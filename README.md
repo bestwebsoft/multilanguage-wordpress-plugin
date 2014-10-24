@@ -32,6 +32,7 @@ Translation
 --------------------------
 * Russian (ru_RU)
 * Ukrainian (uk)
+
 If you create your own language pack or update the existing one, you can send the text of PO and MO files for BestWebSoft and we’ll add it to the plugin. You can download the latest version of the program for work with PO and MO files Poedit.
 
 Technical support
