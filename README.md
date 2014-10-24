@@ -5,12 +5,12 @@ This plugin is a great solution for those, who want their content duplicated in 
 
 <img src="http://bestwebsoft.com/wp-content/uploads/2014/10/xmultilanguage-banner-website.jpg.pagespeed.ic.mpQEPiu2_X.jpg" />
 
-<a href="http://bestwebsoft.com/plugin/multilanguage/#description" target=_blank>Description</a> | 
-<a href="http://bestwebsoft.com/plugin/multilanguage/#installation" target=_blank>Installation</a> | 
-<a href="http://bestwebsoft.com/plugin/multilanguage/#faq" target=_blank>FAQ</a> | 
-<a href="http://bestwebsoft.com/plugin/multilanguage/#screenshots" target=_blank>Screenshots</a> | 
-<a href="http://bestwebsoft.com/plugin/multilanguage/#changelog" target=_blank>Changelog</a> | 
-<a href="http://bestwebsoft.com/plugin/multilanguage/#download" target=_blank>Download</a>
+<a href="http://bestwebsoft.com/products/multilanguage/#description" target=_blank>Description</a> | 
+<a href="http://bestwebsoft.com/products/multilanguage/#installation" target=_blank>Installation</a> | 
+<a href="http://bestwebsoft.com/products/multilanguage/#faq" target=_blank>FAQ</a> | 
+<a href="http://bestwebsoft.com/products/multilanguage/#screenshots" target=_blank>Screenshots</a> | 
+<a href="http://bestwebsoft.com/products/multilanguage/#changelog" target=_blank>Changelog</a> | 
+<a href="http://bestwebsoft.com/products/multilanguage/#download" target=_blank>Download</a>
 
 
 Features
