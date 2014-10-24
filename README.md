@@ -33,9 +33,6 @@ Translation
 * Russian (ru_RU)
 * Ukrainian (uk)
 
-* Russian (ru_RU)
-* Ukrainian (uk)
-
 If you would like to create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress" target="_blank">the text of PO and MO files</a> for <a href="http://support.bestwebsoft.com" target="_blank">BestWebSoft</a> and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO files  <a href="http://www.poedit.net/download.php" target="_blank">Poedit</a>.
 
 Technical support
