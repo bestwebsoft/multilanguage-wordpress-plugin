@@ -1,0 +1,490 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: multilanguage\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-10-22 11:17+0300\n"
+"PO-Revision-Date: \n"
+"Last-Translator: bws <bws>\n"
+"Language-Team: BestWebSoft <info@bestwebsoft.com>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c\n"
+"X-Poedit-Basepath: ..\n"
+"X-Generator: Poedit 1.6.10\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: multilanguage.php:124
+msgid "requires"
+msgstr "требуется"
+
+#: multilanguage.php:124
+msgid "or higher, that is why it has been deactivated! Please upgrade WordPress and try again."
+msgstr "или выше, в связи с чем плагин деактивирован! Пожалуйста, обновите WordPress и попробуйте снова."
+
+#: multilanguage.php:124
+msgid "Back to the WordPress"
+msgstr "Вернуться в WordPress"
+
+#: multilanguage.php:124
+msgid "Plugins page"
+msgstr "Страница плагинов"
+
+#: multilanguage.php:478
+msgid "Attention!!! The changes will not be saved because Title and Content fields are empty on the current tab! It is recommended to fill in at least one field or switch to the tab with the fields that are already filled."
+msgstr "Внимание!!! Внесенные изменения сохранены не будут, так как в текущей вкладке заголовок и содержание пустые! Рекомендуется заполнить хотя бы 1 поле или переключиться на вкладку с заполненными полями."
+
+#: multilanguage.php:505
+msgid "Content language switch"
+msgstr "Переключатель языка содержимого"
+
+#: multilanguage.php:523
+msgid "Localization"
+msgstr "Локализация"
+
+#: multilanguage.php:584
+msgid "Title:"
+msgstr "Заголовок:"
+
+#: multilanguage.php:590
+msgid "Drop-down languages list"
+msgstr "Выпадающий список языков"
+
+#: multilanguage.php:600
+msgid "Drop-down flag icons"
+msgstr "Выпадающие иконки флагов"
+
+#: multilanguage.php:610
+msgid "Flag icons"
+msgstr "Иконки флагов"
+
+#: multilanguage.php:654
+msgid "You do not have sufficient permissions to access this page."
+msgstr "У вас недостаточно прав для доступа к этой странице."
+
+#: multilanguage.php:669
+#: multilanguage.php:697
+#: include/table.php:234
+#: include/table.php:246
+msgid "Settings saved"
+msgstr "Настройки сохранены"
+
+#: multilanguage.php:677
+msgid "Language added"
+msgstr "Язык добавлен"
+
+#: multilanguage.php:680
+msgid "Incorrect language data"
+msgstr "Некорректные данные языка"
+
+#: multilanguage.php:735
+#: multilanguage.php:844
+msgid "Multilanguage Settings"
+msgstr "Настройки Multilanguage"
+
+#: multilanguage.php:736
+#: multilanguage.php:811
+#: multilanguage.php:845
+#: multilanguage.php:955
+msgid "Add&nbsp;language"
+msgstr "Добавить&nbsp;язык"
+
+#: multilanguage.php:740
+#: multilanguage.php:849
+#: include/table.php:200
+msgid "Languages"
+msgstr "Языки"
+
+#: multilanguage.php:741
+#: multilanguage.php:850
+#: multilanguage.php:1589
+#: multilanguage.php:1601
+msgid "Settings"
+msgstr "Настройки"
+
+#: multilanguage.php:742
+#: multilanguage.php:851
+#: multilanguage.php:1602
+msgid "FAQ"
+msgstr "FAQ"
+
+#: multilanguage.php:752
+#: multilanguage.php:861
+msgid "Notice:"
+msgstr "Внимание:"
+
+#: multilanguage.php:752
+#: multilanguage.php:861
+msgid "The plugin's settings have been changed. In order to save them please don't forget to click the 'Save Changes' button."
+msgstr "Настройки плагина были изменены.  Для сохранения настроек, не забудьте нажать на кнопку 'Сохранить изменения'."
+
+#: multilanguage.php:762
+#: multilanguage.php:910
+msgid "Save changes"
+msgstr "Сохранить изменения"
+
+#: multilanguage.php:768
+#: multilanguage.php:918
+msgid "If you enjoy our plugin, please give it 5 stars on WordPress"
+msgstr "Если вам понравился плагин, то поставьте нам 5 звезд на WordPress"
+
+#: multilanguage.php:769
+#: multilanguage.php:919
+msgid "Rate the plugin"
+msgstr "Оценить плагин"
+
+#: multilanguage.php:772
+#: multilanguage.php:922
+msgid "If there is something wrong about it, please contact us"
+msgstr "Если у вас возникнут какие-либо трудности, обращайтесь"
+
+#: multilanguage.php:793
+msgid "Choose a language"
+msgstr "Выберите язык"
+
+#: multilanguage.php:870
+msgid "Post types to translate"
+msgstr "Переводить типы постов"
+
+#: multilanguage.php:886
+msgid "Enable new language"
+msgstr "Включать новый язык"
+
+#: multilanguage.php:889
+msgid "The newly added language will be enabled automatically"
+msgstr "Новый добавленный язык будет включен автоматически"
+
+#: multilanguage.php:894
+msgid "Autosave translation in the editor"
+msgstr "Автосохранение переводов в редакторе"
+
+#: multilanguage.php:897
+msgid "When switching edit posts/pages translation tab, the changes made in the previous tab will be saved automatically (only when the Javascript is enabled)"
+msgstr "При переключении вкладки редактирования языка перевода постов/страниц, изменения, сделанные в предыдущей вкладке, будут автоматически сохраняться (только при включенном Javascript)"
+
+#: multilanguage.php:902
+msgid "Switch Wordpress localization"
+msgstr "Менять язык Wordpress"
+
+#: multilanguage.php:905
+msgid "When changing the language in the frontend, WordPress localization will also be changed (only in case additional WordPress language packs are installed)"
+msgstr "При переключении языка во фронтенде, язык Wordpress также будет меняться (только при наличии установленных дополнительных языковых пакетов для Wordpress)"
+
+#: multilanguage.php:958
+msgid "Edit for language:"
+msgstr "Редактировать для языка:"
+
+#: multilanguage.php:1286
+#: multilanguage.php:1352
+msgid "Translations"
+msgstr "Переводы"
+
+#: multilanguage.php:1603
+msgid "Support"
+msgstr "Поддержка"
+
+#: include/table.php:11
+msgid "language"
+msgstr "язык"
+
+#: include/table.php:12
+msgid "languages"
+msgstr "языки"
+
+#: include/table.php:35
+msgid "Name"
+msgstr "Название"
+
+#: include/table.php:36
+msgid "Locale"
+msgstr "Локализация"
+
+#: include/table.php:37
+msgid "Flag"
+msgstr "Флаг"
+
+#: include/table.php:38
+msgid "Status"
+msgstr "Статус"
+
+#: include/table.php:39
+msgid "Priority"
+msgstr "Приоритет"
+
+#: include/table.php:40
+msgid "Default"
+msgstr "По умолчанию"
+
+#: include/table.php:54
+#: include/table.php:88
+#: include/table.php:124
+msgid "Disabled"
+msgstr "Отключен"
+
+#: include/table.php:55
+#: include/table.php:66
+msgid "Enable"
+msgstr "Включить"
+
+#: include/table.php:57
+#: include/table.php:67
+msgid "Disable"
+msgstr "Отключить"
+
+#: include/table.php:59
+#: include/table.php:68
+msgid "Delete"
+msgstr "Удалить"
+
+#: include/table.php:122
+msgid "Enabled"
+msgstr "Включен"
+
+#: include/table.php:249
+msgid "This language is selected by default. Please select a different default language before disabling it."
+msgstr "Этот язык выбран по умолчанию. Пожалуйста, выберите другой язык по умолчанию прежде чем отключить этот."
+
+#: include/table.php:263
+msgid "Language deleted"
+msgstr "Язык удален"
+
+#: include/table.php:266
+msgid "This language is selected by default. Please select a different default language before deleting it."
+msgstr "Этот язык выбран по умолчанию. Пожалуйста, выберите другой язык по умолчанию прежде чем удалить этот."
+
+#~ msgid "Enable a new language when it is added:"
+#~ msgstr "Включать новый язык при добавлении:"
+
+#~ msgid "Yes"
+#~ msgstr "Да"
+
+#~ msgid "Select how to display Language Switch Widget:"
+#~ msgstr "Выберите как отображать переключение языка в виджете:"
+
+#~ msgid "Multi Language"
+#~ msgstr "Multi Language"
+
+#~ msgid "Default language:"
+#~ msgstr "Язык по умолчанию:"
+
+#~ msgid "Save"
+#~ msgstr "Сохранить"
+
+#~ msgid "default"
+#~ msgstr "по умолчанию"
+
+#~ msgid "Add language"
+#~ msgstr "Добавить язык"
+
+#~ msgid "You must fill all fields"
+#~ msgstr "Необходимо заполнить все поля"
+
+#~ msgid "Incorrect locale or name entered."
+#~ msgstr "Неверно введена локализация или имя."
+
+#~ msgid "Enter wordpress language code. List of codes you can found"
+#~ msgstr "Введите код языка wordpress. Список кодов вы можете найти"
+
+#~ msgid "here"
+#~ msgstr "здесь"
+
+#~ msgid "Example: (en_US)."
+#~ msgstr "Пример: (ru_RU)."
+
+#~ msgid "Name of the language"
+#~ msgstr "Название языка"
+
+#~ msgid "Changes have been saved"
+#~ msgstr "Изменения сохранены"
+
+#~ msgid "Posts by: "
+#~ msgstr "Публикации автора: "
+
+#~ msgid "Not Found..."
+#~ msgstr "Ничего не найдено..."
+
+#~ msgid "Try using the search form"
+#~ msgstr "Попробуйте воспользоваться формой поиска"
+
+#~ msgid "Enter search keyword"
+#~ msgstr "Введите искомое слово"
+
+#~ msgid "search"
+#~ msgstr "поиск"
+
+#~ msgid "Page: "
+#~ msgstr "Страница: "
+
+#~ msgid "edit"
+#~ msgstr "изменить"
+
+#~ msgid "posted by "
+#~ msgstr "опубликовал "
+
+#~ msgid " in "
+#~ msgstr " в "
+
+#~ msgid "Pages:"
+#~ msgstr "Страницы:"
+
+#~ msgid "read comments"
+#~ msgstr "комментарии"
+
+#~ msgid "Tags: "
+#~ msgstr "Метки: "
+
+#~ msgid "Search results for: "
+#~ msgstr "Результаты поиска для: "
+
+#~ msgid "Sorry, no results for your search request..."
+#~ msgstr "Извините, по вашему запросу ничего не найдено..."
+
+#~ msgid "more"
+#~ msgstr "подробнее"
+
+#~ msgid "Powered by %s and %s"
+#~ msgstr "Создано %s и %s"
+
+#~ msgid "Archives for: "
+#~ msgstr "Архив за: "
+
+#~ msgid "Comments are closed."
+#~ msgstr "Комментирование закрыто."
+
+#~ msgid "One response to &ldquo; %s &rdquo;"
+#~ msgstr "Один комментарий к &ldquo; %s &rdquo;"
+
+#~ msgid "%d Responses to &ldquo; %s &rdquo;"
+#~ msgstr "%d комментария(ев) к &ldquo; %s &rdquo;"
+
+#~ msgid "Reply"
+#~ msgstr "Ответить"
+
+#~ msgid "Log in to Reply"
+#~ msgstr "Для комментирования нужно войти/зарегистрироваться"
+#~ msgctxt "noun"
+
+#~ msgid "Comment"
+#~ msgstr "Комментарий"
+
+#~ msgid "You must be "
+#~ msgstr "Вы должны "
+
+#~ msgid "logged in"
+#~ msgstr "войти"
+
+#~ msgid " to post a comment."
+#~ msgstr " для комментирования."
+
+#~ msgid "Logged in as "
+#~ msgstr "Вы вошли как "
+
+#~ msgid "Log out of this account"
+#~ msgstr "Выйти из этого аккаунта"
+
+#~ msgid " Log out?"
+#~ msgstr " Выйти?"
+
+#~ msgid "You may use these "
+#~ msgstr "Вы можете использовать такие "
+
+#~ msgid " tags and attributes: %s"
+#~ msgstr " теги и атрибуты: %s"
+
+#~ msgid "Leave a Reply"
+#~ msgstr "Оставить комментарий"
+
+#~ msgid "Leave a Reply to %s"
+#~ msgstr "Ответить на комментарий %s"
+
+#~ msgid "Cancel reply"
+#~ msgstr "Отменить ответ"
+
+#~ msgid "Post Comment"
+#~ msgstr "Опубликовать"
+
+#~ msgid "Pages: "
+#~ msgstr "Страницы: "
+
+#~ msgid "Page not Found..."
+#~ msgstr "Страница не найдена..."
+
+#~ msgid "Full size is %s pixels"
+#~ msgstr "Полный размер %s пикселей"
+
+#~ msgid "Link to full-size image"
+#~ msgstr "Ссылка на изображение в полном размере"
+
+#~ msgid "Click to full-size image: "
+#~ msgstr "Открыть изображение в полном размере: "
+
+#~ msgid "Previous Image"
+#~ msgstr "Предыдущее изображение"
+
+#~ msgid "Next Image"
+#~ msgstr "Следующее изображение"
+
+#~ msgid "Category: "
+#~ msgstr "Категория: "
+
+#~ msgid "Archives for Tag: "
+#~ msgstr "Архив для Метки: "
+
+#~ msgid "Primary menu"
+#~ msgstr "Основное меню"
+
+#~ msgid "Page %s"
+#~ msgstr "Страница %s"
+
+#~ msgid "Logo & Favicon"
+#~ msgstr "Логотип и Фавикон"
+
+#~ msgid "Upload a logo to be displayed on the left above the header"
+#~ msgstr "Загрузите логотип, который будет отображаться слева над хедером"
+
+#~ msgid "Logo (supported formats: .jpg, .png, .gif)"
+#~ msgstr "Логотип (поддерживаемые форматы: .jpg, .png, .gif)"
+
+#, fuzzy
+#~ msgid "Favicon (supported formats: .ico, .jpg, .png, .gif)"
+#~ msgstr "Фавикон (поддерживаемые форматы: .ico, .jpg, .png, .gif)"
+
+#~ msgid "Logo"
+#~ msgstr "Логотип"
+
+#, fuzzy
+#~ msgid "Image"
+#~ msgstr "Следующее изображение"
+
+#~ msgid " and "
+#~ msgstr " и "
+
+#~ msgid ""
+#~ "You may use these <abbr title=\"HyperText Markup Language\">HTML</abbr> "
+#~ "tags and attributes: %s"
+#~ msgstr ""
+#~ "Вы можете использовать эти <abbr title=\"HyperText Markup Language"
+#~ "\">HTML</abbr> теги и атрибуты: %s"
+
+#~ msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+#~ msgstr ""
+#~ "Для комментирования нужно <a href=\"%s\">войти/зарегистрироваться</a>."
+
+#~ msgid ""
+#~ "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out "
+#~ "of this account\">Log out?</a>"
+#~ msgstr ""
+#~ "Вы вошли как <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out "
+#~ "of this account\">Выйти?</a>"
+
+#~ msgid "Design by: "
+#~ msgstr "Дизайн: "
+
+#~ msgid "and partners: "
+#~ msgstr "и партнеры: "
+
+#~ msgid "%d Responses to &ldquo; %s &rdquo; "
+#~ msgstr "%d комментария(ев) к &ldquo; %s &rdquo; "
