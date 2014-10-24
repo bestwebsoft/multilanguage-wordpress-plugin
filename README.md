@@ -25,8 +25,8 @@ Features
 Recommended Plugins
 --------------------------
 The author of the Multilanguage plugin also recommends the following plugins:
-* Updater – This plugin updates WordPress core and the plugins to the recent versions. You can also use the auto mode or manual mode for updating and set email notifications.
-There is also a premium version of the plugin Updater Pro with more useful features available. It can make backup of all your files and database before updating. Also it can forbid some plugins or WordPress Core update.
+* <a href="http://bestwebsoft.com/products/updater/">Updater</a> – This plugin updates WordPress core and the plugins to the recent versions. You can also use the auto mode or manual mode for updating and set email notifications.
+There is also a premium version of the plugin <a href="http://bestwebsoft.com/products/updater/">Updater Pro</a> with more useful features available. It can make backup of all your files and database before updating. Also it can forbid some plugins or WordPress Core update.
 
 Translation
 --------------------------
