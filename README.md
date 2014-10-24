@@ -3,7 +3,7 @@
 
 This plugin is a great solution for those, who want their content duplicated in other languages. 
 
-<img src="http://bestwebsoft.com/wp-content/uploads/2014/10/xmultilanguage-banner-website.jpg" />
+<img src="http://bestwebsoft.com/wp-content/uploads/2014/10/xmultilanguage-banner-website.jpg.pagespeed.ic.mpQEPiu2_X.jpg" />
 
 <a href="http://bestwebsoft.com/plugin/multilanguage/#description" target=_blank>Description</a> | 
 <a href="http://bestwebsoft.com/plugin/multilanguage/#installation" target=_blank>Installation</a> | 
