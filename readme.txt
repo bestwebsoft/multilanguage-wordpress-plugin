@@ -4,7 +4,7 @@ Donate link: https://www.2checkout.com/checkout/purchase?sid=1430388&quantity=1&
 Tags: plugin, wordpress, multilingual, bilingual, translate, translation, language, multilanguage, international, localization, translation-ready
 Requires at least: 3.7
 Tested up to: 4.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -15,6 +15,8 @@ This plugin allows you to create content on a Wordpress site in different langua
 Multilanguage allows you to create a multilingual WordPress website. Hence, you can create or edit posts, pages, or create categories and post tags as usual, and then define the language for each of them. The translation of a post, whether it was created in the default language or not, is optional. All translations must be done manually using Multilanguage plugin, because it does not integrate any automatic or professional translation service.
 
 NOTE: This plugin will only work with the themes and plugins, which were developed according to Wordpress Codex standards. Also, it uses standard filters (the_title, the_content, get_terms, get_the_terms, get_term, wp_get_nav_menu_items).
+
+http://www.youtube.com/watch?v=Si6ulEWuY1E
 
 <a href="http://wordpress.org/plugins/multilanguage/faq/" target="_blank">FAQ</a>
 <a href="http://support.bestwebsoft.com" target="_blank">Support</a>
@@ -110,10 +112,16 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 
 == Changelog ==
 
+= V1.0.1 - 30.10.2014 =
+* Bugfix : We fixed errors while saving custom posts.
+
 = V1.0.0 - 22.10.2014 =
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.0.1 =
+We fixed errors while saving custom posts.
 
 = V1.0.0 =
 * Release date of Multilanguage.
