@@ -4,7 +4,7 @@ Plugin Name: Multilanguage
 Plugin URI:  http://bestwebsoft.com/products/
 Description: This plugin allows you to display the content in different languages.
 Author: BestWebSoft
-Version: 1.0.1
+Version: 1.0.2
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -25,8 +25,8 @@ License: GPLv3 or later
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-require_once( __DIR__ . '/include/table.php' );
-require_once( __DIR__ . '/include/languages.php' );
+require_once( dirname( __FILE__ ) . '/include/table.php' );
+require_once( dirname( __FILE__ ) . '/include/languages.php' );
 
 /* Function add menu pages */
 if ( ! function_exists( 'mltlngg_admin_menu' ) ) {
@@ -37,19 +37,31 @@ if ( ! function_exists( 'mltlngg_admin_menu' ) ) {
 		$base = plugin_basename( __FILE__ );
 
 		if ( ! isset( $bstwbsftwppdtplgns_options ) ) {
-			if ( ! get_option( 'bstwbsftwppdtplgns_options' ) )
-				add_option( 'bstwbsftwppdtplgns_options', array(), '', 'yes' );
-			$bstwbsftwppdtplgns_options = get_option( 'bstwbsftwppdtplgns_options' );
+			if ( is_multisite() ) {
+				if ( ! get_site_option( 'bstwbsftwppdtplgns_options' ) )
+					add_site_option( 'bstwbsftwppdtplgns_options', array(), '', 'yes' );
+				$bstwbsftwppdtplgns_options = get_site_option( 'bstwbsftwppdtplgns_options' );
+			} else {
+				if ( ! get_option( 'bstwbsftwppdtplgns_options' ) )
+					add_option( 'bstwbsftwppdtplgns_options', array(), '', 'yes' );
+				$bstwbsftwppdtplgns_options = get_option( 'bstwbsftwppdtplgns_options' );
+			}
 		}
 
 		if ( isset( $bstwbsftwppdtplgns_options['bws_menu_version'] ) ) {
 			$bstwbsftwppdtplgns_options['bws_menu']['version'][ $base ] = $bws_menu_version;
 			unset( $bstwbsftwppdtplgns_options['bws_menu_version'] );
-			update_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options, '', 'yes' );
+			if ( is_multisite() )
+				update_site_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options, '', 'yes' );
+			else
+				update_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options, '', 'yes' );
 			require_once( dirname( __FILE__ ) . '/bws_menu/bws_menu.php' );
 		} else if ( ! isset( $bstwbsftwppdtplgns_options['bws_menu']['version'][ $base ] ) || $bstwbsftwppdtplgns_options['bws_menu']['version'][ $base ] < $bws_menu_version ) {
 			$bstwbsftwppdtplgns_options['bws_menu']['version'][ $base ] = $bws_menu_version;
-			update_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options, '', 'yes' );
+			if ( is_multisite() )
+				update_site_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options, '', 'yes' );
+			else
+				update_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options, '', 'yes' );
 			require_once( dirname( __FILE__ ) . '/bws_menu/bws_menu.php' );
 		} else if ( ! isset( $bstwbsftwppdtplgns_added_menu ) ) {
 			$plugin_with_newer_menu = $base;
@@ -66,6 +78,7 @@ if ( ! function_exists( 'mltlngg_admin_menu' ) ) {
 				require_once( dirname( __FILE__ ) . '/bws_menu/bws_menu.php' );
 			$bstwbsftwppdtplgns_added_menu = true;
 		}
+
 		add_menu_page( 'BWS Plugins', 'BWS Plugins', 'manage_options', 'bws_plugins', 'bws_add_menu_render', plugins_url( 'images/px.png', __FILE__ ), 1001 );
 		add_submenu_page( 'bws_plugins', 'Multilanguage', 'Multilanguage', 'manage_options', "mltlngg_settings", 'mltlngg_settings_page' );
 		mltlngg_add_menu_items();
@@ -343,12 +356,14 @@ if ( ! function_exists( 'mltlngg_plugin_load' ) ) {
 			load_plugin_textdomain( 'multilanguage', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
 			/* Do not redirect if is admin/login/logout/ page */
-			if ( ! is_admin() && ! preg_match( "/wp-login.php|wp-comments-post.php/", $_SERVER['REQUEST_URI'] ) )
+			if ( ! is_admin() && ! preg_match( "/wp-login.php|wp-comments-post.php/", $_SERVER['REQUEST_URI'] ) ) {
 				/* Redirect to URL with language code */
-				mltlngg_redirect();
+				mltlngg_redirect();				
+			}
 		}
 	}
 }
+
 
 /* Function for change display language */
 if ( ! function_exists( 'mltlngg_get_display_language' ) ) {
@@ -392,23 +407,109 @@ if ( ! function_exists( 'mltlngg_switch_wp_locale' ) ) {
 /* Function for redirect when display language is changed */
 if ( ! function_exists( 'mltlngg_redirect' ) ) {
 	function mltlngg_redirect() {
-		global $mltlngg_current_language, $mltlngg_old_language, $mltlngg_enabled_languages;
-		if ( ! empty( $mltlngg_old_language ) && ! empty( $mltlngg_current_language ) && $mltlngg_old_language != $mltlngg_current_language ) {
-			if ( false === strpos( $_SERVER['REQUEST_URI'], $mltlngg_old_language ) ) {
-				$home = get_option( 'home' );
-				$mltlngg_permalink = get_option( 'permalink_structure' );
-				$href = ( $mltlngg_permalink != '' ) ? ( str_replace( $home, $home . '/' . $mltlngg_current_language , ( isset( $_SERVER["HTTPS"] ) && $_SERVER["HTTPS"] == "on" ) ? "https://" : "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ) ) : ( ( ( isset( $_SERVER["HTTPS"] ) && $_SERVER["HTTPS"] == "on" ) ? "https://" : "http://" ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . ( ( false === strpos( $_SERVER['REQUEST_URI'], '?' ) ) ? '?lang=' . $mltlngg_current_language : '&lang=' . $mltlngg_current_language ) );
-			} else {
-				$href = str_replace( $mltlngg_old_language, $mltlngg_current_language, ( isset( $_SERVER["HTTPS"] ) && $_SERVER["HTTPS"] == "on" ) ? "https://" : "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] );
+		global $current_blog, $mltlngg_current_language, $mltlngg_old_language, $mltlngg_enabled_languages;
+
+		$home = get_option( 'home' );
+		$mltlngg_permalink = get_option( 'permalink_structure' );
+
+		if ( is_multisite() && ! is_subdomain_install() ) {			
+			if ( $current_blog ) {
+				$home_main = ( ( isset( $_SERVER["HTTPS"] ) && $_SERVER["HTTPS"] == "on" ) ? "https://" : "http://" ) . $current_blog->domain;
+				$home_main = esc_url( $home_main );
 			}
-			wp_redirect( $href );
-			exit();
-		} elseif ( empty( $mltlngg_old_language ) && count( $mltlngg_enabled_languages ) > 1 && false === strpos( $_SERVER['REQUEST_URI'], $mltlngg_current_language ) ) {
-			$home = get_option( 'home' );
-			$mltlngg_permalink = get_option( 'permalink_structure' );
-			$href = ( $mltlngg_permalink != '' ) ? ( str_replace( $home, $home . '/' . $mltlngg_current_language , ( isset( $_SERVER["HTTPS"] ) && $_SERVER["HTTPS"] == "on" ) ? "https://" : "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ) ) : ( ( ( isset( $_SERVER["HTTPS"] ) && $_SERVER["HTTPS"] == "on" ) ? "https://" : "http://" ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . ( ( false === strpos( $_SERVER['REQUEST_URI'], '?' ) ) ? '?lang=' . $mltlngg_current_language : '&lang=' . $mltlngg_current_language ) );
-			wp_redirect( $href );
-			exit();
+
+			if ( ! empty( $mltlngg_old_language ) && ! empty( $mltlngg_current_language ) && $mltlngg_old_language != $mltlngg_current_language ) {
+				if ( false === strpos( $_SERVER['REQUEST_URI'], $mltlngg_old_language ) ) {
+					if ( $mltlngg_permalink != '' ) {
+						$href = str_replace( $home, ( $home . '/' . $mltlngg_current_language ), ( $home_main . $_SERVER['REQUEST_URI'] ) );
+					} else {
+						$href = $home_main . $_SERVER['REQUEST_URI'];
+						if ( 'page' == get_option( 'show_on_front' ) && false === strpos( $_SERVER['REQUEST_URI'], '?' ) ) {
+							$front_page_id = get_option( 'page_on_front' );
+							$href .= ( false === strpos( str_replace( 'lang=' . $mltlngg_old_language, '', $_SERVER['REQUEST_URI'] ), '=' ) ) ? '?page_id=' . $front_page_id : '&page_id=' . $front_page_id;
+							$href .= '&lang=' . $mltlngg_current_language;
+						} else {
+							$href .= ( false === strpos( $_SERVER['REQUEST_URI'], '?' ) ) ? '?lang=' . $mltlngg_current_language : '&lang=' . $mltlngg_current_language;
+						}
+					}
+				} else {
+					$href = $home_main . str_replace( $mltlngg_old_language, $mltlngg_current_language, $_SERVER['REQUEST_URI'] );
+				}
+				wp_redirect( $href );
+				exit();			
+			} elseif ( empty( $mltlngg_old_language ) && count( $mltlngg_enabled_languages ) > 1 && false === strpos( $_SERVER['REQUEST_URI'], $mltlngg_current_language ) ) {
+				if ( $mltlngg_permalink != '' ) {
+					$href = str_replace( $home, ( $home . '/' . $mltlngg_current_language ), ( $home_main . $_SERVER['REQUEST_URI'] ) );
+				} else {
+					$href = $home_main . $_SERVER['REQUEST_URI'];
+					if ( 'page' == get_option( 'show_on_front' ) && false === strpos( $_SERVER['REQUEST_URI'], '?' ) ) {
+						$front_page_id = get_option( 'page_on_front' );
+						$href .= ( false === strpos( $_SERVER['REQUEST_URI'], '?' ) ) ? '?page_id=' . $front_page_id : '&page_id=' . $front_page_id;
+						$href .= '&lang=' . $mltlngg_current_language;
+					} else {
+						$href .= ( false === strpos( $_SERVER['REQUEST_URI'], '?' ) ) ? '?lang=' . $mltlngg_current_language : '&lang=' . $mltlngg_current_language;
+					}
+				}
+				wp_redirect( $href );
+				exit();
+			} elseif ( $mltlngg_permalink == '' ) {				
+				if ( 'page' == get_option( 'show_on_front' ) && false === strpos( str_replace( 'lang=' . $mltlngg_current_language, '', $_SERVER['REQUEST_URI'] ), '=' ) ) {
+					$front_page_id = get_option( 'page_on_front' );
+					$href = trim( $home_main . $_SERVER['REQUEST_URI'] , '/' );
+					$href .= ( false === strpos( $_SERVER['REQUEST_URI'], '?' ) ) ? '?page_id=' . $front_page_id : '&page_id=' . $front_page_id;
+					if ( false === strpos( $_SERVER['REQUEST_URI'], $mltlngg_current_language ) )
+						$href .= '&lang=' . $mltlngg_current_language;
+					wp_redirect( $href );
+					exit();
+				} 
+			}
+		} else {
+			if ( ! empty( $mltlngg_old_language ) && ! empty( $mltlngg_current_language ) && $mltlngg_old_language != $mltlngg_current_language ) {
+				if ( false === strpos( $_SERVER['REQUEST_URI'], $mltlngg_old_language ) ) {
+					if ( $mltlngg_permalink != '' ) {
+						$href = str_replace( $home, ( $home . '/' . $mltlngg_current_language ), ( $home . $_SERVER['REQUEST_URI'] ) );
+					} else {
+						$href = $home . $_SERVER['REQUEST_URI'];
+						if ( 'page' == get_option( 'show_on_front' ) && false === strpos( $_SERVER['REQUEST_URI'], '?' ) ) {
+							$front_page_id = get_option( 'page_on_front' );
+							$href .= ( false === strpos( str_replace( 'lang=' . $mltlngg_old_language, '', $_SERVER['REQUEST_URI'] ), '=' ) ) ? '?page_id=' . $front_page_id : '&page_id=' . $front_page_id;
+							$href .= '&lang=' . $mltlngg_current_language;
+						} else {
+							$href .= ( false === strpos( $_SERVER['REQUEST_URI'], '?' ) ) ? '?lang=' . $mltlngg_current_language : '&lang=' . $mltlngg_current_language;
+						}
+					}
+				} else {
+					$href = $home . str_replace( $mltlngg_old_language, $mltlngg_current_language, $_SERVER['REQUEST_URI'] );
+				}
+				wp_redirect( $href );
+				exit();
+			
+			} elseif ( empty( $mltlngg_old_language ) && count( $mltlngg_enabled_languages ) > 1 && false === strpos( $_SERVER['REQUEST_URI'], $mltlngg_current_language ) ) {
+				if ( $mltlngg_permalink != '' ) {
+					$href = str_replace( $home, ( $home . '/' . $mltlngg_current_language ), ( $home . $_SERVER['REQUEST_URI'] ) );
+				} else {
+					$href = $home . $_SERVER['REQUEST_URI'];
+					if ( 'page' == get_option( 'show_on_front' ) && false === strpos( $_SERVER['REQUEST_URI'], '?' ) ) {
+						$front_page_id = get_option( 'page_on_front' );
+						$href .= ( false === strpos( $_SERVER['REQUEST_URI'], '?' ) ) ? '?page_id=' . $front_page_id : '&page_id=' . $front_page_id;
+						$href .= '&lang=' . $mltlngg_current_language;
+					} else {
+						$href .= ( false === strpos( $_SERVER['REQUEST_URI'], '?' ) ) ? '?lang=' . $mltlngg_current_language : '&lang=' . $mltlngg_current_language;
+					}
+				}
+				wp_redirect( $href );
+				exit();
+			} elseif ( $mltlngg_permalink == '' ) {
+				if ( 'page' == get_option( 'show_on_front' ) && false === strpos( str_replace( 'lang=' . $mltlngg_current_language, '', $_SERVER['REQUEST_URI'] ), '=' ) ) {
+					$front_page_id = get_option( 'page_on_front' );
+					$href = $home . $_SERVER['REQUEST_URI'];
+					$href .= ( false === strpos( $_SERVER['REQUEST_URI'], '?' ) ) ? '?page_id=' . $front_page_id : '&page_id=' . $front_page_id;
+					if ( false === strpos( $_SERVER['REQUEST_URI'], $mltlngg_current_language ) )
+						$href .= '&lang=' . $mltlngg_current_language;
+					wp_redirect( $href );
+					exit();
+				} 
+			}
 		}
 	}
 }
@@ -452,13 +553,18 @@ if ( ! function_exists( 'mltlngg_replace_matched_rule' ) ) {
 if ( ! function_exists( 'mltlngg_get_url_translated' ) ) {
 	function mltlngg_get_url_translated( $url ) {
 		global $mltlngg_current_language, $mltlngg_enabled_languages;
-		if ( count( $mltlngg_enabled_languages ) > 1 && ! is_admin() && false === strpos( $_SERVER['REQUEST_URI'], 'wp-login.php' ) ) {
+		if ( count( $mltlngg_enabled_languages ) > 1 && ! is_admin() && false === strpos( $_SERVER['REQUEST_URI'], 'wp-login.php' ) ) {	
+			$is_content = strpos( $url, content_url() );
+			$is_includes = strpos( $url, includes_url() );
 			$mltlngg_permalink = get_option( 'permalink_structure' );
-			if ( $mltlngg_permalink != '' ) {
-				$home = get_option( 'home' );
-				$url = str_replace( $home, $home . '/' . $mltlngg_current_language, $url );
-			} else {
-				$url .= ( false === strpos( $url, '?' ) ) ? '?lang=' . $mltlngg_current_language : '&lang=' . $mltlngg_current_language;
+
+			if ( false == $is_content && false === $is_includes ) {
+				if ( $mltlngg_permalink == '' ) {
+					$url .= ( false === strpos( $url, '?' ) ) ? '?lang=' . $mltlngg_current_language : '&lang=' . $mltlngg_current_language;
+				} else {
+					$siteurl = get_option( 'siteurl' );
+					$url = str_replace( $siteurl, $siteurl . '/' . $mltlngg_current_language, $url );
+				}
 			}
 		}
 		return $url;
@@ -517,7 +623,7 @@ if ( ! class_exists( 'Mltlngg_Widget' ) ) {
 		 * @param array $instance Saved values from database.
 		 */
 		public function widget( $args, $instance ) {
-			global $mltlngg_current_language, $mltlngg_enabled_languages;
+			global $mltlngg_current_language, $mltlngg_enabled_languages, $current_blog;
 			$mltlngg_language_switcher = ( isset( $instance['mltlngg_language_switcher'] ) ) ? $instance['mltlngg_language_switcher'] : 'drop-down-list';
 			$title = ( isset( $instance['title'] ) ) ? apply_filters( 'widget_title', $instance['title'] ) : NULL;
 			echo $args['before_widget'];
@@ -531,7 +637,15 @@ if ( ! class_exists( 'Mltlngg_Widget' ) ) {
 						<?php foreach ( $mltlngg_enabled_languages as $mltlngg_one_language ) {
 							$mltlngg_selected = ( $mltlngg_one_language['locale'] == $mltlngg_current_language ) ? 'selected="selected"' : '';
 							$mltlngg_option_display = ( $mltlngg_one_language['locale'] == $mltlngg_current_language && count( $mltlngg_enabled_languages ) > 1 ) ? ' display: none;' : '';
-							$language_link = str_replace( $mltlngg_current_language, $mltlngg_one_language['locale'], ( isset( $_SERVER["HTTPS"] ) && $_SERVER["HTTPS"] == "on" ) ? "https://" : "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] );
+							$home = get_option( 'home' );
+							if ( is_multisite() && ! is_subdomain_install() ) {			
+								if ( $current_blog ) {
+									$home_main = ( ( isset( $_SERVER["HTTPS"] ) && $_SERVER["HTTPS"] == "on" ) ? "https://" : "http://" ) . $current_blog->domain;
+									$home_main = esc_url( $home_main );
+								}
+								$language_link = $home_main . str_replace( $mltlngg_current_language, $mltlngg_one_language['locale'], $_SERVER['REQUEST_URI'] );
+							} else
+								$language_link = $home . str_replace( $mltlngg_current_language, $mltlngg_one_language['locale'], $_SERVER['REQUEST_URI'] );
 							echo '<option ' . $mltlngg_selected . ' value="' . $language_link . '" style="background-image: url(' . plugins_url( 'images/flags/' , __FILE__ ) . $mltlngg_one_language['locale'] . '.png' . '); background-repeat: no-repeat; background-position: left center; padding-left: 20px;' . $mltlngg_option_display . '">' . $mltlngg_one_language['name'] . '</option>';
 						} ?>
 					</select>
@@ -733,7 +847,7 @@ if ( ! function_exists( 'mltlngg_languages_tab' ) ) {
 				<a class="nav-tab" href="http://bestwebsoft.com/products/multilanguage/faq/" target="_blank"><?php _e( 'FAQ', 'multilanguage' ); ?></a>
 			</h2><!-- .nav-tab-wrapper -->
 			<!-- /end language tab on setting page -->
-			<?php if ( isset( $_POST['mltlngg_language_form_was_send'] ) || isset( $_POST['mltlngg_add_new_language_form_was_send'] ) || isset( $_GET['action'] ) ) : ?>
+			<?php if ( ( isset( $_POST['mltlngg_language_form_was_send'] ) || isset( $_POST['mltlngg_add_new_language_form_was_send'] ) || isset( $_GET['action'] ) ) && $mltlngg_message_value != '' ) : ?>
 				<div class="updated fade below-h2"><p><?php echo $mltlngg_message_value; ?></p></div>
 			<?php endif; ?>
 			<div id="mltlngg-settings-notice" class="updated fade" style="display:none"><p><strong><?php _e( "Notice:", 'multilanguage' ); ?></strong> <?php _e( "The plugin's settings have been changed. In order to save them please don't forget to click the 'Save Changes' button.", 'multilanguage' ); ?></p></div>
@@ -753,7 +867,7 @@ if ( ! function_exists( 'mltlngg_languages_tab' ) ) {
 			<div class="bws-plugin-reviews">
 				<div class="bws-plugin-reviews-rate">
 					<?php _e( 'If you enjoy our plugin, please give it 5 stars on WordPress', 'multilanguage' ); ?>:
-					<a href="http://wordpress.org/support/view/plugin-reviews/multilanguage/" target="_blank" title="Multi&nbsp;Language"><?php _e( 'Rate the plugin', 'multilanguage' ); ?></a>
+					<a href="http://wordpress.org/support/view/plugin-reviews/multilanguage/" target="_blank" title="Multilanguage"><?php _e( 'Rate the plugin', 'multilanguage' ); ?></a>
 				</div><!-- .bws-plugin-reviews-rate -->
 				<div class="bws-plugin-reviews-support">
 					<?php _e( 'If there is something wrong about it, please contact us', 'multilanguage' ); ?>:
@@ -882,7 +996,7 @@ if ( ! function_exists( 'mltlngg_settings_tab' ) ) {
 			<div class="bws-plugin-reviews">
 				<div class="bws-plugin-reviews-rate">
 					<?php _e( 'If you enjoy our plugin, please give it 5 stars on WordPress', 'multilanguage' ); ?>:
-					<a href="http://wordpress.org/support/view/plugin-reviews/multilanguage/" target="_blank" title="Multi&nbsp;Language"><?php _e( 'Rate the plugin', 'multilanguage' ); ?></a>
+					<a href="http://wordpress.org/support/view/plugin-reviews/multilanguage/" target="_blank" title="Multilanguage"><?php _e( 'Rate the plugin', 'multilanguage' ); ?></a>
 				</div><!-- .bws-plugin-reviews-rate -->
 				<div class="bws-plugin-reviews-support">
 					<?php _e( 'If there is something wrong about it, please contact us', 'multilanguage' ); ?>:

@@ -48,7 +48,10 @@
 
 .mltlngg-lang-button,
 .mltlngg-lang-button:active,
-.mltlngg-lang-button:hover {
+.mltlngg-lang-button:hover,
+.widget .mltlngg-lang-button-icons,
+.widget .mltlngg-lang-button-icons:active,
+.widget .mltlngg-lang-button-icons:hover {
 	padding: 0;
 	margin: 0;
 	width: 46px;

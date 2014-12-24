@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bestwebsoft\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-03 15:03+0300\n"
-"PO-Revision-Date: 2014-03-03 15:03+0300\n"
+"POT-Creation-Date: 2014-11-05 16:30+0300\n"
+"PO-Revision-Date: 2014-11-05 16:30+0300\n"
 "Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
 "Language-Team: Luc Capronnier <lcapronnier@yahoo.com>\n"
 "Language: fr_FR\n"
@@ -15,375 +15,348 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2;plural=n>2;\n"
 "X-Generator: Poedit 1.5.7\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: bws_menu.php:417
+#: bws_menu.php:351
 msgid "Not set"
 msgstr "Not set"
 
-#: bws_menu.php:419
-#: bws_menu.php:423
+#: bws_menu.php:353
+#: bws_menu.php:354
 msgid "On"
 msgstr "On"
 
-#: bws_menu.php:421
-#: bws_menu.php:425
+#: bws_menu.php:353
+#: bws_menu.php:354
 msgid "Off"
 msgstr "Off"
 
-#: bws_menu.php:429
-#: bws_menu.php:433
-#: bws_menu.php:437
-#: bws_menu.php:441
-#: bws_menu.php:445
-#: bws_menu.php:471
+#: bws_menu.php:355
+#: bws_menu.php:356
+#: bws_menu.php:357
+#: bws_menu.php:358
+#: bws_menu.php:359
+#: bws_menu.php:371
 msgid "N/A"
 msgstr "N/A"
 
-#: bws_menu.php:443
+#: bws_menu.php:359
 msgid " Mb"
 msgstr " Mb"
 
-#: bws_menu.php:447
-#: bws_menu.php:451
-#: bws_menu.php:455
-#: bws_menu.php:466
+#: bws_menu.php:360
+#: bws_menu.php:361
+#: bws_menu.php:362
+#: bws_menu.php:367
 msgid "Yes"
 msgstr "Yes"
 
-#: bws_menu.php:449
-#: bws_menu.php:453
-#: bws_menu.php:457
-#: bws_menu.php:468
+#: bws_menu.php:360
+#: bws_menu.php:361
+#: bws_menu.php:362
+#: bws_menu.php:369
 msgid "No"
 msgstr "No"
 
-#: bws_menu.php:482
+#: bws_menu.php:379
 msgid "Operating System"
 msgstr "Operating System"
 
-#: bws_menu.php:483
+#: bws_menu.php:380
 msgid "Server"
 msgstr "Server"
 
-#: bws_menu.php:484
+#: bws_menu.php:381
 msgid "Memory usage"
 msgstr "Memory usage"
 
-#: bws_menu.php:485
+#: bws_menu.php:382
 msgid "MYSQL Version"
 msgstr "MYSQL Version"
 
-#: bws_menu.php:486
+#: bws_menu.php:383
 msgid "SQL Mode"
 msgstr "SQL Mode"
 
-#: bws_menu.php:487
+#: bws_menu.php:384
 msgid "PHP Version"
 msgstr "PHP Version"
 
-#: bws_menu.php:488
+#: bws_menu.php:385
 msgid "PHP Safe Mode"
 msgstr "PHP Safe Mode"
 
-#: bws_menu.php:489
+#: bws_menu.php:386
 msgid "PHP Allow URL fopen"
 msgstr "PHP Allow URL fopen"
 
-#: bws_menu.php:490
+#: bws_menu.php:387
 msgid "PHP Memory Limit"
 msgstr "PHP Memory Limit"
 
-#: bws_menu.php:491
+#: bws_menu.php:388
 msgid "PHP Max Upload Size"
 msgstr "PHP Max Upload Size"
 
-#: bws_menu.php:492
+#: bws_menu.php:389
 msgid "PHP Max Post Size"
 msgstr "PHP Max Post Size"
 
-#: bws_menu.php:493
+#: bws_menu.php:390
 msgid "PHP Max Script Execute Time"
 msgstr "PHP Max Script Execute Time"
 
-#: bws_menu.php:494
+#: bws_menu.php:391
 msgid "PHP Exif support"
 msgstr "PHP Exif support"
 
-#: bws_menu.php:495
+#: bws_menu.php:392
 msgid "PHP IPTC support"
 msgstr "PHP IPTC support"
 
-#: bws_menu.php:496
+#: bws_menu.php:393
 msgid "PHP XML support"
 msgstr "PHP XML support"
 
-#: bws_menu.php:497
+#: bws_menu.php:394
 msgid "Site URL"
 msgstr "Site URL"
 
-#: bws_menu.php:498
+#: bws_menu.php:395
 msgid "Home URL"
 msgstr "Home URL"
 
-#: bws_menu.php:501
+#: bws_menu.php:398
 msgid "WordPress Version"
 msgstr "WordPress Version"
 
-#: bws_menu.php:502
+#: bws_menu.php:399
 msgid "WordPress DB Version"
 msgstr "WordPress DB Version"
 
-#: bws_menu.php:503
+#: bws_menu.php:400
 msgid "Multisite"
 msgstr "Multisite"
 
-#: bws_menu.php:504
+#: bws_menu.php:401
 msgid "Active Theme"
 msgstr "Active Theme"
 
-#: bws_menu.php:520
+#: bws_menu.php:416
 msgid "Please enter a valid email address."
 msgstr "Merci de saisir une adresse e-mail valide."
 
-#: bws_menu.php:524
+#: bws_menu.php:420
 msgid "Email with system info is sent to "
 msgstr "Le courriel avec les informations système est envoyé à"
 
-#: bws_menu.php:528
+#: bws_menu.php:424
 msgid "Thank you for contacting us."
 msgstr "Merci de nous avoir contacté."
 
-#: bws_menu.php:556
+#: bws_menu.php:457
 msgid "Sorry, email message could not be delivered."
 msgstr "Désolé, votre e-mail n'a pas pu être envoyé."
 
-#: bws_menu.php:568
-msgid "Switch to new interface"
-msgstr "Basculer vers la nouvelle interface"
+#: bws_menu.php:465
+msgid "Need help?"
+msgstr "Besoin d'aide ?"
 
-#: bws_menu.php:575
-msgid "Pro plugins"
-msgstr "Plugins Pro"
+#: bws_menu.php:466
+msgid "Client area"
+msgstr "Espace client"
 
-#: bws_menu.php:578
-#: bws_menu.php:604
-msgid "Activated plugins"
-msgstr "Plugin activé"
-
-#: bws_menu.php:580
-#: bws_menu.php:588
-#: bws_menu.php:596
-#: bws_menu.php:606
-#: bws_menu.php:614
-#: bws_menu.php:622
-#: bws_menu.php:632
-#: bws_menu.php:639
-#: bws_menu.php:647
-msgid "Read more"
-msgstr "Lire la suite"
-
-#: bws_menu.php:580
-#: bws_menu.php:606
-#: bws_menu.php:779
-#: bws_menu.php:806
-msgid "Settings"
-msgstr "Réglages"
-
-#: bws_menu.php:586
-#: bws_menu.php:612
-#: bws_menu.php:741
-msgid "Installed plugins"
-msgstr "Plugin installé"
-
-#: bws_menu.php:594
-#: bws_menu.php:620
-#: bws_menu.php:863
-msgid "Recommended plugins"
-msgstr "Plugin recommandé"
-
-#: bws_menu.php:596
-msgid "Purchase"
-msgstr "Achetez"
-
-#: bws_menu.php:601
-msgid "Free plugins"
-msgstr "Plugins gratuits"
-
-#: bws_menu.php:622
-#: bws_menu.php:647
-msgid "Download"
-msgstr "Téléchargement"
-
-#: bws_menu.php:622
-#: bws_menu.php:647
-#: bws_menu.php:980
-#, php-format
-msgid "Install %s"
-msgstr "%s installé"
-
-#: bws_menu.php:622
-#: bws_menu.php:647
-msgid "Install now from wordpress.org"
-msgstr "Installer maintenant depuis wordpress.org"
-
-#: bws_menu.php:628
-msgid "Free themes"
-msgstr "Thèmes gratuits"
-
-#: bws_menu.php:631
-msgid "Activated theme"
-msgstr "Thème actif"
-
-#: bws_menu.php:632
-#, php-format
-msgid "Customize &#8220;%s&#8221;"
-msgstr "Personnaliser &#8220;%s&#8221;"
-
-#: bws_menu.php:632
-msgid "Customize"
-msgstr "Personnaliser"
-
-#: bws_menu.php:637
-msgid "Installed themes"
-msgstr "Thèmes installés"
-
-#: bws_menu.php:645
-msgid "Recommended themes"
-msgstr "Thèmes recommandés"
-
-#: bws_menu.php:653
-msgid "If you have any questions, please contact us via"
-msgstr "Si vous avez des questions, merci de contacter via "
-
-#: bws_menu.php:660
-#: bws_menu.php:731
-#: bws_menu.php:1016
+#: bws_menu.php:467
+#: bws_menu.php:778
 msgid "System status"
 msgstr "System status"
 
-#: bws_menu.php:664
-#: bws_menu.php:1019
-msgid "Environment"
-msgstr "Environment"
-
-#: bws_menu.php:675
-#: bws_menu.php:1030
-msgid "Active Plugins"
-msgstr "Plugin actifs"
-
-#: bws_menu.php:686
-#: bws_menu.php:1041
-msgid "Inactive Plugins"
-msgstr "Plugin inactifs"
-
-#: bws_menu.php:703
-#: bws_menu.php:1058
-msgid "Send to support"
-msgstr "Envoyé au support"
-
-#: bws_menu.php:710
-#: bws_menu.php:1065
-msgid "Send to custom email &#187;"
-msgstr "Envoyer un e-mail spécifique &#187;"
-
-#: bws_menu.php:721
-msgid "Switch to old interface"
-msgstr "Basculer vers l'ancienne interface"
-
-#: bws_menu.php:727
+#: bws_menu.php:472
 msgid "Plugins"
 msgstr "Externsions"
 
-#: bws_menu.php:729
+#: bws_menu.php:474
 msgid "Themes"
 msgstr "Thèmes"
 
-#: bws_menu.php:735
+#: bws_menu.php:479
 msgid "All"
 msgstr "Tous"
 
-#: bws_menu.php:736
+#: bws_menu.php:480
 msgid "Installed"
 msgstr "Installé"
 
-#: bws_menu.php:737
+#: bws_menu.php:481
 msgid "Recommended"
 msgstr "Recommandé"
 
-#: bws_menu.php:777
-#: bws_menu.php:804
-#: bws_menu.php:825
-#: bws_menu.php:852
-#: bws_menu.php:908
+#: bws_menu.php:485
+msgid "Installed plugins"
+msgstr "Plugin installé"
+
+#: bws_menu.php:514
+#: bws_menu.php:536
+#: bws_menu.php:563
+#: bws_menu.php:593
+#: bws_menu.php:639
 msgid "Learn more"
 msgstr "En savoir plus"
 
-#: bws_menu.php:794
-#: bws_menu.php:842
-#: bws_menu.php:898
-msgid "Go"
-msgstr "Allez"
+#: bws_menu.php:517
+#: bws_menu.php:566
+msgid "Settings"
+msgstr "Réglages"
 
-#: bws_menu.php:798
-#: bws_menu.php:846
-#: bws_menu.php:902
-msgid "DONATE"
-msgstr "Faire un don"
-
-#: bws_menu.php:827
-#: bws_menu.php:854
+#: bws_menu.php:538
+#: bws_menu.php:595
 msgid "Activate this plugin"
 msgstr "Activer cette extension"
 
-#: bws_menu.php:827
-#: bws_menu.php:854
+#: bws_menu.php:538
+#: bws_menu.php:595
 msgid "Activate"
 msgstr "Activé"
 
-#: bws_menu.php:910
+#: bws_menu.php:553
+#: bws_menu.php:583
+#: bws_menu.php:629
+msgid "Go"
+msgstr "Passez"
+
+#: bws_menu.php:557
+#: bws_menu.php:587
+#: bws_menu.php:633
+msgid "DONATE"
+msgstr "Faire un don"
+
+#: bws_menu.php:603
+msgid "Recommended plugins"
+msgstr "Plugin recommandé"
+
+#: bws_menu.php:641
 msgid "Install now"
 msgstr "Installer maintenant"
 
-#: bws_menu.php:932
+#: bws_menu.php:662
 msgid "Try again"
 msgstr "Essayer de nouveau"
 
-#: bws_menu.php:949
+#: bws_menu.php:680
 #, php-format
 msgid "Preview &#8220;%s&#8221;"
 msgstr "Pré-visualiser &#8220;%s&#8221;"
 
-#: bws_menu.php:980
+#: bws_menu.php:711
+#, php-format
+msgid "Install %s"
+msgstr "%s installé"
+
+#: bws_menu.php:711
 msgid "Install Now"
 msgstr "Installa Ora"
 
-#: bws_menu.php:983
+#: bws_menu.php:714
 #, php-format
 msgid "Update to version %s"
 msgstr "Mettre à jour pour la version %s"
 
-#: bws_menu.php:983
+#: bws_menu.php:714
 msgid "Update"
 msgstr "Mettre à jour"
 
-#: bws_menu.php:990
+#: bws_menu.php:721
 #, php-format
 msgid "Preview %s"
 msgstr "Pré-visualiser %s"
 
-#: bws_menu.php:990
+#: bws_menu.php:721
 msgid "Preview"
 msgstr "Pré-visualiser"
 
-#: bws_menu.php:997
+#: bws_menu.php:727
+#: bws_menu.php:759
 #, php-format
 msgid "By %s"
 msgstr "Par %s"
 
-#: bws_menu.php:1003
+#: bws_menu.php:733
 msgid "Details"
 msgstr "Détails"
+
+#: bws_menu.php:765
+msgid "Already Installed"
+msgstr "Déjà installé"
+
+#: bws_menu.php:781
+msgid "Environment"
+msgstr "Environment"
+
+#: bws_menu.php:792
+msgid "Active Plugins"
+msgstr "Plugin actifs"
+
+#: bws_menu.php:805
+msgid "Inactive Plugins"
+msgstr "Plugin inactifs"
+
+#: bws_menu.php:821
+msgid "Send to support"
+msgstr "Envoyé au support"
+
+#: bws_menu.php:828
+msgid "Send to custom email &#187;"
+msgstr "Envoyer un e-mail spécifique &#187;"
+
+#~ msgid "Switch to new interface"
+#~ msgstr "Basculer vers la nouvelle interface"
+
+#~ msgid "Pro plugins"
+#~ msgstr "Plugins Pro"
+
+#~ msgid "Activated plugins"
+#~ msgstr "Plugin activé"
+
+#~ msgid "Read more"
+#~ msgstr "Lire la suite"
+
+#~ msgid "Purchase"
+#~ msgstr "Achetez"
+
+#~ msgid "Free plugins"
+#~ msgstr "Plugins gratuits"
+
+#~ msgid "Download"
+#~ msgstr "Téléchargement"
+
+#~ msgid "Install now from wordpress.org"
+#~ msgstr "Installer maintenant depuis wordpress.org"
+
+#~ msgid "Free themes"
+#~ msgstr "Thèmes gratuits"
+
+#~ msgid "Activated theme"
+#~ msgstr "Thème actif"
+
+#~ msgid "Customize &#8220;%s&#8221;"
+#~ msgstr "Personnaliser &#8220;%s&#8221;"
+
+#~ msgid "Customize"
+#~ msgstr "Personnaliser"
+
+#~ msgid "Installed themes"
+#~ msgstr "Thèmes installés"
+
+#~ msgid "Recommended themes"
+#~ msgstr "Thèmes recommandés"
+
+#~ msgid "If you have any questions, please contact us via"
+#~ msgstr "Si vous avez des questions, merci de contacter via "
+
+#~ msgid "Switch to old interface"
+#~ msgstr "Basculer vers l'ancienne interface"
 
 #, fuzzy
 #~ msgid "installed"

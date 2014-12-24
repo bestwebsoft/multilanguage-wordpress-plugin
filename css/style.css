@@ -52,7 +52,10 @@
 
 .mltlngg-lang-button-icons,
 .mltlngg-lang-button-icons:active,
-.mltlngg-lang-button-icons:hover {
+.mltlngg-lang-button-icons:hover,
+.widget .mltlngg-lang-button-icons,
+.widget .mltlngg-lang-button-icons:active,
+.widget .mltlngg-lang-button-icons:hover {
 	padding: 0;
 	margin: 0;
 	width: 22px ;

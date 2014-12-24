@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://www.2checkout.com/checkout/purchase?sid=1430388&quantity=1&product_id=94
 Tags: plugin, wordpress, multilingual, bilingual, translate, translation, language, multilanguage, international, localization, translation-ready
 Requires at least: 3.7
-Tested up to: 4.0
-Stable tag: 1.0.1
+Tested up to: 4.1
+Stable tag: 1.0.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -16,7 +16,7 @@ Multilanguage allows you to create a multilingual WordPress website. Hence, you 
 
 NOTE: This plugin will only work with the themes and plugins, which were developed according to Wordpress Codex standards. Also, it uses standard filters (the_title, the_content, get_terms, get_the_terms, get_term, wp_get_nav_menu_items).
 
-http://www.youtube.com/watch?v=Si6ulEWuY1E
+http://www.youtube.com/watch?v=Si6ulEWuY1E 
 
 <a href="http://wordpress.org/plugins/multilanguage/faq/" target="_blank">FAQ</a>
 <a href="http://support.bestwebsoft.com" target="_blank">Support</a>
@@ -51,6 +51,8 @@ We can fix some things for free for the users who provide a translation of our p
 2. Activate the plugin using the 'Plugins' menu in your WordPress admin panel.
 3. You can adjust the necessary settings using your WordPress admin panel in "BWS Plugins" > "Multilanguage".
 4. Plugin page is located in main menu.
+
+<a href="https://docs.google.com/document/d/1018gX-8ggRs180LT2B90q0zhEJ7EewDOckpwmkJYb5Y/edit" target="_blank">View a Step-by-step Instruction on Multilanguage Installation</a>.
 
 == Frequently Asked Questions ==
 
@@ -112,6 +114,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 
 == Changelog ==
 
+= V1.0.2 - 22.12.2014 =
+* Bugfix : We fixed errors while front page displays a static page.
+* Bugfix : We removed constant __DIR__.
+* Update : We updated all functionality for wordpress 4.1.
+
 = V1.0.1 - 30.10.2014 =
 * Bugfix : We fixed errors while saving custom posts.
 
@@ -119,6 +126,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.0.2 =
+We fixed errors while front page displays a static page. We removed constant __DIR__. We updated all functionality for wordpress 4.1.
 
 = V1.0.1 =
 We fixed errors while saving custom posts.
