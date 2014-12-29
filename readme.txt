@@ -4,7 +4,7 @@ Donate link: https://www.2checkout.com/checkout/purchase?sid=1430388&quantity=1&
 Tags: plugin, wordpress, multilingual, bilingual, translate, translation, language, multilanguage, international, localization, translation-ready
 Requires at least: 3.7
 Tested up to: 4.1
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 
 == Changelog ==
 
+= V1.0.3 - 26.12.2014 =
+* Bugfix : Error that occurs when WP is installed in a subfolder was fixed.
+
 = V1.0.2 - 22.12.2014 =
 * Bugfix : We fixed errors while front page displays a static page.
 * Bugfix : We removed constant __DIR__.
@@ -126,6 +129,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.0.3 =
+Error that occurs when WP is installed in a subfolder was fixed.
 
 = V1.0.2 =
 We fixed errors while front page displays a static page. We removed constant __DIR__. We updated all functionality for wordpress 4.1.
