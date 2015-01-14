@@ -4,12 +4,12 @@ Plugin Name: Multilanguage
 Plugin URI:  http://bestwebsoft.com/products/
 Description: This plugin allows you to display the content in different languages.
 Author: BestWebSoft
-Version: 1.0.3
+Version: 1.0.4
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
 
-/*  © Copyright 2014  BestWebSoft  ( http://support.bestwebsoft.com )
+/*  © Copyright 2015  BestWebSoft  ( http://support.bestwebsoft.com )
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -421,6 +421,10 @@ if ( ! function_exists( 'mltlngg_switch_wp_locale' ) ) {
 if ( ! function_exists( 'mltlngg_redirect' ) ) {
 	function mltlngg_redirect() {
 		global $current_blog, $mltlngg_current_language, $mltlngg_old_language, $mltlngg_enabled_languages;
+		
+		if ( isset( $_POST['wp_customize'] ) && $_POST['wp_customize'] == 'on' ) {
+			return;
+		}
 
 		$home = get_option( 'home' );
 		$mltlngg_permalink = get_option( 'permalink_structure' );
@@ -439,6 +443,7 @@ if ( ! function_exists( 'mltlngg_redirect' ) ) {
 				$server_name = $_SERVER['SERVER_NAME'];
 				if ( 'www.' == substr( $server_name, 0, 4 ) )
 					$server_name = substr( $server_name, 4 );
+				$home_dir = str_replace( $server_name . ':' . $_SERVER['SERVER_PORT'], '', $home_dir );
 				$home_dir = str_replace( $server_name, '', $home_dir );
 				$home_dir = rtrim( $home_dir, '/ ' );
 				$home_dir_count = strlen( $home_dir );
@@ -678,6 +683,7 @@ if ( ! class_exists( 'Mltlngg_Widget' ) ) {
 									$server_name = $_SERVER['SERVER_NAME'];
 									if ( 'www.' == substr( $server_name, 0, 4 ) )
 										$server_name = substr( $server_name, 4 );
+									$home_dir = str_replace( $server_name . ':' . $_SERVER['SERVER_PORT'], '', $home_dir );
 									$home_dir = str_replace( $server_name, '', $home_dir );
 									$home_dir = rtrim( $home_dir, '/ ' );
 									$home_dir_count = strlen( $home_dir );
@@ -1588,16 +1594,22 @@ if ( ! function_exists( 'mltlngg_the_title_filter' ) ) {
 			if ( $mltlngg_post_type == 'post' || $mltlngg_post_type == 'page' ) {
 				if ( is_admin() )
 					$mltlngg_current_language = ( ! empty( $_SESSION['current_language'] ) ) ? $_SESSION['current_language'] : ( ( isset( $_GET['lang'] ) ) ? $_GET['lang'] : ( ( ! isset( $_GET['message'] ) ) ? $mltlngg_options['default_language'] : $mltlngg_active_language['locale'] ) );
-				$mltlngg_sql = $wpdb->prepare(
-					"SELECT *
-					 FROM $mltlngg_table_translate
-					 WHERE `post_ID` = %d AND `language` = '%s'
-				", $id, $mltlngg_current_language
-				);
-				$new_title = $wpdb->get_row( $mltlngg_sql, 'ARRAY_A' );
+
+				$new_title = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $mltlngg_table_translate WHERE `post_ID` = %d AND `language` = '%s'", $id, $mltlngg_current_language ), ARRAY_A );
 				/* If translation is exist and not empty, filter title */
-				if ( isset( $new_title['post_title'] ) && "" != $new_title['post_title'] )
-					$title = $new_title['post_title'];
+				if ( isset( $new_title['post_title'] ) && "" != $new_title['post_title'] ) {
+
+					if ( ! is_admin() ) {
+						if ( ! empty( $post->post_password ) ) {
+							$protected_title_format = apply_filters( 'protected_title_format', __( 'Protected: %s', 'multilanguage' ), $post );
+							$title = sprintf( $protected_title_format, $title );
+						} else if ( isset( $post->post_status ) && 'private' == $post->post_status ) {
+							$private_title_format = apply_filters( 'private_title_format', __( 'Private: %s', 'multilanguage' ), $post );
+							$title = sprintf( $private_title_format, $title );
+						}
+					} else
+						$title = $new_title['post_title'];
+				}
 			}
 		}
 		return $title;
@@ -1643,19 +1655,41 @@ if ( ! function_exists( 'mltlngg_the_content_filter' ) ) {
 		global $post, $wpdb, $mltlngg_table_translate, $mltlngg_current_language, $mltlngg_active_language, $mltlngg_options;
 		$mltlngg_post_type = get_post_type( $post->ID );
 		/* If current post type enabled to translation */
-		if ( $mltlngg_post_type != 'attachment' && ( $mltlngg_post_type == 'post' || $mltlngg_post_type == 'page' ) ) {
+		if ( $mltlngg_post_type == 'post' || $mltlngg_post_type == 'page' ) {
 			if ( is_admin() )
 				$mltlngg_current_language = ( isset( $_GET['lang'] ) ) ? $_GET['lang'] : ( ( isset( $mltlngg_active_language['locale'] ) ) ? $mltlngg_active_language['locale'] : $mltlngg_options['default_language'] );
-			$mltlngg_sql = $wpdb->prepare(
-				"SELECT *
-				 FROM $mltlngg_table_translate
-				 WHERE `post_ID` = %d AND `language` = '%s'
-				", $post->ID, $mltlngg_current_language
-			);
-			$new_content = $wpdb->get_row( $mltlngg_sql, 'ARRAY_A' );
-			/* If translation is exist and not empty, filter content */
-			if ( isset( $new_content['post_content'] ) && "" != $new_content['post_content'] )
-				$content = $new_content['post_content'];
+			
+			$new_content = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $mltlngg_table_translate WHERE `post_ID` = %d AND `language` = '%s' ", $post->ID, $mltlngg_current_language ), ARRAY_A );
+			if ( isset( $new_content['post_content'] ) && "" != $new_content['post_content'] ) {
+				if ( ! is_admin() ) {
+					if ( ! post_password_required() ) {
+						$noteaser = ( ( false !== strpos( $new_content['post_content'], '<!--noteaser-->' ) ) ? true : false );
+						$extends = get_extended( $new_content['post_content'] );
+						$extended = $extends['extended'];
+						$new_content = $extends['main'];
+						
+						if ( ! is_single() ) {					
+							$more_link_text = __( 'Read more...', 'multilanguage' );
+							$more_link = apply_filters( 'the_content_more_link', ' <a href="' . get_permalink() . "#more-{$post->ID}\" class=\"more-link\">$more_link_text</a>", $more_link_text );
+
+							if ( '' != $extended )
+								$new_content .= $more_link;
+						} else {
+							if ( $noteaser )
+								$new_content = '';
+
+							$new_content .= ( 0 != strlen( $new_content ) ) ? '<span id="more-' . $post->ID . '"></span>' . $extended : $extended;
+						}
+
+						if ( 0 != strlen( $new_content ) )
+							return $new_content;
+					} else {
+						$content = get_the_password_form();
+					}
+				/* If translation is exist and not empty, filter content */
+				} else
+					$content = $new_content['post_content'];
+			}
 		}
 		return $content;
 	}

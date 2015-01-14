@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: multilanguage\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 11:17+0300\n"
+"POT-Creation-Date: 2015-01-14 10:30+0300\n"
 "PO-Revision-Date: \n"
-"Last-Translator: bws <bws>\n"
+"Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
 "Language-Team: BestWebSoft <info@bestwebsoft.com>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -17,243 +17,256 @@ msgstr ""
 "X-Generator: Poedit 1.6.10\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: multilanguage.php:124
+#: multilanguage.php:138
 msgid "requires"
 msgstr "требуется"
 
-#: multilanguage.php:124
+#: multilanguage.php:138
 msgid "or higher, that is why it has been deactivated! Please upgrade WordPress and try again."
 msgstr "или выше, в связи с чем плагин деактивирован! Пожалуйста, обновите WordPress и попробуйте снова."
 
-#: multilanguage.php:124
+#: multilanguage.php:138
 msgid "Back to the WordPress"
 msgstr "Вернуться в WordPress"
 
-#: multilanguage.php:124
+#: multilanguage.php:138
 msgid "Plugins page"
 msgstr "Страница плагинов"
 
-#: multilanguage.php:478
+#: multilanguage.php:617
 msgid "Attention!!! The changes will not be saved because Title and Content fields are empty on the current tab! It is recommended to fill in at least one field or switch to the tab with the fields that are already filled."
 msgstr "Внимание!!! Внесенные изменения сохранены не будут, так как в текущей вкладке заголовок и содержание пустые! Рекомендуется заполнить хотя бы 1 поле или переключиться на вкладку с заполненными полями."
 
-#: multilanguage.php:505
+#: multilanguage.php:644
 msgid "Content language switch"
 msgstr "Переключатель языка содержимого"
 
-#: multilanguage.php:523
+#: multilanguage.php:662
 msgid "Localization"
 msgstr "Локализация"
 
-#: multilanguage.php:584
+#: multilanguage.php:746
 msgid "Title:"
 msgstr "Заголовок:"
 
-#: multilanguage.php:590
+#: multilanguage.php:752
 msgid "Drop-down languages list"
 msgstr "Выпадающий список языков"
 
-#: multilanguage.php:600
+#: multilanguage.php:762
 msgid "Drop-down flag icons"
 msgstr "Выпадающие иконки флагов"
 
-#: multilanguage.php:610
+#: multilanguage.php:772
 msgid "Flag icons"
 msgstr "Иконки флагов"
 
-#: multilanguage.php:654
+#: multilanguage.php:815
 msgid "You do not have sufficient permissions to access this page."
 msgstr "У вас недостаточно прав для доступа к этой странице."
 
-#: multilanguage.php:669
-#: multilanguage.php:697
-#: include/table.php:234
-#: include/table.php:246
+#: multilanguage.php:824
+#: multilanguage.php:849
+#: include/table.php:237
+#: include/table.php:249
 msgid "Settings saved"
 msgstr "Настройки сохранены"
 
-#: multilanguage.php:677
+#: multilanguage.php:831
 msgid "Language added"
 msgstr "Язык добавлен"
 
-#: multilanguage.php:680
+#: multilanguage.php:833
 msgid "Incorrect language data"
 msgstr "Некорректные данные языка"
 
-#: multilanguage.php:735
-#: multilanguage.php:844
+#: multilanguage.php:886
+#: multilanguage.php:990
 msgid "Multilanguage Settings"
 msgstr "Настройки Multilanguage"
 
-#: multilanguage.php:736
-#: multilanguage.php:811
-#: multilanguage.php:845
-#: multilanguage.php:955
+#: multilanguage.php:887
+#: multilanguage.php:958
+#: multilanguage.php:991
+#: multilanguage.php:1081
 msgid "Add&nbsp;language"
 msgstr "Добавить&nbsp;язык"
 
-#: multilanguage.php:740
-#: multilanguage.php:849
-#: include/table.php:200
+#: multilanguage.php:891
+#: multilanguage.php:995
+#: include/table.php:203
 msgid "Languages"
 msgstr "Языки"
 
-#: multilanguage.php:741
-#: multilanguage.php:850
-#: multilanguage.php:1589
-#: multilanguage.php:1601
+#: multilanguage.php:892
+#: multilanguage.php:996
+#: multilanguage.php:1745
+#: multilanguage.php:1757
 msgid "Settings"
 msgstr "Настройки"
 
-#: multilanguage.php:742
-#: multilanguage.php:851
-#: multilanguage.php:1602
+#: multilanguage.php:893
+#: multilanguage.php:997
+#: multilanguage.php:1758
 msgid "FAQ"
 msgstr "FAQ"
 
-#: multilanguage.php:752
-#: multilanguage.php:861
+#: multilanguage.php:899
+#: multilanguage.php:1003
 msgid "Notice:"
 msgstr "Внимание:"
 
-#: multilanguage.php:752
-#: multilanguage.php:861
+#: multilanguage.php:899
+#: multilanguage.php:1003
 msgid "The plugin's settings have been changed. In order to save them please don't forget to click the 'Save Changes' button."
 msgstr "Настройки плагина были изменены.  Для сохранения настроек, не забудьте нажать на кнопку 'Сохранить изменения'."
 
-#: multilanguage.php:762
-#: multilanguage.php:910
+#: multilanguage.php:909
+#: multilanguage.php:1036
 msgid "Save changes"
 msgstr "Сохранить изменения"
 
-#: multilanguage.php:768
-#: multilanguage.php:918
+#: multilanguage.php:915
+#: multilanguage.php:1044
 msgid "If you enjoy our plugin, please give it 5 stars on WordPress"
 msgstr "Если вам понравился плагин, то поставьте нам 5 звезд на WordPress"
 
-#: multilanguage.php:769
-#: multilanguage.php:919
+#: multilanguage.php:916
+#: multilanguage.php:1045
 msgid "Rate the plugin"
 msgstr "Оценить плагин"
 
-#: multilanguage.php:772
-#: multilanguage.php:922
+#: multilanguage.php:919
+#: multilanguage.php:1048
 msgid "If there is something wrong about it, please contact us"
 msgstr "Если у вас возникнут какие-либо трудности, обращайтесь"
 
-#: multilanguage.php:793
+#: multilanguage.php:940
 msgid "Choose a language"
 msgstr "Выберите язык"
 
-#: multilanguage.php:870
-msgid "Post types to translate"
-msgstr "Переводить типы постов"
-
-#: multilanguage.php:886
+#: multilanguage.php:1012
 msgid "Enable new language"
 msgstr "Включать новый язык"
 
-#: multilanguage.php:889
+#: multilanguage.php:1015
 msgid "The newly added language will be enabled automatically"
 msgstr "Новый добавленный язык будет включен автоматически"
 
-#: multilanguage.php:894
+#: multilanguage.php:1020
 msgid "Autosave translation in the editor"
 msgstr "Автосохранение переводов в редакторе"
 
-#: multilanguage.php:897
+#: multilanguage.php:1023
 msgid "When switching edit posts/pages translation tab, the changes made in the previous tab will be saved automatically (only when the Javascript is enabled)"
 msgstr "При переключении вкладки редактирования языка перевода постов/страниц, изменения, сделанные в предыдущей вкладке, будут автоматически сохраняться (только при включенном Javascript)"
 
-#: multilanguage.php:902
+#: multilanguage.php:1028
 msgid "Switch Wordpress localization"
 msgstr "Менять язык Wordpress"
 
-#: multilanguage.php:905
+#: multilanguage.php:1031
 msgid "When changing the language in the frontend, WordPress localization will also be changed (only in case additional WordPress language packs are installed)"
 msgstr "При переключении языка во фронтенде, язык Wordpress также будет меняться (только при наличии установленных дополнительных языковых пакетов для Wordpress)"
 
-#: multilanguage.php:958
+#: multilanguage.php:1084
 msgid "Edit for language:"
 msgstr "Редактировать для языка:"
 
-#: multilanguage.php:1286
-#: multilanguage.php:1352
+#: multilanguage.php:1416
+#: multilanguage.php:1481
 msgid "Translations"
 msgstr "Переводы"
 
-#: multilanguage.php:1603
+#: multilanguage.php:1604
+#, php-format
+msgid "Protected: %s"
+msgstr "Защищено: %s"
+
+#: multilanguage.php:1607
+#, php-format
+msgid "Private: %s"
+msgstr "Личное: %s"
+
+#: multilanguage.php:1672
+msgid "Read more..."
+msgstr "Читать далее..."
+
+#: multilanguage.php:1759
 msgid "Support"
 msgstr "Поддержка"
 
-#: include/table.php:11
+#: include/table.php:14
 msgid "language"
 msgstr "язык"
 
-#: include/table.php:12
+#: include/table.php:15
 msgid "languages"
 msgstr "языки"
 
-#: include/table.php:35
+#: include/table.php:38
 msgid "Name"
 msgstr "Название"
 
-#: include/table.php:36
+#: include/table.php:39
 msgid "Locale"
 msgstr "Локализация"
 
-#: include/table.php:37
+#: include/table.php:40
 msgid "Flag"
 msgstr "Флаг"
 
-#: include/table.php:38
+#: include/table.php:41
 msgid "Status"
 msgstr "Статус"
 
-#: include/table.php:39
+#: include/table.php:42
 msgid "Priority"
 msgstr "Приоритет"
 
-#: include/table.php:40
+#: include/table.php:43
 msgid "Default"
 msgstr "По умолчанию"
 
-#: include/table.php:54
-#: include/table.php:88
-#: include/table.php:124
+#: include/table.php:57
+#: include/table.php:91
+#: include/table.php:127
 msgid "Disabled"
 msgstr "Отключен"
 
-#: include/table.php:55
-#: include/table.php:66
+#: include/table.php:58
+#: include/table.php:69
 msgid "Enable"
 msgstr "Включить"
 
-#: include/table.php:57
-#: include/table.php:67
+#: include/table.php:60
+#: include/table.php:70
 msgid "Disable"
 msgstr "Отключить"
 
-#: include/table.php:59
-#: include/table.php:68
+#: include/table.php:62
+#: include/table.php:71
 msgid "Delete"
 msgstr "Удалить"
 
-#: include/table.php:122
+#: include/table.php:125
 msgid "Enabled"
 msgstr "Включен"
 
-#: include/table.php:249
+#: include/table.php:252
 msgid "This language is selected by default. Please select a different default language before disabling it."
 msgstr "Этот язык выбран по умолчанию. Пожалуйста, выберите другой язык по умолчанию прежде чем отключить этот."
 
-#: include/table.php:263
+#: include/table.php:266
 msgid "Language deleted"
 msgstr "Язык удален"
 
-#: include/table.php:266
+#: include/table.php:269
 msgid "This language is selected by default. Please select a different default language before deleting it."
 msgstr "Этот язык выбран по умолчанию. Пожалуйста, выберите другой язык по умолчанию прежде чем удалить этот."
+
+#~ msgid "Post types to translate"
+#~ msgstr "Переводить типы постов"
 
 #~ msgid "Enable a new language when it is added:"
 #~ msgstr "Включать новый язык при добавлении:"

@@ -4,7 +4,7 @@ Donate link: https://www.2checkout.com/checkout/purchase?sid=1430388&quantity=1&
 Tags: plugin, wordpress, multilingual, bilingual, translate, translation, language, multilanguage, international, localization, translation-ready
 Requires at least: 3.7
 Tested up to: 4.1
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 
 == Changelog ==
 
+= V1.0.4 - 14.01.2015 =
+* Bugfix : Private and password protected posts display was fixed.
+* Bugfix : We fixed errors while using <!--more-->.
+* Bugfix : Bugs that occurred if SERVER_PORT was present in the website address were fixed.
+
 = V1.0.3 - 26.12.2014 =
 * Bugfix : Error that occurs when WP is installed in a subfolder was fixed.
 
@@ -129,6 +134,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.0.4 =
+Private and password protected posts display was fixed. We fixed errors while using <!--more-->. Bugs that occurred if SERVER_PORT was present in the website address were fixed.
 
 = V1.0.3 =
 Error that occurs when WP is installed in a subfolder was fixed.
