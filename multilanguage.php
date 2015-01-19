@@ -4,7 +4,7 @@ Plugin Name: Multilanguage
 Plugin URI:  http://bestwebsoft.com/products/
 Description: This plugin allows you to display the content in different languages.
 Author: BestWebSoft
-Version: 1.0.4
+Version: 1.0.5
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -1587,7 +1587,7 @@ if ( ! function_exists( 'mltlngg_delete_term' ) ) {
 /* Display post_title in the selected language */
 if ( ! function_exists( 'mltlngg_the_title_filter' ) ) {
 	function mltlngg_the_title_filter( $title, $id ) {
-		global $mltlngg_options, $wpdb, $mltlngg_table_translate, $mltlngg_current_language, $mltlngg_active_language;
+		global $mltlngg_options, $wpdb, $mltlngg_table_translate, $mltlngg_current_language, $mltlngg_active_language, $post;
 		if ( ! is_nav_menu_item( $id ) ) { /* Do not filter, if a navigation menu */
 			$mltlngg_post_type = get_post_type( $id );
 			/* If current post type enabled to translation */
@@ -1598,7 +1598,7 @@ if ( ! function_exists( 'mltlngg_the_title_filter' ) ) {
 				$new_title = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $mltlngg_table_translate WHERE `post_ID` = %d AND `language` = '%s'", $id, $mltlngg_current_language ), ARRAY_A );
 				/* If translation is exist and not empty, filter title */
 				if ( isset( $new_title['post_title'] ) && "" != $new_title['post_title'] ) {
-
+					$title = $new_title['post_title'];
 					if ( ! is_admin() ) {
 						if ( ! empty( $post->post_password ) ) {
 							$protected_title_format = apply_filters( 'protected_title_format', __( 'Protected: %s', 'multilanguage' ), $post );
@@ -1607,8 +1607,7 @@ if ( ! function_exists( 'mltlngg_the_title_filter' ) ) {
 							$private_title_format = apply_filters( 'private_title_format', __( 'Private: %s', 'multilanguage' ), $post );
 							$title = sprintf( $private_title_format, $title );
 						}
-					} else
-						$title = $new_title['post_title'];
+					}
 				}
 			}
 		}
