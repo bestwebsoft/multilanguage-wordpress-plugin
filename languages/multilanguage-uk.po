@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: multilanguage\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-14 10:32+0300\n"
+"POT-Creation-Date: 2015-02-20 12:45+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
 "Language-Team: BestWebSoft <info@bestwebsoft.com>\n"
@@ -35,166 +35,191 @@ msgstr "Назад до WordPress"
 msgid "Plugins page"
 msgstr "Сторінка плагінів"
 
-#: multilanguage.php:617
+#: multilanguage.php:618
 msgid "Attention!!! The changes will not be saved because Title and Content fields are empty on the current tab! It is recommended to fill in at least one field or switch to the tab with the fields that are already filled."
 msgstr "Увага!!! Зміни не буде збережено, тому що поля Назви та Тексту на цій вкладці пусті! Рекомендуємо заповнити принаймні одне поле або переключитись на вкладку, де поля заповнені"
 
-#: multilanguage.php:644
+#: multilanguage.php:645
 msgid "Content language switch"
 msgstr "Змінити мову тексту"
 
-#: multilanguage.php:662
+#: multilanguage.php:663
 msgid "Localization"
 msgstr "Локалізація"
 
-#: multilanguage.php:746
+#: multilanguage.php:682
 msgid "Title:"
 msgstr "Назва:"
 
-#: multilanguage.php:752
+#: multilanguage.php:688
+#: multilanguage.php:1060
 msgid "Drop-down languages list"
 msgstr "Випадаючий список мов"
 
-#: multilanguage.php:762
+#: multilanguage.php:698
+#: multilanguage.php:1069
 msgid "Drop-down flag icons"
 msgstr "Випадаючий список іконок прапорів"
 
-#: multilanguage.php:772
+#: multilanguage.php:708
+#: multilanguage.php:1078
 msgid "Flag icons"
 msgstr "Іконки прапорів"
 
-#: multilanguage.php:815
+#: multilanguage.php:838
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Перегляд сторінки не дозволено."
 
-#: multilanguage.php:824
-#: multilanguage.php:849
+#: multilanguage.php:848
+#: multilanguage.php:873
 #: include/table.php:237
 #: include/table.php:249
 msgid "Settings saved"
 msgstr "Налаштування збережено"
 
-#: multilanguage.php:831
+#: multilanguage.php:855
 msgid "Language added"
 msgstr "Мову додано"
 
-#: multilanguage.php:833
+#: multilanguage.php:857
 msgid "Incorrect language data"
 msgstr "Невірні дані мови"
 
-#: multilanguage.php:886
-#: multilanguage.php:990
+#: multilanguage.php:910
+#: multilanguage.php:1015
 msgid "Multilanguage Settings"
 msgstr "Налаштування багатомовності"
 
-#: multilanguage.php:887
-#: multilanguage.php:958
-#: multilanguage.php:991
-#: multilanguage.php:1081
+#: multilanguage.php:911
+#: multilanguage.php:982
 msgid "Add&nbsp;language"
 msgstr "Додати&nbsp;мову"
 
-#: multilanguage.php:891
-#: multilanguage.php:995
+#: multilanguage.php:915
+#: multilanguage.php:1020
 #: include/table.php:203
 msgid "Languages"
 msgstr "Мови"
 
-#: multilanguage.php:892
-#: multilanguage.php:996
-#: multilanguage.php:1745
-#: multilanguage.php:1757
+#: multilanguage.php:916
+#: multilanguage.php:1021
+#: multilanguage.php:1750
+#: multilanguage.php:1762
 msgid "Settings"
 msgstr "Налаштування"
 
-#: multilanguage.php:893
-#: multilanguage.php:997
-#: multilanguage.php:1758
+#: multilanguage.php:917
+#: multilanguage.php:1022
+#: multilanguage.php:1763
 msgid "FAQ"
 msgstr "Розповсюджені питання"
 
-#: multilanguage.php:899
-#: multilanguage.php:1003
+#: multilanguage.php:923
+#: multilanguage.php:1028
 msgid "Notice:"
 msgstr "Зауважте:"
 
-#: multilanguage.php:899
-#: multilanguage.php:1003
+#: multilanguage.php:923
+#: multilanguage.php:1028
 msgid "The plugin's settings have been changed. In order to save them please don't forget to click the 'Save Changes' button."
 msgstr "Налаштування плагіну змінено. Щоб зберегти їх, будь ласка, не забудьте клікнути 'Зберегти зміни'"
 
-#: multilanguage.php:909
-#: multilanguage.php:1036
+#: multilanguage.php:933
+#: multilanguage.php:1088
 msgid "Save changes"
 msgstr "Зберегти зміни"
 
-#: multilanguage.php:915
-#: multilanguage.php:1044
+#: multilanguage.php:939
+#: multilanguage.php:1096
 msgid "If you enjoy our plugin, please give it 5 stars on WordPress"
 msgstr "Якщо вам сподобався плагін, будь ласка, поставте йому 5 зірочок на WordPress :)"
 
-#: multilanguage.php:916
-#: multilanguage.php:1045
+#: multilanguage.php:940
+#: multilanguage.php:1097
 msgid "Rate the plugin"
 msgstr "Оцінити плагін"
 
-#: multilanguage.php:919
-#: multilanguage.php:1048
+#: multilanguage.php:943
+#: multilanguage.php:1100
 msgid "If there is something wrong about it, please contact us"
 msgstr "Якщо виникли проблеми, будь ласка, повідомте нам"
 
-#: multilanguage.php:940
+#: multilanguage.php:964
 msgid "Choose a language"
 msgstr "Вибрати мову"
 
-#: multilanguage.php:1012
+#: multilanguage.php:1016
+#: multilanguage.php:1133
+#, fuzzy
+msgid "Add language"
+msgstr "мова"
+
+#: multilanguage.php:1029
+msgid "If you would like to display Language switcher with a widget, you need to add the widget \"Multilanguage\" in the Widgets tab."
+msgstr ""
+
+#: multilanguage.php:1030
+msgid "If you would like to add Language switcher to your website, just copy and paste this shortcode into your post or page"
+msgstr ""
+
+#: multilanguage.php:1031
+msgid "Also, you can paste the following strings into the template source code"
+msgstr ""
+
+#: multilanguage.php:1039
 msgid "Enable new language"
 msgstr "Активувати нову мову"
 
-#: multilanguage.php:1015
+#: multilanguage.php:1041
 msgid "The newly added language will be enabled automatically"
 msgstr "Додана мова буде активована автоматично "
 
-#: multilanguage.php:1020
+#: multilanguage.php:1045
 msgid "Autosave translation in the editor"
 msgstr "Автозбереження перекладу в редакторі"
 
-#: multilanguage.php:1023
+#: multilanguage.php:1047
 msgid "When switching edit posts/pages translation tab, the changes made in the previous tab will be saved automatically (only when the Javascript is enabled)"
 msgstr "При переключенні між вкладками редагування посту/перекладу сторінки, зміни, зроблені на попередній вкладці будуть автоматично застосовані на наступній (якщо ввімкнено Javascript)"
 
-#: multilanguage.php:1028
+#: multilanguage.php:1051
 msgid "Switch Wordpress localization"
 msgstr "Переключити локалізацію Wordpress"
 
-#: multilanguage.php:1031
+#: multilanguage.php:1052
 msgid "When changing the language in the frontend, WordPress localization will also be changed (only in case additional WordPress language packs are installed)"
 msgstr "При зміні мови у фронтенді, локалізацію WordPress також буде змінено (якщо встановлені додаткові мови WordPress)"
 
-#: multilanguage.php:1084
-msgid "Edit for language:"
+#: multilanguage.php:1055
+#, fuzzy
+msgid "Language switcher"
+msgstr "Змінити мову тексту"
+
+#: multilanguage.php:1136
+#, fuzzy
+msgid "Edit for language"
 msgstr "Редагувати для мови:"
 
-#: multilanguage.php:1416
-#: multilanguage.php:1481
+#: multilanguage.php:1435
+#: multilanguage.php:1496
 msgid "Translations"
 msgstr "Переклади"
 
-#: multilanguage.php:1604
+#: multilanguage.php:1610
 #, php-format
 msgid "Protected: %s"
 msgstr ""
 
-#: multilanguage.php:1607
+#: multilanguage.php:1613
 #, php-format
 msgid "Private: %s"
 msgstr ""
 
-#: multilanguage.php:1672
+#: multilanguage.php:1677
 msgid "Read more..."
 msgstr ""
 
-#: multilanguage.php:1759
+#: multilanguage.php:1764
 msgid "Support"
 msgstr "Підтримка"
 
