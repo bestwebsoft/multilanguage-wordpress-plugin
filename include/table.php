@@ -106,12 +106,11 @@ class Mltlngg_List_Table extends WP_List_Table {
 		$per_page = $this->get_items_per_page( 'languages_per_page', 10 );
 		$current_page = $this->get_pagenum();
 		$total_items = count( $mltlngg_options['list_of_languages'] );
-		$this->found_data = array_slice( mltlngg_table_data(), ( ( $current_page - 1 ) * $per_page ), $per_page );
 		$this->set_pagination_args( array(
 			'total_items'	=> $total_items,
 			'per_page'		=> $per_page
 		) );
-		$this->items = $this->found_data;
+		$this->items = array_slice( mltlngg_table_data(), ( ( $current_page - 1 ) * $per_page ), $per_page );
 	}
 }
 
@@ -228,14 +227,13 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 /* function for actions part on table of links tab */
 if ( ! function_exists( 'mltlngg_actions' ) ) {
 	function mltlngg_actions( $mltlngg_action, $mltlngg_locale ) {
-		global $mltlngg_options, $mltlngg_message_value, $mltlngg_message_class;
+		global $mltlngg_options, $mltlngg_message_value;
 		switch ( $mltlngg_action ) {
 			case 'enable':
 				foreach ( $mltlngg_options['list_of_languages'] as $mltlngg_key => $mltlngg_one_language ) {
 					if ( false != array_search( $mltlngg_locale, $mltlngg_one_language, true ) ) {
 						$mltlngg_options['list_of_languages'][ $mltlngg_key ]['enable'] = true;
-						$mltlngg_message_value = __( 'Settings saved', 'multilanguage' );
-						$mltlngg_message_class = "updated";
+						$mltlngg_message_value['success'] = __( 'Settings saved', 'multilanguage' );
 					}
 				}
 				unset( $mltlngg_one_language );
@@ -246,11 +244,9 @@ if ( ! function_exists( 'mltlngg_actions' ) ) {
 					if( false != array_search( $mltlngg_locale, $mltlngg_one_language, true ) ) {
 						if ( $mltlngg_one_language['locale'] != $mltlngg_options['default_language'] ) {
 							$mltlngg_options['list_of_languages'][ $mltlngg_key ]['enable'] = false;
-							$mltlngg_message_value = __( 'Settings saved', 'multilanguage' );
-							$mltlngg_message_class = "updated";
+							$mltlngg_message_value['success'] = __( 'Settings saved', 'multilanguage' );
 						} else {
-							$mltlngg_message_value = __( 'This language is selected by default. Please select a different default language before disabling it.', 'multilanguage' );
-							$mltlngg_message_class = "updated";
+							$mltlngg_message_value['error'] = __( 'This language is selected by default. Please select a different default language before disabling it.', 'multilanguage' );
 							break;
 						}
 					}
@@ -263,11 +259,9 @@ if ( ! function_exists( 'mltlngg_actions' ) ) {
 					if ( false != array_search( $mltlngg_locale, $mltlngg_one_language, true ) ) {
 						if ( $mltlngg_one_language['locale'] != $mltlngg_options['default_language'] ) {
 							unset( $mltlngg_options['list_of_languages'][ $mltlngg_key ] );
-							$mltlngg_message_value = __( 'Language deleted', 'multilanguage' );
-							$mltlngg_message_class = "updated";
+							$mltlngg_message_value['success'] = __( 'Language deleted', 'multilanguage' );
 						} else {
-							$mltlngg_message_value = __( 'This language is selected by default. Please select a different default language before deleting it.', 'multilanguage' );
-							$mltlngg_message_class = "updated";
+							$mltlngg_message_value['error'] = __( 'This language is selected by default. Please select a different default language before deleting it.', 'multilanguage' );
 							break;
 						}
 					}

@@ -20,6 +20,7 @@ $mltlngg_languages = array(
 	array( 'de', 'de_DE', 'Deutsch', '' ),
 	array( 'el', 'el', 'Ελληνικά', '' ),
 	array( 'en', 'en_CA', 'English', '' ),
+	array( 'en', 'en_GB', 'English', '' ),
 	array( 'en', 'en_US', 'English', '' ),
 	array( 'eo', 'eo', 'Esperanto', '' ),
 	array( 'es', 'es_CL', 'Español', '' ),

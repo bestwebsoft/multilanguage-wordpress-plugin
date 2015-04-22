@@ -2,288 +2,285 @@ msgid ""
 msgstr ""
 "Project-Id-Version: multilanguage\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-17 13:13+0300\n"
+"POT-Creation-Date: 2015-04-21 17:05+0300\n"
 "PO-Revision-Date: \n"
-"Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
-"Language-Team: BestWebSoft <info@bestwebsoft.com>\n"
-"Language: ru\n"
+"Last-Translator: Emil Król <emiljo@tlen.pl>\n"
+"Language-Team: Emil Król <emiljo@tlen.pl>\n"
+"Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 1.6.5\n"
-"X-Poedit-Language: Ukrainian\n"
-"X-Poedit-Country: UKRAINE\n"
+"X-Generator: Poedit 1.7.5\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: multilanguage.php:579
 msgid "Attention!!! The changes will not be saved because Title and Content fields are empty on the current tab! It is recommended to fill in at least one field or switch to the tab with the fields that are already filled."
-msgstr "Увага!!! Зміни не буде збережено, тому що поля Назви та Тексту на цій вкладці пусті! Рекомендуємо заповнити принаймні одне поле або переключитись на вкладку, де поля заповнені"
+msgstr "Uwaga! Zmiany nie zostaną zapisane, ponieważ pola Tytuł i Zawartość są puste na bieżącej karcie! Zalecane jest, aby wypełnić co najmniej jedno pole lub przełączyć na zakładkę z pola, które są już wypełnione."
 
 #: multilanguage.php:606
 msgid "Content language switch"
-msgstr "Змінити мову тексту"
+msgstr "Przełącznik języka Treści"
 
 #: multilanguage.php:624
 msgid "Localization"
-msgstr "Локалізація"
+msgstr "Region"
 
 #: multilanguage.php:643
 msgid "Title:"
-msgstr "Назва:"
+msgstr "Tytuł:"
 
 #: multilanguage.php:649
 #: multilanguage.php:1019
 msgid "Drop-down languages list"
-msgstr "Випадаючий список мов"
+msgstr "Rozwijana lista języków"
 
 #: multilanguage.php:659
 #: multilanguage.php:1028
 msgid "Drop-down flag icons"
-msgstr "Випадаючий список іконок прапорів"
+msgstr "Rozwijana lista flag"
 
 #: multilanguage.php:669
 #: multilanguage.php:1037
 msgid "Flag icons"
-msgstr "Іконки прапорів"
+msgstr "Ikony flag"
 
 #: multilanguage.php:800
 msgid "You do not have sufficient permissions to access this page."
-msgstr "Перегляд сторінки не дозволено."
+msgstr "Nie masz wystarczających uprawnień, aby wejść na tę stronę."
 
 #: multilanguage.php:810
 #: multilanguage.php:835
 #: include/table.php:236
 #: include/table.php:247
 msgid "Settings saved"
-msgstr "Налаштування збережено"
+msgstr "Zapisano ustawienia"
 
 #: multilanguage.php:817
 msgid "Language added"
-msgstr "Мову додано"
+msgstr "Dodano język"
 
 #: multilanguage.php:819
 msgid "Incorrect language data"
-msgstr "Невірні дані мови"
+msgstr "Bledne dane jezyka"
 
 #: multilanguage.php:872
 #: multilanguage.php:972
 msgid "Multilanguage Settings"
-msgstr "Налаштування багатомовності"
+msgstr "Ustawienia Multilanguage"
 
 #: multilanguage.php:873
 #: multilanguage.php:939
 msgid "Add&nbsp;language"
-msgstr "Додати&nbsp;мову"
+msgstr "Dodaj&nbsp;język"
 
 #: multilanguage.php:877
 #: multilanguage.php:977
 #: include/table.php:202
 msgid "Languages"
-msgstr "Мови"
+msgstr "Języki"
 
 #: multilanguage.php:878
 #: multilanguage.php:978
-#: multilanguage.php:1856
-#: multilanguage.php:1870
+#: multilanguage.php:1861
+#: multilanguage.php:1875
 msgid "Settings"
-msgstr "Налаштування"
+msgstr "Ustawienia"
 
 #: multilanguage.php:879
 #: multilanguage.php:979
-#: multilanguage.php:1871
+#: multilanguage.php:1876
 msgid "FAQ"
-msgstr "Розповсюджені питання"
+msgstr "FAQ"
 
 #: multilanguage.php:889
 #: multilanguage.php:987
 msgid "Notice:"
-msgstr "Зауважте:"
+msgstr "Uwaga:"
 
 #: multilanguage.php:889
 #: multilanguage.php:987
 msgid "The plugin's settings have been changed. In order to save them please don't forget to click the 'Save Changes' button."
-msgstr "Налаштування плагіну змінено. Щоб зберегти їх, будь ласка, не забудьте клікнути 'Зберегти зміни'"
+msgstr "Ustawienia wtyczki zostały zmienione. Aby zapisać je proszę nie zapomnieć by kliknąć przycisk 'Zapisz zmiany'."
 
 #: multilanguage.php:899
 #: multilanguage.php:1047
 msgid "Save changes"
-msgstr "Зберегти зміни"
+msgstr "Zapisz zmiany"
 
 #: multilanguage.php:921
 msgid "Choose a language"
-msgstr "Вибрати мову"
+msgstr "Wybierz język"
 
 #: multilanguage.php:973
 #: multilanguage.php:1083
 msgid "Add language"
-msgstr "Додати мову"
+msgstr "Dodaj język"
 
 #: multilanguage.php:988
 msgid "If you would like to display Language switcher with a widget, you need to add the widget \"Multilanguage\" in the Widgets tab."
-msgstr "Якщо ви бажаєте використати мовний премикач у віджеті, вам необхідно додати віджет  \"Multilanguage\" на сторінці віджетів."
+msgstr "Jeśli chcesz wyświetlić Przełącznik języka jako widżet, musisz dodać widget \"Multilanguage\" w zakładce Widżety."
 
 #: multilanguage.php:989
 msgid "If you would like to add Language switcher to your website, just copy and paste this shortcode into your post or page"
-msgstr "Якщо ви бажаєте додати мовний перемикач на ваш сайт, скопіюйте цей шорткод в ваш запис або сторінку"
+msgstr "Jeśli chcesz dodać Przełącznik języka na swojej stronie, wystarczy skopiować i wkleić ten shortcode w twój Wpis albo Stronę"
 
 #: multilanguage.php:990
 msgid "Also, you can paste the following strings into the template source code"
-msgstr "Окрім того, ви можете викорастати наступні рядки в вихідному коді шаблону"
+msgstr "Ponadto, możesz też wkleić następujący ciąg do kodu źródłowego szablonu"
 
 #: multilanguage.php:998
 msgid "Enable new language"
-msgstr "Активувати нову мову"
+msgstr "Włącz nowy język"
 
 #: multilanguage.php:1000
 msgid "The newly added language will be enabled automatically"
-msgstr "Додана мова буде активована автоматично "
+msgstr "Nowo dodany język zostanie włączony automatycznie"
 
 #: multilanguage.php:1004
 msgid "Autosave translation in the editor"
-msgstr "Автозбереження перекладу в редакторі"
+msgstr "Automatyczny zapis tłumaczeni w edytorze"
 
 #: multilanguage.php:1006
 msgid "When switching edit posts/pages translation tab, the changes made in the previous tab will be saved automatically (only when the Javascript is enabled)"
-msgstr "При переключенні між вкладками редагування посту/перекладу сторінки, зміни, зроблені на попередній вкладці будуть автоматично застосовані на наступній (якщо ввімкнено Javascript)"
+msgstr "Kiedy zmieniasz zakładkę tłumaczenia dla Wpisów / Stron, tłumaczenie z poprzedniej zakładki zostanie zapisane automatycznie (tylko wtedy, gdy włączona jest obsługa JavaScript)"
 
 #: multilanguage.php:1010
 msgid "Switch Wordpress localization"
-msgstr "Переключити локалізацію Wordpress"
+msgstr "Zmień region  Wordpress"
 
 #: multilanguage.php:1011
 msgid "When changing the language in the frontend, WordPress localization will also be changed (only in case additional WordPress language packs are installed)"
-msgstr "При зміні мови у фронтенді, локалізацію WordPress також буде змінено (якщо встановлені додаткові мови WordPress)"
+msgstr "Po zmianie języka w na stronie, region WordPress zostanie także zmieniony (tylko w przypadku, gdy zainstalowane są dodatkowe pakiety językowe WordPress)"
 
 #: multilanguage.php:1014
 msgid "Language switcher"
-msgstr "Мовний перемикач"
+msgstr "Przełącznik języka"
 
 #: multilanguage.php:1086
 msgid "Edit for language"
-msgstr "Редагувати для мови"
+msgstr "Edycja dla języka"
 
-#: multilanguage.php:1482
-#: multilanguage.php:1543
+#: multilanguage.php:1485
+#: multilanguage.php:1546
 msgid "Translations"
-msgstr "Переклади"
-
-#: multilanguage.php:1659
-#, php-format
-msgid "Protected: %s"
-msgstr "Захищено: %s"
+msgstr "Tłumaczenia"
 
 #: multilanguage.php:1662
 #, php-format
+msgid "Protected: %s"
+msgstr "Zabezpieczony:%s"
+
+#: multilanguage.php:1665
+#, php-format
 msgid "Private: %s"
-msgstr "Особисте: %s"
+msgstr "Prywatny:%s"
 
-#: multilanguage.php:1745
+#: multilanguage.php:1750
 msgid "Read more..."
-msgstr "Більше ..."
+msgstr "Więcej..."
 
-#: multilanguage.php:1872
+#: multilanguage.php:1877
 msgid "Support"
-msgstr "Підтримка"
+msgstr "Wsparcie"
 
 #: include/table.php:14
 msgid "language"
-msgstr "мова"
+msgstr "język"
 
 #: include/table.php:15
 msgid "languages"
-msgstr "мови"
+msgstr "języki"
 
 #: include/table.php:38
 msgid "Name"
-msgstr "Ім'я"
+msgstr "Nazwa"
 
 #: include/table.php:39
 msgid "Locale"
-msgstr "Локаль"
+msgstr "Region"
 
 #: include/table.php:40
 msgid "Flag"
-msgstr "Прапор"
+msgstr "Flaga"
 
 #: include/table.php:41
 msgid "Status"
-msgstr "Статус"
+msgstr "Status"
 
 #: include/table.php:42
 msgid "Priority"
-msgstr "Пріорітет"
+msgstr "Priorytet"
 
 #: include/table.php:43
 msgid "Default"
-msgstr "За замовчуванням"
+msgstr "Domyślny"
 
 #: include/table.php:57
 #: include/table.php:91
 #: include/table.php:126
 msgid "Disabled"
-msgstr "Вимкнено"
+msgstr "Wyłączony"
 
 #: include/table.php:58
 #: include/table.php:69
 msgid "Enable"
-msgstr "Увімкнути"
+msgstr "Włącz"
 
 #: include/table.php:60
 #: include/table.php:70
 msgid "Disable"
-msgstr "Вимкнути"
+msgstr "Wyłącz"
 
 #: include/table.php:62
 #: include/table.php:71
 msgid "Delete"
-msgstr "Видалити"
+msgstr "Usuń"
 
 #: include/table.php:124
 msgid "Enabled"
-msgstr "Увімкнено"
+msgstr "Włączony"
 
 #: include/table.php:249
 msgid "This language is selected by default. Please select a different default language before disabling it."
-msgstr "Цю мову вибрано за замовчуванням. Перед тим, як вимкнути її, будь ласка, виберіть іншу мову за замовчуванням."
+msgstr "Język ten jest domyślnie zaznaczony. Proszę wybrać inny język domyślny przed wyłączeniem."
 
 #: include/table.php:262
 msgid "Language deleted"
-msgstr "Мову видалено"
+msgstr "** Język usunięty"
 
 #: include/table.php:264
 msgid "This language is selected by default. Please select a different default language before deleting it."
-msgstr "Цю мову вибрано за замовчуванням. Перед тим, як видалити її, будь ласка, виберіть іншу мову за замовчуванням."
+msgstr "Język ten jest domyślnie zaznaczony. Proszę wybrać inny język domyślny przed usunięciem."
 
 #~ msgid "requires"
-#~ msgstr "вимагає"
+#~ msgstr "wymaga"
 
 #~ msgid ""
 #~ "or higher, that is why it has been deactivated! Please upgrade WordPress "
 #~ "and try again."
 #~ msgstr ""
-#~ "або вище, от чому його було деактивовано. Будь ласка, оновіть WordPress "
-#~ "та спробуйте ще раз"
+#~ "lub wyższy, dlatego nie został wyłączony! Proszę uaktualnić WordPress i "
+#~ "spróbować ponownie."
 
 #~ msgid "Back to the WordPress"
-#~ msgstr "Назад до WordPress"
+#~ msgstr "Wróć do WordPress"
 
 #~ msgid "Plugins page"
-#~ msgstr "Сторінка плагінів"
+#~ msgstr "Strona Wtyczki"
 
 #~ msgid "If you enjoy our plugin, please give it 5 stars on WordPress"
 #~ msgstr ""
-#~ "Якщо вам сподобався плагін, будь ласка, поставте йому 5 зірочок на "
-#~ "WordPress :)"
+#~ "Jeśli lubisz naszą wtyczkę, to proszę dać mu 5 gwiazdek na WordPress"
 
 #~ msgid "Rate the plugin"
-#~ msgstr "Оцінити плагін"
+#~ msgstr "Oceń wtyczkę"
 
 #~ msgid "If there is something wrong about it, please contact us"
-#~ msgstr "Якщо виникли проблеми, будь ласка, повідомте нам"
+#~ msgstr "Jeśli coś nie działa poprawnie, proszę skontaktuj się z nami"
 
 #~ msgid "Post types to translate"
 #~ msgstr "Тип посту для перекладу"

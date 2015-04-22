@@ -1,10 +1,10 @@
-﻿=== Multilanguage ===
+﻿=== Multilanguage by BestWebSoft ===
 Contributors: bestwebsoft
 Donate link: https://www.2checkout.com/checkout/purchase?sid=1430388&quantity=1&product_id=94
 Tags: plugin, wordpress, multilingual, bilingual, translate, translation, language, multilanguage, international, localization, translation-ready
 Requires at least: 3.7
-Tested up to: 4.1.1
-Stable tag: 1.0.6
+Tested up to: 4.2-RC2
+Stable tag: 1.0.7
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -32,10 +32,11 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 
 = Translation =
 
+* Polish (pl_PL) (thanks to <a href="mailto:emiljo@tlen.pl">Emil Król</a>)
 * Russian (ru_RU)
 * Ukrainian (uk)
 
-If you would like to create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress" target="_blank">the text of PO and MO files</a> for <a href="http://support.bestwebsoft.com" target="_blank">BestWebSoft</a> and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO files  <a href="http://www.poedit.net/download.php" target="_blank">Poedit</a>.
+If you would like to create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress" target="_blank">the text of PO and MO files</a> for <a href="http://support.bestwebsoft.com" target="_blank">BestWebSoft</a> and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO files <a href="http://www.poedit.net/download.php" target="_blank">Poedit</a>.
 
 = Technical support =
 
@@ -114,6 +115,20 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 
 == Changelog ==
 
+= V1.0.7 - 21.04.2015 =
+* NEW : The Polish language file is added.
+* Bugfix : A bug with displaying video was fixed.
+* Bugfix : A bug with compatibility with the Promobar plugin was fixed.
+* Bugfix : Page address changing bug when and address features letter combinations from the translation slug was fixed.
+* Bugfix : Display of categories translation in the Dashboard was fixed.
+* Bugfix : Access to the files in WP root directory bug was fixed.
+* Bugfix : Excerpt translation bug was fixed.
+* Bugfix : A bug with displaying messages when language chart is being edited was fixed.
+* Bugfix : A bug with compatibility with  Booking System (Booking Calendar) plugin was fixed.
+* Bugfix : A bug with uploading images in NextGEN Gallery plugin when working with  Multilanguage was fixed.
+* Update : An image for en_US was changed for the USA flag, and en_GB language was added.
+* Update : We updated all functionality for wordpress 4.2-RC2.
+
 = V1.0.6 - 24.02.2015 =
 * NEW: We added shortcode and the strings to paste into the template source code.
 * Bugfix : Fixed pagination for default permalinks.
@@ -142,6 +157,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.0.7 =
+The Polish language file is added. A bug with displaying video was fixed. A bug with compatibility with the Promobar plugin was fixed. Page address changing bug when and address features letter combinations from the translation slug was fixed. Display of categories translation in the Dashboard was fixed. Access to the files in WP root directory bug was fixed. Excerpt translation bug was fixed. A bug with displaying messages when language chart is being edited was fixed. A bug with compatibility with Booking System (Booking Calendar) plugin was fixed. A bug with uploading images in NextGEN Gallery plugin when working with Multilanguage was fixed. An image for en_US was changed for the USA flag, and en_GB language was added. We updated all functionality for wordpress 4.2-RC2.
 
 = V1.0.6 =
 We added shortcode and the strings to paste into the template source code. Fixed pagination for default permalinks. Fixed author link for default permalinks.
