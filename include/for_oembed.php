@@ -4,7 +4,7 @@
  */
 global $mltlngg_wp_providers;
 $mltlngg_wp_providers = array( 
-	'/(https?:\/\/(www\.)?youtube\.com\/(watch|playlist)[\?=\w-]*)/i', 
+	'/(https?:\/\/(www\.)?youtube\.com\/(watch|playlist)[\?=\w-&;:^*#@!%()+]*)/i', 
 	'/(https?:\/\/youtu\.be\/.*)/i',      
 	'/(http:\/\/blip\.tv\/.*)/',
 	'/(https?:\/\/(.+\.)?vimeo\.com\/.*)/i',
@@ -36,5 +36,5 @@ $mltlngg_wp_providers = array(
 	'/(https?:\/\/(www\.)?collegehumor\.com\/video\/.*)/i',
 	'/(https?:\/\/(www\.)?mixcloud\.com\/.*)/i',
 	'/(https?:\/\/(www\.|embed\.)?ted\.com\/talks\/.*)/i',
-	'/(https?:\/\/(www\.)?(animoto|video214)\.com\/play\/[\?=\w-]*)/i'
+	'/(https?:\/\/(www\.)?(animoto|video214)\.com\/play\/[\?=\w-&;:^*#@!%()+]*)/i'
 );

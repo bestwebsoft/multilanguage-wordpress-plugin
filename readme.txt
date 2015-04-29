@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://www.2checkout.com/checkout/purchase?sid=1430388&quantity=1&product_id=94
 Tags: plugin, wordpress, multilingual, bilingual, translate, translation, language, multilanguage, international, localization, translation-ready
 Requires at least: 3.7
-Tested up to: 4.2-RC2
-Stable tag: 1.0.7
+Tested up to: 4.2.1
+Stable tag: 1.0.8
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -115,6 +115,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 
 == Changelog ==
 
+= V1.0.8 - 29.04.2015 =
+* Bugfix : We fixed the bug when using the plugin with the php version less that 5.3.
+* Bugfix : We fixed the bug when using editor in the frontend.
+* Bugfix : We fixed the bug with read more tag when using it on pages.
+
 = V1.0.7 - 21.04.2015 =
 * NEW : The Polish language file is added.
 * Bugfix : A bug with displaying video was fixed.
@@ -157,6 +162,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.0.8 =
+We fixed the bug when using the plugin with the php version less that 5.3. We fixed the bug when using editor in the frontend. We fixed the bug with read more tag when using it on pages.
 
 = V1.0.7 =
 The Polish language file is added. A bug with displaying video was fixed. A bug with compatibility with the Promobar plugin was fixed. Page address changing bug when and address features letter combinations from the translation slug was fixed. Display of categories translation in the Dashboard was fixed. Access to the files in WP root directory bug was fixed. Excerpt translation bug was fixed. A bug with displaying messages when language chart is being edited was fixed. A bug with compatibility with Booking System (Booking Calendar) plugin was fixed. A bug with uploading images in NextGEN Gallery plugin when working with Multilanguage was fixed. An image for en_US was changed for the USA flag, and en_GB language was added. We updated all functionality for wordpress 4.2-RC2.

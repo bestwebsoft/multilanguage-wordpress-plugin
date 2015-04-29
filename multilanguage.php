@@ -4,7 +4,7 @@ Plugin Name: Multilanguage by BestWebSoft
 Plugin URI: http://bestwebsoft.com/products/
 Description: This plugin allows you to display the content in different languages.
 Author: BestWebSoft
-Version: 1.0.7
+Version: 1.0.8
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -1730,29 +1730,27 @@ if ( ! function_exists( 'mltlngg_the_content_filter' ) ) {
 						if ( ! empty( $mltlngg_wp_providers ) ) {
 							foreach ( $mltlngg_wp_providers as $template ) {
 								if ( false !== preg_match( $template, $extends['extended'] ) ) {
-									$extended = preg_replace_callback( $template , 
-										function( $matches ) {
-											return "\n" . $matches[0] . "\n";
-										},
+									$extended = preg_replace_callback( $template, 
+										"mltlngg_videos_filter",
 										$extended
 									);
 								}
 								if ( false !== preg_match( $template, $extends['main'] ) ) {
 									$new_content = preg_replace_callback( $template, 
-										function( $matches ) {
-											return "\n" . $matches[0] . "\n";
-										},
+										"mltlngg_videos_filter",
 										$new_content
 									);
 								}
 							}
-						}					
-						if ( ! is_single() ) {					
-							$more_link_text = __( 'Read more...' );
+						}				
+						if ( ! is_single() && ! is_page() && ! is_search() ) {					
+							$more_link_text = __( '(more&hellip;)' );
 							$more_link = apply_filters( 'the_content_more_link', ' <a href="' . get_permalink() . "#more-{$post->ID}\" class=\"more-link\">$more_link_text</a>", $more_link_text );
-
+							
 							if ( '' != $extended )
 								$new_content .= $more_link;
+						} elseif ( is_page() ) {
+							$new_content .= $extended;							
 						} else {
 							if ( $noteaser )
 								$new_content = '';
@@ -1772,6 +1770,13 @@ if ( ! function_exists( 'mltlngg_the_content_filter' ) ) {
 			}
 		}
 		return $content;
+	}
+}
+
+/* filter for video on content */
+if ( ! function_exists( 'mltlngg_videos_filter' ) ) {
+	function mltlngg_videos_filter( $matches ) {
+		return "\n" . $matches[0] . "\n";
 	}
 }
 
@@ -1971,7 +1976,8 @@ add_filter( 'home_url', 'mltlngg_get_url_translated' );
 add_action( 'wp_print_scripts', 'mltlngg_disable_autosave_editor_script', 100 );
 add_action( 'edit_form_top', 'mltlngg_showup_language_tabs_in_editor' );	/* Add languages tabs to post editor */
 add_filter( 'title_edit_pre', 'mltlngg_the_title_filter', 10, 2 );
-add_action( 'the_editor_content', 'mltlngg_the_content_filter' );
+if ( is_admin() )
+	add_action( 'the_editor_content', 'mltlngg_the_content_filter' );
 add_action( 'save_post', 'mltlngg_save_post' );	/* Saving changes in posts translations */
 add_action( 'deleted_post', 'mltlngg_delete_post' );	/* Delete posts translations from database */
 
