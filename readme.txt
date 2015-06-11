@@ -1,10 +1,10 @@
 ﻿=== Multilanguage by BestWebSoft ===
 Contributors: bestwebsoft
-Donate link: https://www.2checkout.com/checkout/purchase?sid=1430388&quantity=1&product_id=94
+Donate link: http://bestwebsoft.com/donate/
 Tags: plugin, wordpress, multilingual, bilingual, translate, translation, language, multilanguage, international, localization, translation-ready
 Requires at least: 3.7
-Tested up to: 4.2.1
-Stable tag: 1.0.8
+Tested up to: 4.2.2
+Stable tag: 1.0.9
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -91,11 +91,12 @@ Yes, you can use Multilanguage on a multi-site without any problems as well. The
 
 = When I try to update the post after editing, changes are not saved if I have not filled the title and content fields. Why? =
 
- When Title and Content fields in active language tab are empty, if you try to update the post after editing, the changes will not be saved and an error message will appear. You need to fill at least one field or switch to another language tab, on which the fields are filled, and try to update again.
+When Title and Content fields in active language tab are empty, if you try to update the post after editing, the changes will not be saved and an error message will appear. You need to fill at least one field or switch to another language tab, on which the fields are filled, and try to update again.
 
 = I have some problems with the plugin's work. What Information should I provide to receive proper support? =
 
 Please make sure that the problem hasn't been discussed yet on our forum (<a href="http://support.bestwebsoft.com" target="_blank">http://support.bestwebsoft.com</a>). If no, please provide the following data along with your problem's description:
+
 1. the link to the page where the problem occurs
 2. the name of the plugin and its version. If you are using a pro version - your order number.
 3. the version of your WordPress installation
@@ -114,6 +115,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 9. Language switcher widget in frontend.
 
 == Changelog ==
+
+= V1.0.9 - 11.06.2015 =
+* Bugfix : We added post updating when the plugin is deactivated for some time.
+* Bugfix : We fixed the bug with adding Russian language.
 
 = V1.0.8 - 29.04.2015 =
 * Bugfix : We fixed the bug when using the plugin with the php version less that 5.3.
@@ -162,6 +167,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.0.9 =
+We added post updating when the plugin is deactivated for some time. We fixed the bug with adding Russian language.
 
 = V1.0.8 =
 We fixed the bug when using the plugin with the php version less that 5.3. We fixed the bug when using editor in the frontend. We fixed the bug with read more tag when using it on pages.

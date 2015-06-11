@@ -127,7 +127,7 @@ if ( ! function_exists( 'mltlngg_table_data' ) ) {
 			}
 			$mltlngg_flag = "<img src=" . plugins_url( 'images/flags/', dirname( __FILE__ ) ) . $mltlngg_language['locale'] . '.png' . " alt=" . $mltlngg_language['name'] . " title=" . $mltlngg_language['name'] . ">";
 			$by_default = '<input name="mltlngg_default_lang" type="radio" value="' . $mltlngg_language['locale'] . '"' . ( ( $mltlngg_language['locale'] == $mltlngg_options['default_language'] ) ? ' checked>' : '>' );
-			$priority = '<input value="' . $mltlngg_language['priority'] . '" name="' . $mltlngg_language['locale'] . '" type="text" size="2">';
+			$priority = '<input value="' . $mltlngg_language['priority'] . '" name="' . $mltlngg_language['locale'] . '" type="number" min="1" />';
 			$mltlngg_return[ $i ] = array(
 				'name'		=> $mltlngg_language['name'],
 				'locale'	=> $mltlngg_language['locale'],
