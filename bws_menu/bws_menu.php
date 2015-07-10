@@ -1,7 +1,7 @@
 <?php
 /*
 * Function for displaying BestWebSoft menu
-* Version: 1.6.3
+* Version: 1.6.6
 */
 
 if ( ! function_exists ( 'bws_admin_enqueue_scripts' ) )
@@ -431,7 +431,18 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 				'download'		=> 'http://bestwebsoft.com/products/pagination/download/?k=22adb940256f149559ba8fedcd728ac8&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
 				'wp_install'	=> $admin_url . 'plugin-install.php?tab=search&type=term&s=Pagination+BestWebSoft&plugin-search-input=Search+Plugins',
 				'settings'		=> 'admin.php?page=pagination.php'
-			)
+			),
+			'visitors-online/visitors-online.php' => array(
+				'name'			=> 'Visitors online',
+				'description'	=> 'See how many users, guests and bots are online at the website.',
+				'link'			=> 'http://bestwebsoft.com/products/visitors-online/?k=93c28013a4f830671b3bba9502ed5177&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
+				'download'		=> 'http://bestwebsoft.com/products/visitors-online/download/?k=93c28013a4f830671b3bba9502ed5177&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
+				'wp_install'	=> $admin_url . 'plugin-install.php?tab=search&type=term&s=Visitors+online+BestWebSoft&plugin-search-input=Search+Plugins',
+				'settings'		=> 'admin.php?page=visitors-online.php',
+				'pro_version'	=> 'visitors-online-pro/visitors-online-pro.php',
+				'purchase' 		=> 'http://bestwebsoft.com/products/visitors-online/buy/?k=f9a746075ff8a0a6cb192cb46526afd2&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
+				'pro_settings'	=> 'admin.php?page=visitors-online-pro.php'
+			)			
 		);
 
 		$all_plugins = get_plugins();
@@ -945,7 +956,7 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 						<p>
 							<input type="hidden" name="bwsmn_form_submit_custom_email" value="submit" />
 							<input type="submit" class="button" value="<?php _e( 'Send to custom email &#187;', 'bestwebsoft' ) ?>" />
-							<input type="text" value="<?php echo $bwsmn_form_email; ?>" name="bwsmn_form_email" />
+							<input type="text" maxlength="250" value="<?php echo $bwsmn_form_email; ?>" name="bwsmn_form_email" />
 							<?php wp_nonce_field( plugin_basename(__FILE__), 'bwsmn_nonce_submit_custom_email' ); ?>
 						</p>
 					</form>
@@ -959,6 +970,7 @@ if ( ! function_exists( 'bws_get_banner_array' ) ) {
 	function bws_get_banner_array() {
 		global $bstwbsftwppdtplgns_banner_array;
 		$bstwbsftwppdtplgns_banner_array = array(
+			array( 'vstrsnln_hide_banner_on_plugin_page', 'visitors-online/visitors-online.php', '0.2' ),			
 			array( 'cstmsrch_hide_banner_on_plugin_page', 'custom-search-plugin/custom-search-plugin.php', '1.28' ),
 			array( 'prtfl_hide_banner_on_plugin_page', 'portfolio/portfolio.php', '2.33' ),
 			array( 'rlt_hide_banner_on_plugin_page', 'realty/realty.php', '1.0.0' ),
@@ -982,7 +994,7 @@ if ( ! function_exists( 'bws_get_banner_array' ) ) {
 			array( 'cntctfrm_hide_banner_on_plugin_page', 'contact-form-plugin/contact_form.php', '3.47' ),
 			array( 'cptch_hide_banner_on_plugin_page', 'captcha/captcha.php', '3.8.4' ),
 			array( 'gllr_hide_banner_on_plugin_page', 'gallery-plugin/gallery-plugin.php', '3.9.1' ),
-			array( 'cntctfrm_for_ctfrmtdb_hide_banner_on_plugin_page', 'contact-form-plugin/contact_form.php', '3.62' ),
+			array( 'cntctfrm_for_ctfrmtdb_hide_banner_on_plugin_page', 'contact-form-plugin/contact_form.php', '3.62' )
 		);
 	}
 }

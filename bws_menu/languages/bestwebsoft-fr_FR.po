@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bestwebsoft\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-05 16:45+0300\n"
-"PO-Revision-Date: 2015-06-05 16:45+0300\n"
+"POT-Creation-Date: 2015-06-12 15:56+0300\n"
+"PO-Revision-Date: 2015-06-12 15:56+0300\n"
 "Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
 "Language-Team: Luc Capronnier <lcapronnier@yahoo.com>\n"
 "Language: fr_FR\n"
@@ -301,6 +301,31 @@ msgstr "et vous ne diposerez plus du support rapide et des mises à jour."
 #: bws_functions.php:680
 msgid "Close"
 msgstr "Fermer"
+
+#: bws_functions.php:771
+#: bws_functions.php:784
+msgid "Restore all plugin settings to defaults"
+msgstr ""
+
+#: bws_functions.php:773
+#: bws_functions.php:786
+#, fuzzy
+msgid "Restore settings"
+msgstr "Options supplémentaires"
+
+#: bws_functions.php:797
+#, fuzzy
+msgid "Are you sure you want to restore all settings by default?"
+msgstr "Etes vous sûr de vouloir supprimer cette langue ?"
+
+#: bws_functions.php:799
+msgid "Yes, restore all settings"
+msgstr ""
+
+#: bws_functions.php:800
+#, fuzzy
+msgid "No, go back to the settings page"
+msgstr "Options supplémentaires"
 
 #: bws_menu.php:470
 msgid "Not set"
@@ -1102,9 +1127,6 @@ msgstr "Envoyer un e-mail spécifique &#187;"
 
 #~ msgid "Support"
 #~ msgstr "Support"
-
-#~ msgid "Are you sure that you want to delete this language data?"
-#~ msgstr "Etes vous sûr de vouloir supprimer cette langue ?"
 
 #~ msgid "Display Attachment tips"
 #~ msgstr "Afficher les explications sur les pièces jointes"

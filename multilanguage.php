@@ -4,7 +4,7 @@ Plugin Name: Multilanguage by BestWebSoft
 Plugin URI: http://bestwebsoft.com/products/
 Description: This plugin allows you to display the content in different languages.
 Author: BestWebSoft
-Version: 1.0.9
+Version: 1.1.0
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -1475,6 +1475,8 @@ if ( ! function_exists( 'mltlngg_ajax_callback' ) ) {
 		}
 		/* If received request for a translation for current language */
 		if ( isset( $_POST['get_data'] ) && ! empty( $_POST['new_lang'] ) ) {
+			$mltlngg_new_cat_data = array( "cat_translate" => "" );
+			
 			$mltlngg_sql = $wpdb->prepare(
 				"SELECT *
 				 FROM $mltlngg_table_translate
@@ -1491,6 +1493,7 @@ if ( ! function_exists( 'mltlngg_ajax_callback' ) ) {
 				);
 				$mltlngg_cat_data = $wpdb->get_results( $mltlngg_sql, 'ARRAY_A' ); /* Get translation data for current language from database */
 			}
+
 			if ( ! empty( $mltlngg_cat_data ) ) {
 				foreach ( $mltlngg_cat_data as $value ) {
 					if ( in_array( $value['term_ID'], $_POST['cat_id'] ) )
@@ -1498,8 +1501,7 @@ if ( ! function_exists( 'mltlngg_ajax_callback' ) ) {
 				}		
 				if ( ! empty( $mltlngg_new_cat_mame ) )
 					$mltlngg_new_cat_data = array( "cat_translate" => $mltlngg_new_cat_mame );
-			} else
-				$mltlngg_new_cat_data = array( "cat_translate" => "" );
+			}
 
 			if ( isset( $mltlngg_post_data['post_content'] ) && isset( $mltlngg_post_data['post_title'] ) ) { /* If translation is exist, send translation to ajax */
 				echo json_encode( array_merge( $mltlngg_post_data, $mltlngg_new_cat_data ) );

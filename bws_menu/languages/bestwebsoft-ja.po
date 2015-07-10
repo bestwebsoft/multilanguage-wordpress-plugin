@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bestwebsoft\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-11 14:11+0300\n"
-"PO-Revision-Date: 2015-05-11 14:11+0300\n"
+"POT-Creation-Date: 2015-06-12 15:57+0300\n"
+"PO-Revision-Date: 2015-06-12 15:57+0300\n"
 "Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
 "Language-Team: foken <foken@gmx.com>\n"
 "Language: ja_JP\n"
@@ -183,8 +183,8 @@ msgstr ""
 #: bws_functions.php:371
 #: bws_functions.php:401
 #: bws_functions.php:409
-#: bws_menu.php:643
-#: bws_menu.php:700
+#: bws_menu.php:657
+#: bws_menu.php:714
 #, fuzzy
 msgid "Activate"
 msgstr "有効なcaptcha"
@@ -274,11 +274,11 @@ msgstr ""
 
 #: bws_functions.php:552
 #: bws_functions.php:605
-#: bws_menu.php:619
-#: bws_menu.php:641
-#: bws_menu.php:668
-#: bws_menu.php:698
-#: bws_menu.php:744
+#: bws_menu.php:633
+#: bws_menu.php:655
+#: bws_menu.php:682
+#: bws_menu.php:712
+#: bws_menu.php:758
 #, fuzzy
 msgid "Learn more"
 msgstr "もっと読む"
@@ -312,287 +312,312 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: bws_menu.php:456
+#: bws_functions.php:771
+#: bws_functions.php:784
+msgid "Restore all plugin settings to defaults"
+msgstr ""
+
+#: bws_functions.php:773
+#: bws_functions.php:786
+#, fuzzy
+msgid "Restore settings"
+msgstr "追加設定"
+
+#: bws_functions.php:797
+#, fuzzy
+msgid "Are you sure you want to restore all settings by default?"
+msgstr "本当に、この言語データを削除しますか?"
+
+#: bws_functions.php:799
+msgid "Yes, restore all settings"
+msgstr ""
+
+#: bws_functions.php:800
+#, fuzzy
+msgid "No, go back to the settings page"
+msgstr "追加設定"
+
+#: bws_menu.php:470
 msgid "Not set"
 msgstr "未設定"
 
-#: bws_menu.php:458
-#: bws_menu.php:459
+#: bws_menu.php:472
+#: bws_menu.php:473
 msgid "On"
 msgstr "On"
 
-#: bws_menu.php:458
-#: bws_menu.php:459
+#: bws_menu.php:472
+#: bws_menu.php:473
 msgid "Off"
 msgstr "Off"
 
-#: bws_menu.php:460
-#: bws_menu.php:461
-#: bws_menu.php:462
-#: bws_menu.php:463
-#: bws_menu.php:464
+#: bws_menu.php:474
+#: bws_menu.php:475
 #: bws_menu.php:476
+#: bws_menu.php:477
+#: bws_menu.php:478
+#: bws_menu.php:490
 msgid "N/A"
 msgstr "該当なし"
 
-#: bws_menu.php:464
+#: bws_menu.php:478
 msgid " Mb"
 msgstr " Mb"
 
-#: bws_menu.php:465
-#: bws_menu.php:466
-#: bws_menu.php:467
-#: bws_menu.php:472
+#: bws_menu.php:479
+#: bws_menu.php:480
+#: bws_menu.php:481
+#: bws_menu.php:486
 msgid "Yes"
 msgstr "はい"
 
-#: bws_menu.php:465
-#: bws_menu.php:466
-#: bws_menu.php:467
-#: bws_menu.php:474
+#: bws_menu.php:479
+#: bws_menu.php:480
+#: bws_menu.php:481
+#: bws_menu.php:488
 msgid "No"
 msgstr "いいえ"
 
-#: bws_menu.php:484
+#: bws_menu.php:498
 msgid "Operating System"
 msgstr "オペレーション・システム"
 
-#: bws_menu.php:485
+#: bws_menu.php:499
 msgid "Server"
 msgstr "サーバ"
 
-#: bws_menu.php:486
+#: bws_menu.php:500
 msgid "Memory usage"
 msgstr "メモリー使用"
 
-#: bws_menu.php:487
+#: bws_menu.php:501
 msgid "MYSQL Version"
 msgstr "MYSQL バージョン"
 
-#: bws_menu.php:488
+#: bws_menu.php:502
 msgid "SQL Mode"
 msgstr "SQLモード"
 
-#: bws_menu.php:489
+#: bws_menu.php:503
 msgid "PHP Version"
 msgstr "PHP バージョン"
 
-#: bws_menu.php:490
+#: bws_menu.php:504
 msgid "PHP Safe Mode"
 msgstr "PHP Safe Mode"
 
-#: bws_menu.php:491
+#: bws_menu.php:505
 msgid "PHP Allow URL fopen"
 msgstr "PHP Allow URL fopen"
 
-#: bws_menu.php:492
+#: bws_menu.php:506
 msgid "PHP Memory Limit"
 msgstr "PHP Memory Limit"
 
-#: bws_menu.php:493
+#: bws_menu.php:507
 msgid "PHP Max Upload Size"
 msgstr "PHP Max Upload Size"
 
-#: bws_menu.php:494
+#: bws_menu.php:508
 msgid "PHP Max Post Size"
 msgstr "PHP Max Post Size"
 
-#: bws_menu.php:495
+#: bws_menu.php:509
 msgid "PHP Max Script Execute Time"
 msgstr "PHP Max Script Execute Time"
 
-#: bws_menu.php:496
+#: bws_menu.php:510
 msgid "PHP Exif support"
 msgstr "PHP Exif サポート"
 
-#: bws_menu.php:497
+#: bws_menu.php:511
 msgid "PHP IPTC support"
 msgstr "PHP IPTC サポート"
 
-#: bws_menu.php:498
+#: bws_menu.php:512
 msgid "PHP XML support"
 msgstr "PHP XML サポート"
 
-#: bws_menu.php:499
+#: bws_menu.php:513
 msgid "Site URL"
 msgstr "サイトURL"
 
-#: bws_menu.php:500
+#: bws_menu.php:514
 msgid "Home URL"
 msgstr "ホームURL"
 
-#: bws_menu.php:503
+#: bws_menu.php:517
 msgid "WordPress Version"
 msgstr "WordPress バージョン"
 
-#: bws_menu.php:504
+#: bws_menu.php:518
 msgid "WordPress DB Version"
 msgstr "WordPress データベース バージョン"
 
-#: bws_menu.php:505
+#: bws_menu.php:519
 msgid "Multisite"
 msgstr "複数サイト"
 
-#: bws_menu.php:506
+#: bws_menu.php:520
 msgid "Active Theme"
 msgstr "有効なテーマ"
 
-#: bws_menu.php:521
+#: bws_menu.php:535
 msgid "Please enter a valid email address."
 msgstr "正確なEメール・アドレスを入力して下さい。"
 
-#: bws_menu.php:525
+#: bws_menu.php:539
 msgid "Email with system info is sent to "
 msgstr "システム情報をメールで送信:"
 
-#: bws_menu.php:529
+#: bws_menu.php:543
 msgid "Thank you for contacting us."
 msgstr "ご連絡ありがとうございます"
 
-#: bws_menu.php:562
+#: bws_menu.php:576
 msgid "Sorry, email message could not be delivered."
 msgstr "申し訳ございませんが、貴方のemailは配信できませんでした。"
 
-#: bws_menu.php:570
+#: bws_menu.php:584
 msgid "Need help?"
 msgstr ""
 
-#: bws_menu.php:571
+#: bws_menu.php:585
 msgid "Client area"
 msgstr ""
 
-#: bws_menu.php:572
-#: bws_menu.php:883
+#: bws_menu.php:586
+#: bws_menu.php:897
 msgid "System status"
 msgstr "システム状況"
 
-#: bws_menu.php:577
+#: bws_menu.php:591
 #, fuzzy
 msgid "Plugins"
 msgstr "Pro Plugins"
 
-#: bws_menu.php:579
+#: bws_menu.php:593
 msgid "Themes"
 msgstr ""
 
-#: bws_menu.php:584
+#: bws_menu.php:598
 msgid "All"
 msgstr ""
 
-#: bws_menu.php:585
+#: bws_menu.php:599
 #, fuzzy
 msgid "Installed"
 msgstr "%s 導入"
 
-#: bws_menu.php:586
+#: bws_menu.php:600
 #, fuzzy
 msgid "Recommended"
 msgstr "推奨プラグイン"
 
-#: bws_menu.php:590
+#: bws_menu.php:604
 msgid "Installed plugins"
 msgstr "導入済みプラグイン"
 
-#: bws_menu.php:622
-#: bws_menu.php:671
+#: bws_menu.php:636
+#: bws_menu.php:685
 msgid "Settings"
 msgstr "設定"
 
-#: bws_menu.php:643
-#: bws_menu.php:700
+#: bws_menu.php:657
+#: bws_menu.php:714
 #, fuzzy
 msgid "Activate this plugin"
 msgstr "有効なプラグイン"
 
-#: bws_menu.php:658
-#: bws_menu.php:688
-#: bws_menu.php:734
+#: bws_menu.php:672
+#: bws_menu.php:702
+#: bws_menu.php:748
 msgid "Go"
 msgstr ""
 
-#: bws_menu.php:662
-#: bws_menu.php:692
-#: bws_menu.php:738
+#: bws_menu.php:676
+#: bws_menu.php:706
+#: bws_menu.php:752
 msgid "DONATE"
 msgstr ""
 
-#: bws_menu.php:708
+#: bws_menu.php:722
 msgid "Recommended plugins"
 msgstr "推奨プラグイン"
 
-#: bws_menu.php:746
+#: bws_menu.php:760
 #, fuzzy
 msgid "Install now"
 msgstr "Installa Ora"
 
-#: bws_menu.php:767
+#: bws_menu.php:781
 msgid "Try again"
 msgstr ""
 
-#: bws_menu.php:785
+#: bws_menu.php:799
 #, php-format
 msgid "Preview &#8220;%s&#8221;"
 msgstr ""
 
-#: bws_menu.php:816
+#: bws_menu.php:830
 #, php-format
 msgid "Install %s"
 msgstr "%s 導入"
 
-#: bws_menu.php:816
+#: bws_menu.php:830
 msgid "Install Now"
 msgstr "Installa Ora"
 
-#: bws_menu.php:819
+#: bws_menu.php:833
 #, php-format
 msgid "Update to version %s"
 msgstr ""
 
-#: bws_menu.php:819
+#: bws_menu.php:833
 msgid "Update"
 msgstr ""
 
-#: bws_menu.php:826
+#: bws_menu.php:840
 #, php-format
 msgid "Preview %s"
 msgstr ""
 
-#: bws_menu.php:826
+#: bws_menu.php:840
 msgid "Preview"
 msgstr ""
 
-#: bws_menu.php:832
-#: bws_menu.php:864
+#: bws_menu.php:846
+#: bws_menu.php:878
 #, php-format
 msgid "By %s"
 msgstr ""
 
-#: bws_menu.php:838
+#: bws_menu.php:852
 msgid "Details"
 msgstr ""
 
-#: bws_menu.php:870
+#: bws_menu.php:884
 #, fuzzy
 msgid "Already Installed"
 msgstr "%s 導入"
 
-#: bws_menu.php:886
+#: bws_menu.php:900
 msgid "Environment"
 msgstr "環境"
 
-#: bws_menu.php:897
+#: bws_menu.php:911
 msgid "Active Plugins"
 msgstr "有効なプラグイン"
 
-#: bws_menu.php:910
+#: bws_menu.php:924
 msgid "Inactive Plugins"
 msgstr "無効なプラグイン"
 
-#: bws_menu.php:926
+#: bws_menu.php:940
 msgid "Send to support"
 msgstr "サポートに送信"
 
-#: bws_menu.php:933
+#: bws_menu.php:947
 msgid "Send to custom email &#187;"
 msgstr "カスタムEメールに送信&#187;"
 
@@ -1092,9 +1117,6 @@ msgstr "カスタムEメールに送信&#187;"
 
 #~ msgid "Support"
 #~ msgstr "サポート"
-
-#~ msgid "Are you sure that you want to delete this language data?"
-#~ msgstr "本当に、この言語データを削除しますか?"
 
 #~ msgid "Contact Form Options"
 #~ msgstr "コンタクトフォーム オプション"

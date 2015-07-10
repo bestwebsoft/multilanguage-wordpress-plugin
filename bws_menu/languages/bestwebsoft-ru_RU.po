@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bestwebsoft\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-05 16:49+0300\n"
-"PO-Revision-Date: 2015-06-05 16:49+0300\n"
+"POT-Creation-Date: 2015-06-12 15:57+0300\n"
+"PO-Revision-Date: 2015-06-12 15:58+0300\n"
 "Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
 "Language-Team: bestwebsoft.com <http://support.bestwebsoft.com>\n"
 "Language: ru_RU\n"
@@ -300,6 +300,28 @@ msgstr "и вы не будете получать приоритетную те
 #: bws_functions.php:680
 msgid "Close"
 msgstr "Закрыть"
+
+#: bws_functions.php:771
+#: bws_functions.php:784
+msgid "Restore all plugin settings to defaults"
+msgstr "Восстановить все настройки плагина к настройкам по-умолчанию"
+
+#: bws_functions.php:773
+#: bws_functions.php:786
+msgid "Restore settings"
+msgstr "Восстановить настройки"
+
+#: bws_functions.php:797
+msgid "Are you sure you want to restore all settings by default?"
+msgstr "Вы уверены что хотите восстановить все настройки плагина к настройкам по-умолчанию?"
+
+#: bws_functions.php:799
+msgid "Yes, restore all settings"
+msgstr "Да, восстановить все настройки"
+
+#: bws_functions.php:800
+msgid "No, go back to the settings page"
+msgstr "Нет, вернутся на страницу настроек"
 
 #: bws_menu.php:470
 msgid "Not set"
