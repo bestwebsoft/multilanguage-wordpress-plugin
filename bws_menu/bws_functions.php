@@ -1,7 +1,7 @@
 <?php
 /*
 * General functions for BestWebSoft plugins
-* Version: 1.1.0
+* Version: 1.1.1
 */
 if ( ! function_exists ( 'bws_add_general_menu' ) ) {
 	function bws_add_general_menu( $base ) {
@@ -243,7 +243,17 @@ if ( ! function_exists( 'bws_go_pro_tab_check' ) ) {
 										$url = 'http://bestwebsoft.com/wp-content/plugins/paid-products/plugins/downloads/?bws_first_download=' . $bws_license_plugin . '&bws_license_key=' . $bws_license_key . '&download_from=5';
 										$uploadDir = wp_upload_dir();
 											$zip_name = explode( '/', $bws_license_plugin );
-											$received_content = file_get_contents( $url );
+											
+											if ( !function_exists( 'curl_init' ) ) { 
+												$received_content = file_get_contents( $url );
+											} else {
+												$ch = curl_init();
+												curl_setopt( $ch, CURLOPT_URL, $url );
+												curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+												$received_content = curl_exec( $ch );
+												curl_close( $ch );
+											}
+
 											if ( ! $received_content ) {
 												$result['error'] = __( "Failed to download the zip archive. Please, upload the plugin manually", 'bestwebsoft' );
 											} else {

@@ -190,3 +190,7 @@
 .mltlngg-help-box:hover .mltlngg-hidden-help-text {
     display: block;
 }
+.mltlngg-span {
+    color: #888888;
+    font-size: 10px;
+}

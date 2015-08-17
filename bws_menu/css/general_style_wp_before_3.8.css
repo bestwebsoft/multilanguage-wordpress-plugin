@@ -71,6 +71,7 @@ td.bws_pro_version_tooltip {
     margin: 5px 0;
     border: 1px solid #AAAAAA;
     max-width: 800px;
+    overflow: hidden;
 }
 .bws_table_bg { 
     background: #f8e268 url("../images/pattern.png");
@@ -167,7 +168,7 @@ a.bws_plugin_pro_version {
     float: none;
 }
 /* #### Mobile Phones Portrait or Landscape #### */
-@media screen and (max-device-width: 640px) {
+@media screen and (max-device-width: 768px) {
     .bws_pro_version_tooltip {
         padding: 10px;
         text-align: center;
@@ -259,7 +260,7 @@ div.bws_banner_on_plugin_page .icon {
     cursor: pointer;
 }
 /* #### Mobile Phones Portrait or Landscape #### */
-@media screen and (max-device-width: 640px) {
+@media screen and (max-device-width: 768px) {
     .bws_banner_on_plugin_page .text,
     .bws_banner_on_plugin_page .icon, 
     .bws_banner_on_plugin_page .button_div,

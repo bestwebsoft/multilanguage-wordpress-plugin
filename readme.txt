@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: plugin, wordpress, multilingual, bilingual, translate, translation, language, multilanguage, international, localization, translation-ready
 Requires at least: 3.7
-Tested up to: 4.2.2
-Stable tag: 1.1.0
+Tested up to: 4.2.4
+Stable tag: 1.1.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -21,6 +21,8 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 <a href="http://wordpress.org/plugins/multilanguage/faq/" target="_blank">FAQ</a>
 
 <a href="http://support.bestwebsoft.com" target="_blank">Support</a>
+
+<a href="http://bestwebsoft.com/products/multilanguage/?k=1d4576a3a2c4fc0f127ce2ee0341d81b" target="_blank">Upgrade to Pro Version</a>
 
 = Features =
 
@@ -117,6 +119,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 
 == Changelog ==
 
+= V1.1.1 - 17.08.2015 =
+* New : We added new languages.
+
 = V1.1.0 - 10.07.2015 =
 * Bugfix : We fixed not saving data error when switching between tabs.
 
@@ -171,6 +176,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.1.1 =
+We added new languages.
 
 = V1.1.0 =
 We fixed not saving data error when switching between tabs.
