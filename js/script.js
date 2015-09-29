@@ -6,16 +6,6 @@
 			$( '#mltlngg-add-new-language-form' ).slideToggle();
 		});
 
-		/*
-		 *add notice about changing in the settings page
-		 */
-		$( '#mltlngg-current-languages-form input' ).bind( "change click select", function() {
-			if ( $( this ).attr( 'type' ) != 'submit' ) {
-				$( '.updated.fade' ).css( 'display', 'none' );
-				$( '#mltlngg-settings-notice' ).css( 'display', 'block' );
-			};
-		});
-
 		/* Do not save post if Title and Content is empty */
 		$( '#publish' ).on( 'click', function() {
 			var mltlnggCurrentTitle = $( '#title' ).val(),

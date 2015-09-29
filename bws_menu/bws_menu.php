@@ -1,7 +1,7 @@
 <?php
 /*
 * Function for displaying BestWebSoft menu
-* Version: 1.6.8
+* Version: 1.7.5
 */
 
 if ( ! function_exists ( 'bws_admin_enqueue_scripts' ) )
@@ -230,7 +230,10 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 				'link'			=> 'http://bestwebsoft.com/products/google-captcha/?k=7b59fbe542acf950b29f3e020d5ad735&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
 				'download'		=> 'http://bestwebsoft.com/products/google-captcha/download/?k=7b59fbe542acf950b29f3e020d5ad735&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
 				'wp_install'	=> $admin_url . 'plugin-install.php?tab=search&s=Google+Captcha+Bestwebsoft&plugin-search-input=Search+Plugins',
-				'settings'		=> 'admin.php?page=google-captcha.php'
+				'settings'		=> 'admin.php?page=google-captcha.php',
+				'pro_version'	=> 'google-captcha-pro/google-captcha-pro.php',
+				'purchase'		=> 'http://bestwebsoft.com/products/google-captcha/buy/?k=773d30149acf1edc32e5c0766b96c134&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
+				'pro_settings'	=> 'admin.php?page=google-captcha-pro.php'
 			),
 			'sender/sender.php' => array(
 				'name'			=> 'Sender',
@@ -448,7 +451,23 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 				'pro_version'	=> 'visitors-online-pro/visitors-online-pro.php',
 				'purchase' 		=> 'http://bestwebsoft.com/products/visitors-online/buy/?k=f9a746075ff8a0a6cb192cb46526afd2&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
 				'pro_settings'	=> 'admin.php?page=visitors-online-pro.php'
-			)			
+			),
+			'profile-extra-fields/profile-extra-fields.php' => array(
+				'name'			=> 'Profile Extra Fields',
+				'description'	=> "Add additional fields on the user's profile page",
+				'link'			=> 'http://bestwebsoft.com/products/profile-extra-fields/?k=fe3b6c3dbc80bd4b1cf9a27a2f339820&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
+				'download'		=> 'http://bestwebsoft.com/products/profile-extra-fields/download/?k=fe3b6c3dbc80bd4b1cf9a27a2f339820&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
+				'wp_install'	=> $admin_url . 'plugin-install.php?tab=search&type=term&s=Profile+Extra+Fields+BestWebSoft&plugin-search-input=Search+Plugins',
+				'settings'		=> 'admin.php?page=profile-extra-fields.php'
+			),
+			'error-log-viewer/error-log-viewer.php' => array(
+				'name'			=> 'Error Log Viewer',
+				'description'	=> "Work with log files and folders on the WordPress server",
+				'link'			=> 'http://bestwebsoft.com/products/error-log-viewer/?k=da0de8bd2c7a0b2fea5df64d55a368b3&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
+				'download'		=> 'http://bestwebsoft.com/products/error-log-viewer/download/?k=da0de8bd2c7a0b2fea5df64d55a368b3&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
+				'wp_install'	=> $admin_url . 'plugin-install.php?tab=search&type=term&s=Error+Log+Viewer+BestWebSoft&plugin-search-input=Search+Plugins',
+				'settings'		=> 'admin.php?page=rrrlgvwr.php&tab=settings'
+			)		
 		);
 
 		$all_plugins = get_plugins();
@@ -976,6 +995,7 @@ if ( ! function_exists( 'bws_get_banner_array' ) ) {
 	function bws_get_banner_array() {
 		global $bstwbsftwppdtplgns_banner_array;
 		$bstwbsftwppdtplgns_banner_array = array(
+			array( 'gglcptch_hide_banner_on_plugin_page', 'google-captcha/google-captcha.php', '1.18' ),
 			array( 'mltlngg_hide_banner_on_plugin_page', 'multilanguage/multilanguage.php', '1.1.1' ),
 			array( 'adsns_hide_banner_on_plugin_page', 'adsense-plugin/adsense-plugin.php', '1.36' ),
 			array( 'vstrsnln_hide_banner_on_plugin_page', 'visitors-online/visitors-online.php', '0.2' ),			

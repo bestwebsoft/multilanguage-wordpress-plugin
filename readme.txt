@@ -1,10 +1,10 @@
 ﻿=== Multilanguage by BestWebSoft ===
 Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
-Tags: plugin, wordpress, multilingual, bilingual, translate, translation, language, multilanguage, international, localization, translation-ready
-Requires at least: 3.7
-Tested up to: 4.2.4
-Stable tag: 1.1.1
+Tags: add translation, add translations, best multilanguage plugin, bilingual, free multilanguage plugin, free plugin, globalization, international, international plugin, language, language switcher, localization, multilanguage, multi language, multilanguage plugin, multilingual, plugin, simple multilanguage plugin, simple language switcher, switcher, translate, translation, translations, translation-ready, widget, wordpress multilanguage plugin, wp multilanguage plugin, wordpress plugin, wp plugin
+Requires at least: 3.8
+Tested up to: 4.3.1
+Stable tag: 1.1.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -18,11 +18,11 @@ NOTE: This plugin will only work with the themes and plugins, which were develop
 
 http://www.youtube.com/watch?v=Si6ulEWuY1E 
 
-<a href="http://wordpress.org/plugins/multilanguage/faq/" target="_blank">FAQ</a>
+<a href="http://wordpress.org/plugins/multilanguage/faq/" target="_blank">Multilanguage by BestWebSoft FAQ</a>
 
-<a href="http://support.bestwebsoft.com" target="_blank">Support</a>
+<a href="http://support.bestwebsoft.com" target="_blank">Multilanguage by BestWebSoft Support</a>
 
-<a href="http://bestwebsoft.com/products/multilanguage/?k=1d4576a3a2c4fc0f127ce2ee0341d81b" target="_blank">Upgrade to Pro Version</a>
+<a href="http://bestwebsoft.com/products/multilanguage/?k=1d4576a3a2c4fc0f127ce2ee0341d81b" target="_blank">Upgrade to Multilanguage Pro by BestWebSoft</a>
 
 = Features =
 
@@ -30,6 +30,7 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 * You can add translations for posts, pages, categories, and post tags.
 * The language is either set by the language switcher or by the language code in url (as directory).
 * A customizable language switcher is provided as a widget, which can be displayed in the form of a Drop-down list of languages, Drop-down list of flags icons or Flags icons.
+* Default searching by the language which is currently selected for the site or all available languages.
 * You can determine the priority of language display ​​in the switcher by changing the priority of language display on the plugin settings page.
 * The admin interface is translation-ready.
 
@@ -103,7 +104,7 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 1. the link to the page where the problem occurs
 2. the name of the plugin and its version. If you are using a pro version - your order number.
 3. the version of your WordPress installation
-4. copy and paste into the message your system status report. Please read more here: <a href="https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit" target="_blank">Instuction on System Status</a>
+4. copy and paste into the message your system status report. Please read more here: <a href="https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit" target="_blank">Instruction on System Status</a>
 
 == Screenshots ==
 
@@ -115,9 +116,17 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 6. Translation form for editing a category.
 7. Translation form for adding a new tag.
 8. Adding and settings language switcher widget in admin panel.
-9. Language switcher widget in frontend.
+9. Language switcher widget in frontend (Drop-down languages list).
+10. Language switcher widget in frontend (Drop-down flag icons).
+11. Language switcher widget in frontend (Flag icons).
 
 == Changelog ==
+
+= V1.1.2 - 29.09.2015 =
+* Bugfix : We fixed the bug with missing argument 2 for mltlngg_the_title_filter.
+* NEW : A button for Multilanguage shortcode inserting to the content was added.
+* NEW : Ability to restore settings to defaults.
+* NEW : Ability to default searching by the language which is currently selected for the site or all available languages.
 
 = V1.1.1 - 17.08.2015 =
 * New : We added new languages.
@@ -176,6 +185,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.1.2 =
+We fixed the bug with missing argument 2 for mltlngg_the_title_filter. A button for Multilanguage shortcode inserting to the content was added. Ability to restore settings to defaults. Ability to default searching by the language which is currently selected for the site or all available languages.
 
 = V1.1.1 =
 We added new languages.

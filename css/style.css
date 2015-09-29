@@ -146,43 +146,17 @@
 #mltlngg-current-languages-form .column-priority input {
 	width: 60px;
 }
-/*
-* styles help tooltips
-*/
-.mltlngg-help-box {
-    background-image: url("../images/tooltip_icons.png");
-    background-repeat: no-repeat;
-    cursor: pointer;
-    height: 28px;
-    position: relative;
-    margin: 3px 5px;
-    width: 28px;
-    display: inline-block;
-    vertical-align: middle;
+.mltlngg-lang-switch button.mltlngg-lang-button {
+    padding: 0;
 }
-.mltlngg-hidden-help-text {
-    background: #F4F4F4;
-    border: 1px solid #DCDCDC;
-    border-radius: 4px;
-    left: 40px;
-    padding: 5px 10px;
-    position: absolute;
-    width: auto;
-    line-height: 1.5;
-    display: none;
-    z-index: 5;
-}
-.mltlngg-hidden-help-text:before {
-    content: url("../images/help.png");
-    left: -10px;
-    position: absolute;
-    top: 7px;
-    direction: ltr;
-}
-.mltlngg-help-box:hover .mltlngg-hidden-help-text {
-    display: block;
-}
-.mltlngg-span {
-    color: #888888;
-    font-size: 10px;
+
+@media only screen and ( max-width: 480px ) {
+	.bws_help_box.mltlngg_thumb_block {
+		display: none;
+	}
+	#mltlngg-settings .fixed .column-locale,
+	#mltlngg-settings .fixed .column-flag,
+	#mltlngg-settings .fixed .column-status {
+		display: none;
+	}
 }
