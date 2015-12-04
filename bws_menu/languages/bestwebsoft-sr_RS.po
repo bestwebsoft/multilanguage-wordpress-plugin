@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bestwebsoft\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-17 16:00+0300\n"
-"PO-Revision-Date: 2015-09-17 16:00+0300\n"
+"POT-Creation-Date: 2015-10-09 14:46+0300\n"
+"PO-Revision-Date: 2015-10-09 14:46+0300\n"
 "Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
 "Language-Team: Andrijana Nikolic <andrijanan@webhostinggeeks.com>\n"
 "Language: fr_FR\n"
@@ -17,268 +17,276 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: bws_functions.php:29
-#: bws_functions.php:53
+#: bws_functions.php:39
+#: bws_functions.php:63
 msgid "requires"
 msgstr ""
 
-#: bws_functions.php:31
+#: bws_functions.php:41
 msgid "or higher, that is why it has been deactivated! Please upgrade WordPress and try again."
 msgstr ""
 
-#: bws_functions.php:32
+#: bws_functions.php:42
 msgid "Back to the WordPress"
 msgstr ""
 
-#: bws_functions.php:34
+#: bws_functions.php:44
 #, fuzzy
 msgid "Plugins page"
 msgstr "Pro moduli"
 
-#: bws_functions.php:55
+#: bws_functions.php:65
 msgid "or higher! We do not guarantee that our plugin will work correctly. Please upgrade to WordPress latest version."
 msgstr ""
 
-#: bws_functions.php:112
+#: bws_functions.php:122
 msgid "It’s time to upgrade your"
 msgstr ""
 
-#: bws_functions.php:112
+#: bws_functions.php:122
 #, fuzzy
 msgid "to"
 msgstr "vrh"
 
-#: bws_functions.php:112
+#: bws_functions.php:122
 #, fuzzy
 msgid "version!"
 msgstr "PHP Verzija"
 
-#: bws_functions.php:113
+#: bws_functions.php:123
 msgid "Extend standard plugin functionality with new great options."
 msgstr ""
 
-#: bws_functions.php:116
-#: bws_functions.php:513
+#: bws_functions.php:126
+#: bws_functions.php:561
 #, fuzzy
 msgid "Learn More"
 msgstr "Pročitaj više"
 
-#: bws_functions.php:133
+#: bws_functions.php:143
 msgid "If you enjoy our plugin, please give it 5 stars on WordPress"
 msgstr ""
 
-#: bws_functions.php:134
+#: bws_functions.php:144
 #, fuzzy
 msgid "Rate the plugin"
 msgstr "Aktivirani moduli"
 
-#: bws_functions.php:137
+#: bws_functions.php:147
 #, fuzzy
 msgid "If there is something wrong about it, please contact us"
 msgstr "Ako imate pitanja molimo da nas kontaktirate preko"
 
-#: bws_functions.php:154
-#: bws_functions.php:190
+#: bws_functions.php:179
+msgid "Check premium options on the plugin settings page!"
+msgstr ""
+
+#: bws_functions.php:186
+#: bws_functions.php:222
 msgid "Wrong license key"
 msgstr ""
 
-#: bws_functions.php:184
-#: bws_functions.php:426
-#: bws_functions.php:477
+#: bws_functions.php:216
+#: bws_functions.php:474
+#: bws_functions.php:525
 msgid "Something went wrong. Please try again later. If the error appears again, please contact us"
 msgstr ""
 
-#: bws_functions.php:184
-#: bws_functions.php:426
-#: bws_functions.php:477
+#: bws_functions.php:216
+#: bws_functions.php:474
+#: bws_functions.php:525
 msgid "We are sorry for inconvenience."
 msgstr ""
 
-#: bws_functions.php:192
+#: bws_functions.php:224
 msgid "This license key is bind to another site"
 msgstr ""
 
-#: bws_functions.php:194
-#: bws_functions.php:336
+#: bws_functions.php:226
+#: bws_functions.php:384
 msgid "Unfortunately, you have exceeded the number of available tries per day. Please, upload the plugin manually."
 msgstr ""
 
-#: bws_functions.php:196
+#: bws_functions.php:228
 msgid "Unfortunately, Your license has expired. To continue getting top-priority support and plugin updates you should extend it in your"
 msgstr ""
 
-#: bws_functions.php:198
+#: bws_functions.php:230
 msgid "Unfortunately, the Pro licence was already installed to this domain. The Pro Trial license can be installed only once."
 msgstr ""
 
-#: bws_functions.php:219
-#: bws_functions.php:241
-#: bws_functions.php:263
+#: bws_functions.php:251
+#: bws_functions.php:273
+#: bws_functions.php:295
 msgid "Failed to download the zip archive. Please, upload the plugin manually"
 msgstr ""
 
-#: bws_functions.php:231
+#: bws_functions.php:263
 msgid "Failed to open the zip archive. Please, upload the plugin manually"
 msgstr ""
 
-#: bws_functions.php:237
+#: bws_functions.php:269
 msgid "Your server does not support either ZipArchive or Phar. Please, upload the plugin manually"
 msgstr ""
 
-#: bws_functions.php:244
+#: bws_functions.php:276
 msgid "UploadDir is not writable. Please, upload the plugin manually"
 msgstr ""
 
-#: bws_functions.php:267
+#: bws_functions.php:299
 msgid "Something went wrong. Try again later or upload the plugin manually. We are sorry for inconvenience."
 msgstr ""
 
-#: bws_functions.php:292
+#: bws_functions.php:324
 msgid "Please, enter Your license key"
 msgstr ""
 
-#: bws_functions.php:309
+#: bws_functions.php:348
 msgid "Congratulations! The Pro version of the plugin is successfully download and activated."
 msgstr ""
 
-#: bws_functions.php:311
-#: bws_functions.php:393
+#: bws_functions.php:350
+#: bws_functions.php:441
 msgid "Please, go to"
 msgstr ""
 
-#: bws_functions.php:311
-#: bws_functions.php:393
+#: bws_functions.php:350
+#: bws_functions.php:441
 #, fuzzy
 msgid "the setting page"
 msgstr "na stranici za podešavanje modula ("
 
-#: bws_functions.php:312
-#: bws_functions.php:394
+#: bws_functions.php:351
+#: bws_functions.php:442
 msgid "You will be redirected automatically in 5 seconds."
 msgstr ""
 
-#: bws_functions.php:317
+#: bws_functions.php:358
+msgid "Show Pro features"
+msgstr ""
+
+#: bws_functions.php:365
 msgid "You can download and activate"
 msgstr ""
 
-#: bws_functions.php:319
+#: bws_functions.php:367
 msgid "version of this plugin by entering Your license key."
 msgstr ""
 
-#: bws_functions.php:321
-#: bws_functions.php:362
+#: bws_functions.php:369
+#: bws_functions.php:410
 msgid "You can find your license key on your personal page Client area, by clicking on the link"
 msgstr ""
 
-#: bws_functions.php:323
-#: bws_functions.php:364
+#: bws_functions.php:371
+#: bws_functions.php:412
 msgid "(your username is the email you specify when purchasing the product)."
 msgstr ""
 
-#: bws_functions.php:327
-#: bws_functions.php:630
+#: bws_functions.php:375
+#: bws_functions.php:659
 msgid "or"
 msgstr ""
 
-#: bws_functions.php:327
+#: bws_functions.php:375
 #, php-format
 msgid "Start Your Free %s-Day Trial Now"
 msgstr ""
 
-#: bws_functions.php:333
-#: bws_functions.php:342
-#: bws_functions.php:372
-#: bws_functions.php:380
+#: bws_functions.php:381
+#: bws_functions.php:390
+#: bws_functions.php:420
+#: bws_functions.php:428
 #: bws_menu.php:693
 #: bws_menu.php:750
 #, fuzzy
 msgid "Activate"
 msgstr "Aktivirani moduli"
 
-#: bws_functions.php:359
-#: bws_functions.php:452
+#: bws_functions.php:407
+#: bws_functions.php:500
 #, php-format
 msgid "In order to continue using the plugin it is necessary to buy a %s license."
 msgstr ""
 
-#: bws_functions.php:360
+#: bws_functions.php:408
 msgid "After that you can activate it by entering your license key."
 msgstr ""
 
-#: bws_functions.php:374
+#: bws_functions.php:422
 msgid "Unfortunately, you have exceeded the number of available tries per day."
 msgstr ""
 
-#: bws_functions.php:391
+#: bws_functions.php:439
 msgid "Congratulations! The Pro license of the plugin is successfully activated."
 msgstr ""
 
-#: bws_functions.php:432
+#: bws_functions.php:480
 msgid "Wrong license key."
 msgstr ""
 
-#: bws_functions.php:434
+#: bws_functions.php:482
 msgid "This license key is bind to another site."
 msgstr ""
 
-#: bws_functions.php:436
+#: bws_functions.php:484
 msgid "This license key is valid, but Your license has expired. If you want to update our plugin in future, you should extend the license."
 msgstr ""
 
-#: bws_functions.php:438
+#: bws_functions.php:486
 msgid "Unfortunately, you have exceeded the number of available tries."
 msgstr ""
 
-#: bws_functions.php:440
+#: bws_functions.php:488
 msgid "Unfortunately, the Pro Trial licence was already installed to this domain. The Pro Trial license can be installed only once."
 msgstr ""
 
-#: bws_functions.php:444
+#: bws_functions.php:492
 msgid "The Pro Trial license key is valid."
 msgstr ""
 
-#: bws_functions.php:446
+#: bws_functions.php:494
 msgid "The license key is valid."
 msgstr ""
 
-#: bws_functions.php:449
+#: bws_functions.php:497
 msgid "Your license will expire on"
 msgstr ""
 
-#: bws_functions.php:482
+#: bws_functions.php:530
 msgid "Please, enter your license key"
 msgstr ""
 
-#: bws_functions.php:495
+#: bws_functions.php:543
 msgid "If needed you can check if the license key is correct or reenter it in the field below. You can find your license key on your personal page - Client area - on our website"
 msgstr ""
 
-#: bws_functions.php:495
+#: bws_functions.php:543
 msgid "(your username is the email you specify when purchasing the product). If necessary, please submit \"Lost your password?\" request."
 msgstr ""
 
-#: bws_functions.php:499
+#: bws_functions.php:547
 msgid "Check license key"
 msgstr ""
 
-#: bws_functions.php:513
+#: bws_functions.php:561
 msgid "WARNING: Illegal use notification"
 msgstr ""
 
-#: bws_functions.php:513
+#: bws_functions.php:561
 msgid "You can use one license of the Pro plugin for one domain only. Please check and edit your license or domain if necessary using you personal Client Area. We strongly recommend you to solve the problem within 24 hours, otherwise the Pro plugin will be deactivated."
 msgstr ""
 
-#: bws_functions.php:521
+#: bws_functions.php:569
 msgid "Notice: Your Pro Trial license has expired. To continue using the plugin you should buy a Pro license"
 msgstr ""
 
-#: bws_functions.php:523
+#: bws_functions.php:571
 msgid "Your license has expired. To continue getting top-priority support and plugin updates you should extend it."
 msgstr ""
 
-#: bws_functions.php:523
-#: bws_functions.php:576
+#: bws_functions.php:571
+#: bws_functions.php:624
 #: bws_menu.php:669
 #: bws_menu.php:691
 #: bws_menu.php:718
@@ -288,111 +296,148 @@ msgstr ""
 msgid "Learn more"
 msgstr "Pročitaj više"
 
-#: bws_functions.php:533
+#: bws_functions.php:581
 #, php-format
 msgid "Notice: You are using the Pro Trial license of %s plugin."
 msgstr ""
 
-#: bws_functions.php:535
+#: bws_functions.php:583
 msgid "Notice: You are using the Pro Trial license of plugin."
 msgstr ""
 
-#: bws_functions.php:538
+#: bws_functions.php:586
 msgid "The Pro Trial license will expire on"
 msgstr ""
 
-#: bws_functions.php:576
+#: bws_functions.php:624
 msgid "You license for"
 msgstr ""
 
-#: bws_functions.php:576
+#: bws_functions.php:624
 msgid "expires on"
 msgstr ""
 
-#: bws_functions.php:576
+#: bws_functions.php:624
 msgid "and you won't be granted TOP-PRIORITY SUPPORT or UPDATES."
 msgstr ""
 
-#: bws_functions.php:626
+#: bws_functions.php:655
 #, fuzzy
 msgid "Thank you for installing"
 msgstr "Hvala što ste nas kontaktirali"
 
-#: bws_functions.php:627
+#: bws_functions.php:656
 msgid "Let's get started"
 msgstr ""
 
-#: bws_functions.php:628
+#: bws_functions.php:657
 #, fuzzy
 msgid "Configure Settings"
 msgstr "na stranici za podešavanje modula ("
 
-#: bws_functions.php:631
+#: bws_functions.php:660
 msgid "Add New"
 msgstr "Ajouter"
 
-#: bws_functions.php:635
+#: bws_functions.php:664
 msgid "Close notice"
 msgstr ""
 
-#: bws_functions.php:648
+#: bws_functions.php:677
 msgid "Notice"
 msgstr ""
 
-#: bws_functions.php:648
+#: bws_functions.php:677
 msgid "The plugin's settings have been changed."
 msgstr ""
 
-#: bws_functions.php:649
+#: bws_functions.php:678
 msgid "Save Changes"
 msgstr "Sačuvaj izmene"
 
-#: bws_functions.php:694
+#: bws_functions.php:693
+msgid "You can always look at premium options by clicking on the \"Show Pro features\" in the \"Go PRO\" tab"
+msgstr ""
+
+#: bws_functions.php:773
 msgid "Add BWS Plugins Shortcode"
 msgstr ""
 
-#: bws_functions.php:738
+#: bws_functions.php:793
+#, fuzzy
+msgid "Add shortcode"
+msgstr "Kratak kod za Galeriju"
+
+#: bws_functions.php:793
+msgid "Add BestWebSoft plugins' shortcodes using this button."
+msgstr ""
+
+#: bws_functions.php:833
 msgid "Close"
 msgstr ""
 
-#: bws_functions.php:829
+#: bws_functions.php:925
 msgid "Restore all plugin settings to defaults"
 msgstr ""
 
-#: bws_functions.php:831
+#: bws_functions.php:927
 #, fuzzy
 msgid "Restore settings"
 msgstr "na stranici za podešavanje modula ("
 
-#: bws_functions.php:842
+#: bws_functions.php:938
 msgid "Are you sure you want to restore all settings by default?"
 msgstr ""
 
-#: bws_functions.php:845
+#: bws_functions.php:941
 msgid "Yes, restore all settings"
 msgstr ""
 
-#: bws_functions.php:846
+#: bws_functions.php:942
 #, fuzzy
 msgid "No, go back to the settings page"
 msgstr "na stranici za podešavanje modula ("
 
-#: bws_functions.php:890
+#: bws_functions.php:986
 #, fuzzy
 msgid "Plugin"
 msgstr "Pro moduli"
 
-#: bws_functions.php:899
+#: bws_functions.php:995
 #, fuzzy
 msgid "Shortcode settings"
 msgstr "na stranici za podešavanje modula ("
 
-#: bws_functions.php:904
+#: bws_functions.php:1000
 msgid "The shortcode will be inserted"
 msgstr ""
 
-#: bws_functions.php:909
+#: bws_functions.php:1005
 msgid "Insert"
+msgstr ""
+
+#: bws_functions.php:1036
+msgid "Visit Help Center"
+msgstr ""
+
+#: bws_functions.php:1041
+msgid "FAQ"
+msgstr "FAQ"
+
+#: bws_functions.php:1047
+msgid "For more information:"
+msgstr ""
+
+#: bws_functions.php:1048
+msgid "Documentation"
+msgstr ""
+
+#: bws_functions.php:1049
+msgid "Video Instructions"
+msgstr ""
+
+#: bws_functions.php:1050
+msgid "Submit a Request"
 msgstr ""
 
 #: bws_menu.php:506
@@ -764,9 +809,6 @@ msgstr "Pošalji na korisnički mejl &#187;"
 #~ msgid "Upload File"
 #~ msgstr "Učitaj fajl"
 
-#~ msgid "Gallery Shortcode"
-#~ msgstr "Kratak kod za Galeriju"
-
 #~ msgid ""
 #~ "The gallery temp directory (gallery-plugin/upload/files) is not available "
 #~ "for record on your webserver. Please use the standard WP functionality to "
@@ -1039,9 +1081,6 @@ msgstr "Pošalji na korisnički mejl &#187;"
 
 #~ msgid "Google +1"
 #~ msgstr "Google +1"
-
-#~ msgid "FAQ"
-#~ msgstr "FAQ"
 
 #~ msgid "Support"
 #~ msgstr "Podrška"

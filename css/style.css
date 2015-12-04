@@ -138,10 +138,10 @@
 	padding: 0;
 	height: 20px;
 }
-.mltlngg-nav-tab-wrapper {
-	border-bottom: 1px solid #CCCCCC;
-	padding-bottom: 0;
-	padding-left: 10px;
+.mltlngg-nav-tab-wrapper a.mltlngg_add {
+	font-size: 13px;
+	display: inline-block;
+	margin: 5px 10px 0;
 }
 #mltlngg-current-languages-form .column-priority input {
 	width: 60px;

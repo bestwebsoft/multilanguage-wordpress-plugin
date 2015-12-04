@@ -81,6 +81,9 @@ td.bws_pro_version_tooltip {
     position: absolute;
     z-index: 1;
 }
+.bws_hide_premium_options {
+    z-index: 5;
+}
 .bws_pro_version_table_bloc table.bws_pro_version { 
     background: transparent;
     margin: 0;
@@ -252,6 +255,14 @@ div.bws_banner_on_plugin_page .icon {
     margin: 8px;
     cursor: pointer;
 }
+.rtl .bws_banner_on_plugin_page .close_icon {
+    float: left;
+}
+.rtl div.bws_banner_on_plugin_page .icon,
+.rtl div.bws_banner_on_plugin_page .button,
+.rtl .bws_banner_on_plugin_page .text {
+    float: right;
+}
 /* #### Mobile Phones Portrait or Landscape #### */
 @media screen and (max-device-width: 768px) {
     .bws_banner_on_plugin_page .text,
@@ -285,7 +296,9 @@ span.bws_code {
     position: relative;
     margin: 3px 5px;
     width: 28px;
-    display: inline-block;
+    display: inline-block;    
+}
+.bws_help_box:not(.dashicons) {
     vertical-align: middle;
 }
 .bws_help_box.dashicons-editor-help {
@@ -312,12 +325,10 @@ span.bws_code {
     font-family: "Open Sans",sans-serif;
     text-align: left;
 }
-
 .dashicons-editor-help .bws_hidden_help_text {
     left: 30px;
     top: -6px;
 }
-
 .bws_hidden_help_text:after,
 .bws_hidden_help_text:before {
     position: absolute;
@@ -381,12 +392,13 @@ span.bws_code {
 .rtl .bws_hidden_help_text:before {
     margin-right: -2px;
 }
-
-
 /* bws shortcode insert */
 #bws_shortcode_content,
 #bws_shortcode_select_plugin {
     margin-bottom: 10px;
+}
+#bws_shortcode_content * {
+    white-space: normal;
 }
 #bws_shortcode_popup_block h4 {
     padding: 0;

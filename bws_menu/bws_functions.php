@@ -1,18 +1,44 @@
 <?php
 /*
 * General functions for BestWebSoft plugins
-* Version: 1.1.2
 */
 
+/**
+* Function add BWS Plugins page - for old plugin version
+* @deprecated 1.7.9
+*/
 if ( ! function_exists ( 'bws_add_general_menu' ) ) {
 	function bws_add_general_menu() {
-		add_menu_page( 'BWS Plugins', 'BWS Plugins', 'manage_options', 'bws_plugins', 'bws_add_menu_render', plugins_url( 'images/px.png', __FILE__ ), 1001 );
+		bws_general_menu();
+	}
+}
+
+/**
+* Function add BWS Plugins page
+* @return void
+*/
+if ( ! function_exists ( 'bws_general_menu' ) ) {
+	function bws_general_menu() {
+		global $menu, $bws_general_menu_exist;
+
+		if ( ! $bws_general_menu_exist ) {
+			/* we check also menu exist in global array as in old plugins $bws_general_menu_exist variable not exist */
+			foreach ( $menu as $value_menu ) {
+				if ( 'bws_plugins' == $value_menu[2] ) {
+					$bws_general_menu_exist = true;
+					return;
+				}
+			}
+
+			add_menu_page( 'BWS Plugins', 'BWS Plugins', 'manage_options', 'bws_plugins', 'bws_add_menu_render', plugins_url( 'images/px.png', __FILE__ ), 1001 );
+			$bws_general_menu_exist = true;
+		}
 	}
 }
 
 /**
 * Function check if plugin is compatible with current WP version - for old plugin version
-* @return void
+* @deprecated 1.7.4
 */
 if ( ! function_exists ( 'bws_wp_version_check' ) ) {
 	function bws_wp_version_check( $plugin_basename, $plugin_info, $require_wp ) {
@@ -152,11 +178,33 @@ if ( ! function_exists( 'bws_plugin_reviews_block' ) ) {
 }
 
 if ( ! function_exists( 'bws_go_pro_tab_check' ) ) {
-	function bws_go_pro_tab_check( $plugin_basename ) {
-		global $wp_version, $bstwbsftwppdtplgns_options;
+	function bws_go_pro_tab_check( $plugin_basename, $plugin_options_name = false, $is_network_option = false ) {
+		global $wp_version, $bstwbsftwppdtplgns_options, $current_user;
 		$result = array();
 
 		$bws_license_key = ( isset( $_POST['bws_license_key'] ) ) ? stripslashes( esc_html( trim( $_POST['bws_license_key'] ) ) ) : "";
+
+		if ( ! empty( $plugin_options_name ) && isset( $_POST['bws_hide_premium_options_submit'] ) && check_admin_referer( $plugin_basename, 'bws_license_nonce_name' ) ) {
+			if ( ! $current_user )
+				get_currentuserinfo();
+
+			$plugin_options = ( $is_network_option ) ? get_site_option( $plugin_options_name ) : get_option( $plugin_options_name );
+
+			if ( !empty( $plugin_options['hide_premium_options'] ) ) {
+
+				$key = array_search( $current_user->ID, $plugin_options['hide_premium_options'] );
+				if ( false !== $key ) {
+					unset( $plugin_options['hide_premium_options'][ $key ] );
+				}
+			
+				if ( $is_network_option )
+					update_site_option( $plugin_options_name, $plugin_options );
+				else
+					update_option( $plugin_options_name, $plugin_options );
+
+				$result['message'] = __( 'Check premium options on the plugin settings page!', 'bestwebsoft' );
+			}
+		}
 
 		if ( isset( $_POST['bws_license_submit'] ) && check_admin_referer( $plugin_basename, 'bws_license_nonce_name' ) ) {
 			if ( '' != $bws_license_key ) { 
@@ -306,8 +354,21 @@ if ( ! function_exists( 'bws_go_pro_tab_check' ) ) {
 	}
 }
 
+/**
+* Function display GO PRO tab - for old plugin version
+* @deprecated 1.7.6
+*/
 if ( ! function_exists( 'bws_go_pro_tab' ) ) {
 	function bws_go_pro_tab( $plugin_info, $plugin_basename, $page, $pro_page, $bws_license_plugin, $link_slug, $link_key, $link_pn, $pro_plugin_is_activated = false, $trial_days_number = false ) {
+		bws_go_pro_tab_show( false, $plugin_info, $plugin_basename, $page, $pro_page, $bws_license_plugin, $link_slug, $link_key, $link_pn, $pro_plugin_is_activated, $trial_days_number );
+	}
+}
+
+/**
+* Function display GO PRO tab
+*/
+if ( ! function_exists( 'bws_go_pro_tab_show' ) ) {
+	function bws_go_pro_tab_show( $bws_hide_premium_options_check, $plugin_info, $plugin_basename, $page, $pro_page, $bws_license_plugin, $link_slug, $link_key, $link_pn, $pro_plugin_is_activated = false, $trial_days_number = false ) {
 		global $wp_version, $bstwbsftwppdtplgns_options;
 		$bws_license_key = ( isset( $_POST['bws_license_key'] ) ) ? stripslashes( esc_html( trim( $_POST['bws_license_key'] ) ) ) : "";
 		if ( $pro_plugin_is_activated ) { ?>
@@ -321,7 +382,16 @@ if ( ! function_exists( 'bws_go_pro_tab' ) ) {
 				<?php _e( "Please, go to", 'bestwebsoft' ); ?> <a href="admin.php?page=<?php echo $pro_page; ?>"><?php _e( 'the setting page', 'bestwebsoft' ); ?></a> 
 				(<?php _e( "You will be redirected automatically in 5 seconds.", 'bestwebsoft' ); ?>)
 			</p>
-		<?php } else { ?>
+		<?php } else {
+			if ( $bws_hide_premium_options_check ) { ?>
+				<form method="post" action="admin.php?page=<?php echo $page; ?>&amp;action=go_pro">
+					<p>
+						<input type="hidden" name="bws_hide_premium_options_submit" value="submit" />
+						<input type="submit" class="button" value="<?php _e( 'Show Pro features', 'bestwebsoft' ); ?>" />
+						<?php wp_nonce_field( $plugin_basename, 'bws_license_nonce_name' ); ?>
+					</p>
+				</form>
+			<?php } ?>
 			<form method="post" action="admin.php?page=<?php echo $page; ?>&amp;action=go_pro">
 				<p>
 					<?php _e( 'You can download and activate', 'bestwebsoft' ); ?> 
@@ -607,26 +677,7 @@ if ( ! function_exists( 'bws_plugin_banner_to_settings' ) ) {
 
 		if ( false == strrpos( $banner_url_or_slug, '/' ) ) {
 			$banner_url_or_slug = '//ps.w.org/' . $banner_url_or_slug . '/assets/icon-128x128.png';
-		}
-
-		if ( 4.2 > $wp_version ) {
-			$plugin_dir_array = explode( '/', plugin_basename( __FILE__ ) );
-			$plugin_dir = $plugin_dir_array[0]; ?>
-			<style type="text/css">
-				.bws_hide_settings_notice {
-					width: 11px;
-					height: 11px;
-					border: none;
-					background: url("<?php echo plugins_url( $plugin_dir . '/bws_menu/images/close_banner.png' ); ?>") no-repeat center center;
-					box-shadow: none;
-					float: right;
-					margin: 8px;
-				}
-				.bws_hide_settings_notice:hover {
-					cursor: pointer;
-				}
-			</style>
-		<?php } ?>
+		} ?>
 		<div class="updated" style="padding: 0; margin: 0; border: none; background: none;">
 			<div class="bws_banner_on_plugin_page">
 				<div class="icon">
@@ -662,6 +713,35 @@ if ( ! function_exists( 'bws_show_settings_notice' ) ) {
 	<?php }
 }
 
+if ( ! function_exists( 'bws_hide_premium_options' ) ) {
+	function bws_hide_premium_options( $options ) {
+		global $current_user;
+		if ( ! $current_user )
+			get_currentuserinfo();
+		if ( ! isset( $options['hide_premium_options'] ) || ! is_array( $options['hide_premium_options'] ) )
+			$options['hide_premium_options'] = array();
+		
+		$options['hide_premium_options'][] = $current_user->ID;
+
+		return array( 
+				'message' => __( 'You can always look at premium options by clicking on the "Show Pro features" in the "Go PRO" tab', 'bestwebsoft' ),
+				'options' => $options );
+	}
+}
+
+if ( ! function_exists( 'bws_hide_premium_options_check' ) ) {
+	function bws_hide_premium_options_check( $options ) {
+		global $current_user;
+		if ( ! $current_user )
+			get_currentuserinfo();
+
+		if ( ! empty( $options['hide_premium_options'] ) && in_array( $current_user->ID, $options['hide_premium_options'] ) )
+			return true;
+		else
+			return false;
+	}
+}
+
 if ( ! function_exists ( 'bws_plugins_admin_init' ) ) {
 	function bws_plugins_admin_init() {
 		/* Internationalization, first(!) */
@@ -687,7 +767,7 @@ if ( ! function_exists ( 'bws_admin_enqueue_scripts' ) ) {
 
 if ( ! function_exists ( 'bws_plugins_admin_head' ) ) {
 	function bws_plugins_admin_head() {
-		global $bws_shortcode_list, $wp_version;
+		global $bws_shortcode_list, $wp_version, $post_type;
 		if ( isset( $_GET['page'] ) && $_GET['page'] == "bws_plugins" ) { ?>
 			<noscript>
 				<style type="text/css">
@@ -696,7 +776,30 @@ if ( ! function_exists ( 'bws_plugins_admin_head' ) ) {
 					}
 				</style>
 			</noscript>
-		<?php } 
+		<?php }
+		if ( 4.2 > $wp_version ) {
+			$plugin_dir_array = explode( '/', plugin_basename( __FILE__ ) );
+			$plugin_dir = $plugin_dir_array[0]; ?>
+			<style type="text/css">
+				.bws_hide_settings_notice,
+				.bws_hide_premium_options {
+					width: 11px;
+					height: 11px;
+					border: none;
+					background: url("<?php echo plugins_url( $plugin_dir . '/bws_menu/images/close_banner.png' ); ?>") no-repeat center center;
+					box-shadow: none;
+					float: right;
+					margin: 8px;
+				}
+				.bws_hide_settings_notice:hover,
+				.bws_hide_premium_options:hover {
+					cursor: pointer;
+				}
+				.bws_hide_premium_options {
+					position: relative;
+				}
+			</style>
+		<?php }
 		if ( ! empty( $bws_shortcode_list ) ) { ?>
 			<!-- TinyMCE Shortcode Plugin -->
 			<script type='text/javascript'>
@@ -713,7 +816,25 @@ if ( ! function_exists ( 'bws_plugins_admin_head' ) ) {
 				};
 			</script>
 			<!-- TinyMCE Shortcode Plugin -->
-		<?php } 
+			<?php if ( isset( $post_type ) && in_array( $post_type, array( 'post', 'page' ) ) ) {
+				$tooltip_args = array(
+					'tooltip_id'	=> 'bws_shortcode_button_tooltip',
+					'css_selector' 	=> '.mce-bws_shortcode_button',
+					'actions' 		=> array(
+						'click' 	=> false,
+						'onload' 	=> true
+					), 
+					'content' 		=> '<h3>' . __( 'Add shortcode', 'bestwebsoft' ) . '</h3><p>' . __( "Add BestWebSoft plugins' shortcodes using this button.", 'bestwebsoft' ) . '</p>',
+					'position' => array( 
+						'edge' 		=> 'right'
+					),
+					'set_timeout' => 2000
+				);
+				if ( $wp_version < '3.9' )
+					$tooltip_args['css_selector'] = '.mce_add_bws_shortcode';
+				bws_add_tooltip_in_admin( $tooltip_args );
+			}
+		} 
     }
 }
 
@@ -754,7 +875,8 @@ if ( ! class_exists( 'BWS_admin_tooltip' ) ) {
 					'pos-left'	=> 0, 
 					'pos-top'	=> 0, 
 					'zindex' 	=> 10000 
-				), 
+				),
+				'set_timeout' => 0
 			);
 			$tooltip_args = array_merge( $tooltip_args_default, $tooltip_args );
 			/* Check that our merged array has default values */
@@ -834,11 +956,11 @@ if ( ! class_exists( 'BWS_admin_tooltip' ) ) {
 }
 
 if ( ! function_exists ( 'bws_form_restore_default_settings' ) ) {
-	function bws_form_restore_default_settings( $plugin_basename ) { ?>
+	function bws_form_restore_default_settings( $plugin_basename, $change_permission_attr = '' ) { ?>
 		<form method="post" action="">			
 			<p><?php _e( 'Restore all plugin settings to defaults', 'bestwebsoft' ); ?></p>
 			<p>					
-				<input type="submit" class="button" value="<?php _e( 'Restore settings', 'bestwebsoft' ); ?>" />
+				<input <?php echo $change_permission_attr; ?> type="submit" class="button" value="<?php _e( 'Restore settings', 'bestwebsoft' ); ?>" />
 			</p>
 			<input type="hidden" name="bws_restore_default" value="submit" />
 			<?php wp_nonce_field( $plugin_basename, 'bws_settings_nonce_name' ); ?>
@@ -873,12 +995,14 @@ if ( ! function_exists( 'bws_add_editor_buttons' ) ) {
 		}
 	}
 }
+
 if ( ! function_exists( 'bws_add_buttons' ) ){
 	function bws_add_buttons( $plugin_array ) {
 		$plugin_array['add_bws_shortcode'] = plugins_url( 'js/shortcode-button.js', __FILE__ );
 		return $plugin_array;
 	}
 }
+
 if ( ! function_exists( 'bws_register_buttons' ) ) {
 	function bws_register_buttons( $buttons ) {
 		array_push( $buttons, 'add_bws_shortcode' ); /* dropcap', 'recentposts */
@@ -941,6 +1065,28 @@ if ( ! function_exists( 'bws_shortcode_media_button_popup' ) ) {
 				})(jQuery);
 			</script>
 		<?php } 
+	}
+}
+
+/* add help tab  */
+if ( ! function_exists( 'bws_help_tab' ) ) {
+	function bws_help_tab( $screen, $args ) {
+		$content = '<p><a href="http://support.bestwebsoft.com/hc/en-us/sections/' . $args['section'] . '" target="_blank">' . __( 'Visit Help Center', 'bestwebsoft' ) . '</a></p>';
+
+		$screen->add_help_tab( 
+			array(
+				'id'      => $args['id'] . '_help_tab',
+				'title'   => __( 'FAQ', 'bestwebsoft' ),
+				'content' => $content
+			)
+		);
+
+		$screen->set_help_sidebar(
+			'<p><strong>' . __( 'For more information:', 'bestwebsoft' ) . '</strong></p>' .
+			'<p><a href="https://drive.google.com/folderview?id=0B5l8lO-CaKt9VGh0a09vUjNFNjA&usp=sharing#list" target="_blank">' . __( 'Documentation', 'bestwebsoft' ) . '</a></p>' .
+			'<p><a href="http://www.youtube.com/user/bestwebsoft/playlists?flow=grid&sort=da&view=1" target="_blank">' . __( 'Video Instructions', 'bestwebsoft' ) . '</a></p>' .
+			'<p><a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">' . __( 'Submit a Request', 'bestwebsoft' ) . '</a></p>'
+		);
 	}
 }
 

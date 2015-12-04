@@ -196,7 +196,7 @@ if ( ! function_exists( 'mltlngg_add_menu_items' ) ) {
 
 if ( ! function_exists( 'mltlngg_add_options' ) ) {
 	function mltlngg_add_options() {
-		global $myListTable;
+		global $mltlngg_list_table;
 		$option = 'per_page';
 		$args = array(
 			'label'		=> __( 'Languages', 'multilanguage' ),
@@ -204,7 +204,7 @@ if ( ! function_exists( 'mltlngg_add_options' ) ) {
 			'option'	=> 'languages_per_page'
 		);
 		add_screen_option( $option, $args );
-		$myListTable = new mltlngg_list_table();
+		$mltlngg_list_table = new mltlngg_list_table();
 	}
 }
 
@@ -217,10 +217,10 @@ if ( ! function_exists( 'mltlngg_table_set_option' ) ) {
 /* function to display table of links */
 if ( ! function_exists( 'mltlngg_table' ) ) {
 	function mltlngg_table() {
-		global $myListTable;
-		$myListTable = new mltlngg_list_table();
-		$myListTable->prepare_items();
-		$myListTable->display();
+		global $mltlngg_list_table;
+		$mltlngg_list_table = new mltlngg_list_table();
+		$mltlngg_list_table->prepare_items();
+		$mltlngg_list_table->display();
 	}
 }
 

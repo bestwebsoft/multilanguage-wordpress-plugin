@@ -1,7 +1,7 @@
 <?php
 /*
 * Function for displaying BestWebSoft menu
-* Version: 1.7.5
+* Version: 1.8.0
 */
 
 if ( ! function_exists ( 'bws_admin_enqueue_scripts' ) )
@@ -613,8 +613,7 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 			}
 		} ?>
 		<div class="wrap">
-			<div class="icon32 icon32-bws" id="icon-options-general"></div>
-			<h2>
+			<h1>
 				<span class="bws_main title">BestWebSoft</span>
 				<ul class="subsubsub bws_title_menu">
 					<li><a href="<?php echo esc_url( 'http://support.bestwebsoft.com/home' ); ?>" target="_blank"><?php _e( 'Need help?', 'bestwebsoft' ); ?></a></li> |
@@ -622,12 +621,10 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 					<li><a class="bws_system_status <?php if ( isset( $_GET['action'] ) && 'system_status' == $_GET['action'] ) echo ' nav-tab-active'; ?>" href="admin.php?page=bws_plugins&amp;action=system_status"><?php _e( 'System status', 'bestwebsoft' ); ?></a></li>
 				</ul>
 				<div class="clear"></div>
-			</h2>
+			</h1>
 			<h2 class="nav-tab-wrapper">
 				<a class="nav-tab<?php if ( !isset( $_GET['action'] ) ) echo ' nav-tab-active'; ?>" href="admin.php?page=bws_plugins"><?php _e( 'Plugins', 'bestwebsoft' ); ?></a>
-				<?php if ( $wp_version >= '3.4' ) { ?>
-					<a class="nav-tab<?php if ( isset( $_GET['action'] ) && 'themes' == $_GET['action'] ) echo ' nav-tab-active'; ?>" href="admin.php?page=bws_plugins&amp;action=themes"><?php _e( 'Themes', 'bestwebsoft' ); ?></a>
-				<?php } ?>
+				<a class="nav-tab<?php if ( isset( $_GET['action'] ) && 'themes' == $_GET['action'] ) echo ' nav-tab-active'; ?>" href="admin.php?page=bws_plugins&amp;action=themes"><?php _e( 'Themes', 'bestwebsoft' ); ?></a>
 			</h2>
 			<?php if ( ! isset( $_GET['action'] ) ) { ?>
 				<ul class="subsubsub">
@@ -637,7 +634,7 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 				</ul>
 				<div class="clear"></div>
 				<?php if ( ( isset( $_GET['sub'] ) && 'installed' == $_GET['sub'] ) || !isset( $_GET['sub'] ) ) { ?>
-					<h4 class="bws_installed"><?php _e( 'Installed plugins', 'bestwebsoft' ); ?></h4>
+					<h3 class="bws_installed"><?php _e( 'Installed plugins', 'bestwebsoft' ); ?></h3>
 					<?php foreach ( $all_plugins as $key_plugin => $value_plugin ) {
 						if ( isset( $bws_plugins_pro[ $key_plugin ] ) )
 							$key_plugin = $bws_plugins_pro[ $key_plugin ];
@@ -755,7 +752,7 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 				} ?>
 				<div class="clear"></div>
 				<?php if ( ( isset( $_GET['sub'] ) && 'recommended' == $_GET['sub'] ) || !isset( $_GET['sub'] ) ) { ?>
-					<h4 class="bws_recommended"><?php _e( 'Recommended plugins', 'bestwebsoft' ); ?></h4>
+					<h3 class="bws_recommended"><?php _e( 'Recommended plugins', 'bestwebsoft' ); ?></h3>
 					<?php foreach ( $recommend_plugins as $key_plugin => $value_plugin ) {
 
 						if ( isset( $bws_plugins[ $key_plugin ] ) ) {

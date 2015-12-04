@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: add translation, add translations, best multilanguage plugin, bilingual, free multilanguage plugin, free plugin, globalization, international, international plugin, language, language switcher, localization, multilanguage, multi language, multilanguage plugin, multilingual, plugin, simple multilanguage plugin, simple language switcher, switcher, translate, translation, translations, translation-ready, widget, wordpress multilanguage plugin, wp multilanguage plugin, wordpress plugin, wp plugin
 Requires at least: 3.8
-Tested up to: 4.3.1
-Stable tag: 1.1.2
+Tested up to: 4.4-RC1
+Stable tag: 1.1.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -26,8 +26,8 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 
 = Features =
 
-* You can use as many languages as you want. By default, you can choose one of 76 pre-installed languages. However, you can add any number of languages to list of pre-installed languages in "include/languages.php" file.
-* You can add translations for posts, pages, categories, and post tags.
+* Use as many languages as you want. By default, you can choose one of 76 pre-installed languages. However, you can add any number of languages to list of pre-installed languages in "include/languages.php" file.
+* Add translations for posts, pages, categories, and post tags.
 * The language is either set by the language switcher or by the language code in url (as directory).
 * A customizable language switcher is provided as a widget, which can be displayed in the form of a Drop-down list of languages, Drop-down list of flags icons or Flags icons.
 * Default searching by the language which is currently selected for the site or all available languages.
@@ -122,6 +122,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 
 == Changelog ==
 
+= V1.1.3 - 04.12.2015 =
+* Bugfix : The bug with default searching was fixed.
+* Bugfix : The bug with plugin menu duplicating was fixed.
+
 = V1.1.2 - 29.09.2015 =
 * Bugfix : We fixed the bug with missing argument 2 for mltlngg_the_title_filter.
 * NEW : A button for Multilanguage shortcode inserting to the content was added.
@@ -185,6 +189,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.1.3 =
+The bug with default searching was fixed. The bug with plugin menu duplicating was fixed.
 
 = V1.1.2 =
 We fixed the bug with missing argument 2 for mltlngg_the_title_filter. A button for Multilanguage shortcode inserting to the content was added. Ability to restore settings to defaults. Ability to default searching by the language which is currently selected for the site or all available languages.

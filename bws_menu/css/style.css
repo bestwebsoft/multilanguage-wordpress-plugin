@@ -24,15 +24,15 @@
     float: left;
     margin-right: 30px;
 }
-h4.bws_installed,
-h4.bws_recommended {
+.bws_installed,
+.bws_recommended {
     color: #999;
     font-weight: bold;
     text-transform: uppercase;
     font-size: 14px;    
 }
-h4.bws_installed:before,
-h4.bws_recommended:before {
+.bws_installed:before,
+.bws_recommended:before {
     border-radius: 9px;
     content: "";
     display: inline-block;
@@ -42,10 +42,10 @@ h4.bws_recommended:before {
     width: 8px;
     margin-right: 7px;
 }
-h4.bws_recommended:before {
+.bws_recommended:before {
     background: #0074a2;
 }
-h4.bws_installed:before {
+.bws_installed:before {
     background: #00a22e;
 }
 .bws_product_box {
