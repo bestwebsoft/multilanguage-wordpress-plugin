@@ -704,7 +704,7 @@ if ( ! function_exists( 'bws_plugin_banner_to_settings' ) ) {
 
 if ( ! function_exists( 'bws_show_settings_notice' ) ) {
 	function bws_show_settings_notice() { ?>
-		<div id="bws_save_settings_notice" class="updated fade" style="display:none">
+		<div id="bws_save_settings_notice" class="updated fade below-h2" style="display:none;">
 			<p>
 				<strong><?php _e( 'Notice', 'bestwebsoft' ); ?></strong>: <?php _e( "The plugin's settings have been changed.", 'bestwebsoft' ); ?> 
 				<a class="bws_save_anchor" href="#bws-submit-button"><?php _e( 'Save Changes', 'bestwebsoft' ); ?></a>

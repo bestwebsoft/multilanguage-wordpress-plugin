@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: add translation, add translations, best multilanguage plugin, bilingual, free multilanguage plugin, free plugin, globalization, international, international plugin, language, language switcher, localization, multilanguage, multi language, multilanguage plugin, multilingual, plugin, simple multilanguage plugin, simple language switcher, switcher, translate, translation, translations, translation-ready, widget, wordpress multilanguage plugin, wp multilanguage plugin, wordpress plugin, wp plugin
 Requires at least: 3.8
-Tested up to: 4.4-RC1
-Stable tag: 1.1.3
+Tested up to: 4.4.2
+Stable tag: 1.1.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -16,7 +16,7 @@ Multilanguage allows you to create a multilingual WordPress website. Hence, you 
 
 NOTE: This plugin will only work with the themes and plugins, which were developed according to Wordpress Codex standards. Also, it uses standard filters (the_title, the_content, get_terms, get_the_terms, get_term, wp_get_nav_menu_items).
 
-http://www.youtube.com/watch?v=Si6ulEWuY1E 
+http://www.youtube.com/watch?v=Si6ulEWuY1E
 
 <a href="http://wordpress.org/plugins/multilanguage/faq/" target="_blank">Multilanguage by BestWebSoft FAQ</a>
 
@@ -26,13 +26,15 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 
 = Features =
 
-* Use as many languages as you want. By default, you can choose one of 76 pre-installed languages. However, you can add any number of languages to list of pre-installed languages in "include/languages.php" file.
+* Use as many languages as you want. By default, you can choose one of 87 pre-installed languages. However, you can add any number of languages to list of pre-installed languages in "includes/languages.php" file.
 * Add translations for posts, pages, categories, and post tags.
 * The language is either set by the language switcher or by the language code in url (as directory).
 * A customizable language switcher is provided as a widget, which can be displayed in the form of a Drop-down list of languages, Drop-down list of flags icons or Flags icons.
 * Default searching by the language which is currently selected for the site or all available languages.
 * You can determine the priority of language display ​​in the switcher by changing the priority of language display on the plugin settings page.
 * The admin interface is translation-ready.
+* Add links to your current page for each language from your site into the tag <head>.
+* Hide link slug for default language.
 
 = Translation =
 
@@ -69,9 +71,9 @@ No, it will not. It manages relationships between sites and translations, but it
 
 No, it will not. All translations must be done manually.
 
-= Can I add more than 76 ​​pre-installed languages? =
+= Can I add more than 87 ​​pre-installed languages? =
 
-Yes, you can add any number of languages to the list of pre-installed languages in file "include/languages.php".
+Yes, you can add any number of languages to the list of pre-installed languages in file "includes/languages.php".
 
 = How can I change content display language? =
 
@@ -97,6 +99,25 @@ Yes, you can use Multilanguage on a multi-site without any problems as well. The
 
 When Title and Content fields in active language tab are empty, if you try to update the post after editing, the changes will not be saved and an error message will appear. You need to fill at least one field or switch to another language tab, on which the fields are filled, and try to update again.
 
+= How can I add more alternate links for current page? =
+
+You can use 'bwsplgns_mltlngg_add_alt_links' filter to do that. For example, you want that search engines firstly indexed exactly English-language pages of your site for people from New Zealand and South Africa. Just add the following code into funcions.php of your theme:
+
+`function get_additional_links( $links_attr ) {
+	/* English for New Zealand */
+	$links_attr[] = array( 'hreflang' => 'en_NZ', 'link_param' => 'en_GB' );
+	/* English for South Africa */
+	$links_attr[] = array( 'hreflang' => 'en_ZA', 'link_param' => 'en_GB' );
+	return $links_attr;
+}
+add_filter( 'bwsplgns_mltlngg_add_alt_links', 'get_additional_links' );`
+
+But note: before you have to choose English ( for England ) as one of languages of your website.
+
+= I added several whitespaces between words during the post content editing in the text mode. They are gone after I switched to the visual mode. Why? =
+
+After the mode switching, the post content has been automatically filtered to remove all odd symbols or HTML tags which can disrupt the pages layout on your website. This functionality is related to WordPress core and our plugin does not affect on it in any way.
+
 = I have some problems with the plugin's work. What Information should I provide to receive proper support? =
 
 Please make sure that the problem hasn't been discussed yet on our forum (<a href="http://support.bestwebsoft.com" target="_blank">http://support.bestwebsoft.com</a>). If no, please provide the following data along with your problem's description:
@@ -121,6 +142,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 11. Language switcher widget in frontend (Flag icons).
 
 == Changelog ==
+
+= V1.1.4 - 22.02.2016 =
+* NEW : Ability to add links to your current page for each language from your site into the tag <head> has been added.
+* NEW : Ability to hide link slug for default language has been added.
+* Update : Widget with languages switcher has been updated.
 
 = V1.1.3 - 04.12.2015 =
 * Bugfix : The bug with default searching was fixed.
@@ -189,6 +215,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.1.4 =
+Ability to add links to your current page for each language from your site into the tag <head> has been added. Ability to hide link slug for default language has been added. Widget with languages switcher has been updated.
 
 = V1.1.3 =
 The bug with default searching was fixed. The bug with plugin menu duplicating was fixed.

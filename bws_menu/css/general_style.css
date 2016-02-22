@@ -255,11 +255,11 @@ div.bws_banner_on_plugin_page .icon {
     margin: 8px;
     cursor: pointer;
 }
+.rtl div.bws_banner_on_plugin_page .button,
 .rtl .bws_banner_on_plugin_page .close_icon {
     float: left;
 }
 .rtl div.bws_banner_on_plugin_page .icon,
-.rtl div.bws_banner_on_plugin_page .button,
 .rtl .bws_banner_on_plugin_page .text {
     float: right;
 }

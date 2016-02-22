@@ -63,7 +63,7 @@ $mltlngg_languages = array(
 	array( 'ms', 'ms_MY', 'Bahasa Melayu', '' ),
 	array( 'my', 'my_MM', 'ဗမာစာ', '' ),
 	array( 'mv', 'mv', 'ދިވެހިބަސް', 'rtl' ),
-	array( 'mе', 'mе', 'Crnogorski', '' ),	
+	array( 'me', 'me', 'Crnogorski', '' ),	
 	array( 'nb', 'nb_NO', 'Norsk Bokmål', '' ),
 	array( 'ne', 'ne_NP', 'नेपाली', '' ),
 	array( 'nl', 'nl_NL', 'Nederlands', '' ),
