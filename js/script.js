@@ -5,13 +5,13 @@
 		$( '#mltlngg-add-lang-link' ).click( function() {
 			$( '#mltlngg-add-new-language-form' ).slideToggle();
 		});
-
+		
 		/* Do not save post if Title and Content is empty */
 		$( '#publish' ).on( 'click', function() {
 			var mltlnggCurrentTitle = $( '#title' ).val(),
 				mltlnggCurrentContent;
 			if ( $( '#content' ).is( ":hidden" ) ) {
-				mltlnggCurrentContent = tinymce.activeEditor.getContent();
+				mltlnggCurrentContent = tinymce.get('content').getContent();
 			} else {
 				mltlnggCurrentContent = $( '#content' ).val();
 			}

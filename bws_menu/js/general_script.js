@@ -19,5 +19,15 @@ function bws_show_settings_notice() {
 			event.preventDefault();
 			$( '.bws_form #bws-submit-button' ).click();
 		});
+
+		if ( typeof CodeMirror == 'function' && $( '#bws_newcontent_css' ).length > 0 ) {
+			var editor = CodeMirror.fromTextArea( document.getElementById("bws_newcontent_css"), {
+				mode: "css",
+				theme: "default",
+				styleActiveLine: true,
+				matchBrackets: true,
+				lineNumbers: true
+			});
+		}
 	});
 })(jQuery);

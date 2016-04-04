@@ -2,9 +2,9 @@
 if ( ! file_exists( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' ) )
 	return;
 
-if ( ! class_exists( 'WP_List_Table' ) ) {
+if ( ! class_exists( 'WP_List_Table' ) )
 	require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
-}
+
 if ( ! class_exists( 'Mltlngg_List_Table' ) ) {
 	class Mltlngg_List_Table extends WP_List_Table {
 
@@ -30,7 +30,9 @@ if ( ! class_exists( 'Mltlngg_List_Table' ) ) {
 				case 'priority':
 				case 'bydefault':
 					return $item[ $column_name ];
-				case 'pro_options':
+				case 'pro_options_slug':
+				case 'pro_options_blogname':
+				case 'pro_options_blogdescription':
 					return $this->hide_pro_options ? '' : $item[ $column_name ];
 				default:
 					return print_r( $item, true ) ; /* Show the whole array for troubleshooting purposes */
@@ -45,15 +47,16 @@ if ( ! class_exists( 'Mltlngg_List_Table' ) ) {
 				'locale'	=> __( 'Locale', 'multilanguage' )
 			);
 			if ( ! $this->hide_pro_options )
-				$columns['pro_options'] = 
-					'<div class="bws_pro_version_bloc mltlngg_link_slug_ads">
-						<div class="bws_table_bg"></div>
-						<p>' . __( 'Link slug', 'multilanguage' ) .'</p>
-					</div>';
+				$columns['pro_options_slug'] = __( 'Link slug', 'multilanguage' );
 			$columns['flag']      = __( 'Flag', 'multilanguage' );
 			$columns['status']    = __( 'Status', 'multilanguage' );
 			$columns['priority']  = __( 'Priority', 'multilanguage' );
 			$columns['bydefault'] = __( 'Default', 'multilanguage' );
+
+			if ( ! $this->hide_pro_options ) {
+				$columns['pro_options_blogname'] = __( 'Site Title', 'multilanguage' );
+				$columns['pro_options_blogdescription'] = __( 'Tagline', 'multilanguage' );
+			}
 
 			return $columns;
 		}
@@ -138,11 +141,8 @@ if ( ! function_exists( 'mltlngg_table_data' ) ) {
 		$i = 0;
 		$mltlngg_data = $mltlngg_options['list_of_languages'];
 		foreach ( $mltlngg_data as $mltlngg_language ) {
-			if ( true === $mltlngg_language['enable'] ) {
-				$mltlngg_status = __( 'Enabled', 'multilanguage' );
-			} else {
-				$mltlngg_status = __( 'Disabled', 'multilanguage' );
-			}
+			$mltlngg_status = ( true === $mltlngg_language['enable'] ) ? __( 'Enabled', 'multilanguage' ) : __( 'Disabled', 'multilanguage' );
+
 			$mltlngg_flag = "<img src=" . plugins_url( 'images/flags/', dirname( __FILE__ ) ) . $mltlngg_language['locale'] . '.png' . " alt=" . $mltlngg_language['name'] . " title=" . $mltlngg_language['name'] . ">";
 			$by_default   = '<input name="mltlngg_default_lang" type="radio" value="' . $mltlngg_language['locale'] . '"' . ( ( $mltlngg_language['locale'] == $mltlngg_options['default_language'] ) ? ' checked>' : '>' );
 			$priority     = '<input value="' . $mltlngg_language['priority'] . '" name="' . $mltlngg_language['locale'] . '" type="number" min="1" />';
@@ -157,14 +157,17 @@ if ( ! function_exists( 'mltlngg_table_data' ) ) {
 			);
 			if ( ! $hide_pro_options ) {
 				$locale_array = explode( '_', $mltlngg_language['locale'] );
-				$mltlngg_return[ $i ]['pro_options'] = 
-					'<div class="bws_pro_version_bloc mltlngg_link_slug_ads">
-						<div class="bws_table_bg"></div>
-						<p>
-							<label class="mltlngg_language_code"><input type="radio" disabled="disabled"/>&nbsp;' . $locale_array[0] .'</label>' .
-							( isset( $locale_array[1] ) ? '<label><input type="radio" disabled="disabled"/>&nbsp;' . $mltlngg_language['locale'] .'</label>' : '' ) .
-						'</p>
-					</div>';
+				$mltlngg_return[ $i ]['pro_options_slug'] = 
+					'<label class="mltlngg_language_code"><input type="radio" disabled="disabled"/>&nbsp;' . $locale_array[0] .'</label>' .
+					( isset( $locale_array[1] ) ? '<label><input type="radio" disabled="disabled"/>&nbsp;' . $mltlngg_language['locale'] .'</label>' : '' );
+
+
+				if ( $mltlngg_language['locale'] == $mltlngg_options['default_language'] ) {
+					$mltlngg_return[ $i ]['pro_options_blogname'] = esc_attr( get_option( 'blogname' ) );
+					$mltlngg_return[ $i ]['pro_options_blogdescription'] = esc_attr( get_option( 'blogdescription' ) );
+				} else {
+					$mltlngg_return[ $i ]['pro_options_blogdescription'] = $mltlngg_return[ $i ]['pro_options_blogname'] = '<textarea class="mltlngg_table_pro_option" disabled="disabled"></textarea>';
+				}
 			}
 			$i++;
 		}

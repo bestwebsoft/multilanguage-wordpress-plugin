@@ -4,7 +4,7 @@ Donate link: http://bestwebsoft.com/donate/
 Tags: add translation, add translations, best multilanguage plugin, bilingual, free multilanguage plugin, free plugin, globalization, international, international plugin, language, language switcher, localization, multilanguage, multi language, multilanguage plugin, multilingual, plugin, simple multilanguage plugin, simple language switcher, switcher, translate, translation, translations, translation-ready, widget, wordpress multilanguage plugin, wp multilanguage plugin, wordpress plugin, wp plugin
 Requires at least: 3.8
 Tested up to: 4.4.2
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -30,14 +30,19 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 * Add translations for posts, pages, categories, and post tags.
 * The language is either set by the language switcher or by the language code in url (as directory).
 * A customizable language switcher is provided as a widget, which can be displayed in the form of a Drop-down list of languages, Drop-down list of flags icons or Flags icons.
+* Add languages switcher into site menu.
 * Default searching by the language which is currently selected for the site or all available languages.
 * You can determine the priority of language display ​​in the switcher by changing the priority of language display on the plugin settings page.
 * The admin interface is translation-ready.
 * Add links to your current page for each language from your site into the tag <head>.
 * Hide link slug for default language.
+* Displaying availability of translation in the general posts and taxonomies list.
+
+If you have a feature, suggestion or idea you'd like to see in the plugin, we'd love to hear about it! <a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">Suggest a Feature</a>
 
 = Translation =
 
+* Czech (cs_CZ) (thanks to <a href="mailto:info@pamadessoft.cz">PaMaDeSSoft</a>, www.pamadessoft.cz)
 * Polish (pl_PL) (thanks to <a href="mailto:emiljo@tlen.pl">Emil Król</a>)
 * Russian (ru_RU)
 * Ukrainian (uk)
@@ -87,9 +92,9 @@ In the plugin settings, you can enable/disable an option to switch Wordpress loc
 
 You can find all official translation files in WordPress [language repository](http://i18n.svn.wordpress.org/).
 
-= Can I use Multilanguage on a single-site? =
+= There is no adding block for Multilanguage switcher in Edit Menus =
 
-Yes, you can use Multilanguage in a single-site without any problems.
+It seems like this block is disabled in Screen Options of your page. Please open Screen Options on the page (in the upper right corner of the screen) and enable Multilanguage checkbox.
 
 = Can I use Multilanguage on a multi-site? =
 
@@ -137,11 +142,19 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 6. Translation form for editing a category.
 7. Translation form for adding a new tag.
 8. Adding and settings language switcher widget in admin panel.
-9. Language switcher widget in frontend (Drop-down languages list).
-10. Language switcher widget in frontend (Drop-down flag icons).
-11. Language switcher widget in frontend (Flag icons).
+9. Language switcher widget in frontend.
+10. Adding language switcher into site menu.
+11. Language switcher in site menu.
 
 == Changelog ==
+
+= V1.1.5 - 04.04.2016 =
+* NEW : Ability to add languages switcher into site menu.
+* NEW : The column which displays translation availability has been added to the posts and taxonomies list.
+* Update : Displaying Language switcher widget as Drop-down languages list was changed.
+* NEW : Ability to add custom styles.
+* NEW : The Czech language file was added.
+* Update : Saving data for languages in admin panel has been improved.
 
 = V1.1.4 - 22.02.2016 =
 * NEW : Ability to add links to your current page for each language from your site into the tag <head> has been added.
@@ -215,6 +228,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.1.5 =
+Ability to add languages switcher into site menu. The column which displays translation availability has been added to the posts and taxonomies list. Displaying Language switcher widget as Drop-down languages list was changed. Ability to add custom styles. The Czech language file was added. Saving data for languages in admin panel has been improved.
 
 = V1.1.4 =
 Ability to add links to your current page for each language from your site into the tag <head> has been added. Ability to hide link slug for default language has been added. Widget with languages switcher has been updated.

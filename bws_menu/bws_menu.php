@@ -1,7 +1,7 @@
 <?php
 /*
 * Function for displaying BestWebSoft menu
-* Version: 1.8.1
+* Version: 1.8.3
 */
 
 if ( ! function_exists ( 'bws_admin_enqueue_scripts' ) )
@@ -390,8 +390,8 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 			'bws-smtp/bws-smtp.php' => array(
 				'name'			=> 'SMTP',
 				'description'	=> 'This plugin introduces an easy way to configure sending email messages via SMTP.',
-				'link'			=> 'http://bestwebsoft.com/products/bws-smtp/?k=0546419f962704429ad2d9b88567752f&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
-				'download'		=> 'http://bestwebsoft.com/products/bws-smtp/download/?k=0546419f962704429ad2d9b88567752f&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
+				'link'			=> 'http://bestwebsoft.com/products/smtp/?k=0546419f962704429ad2d9b88567752f&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
+				'download'		=> 'http://bestwebsoft.com/products/smtp/download/?k=0546419f962704429ad2d9b88567752f&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
 				'wp_install'	=> $admin_url . 'plugin-install.php?tab=search&type=term&s=SMTP+BestWebSoft&plugin-search-input=Search+Plugins',
 				'settings'		=> 'admin.php?page=bwssmtp_settings'
 			),
@@ -423,7 +423,10 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 				'link'			=> 'http://bestwebsoft.com/products/zendesk-help-center/?k=2a5fd2f4b2f4bde46f2ca44b8d15846d&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
 				'download'		=> 'http://bestwebsoft.com/products/zendesk-help-center/download/?k=2a5fd2f4b2f4bde46f2ca44b8d15846d&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
 				'wp_install'	=> $admin_url . 'plugin-install.php?tab=search&type=term&s=Zendesk+Help+Center+Backup+BestWebSoft&plugin-search-input=Search+Plugins',
-				'settings'		=> 'admin.php?page=zendesk_hc.php&tab=settings'
+				'settings'		=> 'admin.php?page=zendesk_hc.php&tab=settings',
+				'pro_version'	=> 'zendesk-help-center-pro/zendesk-help-center-pro.php',
+				'purchase' 		=> 'http://bestwebsoft.com/products/zendesk-help-center/buy/?k=45199e4538b5befe4d9566868a61a3aa&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
+				'pro_settings'	=> 'admin.php?page=zendesk_hc.php&tab=settings'
 			),
 			'social-buttons-pack/social-buttons-pack.php' => array(
 				'name'			=> 'Social Buttons Pack',
@@ -992,6 +995,7 @@ if ( ! function_exists( 'bws_get_banner_array' ) ) {
 	function bws_get_banner_array() {
 		global $bstwbsftwppdtplgns_banner_array;
 		$bstwbsftwppdtplgns_banner_array = array(
+			array( 'zndskhcpr_hide_banner_on_plugin_page', 'zendesk-help-center/zendesk-help-center.php', '1.0.0' ),
 			array( 'gglcptch_hide_banner_on_plugin_page', 'google-captcha/google-captcha.php', '1.18' ),
 			array( 'mltlngg_hide_banner_on_plugin_page', 'multilanguage/multilanguage.php', '1.1.1' ),
 			array( 'adsns_hide_banner_on_plugin_page', 'adsense-plugin/adsense-plugin.php', '1.36' ),

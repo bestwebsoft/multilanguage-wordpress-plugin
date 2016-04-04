@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: multilanguage\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-10 10:10+0300\n"
+"POT-Creation-Date: 2016-03-30 15:10+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: BestWebSoft team <wp@bestwebsoft.com>\n"
 "Language-Team: Emil Król <emiljo@tlen.pl>\n"
@@ -17,7 +17,12 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: multilanguage.php:837
+#: multilanguage.php:107
+#, fuzzy
+msgid "Multilanguage switcher"
+msgstr "Przełącznik języka"
+
+#: multilanguage.php:832
 msgid ""
 "Attention!!! The changes will not be saved because Title and Content fields "
 "are empty on the current tab! It is recommended to fill in at least one "
@@ -27,75 +32,80 @@ msgstr ""
 "na bieżącej karcie! Zalecane jest, aby wypełnić co najmniej jedno pole lub "
 "przełączyć na zakładkę z pola, które są już wypełnione."
 
-#: multilanguage.php:865
-msgid "Content language switch"
-msgstr "Przełącznik języka Treści"
-
-#: multilanguage.php:899
-msgid "Localization"
-msgstr "Region"
-
-#: multilanguage.php:902
-msgid "Title:"
-msgstr "Tytuł:"
-
-#: multilanguage.php:908 multilanguage.php:1216
+#: multilanguage.php:853 multilanguage.php:931 multilanguage.php:1245
 msgid "Drop-down languages list"
 msgstr "Rozwijana lista języków"
 
-#: multilanguage.php:916 multilanguage.php:1225
+#: multilanguage.php:854 multilanguage.php:939 multilanguage.php:1254
 msgid "Drop-down flag icons"
 msgstr "Rozwijana lista flag"
 
-#: multilanguage.php:924 multilanguage.php:1234
+#: multilanguage.php:857 multilanguage.php:1239 multilanguage.php:2644
+#: multilanguage.php:2647
+msgid "Language switcher"
+msgstr "Przełącznik języka"
+
+#: multilanguage.php:888
+msgid "Content language switch"
+msgstr "Przełącznik języka Treści"
+
+#: multilanguage.php:922
+msgid "Localization"
+msgstr "Region"
+
+#: multilanguage.php:925
+msgid "Title:"
+msgstr "Tytuł:"
+
+#: multilanguage.php:947 multilanguage.php:1263
 msgid "Flag icons"
 msgstr "Ikony flag"
 
-#: multilanguage.php:984
-msgid "Switch"
-msgstr ""
-
-#: multilanguage.php:1050 multilanguage.php:1088
+#: multilanguage.php:1078 multilanguage.php:1116
 msgid "Settings saved"
 msgstr "Zapisano ustawienia"
 
-#: multilanguage.php:1061
+#: multilanguage.php:1089
 msgid "Language added"
 msgstr "Dodano język"
 
-#: multilanguage.php:1063
+#: multilanguage.php:1091
 msgid "Incorrect language data"
 msgstr "Bledne dane jezyka"
 
-#: multilanguage.php:1121
+#: multilanguage.php:1149
 msgid "All plugin settings were restored."
 msgstr ""
 
-#: multilanguage.php:1135
+#: multilanguage.php:1163
 msgid "Multilanguage Settings"
 msgstr "Ustawienia Multilanguage"
 
-#: multilanguage.php:1137 multilanguage.php:1383 multilanguage.php:1441
+#: multilanguage.php:1165 multilanguage.php:1412 multilanguage.php:1469
 msgid "Add language"
 msgstr "Dodaj język"
 
-#: multilanguage.php:1142 includes/table.php:232
+#: multilanguage.php:1170 includes/table.php:235
 msgid "Languages"
 msgstr "Języki"
 
-#: multilanguage.php:1143 multilanguage.php:2398 multilanguage.php:2412
+#: multilanguage.php:1171 multilanguage.php:2719 multilanguage.php:2733
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: multilanguage.php:1144
+#: multilanguage.php:1172
+msgid "Custom code"
+msgstr ""
+
+#: multilanguage.php:1173
 msgid "Go PRO"
 msgstr ""
 
-#: multilanguage.php:1166 multilanguage.php:1336
+#: multilanguage.php:1195 multilanguage.php:1363
 msgid "Save changes"
 msgstr "Zapisz zmiany"
 
-#: multilanguage.php:1174
+#: multilanguage.php:1203
 msgid ""
 "If you would like to display Language switcher with a widget, you need to "
 "add the widget \"Multilanguage\" in the Widgets tab."
@@ -103,7 +113,7 @@ msgstr ""
 "Jeśli chcesz wyświetlić Przełącznik języka jako widżet, musisz dodać widget "
 "\"Multilanguage\" w zakładce Widżety."
 
-#: multilanguage.php:1176
+#: multilanguage.php:1205
 #, fuzzy, php-format
 msgid ""
 "If you would like to add a Language switcher to your page or post, please "
@@ -112,7 +122,7 @@ msgstr ""
 "Jeśli chcesz dodać Przełącznik języka na swojej stronie, wystarczy skopiować "
 "i wkleić ten shortcode w twój Wpis albo Stronę"
 
-#: multilanguage.php:1182
+#: multilanguage.php:1211
 #, php-format
 msgid ""
 "You can add Language switcher to your page or post by clicking on %s button "
@@ -120,24 +130,24 @@ msgid ""
 "displayed, please use the shortcode %s."
 msgstr ""
 
-#: multilanguage.php:1189
+#: multilanguage.php:1218
 msgid "Also, you can paste the following strings into the template source code"
 msgstr ""
 "Ponadto, możesz też wkleić następujący ciąg do kodu źródłowego szablonu"
 
-#: multilanguage.php:1194
+#: multilanguage.php:1223
 msgid "Enable new language"
 msgstr "Włącz nowy język"
 
-#: multilanguage.php:1196
+#: multilanguage.php:1225
 msgid "The newly added language will be enabled automatically"
 msgstr "Nowo dodany język zostanie włączony automatycznie"
 
-#: multilanguage.php:1200
+#: multilanguage.php:1229
 msgid "Autosave translation in the editor"
 msgstr "Automatyczny zapis tłumaczeni w edytorze"
 
-#: multilanguage.php:1202
+#: multilanguage.php:1231
 msgid ""
 "When switching edit posts/pages translation tab, the changes made in the "
 "previous tab will be saved automatically (only when the Javascript is "
@@ -147,11 +157,11 @@ msgstr ""
 "poprzedniej zakładki zostanie zapisane automatycznie (tylko wtedy, gdy "
 "włączona jest obsługa JavaScript)"
 
-#: multilanguage.php:1206
+#: multilanguage.php:1235
 msgid "Switch Wordpress localization"
 msgstr "Zmień region  Wordpress"
 
-#: multilanguage.php:1207
+#: multilanguage.php:1236
 msgid ""
 "When changing the language in the frontend, WordPress localization will also "
 "be changed (only in case additional WordPress language packs are installed)"
@@ -160,139 +170,136 @@ msgstr ""
 "(tylko w przypadku, gdy zainstalowane są dodatkowe pakiety językowe "
 "WordPress)"
 
-#: multilanguage.php:1210
-msgid "Language switcher"
-msgstr "Przełącznik języka"
-
-#: multilanguage.php:1244
+#: multilanguage.php:1273
 msgid "Display alternative page links"
 msgstr ""
 
-#: multilanguage.php:1250
+#: multilanguage.php:1278
+#, php-format
 msgid ""
 "With this option, there will be added links to your current page for each "
-"language from your site into the tag"
+"language from your site into the tag %s"
 msgstr ""
 
-#: multilanguage.php:1257
+#: multilanguage.php:1284
 msgid "Hide link slug for default language"
 msgstr ""
 
-#: multilanguage.php:1263
+#: multilanguage.php:1290
 msgid "Default searching by"
 msgstr ""
 
-#: multilanguage.php:1268
+#: multilanguage.php:1295
 #, fuzzy
 msgid "selected language"
 msgstr "Dodaj język"
 
-#: multilanguage.php:1272
+#: multilanguage.php:1299
 #, fuzzy
 msgid "all available languages"
 msgstr "Włącz nowy język"
 
-#: multilanguage.php:1281
+#: multilanguage.php:1308
 msgid "Close"
 msgstr ""
 
-#: multilanguage.php:1285
+#: multilanguage.php:1312
 msgid "Determining the locale using the user's IP"
 msgstr ""
 
-#: multilanguage.php:1291
+#: multilanguage.php:1318
 msgid "Update GeoIP"
 msgstr ""
 
-#: multilanguage.php:1293
+#: multilanguage.php:1320
 msgid "every"
 msgstr ""
 
-#: multilanguage.php:1293
+#: multilanguage.php:1320
 msgid "months"
 msgstr ""
 
-#: multilanguage.php:1295
+#: multilanguage.php:1322
 msgid "Update now"
 msgstr ""
 
-#: multilanguage.php:1300
+#: multilanguage.php:1327
 msgid ""
 "This option allows you to download lists with registered IP addresses all "
 "over the world to the database (from"
 msgstr ""
 
-#: multilanguage.php:1303
+#: multilanguage.php:1330
 msgid ""
 "With this, you receive an information about each IP address, and to which "
 "country it belongs to. You can select the desired frequency for IP database "
 "updating"
 msgstr ""
 
-#: multilanguage.php:1306
+#: multilanguage.php:1333
 msgid ""
 "If you need to update GeoIP immediately, please click on the \"Update now\" "
 "button and wait until the operation is finished"
 msgstr ""
 
-#: multilanguage.php:1309
+#: multilanguage.php:1336
 msgid ""
 "Due to the fact that JavaScript is disabled, GeoIP will be updated via "
 "wp_cron"
 msgstr ""
 
-#: multilanguage.php:1312
+#: multilanguage.php:1339
 #, fuzzy
 msgid "Read more about"
 msgstr "Więcej..."
 
-#: multilanguage.php:1316
+#: multilanguage.php:1343
 msgid "Last update was carried out"
 msgstr ""
 
-#: multilanguage.php:1321
+#: multilanguage.php:1348
 msgid "If you upgrade to Pro version all your settings will be saved."
 msgstr ""
 
-#: multilanguage.php:1328
+#: multilanguage.php:1355
 msgid "Unlock premium options by upgrading to Pro version"
 msgstr ""
 
-#: multilanguage.php:1330
+#: multilanguage.php:1357
 msgid "Learn More"
 msgstr ""
 
-#: multilanguage.php:1365
+#: multilanguage.php:1394
 msgid "Choose a language"
 msgstr "Wybierz język"
 
-#: multilanguage.php:1444
+#: multilanguage.php:1472
 msgid "Edit for language"
 msgstr "Edycja dla języka"
 
-#: multilanguage.php:1846 multilanguage.php:1907
+#: multilanguage.php:1884 multilanguage.php:1945
 msgid "Translations"
 msgstr "Tłumaczenia"
 
-#: multilanguage.php:2024
+#: multilanguage.php:2062
 #, php-format
 msgid "Protected: %s"
 msgstr "Zabezpieczony:%s"
 
-#: multilanguage.php:2027
+#: multilanguage.php:2065
 #, php-format
 msgid "Private: %s"
 msgstr "Prywatny:%s"
 
-#: multilanguage.php:2111
+#: multilanguage.php:2256
 msgid "(more&hellip;)"
 msgstr ""
 
-#: multilanguage.php:2413
+#: multilanguage.php:2734
 msgid "FAQ"
 msgstr "FAQ"
 
-#: multilanguage.php:2414
+#: multilanguage.php:2735
 msgid "Support"
 msgstr "Wsparcie"
 
@@ -304,64 +311,73 @@ msgstr "język"
 msgid "languages"
 msgstr "języki"
 
-#: includes/table.php:44
+#: includes/table.php:46
 msgid "Name"
 msgstr "Nazwa"
 
-#: includes/table.php:45
+#: includes/table.php:47
 msgid "Locale"
 msgstr "Region"
 
-#: includes/table.php:51
+#: includes/table.php:50
 msgid "Link slug"
 msgstr ""
 
-#: includes/table.php:53
+#: includes/table.php:51
 msgid "Flag"
 msgstr "Flaga"
 
-#: includes/table.php:54
+#: includes/table.php:52
 msgid "Status"
 msgstr "Status"
 
-#: includes/table.php:55
+#: includes/table.php:53
 msgid "Priority"
 msgstr "Priorytet"
 
-#: includes/table.php:56
+#: includes/table.php:54
 msgid "Default"
 msgstr "Domyślny"
 
-#: includes/table.php:74 includes/table.php:108 includes/table.php:144
+#: includes/table.php:57
+#, fuzzy
+msgid "Site Title"
+msgstr "Tytuł:"
+
+#: includes/table.php:58
+msgid "Tagline"
+msgstr ""
+
+#: includes/table.php:77 includes/table.php:111 includes/table.php:144
 msgid "Disabled"
 msgstr "Wyłączony"
 
-#: includes/table.php:75 includes/table.php:86
+#: includes/table.php:78 includes/table.php:89
 msgid "Enable"
 msgstr "Włącz"
 
-#: includes/table.php:77 includes/table.php:87
+#: includes/table.php:80 includes/table.php:90
 msgid "Disable"
 msgstr "Wyłącz"
 
-#: includes/table.php:79 includes/table.php:88
+#: includes/table.php:82 includes/table.php:91
 msgid "Delete"
 msgstr "Usuń"
 
-#: includes/table.php:142
+#: includes/table.php:144
 msgid "Enabled"
 msgstr "Włączony"
 
-#: includes/table.php:317
+#: includes/table.php:320
 msgid "Unknown action"
 msgstr ""
 
-#: includes/table.php:321
+#: includes/table.php:324
 #, fuzzy, php-format
 msgid "Selected languages have been %s"
 msgstr "Dodaj język"
 
-#: includes/table.php:323
+#: includes/table.php:326
 #, php-format
 msgid "No one from selected languages has not been %s"
 msgstr ""

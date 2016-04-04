@@ -1,0 +1,414 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: multilanguage\n"
+"POT-Creation-Date: 2016-03-30 15:10+0300\n"
+"PO-Revision-Date: 2016-03-30 15:10+0300\n"
+"Last-Translator: BestWebSoft team <wp@bestwebsoft.com>\n"
+"Language-Team: BestWebSoft <info@bestwebsoft.com>\n"
+"Language: cs_CZ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../multilanguage.php:107
+#, fuzzy
+msgid "Multilanguage switcher"
+msgstr "Přepínač jazyků"
+
+#: ../multilanguage.php:832
+msgid ""
+"Attention!!! The changes will not be saved because Title and Content fields "
+"are empty on the current tab! It is recommended to fill in at least one "
+"field or switch to the tab with the fields that are already filled."
+msgstr ""
+"Upozornění!!! Změny nebudou uloženy, protože na aktuální kartě jsou pole "
+"Název a Obsah prázdné! Doporučujeme vyplnit alespoň jedno pole nebo přejděte "
+"na kartu s poli, která jsou již vyplněná."
+
+#: ../multilanguage.php:853 ../multilanguage.php:931 ../multilanguage.php:1245
+msgid "Drop-down languages list"
+msgstr "Nabídka jazyků táhni-pusť"
+
+#: ../multilanguage.php:854 ../multilanguage.php:939 ../multilanguage.php:1254
+msgid "Drop-down flag icons"
+msgstr "Ikony vlajek táhni-pusť"
+
+#: ../multilanguage.php:857 ../multilanguage.php:1239
+#: ../multilanguage.php:2644 ../multilanguage.php:2647
+msgid "Language switcher"
+msgstr "Přepínač jazyků"
+
+#: ../multilanguage.php:888
+msgid "Content language switch"
+msgstr "Přepínání jazyku pro obsah"
+
+#: ../multilanguage.php:922
+msgid "Localization"
+msgstr "Lokalizace"
+
+#: ../multilanguage.php:925
+msgid "Title:"
+msgstr "Název:"
+
+#: ../multilanguage.php:947 ../multilanguage.php:1263
+msgid "Flag icons"
+msgstr "Ikony vlajek "
+
+#: ../multilanguage.php:1078 ../multilanguage.php:1116
+msgid "Settings saved"
+msgstr "Nastavení uloženo"
+
+#: ../multilanguage.php:1089
+msgid "Language added"
+msgstr "Přidání jazyka"
+
+#: ../multilanguage.php:1091
+msgid "Incorrect language data"
+msgstr "Nesprávná data pro jazyk"
+
+#: ../multilanguage.php:1149
+msgid "All plugin settings were restored."
+msgstr "Výchozí nastavení pluginu bylo obnoveno."
+
+#: ../multilanguage.php:1163
+msgid "Multilanguage Settings"
+msgstr "Vícejazyčná nastavení"
+
+#: ../multilanguage.php:1165 ../multilanguage.php:1412
+#: ../multilanguage.php:1469
+msgid "Add language"
+msgstr "Přidat jazyk"
+
+#: ../multilanguage.php:1170 ../includes/table.php:235
+msgid "Languages"
+msgstr "Jazyky"
+
+#: ../multilanguage.php:1171 ../multilanguage.php:2719
+#: ../multilanguage.php:2733
+msgid "Settings"
+msgstr "Nastavení"
+
+#: ../multilanguage.php:1172
+msgid "Custom code"
+msgstr ""
+
+#: ../multilanguage.php:1173
+msgid "Go PRO"
+msgstr "Získat verzi Pro"
+
+#: ../multilanguage.php:1195 ../multilanguage.php:1363
+msgid "Save changes"
+msgstr "Uložit změny"
+
+#: ../multilanguage.php:1203
+msgid ""
+"If you would like to display Language switcher with a widget, you need to "
+"add the widget \"Multilanguage\" in the Widgets tab."
+msgstr ""
+"Pokud chcete zobrazit volba jazyků na widgetu, je třeba přidat widget "
+"\"Vícejazyčný\" na kartě widgety."
+
+#: ../multilanguage.php:1205
+#, php-format
+msgid ""
+"If you would like to add a Language switcher to your page or post, please "
+"use %s button"
+msgstr ""
+"Pokud byste chtěli přidat volbu jazyků na vaší stránce nebo příspěvku, "
+"použijte tlačítko %s"
+
+#: ../multilanguage.php:1211
+#, php-format
+msgid ""
+"You can add Language switcher to your page or post by clicking on %s button "
+"in the content edit block using the Visual mode. If the button isn't "
+"displayed, please use the shortcode %s."
+msgstr ""
+"Na stránku nebo do příspěvku můžete přidat volbu jazyků klepnutím na "
+"tlačítko %s v bloku pro úpravy obsahu pomocí vizuálního módu. Pokud tlačítko "
+"není zobrazeno, použijte krátký kód %s."
+
+#: ../multilanguage.php:1218
+msgid "Also, you can paste the following strings into the template source code"
+msgstr "Také můžete vložit následující řetězec do zdrojového kódu šablony"
+
+#: ../multilanguage.php:1223
+msgid "Enable new language"
+msgstr "Povolit nový jazyk "
+
+#: ../multilanguage.php:1225
+msgid "The newly added language will be enabled automatically"
+msgstr "Nově přidaný jazyk bude automaticky povolený."
+
+#: ../multilanguage.php:1229
+msgid "Autosave translation in the editor"
+msgstr "Automatické uložení překladu v editoru"
+
+#: ../multilanguage.php:1231
+msgid ""
+"When switching edit posts/pages translation tab, the changes made in the "
+"previous tab will be saved automatically (only when the Javascript is "
+"enabled)"
+msgstr ""
+"Při přepnutí karty úprav příspěvkú/stránek, budou změny provedené na "
+"předchozí kartě automaticky uloženy (jen když je povolen Javascript)"
+
+#: ../multilanguage.php:1235
+msgid "Switch Wordpress localization"
+msgstr "Přepnout lokalizaci Wordpressu"
+
+#: ../multilanguage.php:1236
+msgid ""
+"When changing the language in the frontend, WordPress localization will also "
+"be changed (only in case additional WordPress language packs are installed)"
+msgstr ""
+"Při změně jazyka ve frontendu se lokalizace WordPressu změní také (pouze v "
+"případě, že jsou nainstalovány další jazykové balíčky pro WordPress)"
+
+#: ../multilanguage.php:1273
+msgid "Display alternative page links"
+msgstr "Zobrazit alternativní odkazy stránky "
+
+#: ../multilanguage.php:1278
+#, fuzzy, php-format
+msgid ""
+"With this option, there will be added links to your current page for each "
+"language from your site into the tag %s"
+msgstr ""
+"S touto možností tam budou přidány odkazy na aktuální stránce pro každý "
+"jazyk z vašich stránek do tagu"
+
+#: ../multilanguage.php:1284
+msgid "Hide link slug for default language"
+msgstr "Skrýt odkaz  slugu pro výchozí jazyk"
+
+#: ../multilanguage.php:1290
+msgid "Default searching by"
+msgstr "Výchozí hledání podle"
+
+#: ../multilanguage.php:1295
+msgid "selected language"
+msgstr "vybraný jazyk"
+
+#: ../multilanguage.php:1299
+msgid "all available languages"
+msgstr "všechny dostupné jazyky"
+
+#: ../multilanguage.php:1308
+msgid "Close"
+msgstr "Zavřít"
+
+#: ../multilanguage.php:1312
+msgid "Determining the locale using the user's IP"
+msgstr "Stanovení národního prostředí použitím uživatelova IP"
+
+#: ../multilanguage.php:1318
+msgid "Update GeoIP"
+msgstr ""
+
+#: ../multilanguage.php:1320
+msgid "every"
+msgstr ""
+
+#: ../multilanguage.php:1320
+msgid "months"
+msgstr ""
+
+#: ../multilanguage.php:1322
+msgid "Update now"
+msgstr ""
+
+#: ../multilanguage.php:1327
+msgid ""
+"This option allows you to download lists with registered IP addresses all "
+"over the world to the database (from"
+msgstr ""
+
+#: ../multilanguage.php:1330
+msgid ""
+"With this, you receive an information about each IP address, and to which "
+"country it belongs to. You can select the desired frequency for IP database "
+"updating"
+msgstr ""
+
+#: ../multilanguage.php:1333
+msgid ""
+"If you need to update GeoIP immediately, please click on the \"Update now\" "
+"button and wait until the operation is finished"
+msgstr ""
+
+#: ../multilanguage.php:1336
+msgid ""
+"Due to the fact that JavaScript is disabled, GeoIP will be updated via "
+"wp_cron"
+msgstr ""
+
+#: ../multilanguage.php:1339
+msgid "Read more about"
+msgstr ""
+
+#: ../multilanguage.php:1343
+msgid "Last update was carried out"
+msgstr ""
+
+#: ../multilanguage.php:1348
+msgid "If you upgrade to Pro version all your settings will be saved."
+msgstr "Pokud upgradujete na verzi Pro všechna nastavení budou uložena."
+
+#: ../multilanguage.php:1355
+msgid "Unlock premium options by upgrading to Pro version"
+msgstr "Odemknout prémiové možnosti při aktualizaci na verzi Pro"
+
+#: ../multilanguage.php:1357
+msgid "Learn More"
+msgstr "Více informací"
+
+#: ../multilanguage.php:1394
+msgid "Choose a language"
+msgstr "Zvolte jazyk"
+
+#: ../multilanguage.php:1472
+msgid "Edit for language"
+msgstr "Úpravy pro jazyk"
+
+#: ../multilanguage.php:1884 ../multilanguage.php:1945
+msgid "Translations"
+msgstr "Překlad"
+
+#: ../multilanguage.php:2062
+#, php-format
+msgid "Protected: %s"
+msgstr "Chráněné:% s"
+
+#: ../multilanguage.php:2065
+#, php-format
+msgid "Private: %s"
+msgstr "Soukromé: %s"
+
+#: ../multilanguage.php:2256
+msgid "(more&hellip;)"
+msgstr "(více&hellip;)"
+
+#: ../multilanguage.php:2734
+msgid "FAQ"
+msgstr "Často kladené otázky"
+
+#: ../multilanguage.php:2735
+msgid "Support"
+msgstr "Podpora"
+
+#: ../includes/table.php:17
+msgid "language"
+msgstr "jazyk"
+
+#: ../includes/table.php:18
+msgid "languages"
+msgstr "jazyky"
+
+#: ../includes/table.php:46
+msgid "Name"
+msgstr "Název"
+
+#: ../includes/table.php:47
+msgid "Locale"
+msgstr "Lokalita"
+
+#: ../includes/table.php:50
+msgid "Link slug"
+msgstr ""
+
+#: ../includes/table.php:51
+msgid "Flag"
+msgstr "Vlajka"
+
+#: ../includes/table.php:52
+msgid "Status"
+msgstr "Stav"
+
+#: ../includes/table.php:53
+msgid "Priority"
+msgstr "Priorita"
+
+#: ../includes/table.php:54
+msgid "Default"
+msgstr "Výchozí"
+
+#: ../includes/table.php:57
+#, fuzzy
+msgid "Site Title"
+msgstr "Název:"
+
+#: ../includes/table.php:58
+msgid "Tagline"
+msgstr ""
+
+#: ../includes/table.php:77 ../includes/table.php:111
+#: ../includes/table.php:144
+msgid "Disabled"
+msgstr "vypnout"
+
+#: ../includes/table.php:78 ../includes/table.php:89
+msgid "Enable"
+msgstr "Zapnout"
+
+#: ../includes/table.php:80 ../includes/table.php:90
+msgid "Disable"
+msgstr "vypnout"
+
+#: ../includes/table.php:82 ../includes/table.php:91
+msgid "Delete"
+msgstr "Smazat"
+
+#: ../includes/table.php:144
+msgid "Enabled"
+msgstr "Zapnuto"
+
+#: ../includes/table.php:320
+msgid "Unknown action"
+msgstr ""
+
+#: ../includes/table.php:324
+#, fuzzy, php-format
+msgid "Selected languages have been %s"
+msgstr "vybraný jazyk"
+
+#: ../includes/table.php:326
+#, php-format
+msgid "No one from selected languages has not been %s"
+msgstr ""
+
+#~ msgid "Switch"
+#~ msgstr "Přepnout"
+
+#~ msgid "Automatic country table update every"
+#~ msgstr "Automatická aktualizace tabulky zemí každých"
+
+#~ msgid "day"
+#~ msgstr "dnů"
+
+#~ msgid ""
+#~ "on the developers site the data is updated on the first Tuesday of every "
+#~ "month"
+#~ msgstr "Vývojáři webu data aktualizují každé první úterý v měsíci"
+
+#~ msgid ""
+#~ "This language is selected by default. Please select a different default "
+#~ "language before disabling it."
+#~ msgstr ""
+#~ "Ve výchozím nastavení je vybrán tento jazyk. Před zakázáním vyberte jiný "
+#~ "výchozí jazyk."
+
+#~ msgid "Language deleted"
+#~ msgstr "Jazyk odstraněn"
+
+#~ msgid ""
+#~ "This language is selected by default. Please select a different default "
+#~ "language before deleting it."
+#~ msgstr ""
+#~ "Ve výchozím nastavení je vybrán tento jazyk. Před zakázáním vyberte jiný "
+#~ "výchozí jazyk."
