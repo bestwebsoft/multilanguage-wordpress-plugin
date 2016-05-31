@@ -1,10 +1,10 @@
 ﻿=== Multilanguage by BestWebSoft ===
 Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
-Tags: add translation, add translations, best multilanguage plugin, bilingual, free multilanguage plugin, free plugin, globalization, international, international plugin, language, language switcher, localization, multilanguage, multi language, multilanguage plugin, multilingual, plugin, simple multilanguage plugin, simple language switcher, switcher, translate, translation, translations, translation-ready, widget, wordpress multilanguage plugin, wp multilanguage plugin, wordpress plugin, wp plugin
+Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
 Requires at least: 3.8
-Tested up to: 4.4.2
-Stable tag: 1.1.5
+Tested up to: 4.5.2
+Stable tag: 1.1.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -51,7 +51,7 @@ If you would like to create your own language pack or update the existing one, y
 
 = Technical support =
 
-Dear users, our plugins are available for free download. If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to contact us. Please note that we accept requests in English only. All messages in another languages won't be accepted.
+Dear users, our plugins are available for free download. If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to contact us. Please note that we accept requests in English only. All messages in other languages won't be accepted.
 
 If you notice any bugs in the plugin's work, you can notify us about it and we'll then investigate and fix the issue. Your request should contain URL of the website, issues description and WordPress admin panel credentials.
 Moreover, we can customize the plugin according to your requirements. It's a paid service (as a rule it costs $40, but the price can vary depending on the amount of the necessary changes and their complexity). Please note that we could also include this or that feature (developed for you) in the next release and then share it with other users.
@@ -134,19 +134,24 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 
 == Screenshots ==
 
-1. Plugin setting page with a table of languages ​​that have been added to the translation.
-2. Plugin setting page with a form to add a language.
-3. Plugin setting page with the main plugin settings.
-4. Post/page editor with translation tabs.
-5. Translation form for adding a new category.
-6. Translation form for editing a category.
-7. Translation form for adding a new tag.
-8. Adding and settings language switcher widget in admin panel.
-9. Language switcher widget in frontend.
-10. Adding language switcher into site menu.
-11. Language switcher in site menu.
+1. Language switcher widgets in frontend.
+2. Language switcher in site menu.
+3. Plugin setting page with a table of languages ​​that have been added to the translation.
+4. Plugin setting page with a form to add a language.
+5. Plugin setting page with the main plugin settings.
+6. Post/page editor with translation tabs.
+7. Translation form for adding a new category.
+8. Translation form for editing a category.
+9. Translation form for adding a new tag.
+10. Adding and settings language switcher widget in admin panel.
+11. Adding language switcher into site menu.
 
 == Changelog ==
+
+= V1.1.6 - 30.05.2016 =
+* NEW : Ability to display aligned languages switcher in the site menu has been added.
+* Bugfix : Bug with displaying alternative page links was fixed.
+* Bugfix : The conflict with WooCommerce REST API was resolved.
 
 = V1.1.5 - 04.04.2016 =
 * NEW : Ability to add languages switcher into site menu.
@@ -228,6 +233,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.1.6 =
+Ability to display aligned languages switcher in the site menu has been added. Bug with displaying alternative page links was fixed. The conflict with WooCommerce REST API was resolved.
 
 = V1.1.5 =
 Ability to add languages switcher into site menu. The column which displays translation availability has been added to the posts and taxonomies list. Displaying Language switcher widget as Drop-down languages list was changed. Ability to add custom styles. The Czech language file was added. Saving data for languages in admin panel has been improved.

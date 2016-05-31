@@ -328,4 +328,4 @@ if ( ! function_exists( 'mltlngg_actions' ) ) {
 		update_option( 'mltlngg_options', $mltlngg_options );
 		return $result;
 	}
-} ?>
+}

@@ -170,6 +170,24 @@
 .subsubsub a.bws_system_status:hover {
     background-color: #529FBD;
 }
+
+.bws_browse_link {
+    color: #666;
+    font-size: 18px;
+    text-decoration: none;
+    background-color: #ddd;
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 8px 0;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.bws_browse_link .dashicons {
+    line-height: inherit;
+    vertical-align: text-top;
+    font-size: 17px;
+}
 /* theme page after WP 3.9 */
 .toplevel_page_bws_plugins #availablethemes .theme-browser {
     margin-top: 25px;

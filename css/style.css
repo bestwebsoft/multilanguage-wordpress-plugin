@@ -5,6 +5,9 @@
 	display: block;
 	position: relative;
 }
+#mltlngg-add-new-language-form .form-table {
+	margin-top: 0;
+}
 .mltlngg-disabled {
 	background-color: #fefaf7;
 	border-left: 3px solid #d54e21;

@@ -1,6 +1,7 @@
 (function($) {
     if ( typeof bws_shortcode_button != 'undefined' ) {
     	var win;
+
         tinymce.create( 'tinymce.plugins.BWSButton', {
             /**
              * Initializes the plugin, this will be executed after the plugin has been created.
@@ -11,12 +12,12 @@
              * @param {string} url Absolute URL to where the plugin is located.
              */
             init : function( ed, url ) {
-                ed.addButton( 'add_bws_shortcode', {
-                    title : bws_shortcode_button.title,
-                    classes: 'bws_shortcode_button widget btn',
-                    image : bws_shortcode_button.icon_url,
-    				onclick: function() {	
-                        if ( bws_shortcode_button.wp_version < '3.9' ) {
+                if ( bws_shortcode_button.wp_version < '3.9' ) {
+                    ed.addButton( 'add_bws_shortcode', {
+                        title : bws_shortcode_button.title,
+                        classes: 'bws_shortcode_button widget btn',                   
+                        image : bws_shortcode_button.icon_url,                        
+        				onclick: function() {	
                             /* triggers the thickbox */
                             var width = jQuery(window).width(), H = jQuery(window).height(), W = ( 720 < width ) ? 720 : width;
                             W = W - 80;
@@ -24,7 +25,44 @@
                             tb_show( bws_shortcode_button.title, '#TB_inline?width=' + W + '&height=' + H + '&inlineId=bws_shortcode_popup' );
                     	
                             var current_object = '#TB_ajaxContent';
-                        } else {
+                            
+                            var select_count = $( current_object + ' select#bws_shortcode_select option').length;
+                            if ( 1 == select_count ) {
+                                $( current_object + ' #bws_shortcode_select_plugin' ).hide();
+                            }
+
+                            var plugin = $( current_object + ' #bws_shortcode_select option:selected' ).val();
+                            $( current_object + ' #bws_shortcode_content > div' ).hide();
+                            $( current_object + ' #bws_shortcode_content > #' + plugin ).show();
+
+                            if ( $( current_object + ' #bws_shortcode_content > #' + plugin + ' .bws_default_shortcode' ).length > 0 ) {
+                                $( current_object + ' #bws_shortcode_display' ).text( $( current_object + ' #bws_shortcode_content > #' + plugin + ' .bws_default_shortcode' ).val() );
+                            }
+
+                            $( current_object + ' #bws_shortcode_select' ).on( 'change',function() {
+                                var plugin = $( current_object + ' #bws_shortcode_select option:selected' ).val();
+                                $( current_object + ' #bws_shortcode_content > div' ).hide();
+                                $( current_object + ' #bws_shortcode_content > #' + plugin ).show();
+                                if ( $( current_object + ' #bws_shortcode_content > #' + plugin + ' .bws_default_shortcode' ).length > 0 ) {
+                                    $( current_object + ' #bws_shortcode_display' ).text( $( current_object + ' #bws_shortcode_content > #' + plugin + ' .bws_default_shortcode' ).val() );
+                                } else {
+                                    $( current_object + ' #bws_shortcode_display' ).text( '' );
+                                }
+                            });                   
+
+                            $.each( bws_shortcode_button.function_name, function( index, value ) {
+                                eval( value + '();' );
+                            });
+        				}
+                    });
+                } else {
+                    ed.addButton( 'add_bws_shortcode', {
+                        title : bws_shortcode_button.title,
+                        classes: 'bws_shortcode_button widget btn',                
+                        icon: 'icon bws-shortcode-icon',
+                        text: bws_shortcode_button.label,
+                        onclick: function() {   
+
                             win = ed.windowManager.open( {
                                 width: 400,
                                 height: 400,   
@@ -55,36 +93,36 @@
                                                      
                             });
                             var current_object = '.mce-container-body';
-                        }
-                        var select_count = $( current_object + ' select#bws_shortcode_select option').length;
-                        if ( 1 == select_count ) {
-                            $( current_object + ' #bws_shortcode_select_plugin' ).hide();
-                        }
+                            var select_count = $( current_object + ' select#bws_shortcode_select option').length;
+                            if ( 1 == select_count ) {
+                                $( current_object + ' #bws_shortcode_select_plugin' ).hide();
+                            }
 
-                        var plugin = $( current_object + ' #bws_shortcode_select option:selected' ).val();
-                        $( current_object + ' #bws_shortcode_content > div' ).hide();
-                        $( current_object + ' #bws_shortcode_content > #' + plugin ).show();
-
-                        if ( $( current_object + ' #bws_shortcode_content > #' + plugin + ' .bws_default_shortcode' ).length > 0 ) {
-                            $( current_object + ' #bws_shortcode_display' ).text( $( current_object + ' #bws_shortcode_content > #' + plugin + ' .bws_default_shortcode' ).val() );
-                        }
-
-                        $( current_object + ' #bws_shortcode_select' ).on( 'change',function() {
                             var plugin = $( current_object + ' #bws_shortcode_select option:selected' ).val();
                             $( current_object + ' #bws_shortcode_content > div' ).hide();
                             $( current_object + ' #bws_shortcode_content > #' + plugin ).show();
+
                             if ( $( current_object + ' #bws_shortcode_content > #' + plugin + ' .bws_default_shortcode' ).length > 0 ) {
                                 $( current_object + ' #bws_shortcode_display' ).text( $( current_object + ' #bws_shortcode_content > #' + plugin + ' .bws_default_shortcode' ).val() );
-                            } else {
-                                $( current_object + ' #bws_shortcode_display' ).text( '' );
                             }
-                        });                   
 
-                        $.each( bws_shortcode_button.function_name, function( index, value ) {
-                            eval( value + '();' );
-                        });
-    				}
-                });
+                            $( current_object + ' #bws_shortcode_select' ).on( 'change',function() {
+                                var plugin = $( current_object + ' #bws_shortcode_select option:selected' ).val();
+                                $( current_object + ' #bws_shortcode_content > div' ).hide();
+                                $( current_object + ' #bws_shortcode_content > #' + plugin ).show();
+                                if ( $( current_object + ' #bws_shortcode_content > #' + plugin + ' .bws_default_shortcode' ).length > 0 ) {
+                                    $( current_object + ' #bws_shortcode_display' ).text( $( current_object + ' #bws_shortcode_content > #' + plugin + ' .bws_default_shortcode' ).val() );
+                                } else {
+                                    $( current_object + ' #bws_shortcode_display' ).text( '' );
+                                }
+                            });                   
+
+                            $.each( bws_shortcode_button.function_name, function( index, value ) {
+                                eval( value + '();' );
+                            });
+                        }
+                    });
+                }
             },
      
             /**

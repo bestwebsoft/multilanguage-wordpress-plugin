@@ -29,6 +29,10 @@
 }
 .bws-plugin-reviews-support {
 	padding: 10px;
+    border-bottom: 1px dashed #70A8C2;
+}
+.bws-plugin-reviews-donate {
+    padding: 10px;
 }
 /*
 * styles for Go PRO tab
@@ -405,6 +409,13 @@ span.bws_code {
     margin-right: -2px;
 }
 /* bws shortcode insert */
+.mce-toolbar .mce-btn-group .mce-btn.mce-bws_shortcode_button {
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+}
+.mce-toolbar .mce-btn i.bws-shortcode-icon {
+    background: transparent url("../images/shortcode-icon.png");
+}
 #bws_shortcode_content,
 #bws_shortcode_select_plugin {
     margin-bottom: 10px;
