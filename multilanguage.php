@@ -6,7 +6,7 @@ Description: This plugin allows you to display the content in different language
 Author: BestWebSoft
 Text Domain: multilanguage
 Domain Path: /languages
-Version: 1.1.6
+Version: 1.1.7
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -34,7 +34,7 @@ require_once( dirname( __FILE__ ) . '/includes/languages.php' );
 if ( ! function_exists( 'mltlngg_admin_menu' ) ) {
 	function mltlngg_admin_menu() {
 		bws_general_menu();
-		$settings = add_submenu_page( 'bws_plugins', 'Multilanguage', 'Multilanguage', 'manage_options', "mltlngg_settings", 'mltlngg_settings_page' );
+		$settings = add_submenu_page( 'bws_panel', 'Multilanguage', 'Multilanguage', 'manage_options', "mltlngg_settings", 'mltlngg_settings_page' );
 		mltlngg_add_menu_items();
 		add_action( 'load-' . $settings, 'mltlngg_add_tabs' );
 	}
@@ -2057,6 +2057,17 @@ if ( ! function_exists( 'mltlngg_delete_term' ) ) {
 	}
 }
 
+/* add a class with language name */
+if ( ! function_exists ( 'mltlngg_add_body_classes' ) ) {
+	function mltlngg_add_body_classes( $classes ) {
+		global $mltlngg_current_language;
+		if ( ! empty( $mltlngg_current_language ) ) {
+			$classes[] = 'mltlngg-' . $mltlngg_current_language;
+		}
+		return $classes;
+	}
+}
+
 /* Display post_title in the selected language */
 if ( ! function_exists( 'mltlngg_the_title_filter' ) ) {
 	function mltlngg_the_title_filter( $title, $id = null ) {
@@ -2903,6 +2914,9 @@ if ( is_admin() )
 	add_action( 'the_editor_content', 'mltlngg_the_content_filter' );
 add_action( 'save_post', 'mltlngg_save_post' );	/* Saving changes in posts translations */
 add_action( 'deleted_post', 'mltlngg_delete_post' );	/* Delete posts translations from database */
+
+/* add language name as class to body tag */
+add_filter( 'body_class', 'mltlngg_add_body_classes' );
 
 /* Filters for display frontend content language */
 add_filter( 'the_title', 'mltlngg_the_title_filter', 10, 2 );

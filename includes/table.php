@@ -121,7 +121,11 @@ if ( ! class_exists( 'Mltlngg_List_Table' ) ) {
 		/* function for prepairing items */
 		function prepare_items() {
 			global $mltlngg_options;
-			$this->_column_headers = $this->get_column_info();
+			$this->_column_headers = array( 
+				$this->get_columns(),
+				array(),
+				$this->get_sortable_columns()
+			);
 			$action = $this->current_action();
 			$per_page = $this->get_items_per_page( 'languages_per_page', 10 );
 			$current_page = $this->get_pagenum();

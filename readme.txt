@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
 Requires at least: 3.8
-Tested up to: 4.5.2
-Stable tag: 1.1.6
+Tested up to: 4.5.3
+Stable tag: 1.1.7
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -47,7 +47,7 @@ If you have a feature, suggestion or idea you'd like to see in the plugin, we'd 
 * Russian (ru_RU)
 * Ukrainian (uk)
 
-If you would like to create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress" target="_blank">the text of PO and MO files</a> for <a href="http://support.bestwebsoft.com" target="_blank">BestWebSoft</a> and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO files <a href="http://www.poedit.net/download.php" target="_blank">Poedit</a>.
+Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress" target="_blank">the text of PO and MO files</a> for <a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">BestWebSoft</a> and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO files <a href="http://www.poedit.net/download.php" target="_blank">Poedit</a>.
 
 = Technical support =
 
@@ -61,7 +61,7 @@ We can fix some things for free for the users who provide a translation of our p
 
 1. Upload the `multilanguage` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin using the 'Plugins' menu in your WordPress admin panel.
-3. You can adjust the necessary settings using your WordPress admin panel in "BWS Plugins" > "Multilanguage".
+3. You can adjust the necessary settings using your WordPress admin panel in "BWS Panel" > "Multilanguage".
 4. Plugin page is located in main menu.
 
 <a href="https://docs.google.com/document/d/1018gX-8ggRs180LT2B90q0zhEJ7EewDOckpwmkJYb5Y/edit" target="_blank">View a Step-by-step Instruction on Multilanguage Installation</a>.
@@ -123,6 +123,16 @@ But note: before you have to choose English ( for England ) as one of languages 
 
 After the mode switching, the post content has been automatically filtered to remove all odd symbols or HTML tags which can disrupt the pages layout on your website. This functionality is related to WordPress core and our plugin does not affect on it in any way.
 
+= How can I change element's style in the frontend for certain language? =
+
+"mltlngg-{current language slug}" class type has been added to <body> tag for an ability to stylize content of certain language. For example, if you want to set green color for <p> when English language is selected, it is necessary to:
+1. Go to WordPress admin panel "BWS Panel" > "Multilanguage Pro" -> "Custom code";
+2. Check off "Activate" in "Editing bws-custom-code.css" block and enter the following code:
+`.mltlngg-en_US p {
+	color: green;
+}`
+3. Save changes. 
+
 = I have some problems with the plugin's work. What Information should I provide to receive proper support? =
 
 Please make sure that the problem hasn't been discussed yet on our forum (<a href="http://support.bestwebsoft.com" target="_blank">http://support.bestwebsoft.com</a>). If no, please provide the following data along with your problem's description:
@@ -147,6 +157,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 11. Adding language switcher into site menu.
 
 == Changelog ==
+
+= V1.1.7 - 28.06.2016 =
+* Bugfix : Bug with displaying the list of languages was fixed.
+* NEW : "mltlngg-{current language slug}" class type has been added to <body> tag for an ability to stylize content of certain language.
 
 = V1.1.6 - 30.05.2016 =
 * NEW : Ability to display aligned languages switcher in the site menu has been added.
@@ -233,6 +247,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.1.7 =
+Bug with displaying the list of languages was fixed. "mltlngg-{current language slug}" class type has been added to <body> tag for an ability to stylize content of certain language.
 
 = V1.1.6 =
 Ability to display aligned languages switcher in the site menu has been added. Bug with displaying alternative page links was fixed. The conflict with WooCommerce REST API was resolved.
