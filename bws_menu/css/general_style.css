@@ -4,10 +4,7 @@
 #adminmenu #toplevel_page_bws_panel.wp-has-current-submenu div.wp-menu-image img {
     width: 18px;
 }
-#adminmenu #toplevel_page_bws_panel .wp-submenu .wp-first-item {
-    display: none;
-}
-#adminmenu #toplevel_page_bws_panel .wp-submenu li:nth-child(5) a {
+#adminmenu #toplevel_page_bws_panel .wp-submenu li:nth-child(4) a {
     border-bottom: 1px solid #444;
     padding-bottom: 12px;
     margin-bottom: 5px;

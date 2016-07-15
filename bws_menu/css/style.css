@@ -2,14 +2,12 @@ a.toplevel_page_bws_panel.wp-has-current-submenu:after {
     display: none;
 }
 .toplevel_page_bws_panel #wpcontent,
-.bws-panel_page_bws_plugins #wpcontent,
 .bws-panel_page_bws_themes #wpcontent,
 .bws-panel_page_bws_system_status #wpcontent {
     padding-left: 0;
     padding-right: 0;
 }
 .toplevel_page_bws_panel .update-nag,
-.bws-panel_page_bws_plugins .update-nag,
 .bws-panel_page_bws_themes .update-nag,
 .bws-panel_page_bws_system_status .update-nag {
     display: none;
@@ -36,7 +34,7 @@ a.toplevel_page_bws_panel.wp-has-current-submenu:after {
 }
 .bws-title {
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 18px;
     letter-spacing: 0.1em;
     margin-top: 15px;    
@@ -112,6 +110,8 @@ a.toplevel_page_bws_panel.wp-has-current-submenu:after {
     background: url("../images/membership-background.jpg") no-repeat center #fff;     
     overflow: hidden;
     position: relative;
+    margin: 20px 20px 0 20px;
+    border-radius: 4px;
 }
 .bws-membership-backround {
     background-color: #000;
@@ -131,23 +131,11 @@ a.toplevel_page_bws_panel.wp-has-current-submenu:after {
 .bws-membership * {
     text-align: center;
 }
-.bws-membership-title {    
-    font-size: 27px;
-    font-weight: bolder;
-    line-height: initial;
-}
-.bws-membership-description {
-    font-size: 15px;
-    line-height: 24px;
-    margin: 18px 0 23px;
-    color: #999;
-}
 .bws-membership input[type="text"] {
     border-radius: 3px;
     border: none;
     font-size: 16.14px;
-    line-height: 18.16px;
-    padding: 9px 20px;
+    padding: 8px 20px 8px 10px;
     text-align: left;
 }
 .bws-membership .bws-button {
@@ -157,7 +145,7 @@ a.toplevel_page_bws_panel.wp-has-current-submenu:after {
     display: inline-block;
     text-decoration: none;
     font-size: 16px;
-    font-weight: bolder;
+    font-weight: 600;
     padding: 8px 30px;   
     border-radius: 3px; 
     border: none;
@@ -173,6 +161,9 @@ a.toplevel_page_bws_panel.wp-has-current-submenu:after {
     color: #fff;
     text-decoration: none;
     border-bottom: 1px solid #999;
+}
+.bws-membership-link a:hover {
+    border-bottom: none;
 }
 .bws_error {
     color: #c5412b;
@@ -218,6 +209,9 @@ a.toplevel_page_bws_panel.wp-has-current-submenu:after {
     float: left;
     margin-right: 10px;
     max-width: 400px;
+}
+.rtl .bws_system_info {
+    float: right;
 }
 .bws_system_info th {
     padding: 10px 0;
@@ -273,6 +267,7 @@ a.toplevel_page_bws_panel.wp-has-current-submenu:after {
 }
 .bws_product_title a {
     color: #444;
+    font-weight: 600;
 }
 .bws_product_title a:hover {
     color: #00a0d2;
@@ -295,6 +290,7 @@ a.toplevel_page_bws_panel.wp-has-current-submenu:after {
     font-size: 13px;
     line-height: 18px;
     margin: 6px 0 2px;
+    color: #666;
 }
 .bws_product_links {
     margin: 15px 0;    
@@ -316,6 +312,7 @@ a.toplevel_page_bws_panel.wp-has-current-submenu:after {
     background: #dd6930;
     border: 1px solid #c16436;
     color: #fff;
+    margin-right: 12px;
 }
 a.bws_settings,
 a.bws_donate {
@@ -405,7 +402,7 @@ a.bws_donate {
         width: 1020px;
     }
 }
-@media screen and (max-width: 1450px) {
+@media screen and (max-width: 1425px) {
     .bws-products {
         width: 700px;
     }

@@ -1,12 +1,12 @@
 <?php
 /*
 Plugin Name: Multilanguage by BestWebSoft
-Plugin URI: http://bestwebsoft.com/products/
-Description: This plugin allows you to display the content in different languages.
+Plugin URI: http://bestwebsoft.com/products/multilanguage/
+Description: Translate WordPress website content to other languages manually. Create multilingual pages, posts, widgets, menus, etc.
 Author: BestWebSoft
 Text Domain: multilanguage
 Domain Path: /languages
-Version: 1.1.7
+Version: 1.1.8
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */

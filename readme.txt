@@ -4,11 +4,11 @@ Donate link: http://bestwebsoft.com/donate/
 Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
 Requires at least: 3.8
 Tested up to: 4.5.3
-Stable tag: 1.1.7
+Stable tag: 1.1.8
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-This plugin allows you to create content on a Wordpress site in different languages.
+Translate WordPress website content to other languages manually. Create multilingual pages, posts, widgets, menus, etc.
 
 == Description ==
 
@@ -126,7 +126,7 @@ After the mode switching, the post content has been automatically filtered to re
 = How can I change element's style in the frontend for certain language? =
 
 "mltlngg-{current language slug}" class type has been added to <body> tag for an ability to stylize content of certain language. For example, if you want to set green color for <p> when English language is selected, it is necessary to:
-1. Go to WordPress admin panel "BWS Panel" > "Multilanguage Pro" -> "Custom code";
+1. Go to WordPress admin panel "BWS Panel" > "Multilanguage" -> "Custom code";
 2. Check off "Activate" in "Editing bws-custom-code.css" block and enter the following code:
 `.mltlngg-en_US p {
 	color: green;
@@ -157,6 +157,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 11. Adding language switcher into site menu.
 
 == Changelog ==
+
+= V1.1.8 - 15.07.2016 =
+* Update : BWS panel section was updated.
 
 = V1.1.7 - 28.06.2016 =
 * Bugfix : Bug with displaying the list of languages was fixed.
@@ -247,6 +250,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.1.8 =
+Usability improved.
 
 = V1.1.7 =
 Bug with displaying the list of languages was fixed. "mltlngg-{current language slug}" class type has been added to <body> tag for an ability to stylize content of certain language.
