@@ -21,7 +21,7 @@
 						if ( ( typeof( mltlngg_var.value[ item ] ) != 'undefined' && mltlngg_var.value[ item ] == key ) || ( typeof( mltlngg_var.value[ item ] ) == 'undefined' && key == 'drop-down-list' ) ) {
 							check = ' checked="checked"';
 						}
-						$( this_block ).prepend( $( '<div style="clear: both;"><label for="edit-menu-item-' + key + i + '-' + item + '"><input' + check + ' id="edit-menu-item-' + key + i + '-' + item + '" value="' + key + '" name="menu-item-mltlngg-switcher[' + item + ']" type="radio" /> ' + value + '</label></div>' ) );
+						$( this_block ).prepend( $( '<div class="mltlngg-menu-item-radio"><label for="edit-menu-item-' + key + i + '-' + item + '"><input' + check + ' id="edit-menu-item-' + key + i + '-' + item + '" value="' + key + '" name="menu-item-mltlngg-switcher[' + item + ']" type="radio" /> ' + value + '</label></div>' ) );
 						i++;
 					});
 				});

@@ -6,7 +6,7 @@ Description: Translate WordPress website content to other languages manually. Cr
 Author: BestWebSoft
 Text Domain: multilanguage
 Domain Path: /languages
-Version: 1.1.8
+Version: 1.1.9
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -43,7 +43,7 @@ if ( ! function_exists( 'mltlngg_admin_menu' ) ) {
 /* Plugin initialisation in backend and frontend */
 if ( ! function_exists( 'mltlngg_init' ) ) {
 	function mltlngg_init() {
-		global $wpdb, $mltlngg_options, $mltlngg_table_translate, $mltlngg_terms_table_translate, $mltlngg_plugin_info;
+		global $wpdb, $mltlngg_options, $mltlngg_plugin_info;
 
 		require_once( dirname( __FILE__ ) . '/bws_menu/bws_include.php' );
 		bws_include_init( plugin_basename( __FILE__ ) );
@@ -56,9 +56,6 @@ if ( ! function_exists( 'mltlngg_init' ) ) {
 
 		/* check WordPress version */
 		bws_wp_min_version_check( plugin_basename( __FILE__ ), $mltlngg_plugin_info, '3.8' );
-
-		$mltlngg_table_translate = $wpdb->prefix . 'mltlngg_translate';
-		$mltlngg_terms_table_translate = $wpdb->prefix . 'mltlngg_terms_translate';
 
 		mltlngg_register_settings();
 
@@ -111,38 +108,36 @@ if ( ! function_exists( 'mltlngg_admin_init' ) ) {
 /* Default Plugin settings */
 if ( ! function_exists( 'mltlngg_register_settings' ) ) {
 	function mltlngg_register_settings() {
-		global $mltlngg_plugin_info, $mltlngg_options, $mltlngg_languages, $mltlngg_language_default, $mltlngg_list_of_languages, $mltlngg_default_options, $wp_version;
+		global $mltlngg_plugin_info, $mltlngg_options, $mltlngg_languages, $mltlngg_list_of_languages, $mltlngg_default_options, $wp_version;
 		$mltlngg_db_version = '0.3';
 		
 		/* Set the default language is the same as the language of the Wordpress localization */
 		foreach ( $mltlngg_languages as $one_lang ) { /* Search locale in the array of standard languages, source - languages.php */
 			$mltlngg_is_lang_exist = array_search( get_locale(), $one_lang );
 			if ( false != $mltlngg_is_lang_exist ) { /* If the locale is found set the default language */
-				$mltlngg_language_default = $one_lang;
+				$language_default = $one_lang;
 				break;
 			}
 		}
 
 		/* If the language is not found or is not a standard, set English ('en_US') as the default language */
-		if ( ! isset( $mltlngg_language_default ) || NULL == $mltlngg_language_default )
-			$mltlngg_language_default = array( 'en', 'en_US', 'English', '' );
+		if ( ! isset( $language_default ) || NULL == $language_default )
+			$language_default = array( 'en', 'en_US', 'English', '' );
 		
-		$mltlngg_list_of_languages = array(
-			array(
-				'locale'	=> $mltlngg_language_default[1],
-				'name'		=> $mltlngg_language_default[2],
-				'enable'	=> true,
-				'priority'	=> 1
-			),
-		);
-
 		/* Set the default options */
 		$mltlngg_default_options = array(
 			'plugin_option_version'		=> $mltlngg_plugin_info["Version"],
 			'plugin_db_version' 		=> $mltlngg_db_version,
 			'wp_version'				=> $wp_version,
-			'default_language'			=> $mltlngg_language_default[1],
-			'list_of_languages'			=> $mltlngg_list_of_languages,
+			'default_language'			=> $language_default[1],
+			'list_of_languages'			=> array(
+				array(
+					'locale'	=> $language_default[1],
+					'name'		=> $language_default[2],
+					'enable'	=> true,
+					'priority'	=> 1
+				)
+			),
 			'enabled_new_language'		=> false,
 			'autosave_editor_content'	=> true,
 			'wp_localization'			=> true,
@@ -234,15 +229,13 @@ if ( ! function_exists( 'mltlngg_new_blog' ) ) {
 /* Create tables for translations when plugin is activate */
 if ( ! function_exists( '_mltlngg_plugin_activate' ) ) {
 	function _mltlngg_plugin_activate() {
-		global $wpdb, $mltlngg_table_translate, $mltlngg_terms_table_translate, $mltlngg_options;
+		global $wpdb, $mltlngg_options;
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-		$mltlngg_table_translate = $wpdb->prefix . 'mltlngg_translate';
-		$mltlngg_terms_table_translate = $wpdb->prefix . 'mltlngg_terms_translate';
 
 		mltlngg_register_settings();
 
 		$mltlngg_sql =
-			"CREATE TABLE IF NOT EXISTS `" . $mltlngg_table_translate . "` (
+			"CREATE TABLE IF NOT EXISTS `" . $wpdb->prefix . "mltlngg_translate` (
 			`ID` INT(6) UNSIGNED NOT NULL AUTO_INCREMENT,
 			`post_ID` INT(6) NOT NULL,
 			`post_content` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
@@ -254,7 +247,7 @@ if ( ! function_exists( '_mltlngg_plugin_activate' ) ) {
 		dbDelta( $mltlngg_sql );
 
 		$mltlngg_sql =
-			"CREATE TABLE IF NOT EXISTS `" . $mltlngg_terms_table_translate . "` (
+			"CREATE TABLE IF NOT EXISTS `" . $wpdb->prefix . "mltlngg_terms_translate` (
 			`ID` INT(6) UNSIGNED NOT NULL AUTO_INCREMENT,
 			`term_ID` INT(6) NOT NULL,
 			`name` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
@@ -312,16 +305,16 @@ if ( ! function_exists( '_mltlngg_plugin_activate' ) ) {
 			/* update content */
 			$posts = $wpdb->get_results( 
 				"SELECT $wpdb->posts.`ID`, $wpdb->posts.`post_content`, $wpdb->posts.`post_title`, $wpdb->posts.`post_excerpt`
-					FROM $wpdb->posts, $mltlngg_table_translate
+					FROM $wpdb->posts, `" . $wpdb->prefix . "mltlngg_translate`
 					WHERE 
 						`post_type` IN ('page', 'post') AND
-						$wpdb->posts.`ID` = $mltlngg_table_translate.`post_ID` AND
+						$wpdb->posts.`ID` = `" . $wpdb->prefix . "mltlngg_translate`.`post_ID` AND
 						`post_modified` > '" . $mltlngg_options['deactivation'] . "'"
 			);
 
 			foreach ( $posts as $key => $value ) {
 				$wpdb->update(
-					$mltlngg_table_translate,
+					$wpdb->prefix . 'mltlngg_translate',
 					array(
 						'post_content'	=> $value->post_content,
 						'post_title'	=> $value->post_title,
@@ -835,13 +828,15 @@ if ( ! function_exists( 'mltlngg_get_url_translated' ) ) {
 /* Load scripts and styles */
 if ( ! function_exists( 'mltlngg_script_style' ) ) {
 	function mltlngg_script_style() {
-		global $hook_suffix;
+		global $hook_suffix, $mltlngg_options;
 		wp_enqueue_style( 'mltlngg_stylesheet', plugins_url( 'css/style.css', __FILE__ ) );
 		if ( is_admin() ) {
 			wp_enqueue_script( 'mltlngg_script', plugins_url( 'js/script.js', __FILE__ ), array( 'jquery' ) );
 			wp_localize_script( 'mltlngg_script', 'mltlngg_vars',
 				array(
-					'update_post_error' => __( 'Attention!!! The changes will not be saved because Title and Content fields are empty on the current tab! It is recommended to fill in at least one field or switch to the tab with the fields that are already filled.', 'multilanguage' )
+					'update_post_error' => __( 'Attention!!! The changes will not be saved because Title and Content fields are empty on the current tab! It is recommended to fill in at least one field or switch to the tab with the fields that are already filled.', 'multilanguage' ),
+					'ajax_nonce' 		=> wp_create_nonce( "mltlngg-ajax-nonce" ),
+					'autosave' 			=> $mltlngg_options['autosave_editor_content']
 				)
 			);
 
@@ -891,7 +886,6 @@ if ( ! function_exists( 'mltlngg_disable_autosave_editor_script' ) ) {
  */
 if ( ! class_exists( 'Mltlngg_Widget' ) ) {
 	class Mltlngg_Widget extends WP_Widget {
-
 		/**
 		 * Register widget with WordPress.
 		 */
@@ -916,9 +910,7 @@ if ( ! class_exists( 'Mltlngg_Widget' ) ) {
 			$mltlngg_language_switcher = ( isset( $instance['mltlngg_language_switcher'] ) ) ? $instance['mltlngg_language_switcher'] : $mltlngg_options['language_switcher'];
 			$title = ( ! empty( $instance['title'] ) ) ? apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base ) : '';
 			echo $args['before_widget'];
-			echo $args['before_title'];
-			echo $title;
-			echo $args['after_title'];
+			echo $args['before_title'] . $title . $args['after_title'];
 			/* Language switcher style */
 			echo mltlngg_get_switcher_block( $mltlngg_language_switcher );
 			echo $args['after_widget'];
@@ -1177,7 +1169,7 @@ if ( ! function_exists( 'mltlngg_settings_page' ) ) {
 		} ?>
 		<div class="wrap" id="mltlngg-settings">
 			<h1><?php _e( 'Multilanguage Settings', 'multilanguage' ); 
-				if ( ! ( isset( $_GET['tab'] ) && in_array( $_GET['tab'], array( 'settings', 'go_pro' ) ) ) ) { ?>
+				if ( ! isset( $_GET['tab'] ) ) { ?>
 					<a class="page-title-action hide-if-no-js" href="#" id="mltlngg-add-lang-link"><?php _e( 'Add language', 'multilanguage' ); ?></a>
 				<?php } ?>
 			</h1>
@@ -1286,12 +1278,12 @@ if ( ! function_exists( 'mltlngg_settings_page' ) ) {
 								</td>
 							</tr>
 							<tr valign="middle">
-								<th scope="row"><?php _e( "Display alternative page links", 'multilanguage' ); ?></th>
+								<th scope="row"><?php printf( __( 'Add hreflang links to %s section', 'multilanguage' ), '&lt;head>' ); ?></th>
 								<td>
 									<input type="checkbox" id="mltlngg_display_alternative_link" name="mltlngg_display_alternative_link" value="1" <?php echo ( true == $mltlngg_options['display_alternative_link'] ) ? ' checked="checked"' : ''; ?> />
 									<div class="bws_help_box dashicons dashicons-editor-help mltlngg_thumb_block">
 										<div class="bws_hidden_help_text" style="width: 200px;">
-											<p><?php printf( __( 'With this option, there will be added links to your current page for each language from your site into the tag %s', 'multilanguage' ), '&lt;head>' ); ?></p>
+											<p><?php _e( 'The hreflang attribute is used by Google and other search systems to display the correct language or regional URL in search results. This option automatically inserts the respective link elements of each language within the head section.', 'multilanguage' ); ?></p>
 										</div>
 									</div>
 								</td>
@@ -1461,7 +1453,7 @@ if ( ! function_exists( 'mltlngg_add_language' ) ) {
 /* Adding to post/page editor tabs in enabled languages */
 if ( ! function_exists( 'mltlngg_showup_language_tabs_in_editor' ) ) {
 	function mltlngg_showup_language_tabs_in_editor() {
-		global $wpdb, $post, $mltlngg_options, $mltlngg_language, $mltlngg_active_language, $mltlngg_current_language, $mltlngg_table_translate, $mltlngg_enabled_languages, $mltlngg_get_default_language;
+		global $wpdb, $post, $mltlngg_options, $mltlngg_language, $mltlngg_active_language, $mltlngg_current_language, $mltlngg_enabled_languages, $mltlngg_get_default_language;
 		$mltlngg_post_type = get_post_type( $post->ID );
 		if ( $mltlngg_post_type == 'post' || $mltlngg_post_type == 'page' ) {
 			$mltlngg_original_data = $wpdb->get_row( $wpdb->prepare(
@@ -1493,7 +1485,7 @@ if ( ! function_exists( 'mltlngg_showup_language_tabs_in_editor' ) ) {
 			<?php if ( is_admin() )
 				$mltlngg_current_language = ( isset( $_GET['lang'] ) ) ? $_GET['lang'] : ( ( isset( $mltlngg_active_language['locale'] ) ) ? $mltlngg_active_language['locale'] : $mltlngg_options['default_language'] );
 			if ( $mltlngg_get_default_language != $mltlngg_current_language ) {
-				$excerpt = $wpdb->get_var( $wpdb->prepare( "SELECT `post_excerpt` FROM $mltlngg_table_translate WHERE `post_ID` = %d AND `language` = '%s'", $post->ID, $mltlngg_active_language['locale'] ) );
+				$excerpt = $wpdb->get_var( $wpdb->prepare( "SELECT `post_excerpt` FROM `" . $wpdb->prefix . "mltlngg_translate` WHERE `post_ID` = %d AND `language` = %s", $post->ID, $mltlngg_active_language['locale'] ) );
 			} else
 				$excerpt = $mltlngg_original_data['post_excerpt']; ?>
 			<input id="title-<?php echo $mltlngg_options['default_language']; ?>" type="hidden" value="<?php echo esc_html( $mltlngg_original_data['post_title'] ); ?>" name="title_<?php echo $mltlngg_options['default_language']; ?>">
@@ -1507,7 +1499,7 @@ if ( ! function_exists( 'mltlngg_showup_language_tabs_in_editor' ) ) {
 /* Function for save post/page changes to translations tables */
 if ( ! function_exists( 'mltlngg_save_post' ) ) {
 	function mltlngg_save_post( $post_id ) {
-		global $wpdb, $mltlngg_table_translate, $mltlngg_options;
+		global $wpdb, $mltlngg_options;
 		$mltlngg_post_type = get_post_type( $post_id );
 		if ( $mltlngg_post_type == 'post' || $mltlngg_post_type == 'page' ) {
 			if ( ( isset( $_POST['save'] ) || isset( $_POST['publish'] ) ) && check_admin_referer( 'mltlngg_translate_form', 'mltlngg_translate_form_field' ) ) {
@@ -1525,19 +1517,21 @@ if ( ! function_exists( 'mltlngg_save_post' ) ) {
 					}
 					/* Save the translation data from new array */
 					foreach ( $mltlngg_translate_data as $mltlngg_translate ) {
-						if ( $mltlngg_translate['lang'] != $_POST['mltlngg_active_language'] ) { /* If active language tab same as default language do not save changes */
-							$mltlngg_sql = $wpdb->prepare(
+						if ( $mltlngg_translate['lang'] != $_POST['mltlngg_active_language'] ) {
+							/* If active language tab same as default language do not save changes */
+
+							/* Get translation data for current language from database */
+							$mltlngg_result = $wpdb->get_row( $wpdb->prepare(
 								"SELECT *
-								 FROM $mltlngg_table_translate
-								 WHERE `post_ID` = %d AND `language` = '%s'
+								 FROM `" . $wpdb->prefix . "mltlngg_translate`
+								 WHERE `post_ID` = %d AND `language` = %s
 								", $mltlngg_post_id, $mltlngg_translate['lang']
-							);
-							$mltlngg_result = $wpdb->get_row( $mltlngg_sql, 'ARRAY_A' ); /* Get translation data for current language from database */
+							), ARRAY_A );
 							$excerpt = isset( $mltlngg_translate['excerpt'] ) ? $mltlngg_translate['excerpt'] : '';
 							if ( isset( $mltlngg_result['post_content'] ) && isset( $mltlngg_result['post_title'] ) ) { /* If translation is exist in database, update translation */
 								if ( $mltlngg_translate['content'] != $mltlngg_result['post_content'] || $mltlngg_translate['title'] != $mltlngg_result['post_title'] || $excerpt != $mltlngg_result['post_excerpt'] ) {
 									$wpdb->update(
-										$mltlngg_table_translate,
+										$wpdb->prefix . 'mltlngg_translate',
 										array(
 											'post_content'	=> wp_unslash( sanitize_post_field( 'post_content', $mltlngg_translate['content'], 0, 'db' ) ),
 											'post_title'	=> wp_unslash( $mltlngg_translate['title'] ),
@@ -1551,9 +1545,10 @@ if ( ! function_exists( 'mltlngg_save_post' ) ) {
 										array( '%d', '%s' )
 									);
 								}
-							} elseif ( $mltlngg_translate['content'] != "" || $mltlngg_translate['title'] != "" ) { /* If translation is not exist in database, create translation */
+							} elseif ( $mltlngg_translate['content'] != "" || $mltlngg_translate['title'] != "" ) {
+								/* If translation is not exist in database, create translation */
 								$wpdb->insert(
-									$mltlngg_table_translate,
+									$wpdb->prefix . 'mltlngg_translate',
 									array(
 										'post_ID'		=> $mltlngg_post_id,
 										'post_content'	=> wp_unslash( sanitize_post_field( 'post_content', $mltlngg_translate['content'], 0, 'db' ) ),
@@ -1568,18 +1563,19 @@ if ( ! function_exists( 'mltlngg_save_post' ) ) {
 					}
 				}
 				/* Save the translation data from active language tab */
-				$mltlngg_sql = $wpdb->prepare(
+
+				/* Get translation data for current language from database */
+				$mltlngg_result = $wpdb->get_row( $wpdb->prepare(
 					"SELECT *
-					 FROM $mltlngg_table_translate
-					 WHERE `post_ID` = %d AND `language` = '%s'
+					 FROM `" . $wpdb->prefix . "mltlngg_translate`
+					 WHERE `post_ID` = %d AND `language` = %s
 					", $mltlngg_post_id, $_POST['mltlngg_active_language']
-				);
-				$mltlngg_result = $wpdb->get_row( $mltlngg_sql, 'ARRAY_A' ); /* Get translation data for current language from database */
+				), ARRAY_A ); 
 				$excerpt = isset( $_POST['post_excerpt'] ) ? $_POST['post_excerpt'] : '';
 				if ( isset( $mltlngg_result['post_content'] ) && isset( $mltlngg_result['post_title'] ) ) { /* If translation is exist in database, update translation */
 					if ( $_POST['content'] != $mltlngg_result['post_content'] || $_POST['post_title'] != $mltlngg_result['post_title'] || $excerpt != $mltlngg_result['post_excerpt'] ) {
 						$wpdb->update(
-							$mltlngg_table_translate,
+							$wpdb->prefix . 'mltlngg_translate',
 							array(
 								'post_content'	=> wp_unslash( sanitize_post_field( 'post_content', $_POST['content'] , 0, 'db' ) ),
 								'post_title'	=> wp_unslash( $_POST['post_title'] ),
@@ -1595,7 +1591,7 @@ if ( ! function_exists( 'mltlngg_save_post' ) ) {
 					}
 				} else { /* If translation is not exist in database, create translation */
 					$wpdb->insert(
-						$mltlngg_table_translate,
+						$wpdb->prefix . 'mltlngg_translate',
 						array(
 							'post_ID'		=> $mltlngg_post_id,
 							'post_content'	=> wp_unslash( sanitize_post_field( 'post_content', $_POST['content'] , 0, 'db' ) ),
@@ -1632,192 +1628,27 @@ if ( ! function_exists( 'mltlngg_save_post' ) ) {
 	}
 }
 
-/* AJAX function for switch language and auto-save changes to translations tables */
-if ( ! function_exists( 'mltlngg_ajax_languages_tab' ) ) {
-	function mltlngg_ajax_languages_tab() {
-		$ajax_nonce = wp_create_nonce( "mltlngg-ajax-nonce" ); ?>
-		<script type="text/javascript">
-			(function( $ ) {
-				$( document ).ready(function() {
-					/* Get option how to update translation */
-					var autoSaveContent = '<?php $autosave = get_option( 'mltlngg_options' ); echo $autosave['autosave_editor_content']; ?>', /* Get autosave option */
-					getLangContentDiv = $( '#get-lang-content' ); /* Find DIV id=get-lang-content */
-					$( '#excerpt' ).val( $( 'input#excerpt-' + getLangContentDiv.find( 'a.nav-tab-active' ).data( 'lang' ) ).val() );/* show excerpt loaded language */
-					$( 'li[id^="category-"]' ).each( function( i,elem ) {
-						var old_cat = $( elem ).find( 'label' ).text();
-						old_cat = old_cat.trim();
-						var old_key = $( elem ).find( 'input' ).text();
-						$( elem ).append(
-							$( '<input/>' ) /* Create hidden field with categories */
-							.attr( 'type', 'hidden' )
-							.attr( 'id', 'cat-' + getLangContentDiv.find( 'a.nav-tab-active' ).data( 'lang' ) )
-							.attr( 'name', 'cat_' + getLangContentDiv.find( 'a.nav-tab-active' ).data( 'lang' ) )
-							.val( old_cat )
-						);	 
-					});
-
-					/* Function for click on another language tab to edit translation */
-					getLangContentDiv.on( 'click', 'a.nav-tab', function() {
-						var inputTitle = $( '#title' ), /* Find INPUT id=title */
-							inputContent = $( '#content' ), /* Find INPUT id=content */
-							inputExcerpt = $( '#excerpt' ),
-							mltlnggPostId = $( '#post_ID' ).attr( 'value' ), /* Get current post ID */
-							cat_id = [],/* Array for category */
-							newLang = ( $( this ).data( 'lang' ) ), /* Get language code from current language tab */
-							newLangName = ( $( this ).attr( 'value' ) ), /* Get language name from current language tab */
-							inputTitleNewLang = $( 'input#title-' + newLang ), /* Find INPUT id=title-{new lang code} */
-							oldLang = getLangContentDiv.find( 'a.nav-tab-active' ).data( 'lang' ), /* Get language code from previous language tab */
-							inputTitleOldLang = $( 'input#title-' + oldLang ), /* Find INPUT id=title-{old lang code} */
-							mltlnggOldTitle = inputTitle.val(), /* Get title from previous language tab */
-							mltlnggOldExcerpt = $( '#excerpt' ).val(),
-							mltlnggOldContent, data;
-						$( 'input[id^="in-category-"]' ).each( function( i,elem ) { 
-							cat_id[i] = $( elem ).val();
-						});
-						getLangContentDiv.find( 'a.nav-tab-active' ).removeClass( 'nav-tab-active' ); /* Change previous language tab from active to inactive */
-						$( this ).addClass( 'nav-tab-active' ); /* Change current language tab from inactive to active */
-						/* Get content from previous language tab */
-						if ( inputContent.is( ":hidden" ) ) { /* If TinyMCE editor is active */
-							mltlnggOldContent = tinymce.get('content').getContent(); /* Get content from TinyMCE */
-						} else { /* If Text editor is active */
-							mltlnggOldContent = inputContent.val(); /* Get content from Text editor */
-						}
-						inputTitleOldLang.val( mltlnggOldTitle ); /* Insert Title from previous language tab to hidden field */
-						$( 'textarea#content-' + oldLang ).val( mltlnggOldContent ); /* Insert Content from previous language tab to hidden field */
-						$( 'input#excerpt-' + oldLang ).val( mltlnggOldExcerpt );
-						if ( inputTitleNewLang.length > 0 && $( '#after-save-' + newLang ).length > 0 ) { /* If hidden blocks is exist, get Title & Content from them */
-							inputTitle.val( inputTitleNewLang.val() ); /* Set title to current language tab */
-							/* Set content to current language tab */
-							if ( inputContent.is( ":hidden" ) ) { /* If TinyMCE editor is active */
-								tinymce.get('content').setContent( $( 'textarea#content-' + newLang ).val() ); /* Set content to TinyMCE */
-							} else { /* If Text editor is active */
-								inputContent.val( $( 'textarea#content-' + newLang ).val() ); /* Set content to Text editor */
-							}
-							inputExcerpt.val( $( 'input#excerpt-' + newLang ).val() );
-							$( 'li[id^="category-"]' ).each(function( i, elem ) { 
-								var html_object = $( elem ).find( 'label' );
-								var old_cat = html_object.text();
-								var content = html_object.html();
-								if ( $( elem ).find( 'input[id^="cat-' + newLang +'"]' ).length > 0 ) {
-									content = content.replace( old_cat, ' ' + $( elem ).find( 'input[id^="cat-' + newLang +'"]' ).val() )
-									$( html_object ).html( content );
-								}	
-							} );
-							/* If autoupdate translation is enabled, save changes */
-							if ( 1 == autoSaveContent ) {
-								data = {
-									'action': 'mltlngg_ajax_callback',
-									'old_lang': oldLang,
-									'cat_id' : cat_id,
-									'mltlngg_post_id': mltlnggPostId,
-									'mltlngg_old_title': mltlnggOldTitle,
-									'mltlngg_old_content': mltlnggOldContent,
-									'mltlngg_old_excerpt': mltlnggOldExcerpt,
-									'security': '<?php echo $ajax_nonce; ?>'
-								};
-								$.post( ajaxurl, data );
-							}
-						} else { /* If hidden blocks is not exist, get Title & Content from database, then create hidden blocks */
-							data = {
-								'action': 'mltlngg_ajax_callback',
-								'get_data': 'get_data',
-								'cat_id' : cat_id,
-								'new_lang': newLang,
-								'old_lang': oldLang,
-								'mltlngg_post_id': mltlnggPostId,
-								'mltlngg_old_title': mltlnggOldTitle,
-								'mltlngg_old_content': mltlnggOldContent,
-								'mltlngg_old_excerpt': mltlnggOldExcerpt,
-								'security': '<?php echo $ajax_nonce; ?>'
-							};
-							$.post( ajaxurl, data, function ( response ) {
-								/* get only content in multilanguage comments */
-								var regExp = /<!--mltlngg-ajax-results-->([^]+)<!--end-mltlngg-ajax-results-->/;
-								var matches = regExp.exec( response );
-								if ( matches ) {
-									response = matches[1];
-								}
-
-								var mltlnggNew = $.parseJSON( response );
-								$( '#post-body-content' ).append(
-									$( '<input/>' ) /* Create hidden field with Title */
-										.attr( 'type', 'hidden' )
-										.attr( 'id', 'title-' + newLang )
-										.attr( 'name', 'title_' + newLang )
-										.val( mltlnggNew.post_title ),
-									$( '<textarea/>' ) /* Create hidden field with Content */
-										.css( 'display', 'none' )
-										.attr( 'id', 'content-' + newLang )
-										.attr( 'name', 'content_' + newLang )
-										.val( mltlnggNew.post_content ),
-									$( '<input/>' ) /* Create hidden field with Excerpt */
-										.attr( 'type', 'hidden' )
-										.attr( 'id', 'excerpt-' + newLang )
-										.attr( 'name', 'excerpt_' + newLang )
-										.val( mltlnggNew.post_excerpt )	
-								);
-								inputTitle.val( mltlnggNew.post_title ); /* Set title to current language tab */
-								/* Set content to current language tab */
-								if ( inputContent.is( ":hidden" ) ) { /* If TinyMCE editor is active */
-									tinymce.get('content').setContent( mltlnggNew.post_content );
-								} else { /* If Text editor is active */
-									inputContent.val( mltlnggNew.post_content );
-								}
-								$( '#excerpt' ).val( mltlnggNew.post_excerpt );
-								for( var key in mltlnggNew.cat_translate ) {
-									var html_object = $( '#category-' + key + ' label' );
-									var old_cat = html_object.text();
-									var content = html_object.html();
-									content = content.replace( old_cat, ' ' + mltlnggNew.cat_translate[key] )
-									$( 'li#category-' + key + ' label' ).html( content );
-									$( 'li#category-' + key + '' ).append(
-										$( '<input/>' ) /* Create hidden field with Categories */
-										.attr( 'type', 'hidden' )
-										.attr( 'id', 'cat-' + newLang + "-" + key )
-										.attr( 'name', 'cat_' + newLang + "_" + key )
-										.val( mltlnggNew.cat_translate[key] )
-									);
-								}
-								if ( $( '#after-save-' + newLang ).length == 0 ) {
-									$( getLangContentDiv ).append(
-										$( '<input/>' ) /* Create hidden field with mark on the save */
-										.attr( 'type', 'hidden' )
-										.attr( 'id', 'after-save-' + newLang )
-										.val( newLang )
-										);
-								}
-							});
-						}
-						$( '#mltlngg-current-lang' ).text( newLangName );
-						$( '#mltlngg-active-language' ).val( newLang ); /* Set new active language */
-						return false;
-					});
-				});
-			})( jQuery );
-		</script>
-	<?php }
-}
-
 /* Callback function for AJAX function */
 if ( ! function_exists( 'mltlngg_ajax_callback' ) ) {
 	function mltlngg_ajax_callback() {
-		global $wpdb, $mltlngg_table_translate, $mltlngg_options, $mltlngg_terms_table_translate;
+		global $wpdb, $mltlngg_options;
 		check_ajax_referer( 'mltlngg-ajax-nonce', 'security' );
 		$mltlngg_old_excerpt = isset( $_POST['mltlngg_old_excerpt'] ) ? $_POST['mltlngg_old_excerpt'] :'';
 		$mltlngg_id = $_POST['mltlngg_post_id'];
 		/* Auto-update translation if it has been changed when autosave option is enabled */
 		if ( true == $mltlngg_options['autosave_editor_content'] && ! empty( $_POST['old_lang'] ) ) {
-			$mltlngg_sql_old = $wpdb->prepare(
+			/* Get translation data for previous language from database */
+			$mltlngg_result_old = $wpdb->get_row( $wpdb->prepare(
 				"SELECT *
-				 FROM $mltlngg_table_translate
-				 WHERE `post_ID` = %d AND `language` = '%s'
+				 FROM `" . $wpdb->prefix . "mltlngg_translate`
+				 WHERE `post_ID` = %d AND `language` = %s
 				", $mltlngg_id, $_POST['old_lang']
-			);
-			$mltlngg_result_old = $wpdb->get_row( $mltlngg_sql_old, 'ARRAY_A' ); /* Get translation data for previous language from database */
-			if ( isset( $mltlngg_result_old['post_content'] ) && isset( $mltlngg_result_old['post_title'] ) ) { /* If translation is exist in database, update translation */
+			), ARRAY_A ); 
+			if ( isset( $mltlngg_result_old['post_content'] ) && isset( $mltlngg_result_old['post_title'] ) ) {
+				/* If translation is exist in database, update translation */
 				if ( $_POST['mltlngg_old_content'] != $mltlngg_result_old['post_content'] || $_POST['mltlngg_old_title'] != $mltlngg_result_old['post_title'] || $mltlngg_old_excerpt != $mltlngg_result_old['post_excerpt'] ) {
 					$wpdb->update(
-						$mltlngg_table_translate,
+						$wpdb->prefix . 'mltlngg_translate',
 						array(
 							'post_content'	=> wp_unslash( sanitize_post_field( 'post_content', $_POST['mltlngg_old_content'] , 0, 'db' ) ),
 							'post_title'	=> wp_unslash( $_POST['mltlngg_old_title'] ),
@@ -1831,9 +1662,10 @@ if ( ! function_exists( 'mltlngg_ajax_callback' ) ) {
 						array( '%d', '%s' )
 					);
 				}
-			} elseif ( "" != $_POST['mltlngg_old_content'] || "" != $_POST['mltlngg_old_title'] ) { /* If translation not exist in database, create translation */
+			} elseif ( "" != $_POST['mltlngg_old_content'] || "" != $_POST['mltlngg_old_title'] ) {
+				/* If translation not exist in database, create translation */
 				$wpdb->insert(
-					$mltlngg_table_translate,
+					$wpdb->prefix . 'mltlngg_translate',
 					array(
 						'post_ID'		=> $mltlngg_id,
 						'post_content'	=> wp_unslash( sanitize_post_field( 'post_content', $_POST['mltlngg_old_content'] , 0, 'db' ) ),
@@ -1849,21 +1681,20 @@ if ( ! function_exists( 'mltlngg_ajax_callback' ) ) {
 		if ( isset( $_POST['get_data'] ) && ! empty( $_POST['new_lang'] ) ) {
 			$mltlngg_new_cat_data = array( "cat_translate" => "" );
 			
-			$mltlngg_sql = $wpdb->prepare(
+			 /* Get translation data for current language from database */
+			$mltlngg_post_data = $wpdb->get_row( $wpdb->prepare(
 				"SELECT *
-				 FROM $mltlngg_table_translate
-				 WHERE `post_ID` = %d AND `language` = '%s'
+				 FROM `" . $wpdb->prefix . "mltlngg_translate`
+				 WHERE `post_ID` = %d AND `language` = %s
 				", $mltlngg_id, $_POST['new_lang']
-			);
-			$mltlngg_post_data = $wpdb->get_row( $mltlngg_sql, 'ARRAY_A' ); /* Get translation data for current language from database */
+			), ARRAY_A );
 			if ( isset( $_POST['cat_id'] ) ) {
-				$mltlngg_sql = $wpdb->prepare(
+				$mltlngg_cat_data = $wpdb->get_results( $wpdb->prepare(
 					"SELECT *
-					 FROM $mltlngg_terms_table_translate
-					 WHERE `language` = '%s'
+					 FROM `" . $wpdb->prefix . "mltlngg_terms_translate`
+					 WHERE `language` = %s
 					", $_POST['new_lang']
-				);
-				$mltlngg_cat_data = $wpdb->get_results( $mltlngg_sql, 'ARRAY_A' ); /* Get translation data for current language from database */
+				), ARRAY_A ); /* Get translation data for current language from database */
 			}
 
 			if ( ! empty( $mltlngg_cat_data ) ) {
@@ -1921,12 +1752,12 @@ if ( ! function_exists( 'mltlngg_new_terms_translate' ) ) {
 /* Function for create new category/tag with translations */
 if ( ! function_exists( 'mltlngg_new_terms_created' ) ) {
 	function mltlngg_new_terms_created( $term_id ) {
-		global $wpdb, $mltlngg_terms_table_translate, $mltlngg_enabled_languages;
+		global $wpdb, $mltlngg_enabled_languages;
 		foreach ( $mltlngg_enabled_languages as $one_language ) {
 			$cat_lang = 'mltlngg_translate_' . $one_language['locale'];
 			if ( isset( $_POST[ $cat_lang ] ) && "" != $_POST[ $cat_lang ] ) { /* If translation is empty, do not create translation in database */
 				$wpdb->insert(
-					$mltlngg_terms_table_translate,
+					$wpdb->prefix . 'mltlngg_terms_translate',
 					array(
 						'term_ID'	=> $term_id,
 						'name'		=> $_POST[ $cat_lang ],
@@ -1942,17 +1773,16 @@ if ( ! function_exists( 'mltlngg_new_terms_created' ) ) {
 /* Adding translations form for all enabled languages to edit category/tag */
 if ( ! function_exists( 'mltlngg_terms_translate' ) ) {
 	function mltlngg_terms_translate() {
-		global $tag_ID, $wpdb, $mltlngg_terms_table_translate, $mltlngg_enabled_languages;
+		global $tag_ID, $wpdb, $mltlngg_enabled_languages;
 		$mltlngg_term = array();
 		foreach ( $mltlngg_enabled_languages as $one_language ) {
-			/* Get translation data from database */
-			$mltlngg_sql = $wpdb->prepare(
+			/* Get terms translations from database */
+			$mltlngg_term_result = $wpdb->get_row( $wpdb->prepare(
 				"SELECT *
-				 FROM $mltlngg_terms_table_translate
+				 FROM `" . $wpdb->prefix . "mltlngg_terms_translate`
 				 WHERE `term_ID` = %d AND `language` = %s
 				", $tag_ID, $one_language['locale']
-			);
-			$mltlngg_term_result = $wpdb->get_row( $mltlngg_sql, 'ARRAY_A' ); /* Get terms translations from database */
+			), ARRAY_A ); 
 			$mltlngg_term[ $one_language['locale'] ] = $mltlngg_term_result['name'];
 		} ?>
 		<table class="form-table">
@@ -1985,11 +1815,11 @@ if ( ! function_exists( 'mltlngg_terms_translate' ) ) {
 /* Function for update translations of category/tag */
 if ( ! function_exists( 'mltlngg_terms_update' ) ) {
 	function mltlngg_terms_update() {
-		global $tag_ID, $wpdb, $mltlngg_terms_table_translate, $mltlngg_enabled_languages;
+		global $tag_ID, $wpdb, $mltlngg_enabled_languages;
 		$local_name = get_locale();
 		if ( isset( $_POST['action'] ) && 'inline-save-tax' == $_POST['action'] ) {
 			$wpdb->update(
-				$mltlngg_terms_table_translate,
+				$wpdb->prefix . 'mltlngg_terms_translate',
 				array(
 					'name'	=> $_POST['name'],
 				),
@@ -2004,17 +1834,17 @@ if ( ! function_exists( 'mltlngg_terms_update' ) ) {
 		if ( isset( $_POST['submit'] ) && check_admin_referer( 'mltlngg_translate_terms_form', 'mltlngg_translate_terms_form_field' ) ) {
 			foreach ( $mltlngg_enabled_languages as $one_language ) {
 				$cat_lang = 'mltlngg_translate_' . $one_language['locale'];
-				$mltlngg_sql = $wpdb->prepare(
+
+				$mltlngg_result = $wpdb->get_row( $wpdb->prepare(
 					"SELECT *
-					 FROM $mltlngg_terms_table_translate
-					 WHERE `term_ID` = %d AND `language` = '%s'
+					 FROM `" . $wpdb->prefix . "mltlngg_terms_translate`
+					 WHERE `term_ID` = %d AND `language` = %s
 					", $tag_ID, $one_language['locale']
-				);
-				$mltlngg_result = $wpdb->get_row( $mltlngg_sql, 'ARRAY_A' ); /* Get terms translations from database */
+				), ARRAY_A ); /* Get terms translations from database */
 				$cat_name = ( $mltlngg_result['language'] == $local_name ) ? $_POST['name'] : $_POST[ $cat_lang ];
 				if ( isset( $mltlngg_result['name'] ) && ( ( $_POST[ $cat_lang ] != $mltlngg_result['name'] ) || ( $mltlngg_result['language'] == $local_name ) ) ) { /* If translation is exist in database, update translation */
 					$wpdb->update(
-						$mltlngg_terms_table_translate,
+						$wpdb->prefix . 'mltlngg_terms_translate',
 						array(
 							'name'	=> $cat_name,
 						),
@@ -2025,9 +1855,10 @@ if ( ! function_exists( 'mltlngg_terms_update' ) ) {
 						array( '%s' ),
 						array( '%d', '%s' )
 					);
-				} elseif ( ! isset( $mltlngg_result['name'] ) && "" != $_POST[ $cat_lang ] ) { /* If translation is not exist in database, create translation */
+				} elseif ( ! isset( $mltlngg_result['name'] ) && "" != $_POST[ $cat_lang ] ) {
+					/* If translation is not exist in database, create translation */
 					$wpdb->insert(
-						$mltlngg_terms_table_translate,
+						$wpdb->prefix . 'mltlngg_terms_translate',
 						array(
 							'term_ID'	=> $tag_ID,
 							'name'		=> $cat_name,
@@ -2044,16 +1875,16 @@ if ( ! function_exists( 'mltlngg_terms_update' ) ) {
 /* Function for delete post translations */
 if ( ! function_exists( 'mltlngg_delete_post' ) ) {
 	function mltlngg_delete_post( $postid ) {
-		global $wpdb, $mltlngg_table_translate;
-		$wpdb->query( $wpdb->prepare( "DELETE FROM $mltlngg_table_translate WHERE `post_ID` = %d", $postid ) );
+		global $wpdb;
+		$wpdb->query( $wpdb->prepare( "DELETE FROM `" . $wpdb->prefix . "mltlngg_translate` WHERE `post_ID` = %d", $postid ) );
 	}
 }
 
 /* Function for delete terms translations */
 if ( ! function_exists( 'mltlngg_delete_term' ) ) {
 	function mltlngg_delete_term( $term ) {
-		global $wpdb, $mltlngg_terms_table_translate;
-		$wpdb->query( $wpdb->prepare( "DELETE FROM $mltlngg_terms_table_translate WHERE `term_ID` = %d", $term ) );
+		global $wpdb;
+		$wpdb->query( $wpdb->prepare( "DELETE FROM `" . $wpdb->prefix . "mltlngg_terms_translate` WHERE `term_ID` = %d", $term ) );
 	}
 }
 
@@ -2071,7 +1902,7 @@ if ( ! function_exists ( 'mltlngg_add_body_classes' ) ) {
 /* Display post_title in the selected language */
 if ( ! function_exists( 'mltlngg_the_title_filter' ) ) {
 	function mltlngg_the_title_filter( $title, $id = null ) {
-		global $mltlngg_options, $wpdb, $mltlngg_table_translate, $mltlngg_current_language, $mltlngg_active_language, $post;
+		global $mltlngg_options, $wpdb, $mltlngg_current_language, $mltlngg_active_language, $post;
 		if ( ! empty( $id ) ) {
 			if ( ! is_nav_menu_item( $id ) ) { /* Do not filter, if a navigation menu */
 				$mltlngg_post_type = get_post_type( $id );
@@ -2080,7 +1911,7 @@ if ( ! function_exists( 'mltlngg_the_title_filter' ) ) {
 					if ( is_admin() )
 						$mltlngg_current_language = ( ! empty( $_SESSION['current_language'] ) ) ? $_SESSION['current_language'] : ( ( isset( $_GET['lang'] ) ) ? $_GET['lang'] : ( ( ! isset( $_GET['message'] ) ) ? $mltlngg_options['default_language'] : $mltlngg_active_language['locale'] ) );
 
-					$new_title = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $mltlngg_table_translate WHERE `post_ID` = %d AND `language` = '%s'", $id, $mltlngg_current_language ), ARRAY_A );
+					$new_title = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM `" . $wpdb->prefix . "mltlngg_translate` WHERE `post_ID` = %d AND `language` = %s", $id, $mltlngg_current_language ), ARRAY_A );
 					/* If translation is exist and not empty, filter title */
 					if ( isset( $new_title['post_title'] ) && "" != $new_title['post_title'] ) {
 						$title = $new_title['post_title'];
@@ -2112,7 +1943,7 @@ if ( ! function_exists( 'mltlngg_nav_menu_items_filter' ) ) {
 		if ( function_exists( 'doing_action' ) && doing_action( 'customize_register' ) )
 			return $items;
 		
-		global $mltlngg_options, $wpdb, $mltlngg_table_translate, $mltlngg_current_language, $mltlngg_terms_table_translate, $mltlngg_enabled_languages, $mltlngg_get_default_language, $mltlngg_enabled_languages_locale;
+		global $mltlngg_options, $wpdb, $mltlngg_current_language, $mltlngg_enabled_languages, $mltlngg_get_default_language, $mltlngg_enabled_languages_locale;
 		
 		$is_admin = is_admin();
 		$new_items = array();
@@ -2123,8 +1954,8 @@ if ( ! function_exists( 'mltlngg_nav_menu_items_filter' ) ) {
 				$new_title = $wpdb->get_var(
 					$wpdb->prepare(
 						"SELECT `name`
-						 FROM $mltlngg_terms_table_translate
-						 WHERE `term_ID` = %d AND `language` = '%s'
+						 FROM `" . $wpdb->prefix . "mltlngg_terms_translate`
+						 WHERE `term_ID` = %d AND `language` = %s
 						", $item->object_id, $mltlngg_current_language
 					)
 				);
@@ -2134,8 +1965,8 @@ if ( ! function_exists( 'mltlngg_nav_menu_items_filter' ) ) {
 				$new_title = $wpdb->get_var(
 					$wpdb->prepare(
 						"SELECT `post_title`
-						 FROM $mltlngg_table_translate
-						 WHERE `post_ID` = %d AND `language` = '%s'
+						 FROM `" . $wpdb->prefix . "mltlngg_translate`
+						 WHERE `post_ID` = %d AND `language` = %s
 						", $item->object_id, $mltlngg_current_language
 					)
 				);
@@ -2257,7 +2088,7 @@ if ( ! function_exists( 'mltlngg_nav_menu_items_filter' ) ) {
 /* Display post_content in the selected language */
 if ( ! function_exists( 'mltlngg_the_content_filter' ) ) {
 	function mltlngg_the_content_filter( $content, $more_link_text = null, $strip_teaser = false ) {
-		global $hook_suffix, $post, $wpdb, $wp_current_filter, $mltlngg_table_translate, $mltlngg_current_language, $mltlngg_active_language, $mltlngg_options, $mltlngg_wp_providers;
+		global $hook_suffix, $post, $wpdb, $wp_current_filter, $mltlngg_current_language, $mltlngg_active_language, $mltlngg_options, $mltlngg_wp_providers;
 
 		if ( is_admin() && ! ( 'post.php' == $hook_suffix || 'post-new.php' == $hook_suffix ) )
 			return $content;
@@ -2268,7 +2099,7 @@ if ( ! function_exists( 'mltlngg_the_content_filter' ) ) {
 			if ( is_admin() )
 				$mltlngg_current_language = ( isset( $_GET['lang'] ) ) ? $_GET['lang'] : ( ( isset( $mltlngg_active_language['locale'] ) ) ? $mltlngg_active_language['locale'] : $mltlngg_options['default_language'] );
 			
-			$new_content = $wpdb->get_var( $wpdb->prepare( "SELECT `post_content` FROM $mltlngg_table_translate WHERE `post_ID` = %d AND `language` = '%s' ", $post->ID, $mltlngg_current_language ) );
+			$new_content = $wpdb->get_var( $wpdb->prepare( "SELECT `post_content` FROM `" . $wpdb->prefix . "mltlngg_translate` WHERE `post_ID` = %d AND `language` = %s ", $post->ID, $mltlngg_current_language ) );
 			if ( ! empty( $new_content ) ) {
 				if ( ! is_admin() ) {
 					if ( ! post_password_required() ) {
@@ -2415,7 +2246,7 @@ if ( ! function_exists( 'mltlngg_fiter_terms_search' ) ) {
 /* Display categories list & tags cloud & categories/tags of posts in the selected language */
 if ( ! function_exists( 'mltlngg_terms_filter' ) ) {
 	function mltlngg_terms_filter( $terms ) {
-		global $mltlngg_terms_table_translate, $wpdb, $mltlngg_current_language;
+		global $wpdb, $mltlngg_current_language;
 		
 		/* Filter the search of terms during the post editing */
 		if ( 
@@ -2451,7 +2282,7 @@ if ( ! function_exists( 'mltlngg_terms_filter' ) ) {
 					$mltlngg_one_term_name = $wpdb->get_var(
 						$wpdb->prepare(
 							"SELECT `name`
-							 FROM {$mltlngg_terms_table_translate}
+							 FROM `" . $wpdb->prefix . "mltlngg_terms_translate`
 							 WHERE `term_ID`=%d AND `language`='%s'
 							", $mltlngg_one_term->term_id, $mltlngg_current_language
 						)
@@ -2468,12 +2299,12 @@ if ( ! function_exists( 'mltlngg_terms_filter' ) ) {
 /* Display category & tags names in the title of archive pages in the selected language */
 if ( ! function_exists( 'mltlngg_term_filter' ) ) {
 	function mltlngg_term_filter( $term ) {
-		global $mltlngg_terms_table_translate, $wpdb, $mltlngg_current_language;
+		global $wpdb, $mltlngg_current_language;
 		$mltlngg_term_name = $wpdb->get_var(
 			$wpdb->prepare(
 				"SELECT `name`
-				 FROM $mltlngg_terms_table_translate
-				 WHERE `term_ID` = %d AND `language` = '%s'
+				 FROM `" . $wpdb->prefix . "mltlngg_terms_translate`
+				 WHERE `term_ID` = %d AND `language` = %s
 				", $term->term_id, $mltlngg_current_language
 			)
 		);
@@ -2504,12 +2335,12 @@ if ( ! function_exists( 'mltlngg_author_url_fix' ) ) {
 
 if ( ! function_exists( 'mltlngg_localize_excerpt' ) ) {
 	function mltlngg_localize_excerpt( $excerpt ) {
-		global $wpdb, $post, $mltlngg_current_language, $mltlngg_get_default_language, $mltlngg_table_translate;
+		global $wpdb, $post, $mltlngg_current_language, $mltlngg_get_default_language;
 		if ( $mltlngg_get_default_language != $mltlngg_current_language ) {
 			/* If current post type enabled to translation */
 			$mltlngg_post_type = get_post_type( $post->ID );
 			if ( $mltlngg_post_type == 'post' || $mltlngg_post_type == 'page' ) {	
-				$excerpt_new = $wpdb->get_var( $wpdb->prepare( "SELECT `post_excerpt` FROM $mltlngg_table_translate WHERE `post_ID` = %d AND `language` = '%s'", $post->ID, $mltlngg_current_language ) );
+				$excerpt_new = $wpdb->get_var( $wpdb->prepare( "SELECT `post_excerpt` FROM `" . $wpdb->prefix . "mltlngg_translate` WHERE `post_ID` = %d AND `language` = %s", $post->ID, $mltlngg_current_language ) );
 				if ( ! empty( $excerpt_new ) ) {
 					return $excerpt_new;
 				}
@@ -2521,14 +2352,14 @@ if ( ! function_exists( 'mltlngg_localize_excerpt' ) ) {
 
 if ( ! function_exists( 'mltlngg_search_join' ) ) {
 	function mltlngg_search_join( $join ) {
-		global $mltlngg_table_translate, $wpdb, $mltlngg_current_language, $mltlngg_options, $mltlngg_enabled_languages_locale, $mltlngg_get_default_language;
+		global $wpdb, $mltlngg_current_language, $mltlngg_options, $mltlngg_enabled_languages_locale, $mltlngg_get_default_language;
 		if ( ! is_admin() && is_main_query() && is_search() ) {
 			if ( 'single' == $mltlngg_options['search'] && $mltlngg_get_default_language != $mltlngg_current_language )
-				$join .= "LEFT JOIN (SELECT post_ID, post_content AS mltlngg_post_content, post_title AS mltlngg_post_title FROM $mltlngg_table_translate WHERE `language` = '$mltlngg_current_language' ) $mltlngg_table_translate ON " . $wpdb->posts . ".ID = " . $mltlngg_table_translate . ".post_ID";
+				$join .= "LEFT JOIN (SELECT post_ID, post_content AS mltlngg_post_content, post_title AS mltlngg_post_title FROM `" . $wpdb->prefix . "mltlngg_translate` WHERE `language` = '$mltlngg_current_language' ) `" . $wpdb->prefix . "mltlngg_translate` ON " . $wpdb->posts . ".ID = `" . $wpdb->prefix . "mltlngg_translate`.post_ID";
 			else {
 				global $wpdb;
 				$wpdb->query( "SET SESSION group_concat_max_len = 100000000;" );
-				$join .= "LEFT JOIN (SELECT post_ID, GROUP_CONCAT( DISTINCT post_content ORDER BY post_content ASC SEPARATOR ', ') AS mltlngg_post_content, GROUP_CONCAT( DISTINCT post_title ORDER BY post_title ASC SEPARATOR ', ') AS mltlngg_post_title FROM $mltlngg_table_translate WHERE `language` IN ('" . implode( "','", $mltlngg_enabled_languages_locale ) . "') AND ( `post_content` != '' OR `post_title` != '' ) GROUP BY `post_ID` ) $mltlngg_table_translate ON " . $wpdb->posts . ".ID = " . $mltlngg_table_translate . ".post_ID";
+				$join .= "LEFT JOIN (SELECT post_ID, GROUP_CONCAT( DISTINCT post_content ORDER BY post_content ASC SEPARATOR ', ') AS mltlngg_post_content, GROUP_CONCAT( DISTINCT post_title ORDER BY post_title ASC SEPARATOR ', ') AS mltlngg_post_title FROM `" . $wpdb->prefix . "mltlngg_translate` WHERE `language` IN ('" . implode( "','", $mltlngg_enabled_languages_locale ) . "') AND ( `post_content` != '' OR `post_title` != '' ) GROUP BY `post_ID` ) `" . $wpdb->prefix . "mltlngg_translate` ON " . $wpdb->posts . ".ID = `" . $wpdb->prefix . "mltlngg_translate`.post_ID";
 			}
 		}
 		return $join;
@@ -2557,7 +2388,7 @@ if ( ! function_exists( 'mltlngg_search_where' ) ) {
 	}
 }
 
-/*
+/**
 * Add language columns in the taxonomy wp_list_table
 *
 * @param array $columns list of terms table columns
@@ -2569,7 +2400,7 @@ if ( ! function_exists( 'mltlngg_add_term_column' ) ) {
 	}
 }
 
-/*
+/**
 * Add language columns in the posts wp_list_table
 *
 * @param array $columns list of posts table columns
@@ -2581,7 +2412,7 @@ if ( ! function_exists( 'mltlngg_add_post_column' ) ) {
 	}
 }
 
-/*
+/**
 * Fill language column in the taxonomy wp_list_table
 *
 * @param string $out
@@ -2599,14 +2430,14 @@ if ( ! function_exists( 'mltlngg_term_column' ) ) {
 		if ( ! post_type_exists( $post_type ) || ! taxonomy_exists( $taxonomy ) )
 			return $out;
 
-		global $wpdb, $mltlngg_terms_table_translate;
+		global $wpdb;
 
 		$language = str_replace( 'mltlngg_language_', '', $column );
 
 		/* Get term translation from database */
 		$term_translation = $wpdb->get_var( $wpdb->prepare(
 			"SELECT `name`
-			 FROM $mltlngg_terms_table_translate
+			 FROM `" . $wpdb->prefix . "mltlngg_terms_translate`
 			 WHERE `term_ID` = %d AND `language` = %s
 			", $term_id, $language
 		) );
@@ -2619,7 +2450,7 @@ if ( ! function_exists( 'mltlngg_term_column' ) ) {
 	}
 }
 
-/*
+/**
 * Fill language column in the posts wp_list_table
 *
 * @param string $column column name
@@ -2630,14 +2461,14 @@ if ( ! function_exists( 'mltlngg_post_column' ) ) {
 		if ( defined( 'DOING_AJAX' ) || false === strpos( $column, 'mltlngg_language_' ) )
 			return;
 
-		global $wpdb, $mltlngg_table_translate;
+		global $wpdb;
 
 		$language = str_replace( 'mltlngg_language_', '', $column );
 
 		/* Get post translation from database */
 		$translation = $wpdb->get_var( $wpdb->prepare(
 			"SELECT `post_content`
-			 FROM $mltlngg_table_translate
+			 FROM `" . $wpdb->prefix . "mltlngg_translate`
 			 WHERE `post_ID` = %d AND `language` = %s
 			", $post_id, $language
 		) );
@@ -2648,7 +2479,7 @@ if ( ! function_exists( 'mltlngg_post_column' ) ) {
 	}
 }
 
-/*
+/**
  * adds languages and translations columns
  *
  * @param array $columns list of table columns
@@ -2657,7 +2488,7 @@ if ( ! function_exists( 'mltlngg_post_column' ) ) {
  */
 if ( ! function_exists( 'mltlngg_add_column' ) ) {
 	function mltlngg_add_column( $columns, $before = false ) {
-		global $mltlngg_enabled_languages, $mltlngg_current_language;
+		global $mltlngg_enabled_languages, $mltlngg_get_default_language;
 		
 		if ( $before && $n = array_search( $before, array_keys( $columns ) ) ) {
 			$end = array_slice( $columns, $n );
@@ -2666,7 +2497,7 @@ if ( ! function_exists( 'mltlngg_add_column' ) ) {
 
 		foreach ( $mltlngg_enabled_languages as $language ) {
 			/* don't add the column for default language */
-			if ( $language['locale'] != $mltlngg_current_language ) {
+			if ( $language['locale'] != $mltlngg_get_default_language ) {
 
 				$columns[ 'mltlngg_language_' . $language['locale'] ] = '<img class="mltlngg-lang" src="' . plugins_url( 'images/flags/' , __FILE__ ) . $language['locale'] . '.png' . '" alt="' . $language['name'] . '"><span class="screen-reader-text">' . $language['name'] . '</span>';
 			}
@@ -2707,7 +2538,7 @@ if ( ! function_exists( 'mltlngg_language_switcher_box' ) ) {
 	<?php }
 }
 
-/*
+/**
  * Save nav menu options
  *
  * @param int $menu_id not used
@@ -2730,6 +2561,94 @@ if ( ! function_exists( 'mltlngg_wp_update_nav_menu_item' ) ) {
 				update_post_meta( $menu_item_db_id, '_mltlngg_menu_item', $value );
 			}
 		}
+	}
+}
+
+/**
+ * Compatibility with PDF & Print by BestWebSoft plugin. Display content for current language.
+ *
+ * @since 1.1.9
+ */
+if ( ! function_exists( 'mltlngg_pdf_print_content_filter' ) ) {
+	function mltlngg_pdf_print_content_filter( $content, $object ) {
+		global $wpdb, $mltlngg_current_language, $mltlngg_get_default_language, $wp_current_filter;
+
+		if ( $mltlngg_get_default_language != $mltlngg_current_language ) {
+			/* If current post type enabled to translation */
+			if ( $object->post_type == 'post' || $object->post_type == 'page' ) {
+				
+				$new_content = $wpdb->get_var( $wpdb->prepare( "SELECT `post_content` FROM `" . $wpdb->prefix . "mltlngg_translate` WHERE `post_ID` = %d AND `language` = %s ", $object->ID, $mltlngg_current_language ) );
+				if ( ! empty( $new_content ) ) {
+					$noteaser    = ( ( false !== strpos( $new_content, '<!--noteaser-->' ) ) ? true : false );
+					$extends     = get_extended( $new_content );
+					$extended    = $extends['extended'];
+					$new_content = $extends['main'];
+					
+					if ( ! empty( $mltlngg_options['video_providers'] ) ) {
+						foreach ( $mltlngg_options['video_providers'] as $reg_exp ) {
+							preg_match( $reg_exp, $new_content, $matches ); 
+							if ( ! empty( $matches[0] ) ) {
+								$string      = strstr( $matches[0], '<', true );
+								$match       = $string ? '[(' . preg_quote( $string ) . ')]' : '[(' . preg_quote( $matches[0] ) . ')]';
+								$new_content = preg_replace_callback( $match, "mltlngg_videos_filter", $new_content );
+							}
+							preg_match( $reg_exp, $new_content, $matches ); 
+							if ( ! empty( $matches[0] ) ) {
+								$string   = strstr( $matches[0], '<', true );
+								$match    = $string ? '[(' . preg_quote( $string ) . ')]' : '[(' . preg_quote( $matches[0] ) . ')]';
+								$extended = preg_replace_callback( $match, "mltlngg_videos_filter", $extended );
+							}
+						}
+					}
+
+					if ( ! is_single() && ! is_page() && ! is_search() ) {					
+						$more_link_text = __( '(more&hellip;)' );
+						$more_link = apply_filters( 'the_content_more_link', ' <a href="' . get_permalink() . "#more-{$post->ID}\" class=\"more-link\">$more_link_text</a>", $more_link_text );
+						
+						if ( '' != $extended )
+							$new_content .= $more_link;
+					} elseif ( is_page() ) {
+						$new_content .= $extended;							
+					} else {
+						if ( $noteaser )
+							$new_content = '';
+
+						$new_content .= ( 0 != strlen( $new_content ) ) ? '<span id="more-' . $object->ID . '"></span>' . $extended : $extended;
+					}
+
+					/* if it is the_excerpt - remove shortcodes */
+					if ( ! empty( $wp_current_filter ) && in_array( 'get_the_excerpt', $wp_current_filter ) )
+						$new_content = strip_shortcodes( $new_content );
+
+					if ( 0 != strlen( $new_content ) ) {	
+						return force_balance_tags( $new_content );
+					}
+					return $new_content;
+				}
+			}
+		}
+		return $content;
+	}
+}
+
+/**
+ * Compatibility with PDF & Print by BestWebSoft plugin. Display title for current language.
+ *
+ * @since 1.1.9
+ */
+if ( ! function_exists( 'mltlngg_pdf_print_title_filter' ) ) {
+	function mltlngg_pdf_print_title_filter( $title, $object ) {
+		global $mltlngg_options, $wpdb, $mltlngg_current_language, $mltlngg_get_default_language;
+		if ( $mltlngg_get_default_language != $mltlngg_current_language ) {
+			/* If current post type enabled to translation */
+			if ( $object->post_type == 'post' || $object->post_type == 'page' ) {
+				$new_title = $wpdb->get_var( $wpdb->prepare( "SELECT `post_title` FROM `" . $wpdb->prefix . "mltlngg_translate` WHERE `post_ID` = %d AND `language` = %s", $object->ID, $mltlngg_current_language ) );
+
+				if ( ! empty( $new_title ) )
+					return $new_title;
+			}
+		}
+		return $title;
 	}
 }
 
@@ -2800,9 +2719,14 @@ if ( ! function_exists( 'mltlngg_delete_blog' ) ) {
 	function mltlngg_delete_blog( $blog_id ) {
 		global $wpdb;
 		if ( is_plugin_active_for_network( 'multilanguage/multilanguage.php' ) ) {
+			if ( ! function_exists( 'get_plugins' ) )
+				require_once( ABSPATH . 'wp-admin/includes/plugin.php' );		
+			$all_plugins = get_plugins();
+			$pro_exist = array_key_exists( 'multilanguage-pro/multilanguage-pro.php', $all_plugins );
+
 			$old_blog = $wpdb->blogid;
 			switch_to_blog( $blog_id );
-			_mltlngg_delete_options();
+			_mltlngg_delete_options( $pro_exist );
 			switch_to_blog( $old_blog );
 		}
 	}
@@ -2812,6 +2736,12 @@ if ( ! function_exists( 'mltlngg_delete_blog' ) ) {
 if ( ! function_exists( 'mltlngg_delete_options' ) ) {
 	function mltlngg_delete_options() {
 		global $wpdb;
+
+		if ( ! function_exists( 'get_plugins' ) )
+			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );		
+		$all_plugins = get_plugins();
+		$pro_exist = array_key_exists( 'multilanguage-pro/multilanguage-pro.php', $all_plugins );
+
 		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
 			/* check if it is a network activation - if so, run the activation function for each blog id */
 			$old_blog = $wpdb->blogid;
@@ -2819,12 +2749,12 @@ if ( ! function_exists( 'mltlngg_delete_options' ) ) {
 			$blogids = $wpdb->get_col( "SELECT `blog_id` FROM $wpdb->blogs" );
 			foreach ( $blogids as $blog_id ) {
 				switch_to_blog( $blog_id );
-				_mltlngg_delete_options();
+				_mltlngg_delete_options( $pro_exist );
 			}
 			switch_to_blog( $old_blog );
-			return;
+		} else {
+			_mltlngg_delete_options( $pro_exist );
 		}
-		_mltlngg_delete_options();
 
 		require_once( dirname( __FILE__ ) . '/bws_menu/bws_include.php' );
 		bws_include_init( plugin_basename( __FILE__ ) );
@@ -2834,16 +2764,11 @@ if ( ! function_exists( 'mltlngg_delete_options' ) ) {
 
 /* Delete plugin options */
 if ( ! function_exists( '_mltlngg_delete_options' ) ) {
-	function _mltlngg_delete_options() {
+	function _mltlngg_delete_options( $pro_exist ) {
 		global $wpdb;
-		$mltlngg_table_translate = $wpdb->prefix . 'mltlngg_translate';
-		$mltlngg_terms_table_translate = $wpdb->prefix . 'mltlngg_terms_translate';
-		if ( ! function_exists( 'get_plugins' ) )
-			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );		
-		$all_plugins = get_plugins();
-		if ( ! array_key_exists( 'multilanguage-pro/multilanguage-pro.php', $all_plugins ) ) {
-			$mltlngg_sql = "DROP TABLE `" . $mltlngg_table_translate . "`, `" . $mltlngg_terms_table_translate . "`;";
-			$wpdb->query( $mltlngg_sql );
+
+		if ( ! $pro_exist ) {
+			$wpdb->query( "DROP TABLE `" . $wpdb->prefix . "mltlngg_translate`, `" . $wpdb->prefix . "mltlngg_terms_translate`;" );
 
 			/* Delete widget from database */
 			if ( is_dynamic_sidebar() ) { /* If there is an active sidebar */
@@ -2861,8 +2786,9 @@ if ( ! function_exists( '_mltlngg_delete_options' ) ) {
 				update_option( 'sidebars_widgets', $mltlngg_available_sidebars );
 			}
 			delete_option( 'widget_multi_language_widget' );
+			delete_option( 'mltlngg_options' );	
 		}
-		delete_option( 'mltlngg_options' );		
+			
 		flush_rewrite_rules();
 	}
 }
@@ -2935,6 +2861,10 @@ add_filter( 'set-screen-option', 'mltlngg_table_set_option', 10, 3 );
 add_filter( 'posts_join', 'mltlngg_search_join' );
 add_filter( 'posts_where', 'mltlngg_search_where' );
 
+/* Compatibility with PDF & Print by BestWebSoft plugin. */
+add_filter( 'bwsplgns_get_pdf_print_content', 'mltlngg_pdf_print_content_filter', 10, 2 );
+add_filter( 'bwsplgns_get_pdf_print_title', 'mltlngg_pdf_print_title_filter', 10, 2 );
+
 /* custom filter for bws button in tinyMCE */
 add_filter( 'bws_shortcode_button_content', 'mltlngg_shortcode_button_content' );
 
@@ -2943,7 +2873,6 @@ add_filter( 'plugin_action_links', 'mltlngg_plugin_action_links', 10, 2 );
 add_filter( 'plugin_row_meta', 'mltlngg_register_plugin_links', 10, 2 );
 
 /* Add AJAX function */
-add_action( 'admin_footer', 'mltlngg_ajax_languages_tab' );
 add_action( 'wp_ajax_mltlngg_ajax_callback', 'mltlngg_ajax_callback' );
 
 add_action( 'admin_notices', 'mltlngg_plugin_banner' );

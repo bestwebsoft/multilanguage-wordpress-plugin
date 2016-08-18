@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
 Requires at least: 3.8
-Tested up to: 4.5.3
-Stable tag: 1.1.8
+Tested up to: 4.6
+Stable tag: 1.1.9
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,50 +12,93 @@ Translate WordPress website content to other languages manually. Create multilin
 
 == Description ==
 
-Multilanguage allows you to create a multilingual WordPress website. Hence, you can create or edit posts, pages, or create categories and post tags as usual, and then define the language for each of them. The translation of a post, whether it was created in the default language or not, is optional. All translations must be done manually using Multilanguage plugin, because it does not integrate any automatic or professional translation service.
+Multilanguage plugin is a great way to translate your WordPress website to another languages. Add translated content to pages, posts, widgets, menus, custom post types, taxonomies, etc. Let your visitors switch languages and browse content in their language. Create and manage your multilingual website today!
 
-NOTE: This plugin will only work with the themes and plugins, which were developed according to Wordpress Codex standards. Also, it uses standard filters (the_title, the_content, get_terms, get_the_terms, get_term, wp_get_nav_menu_items).
+**NOTE: Plugin does NOT translate texts automatically!** It works with themes and plugins developed according to WordPress Codex standards. It uses standard filters (the_title, the_content, get_terms, get_the_terms, get_term, wp_get_nav_menu_items).
 
 http://www.youtube.com/watch?v=Si6ulEWuY1E
 
-<a href="http://wordpress.org/plugins/multilanguage/faq/" target="_blank">Multilanguage by BestWebSoft FAQ</a>
+= Free Features =
 
-<a href="http://support.bestwebsoft.com" target="_blank">Multilanguage by BestWebSoft Support</a>
+* Manually translate:
+	* pages
+	* posts
+	* post categories
+	* post tags
+	* menus (partially)
+* 80+ pre-installed languages
+* Add new languages
+* Choose the default language
+* Search website content by:
+	* current language
+	* all languages
+* Add language switcher to:
+	* navigation menu
+	* widgets
+* Change display order in the language switcher
+* Multiple language switcher layouts
+	* Drop-down list
+	* Drop-down flag icons
+	* Flag icons
+* Display translation availability in the posts and taxonomy lists
+* Add hreflang links to <head> section
+* Hide link slug for the default language
+* Translation-ready admin dashboard
+* RTL ready
+* Add custom code via plugin settings page
+* Compatible with latest WordPress version
+* Incredibly simple settings for fast setup without modifying code
+* Detailed step-by-step documentation and videos
 
-<a href="http://bestwebsoft.com/products/multilanguage/?k=1d4576a3a2c4fc0f127ce2ee0341d81b" target="_blank">Upgrade to Multilanguage Pro by BestWebSoft</a>
+> **Pro Features**
+>
+> All features from Free version included plus:
+>
+> * Translate custom:
+> 	* post types
+> 	* taxonomies
+> 	* fields
+> * Translate:
+> 	* widget titles
+> 	* website title
+> 	* website tagline
+> * Create separate menus for different languages
+> * Display/hide widgets for different languages
+> * Switch language automatically based on user’s IP
+> * Add short language code version to the URL
+> * Get answer to your support question within one business day ([Support Policy](http://bestwebsoft.com/support-policy/))
+>
+> [Upgrade to Pro Now](http://bestwebsoft.com/products/multilanguage/?k=1d4576a3a2c4fc0f127ce2ee0341d81b)
 
-= Features =
+If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! [Suggest a Feature](http://support.bestwebsoft.com/hc/en-us/requests/new)
 
-* Use as many languages as you want. By default, you can choose one of 87 pre-installed languages. However, you can add any number of languages to list of pre-installed languages in "includes/languages.php" file.
-* Add translations for posts, pages, categories, and post tags.
-* The language is either set by the language switcher or by the language code in url (as directory).
-* A customizable language switcher is provided as a widget, which can be displayed in the form of a Drop-down list of languages, Drop-down list of flags icons or Flags icons.
-* Add languages switcher into site menu.
-* Default searching by the language which is currently selected for the site or all available languages.
-* You can determine the priority of language display ​​in the switcher by changing the priority of language display on the plugin settings page.
-* The admin interface is translation-ready.
-* Add links to your current page for each language from your site into the tag <head>.
-* Hide link slug for default language.
-* Displaying availability of translation in the general posts and taxonomies list.
+= Documentation & Videos =
 
-If you have a feature, suggestion or idea you'd like to see in the plugin, we'd love to hear about it! <a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">Suggest a Feature</a>
+* [[Doc] Installation](https://docs.google.com/document/d/1018gX-8ggRs180LT2B90q0zhEJ7EewDOckpwmkJYb5Y/edit)
+
+= Help & Support =
+
+Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <http://support.bestwebsoft.com/>
 
 = Translation =
 
-* Czech (cs_CZ) (thanks to <a href="mailto:info@pamadessoft.cz">PaMaDeSSoft</a>, www.pamadessoft.cz)
-* Polish (pl_PL) (thanks to <a href="mailto:emiljo@tlen.pl">Emil Król</a>)
+* Czech (cs_CZ) (thanks to [PaMaDeSSoft](mailto:info@pamadessoft.cz), www.pamadessoft.cz)
+* Polish (pl_PL) (thanks to [Emil Król](mailto:emiljo@tlen.pl))
 * Russian (ru_RU)
 * Ukrainian (uk)
 
-Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress" target="_blank">the text of PO and MO files</a> for <a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">BestWebSoft</a> and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO files <a href="http://www.poedit.net/download.php" target="_blank">Poedit</a>.
+Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send [the text of PO and MO files](http://codex.wordpress.org/Translating_WordPress) to [BestWebSoft](http://support.bestwebsoft.com/hc/en-us/requests/new) and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO [files Poedit](http://www.poedit.net/download.php).
 
-= Technical support =
+= Recommended Plugins =
 
-Dear users, our plugins are available for free download. If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to contact us. Please note that we accept requests in English only. All messages in other languages won't be accepted.
+* [PDF & Print](http://bestwebsoft.com/products/pdf-print/?k=e7f954c2040303cfe69904409d8ba2ed) - Generate PDF files and print WordPress posts/pages. Customize document header/footer styles and appearance.
+* [Updater](http://bestwebsoft.com/products/updater/?k=3a06ca59d129f65a2259ac56620ce27e) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
 
-If you notice any bugs in the plugin's work, you can notify us about it and we'll then investigate and fix the issue. Your request should contain URL of the website, issues description and WordPress admin panel credentials.
-Moreover, we can customize the plugin according to your requirements. It's a paid service (as a rule it costs $40, but the price can vary depending on the amount of the necessary changes and their complexity). Please note that we could also include this or that feature (developed for you) in the next release and then share it with other users.
-We can fix some things for free for the users who provide a translation of our plugin into their native language (this should be a new translation of a certain plugin, you can check available translations on the official plugin page).
+= Donate =
+
+Donations play an important role in supporting open-source projects. We greatly appreciate any donation you can make to help us continue further development of free products.
+
+[Donate Now](http://bestwebsoft.com/donate/)
 
 == Installation ==
 
@@ -64,7 +107,7 @@ We can fix some things for free for the users who provide a translation of our p
 3. You can adjust the necessary settings using your WordPress admin panel in "BWS Panel" > "Multilanguage".
 4. Plugin page is located in main menu.
 
-<a href="https://docs.google.com/document/d/1018gX-8ggRs180LT2B90q0zhEJ7EewDOckpwmkJYb5Y/edit" target="_blank">View a Step-by-step Instruction on Multilanguage Installation</a>.
+[View a Step-by-step Instruction on Multilanguage Installation](https://docs.google.com/document/d/1018gX-8ggRs180LT2B90q0zhEJ7EewDOckpwmkJYb5Y/edit)
 
 == Frequently Asked Questions ==
 
@@ -135,12 +178,12 @@ After the mode switching, the post content has been automatically filtered to re
 
 = I have some problems with the plugin's work. What Information should I provide to receive proper support? =
 
-Please make sure that the problem hasn't been discussed yet on our forum (<a href="http://support.bestwebsoft.com" target="_blank">http://support.bestwebsoft.com</a>). If no, please provide the following data along with your problem's description:
+Please make sure that the problem hasn't been discussed yet on our forum (<http://support.bestwebsoft.com>). If no, please provide the following data along with your problem's description:
 
 1. the link to the page where the problem occurs
 2. the name of the plugin and its version. If you are using a pro version - your order number.
 3. the version of your WordPress installation
-4. copy and paste into the message your system status report. Please read more here: <a href="https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit" target="_blank">Instruction on System Status</a>
+4. copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit)
 
 == Screenshots ==
 
@@ -157,6 +200,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 11. Adding language switcher into site menu.
 
 == Changelog ==
+
+= V1.1.9 - 18.08.2016 =
+* NEW: Compatibility with PDF & Print by BestWebSoft plugin.
+* Pro: Ability to translate custom fields.
 
 = V1.1.8 - 15.07.2016 =
 * Update : BWS panel section was updated.
@@ -251,8 +298,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<a hre
 
 == Upgrade Notice ==
 
+= V1.1.9 =
+* Functionality expanded.
+
 = V1.1.8 =
-Usability improved.
+* Usability improved.
 
 = V1.1.7 =
 Bug with displaying the list of languages was fixed. "mltlngg-{current language slug}" class type has been added to <body> tag for an ability to stylize content of certain language.

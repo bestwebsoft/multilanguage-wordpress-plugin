@@ -269,9 +269,18 @@ li.mltlngg-menu-item-icon > ul > li.mltlngg-menu-item-icon > a {
 	width: auto !important;
 	display: inline-block !important;
 }
+.mltlngg-menu-item-radio {
+	clear: both;
+}
 @media screen and (max-width: 782px) {
 	#mltlngg-current-languages-form tbody td[class*='column-pro_options'] {
 		border: 1px solid #AAA;
+	}
+	.mltlngg-menu-item-radio input {
+		width: 25px;
+	}
+	.mltlngg-menu-item-radio {
+		margin-bottom: 5px;
 	}
 }
 @media only screen and ( max-width: 768px ) {

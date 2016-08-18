@@ -1,7 +1,7 @@
 <a href="http://bestwebsoft.com/products/multilanguage/" target=_blank>Multilanguage WordPress Plugin</a>
 ========================
 
-Multilanguage allows you to create a multilingual WordPress website. Hence, you can create or edit posts, pages, or create categories and post tags as usual, and then define the language for each of them. The translation of a post, whether it was created in the default language or not, is optional. All translations must be done manually using Multilanguage plugin, because it does not integrate any automatic or professional translation service.
+Multilanguage plugin is a great way to translate your WordPress website to another languages. Add translated content to pages, posts, widgets, menus, custom post types, taxonomies, etc. Let your visitors switch languages and browse content in their language. Create and manage your multilingual website today!
 
 <img src="http://bestwebsoft.com/wp-content/uploads/2014/10/multilanguage-banner-website.jpg" />
 
@@ -15,17 +15,14 @@ Multilanguage allows you to create a multilingual WordPress website. Hence, you 
 
 Features
 -----------------------------
-* Use as many languages as you want. By default, you can choose one of 87 pre-installed languages. However, you can add any number of languages to list of pre-installed languages in "includes/languages.php" file.
-* Add translations for posts, pages, categories, and post tags.
-* The language is either set by the language switcher or by the language code in url (as directory).
-* A customizable language switcher is provided as a widget, which can be displayed in the form of a Drop-down list of languages, Drop-down list of flags icons or Flags icons.
-* Add languages switcher into site menu.
-* Default searching by the language which is currently selected for the site or all available languages.
-* You can determine the priority of language display ​​in the switcher by changing the priority of language display on the plugin settings page.
-* The admin interface is translation-ready.
-* Add links to your current page for each language from your site into the tag .
-* Hide link slug for default language.
-* Displaying availability of translation in the general posts and taxonomies list.
+* Manually translate:
+
+
+* pages
+* posts
+* post categories
+* post tags
+* menus (partially)
 
 
 Translation
