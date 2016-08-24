@@ -1,44 +1,126 @@
 <a href="http://bestwebsoft.com/products/multilanguage/" target=_blank>Multilanguage WordPress Plugin</a>
 ========================
 
-Multilanguage plugin is a great way to translate your WordPress website to another languages. Add translated content to pages, posts, widgets, menus, custom post types, taxonomies, etc. Let your visitors switch languages and browse content in their language. Create and manage your multilingual website today!
+Translate WordPress website content to other languages manually. Create multilingual pages, posts, widgets, menus, etc.
 
 <img src="http://bestwebsoft.com/wp-content/uploads/2014/10/multilanguage-banner-website.jpg" />
 
-<a href="http://bestwebsoft.com/products/multilanguage/description/" target=_blank>Description</a> | 
-<a href="http://bestwebsoft.com/products/multilanguage/installation/" target=_blank>Installation</a> | 
-<a href="http://bestwebsoft.com/products/multilanguage/faq/" target=_blank>FAQ</a> | 
-<a href="http://bestwebsoft.com/products/multilanguage/screenshots/" target=_blank>Screenshots</a> | 
-<a href="http://bestwebsoft.com/products/multilanguage/changelog/" target=_blank>Changelog</a> | 
-<a href="http://bestwebsoft.com/products/multilanguage/download/" target=_blank>Download</a>
+<p>Multilanguage plugin is a great way to translate your WordPress website to another languages. Add translated content to pages, posts, widgets, menus, custom post types, taxonomies, etc. Let your visitors switch languages and browse content in their language. Create and manage your multilingual website today!</p>
+
+<p><strong>NOTE: Plugin does NOT translate texts automatically!</strong> It works with themes and plugins developed according to WordPress Codex standards. It uses standard filters (the_title, the_content, get_terms, get_the_terms, get_term, wp_get_nav_menu_items).</p>
 
 
-Features
------------------------------
-* Manually translate:
+<div class='video'></div>
 
 
-* pages
-* posts
-* post categories
-* post tags
-* menus (partially)
+<h4>Free Features</h4>
 
+<ul>
+<li>Manually translate:
 
-Translation
------------------------------
-* Czech (cs_CZ) (thanks to PaMaDeSSoft, www.pamadessoft.cz)
-* Polish (pl_PL) (thanks to Emil Król)
-* Russian (ru_RU)
-* Ukrainian (uk)
+<ul>
+<li>pages</li>
+<li>posts</li>
+<li>post categories</li>
+<li>post tags</li>
+<li>menus (partially)</li>
+</ul></li>
+<li>80+ pre-installed languages</li>
+<li>Add new languages</li>
+<li>Choose the default language</li>
+<li>Search website content by:
 
-If you would like to create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress" target="_blank">the text of PO and MO files</a> for <a href="http://support.bestwebsoft.com" target="_blank">BestWebSoft</a> and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO files <a href="http://www.poedit.net/download.php" target="_blank">Poedit</a>.
+<ul>
+<li>current language</li>
+<li>all languages</li>
+</ul></li>
+<li>Add language switcher to:
 
+<ul>
+<li>navigation menu</li>
+<li>widgets</li>
+</ul></li>
+<li>Change display order in the language switcher</li>
+<li>Multiple language switcher layouts
 
-Technical support
------------------------------
-Dear users, our plugins are available for free download. If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to contact us. Please note that we accept requests in English only. All messages in other languages won't be accepted.
+<ul>
+<li>Drop-down list</li>
+<li>Drop-down flag icons</li>
+<li>Flag icons</li>
+</ul></li>
+<li>Display translation availability in the posts and taxonomy lists</li>
+<li>Add hreflang links to  section</li>
+<li>Hide link slug for the default language</li>
+<li>Translation-ready admin dashboard</li>
+<li>RTL ready</li>
+<li>Add custom code via plugin settings page</li>
+<li>Compatible with latest WordPress version</li>
+<li>Incredibly simple settings for fast setup without modifying code</li>
+<li>Detailed step-by-step documentation and videos</li>
+</ul>
 
-If you notice any bugs in the plugins, you can notify us about it and we'll investigate and fix the issue then. Your request should contain URL of the website, issues description and WordPress admin panel credentials.
-Moreover we can customize the plugin according to your requirements. It's a paid service (as a rule it costs $40, but the price can vary depending on the amount of the necessary changes and their complexity). Please note that we could also include this or that feature (developed for you) in the next release and share with the other users then.
-We can fix some things for free for the users who provide translation of our plugin into their native language (this should be a new translation of a certain plugin, you can check available translations on the official plugin page).
+<blockquote>
+  <p><strong>Pro Features</strong></p>
+  
+  <p>All features from Free version included plus:</p>
+  
+  <ul>
+  <li>Translate custom:
+  
+  <ul>
+  <li>post types</li>
+  <li>taxonomies</li>
+  <li>fields</li>
+  </ul></li>
+  <li>Translate:
+  
+  <ul>
+  <li>widget titles</li>
+  <li>website title</li>
+  <li>website tagline</li>
+  </ul></li>
+  <li>Create separate menus for different languages</li>
+  <li>Display/hide widgets for different languages</li>
+  <li>Switch language automatically based on user&#8217;s IP</li>
+  <li>Add short language code version to the URL</li>
+  <li>Get answer to your support question within one business day (<a href="http://bestwebsoft.com/support-policy/">Support Policy</a>)</li>
+  </ul>
+  
+  <p><a href="http://bestwebsoft.com/products/multilanguage/?k=1d4576a3a2c4fc0f127ce2ee0341d81b">Upgrade to Pro Now</a></p>
+</blockquote>
+
+<p>If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! <a href="http://support.bestwebsoft.com/hc/en-us/requests/new">Suggest a Feature</a></p>
+
+<h4>Documentation &#38; Videos</h4>
+
+<ul>
+<li><a href="https://docs.google.com/document/d/1018gX-8ggRs180LT2B90q0zhEJ7EewDOckpwmkJYb5Y/edit">[Doc] Installation</a></li>
+</ul>
+
+<h4>Help &#38; Support</h4>
+
+<p>Visit our Help Center if you have any questions, our friendly Support Team is happy to help &#8212; <a href="http://support.bestwebsoft.com/">http://support.bestwebsoft.com/</a></p>
+
+<h4>Translation</h4>
+
+<ul>
+<li>Czech (cs_CZ) (thanks to <a href="mailto:info@pamadessoft.cz">PaMaDeSSoft</a>, <a href="http://www.pamadessoft.cz" rel="nofollow">http://www.pamadessoft.cz</a>)</li>
+<li>Polish (pl_PL) (thanks to <a href="mailto:emiljo@tlen.pl">Emil Kr&#243;l</a>)</li>
+<li>Russian (ru_RU)</li>
+<li>Ukrainian (uk)</li>
+</ul>
+
+<p>Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress">the text of PO and MO files</a> to <a href="http://support.bestwebsoft.com/hc/en-us/requests/new">BestWebSoft</a> and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO <a href="http://www.poedit.net/download.php">files Poedit</a>.</p>
+
+<h4>Recommended Plugins</h4>
+
+<ul>
+<li><a href="http://bestwebsoft.com/products/pdf-print/?k=e7f954c2040303cfe69904409d8ba2ed">PDF &#38; Print</a> - Generate PDF files and print WordPress posts/pages. Customize document header/footer styles and appearance.</li>
+<li><a href="http://bestwebsoft.com/products/updater/?k=3a06ca59d129f65a2259ac56620ce27e">Updater</a> - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.</li>
+</ul>
+
+<h4>Donate</h4>
+
+<p>Donations play an important role in supporting open-source projects. We greatly appreciate any donation you can make to help us continue further development of free products.</p>
+
+<p><a href="http://bestwebsoft.com/donate/">Donate Now</a></p>
