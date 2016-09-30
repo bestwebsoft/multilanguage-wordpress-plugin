@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
 Requires at least: 3.8
-Tested up to: 4.6
-Stable tag: 1.1.9
+Tested up to: 4.6.1
+Stable tag: 1.2.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -21,20 +21,20 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 = Free Features =
 
 * Manually translate:
-	* pages
-	* posts
-	* post categories
-	* post tags
-	* menus (partially)
+	* Pages
+	* Posts
+	* Post categories
+	* Post tags
+	* Menus (partially)
 * 80+ pre-installed languages
 * Add new languages
 * Choose the default language
 * Search website content by:
-	* current language
-	* all languages
+	* Current language
+	* All languages
 * Add language switcher to:
-	* navigation menu
-	* widgets
+	* Navigation menu
+	* Widgets
 * Change display order in the language switcher
 * Multiple language switcher layouts
 	* Drop-down list
@@ -55,20 +55,20 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 > All features from Free version included plus:
 >
 > * Translate custom:
-> 	* post types
-> 	* taxonomies
-> 	* fields
+> 	* Post types
+> 	* Taxonomies
+> 	* Fields
 > * Translate:
-> 	* widget titles
-> 	* website title
-> 	* website tagline
+> 	* Widget titles
+> 	* Website title
+> 	* Website tagline
 > * Create separate menus for different languages
 > * Display/hide widgets for different languages
 > * Switch language automatically based on user’s IP
 > * Add short language code version to the URL
 > * Get answer to your support question within one business day ([Support Policy](http://bestwebsoft.com/support-policy/))
 >
-> [Upgrade to Pro Now](http://bestwebsoft.com/products/multilanguage/?k=1d4576a3a2c4fc0f127ce2ee0341d81b)
+> [Upgrade to Pro Now](http://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=1d4576a3a2c4fc0f127ce2ee0341d81b)
 
 If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! [Suggest a Feature](http://support.bestwebsoft.com/hc/en-us/requests/new)
 
@@ -82,6 +82,7 @@ Visit our Help Center if you have any questions, our friendly Support Team is ha
 
 = Translation =
 
+* Arabic (ar) (thanks to [Rody](mailto:f1@sba8at.com))
 * Czech (cs_CZ) (thanks to [PaMaDeSSoft](mailto:info@pamadessoft.cz), www.pamadessoft.cz)
 * Polish (pl_PL) (thanks to [Emil Król](mailto:emiljo@tlen.pl))
 * Russian (ru_RU)
@@ -91,8 +92,8 @@ Some of these translations are not complete. We are constantly adding new featur
 
 = Recommended Plugins =
 
-* [PDF & Print](http://bestwebsoft.com/products/pdf-print/?k=e7f954c2040303cfe69904409d8ba2ed) - Generate PDF files and print WordPress posts/pages. Customize document header/footer styles and appearance.
-* [Updater](http://bestwebsoft.com/products/updater/?k=3a06ca59d129f65a2259ac56620ce27e) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
+* [PDF & Print](http://bestwebsoft.com/products/wordpress/plugins/pdf-print/?k=e7f954c2040303cfe69904409d8ba2ed) - Generate PDF files and print WordPress posts/pages. Customize document header/footer styles and appearance.
+* [Updater](http://bestwebsoft.com/products/wordpress/plugins/updater/?k=3a06ca59d129f65a2259ac56620ce27e) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
 
 = Donate =
 
@@ -201,6 +202,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<http:
 
 == Changelog ==
 
+= V1.2.0 - 30.09.2016 =
+* NEW : The arabic language file was added.
+
 = V1.1.9 - 18.08.2016 =
 * NEW: Compatibility with PDF & Print by BestWebSoft plugin.
 * Pro: Ability to translate custom fields.
@@ -297,6 +301,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<http:
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.2.0 =
+* New languages added.
 
 = V1.1.9 =
 * Functionality expanded.

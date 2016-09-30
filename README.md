@@ -19,11 +19,11 @@ Translate WordPress website content to other languages manually. Create multilin
 <li>Manually translate:
 
 <ul>
-<li>pages</li>
-<li>posts</li>
-<li>post categories</li>
-<li>post tags</li>
-<li>menus (partially)</li>
+<li>Pages</li>
+<li>Posts</li>
+<li>Post categories</li>
+<li>Post tags</li>
+<li>Menus (partially)</li>
 </ul></li>
 <li>80+ pre-installed languages</li>
 <li>Add new languages</li>
@@ -31,14 +31,14 @@ Translate WordPress website content to other languages manually. Create multilin
 <li>Search website content by:
 
 <ul>
-<li>current language</li>
-<li>all languages</li>
+<li>Current language</li>
+<li>All languages</li>
 </ul></li>
 <li>Add language switcher to:
 
 <ul>
-<li>navigation menu</li>
-<li>widgets</li>
+<li>Navigation menu</li>
+<li>Widgets</li>
 </ul></li>
 <li>Change display order in the language switcher</li>
 <li>Multiple language switcher layouts
@@ -68,16 +68,16 @@ Translate WordPress website content to other languages manually. Create multilin
   <li>Translate custom:
   
   <ul>
-  <li>post types</li>
-  <li>taxonomies</li>
-  <li>fields</li>
+  <li>Post types</li>
+  <li>Taxonomies</li>
+  <li>Fields</li>
   </ul></li>
   <li>Translate:
   
   <ul>
-  <li>widget titles</li>
-  <li>website title</li>
-  <li>website tagline</li>
+  <li>Widget titles</li>
+  <li>Website title</li>
+  <li>Website tagline</li>
   </ul></li>
   <li>Create separate menus for different languages</li>
   <li>Display/hide widgets for different languages</li>
@@ -86,7 +86,7 @@ Translate WordPress website content to other languages manually. Create multilin
   <li>Get answer to your support question within one business day (<a href="http://bestwebsoft.com/support-policy/">Support Policy</a>)</li>
   </ul>
   
-  <p><a href="http://bestwebsoft.com/products/multilanguage/?k=1d4576a3a2c4fc0f127ce2ee0341d81b">Upgrade to Pro Now</a></p>
+  <p><a href="http://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=1d4576a3a2c4fc0f127ce2ee0341d81b">Upgrade to Pro Now</a></p>
 </blockquote>
 
 <p>If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! <a href="http://support.bestwebsoft.com/hc/en-us/requests/new">Suggest a Feature</a></p>
@@ -104,6 +104,7 @@ Translate WordPress website content to other languages manually. Create multilin
 <h4>Translation</h4>
 
 <ul>
+<li>Arabic (ar) (thanks to <a href="mailto:f1@sba8at.com">Rody</a>)</li>
 <li>Czech (cs_CZ) (thanks to <a href="mailto:info@pamadessoft.cz">PaMaDeSSoft</a>, <a href="http://www.pamadessoft.cz" rel="nofollow">http://www.pamadessoft.cz</a>)</li>
 <li>Polish (pl_PL) (thanks to <a href="mailto:emiljo@tlen.pl">Emil Kr&#243;l</a>)</li>
 <li>Russian (ru_RU)</li>
@@ -115,8 +116,8 @@ Translate WordPress website content to other languages manually. Create multilin
 <h4>Recommended Plugins</h4>
 
 <ul>
-<li><a href="http://bestwebsoft.com/products/pdf-print/?k=e7f954c2040303cfe69904409d8ba2ed">PDF &#38; Print</a> - Generate PDF files and print WordPress posts/pages. Customize document header/footer styles and appearance.</li>
-<li><a href="http://bestwebsoft.com/products/updater/?k=3a06ca59d129f65a2259ac56620ce27e">Updater</a> - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.</li>
+<li><a href="http://bestwebsoft.com/products/wordpress/plugins/pdf-print/?k=e7f954c2040303cfe69904409d8ba2ed">PDF &#38; Print</a> - Generate PDF files and print WordPress posts/pages. Customize document header/footer styles and appearance.</li>
+<li><a href="http://bestwebsoft.com/products/wordpress/plugins/updater/?k=3a06ca59d129f65a2259ac56620ce27e">Updater</a> - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.</li>
 </ul>
 
 <h4>Donate</h4>

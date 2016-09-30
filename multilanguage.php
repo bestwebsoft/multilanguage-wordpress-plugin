@@ -1,12 +1,12 @@
 <?php
 /*
 Plugin Name: Multilanguage by BestWebSoft
-Plugin URI: http://bestwebsoft.com/products/multilanguage/
+Plugin URI: http://bestwebsoft.com/products/wordpress/plugins/multilanguage/
 Description: Translate WordPress website content to other languages manually. Create multilingual pages, posts, widgets, menus, etc.
 Author: BestWebSoft
 Text Domain: multilanguage
 Domain Path: /languages
-Version: 1.1.9
+Version: 1.2.0
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -1362,7 +1362,7 @@ if ( ! function_exists( 'mltlngg_settings_page' ) ) {
 									<div class="bws_info">
 										<?php _e( 'Unlock premium options by upgrading to Pro version', 'multilanguage' ); ?>
 									</div>
-									<a class="bws_button" href="http://bestwebsoft.com/products/multilanguage/?k=fa164f00821ed3a87e6f78cb3f5c277b&pn=143&v=<?php echo $mltlngg_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" target="_blank" title="Multilanguage Pro"><?php _e( 'Learn More', 'multilanguage' ); ?></a>
+									<a class="bws_button" href="http://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=fa164f00821ed3a87e6f78cb3f5c277b&pn=143&v=<?php echo $mltlngg_plugin_info["Version"]; ?>&wp_v=<?php echo $wp_version; ?>" target="_blank" title="Multilanguage Pro"><?php _e( 'Learn More', 'multilanguage' ); ?></a>
 									<div class="clear"></div>
 								</div>
 							</div>
