@@ -5,7 +5,7 @@
 		$( '#mltlngg-add-lang-link' ).click( function() {
 			$( '#mltlngg-add-new-language-form' ).slideToggle();
 		});
-		
+
 		/* Do not save post if Title and Content is empty */
 		$( '#publish' ).on( 'click', function() {
 			var mltlnggCurrentTitle = $( '#title' ).val(),
@@ -34,7 +34,7 @@
 				.attr( 'id', 'cat-' + getLangContentDiv.find( 'a.nav-tab-active' ).data( 'lang' ) )
 				.attr( 'name', 'cat_' + getLangContentDiv.find( 'a.nav-tab-active' ).data( 'lang' ) )
 				.val( old_cat )
-			);	 
+			);
 		});
 
 		/* Function for click on another language tab to edit translation */
@@ -51,14 +51,23 @@
 				inputTitleOldLang = $( 'input#title-' + oldLang ), /* Find INPUT id=title-{old lang code} */
 				mltlnggOldTitle = inputTitle.val(), /* Get title from previous language tab */
 				mltlnggOldExcerpt = $( '#excerpt' ).val(),
+				tmceEnabled = $( '#wp-content-wrap' ).hasClass('tmce-active'),
+				fusionPageBuilder = $( '#fusion-page-builder' ),/* If Fusion Page Builder Plugin is enabled we will need to do some extra steps */
+				fusionPageBuilderIsEnabled = false,
 				mltlnggOldContent, data;
-			$( 'input[id^="in-category-"]' ).each( function( i,elem ) { 
+
+			/* Fusion Page Builder can mess up if we don't switch back to WP default editor */
+			if ( fusionPageBuilder.length > 0 && ! fusionPageBuilder.hasClass( 'fusion-page-builder-hide' ) ) {
+				fusionPageBuilderIsEnabled = true;
+			}
+
+			$( 'input[id^="in-category-"]' ).each( function( i,elem ) {
 				cat_id[i] = $( elem ).val();
 			});
 			getLangContentDiv.find( 'a.nav-tab-active' ).removeClass( 'nav-tab-active' ); /* Change previous language tab from active to inactive */
 			$( this ).addClass( 'nav-tab-active' ); /* Change current language tab from inactive to active */
 			/* Get content from previous language tab */
-			if ( inputContent.is( ":hidden" ) ) { /* If TinyMCE editor is active */
+			if ( tmceEnabled ) { /* If TinyMCE editor or Fusion Page Builder is active */
 				mltlnggOldContent = tinymce.get('content').getContent(); /* Get content from TinyMCE */
 			} else { /* If Text editor is active */
 				mltlnggOldContent = inputContent.val(); /* Get content from Text editor */
@@ -69,20 +78,20 @@
 			if ( inputTitleNewLang.length > 0 && $( '#after-save-' + newLang ).length > 0 ) { /* If hidden blocks is exist, get Title & Content from them */
 				inputTitle.val( inputTitleNewLang.val() ); /* Set title to current language tab */
 				/* Set content to current language tab */
-				if ( inputContent.is( ":hidden" ) ) { /* If TinyMCE editor is active */
+				if ( tmceEnabled ) { /* If TinyMCE editor is active */
 					tinymce.get('content').setContent( $( 'textarea#content-' + newLang ).val() ); /* Set content to TinyMCE */
 				} else { /* If Text editor is active */
 					inputContent.val( $( 'textarea#content-' + newLang ).val() ); /* Set content to Text editor */
 				}
 				inputExcerpt.val( $( 'input#excerpt-' + newLang ).val() );
-				$( 'li[id^="category-"]' ).each(function( i, elem ) { 
+				$( 'li[id^="category-"]' ).each(function( i, elem ) {
 					var html_object = $( elem ).find( 'label' );
 					var old_cat = html_object.text();
 					var content = html_object.html();
 					if ( $( elem ).find( 'input[id^="cat-' + newLang +'"]' ).length > 0 ) {
 						content = content.replace( old_cat, ' ' + $( elem ).find( 'input[id^="cat-' + newLang +'"]' ).val() )
 						$( html_object ).html( content );
-					}	
+					}
 				} );
 				/* If autoupdate translation is enabled, save changes */
 				if ( 1 == mltlngg_vars.autosave ) {
@@ -98,8 +107,12 @@
 					};
 					$.post( ajaxurl, data );
 				}
+				/* If Fusion Page Builder Plugin was enabled, reload it */
+				if ( fusionPageBuilderIsEnabled ) {
+					DdHelper.shortCodestoBuilderElements();
+				}
 			} else {
-				/* If hidden blocks is not exist, get Title & Content from database, then create hidden blocks */
+				/* If hidden blocks do not exist, get Title & Content from database, then create hidden blocks */
 				data = {
 					'action': 'mltlngg_ajax_callback',
 					'get_data': 'get_data',
@@ -138,7 +151,7 @@
 								.attr( 'type', 'hidden' )
 								.attr( 'id', 'excerpt-' + newLang )
 								.attr( 'name', 'excerpt_' + newLang )
-								.val( mltlnggNew.post_excerpt )	
+								.val( mltlnggNew.post_excerpt )
 						);
 					} else {
 						/* when autosave is off and we come to post where multi has no date - do not lost default lang */
@@ -148,7 +161,7 @@
 					}
 					inputTitle.val( mltlnggNew.post_title ); /* Set title to current language tab */
 					/* Set content to current language tab */
-					if ( inputContent.is( ":hidden" ) ) { /* If TinyMCE editor is active */
+					if ( tmceEnabled ) { /* If TinyMCE editor is active */
 						tinymce.get('content').setContent( mltlnggNew.post_content );
 					} else { /* If Text editor is active */
 						inputContent.val( mltlnggNew.post_content );
@@ -158,7 +171,7 @@
 						var html_object = $( '#category-' + key + ' label' );
 						var old_cat = html_object.text();
 						var content = html_object.html();
-						content = content.replace( old_cat, ' ' + mltlnggNew.cat_translate[key] )
+						content = content.replace( old_cat, ' ' + mltlnggNew.cat_translate[key] );
 						$( 'li#category-' + key + ' label' ).html( content );
 						$( 'li#category-' + key + '' ).append(
 							$( '<input/>' ) /* Create hidden field with Categories */
@@ -175,6 +188,10 @@
 							.attr( 'id', 'after-save-' + newLang )
 							.val( newLang )
 							);
+					}
+					/* If Fusion Page Builder Plugin was enabled, reload it */
+					if ( fusionPageBuilderIsEnabled ) {
+						DdHelper.shortCodestoBuilderElements();
 					}
 				});
 			}
