@@ -1,9 +1,7 @@
-<a href="http://bestwebsoft.com/products/multilanguage/" target=_blank>Multilanguage WordPress Plugin</a>
+<a href="http://bestwebsoft.com/products/wordpress/plugins/multilanguage/" target=_blank>Multilanguage WordPress Plugin</a>
 ========================
 
 Translate WordPress website content to other languages manually. Create multilingual pages, posts, widgets, menus, etc.
-
-<img src="http://bestwebsoft.com/wp-content/uploads/2014/10/multilanguage-banner-website.jpg" />
 
 <p>Multilanguage plugin is a great way to translate your WordPress website to another languages. Add translated content to pages, posts, widgets, menus, custom post types, taxonomies, etc. Let your visitors switch languages and browse content in their language. Create and manage your multilingual website today!</p>
 
