@@ -6,7 +6,7 @@ Description: Translate WordPress website content to other languages manually. Cr
 Author: BestWebSoft
 Text Domain: multilanguage
 Domain Path: /languages
-Version: 1.2.0
+Version: 1.2.1
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -835,6 +835,7 @@ if ( ! function_exists( 'mltlngg_script_style' ) ) {
 			wp_localize_script( 'mltlngg_script', 'mltlngg_vars',
 				array(
 					'update_post_error' => __( 'Attention!!! The changes will not be saved because Title and Content fields are empty on the current tab! It is recommended to fill in at least one field or switch to the tab with the fields that are already filled.', 'multilanguage' ),
+					'confirm_update_post'	=> __( "Switching to another language, all unsaved data will be lost. Save data?", 'multilanguage' ),
 					'ajax_nonce' 		=> wp_create_nonce( "mltlngg-ajax-nonce" ),
 					'autosave' 			=> $mltlngg_options['autosave_editor_content']
 				)
@@ -1233,12 +1234,14 @@ if ( ! function_exists( 'mltlngg_settings_page' ) ) {
 									<input id="mltlngg_new_language_enable" name="mltlngg_new_language_enable" type="checkbox" value="true" <?php echo ( ( true == $mltlngg_options['enabled_new_language'] ) ? ' checked' : '' ); ?>> <span class="bws_info"><?php _e( "The newly added language will be enabled automatically", 'multilanguage' ); ?></span>
 								</td>
 							</tr>
-							<tr valign="middle">
-								<th scope="row"><?php _e( 'Autosave translation in the editor', 'multilanguage' ); ?></th>
-								<td>
-									<input name="mltlngg_autosave_editor_content" type="checkbox" value="true" <?php echo ( ( true == $mltlngg_options['autosave_editor_content'] ) ? ' checked' : '' ); ?>> <span class="bws_info"><?php _e( "When switching edit posts/pages translation tab, the changes made in the previous tab will be saved automatically (only when the Javascript is enabled)", 'multilanguage' ); ?></span>
-								</td>
-							</tr>
+							<?php if ( ! defined( 'ET_BUILDER_THEME' ) && ! defined( 'WPB_VC_VERSION' ) ) { ?>
+								<tr valign="middle">
+									<th scope="row"><?php _e( 'Autosave translation in the editor', 'multilanguage' ); ?></th>
+									<td>
+										<input name="mltlngg_autosave_editor_content" type="checkbox" value="true" <?php echo ( ( true == $mltlngg_options['autosave_editor_content'] ) ? ' checked' : '' ); ?>> <span class="bws_info"><?php _e( "When switching edit posts/pages translation tab, the changes made in the previous tab will be saved automatically (only when the JavaScript is enabled)", 'multilanguage' ); ?></span>
+									</td>
+								</tr>
+							<?php } ?>
 							<tr valign="middle">
 								<th scope="row"><?php _e( 'Switch Wordpress localization', 'multilanguage' ); ?></th>
 								<td><input name="mltlngg_wp_localization" type="checkbox" value="true" <?php echo ( ( true == $mltlngg_options['wp_localization'] ) ? ' checked' : '' ); ?>> <span class="bws_info"><?php _e( "When changing the language in the frontend, WordPress localization will also be changed (only in case additional WordPress language packs are installed)", 'multilanguage' ); ?></span></td>
@@ -1454,8 +1457,9 @@ if ( ! function_exists( 'mltlngg_add_language' ) ) {
 if ( ! function_exists( 'mltlngg_showup_language_tabs_in_editor' ) ) {
 	function mltlngg_showup_language_tabs_in_editor() {
 		global $wpdb, $post, $mltlngg_options, $mltlngg_language, $mltlngg_active_language, $mltlngg_current_language, $mltlngg_enabled_languages, $mltlngg_get_default_language;
-		$mltlngg_post_type = get_post_type( $post->ID );
-		if ( $mltlngg_post_type == 'post' || $mltlngg_post_type == 'page' ) {
+		
+		$current_posttype = get_post_type( $post->ID );		
+		if ( $current_posttype == 'post' || $current_posttype == 'page' ) {
 			$mltlngg_original_data = $wpdb->get_row( $wpdb->prepare(
 				"SELECT `post_content`, `post_title`, `post_excerpt`
 						 FROM $wpdb->posts
@@ -1476,6 +1480,12 @@ if ( ! function_exists( 'mltlngg_showup_language_tabs_in_editor' ) ) {
 				unset( $_SESSION['current_language'] ); ?>
 				<a class="mltlngg_add" href="admin.php?page=mltlngg_settings"><?php _e( 'Add language', 'multilanguage' ); ?></a>
 			</h2> <!-- #get-lang-content .nav-tab-wrapper -->
+			<?php /* compability with DIVI Builder */
+			if ( defined( 'ET_BUILDER_THEME' ) || defined( 'WPB_VC_VERSION' ) ) { ?>
+				<div id="mltlngg-disable-ajax-tabs" class="update-nag inline hide-if-no-js" style="margin: 0;">
+					<div><strong><?php _e( 'Attention', 'multilanguage' ); ?></strong>: <?php _e( 'Please update the post before switching the language. Data is not saved automatically.', 'multilanguage' ); ?></div>
+				</div>
+			<?php } ?>
 			<h2>
 				<?php _e( 'Edit for language', 'multilanguage' ); ?>:
 				<span id="mltlngg-current-lang"><?php echo $mltlngg_active_language['name']; ?></span>
@@ -1486,8 +1496,9 @@ if ( ! function_exists( 'mltlngg_showup_language_tabs_in_editor' ) ) {
 				$mltlngg_current_language = ( isset( $_GET['lang'] ) ) ? $_GET['lang'] : ( ( isset( $mltlngg_active_language['locale'] ) ) ? $mltlngg_active_language['locale'] : $mltlngg_options['default_language'] );
 			if ( $mltlngg_get_default_language != $mltlngg_current_language ) {
 				$excerpt = $wpdb->get_var( $wpdb->prepare( "SELECT `post_excerpt` FROM `" . $wpdb->prefix . "mltlngg_translate` WHERE `post_ID` = %d AND `language` = %s", $post->ID, $mltlngg_active_language['locale'] ) );
-			} else
-				$excerpt = $mltlngg_original_data['post_excerpt']; ?>
+			} else {
+				$excerpt = $mltlngg_original_data['post_excerpt'];
+			} ?>
 			<input id="title-<?php echo $mltlngg_options['default_language']; ?>" type="hidden" value="<?php echo esc_html( $mltlngg_original_data['post_title'] ); ?>" name="title_<?php echo $mltlngg_options['default_language']; ?>">
 			<textarea id="content-<?php echo $mltlngg_options['default_language']; ?>" style="display: none;" name="content_<?php echo $mltlngg_options['default_language']; ?>"><?php echo esc_html( $mltlngg_original_data['post_content'] ); ?></textarea>
 			<input id="excerpt-<?php echo $mltlngg_active_language['locale'] ?>" type="hidden" value="<?php echo esc_html( $excerpt ) ?>" name="excerpt_<?php echo $mltlngg_active_language['locale'] ?>">
@@ -1500,10 +1511,12 @@ if ( ! function_exists( 'mltlngg_showup_language_tabs_in_editor' ) ) {
 if ( ! function_exists( 'mltlngg_save_post' ) ) {
 	function mltlngg_save_post( $post_id ) {
 		global $wpdb, $mltlngg_options;
-		$mltlngg_post_type = get_post_type( $post_id );
-		if ( $mltlngg_post_type == 'post' || $mltlngg_post_type == 'page' ) {
+
+		$current_posttype = get_post_type( $post_id );
+		if ( $current_posttype == 'post' || $current_posttype == 'page' ) {
 			if ( ( isset( $_POST['save'] ) || isset( $_POST['publish'] ) ) && check_admin_referer( 'mltlngg_translate_form', 'mltlngg_translate_form_field' ) ) {
 				$_SESSION['current_language'] = $_POST['mltlngg_active_language'];
+
 				$mltlngg_post_id = $_POST['post_ID'];
 				/* If autosave option is disabled save all changes */
 				if ( true != $mltlngg_options['autosave_editor_content'] ) {
@@ -2088,20 +2101,26 @@ if ( ! function_exists( 'mltlngg_nav_menu_items_filter' ) ) {
 /* Display post_content in the selected language */
 if ( ! function_exists( 'mltlngg_the_content_filter' ) ) {
 	function mltlngg_the_content_filter( $content, $more_link_text = null, $strip_teaser = false ) {
-		global $hook_suffix, $post, $wpdb, $wp_current_filter, $mltlngg_current_language, $mltlngg_active_language, $mltlngg_options, $mltlngg_wp_providers;
+		global $hook_suffix, $post, $wpdb, $wp_current_filter, $mltlngg_current_language, $mltlngg_active_language, $mltlngg_options, $mltlngg_wp_providers, $wp_list_table;
 
-		if ( is_admin() && ! ( 'post.php' == $hook_suffix || 'post-new.php' == $hook_suffix ) )
+		$is_admin = is_admin();
+
+		if ( $is_admin && ! ( 'post.php' == $hook_suffix || 'post-new.php' == $hook_suffix ) )
+			return $content;
+
+		/* exclude filter for wp_editor() in 'Add new Comment' block */
+		if ( $is_admin && $wp_list_table && 'WP_Post_Comments_List_Table' == get_class( $wp_list_table ) )
 			return $content;
 
 		$mltlngg_post_type = get_post_type( $post->ID );
 		/* If current post type enabled to translation */
 		if ( $mltlngg_post_type == 'post' || $mltlngg_post_type == 'page' ) {
-			if ( is_admin() )
+			if ( $is_admin )
 				$mltlngg_current_language = ( isset( $_GET['lang'] ) ) ? $_GET['lang'] : ( ( isset( $mltlngg_active_language['locale'] ) ) ? $mltlngg_active_language['locale'] : $mltlngg_options['default_language'] );
 			
 			$new_content = $wpdb->get_var( $wpdb->prepare( "SELECT `post_content` FROM `" . $wpdb->prefix . "mltlngg_translate` WHERE `post_ID` = %d AND `language` = %s ", $post->ID, $mltlngg_current_language ) );
 			if ( ! empty( $new_content ) ) {
-				if ( ! is_admin() ) {
+				if ( ! $is_admin ) {
 					if ( ! post_password_required() ) {
 						$noteaser    = ( ( false !== strpos( $new_content, '<!--noteaser-->' ) ) ? true : false );
 						$extends     = get_extended( $new_content );

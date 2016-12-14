@@ -3,7 +3,9 @@
 
 Translate WordPress website content to other languages manually. Create multilingual pages, posts, widgets, menus, etc.
 
-<p>Multilanguage plugin is a great way to translate your WordPress website to another languages. Add translated content to pages, posts, widgets, menus, custom post types, taxonomies, etc. Let your visitors switch languages and browse content in their language. Create and manage your multilingual website today!</p>
+<p>Multilanguage plugin is a great way to translate your WordPress website to other languages. Add translated content to pages, posts, widgets, menus, custom post types, taxonomies, etc. Let your visitors switch languages and browse content in their language.</p>
+
+<p>Create and manage your multilingual website today!</p>
 
 <p><strong>NOTE: Plugin does NOT translate texts automatically!</strong> It works with themes and plugins developed according to WordPress Codex standards. It uses standard filters (the_title, the_content, get_terms, get_the_terms, get_term, wp_get_nav_menu_items).</p>
 
@@ -55,6 +57,7 @@ Translate WordPress website content to other languages manually. Create multilin
 <li>Compatible with latest WordPress version</li>
 <li>Incredibly simple settings for fast setup without modifying code</li>
 <li>Detailed step-by-step documentation and videos</li>
+<li>Multilingual and RTL ready</li>
 </ul>
 
 <blockquote>

@@ -99,6 +99,9 @@
 	margin: auto 0;
 	vertical-align: sub;
 }
+body .mltlngg-lang-switch a img {
+	box-shadow: none;
+}
 body:not(.rtl) .mltlngg-lang-switch > li:after {
 	border-color: #9C9C9C transparent;
 	border-style: solid;
@@ -162,7 +165,7 @@ body:not(.rtl) .mltlngg-lang-switch.mltlngg-lang-switch-names > li:after {
 .mltlngg-lang-switch > li ul {
 	display: none;
 	top: 20px;
-	position: absolute;
+	position: absolute !important;
 	margin: 0 !important;
 	padding: 0;
 	z-index: 100;
@@ -175,7 +178,8 @@ body:not(.rtl) .mltlngg-lang-switch.mltlngg-lang-switch-names > li:after {
 .mltlngg-lang-switch > li:hover > ul {
 	display: block;	
 }
-.mltlngg-lang-switch li > ul li {
+.mltlngg-lang-switch li > ul li,
+.widget .mltlngg-lang-switch li > ul li {
 	margin: 0;
 	padding: 0;
 	height: 20px;

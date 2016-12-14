@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
 Requires at least: 3.8
-Tested up to: 4.6.1
-Stable tag: 1.2.0
+Tested up to: 4.7
+Stable tag: 1.2.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,7 +12,9 @@ Translate WordPress website content to other languages manually. Create multilin
 
 == Description ==
 
-Multilanguage plugin is a great way to translate your WordPress website to another languages. Add translated content to pages, posts, widgets, menus, custom post types, taxonomies, etc. Let your visitors switch languages and browse content in their language. Create and manage your multilingual website today!
+Multilanguage plugin is a great way to translate your WordPress website to other languages. Add translated content to pages, posts, widgets, menus, custom post types, taxonomies, etc. Let your visitors switch languages and browse content in their language.
+
+Create and manage your multilingual website today!
 
 **NOTE: Plugin does NOT translate texts automatically!** It works with themes and plugins developed according to WordPress Codex standards. It uses standard filters (the_title, the_content, get_terms, get_the_terms, get_term, wp_get_nav_menu_items).
 
@@ -49,6 +51,7 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 * Compatible with latest WordPress version
 * Incredibly simple settings for fast setup without modifying code
 * Detailed step-by-step documentation and videos
+* Multilingual and RTL ready
 
 > **Pro Features**
 >
@@ -188,19 +191,23 @@ Please make sure that the problem hasn't been discussed yet on our forum (<http:
 
 == Screenshots ==
 
-1. Language switcher widgets in frontend.
-2. Language switcher in site menu.
-3. Plugin setting page with a table of languages ​​that have been added to the translation.
-4. Plugin setting page with a form to add a language.
-5. Plugin setting page with the main plugin settings.
+1. Language switcher widget in the frontend.
+2. Language switcher in the site menu.
+3. Plugin settings page with a table of languages ​​that have been added to the translation.
+4. Plugin settings page with a form for adding languages.
+5. Plugin settings page with the main plugin settings.
 6. Post/page editor with translation tabs.
 7. Translation form for adding a new category.
 8. Translation form for editing a category.
 9. Translation form for adding a new tag.
-10. Adding and settings language switcher widget in admin panel.
+10. Adding and configuring language switcher widget in the admin panel.
 11. Adding language switcher into site menu.
 
 == Changelog ==
+
+= V1.2.1 - 14.12.2016 =
+* NEW: Compatibility with Visual Composer Backend Editor and Divi builder was added.
+* PRO: Compatibility with Page Builder by SiteOrigin was added.
 
 = V1.2.0 - 30.09.2016 =
 * NEW : The arabic language file was added.
@@ -301,6 +308,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<http:
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.2.1 =
+* Functionality expanded.
 
 = V1.2.0 =
 * New languages added.
