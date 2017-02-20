@@ -371,7 +371,7 @@ if ( ! function_exists( 'mltlngg_plugin_load' ) ) {
 			 * or we not on login/logout/ page
 			 * redirect to URL with language code 
 			 */
-			if ( ! is_admin() && ! preg_match( "/\/?\w+\.{1}[a-z]{3,4}/", $_SERVER['REQUEST_URI'] ) )
+			if ( ! is_admin() && ! preg_match( "/\/?\w+\.{1}[a-z]{3,4}/", $_SERVER['REQUEST_URI'] ) && ! is_defined('WP_CLI') )
 				mltlngg_redirect();
 		}
 	}
