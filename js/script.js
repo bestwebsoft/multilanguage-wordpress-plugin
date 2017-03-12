@@ -37,6 +37,11 @@
 			);
 		});
 
+		/* If Fusion Page Builder Plugin is enabled we will need to reload it */
+		if (isFusionPageBuilderInstalled) {
+			reloadFusionPageBuilder();
+		}
+
 		/* Function for click on another language tab to edit translation */
 		getLangContentDiv.on( 'click', 'a.nav-tab', function() {
 			var inputTitle = $( '#title' ), /* Find INPUT id=title */
@@ -52,14 +57,8 @@
 				mltlnggOldTitle = inputTitle.val(), /* Get title from previous language tab */
 				mltlnggOldExcerpt = $( '#excerpt' ).val(),
 				tmceEnabled = $( '#wp-content-wrap' ).hasClass('tmce-active'),
-				fusionPageBuilder = $( '#fusion-page-builder' ),/* If Fusion Page Builder Plugin is enabled we will need to do some extra steps */
-				fusionPageBuilderIsEnabled = false,
+				fusionPageBuilderIsEnabled = isFusionPageBuilderEnabled(),
 				mltlnggOldContent, data;
-
-			/* Fusion Page Builder can mess up if we don't switch back to WP default editor */
-			if ( fusionPageBuilder.length > 0 && ! fusionPageBuilder.hasClass( 'fusion-page-builder-hide' ) ) {
-				fusionPageBuilderIsEnabled = true;
-			}
 
 			$( 'input[id^="in-category-"]' ).each( function( i,elem ) {
 				cat_id[i] = $( elem ).val();
@@ -77,12 +76,14 @@
 			$( 'input#excerpt-' + oldLang ).val( mltlnggOldExcerpt );
 			if ( inputTitleNewLang.length > 0 && $( '#after-save-' + newLang ).length > 0 ) { /* If hidden blocks is exist, get Title & Content from them */
 				inputTitle.val( inputTitleNewLang.val() ); /* Set title to current language tab */
+
 				/* Set content to current language tab */
 				if ( tmceEnabled ) { /* If TinyMCE editor is active */
 					tinymce.get('content').setContent( $( 'textarea#content-' + newLang ).val() ); /* Set content to TinyMCE */
 				} else { /* If Text editor is active */
 					inputContent.val( $( 'textarea#content-' + newLang ).val() ); /* Set content to Text editor */
 				}
+
 				inputExcerpt.val( $( 'input#excerpt-' + newLang ).val() );
 				$( 'li[id^="category-"]' ).each(function( i, elem ) {
 					var html_object = $( elem ).find( 'label' );
@@ -93,6 +94,7 @@
 						$( html_object ).html( content );
 					}
 				} );
+
 				/* If autoupdate translation is enabled, save changes */
 				if ( 1 == mltlngg_vars.autosave ) {
 					data = {
@@ -166,6 +168,7 @@
 					} else { /* If Text editor is active */
 						inputContent.val( mltlnggNew.post_content );
 					}
+
 					$( '#excerpt' ).val( mltlnggNew.post_excerpt );
 					for( var key in mltlnggNew.cat_translate ) {
 						var html_object = $( '#category-' + key + ' label' );
@@ -199,5 +202,29 @@
 			$( '#mltlngg-active-language' ).val( newLang ); /* Set new active language */
 			return false;
 		});
+
+		function isFusionPageBuilderInstalled()
+		{
+			return ($('#fusion-page-builder').length > 0);
+		}
+
+		function isFusionPageBuilderEnabled()
+		{
+			var fusionPageBuilder = $('#fusion-page-builder');
+			return (fusionPageBuilder.length > 0 && !fusionPageBuilder.hasClass('fusion-page-builder-hide'));
+		}
+
+		function reloadFusionPageBuilder()
+		{
+			// Wait until fusion page builder is completely loaded
+			if (window.fusion_builder_fully_loaded != true) {
+				setTimeout(reloadFusionPageBuilder, 100);
+			} else {
+				var fusionPageBuilderIsEnabled = isFusionPageBuilderEnabled();
+				if (fusionPageBuilderIsEnabled) {
+					DdHelper.shortCodestoBuilderElements();
+				}
+			}
+		}
 	});
 })( jQuery );

@@ -1,12 +1,12 @@
 <?php
 /*
-Plugin Name: Multilanguage by BestWebSoft
-Plugin URI: http://bestwebsoft.com/products/wordpress/plugins/multilanguage/
+Plugin Name: Multilanguage by BestWebSoft - GabrielAnca fork
+Plugin URI: http://github.com/GabrielAnca/multilanguage-wordpress-plugin
 Description: Translate WordPress website content to other languages manually. Create multilingual pages, posts, widgets, menus, etc.
 Author: BestWebSoft
 Text Domain: multilanguage
 Domain Path: /languages
-Version: 1.2.0
+Version: 1.3.0
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
