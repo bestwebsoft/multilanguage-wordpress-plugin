@@ -1,10 +1,10 @@
 ﻿=== Multilanguage by BestWebSoft ===
 Contributors: bestwebsoft
-Donate link: http://bestwebsoft.com/donate/
+Donate link: https://bestwebsoft.com/donate/
 Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
 Requires at least: 3.8
-Tested up to: 4.7
-Stable tag: 1.2.1
+Tested up to: 4.7.3
+Stable tag: 1.2.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -39,14 +39,17 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 	* Widgets
 * Change display order in the language switcher
 * Multiple language switcher layouts
-	* Drop-down list
+	* Drop-down list with languages and icons
 	* Drop-down flag icons
 	* Flag icons
+	* Languages list
+* Choose language flag icon:[NEW]
+	* Default
+	* Custom
 * Display translation availability in the posts and taxonomy lists
 * Add hreflang links to <head> section
 * Hide link slug for the default language
 * Translation-ready admin dashboard
-* RTL ready
 * Add custom code via plugin settings page
 * Compatible with latest WordPress version
 * Incredibly simple settings for fast setup without modifying code
@@ -69,19 +72,19 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 > * Display/hide widgets for different languages
 > * Switch language automatically based on user’s IP
 > * Add short language code version to the URL
-> * Get answer to your support question within one business day ([Support Policy](http://bestwebsoft.com/support-policy/))
+> * Get answer to your support question within one business day ([Support Policy](https://bestwebsoft.com/support-policy/))
 >
-> [Upgrade to Pro Now](http://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=1d4576a3a2c4fc0f127ce2ee0341d81b)
+> [Upgrade to Pro Now](https://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=1d4576a3a2c4fc0f127ce2ee0341d81b)
 
-If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! [Suggest a Feature](http://support.bestwebsoft.com/hc/en-us/requests/new)
+If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! [Suggest a Feature](https://support.bestwebsoft.com/hc/en-us/requests/new)
 
 = Documentation & Videos =
 
-* [[Doc] Installation](https://docs.google.com/document/d/1018gX-8ggRs180LT2B90q0zhEJ7EewDOckpwmkJYb5Y/edit)
+* [[Doc] Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
 
 = Help & Support =
 
-Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <http://support.bestwebsoft.com/>
+Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <https://support.bestwebsoft.com/>
 
 = Translation =
 
@@ -91,18 +94,18 @@ Visit our Help Center if you have any questions, our friendly Support Team is ha
 * Russian (ru_RU)
 * Ukrainian (uk)
 
-Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send [the text of PO and MO files](http://codex.wordpress.org/Translating_WordPress) to [BestWebSoft](http://support.bestwebsoft.com/hc/en-us/requests/new) and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO [files Poedit](http://www.poedit.net/download.php).
+Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send [the text of PO and MO files](http://codex.wordpress.org/Translating_WordPress) to [BestWebSoft](https://support.bestwebsoft.com/hc/en-us/requests/new) and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO [files Poedit](http://www.poedit.net/download.php).
 
 = Recommended Plugins =
 
-* [PDF & Print](http://bestwebsoft.com/products/wordpress/plugins/pdf-print/?k=e7f954c2040303cfe69904409d8ba2ed) - Generate PDF files and print WordPress posts/pages. Customize document header/footer styles and appearance.
-* [Updater](http://bestwebsoft.com/products/wordpress/plugins/updater/?k=3a06ca59d129f65a2259ac56620ce27e) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
+* [PDF & Print](https://bestwebsoft.com/products/wordpress/plugins/pdf-print/?k=e7f954c2040303cfe69904409d8ba2ed) - Generate PDF files and print WordPress posts/pages. Customize document header/footer styles and appearance.
+* [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=3a06ca59d129f65a2259ac56620ce27e) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
 
 = Donate =
 
 Donations play an important role in supporting open-source projects. We greatly appreciate any donation you can make to help us continue further development of free products.
 
-[Donate Now](http://bestwebsoft.com/donate/)
+[Donate Now](https://bestwebsoft.com/donate/)
 
 == Installation ==
 
@@ -111,7 +114,7 @@ Donations play an important role in supporting open-source projects. We greatly 
 3. You can adjust the necessary settings using your WordPress admin panel in "BWS Panel" > "Multilanguage".
 4. Plugin page is located in main menu.
 
-[View a Step-by-step Instruction on Multilanguage Installation](https://docs.google.com/document/d/1018gX-8ggRs180LT2B90q0zhEJ7EewDOckpwmkJYb5Y/edit)
+[View a Step-by-step Instruction on Multilanguage Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
 
 == Frequently Asked Questions ==
 
@@ -178,11 +181,11 @@ After the mode switching, the post content has been automatically filtered to re
 `.mltlngg-en_US p {
 	color: green;
 }`
-3. Save changes. 
+3. Save changes.
 
 = I have some problems with the plugin's work. What Information should I provide to receive proper support? =
 
-Please make sure that the problem hasn't been discussed yet on our forum (<http://support.bestwebsoft.com>). If no, please provide the following data along with your problem's description:
+Please make sure that the problem hasn't been discussed yet on our forum (<https://support.bestwebsoft.com>). If no, please provide the following data along with your problem's description:
 
 1. the link to the page where the problem occurs
 2. the name of the plugin and its version. If you are using a pro version - your order number.
@@ -193,9 +196,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<http:
 
 1. Language switcher widget in the frontend.
 2. Language switcher in the site menu.
-3. Plugin settings page with a table of languages ​​that have been added to the translation.
-4. Plugin settings page with a form for adding languages.
-5. Plugin settings page with the main plugin settings.
+3. Plugin settings page.
+4. Plugin languages page.
+5. Edit language page.
 6. Post/page editor with translation tabs.
 7. Translation form for adding a new category.
 8. Translation form for editing a category.
@@ -204,6 +207,14 @@ Please make sure that the problem hasn't been discussed yet on our forum (<http:
 11. Adding language switcher into site menu.
 
 == Changelog ==
+
+= V1.2.2 - 22.03.2017 =
+* NEW: Ability to change a language flag icon was added.
+* NEW: New language switcher type was added.
+* Update : The plugin settings page has been updated.
+* NEW: Translation Saving Mode was added.
+* Bugfix : Bugs with search were fixed.
+* Bugfix : Wrong link formation bug in the menu Language switcher was fixed.
 
 = V1.2.1 - 14.12.2016 =
 * NEW: Compatibility with Visual Composer Backend Editor and Divi builder was added.
@@ -308,6 +319,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<http:
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.2.2 =
+* Functionality expanded.
+* Usability improved.
+* Bugs fixed.
 
 = V1.2.1 =
 * Functionality expanded.
