@@ -2604,4 +2604,3 @@ add_action( 'wp_ajax_mltlngg_ajax_callback', 'mltlngg_ajax_callback' );
 
 add_action( 'admin_notices', 'mltlngg_plugin_banner' );
 register_deactivation_hook( __FILE__, 'mltlngg_deactivation' );
-register_uninstall_hook( __FILE__, 'mltlngg_delete_options' );
