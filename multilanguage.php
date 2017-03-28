@@ -407,7 +407,7 @@ if ( ! function_exists( 'mltlngg_plugin_load' ) ) {
 			 * or we not on login/logout/ page
 			 * redirect to URL with language code 
 			 */
-			if ( ! is_admin() && ! preg_match( "/\/?\w+\.{1}[a-z]{3,4}/", $_SERVER['REQUEST_URI'] ) )
+			if ( ! is_admin() && ! preg_match( "/\/?\w+\.{1}[a-z]{3,4}/", $_SERVER['REQUEST_URI'] ) && ! defined('WP_CLI') )
 				mltlngg_redirect();
 		}
 	}
@@ -2604,4 +2604,3 @@ add_action( 'wp_ajax_mltlngg_ajax_callback', 'mltlngg_ajax_callback' );
 
 add_action( 'admin_notices', 'mltlngg_plugin_banner' );
 register_deactivation_hook( __FILE__, 'mltlngg_deactivation' );
-register_uninstall_hook( __FILE__, 'mltlngg_delete_options' );
