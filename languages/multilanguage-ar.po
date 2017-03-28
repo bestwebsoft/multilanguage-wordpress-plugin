@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: multilanguage\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-13 16:27+0300\n"
+"POT-Creation-Date: 2017-03-13 16:25+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: BestWebSoft team <wp@bestwebsoft.com>\n"
 "Language-Team: BestWebSoft <info@bestwebsoft.com>\n"
@@ -14,15 +14,386 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: multilanguage.php:104 multilanguage.php:867 multilanguage.php:2541
-#: multilanguage.php:2544
+#: includes/class-mltlngg-settings.php:24 multilanguage.php:38
+#: multilanguage.php:40 multilanguage.php:1137 multilanguage.php:2414
+#: multilanguage.php:2428
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: includes/class-mltlngg-settings.php:25
+msgid "Misc"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:26
+msgid "Custom Code"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:27
+msgid "License Key"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:67 includes/table.php:346
+msgid "Settings saved."
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:78
+msgid "Multilanguage Settings"
+msgstr "الإعدادات"
+
+#: includes/class-mltlngg-settings.php:83
+msgid "Language Switcher Type"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:88
+#: includes/class-mltlngg-settings.php:93
+#: includes/class-mltlngg-settings.php:98 multilanguage.php:899
+#: multilanguage.php:900 multilanguage.php:901 multilanguage.php:978
+#: multilanguage.php:984 multilanguage.php:990
+msgid "Drop-down list"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:88
+#: includes/class-mltlngg-settings.php:98 multilanguage.php:899
+#: multilanguage.php:901 multilanguage.php:978 multilanguage.php:990
+msgid "flag"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:88
+#: includes/class-mltlngg-settings.php:93 multilanguage.php:896
+#: multilanguage.php:899 multilanguage.php:900 multilanguage.php:978
+#: multilanguage.php:984
+msgid "title"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:103 includes/table.php:40
+#: multilanguage.php:896 multilanguage.php:898 multilanguage.php:995
+msgid "Flag"
+msgstr "الشعار"
+
+#: includes/class-mltlngg-settings.php:112
+#: includes/class-mltlngg-settings.php:192
+msgid "Close"
+msgstr "إغلاق"
+
+#: includes/class-mltlngg-settings.php:116
+msgid "Switch Language Automatically"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:118
+msgid ""
+"Enable to determine user IP and switch website language automatically based "
+"on the location."
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:128
+msgid "Default Language Slug"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:130
+msgid "Enable to show default language slug in the URL."
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:134
+msgid "Wordpress Language"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:136
+msgid ""
+"Enable to switch WordPress language automatically when the language is "
+"changed in the front-end (installed WordPress language packs are required)."
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:140
+msgid "hreflang Attribute"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:142
+#, php-format
+msgid ""
+"Enable to add hreflang attribute used by search engines and display the "
+"correct language or regional URL in search results. This option inserts "
+"automatically the respective link for each language within the %s section."
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:149
+msgid "Translation Saving Mode"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:154
+msgid "Auto"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:159
+msgid "Manual (Save Changes button)"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:162
+msgid ""
+"Enable Manual mode if you have some problems with saving translations using "
+"Auto mode."
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:167
+msgid "Default Search by"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:171
+msgid "Current language"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:175
+msgid "All active languages"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:196
+msgid "Update GeoIP Every"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:199
+msgid "months"
+msgstr "أشهر"
+
+#: includes/class-mltlngg-settings.php:200
+msgid "Country table is not loaded yet."
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:202
+msgid "Update Now"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:205
+#, php-format
+msgid ""
+"Automatically download lists with registered IP addresses all over the world "
+"(from %s) to the database. Receive an information about each IP address, and "
+"to which country it belongs to."
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:205
+msgid "Learn More"
+msgstr "تعرف على المزيد"
+
+#: includes/class-mltlngg-settings.php:236
+msgid "Language Switcher"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:239
+msgid "Add \"Multilanguage Switcher\" to a widget."
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:239
+msgid "Navigate to Widgets"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:240
+msgid "Add \"Multilanguage Switcher\" to a menu."
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:240
+msgid "Navigate to Menus"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:241
+msgid ""
+"Add a language switcher to your posts, pages or custom post types by using "
+"the following shortcode:"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:243
+msgid ""
+"Add a language switcher to PHP template files by using the following code"
+msgstr ""
+
+#: includes/table.php:15
+msgid "language"
+msgstr "اللغة"
+
+#: includes/table.php:16
+msgid "languages"
+msgstr "اللغات"
+
+#: includes/table.php:37 multilanguage.php:897
+msgid "Title"
+msgstr ""
+
+#: includes/table.php:38 includes/table.php:403
+msgid "URL Slug"
+msgstr ""
+
+#: includes/table.php:41 includes/table.php:391
+msgid "Order"
+msgstr ""
+
+#: includes/table.php:59 includes/table.php:359 includes/table.php:369
+msgid "Default"
+msgstr "الأساسي"
+
+#: includes/table.php:63
+msgid "Edit"
+msgstr ""
+
+#: includes/table.php:69 includes/table.php:81 includes/table.php:92
+msgid "Enable"
+msgstr "تفعيل"
+
+#: includes/table.php:71 includes/table.php:82 includes/table.php:87
+msgid "Disable"
+msgstr "تعطيل"
+
+#: includes/table.php:73 includes/table.php:83 includes/table.php:88
+#: includes/table.php:93
+msgid "Delete"
+msgstr "حذف"
+
+#: includes/table.php:214 includes/table.php:452 multilanguage.php:42
+msgid "Languages"
+msgstr "اللغات"
+
+#: includes/table.php:244
+msgid "Language added"
+msgstr "تم إضافة اللغة"
+
+#: includes/table.php:246
+msgid "Incorrect language data."
+msgstr ""
+
+#: includes/table.php:310
+#, php-format
+msgid "Error: File size > %s."
+msgstr ""
+
+#: includes/table.php:312
+msgid "Error: Invalid file type."
+msgstr ""
+
+#: includes/table.php:324
+msgid "Error: failed to move file."
+msgstr ""
+
+#: includes/table.php:327
+msgid "Error: check image width or height."
+msgstr ""
+
+#: includes/table.php:331
+msgid "Uploading Error: check image properties."
+msgstr ""
+
+#: includes/table.php:349
+msgid "Edit Language"
+msgstr ""
+
+#: includes/table.php:365
+msgid "Flag Image"
+msgstr ""
+
+#: includes/table.php:372
+msgid "Custom"
+msgstr ""
+
+#: includes/table.php:379
+msgid "Current flag"
+msgstr ""
+
+#: includes/table.php:387
+#, php-format
+msgid ""
+"Upload image with the maximum %s dimensions, JPG, JPEG or PNG formats "
+"(maximum file size - %s)."
+msgstr ""
+
+#: includes/table.php:426
+msgid "Site Title"
+msgstr "أسم الموقع"
+
+#: includes/table.php:432
+msgid "Tagline"
+msgstr "وصف الموقع"
+
+#: includes/table.php:440 multilanguage.php:48
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: includes/table.php:446
+msgid "Save changes"
+msgstr "حفظ التعديلات"
+
+#: includes/table.php:453
+msgid "Add New"
+msgstr ""
+
+#: includes/table.php:471
+msgid "All"
+msgstr ""
+
+#: includes/table.php:472
+msgid "Active"
+msgstr ""
+
+#: includes/table.php:473
+msgid "Disabled"
+msgstr "معطل"
+
+#: includes/table.php:511
+msgctxt "plural"
+msgid "enabled"
+msgstr "تفعيل الكل"
+
+#: includes/table.php:511
+msgctxt "singular"
+msgid "enabled"
+msgstr "تفعيل"
+
+#: includes/table.php:528
+msgctxt "plural"
+msgid "disabled"
+msgstr "تعطيل الكل"
+
+#: includes/table.php:528
+msgctxt "singular"
+msgid "disabled"
+msgstr "تعطيل"
+
+#: includes/table.php:544
+msgctxt "plural"
+msgid "deleted"
+msgstr "حذف الكل"
+
+#: includes/table.php:544
+msgctxt "singular"
+msgid "deleted"
+msgstr "حذف"
+
+#: includes/table.php:548
+msgid "Unknown action"
+msgstr "إجراء غير معروف"
+
+#: includes/table.php:552
+#, php-format
+msgid "Selected languages have been %s"
+msgstr "اللغات المختارة تم %s"
+
+#: includes/table.php:554
+#, php-format
+msgid "No one from selected languages has not been %s"
+msgstr "لا أحد من اللغات المختارة قد تم %s"
+
+#: includes/table.php:574
+msgid "Choose a language"
+msgstr "اختيار اللغة"
+
+#: includes/table.php:593 multilanguage.php:1176
+msgid "Add Language"
+msgstr ""
+
+#: multilanguage.php:120 multilanguage.php:905 multilanguage.php:2251
+#: multilanguage.php:2254
 msgid "Multilanguage switcher"
 msgstr "محول اللغات"
 
-#: multilanguage.php:837
+#: multilanguage.php:873
 msgid ""
 "Attention!!! The changes will not be saved because Title and Content fields "
 "are empty on the current tab! It is recommended to fill in at least one "
@@ -32,410 +403,245 @@ msgstr ""
 "الحالي، نوصي بملئ حقل واحد على الأقل، أو الانتقال إلى تبويب آخر تكون فيه كل "
 "الحقول ممتلئة"
 
-#: multilanguage.php:838
+#: multilanguage.php:874
 msgid ""
 "Switching to another language, all unsaved data will be lost. Save data?"
 msgstr ""
 
-#: multilanguage.php:861
-msgid "Aligned languages list"
-msgstr "محاذاة قائمة اللغات"
-
-#: multilanguage.php:862
-msgid "Aligned flag icons"
-msgstr "محاذاة أيقونات الأعلام"
-
-#: multilanguage.php:863 multilanguage.php:938 multilanguage.php:1256
-msgid "Drop-down languages list"
-msgstr "قائمة منسدلة باللغات"
-
-#: multilanguage.php:864 multilanguage.php:946 multilanguage.php:1265
-msgid "Drop-down flag icons"
-msgstr "قائمة منسدلة بأيقونات الأعلام"
-
-#: multilanguage.php:897
+#: multilanguage.php:937
 msgid "Content language switch"
 msgstr "تغيير لغة المحتوى"
 
-#: multilanguage.php:929
+#: multilanguage.php:969
 msgid "Localization"
 msgstr "الترجمة"
 
-#: multilanguage.php:932
+#: multilanguage.php:972
 msgid "Title:"
 msgstr "العنوان:"
 
-#: multilanguage.php:954 multilanguage.php:1274
-msgid "Flag icons"
-msgstr "أيقونة اللغة"
-
-#: multilanguage.php:1087 multilanguage.php:1125
-msgid "Settings saved"
-msgstr "تم حفظ التعديلات"
-
-#: multilanguage.php:1098
-msgid "Language added"
-msgstr "تم إضافة اللغة"
-
-#: multilanguage.php:1100
-msgid "Incorrect language data"
-msgstr "معلومات اللغة غير صحيحة"
-
-#: multilanguage.php:1158
-msgid "All plugin settings were restored."
-msgstr "تم استرجاع كل بيانات اللغة"
-
-#: multilanguage.php:1172
-msgid "Multilanguage Settings"
-msgstr "الإعدادات"
-
-#: multilanguage.php:1174 multilanguage.php:1423 multilanguage.php:1481
-msgid "Add language"
-msgstr "إضافة لغة"
-
-#: multilanguage.php:1179 includes/table.php:239
-msgid "Languages"
-msgstr "اللغات"
-
-#: multilanguage.php:1180 multilanguage.php:2704 multilanguage.php:2718
-msgid "Settings"
-msgstr "الإعدادات"
-
 #: multilanguage.php:1181
-msgid "Custom code"
-msgstr "كود مخصص"
-
-#: multilanguage.php:1182
-msgid "Go PRO"
-msgstr "الترقية للإصدار الإحترافي"
-
-#: multilanguage.php:1204 multilanguage.php:1374
-msgid "Save changes"
-msgstr "حفظ التعديلات"
-
-#: multilanguage.php:1212
-msgid ""
-"If you would like to display Language switcher with a widget, you need to "
-"add the widget \"Multilanguage\" in the Widgets tab."
-msgstr ""
-"إذا كنت تري إظهار محول اللغات في مربع جانبي، إذن أنت بحاجة إلى إضافة "
-"البرنامج إلى قائمة المربعات الجانبية"
-
-#: multilanguage.php:1214
-#, php-format
-msgid ""
-"If you would like to add a Language switcher to your page or post, please "
-"use %s button"
-msgstr "إذا كنت تريد إضافة محول اللغات إلى صفحة أو مقال، الرجاء استخدام زر %s "
-
-#: multilanguage.php:1220
-#, php-format
-msgid ""
-"You can add Language switcher to your page or post by clicking on %s button "
-"in the content edit block using the Visual mode. If the button isn't "
-"displayed, please use the shortcode %s."
-msgstr ""
-"يمكنك إضافة محول اللغات إلى الصفحات أو المقالات عبر الضغط على زر %s \n"
-"والموجود في المحرر المرئي، وفي حال عدم ظهور الزر، الرجاء استخدام هذا "
-"الاختصار %s"
-
-#: multilanguage.php:1227
-msgid "Also, you can paste the following strings into the template source code"
-msgstr "كما يمكنك لصق الكود أدناه مباشرة إلى الكود المصدري للقالب الخاص بك"
-
-#: multilanguage.php:1232
-msgid "Enable new language"
-msgstr "تفعيل اللغة الجديدة"
-
-#: multilanguage.php:1234
-msgid "The newly added language will be enabled automatically"
-msgstr "سيتم تفعيل اللغة المضافة مؤخراً بشكلٍ تلقائي."
-
-#: multilanguage.php:1239
-msgid "Autosave translation in the editor"
-msgstr "الحفظ التلقائي للترجمة في المحرر"
-
-#: multilanguage.php:1241
-#, fuzzy
-msgid ""
-"When switching edit posts/pages translation tab, the changes made in the "
-"previous tab will be saved automatically (only when the JavaScript is "
-"enabled)"
-msgstr ""
-"عند الانتقال إلى تبويب تحرير الردود/ الصفحات، سيتم حفظ التغييرات أوتوماتيكياً "
-"على التبويب السابق (فقط عند تفعيل الجافا سكربت)"
-
-#: multilanguage.php:1246
-msgid "Switch Wordpress localization"
-msgstr "تغيير تعريب الوردبريس"
-
-#: multilanguage.php:1247
-msgid ""
-"When changing the language in the frontend, WordPress localization will also "
-"be changed (only in case additional WordPress language packs are installed)"
-msgstr ""
-" عند تغيير اللغة في واجهة الموقع، سيتم تغيير لغة الموقع أيضاً، وذلك (في حال "
-"تم تثبيت حزمة اللغات الإضافية للوردبريس)"
-
-#: multilanguage.php:1250
-msgid "Language switcher"
-msgstr "محول اللغات"
-
-#: multilanguage.php:1284
-#, php-format
-msgid "Add hreflang links to %s section"
-msgstr "إضافة روابط hreflang إلى قسم %s"
-
-#: multilanguage.php:1289
-msgid ""
-"The hreflang attribute is used by Google and other search systems to display "
-"the correct language or regional URL in search results. This option "
-"automatically inserts the respective link elements of each language within "
-"the head section."
-msgstr ""
-"hreflang \n"
-"وسم يستخدم بواسطة قوقل ومحركات البحث الأخرى لعرض اللغة الحالية أو الرابط "
-"الأصلي في نتائج البحث، هذا الخيار يقوم بإضافة الوسم إلى كل اللغات ضمن رأس "
-"الصفحة"
-
-#: multilanguage.php:1295
-msgid "Hide link slug for default language"
-msgstr "إخفاء إسم اللغة الإفتراضية"
-
-#: multilanguage.php:1301
-msgid "Default searching by"
-msgstr "البحث الإفتراضي بواسطة"
-
-#: multilanguage.php:1306
-msgid "selected language"
-msgstr "اللغة المختارة"
-
-#: multilanguage.php:1310
-msgid "all available languages"
-msgstr "جميع اللغات المتاحة"
-
-#: multilanguage.php:1319
-msgid "Close"
-msgstr "إغلاق"
-
-#: multilanguage.php:1323
-msgid "Determining the locale using the user's IP"
-msgstr "تحديد اللغة باستخدام الآيبي الخاص بالمستخدم"
-
-#: multilanguage.php:1329
-msgid "Update GeoIP"
-msgstr "تحديث الأيبي"
-
-#: multilanguage.php:1331
-msgid "every"
-msgstr "كل"
-
-#: multilanguage.php:1331
-msgid "months"
-msgstr "أشهر"
-
-#: multilanguage.php:1333
-msgid "Update now"
-msgstr "التحديث الآن"
-
-#: multilanguage.php:1338
-msgid ""
-"This option allows you to download lists with registered IP addresses all "
-"over the world to the database (from"
-msgstr "هذه القائمة تسمح لك بتنزيل قوائم الآيبيات المسجلة عبر العالم"
-
-#: multilanguage.php:1341
-msgid ""
-"With this, you receive an information about each IP address, and to which "
-"country it belongs to. You can select the desired frequency for IP database "
-"updating"
-msgstr ""
-"هنا، تحصل على معلومات حول كل عنوان آيبي، ولأي بلد ينتمي، ويمكنك اختيار "
-"التردد المطلوب لتحديث قاعدة بيانات الآيبيات"
-
-#: multilanguage.php:1344
-msgid ""
-"If you need to update GeoIP immediately, please click on the \"Update now\" "
-"button and wait until the operation is finished"
-msgstr ""
-"إذا كنت تريد تحديث الإيبي الجغرافي الآن، الرجاء الضغط على زر \"التحديث الآن"
-"\"، وإنتظر حتى انتهاء العملية"
-
-#: multilanguage.php:1347
-msgid ""
-"Due to the fact that JavaScript is disabled, GeoIP will be updated via "
-"wp_cron"
-msgstr "نظراً لعدم تفعيل الجافا سكربت، سيتم تحديث الآيبي الجغرافي  عبر wp-corn"
-
-#: multilanguage.php:1350
-msgid "Read more about"
-msgstr "إقرأ المزيد حول"
-
-#: multilanguage.php:1354
-msgid "Last update was carried out"
-msgstr "تم تنفيذ التحديث الأخير"
-
-#: multilanguage.php:1359
-msgid "If you upgrade to Pro version all your settings will be saved."
-msgstr ""
-"سيتم حفظ جميع الإعدادات الخاصة بك إذا قمت بالترقية إلى النسخة الإحترافية"
-
-#: multilanguage.php:1366
-msgid "Unlock premium options by upgrading to Pro version"
-msgstr "فتح الخيارات المتميزة عن طريق الترقية إلى النسخة االإحترافية"
-
-#: multilanguage.php:1368
-msgid "Learn More"
-msgstr "تعرف على المزيد"
-
-#: multilanguage.php:1405
-msgid "Choose a language"
-msgstr "اختيار اللغة"
-
-#: multilanguage.php:1486
 msgid "Attention"
 msgstr ""
 
-#: multilanguage.php:1486
+#: multilanguage.php:1181
 msgid ""
 "Please update the post before switching the language. Data is not saved "
 "automatically."
 msgstr ""
 
-#: multilanguage.php:1490
+#: multilanguage.php:1185
 msgid "Edit for language"
 msgstr "تحرير اللغة"
 
-#: multilanguage.php:1744 multilanguage.php:1804
+#: multilanguage.php:1440 multilanguage.php:1501
 msgid "Translations"
 msgstr "الترجمات"
 
-#: multilanguage.php:1933
+#: multilanguage.php:1631
 #, php-format
 msgid "Protected: %s"
 msgstr "محمي: %s"
 
-#: multilanguage.php:1936
+#: multilanguage.php:1634
 #, php-format
 msgid "Private: %s"
 msgstr "خاص: %s"
 
-#: multilanguage.php:2148 multilanguage.php:2624
+#: multilanguage.php:1856 multilanguage.php:2334
 msgid "(more&hellip;)"
 msgstr "(أكثر&hellip;)"
 
-#: multilanguage.php:2719
+#: multilanguage.php:2429
 msgid "FAQ"
 msgstr "الأسئلة الشائعة"
 
-#: multilanguage.php:2720
+#: multilanguage.php:2430
 msgid "Support"
 msgstr "الدعم"
 
-#: includes/table.php:17
-msgid "language"
-msgstr "اللغة"
+#~ msgid "Aligned languages list"
+#~ msgstr "محاذاة قائمة اللغات"
 
-#: includes/table.php:18
-msgid "languages"
-msgstr "اللغات"
+#~ msgid "Aligned flag icons"
+#~ msgstr "محاذاة أيقونات الأعلام"
 
-#: includes/table.php:46
-msgid "Name"
-msgstr "الأسم"
+#~ msgid "Drop-down languages list"
+#~ msgstr "قائمة منسدلة باللغات"
 
-#: includes/table.php:47
-msgid "Locale"
-msgstr "اللغة"
+#~ msgid "Drop-down flag icons"
+#~ msgstr "قائمة منسدلة بأيقونات الأعلام"
 
-#: includes/table.php:50
-msgid "Link slug"
-msgstr "وسم اللغة"
+#~ msgid "Flag icons"
+#~ msgstr "أيقونة اللغة"
 
-#: includes/table.php:51
-msgid "Flag"
-msgstr "الشعار"
+#~ msgid "Settings saved"
+#~ msgstr "تم حفظ التعديلات"
 
-#: includes/table.php:52
-msgid "Status"
-msgstr "الحالة"
+#~ msgid "Incorrect language data"
+#~ msgstr "معلومات اللغة غير صحيحة"
 
-#: includes/table.php:53
-msgid "Priority"
-msgstr "الأولوية"
+#~ msgid "All plugin settings were restored."
+#~ msgstr "تم استرجاع كل بيانات اللغة"
 
-#: includes/table.php:54
-msgid "Default"
-msgstr "الأساسي"
+#~ msgid "Add language"
+#~ msgstr "إضافة لغة"
 
-#: includes/table.php:57
-msgid "Site Title"
-msgstr "أسم الموقع"
+#~ msgid "Custom code"
+#~ msgstr "كود مخصص"
 
-#: includes/table.php:58
-msgid "Tagline"
-msgstr "وصف الموقع"
+#~ msgid "Go PRO"
+#~ msgstr "الترقية للإصدار الإحترافي"
 
-#: includes/table.php:77 includes/table.php:111 includes/table.php:148
-msgid "Disabled"
-msgstr "معطل"
+#~ msgid ""
+#~ "If you would like to display Language switcher with a widget, you need to "
+#~ "add the widget \"Multilanguage\" in the Widgets tab."
+#~ msgstr ""
+#~ "إذا كنت تري إظهار محول اللغات في مربع جانبي، إذن أنت بحاجة إلى إضافة "
+#~ "البرنامج إلى قائمة المربعات الجانبية"
 
-#: includes/table.php:78 includes/table.php:89
-msgid "Enable"
-msgstr "تفعيل"
+#~ msgid ""
+#~ "If you would like to add a Language switcher to your page or post, please "
+#~ "use %s button"
+#~ msgstr ""
+#~ "إذا كنت تريد إضافة محول اللغات إلى صفحة أو مقال، الرجاء استخدام زر %s "
 
-#: includes/table.php:80 includes/table.php:90
-msgid "Disable"
-msgstr "تعطيل"
+#~ msgid ""
+#~ "You can add Language switcher to your page or post by clicking on %s "
+#~ "button in the content edit block using the Visual mode. If the button "
+#~ "isn't displayed, please use the shortcode %s."
+#~ msgstr ""
+#~ "يمكنك إضافة محول اللغات إلى الصفحات أو المقالات عبر الضغط على زر %s \n"
+#~ "والموجود في المحرر المرئي، وفي حال عدم ظهور الزر، الرجاء استخدام هذا "
+#~ "الاختصار %s"
 
-#: includes/table.php:82 includes/table.php:91
-msgid "Delete"
-msgstr "حذف"
+#~ msgid ""
+#~ "Also, you can paste the following strings into the template source code"
+#~ msgstr "كما يمكنك لصق الكود أدناه مباشرة إلى الكود المصدري للقالب الخاص بك"
 
-#: includes/table.php:148
-msgid "Enabled"
-msgstr "مفعل"
+#~ msgid "Enable new language"
+#~ msgstr "تفعيل اللغة الجديدة"
 
-#: includes/table.php:287
-msgctxt "plural"
-msgid "enabled"
-msgstr "تفعيل الكل"
+#~ msgid "The newly added language will be enabled automatically"
+#~ msgstr "سيتم تفعيل اللغة المضافة مؤخراً بشكلٍ تلقائي."
 
-#: includes/table.php:287
-msgctxt "singular"
-msgid "enabled"
-msgstr "تفعيل"
+#~ msgid "Autosave translation in the editor"
+#~ msgstr "الحفظ التلقائي للترجمة في المحرر"
 
-#: includes/table.php:304
-msgctxt "plural"
-msgid "disabled"
-msgstr "تعطيل الكل"
+#, fuzzy
+#~ msgid ""
+#~ "When switching edit posts/pages translation tab, the changes made in the "
+#~ "previous tab will be saved automatically (only when the JavaScript is "
+#~ "enabled)"
+#~ msgstr ""
+#~ "عند الانتقال إلى تبويب تحرير الردود/ الصفحات، سيتم حفظ التغييرات "
+#~ "أوتوماتيكياً على التبويب السابق (فقط عند تفعيل الجافا سكربت)"
 
-#: includes/table.php:304
-msgctxt "singular"
-msgid "disabled"
-msgstr "تعطيل"
+#~ msgid "Switch Wordpress localization"
+#~ msgstr "تغيير تعريب الوردبريس"
 
-#: includes/table.php:320
-msgctxt "plural"
-msgid "deleted"
-msgstr "حذف الكل"
+#~ msgid ""
+#~ "When changing the language in the frontend, WordPress localization will "
+#~ "also be changed (only in case additional WordPress language packs are "
+#~ "installed)"
+#~ msgstr ""
+#~ " عند تغيير اللغة في واجهة الموقع، سيتم تغيير لغة الموقع أيضاً، وذلك (في "
+#~ "حال تم تثبيت حزمة اللغات الإضافية للوردبريس)"
 
-#: includes/table.php:320
-msgctxt "singular"
-msgid "deleted"
-msgstr "حذف"
+#~ msgid "Language switcher"
+#~ msgstr "محول اللغات"
 
-#: includes/table.php:324
-msgid "Unknown action"
-msgstr "إجراء غير معروف"
+#~ msgid "Add hreflang links to %s section"
+#~ msgstr "إضافة روابط hreflang إلى قسم %s"
 
-#: includes/table.php:328
-#, php-format
-msgid "Selected languages have been %s"
-msgstr "اللغات المختارة تم %s"
+#~ msgid ""
+#~ "The hreflang attribute is used by Google and other search systems to "
+#~ "display the correct language or regional URL in search results. This "
+#~ "option automatically inserts the respective link elements of each "
+#~ "language within the head section."
+#~ msgstr ""
+#~ "hreflang \n"
+#~ "وسم يستخدم بواسطة قوقل ومحركات البحث الأخرى لعرض اللغة الحالية أو الرابط "
+#~ "الأصلي في نتائج البحث، هذا الخيار يقوم بإضافة الوسم إلى كل اللغات ضمن رأس "
+#~ "الصفحة"
 
-#: includes/table.php:330
-#, php-format
-msgid "No one from selected languages has not been %s"
-msgstr "لا أحد من اللغات المختارة قد تم %s"
+#~ msgid "Hide link slug for default language"
+#~ msgstr "إخفاء إسم اللغة الإفتراضية"
+
+#~ msgid "Default searching by"
+#~ msgstr "البحث الإفتراضي بواسطة"
+
+#~ msgid "selected language"
+#~ msgstr "اللغة المختارة"
+
+#~ msgid "all available languages"
+#~ msgstr "جميع اللغات المتاحة"
+
+#~ msgid "Determining the locale using the user's IP"
+#~ msgstr "تحديد اللغة باستخدام الآيبي الخاص بالمستخدم"
+
+#~ msgid "Update GeoIP"
+#~ msgstr "تحديث الأيبي"
+
+#~ msgid "every"
+#~ msgstr "كل"
+
+#~ msgid "Update now"
+#~ msgstr "التحديث الآن"
+
+#~ msgid ""
+#~ "This option allows you to download lists with registered IP addresses all "
+#~ "over the world to the database (from"
+#~ msgstr "هذه القائمة تسمح لك بتنزيل قوائم الآيبيات المسجلة عبر العالم"
+
+#~ msgid ""
+#~ "With this, you receive an information about each IP address, and to which "
+#~ "country it belongs to. You can select the desired frequency for IP "
+#~ "database updating"
+#~ msgstr ""
+#~ "هنا، تحصل على معلومات حول كل عنوان آيبي، ولأي بلد ينتمي، ويمكنك اختيار "
+#~ "التردد المطلوب لتحديث قاعدة بيانات الآيبيات"
+
+#~ msgid ""
+#~ "If you need to update GeoIP immediately, please click on the \"Update now"
+#~ "\" button and wait until the operation is finished"
+#~ msgstr ""
+#~ "إذا كنت تريد تحديث الإيبي الجغرافي الآن، الرجاء الضغط على زر \"التحديث "
+#~ "الآن\"، وإنتظر حتى انتهاء العملية"
+
+#~ msgid ""
+#~ "Due to the fact that JavaScript is disabled, GeoIP will be updated via "
+#~ "wp_cron"
+#~ msgstr ""
+#~ "نظراً لعدم تفعيل الجافا سكربت، سيتم تحديث الآيبي الجغرافي  عبر wp-corn"
+
+#~ msgid "Read more about"
+#~ msgstr "إقرأ المزيد حول"
+
+#~ msgid "Last update was carried out"
+#~ msgstr "تم تنفيذ التحديث الأخير"
+
+#~ msgid "If you upgrade to Pro version all your settings will be saved."
+#~ msgstr ""
+#~ "سيتم حفظ جميع الإعدادات الخاصة بك إذا قمت بالترقية إلى النسخة الإحترافية"
+
+#~ msgid "Unlock premium options by upgrading to Pro version"
+#~ msgstr "فتح الخيارات المتميزة عن طريق الترقية إلى النسخة االإحترافية"
+
+#~ msgid "Name"
+#~ msgstr "الأسم"
+
+#~ msgid "Locale"
+#~ msgstr "اللغة"
+
+#~ msgid "Link slug"
+#~ msgstr "وسم اللغة"
+
+#~ msgid "Status"
+#~ msgstr "الحالة"
+
+#~ msgid "Priority"
+#~ msgstr "الأولوية"
+
+#~ msgid "Enabled"
+#~ msgstr "مفعل"

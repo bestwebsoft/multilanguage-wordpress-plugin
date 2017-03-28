@@ -24,7 +24,6 @@
 		if ( $( '#mltlngg-disable-ajax-tabs' ).length == 0 ) {
 			/* Get option how to update translation */
 			var getLangContentDiv = $( '#get-lang-content' ); /* Find DIV id=get-lang-content */
-			$( '#excerpt' ).val( $( 'input#excerpt-' + getLangContentDiv.find( 'a.nav-tab-active' ).data( 'lang' ) ).val() );/* show excerpt loaded language */
 			$( 'li[id^="category-"]' ).each( function( i,elem ) {
 				var old_cat = $( elem ).find( 'label' ).text();
 				old_cat = old_cat.trim();
@@ -56,6 +55,7 @@
 				$( 'input[id^="in-category-"]' ).each( function( i,elem ) { 
 					cat_id[i] = $( elem ).val();
 				});
+				$( '#mltlngg-overlay' ).show();
 				getLangContentDiv.find( 'a.nav-tab-active' ).removeClass( 'nav-tab-active' ); /* Change previous language tab from active to inactive */
 				$( this ).addClass( 'nav-tab-active' ); /* Change current language tab from inactive to active */
 				/* Get content from previous language tab */
@@ -85,20 +85,20 @@
 							$( html_object ).html( content );
 						}	
 					} );
-					/* If autoupdate translation is enabled, save changes */
-					if ( 1 == mltlngg_vars.autosave ) {
-						data = {
-							'action': 'mltlngg_ajax_callback',
-							'old_lang': oldLang,
-							'cat_id' : cat_id,
-							'mltlngg_post_id': mltlnggPostId,
-							'mltlngg_old_title': mltlnggOldTitle,
-							'mltlngg_old_content': mltlnggOldContent,
-							'mltlngg_old_excerpt': mltlnggOldExcerpt,
-							'security': mltlngg_vars.ajax_nonce
-						};
-						$.post( ajaxurl, data );
-					}
+
+					data = {
+						'action': 'mltlngg_ajax_callback',
+						'old_lang': oldLang,
+						'cat_id' : cat_id,
+						'mltlngg_post_id': mltlnggPostId,
+						'mltlngg_old_title': mltlnggOldTitle,
+						'mltlngg_old_content': mltlnggOldContent,
+						'mltlngg_old_excerpt': mltlnggOldExcerpt,
+						'security': mltlngg_vars.ajax_nonce
+					};
+					$.post( ajaxurl, data, function ( response ) {
+						$( '#mltlngg-overlay' ).hide();
+					} );						
 				} else {
 					/* If hidden blocks is not exist, get Title & Content from database, then create hidden blocks */
 					data = {
@@ -177,6 +177,7 @@
 								.val( newLang )
 								);
 						}
+						$( '#mltlngg-overlay' ).hide();
 					});
 				}
 				$( '#mltlngg-current-lang' ).text( newLangName );
