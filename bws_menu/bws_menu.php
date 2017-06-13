@@ -1,7 +1,7 @@
 <?php
 /*
 * Function for displaying BestWebSoft menu
-* Version: 2.0.5
+* Version: 2.0.8
 */
 
 if ( ! function_exists ( 'bws_admin_enqueue_scripts' ) )
@@ -53,14 +53,16 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 						$is_pro_installed = array_key_exists( $value_plugin['pro_version'], $all_plugins );
 					}
 					/* check update_availible */
-					if ( $is_pro_installed && array_key_exists( $value_plugin['pro_version'], $update_availible_all->response ) ) {
-						unset( $bws_plugins[ $key_plugin ] );
-						$value_plugin['update_availible'] = $value_plugin['pro_version'];
-						$bws_plugins_update_availible[ $key_plugin ] = $value_plugin;
-					} else if ( $is_installed && array_key_exists( $key_plugin, $update_availible_all->response ) ) {
-						unset( $bws_plugins[ $key_plugin ] );
-						$value_plugin['update_availible'] = $key_plugin;
-						$bws_plugins_update_availible[ $key_plugin ] = $value_plugin;
+					if ( ! empty( $update_availible_all ) && ! empty( $update_availible_all->response ) ) {
+						if ( $is_pro_installed && array_key_exists( $value_plugin['pro_version'], $update_availible_all->response ) ) {
+							unset( $bws_plugins[ $key_plugin ] );
+							$value_plugin['update_availible'] = $value_plugin['pro_version'];
+							$bws_plugins_update_availible[ $key_plugin ] = $value_plugin;
+						} else if ( $is_installed && array_key_exists( $key_plugin, $update_availible_all->response ) ) {
+							unset( $bws_plugins[ $key_plugin ] );
+							$value_plugin['update_availible'] = $key_plugin;
+							$bws_plugins_update_availible[ $key_plugin ] = $value_plugin;
+						}
 					}
 					/* check expired */
 					if ( $is_pro_installed && isset( $bstwbsftwppdtplgns_options['time_out'][ $value_plugin['pro_version'] ] ) &&
@@ -530,7 +532,7 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 											} ?>
 										</div>
 										<div class="bws_product_description">
-											<?php echo ( strlen( $value_plugin['description'] ) > 100 ) ? substr( $value_plugin['description'], 0, 100 ) . '...' : $value_plugin['description']; ?>
+											<?php echo ( strlen( $value_plugin['description'] ) > 100 ) ? mb_substr( $value_plugin['description'], 0, 100 ) . '...' : $value_plugin['description']; ?>
 										</div>
 										<div class="bws_product_links">
 											<?php if ( $is_active || $is_pro_active ) {

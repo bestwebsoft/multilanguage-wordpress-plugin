@@ -157,6 +157,10 @@
 						$( '#excerpt' ).val( mltlnggNew.post_excerpt );
 						for( var key in mltlnggNew.cat_translate ) {
 							var html_object = $( '#category-' + key + ' label' );
+
+							if ( ! html_object.length )
+								continue;
+
 							var old_cat = html_object.text();
 							var content = html_object.html();
 							content = content.replace( old_cat, ' ' + mltlnggNew.cat_translate[key] )

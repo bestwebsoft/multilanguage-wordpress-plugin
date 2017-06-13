@@ -2,9 +2,9 @@
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
-Requires at least: 3.8
-Tested up to: 4.7.3
-Stable tag: 1.2.2
+Requires at least: 3.9
+Tested up to: 4.8
+Stable tag: 1.2.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -43,7 +43,7 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 	* Drop-down flag icons
 	* Flag icons
 	* Languages list
-* Choose language flag icon:[NEW]
+* Choose language flag icon:
 	* Default
 	* Custom
 * Display translation availability in the posts and taxonomy lists
@@ -81,6 +81,7 @@ If you have a feature suggestion or idea you'd like to see in the plugin, we'd l
 = Documentation & Videos =
 
 * [[Doc] Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
+* [[Doc] How to use](https://docs.google.com/document/d/1y_c25pWDedi4FghjWj7W2Qleb-JsC10fGFinw4hy8T0/)
 
 = Help & Support =
 
@@ -88,7 +89,6 @@ Visit our Help Center if you have any questions, our friendly Support Team is ha
 
 = Translation =
 
-* Arabic (ar) (thanks to [Rody](mailto:f1@sba8at.com))
 * Czech (cs_CZ) (thanks to [PaMaDeSSoft](mailto:info@pamadessoft.cz), www.pamadessoft.cz)
 * Polish (pl_PL) (thanks to [Emil Król](mailto:emiljo@tlen.pl))
 * Russian (ru_RU)
@@ -98,14 +98,8 @@ Some of these translations are not complete. We are constantly adding new featur
 
 = Recommended Plugins =
 
+* [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=3a06ca59d129f65a2259ac56620ce27e) - Automatically check and update WordPress website core with all installed plugins and themes to the latest versions.
 * [PDF & Print](https://bestwebsoft.com/products/wordpress/plugins/pdf-print/?k=e7f954c2040303cfe69904409d8ba2ed) - Generate PDF files and print WordPress posts/pages. Customize document header/footer styles and appearance.
-* [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=3a06ca59d129f65a2259ac56620ce27e) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
-
-= Donate =
-
-Donations play an important role in supporting open-source projects. We greatly appreciate any donation you can make to help us continue further development of free products.
-
-[Donate Now](https://bestwebsoft.com/donate/)
 
 == Installation ==
 
@@ -118,45 +112,33 @@ Donations play an important role in supporting open-source projects. We greatly 
 
 == Frequently Asked Questions ==
 
-= Will Multilanguage translate my content? =
+= Does Multilanguage plugin translate website content automatically? =
 
-No, it will not. It manages relationships between sites and translations, but it doesn't change the content.
+No, it does not. It allows to manage relationships between website and translations, but it doesn’t change the content.
 
-= Will Multilanguage translate the content automatically? =
-
-No, it will not. All translations must be done manually.
-
-= Can I add more than 87 ​​pre-installed languages? =
-
-Yes, you can add any number of languages to the list of pre-installed languages in file "includes/languages.php".
-
-= How can I change content display language? =
+= How do I change the language my content is displayed in? =
 
 You can change content display language through the widget, which is activated automatically when you activate the plugin if you have an active sidebar. If you have several active sidebars, the widget is added to the sidebar, which features a search widget. But if you do not have an active sidebar, you need to create it and add Multilanguage widget manually.
 
-= When changing content display language, will WordPress localization in the frontend be changed as well?  =
+= Where do I get these language packs of the extra languages? =
 
-In the plugin settings, you can enable/disable an option to switch Wordpress localization when the language is changed in the frontend. If you enable this option, you must install additional language packs for Wordpress to have this function working. However, in the backend, Wordpress localization corresponds to the default language, and cannot be changed.
+You can find all official translation files in [WordPress language repository](http://i18n.svn.wordpress.org/).
 
-= Where can I get additional Wordpress language packs? =
+= So whenever I change the language for my content, WordPress localization in the frontend also changes? =
 
-You can find all official translation files in WordPress [language repository](http://i18n.svn.wordpress.org/).
+In the plugin settings, you can enable/disable an option to switch WordPress localization when the language is changed in the frontend. If you enable this option, you must install additional language packs for WordPress to have this function working. However, in the backend, WordPress localization corresponds to the default language, and cannot be changed.
 
 = There is no adding block for Multilanguage switcher in Edit Menus =
 
 It seems like this block is disabled in Screen Options of your page. Please open Screen Options on the page (in the upper right corner of the screen) and enable Multilanguage checkbox.
 
-= Can I use Multilanguage on a multi-site? =
+= Can I use Multilanguage plugin on a multisite? =
 
 Yes, you can use Multilanguage on a multi-site without any problems as well. The plugin settings on each site will be unique.
 
-= When I try to update the post after editing, changes are not saved if I have not filled the title and content fields. Why? =
-
-When Title and Content fields in active language tab are empty, if you try to update the post after editing, the changes will not be saved and an error message will appear. You need to fill at least one field or switch to another language tab, on which the fields are filled, and try to update again.
-
 = How can I add more alternate links for current page? =
 
-You can use 'bwsplgns_mltlngg_add_alt_links' filter to do that. For example, you want that search engines firstly indexed exactly English-language pages of your site for people from New Zealand and South Africa. Just add the following code into funcions.php of your theme:
+You can use 'bwsplgns_mltlngg_add_alt_links' filter to do that. For example, you want that search engines firstly indexed exactly English-language pages of your site for people from New Zealand and South Africa. Just add the following code into "functions.php" of your theme:
 
 `function get_additional_links( $links_attr ) {
 	/* English for New Zealand */
@@ -167,16 +149,20 @@ You can use 'bwsplgns_mltlngg_add_alt_links' filter to do that. For example, you
 }
 add_filter( 'bwsplgns_mltlngg_add_alt_links', 'get_additional_links' );`
 
-But note: before you have to choose English ( for England ) as one of languages of your website.
+Note: before you have to choose English (for England) as one of languages of your website.
 
 = I added several whitespaces between words during the post content editing in the text mode. They are gone after I switched to the visual mode. Why? =
 
-After the mode switching, the post content has been automatically filtered to remove all odd symbols or HTML tags which can disrupt the pages layout on your website. This functionality is related to WordPress core and our plugin does not affect on it in any way.
+After the mode switching, the post content has been automatically filtered to remove all odd symbols or HTML tags which can disrupt pages layout on your website. This functionality is related to WordPress core and our plugin does not affect it in any way.
+
+= When title and content is empty, none of the changes get saved when I update the post =
+
+When title and content fields in active language tab are empty when you are trying to update the post after editing, the changes will not be saved and an error message will appear. You need to fill at least one field or switch to another language tab (which contains some content in the specified input fields) and try to update once again.
 
 = How can I change element's style in the frontend for certain language? =
 
-"mltlngg-{current language slug}" class type has been added to <body> tag for an ability to stylize content of certain language. For example, if you want to set green color for <p> when English language is selected, it is necessary to:
-1. Go to WordPress admin panel "BWS Panel" > "Multilanguage" -> "Custom code";
+"mltlngg-{current language slug}" class type has been added to <body> tag for an ability to stylize content of certain language. For example, if you want to set a green color for <p> when the English language is selected, it is necessary to:
+1. Go to WordPress admin panel "Multilanguage" -> "Custom Code";
 2. Check off "Activate" in "Editing bws-custom-code.css" block and enter the following code:
 `.mltlngg-en_US p {
 	color: green;
@@ -186,11 +172,10 @@ After the mode switching, the post content has been automatically filtered to re
 = I have some problems with the plugin's work. What Information should I provide to receive proper support? =
 
 Please make sure that the problem hasn't been discussed yet on our forum (<https://support.bestwebsoft.com>). If no, please provide the following data along with your problem's description:
-
-1. the link to the page where the problem occurs
-2. the name of the plugin and its version. If you are using a pro version - your order number.
-3. the version of your WordPress installation
-4. copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit)
+- The link to the page where the problem occurs
+- The name of the plugin and its version. If you are using a pro version - your order number.
+- The version of your WordPress installation
+- Copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/)
 
 == Screenshots ==
 
@@ -207,6 +192,19 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 11. Adding language switcher into site menu.
 
 == Changelog ==
+
+= V1.2.4 - 13.06.2017 =
+* Update : The list of languages has been updated.
+* Update : Czech language file has been updated.
+* Bugfix : Bug with website's default language switching has been fixed.
+* Bugfix : Bug with website search has been fixed.
+* Bugfix : Bug with hidden current language tab during post editing has been fixed.
+* Bugfix : Yoast SEO compatibility issue has been fixed.
+* Bugfix : WP-CLI compatibility issue has been fixed.
+
+= V1.2.3 - 24.03.2017 =
+* Bugfix : Bug with hiding link slug for the default language was fixed.
+* Update : Czech language file was updated.
 
 = V1.2.2 - 22.03.2017 =
 * NEW: Ability to change a language flag icon was added.
@@ -319,6 +317,13 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.2.4 =
+* Bugs fixed.
+* Languages updated.
+
+= V1.2.3 =
+* Bugs fixed.
 
 = V1.2.2 =
 * Functionality expanded.

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: multilanguage\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-13 16:25+0200\n"
+"POT-Creation-Date: 2017-05-18 12:45+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: BestWebSoft team <wp@bestwebsoft.com>\n"
 "Language-Team: BestWebSoft <info@bestwebsoft.com>\n"
@@ -18,8 +18,8 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: includes/class-mltlngg-settings.php:24 multilanguage.php:38
-#: multilanguage.php:40 multilanguage.php:1137 multilanguage.php:2414
-#: multilanguage.php:2428
+#: multilanguage.php:40 multilanguage.php:1136 multilanguage.php:2413
+#: multilanguage.php:2427
 msgid "Settings"
 msgstr "الإعدادات"
 
@@ -35,82 +35,82 @@ msgstr ""
 msgid "License Key"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:67 includes/table.php:346
+#: includes/class-mltlngg-settings.php:66 includes/table.php:347
 msgid "Settings saved."
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:78
+#: includes/class-mltlngg-settings.php:77
 msgid "Multilanguage Settings"
 msgstr "الإعدادات"
 
-#: includes/class-mltlngg-settings.php:83
+#: includes/class-mltlngg-settings.php:82
 msgid "Language Switcher Type"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:88
-#: includes/class-mltlngg-settings.php:93
-#: includes/class-mltlngg-settings.php:98 multilanguage.php:899
-#: multilanguage.php:900 multilanguage.php:901 multilanguage.php:978
-#: multilanguage.php:984 multilanguage.php:990
+#: includes/class-mltlngg-settings.php:87
+#: includes/class-mltlngg-settings.php:92
+#: includes/class-mltlngg-settings.php:97 multilanguage.php:898
+#: multilanguage.php:899 multilanguage.php:900 multilanguage.php:977
+#: multilanguage.php:983 multilanguage.php:989
 msgid "Drop-down list"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:88
-#: includes/class-mltlngg-settings.php:98 multilanguage.php:899
-#: multilanguage.php:901 multilanguage.php:978 multilanguage.php:990
+#: includes/class-mltlngg-settings.php:87
+#: includes/class-mltlngg-settings.php:97 multilanguage.php:898
+#: multilanguage.php:900 multilanguage.php:977 multilanguage.php:989
 msgid "flag"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:88
-#: includes/class-mltlngg-settings.php:93 multilanguage.php:896
-#: multilanguage.php:899 multilanguage.php:900 multilanguage.php:978
-#: multilanguage.php:984
+#: includes/class-mltlngg-settings.php:87
+#: includes/class-mltlngg-settings.php:92 multilanguage.php:895
+#: multilanguage.php:898 multilanguage.php:899 multilanguage.php:977
+#: multilanguage.php:983
 msgid "title"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:103 includes/table.php:40
-#: multilanguage.php:896 multilanguage.php:898 multilanguage.php:995
+#: includes/class-mltlngg-settings.php:102 includes/table.php:39
+#: multilanguage.php:895 multilanguage.php:897 multilanguage.php:994
 msgid "Flag"
 msgstr "الشعار"
 
-#: includes/class-mltlngg-settings.php:112
-#: includes/class-mltlngg-settings.php:192
+#: includes/class-mltlngg-settings.php:111
+#: includes/class-mltlngg-settings.php:191
 msgid "Close"
 msgstr "إغلاق"
 
-#: includes/class-mltlngg-settings.php:116
+#: includes/class-mltlngg-settings.php:115
 msgid "Switch Language Automatically"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:118
+#: includes/class-mltlngg-settings.php:117
 msgid ""
 "Enable to determine user IP and switch website language automatically based "
 "on the location."
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:128
+#: includes/class-mltlngg-settings.php:127
 msgid "Default Language Slug"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:130
+#: includes/class-mltlngg-settings.php:129
 msgid "Enable to show default language slug in the URL."
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:134
-msgid "Wordpress Language"
+#: includes/class-mltlngg-settings.php:133
+msgid "WordPress Language"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:136
+#: includes/class-mltlngg-settings.php:135
 msgid ""
 "Enable to switch WordPress language automatically when the language is "
 "changed in the front-end (installed WordPress language packs are required)."
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:140
+#: includes/class-mltlngg-settings.php:139
 msgid "hreflang Attribute"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:142
+#: includes/class-mltlngg-settings.php:141
 #, php-format
 msgid ""
 "Enable to add hreflang attribute used by search engines and display the "
@@ -118,53 +118,53 @@ msgid ""
 "automatically the respective link for each language within the %s section."
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:149
+#: includes/class-mltlngg-settings.php:148
 msgid "Translation Saving Mode"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:154
+#: includes/class-mltlngg-settings.php:153
 msgid "Auto"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:159
+#: includes/class-mltlngg-settings.php:158
 msgid "Manual (Save Changes button)"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:162
+#: includes/class-mltlngg-settings.php:161
 msgid ""
 "Enable Manual mode if you have some problems with saving translations using "
 "Auto mode."
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:167
+#: includes/class-mltlngg-settings.php:166
 msgid "Default Search by"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:171
+#: includes/class-mltlngg-settings.php:170
 msgid "Current language"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:175
+#: includes/class-mltlngg-settings.php:174
 msgid "All active languages"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:196
+#: includes/class-mltlngg-settings.php:195
 msgid "Update GeoIP Every"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:199
+#: includes/class-mltlngg-settings.php:198
 msgid "months"
 msgstr "أشهر"
 
-#: includes/class-mltlngg-settings.php:200
+#: includes/class-mltlngg-settings.php:199
 msgid "Country table is not loaded yet."
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:202
+#: includes/class-mltlngg-settings.php:201
 msgid "Update Now"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:205
+#: includes/class-mltlngg-settings.php:204
 #, php-format
 msgid ""
 "Automatically download lists with registered IP addresses all over the world "
@@ -172,37 +172,37 @@ msgid ""
 "to which country it belongs to."
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:205
+#: includes/class-mltlngg-settings.php:204
 msgid "Learn More"
 msgstr "تعرف على المزيد"
 
-#: includes/class-mltlngg-settings.php:236
+#: includes/class-mltlngg-settings.php:235
 msgid "Language Switcher"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:239
+#: includes/class-mltlngg-settings.php:238
 msgid "Add \"Multilanguage Switcher\" to a widget."
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:239
+#: includes/class-mltlngg-settings.php:238
 msgid "Navigate to Widgets"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:240
+#: includes/class-mltlngg-settings.php:239
 msgid "Add \"Multilanguage Switcher\" to a menu."
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:240
+#: includes/class-mltlngg-settings.php:239
 msgid "Navigate to Menus"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:241
+#: includes/class-mltlngg-settings.php:240
 msgid ""
 "Add a language switcher to your posts, pages or custom post types by using "
 "the following shortcode:"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:243
+#: includes/class-mltlngg-settings.php:242
 msgid ""
 "Add a language switcher to PHP template files by using the following code"
 msgstr ""
@@ -215,185 +215,185 @@ msgstr "اللغة"
 msgid "languages"
 msgstr "اللغات"
 
-#: includes/table.php:37 multilanguage.php:897
+#: includes/table.php:37 multilanguage.php:896
 msgid "Title"
 msgstr ""
 
-#: includes/table.php:38 includes/table.php:403
+#: includes/table.php:38 includes/table.php:404
 msgid "URL Slug"
 msgstr ""
 
-#: includes/table.php:41 includes/table.php:391
+#: includes/table.php:40 includes/table.php:392
 msgid "Order"
 msgstr ""
 
-#: includes/table.php:59 includes/table.php:359 includes/table.php:369
+#: includes/table.php:58 includes/table.php:360 includes/table.php:370
 msgid "Default"
 msgstr "الأساسي"
 
-#: includes/table.php:63
+#: includes/table.php:62
 msgid "Edit"
 msgstr ""
 
-#: includes/table.php:69 includes/table.php:81 includes/table.php:92
+#: includes/table.php:68 includes/table.php:80 includes/table.php:91
 msgid "Enable"
 msgstr "تفعيل"
 
-#: includes/table.php:71 includes/table.php:82 includes/table.php:87
+#: includes/table.php:70 includes/table.php:81 includes/table.php:86
 msgid "Disable"
 msgstr "تعطيل"
 
-#: includes/table.php:73 includes/table.php:83 includes/table.php:88
-#: includes/table.php:93
+#: includes/table.php:72 includes/table.php:82 includes/table.php:87
+#: includes/table.php:92
 msgid "Delete"
 msgstr "حذف"
 
-#: includes/table.php:214 includes/table.php:452 multilanguage.php:42
+#: includes/table.php:213 includes/table.php:453 multilanguage.php:42
 msgid "Languages"
 msgstr "اللغات"
 
-#: includes/table.php:244
+#: includes/table.php:243
 msgid "Language added"
 msgstr "تم إضافة اللغة"
 
-#: includes/table.php:246
+#: includes/table.php:245
 msgid "Incorrect language data."
 msgstr ""
 
-#: includes/table.php:310
+#: includes/table.php:309
 #, php-format
 msgid "Error: File size > %s."
 msgstr ""
 
-#: includes/table.php:312
+#: includes/table.php:311
 msgid "Error: Invalid file type."
 msgstr ""
 
-#: includes/table.php:324
+#: includes/table.php:323
 msgid "Error: failed to move file."
 msgstr ""
 
-#: includes/table.php:327
+#: includes/table.php:326
 msgid "Error: check image width or height."
 msgstr ""
 
-#: includes/table.php:331
+#: includes/table.php:330
 msgid "Uploading Error: check image properties."
 msgstr ""
 
-#: includes/table.php:349
+#: includes/table.php:350
 msgid "Edit Language"
 msgstr ""
 
-#: includes/table.php:365
+#: includes/table.php:366
 msgid "Flag Image"
 msgstr ""
 
-#: includes/table.php:372
+#: includes/table.php:373
 msgid "Custom"
 msgstr ""
 
-#: includes/table.php:379
+#: includes/table.php:380
 msgid "Current flag"
 msgstr ""
 
-#: includes/table.php:387
+#: includes/table.php:388
 #, php-format
 msgid ""
 "Upload image with the maximum %s dimensions, JPG, JPEG or PNG formats "
 "(maximum file size - %s)."
 msgstr ""
 
-#: includes/table.php:426
+#: includes/table.php:427
 msgid "Site Title"
 msgstr "أسم الموقع"
 
-#: includes/table.php:432
+#: includes/table.php:433
 msgid "Tagline"
 msgstr "وصف الموقع"
 
-#: includes/table.php:440 multilanguage.php:48
+#: includes/table.php:441 multilanguage.php:48
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: includes/table.php:446
+#: includes/table.php:447
 msgid "Save changes"
 msgstr "حفظ التعديلات"
 
-#: includes/table.php:453
+#: includes/table.php:454
 msgid "Add New"
 msgstr ""
 
-#: includes/table.php:471
+#: includes/table.php:472
 msgid "All"
 msgstr ""
 
-#: includes/table.php:472
+#: includes/table.php:473
 msgid "Active"
 msgstr ""
 
-#: includes/table.php:473
+#: includes/table.php:474
 msgid "Disabled"
 msgstr "معطل"
 
-#: includes/table.php:511
+#: includes/table.php:512
 msgctxt "plural"
 msgid "enabled"
 msgstr "تفعيل الكل"
 
-#: includes/table.php:511
+#: includes/table.php:512
 msgctxt "singular"
 msgid "enabled"
 msgstr "تفعيل"
 
-#: includes/table.php:528
+#: includes/table.php:529
 msgctxt "plural"
 msgid "disabled"
 msgstr "تعطيل الكل"
 
-#: includes/table.php:528
+#: includes/table.php:529
 msgctxt "singular"
 msgid "disabled"
 msgstr "تعطيل"
 
-#: includes/table.php:544
+#: includes/table.php:545
 msgctxt "plural"
 msgid "deleted"
 msgstr "حذف الكل"
 
-#: includes/table.php:544
+#: includes/table.php:545
 msgctxt "singular"
 msgid "deleted"
 msgstr "حذف"
 
-#: includes/table.php:548
+#: includes/table.php:549
 msgid "Unknown action"
 msgstr "إجراء غير معروف"
 
-#: includes/table.php:552
+#: includes/table.php:553
 #, php-format
 msgid "Selected languages have been %s"
 msgstr "اللغات المختارة تم %s"
 
-#: includes/table.php:554
+#: includes/table.php:556
 #, php-format
-msgid "No one from selected languages has not been %s"
-msgstr "لا أحد من اللغات المختارة قد تم %s"
+msgid "None of the selected languages has been %s"
+msgstr ""
 
-#: includes/table.php:574
+#: includes/table.php:577
 msgid "Choose a language"
 msgstr "اختيار اللغة"
 
-#: includes/table.php:593 multilanguage.php:1176
+#: includes/table.php:596 multilanguage.php:1175
 msgid "Add Language"
 msgstr ""
 
-#: multilanguage.php:120 multilanguage.php:905 multilanguage.php:2251
-#: multilanguage.php:2254
+#: multilanguage.php:121 multilanguage.php:904 multilanguage.php:2250
+#: multilanguage.php:2253
 msgid "Multilanguage switcher"
 msgstr "محول اللغات"
 
-#: multilanguage.php:873
+#: multilanguage.php:872
 msgid ""
 "Attention!!! The changes will not be saved because Title and Content fields "
 "are empty on the current tab! It is recommended to fill in at least one "
@@ -403,62 +403,65 @@ msgstr ""
 "الحالي، نوصي بملئ حقل واحد على الأقل، أو الانتقال إلى تبويب آخر تكون فيه كل "
 "الحقول ممتلئة"
 
-#: multilanguage.php:874
+#: multilanguage.php:873
 msgid ""
 "Switching to another language, all unsaved data will be lost. Save data?"
 msgstr ""
 
-#: multilanguage.php:937
+#: multilanguage.php:936
 msgid "Content language switch"
 msgstr "تغيير لغة المحتوى"
 
-#: multilanguage.php:969
+#: multilanguage.php:968
 msgid "Localization"
 msgstr "الترجمة"
 
-#: multilanguage.php:972
+#: multilanguage.php:971
 msgid "Title:"
 msgstr "العنوان:"
 
-#: multilanguage.php:1181
+#: multilanguage.php:1180
 msgid "Attention"
 msgstr ""
 
-#: multilanguage.php:1181
+#: multilanguage.php:1180
 msgid ""
 "Please update the post before switching the language. Data is not saved "
 "automatically."
 msgstr ""
 
-#: multilanguage.php:1185
+#: multilanguage.php:1184
 msgid "Edit for language"
 msgstr "تحرير اللغة"
 
-#: multilanguage.php:1440 multilanguage.php:1501
+#: multilanguage.php:1435 multilanguage.php:1496
 msgid "Translations"
 msgstr "الترجمات"
 
-#: multilanguage.php:1631
+#: multilanguage.php:1626
 #, php-format
 msgid "Protected: %s"
 msgstr "محمي: %s"
 
-#: multilanguage.php:1634
+#: multilanguage.php:1629
 #, php-format
 msgid "Private: %s"
 msgstr "خاص: %s"
 
-#: multilanguage.php:1856 multilanguage.php:2334
+#: multilanguage.php:1850 multilanguage.php:2333
 msgid "(more&hellip;)"
 msgstr "(أكثر&hellip;)"
 
-#: multilanguage.php:2429
+#: multilanguage.php:2428
 msgid "FAQ"
 msgstr "الأسئلة الشائعة"
 
-#: multilanguage.php:2430
+#: multilanguage.php:2429
 msgid "Support"
 msgstr "الدعم"
+
+#~ msgid "No one from selected languages has not been %s"
+#~ msgstr "لا أحد من اللغات المختارة قد تم %s"
 
 #~ msgid "Aligned languages list"
 #~ msgstr "محاذاة قائمة اللغات"

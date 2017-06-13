@@ -54,7 +54,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 		 * @return array    The action results
 		 */
 		public function save_options() {
-			global $wpdb;				
+			global $wpdb;
 
 			$this->options['save_mode']					= isset( $_POST['mltlngg_save_mode'] ) && 'ajax' == $_POST['mltlngg_save_mode'] ? 'ajax' : 'manual';
 			$this->options['display_alternative_link']	= isset( $_POST['mltlngg_display_alternative_link'] ) ? 1 : 0;
@@ -76,29 +76,29 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 		public function tab_settings() { ?>
 			<h3 class="bws_tab_label"><?php _e( 'Multilanguage Settings', 'multilanguage' ); ?></h3>
 			<?php $this->help_phrase(); ?>
-			<hr>		
+			<hr>
 			<table class="form-table">
 				<tr>
 					<th><?php _e( 'Language Switcher Type', 'multilanguage' ); ?></th>
 					<td>
 						<fieldset>
 							<label>
-								<input name="mltlngg_language_switcher" type="radio" value="drop-down-list" <?php checked( $this->options['language_switcher'], 'drop-down-list' ); ?> /> 
+								<input name="mltlngg_language_switcher" type="radio" value="drop-down-list" <?php checked( $this->options['language_switcher'], 'drop-down-list' ); ?> />
 								<?php _e( 'Drop-down list', 'multilanguage' ); ?> (<?php _e( 'flag', 'multilanguage' ); ?> + <?php _e( 'title', 'multilanguage' ); ?>)
 							</label>
 							<br/>
 							<label>
-								<input name="mltlngg_language_switcher" type="radio" value="drop-down-titles" <?php checked( $this->options['language_switcher'], 'drop-down-titles' ); ?> /> 
+								<input name="mltlngg_language_switcher" type="radio" value="drop-down-titles" <?php checked( $this->options['language_switcher'], 'drop-down-titles' ); ?> />
 								<?php _e( 'Drop-down list', 'multilanguage' ); ?> (<?php _e( 'title', 'multilanguage' ); ?>)
 							</label>
 							<br/>
 							<label>
-								<input name="mltlngg_language_switcher" type="radio" value="drop-down-icons" <?php checked( $this->options['language_switcher'], 'drop-down-icons' ); ?> /> 
+								<input name="mltlngg_language_switcher" type="radio" value="drop-down-icons" <?php checked( $this->options['language_switcher'], 'drop-down-icons' ); ?> />
 								<?php _e( 'Drop-down list', 'multilanguage' ); ?> (<?php _e( 'flag', 'multilanguage' ); ?>)
 							</label>
 							<br/>
 							<label>
-								<input name="mltlngg_language_switcher" type="radio" value="flags-icons" <?php checked( $this->options['language_switcher'], 'flags-icons' ); ?> /> 
+								<input name="mltlngg_language_switcher" type="radio" value="flags-icons" <?php checked( $this->options['language_switcher'], 'flags-icons' ); ?> />
 								<?php _e( 'Flag', 'multilanguage' ); ?>
 							</label>
 						</fieldset>
@@ -122,7 +122,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 					<?php $this->bws_pro_block_links(); ?>
 				</div>
 			<?php } ?>
-			<table class="form-table">				
+			<table class="form-table">
 				<tr>
 					<th><?php _e( "Default Language Slug", 'multilanguage' ); ?></th>
 					<td>
@@ -130,7 +130,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 					</td>
 				</tr>
 				<tr>
-					<th><?php _e( 'Wordpress Language', 'multilanguage' ); ?></th>
+					<th><?php _e( 'WordPress Language', 'multilanguage' ); ?></th>
 					<td>
 						<input name="mltlngg_wp_localization" type="checkbox" value="1" <?php checked( 1, $this->options['wp_localization'] ); ?>> <span class="bws_info"><?php _e( "Enable to switch WordPress language automatically when the language is changed in the front-end (installed WordPress language packs are required).", 'multilanguage' ); ?></span>
 					</td>
@@ -149,7 +149,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 						<td>
 							<fieldset>
 								<label>
-									<input name="mltlngg_save_mode" type="radio" value="ajax" <?php checked( 'ajax', $this->options['save_mode'] ); ?> /> 
+									<input name="mltlngg_save_mode" type="radio" value="ajax" <?php checked( 'ajax', $this->options['save_mode'] ); ?> />
 									<?php _e( 'Auto', 'multilanguage' ); ?> (AJAX)
 								</label>
 								<br>
@@ -161,7 +161,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 							<span class="bws_info"><?php _e( "Enable Manual mode if you have some problems with saving translations using Auto mode.", 'multilanguage' ); ?></span>
 						</td>
 					</tr>
-				<?php } ?>				
+				<?php } ?>
 				<tr>
 					<th><?php _e( 'Default Search by', 'multilanguage' ); ?></th>
 					<td>
@@ -240,7 +240,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 					<?php _e( "Add a language switcher to your posts, pages or custom post types by using the following shortcode:", 'multilanguage' ); ?>
 					<?php bws_shortcode_output( '[multilanguage_switcher]' ); ?>
 					<p><?php _e( 'Add a language switcher to PHP template files by using the following code', 'multilanguage' ); ?>:</p>
-					<code>&#60;?php if ( function_exists( 'mltlngg_display_switcher' ) ) mltlngg_display_switcher(); ?&#62;</code> 	
+					<code>&#60;?php if ( function_exists( 'mltlngg_display_switcher' ) ) mltlngg_display_switcher(); ?&#62;</code>
 				</div>
 			</div>
 		<?php }

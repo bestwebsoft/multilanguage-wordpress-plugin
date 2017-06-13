@@ -155,7 +155,7 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 																	}
 																	$license_status .= '. <a target="_blank" href="' . $this->plugins_info['PluginURI'] . '">' . __( 'Upgrade to Pro', 'bestwebsoft' ) . '</a>';							 		
 																} else {
-																	$license_type = 'Pro';
+																	$license_type = isset( $bstwbsftwppdtplgns_options['nonprofit'][ $this->plugin_basename ] ) ? 'Nonprofit Pro' : 'Pro';
 																	if ( $finish < $today ) {
 																		$license_status = sprintf( __( 'Expired on %s', 'bestwebsoft' ), $bstwbsftwppdtplgns_options['time_out'][ $this->plugin_basename ] ) . '. <a target="_blank" href="https://support.bestwebsoft.com/entries/53487136">' . __( 'Renew Now', 'bestwebsoft' ) . '</a>';
 																	} else {
@@ -791,16 +791,16 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 						}
 						$current = get_site_transient( 'update_plugins' );
 
-						if ( ! empty( $this->all_plugins ) && isset( $current ) && is_array( $current->response ) ) {
+						if ( ! empty( $this->all_plugins ) && ! empty( $current ) && isset( $current->response ) && is_array( $current->response ) ) {
 							$to_send = array();
 							$to_send["plugins"][ $this->plugin_basename ] = $this->all_plugins[ $this->plugin_basename ];
 							$to_send["plugins"][ $this->plugin_basename ]["bws_license_key"] = $bws_license_key;
 							$to_send["plugins"][ $this->plugin_basename ]["bws_illegal_client"] = true;
 							$options = array(
-									'timeout' => ( ( defined('DOING_CRON') && DOING_CRON ) ? 30 : 3),
-									'body' => array( 'plugins' => serialize( $to_send ) ),
-									'user-agent' => 'WordPress/' . $wp_version . '; ' . get_bloginfo( 'url' )
-								);
+								'timeout' => ( ( defined('DOING_CRON') && DOING_CRON ) ? 30 : 3 ),
+								'body' => array( 'plugins' => serialize( $to_send ) ),
+								'user-agent' => 'WordPress/' . $wp_version . '; ' . get_bloginfo( 'url' )
+							);
 							$raw_response = wp_remote_post( 'http://bestwebsoft.com/wp-content/plugins/paid-products/plugins/update-check/1.0/', $options );
 							
 							if ( is_wp_error( $raw_response ) || 200 != wp_remote_retrieve_response_code( $raw_response ) ) {
@@ -895,7 +895,7 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 
 						if ( ! array_key_exists( $bws_license_plugin, $this->all_plugins ) ) {
 							$current = get_site_transient( 'update_plugins' );
-							if ( isset( $current ) && is_array( $current->response ) ) {
+							if ( ! empty( $current ) && isset( $current->response ) && is_array( $current->response ) ) {
 								$to_send = array();
 								$to_send["plugins"][ $bws_license_plugin ] = array();
 								$to_send["plugins"][ $bws_license_plugin ]["bws_license_key"] = $bws_license_key;
@@ -1071,6 +1071,11 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 		 * @return void
 		 */
 		public function restore_options() {
+			unset(
+				$this->default_options['first_install'],
+				$this->default_options['suggest_feature_banner'],
+				$this->default_options['display_settings_notice']
+			);
 			/**
 			 * filter - Change default_options array OR process custom functions
 			 */
