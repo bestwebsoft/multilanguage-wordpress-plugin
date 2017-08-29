@@ -1,7 +1,7 @@
 <?php
 /*
 * Function for displaying BestWebSoft menu
-* Version: 2.0.8
+* Version: 2.1.3
 */
 
 if ( ! function_exists ( 'bws_admin_enqueue_scripts' ) )
@@ -178,7 +178,7 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 			$post_max_size = ( ini_get( 'post_max_size' ) ) ? ini_get( 'post_max_size' ) : __( 'N/A', 'bestwebsoft' );
 			$max_execution_time = ( ini_get( 'max_execution_time' ) ) ? ini_get( 'max_execution_time' ) : __( 'N/A', 'bestwebsoft' );
 			$memory_limit = ( ini_get( 'memory_limit' ) ) ? ini_get( 'memory_limit' ) : __( 'N/A', 'bestwebsoft' );
-			$wp_memory_limit = ( defined( 'WP_MEMORY_LIMIT' ) ) ? WP_MEMORY_LIMIT : __( 'N/A', 'bestwebsoft' );	
+			$wp_memory_limit = ( defined( 'WP_MEMORY_LIMIT' ) ) ? WP_MEMORY_LIMIT : __( 'N/A', 'bestwebsoft' );
 			$memory_usage = ( function_exists( 'memory_get_usage' ) ) ? round( memory_get_usage() / 1024 / 1024, 2 ) . __( ' Mb', 'bestwebsoft' ) : __( 'N/A', 'bestwebsoft' );
 			$exif_read_data = ( is_callable( 'exif_read_data' ) ) ? __( 'Yes', 'bestwebsoft' ) . " ( V" . substr( phpversion( 'exif' ), 0,4 ) . ")" : __( 'No', 'bestwebsoft' );
 			$iptcparse = ( is_callable( 'iptcparse' ) ) ? __( 'Yes', 'bestwebsoft' ) : __( 'No', 'bestwebsoft' );
@@ -199,7 +199,7 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 						__( 'Website URL', 'bestwebsoft' )					=> get_option( 'siteurl' ),
 						__( 'WP Version', 'bestwebsoft' )					=> $wp_version,
 						__( 'WP Multisite', 'bestwebsoft' )					=> $multisite,
-						__( 'WP Memory Limit', 'bestwebsoft' )				=> $wp_memory_limit,		
+						__( 'WP Memory Limit', 'bestwebsoft' )				=> $wp_memory_limit,
 						__( 'Active Theme', 'bestwebsoft' )					=> $theme['Name'] . ' ' . $theme['Version'] . ' (' . sprintf( __( 'by %s', 'bestwebsoft' ), $theme['Author'] ) . ')'
 					),
 				),
@@ -217,7 +217,7 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 						__( 'PHP Max Script Execute Time', 'bestwebsoft' )	=> $max_execution_time,
 						__( 'PHP Exif support', 'bestwebsoft' )				=> $exif_read_data,
 						__( 'PHP IPTC support', 'bestwebsoft' )				=> $iptcparse,
-						__( 'PHP XML support', 'bestwebsoft' )				=> $xml_parser_create,					
+						__( 'PHP XML support', 'bestwebsoft' )				=> $xml_parser_create,
 						'$_SERVER[HTTP_HOST]'								=> $_SERVER['HTTP_HOST'],
 						'$_SERVER[SERVER_NAME]'								=> $_SERVER['SERVER_NAME'],
 					),
@@ -273,8 +273,8 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 					$headers .= 'Content-type: text/html; charset=utf-8' . "\n";
 					$headers .= 'From: ' . get_option( 'admin_email' );
 					$message_text = '<html><head><title>System Info From ' . home_url() . '</title></head><body>';
-					foreach ( $system_info as $info ) {	
-						if ( ! empty( $info['data'] ) ) {				
+					foreach ( $system_info as $info ) {
+						if ( ! empty( $info['data'] ) ) {
 							$message_text .= '<h4>' . $info['name'];
 							if ( isset( $info['count'] ) )
 								$message_text .= ' (' . $info['count'] . ')';
@@ -301,7 +301,7 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 						<span>panel</span>
 					</a>
 				</div>
-				<div class="bws-menu-item-icon">&#8226;&#8226;&#8226;</div>				
+				<div class="bws-menu-item-icon">&#8226;&#8226;&#8226;</div>
 				<div class="bws-nav-tab-wrapper">
 					<?php if ( $is_main_page ) { ?>
 						<a class="bws-nav-tab<?php if ( 'bws_panel' == $page ) echo ' bws-nav-tab-active'; ?>" href="<?php echo self_admin_url( 'admin.php?page=bws_panel' ); ?>"><?php _e( 'Plugins', 'bestwebsoft' ); ?></a>
@@ -536,8 +536,8 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 										</div>
 										<div class="bws_product_links">
 											<?php if ( $is_active || $is_pro_active ) {
-												if ( $is_pro_isset ) {
-													if (  ! $is_pro_installed ) {
+												if ( $is_pro_isset ) {													
+													if ( ! $is_pro_installed ) {
 														if ( ! empty( $plugins_array ) && array_key_exists( $value_plugin['pro_version'], $plugins_array ) ) { ?>
 															<form method="post" action="">
 																<input type="submit" class="button button-secondary" value="<?php _e( 'Install Now', 'bestwebsoft' ); ?>" />
@@ -610,52 +610,31 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 					require( dirname( __FILE__ ) . '/product_list.php' ); ?>
 					<h1><?php _e( 'Themes', 'bestwebsoft' ); ?></h1>
 					<div id="availablethemes" class="bws-availablethemes">
-						<?php if ( $wp_version < '3.9' ) {
-							foreach ( $themes as $theme ) { ?>
-								<div class="available-theme installable-theme"><?php
+						<div class="theme-browser content-filterable rendered">
+							<div class="themes wp-clearfix">
+								<?php foreach ( $themes as $key => $theme ) {
 									$installed_theme = wp_get_theme( $theme->slug ); ?>
-									<a class="screenshot" href="<?php echo esc_url( $theme->href ); ?>">
-										<img src="<?php echo bws_menu_url( "icons/themes/" ) . $theme->slug . '.png'; ?>" width='150' />
-									</a>
-									<h3><?php echo $theme->name; ?></h3>
-									<div class="theme-author"><?php printf( __( 'By %s', 'bestwebsoft' ), 'BestWebSoft' ); ?></div>
-									<div class="action-links">
-										<ul>
-											<?php if ( $installed_theme->exists() ) { ?>
-												<li><span class="install-now" title="'<?php esc_attr__( 'This theme is already installed and is up to date' ); ?>"><?php echo _x( 'Installed', 'theme', 'bestwebsoft' ); ?></span></li>
-											<?php } ?>
-											<li><a class="theme-detail" href="<?php echo esc_url( $theme->href ); ?>" target="_blank"><?php _e( 'Learn More', 'bestwebsoft' ); ?></a></li>
-										</ul>
-									</div>
-								</div>
-							<?php }
-						} else { ?>
-							<div class="theme-browser content-filterable rendered">
-								<div class="themes wp-clearfix">
-									<?php foreach ( $themes as $key => $theme ) {
-										$installed_theme = wp_get_theme( $theme->slug ); ?>
-										<div class="theme" tabindex="0">
-											<div class="theme-screenshot">
-												<img src="<?php echo bws_menu_url( "icons/themes/" ) . $theme->slug . '.png'; ?>" alt="" />
-											</div>
-											<div class="theme-author"><?php printf( __( 'By %s', 'bestwebsoft' ), 'BestWebSoft' ); ?></div>
-											<h3 class="theme-name"><?php echo $theme->name; ?></h3>
-											<div class="theme-actions">
-												<a class="button button-secondary preview install-theme-preview" href="<?php echo $theme->href; ?>" target="_blank"><?php esc_html_e( 'Learn More', 'bestwebsoft' ); ?></a>
-											</div>
-											<?php if ( $installed_theme->exists() ) {
-												if ( $wp_version < '4.6' ) { ?>
-													<div class="theme-installed"><?php _e( 'Already Installed', 'bestwebsoft' ); ?></div>
-												<?php } else { ?>
-													<div class="notice notice-success notice-alt inline"><p><?php _e( 'Installed', 'bestwebsoft' ); ?></p></div>
-												<?php }
-											} ?>
+									<div class="theme" tabindex="0">
+										<div class="theme-screenshot">
+											<img src="<?php echo bws_menu_url( "icons/themes/" ) . $theme->slug . '.png'; ?>" alt="" />
 										</div>
-									<?php } ?>
-									<br class="clear" />
-								</div>
+										<div class="theme-author"><?php printf( __( 'By %s', 'bestwebsoft' ), 'BestWebSoft' ); ?></div>
+										<h3 class="theme-name"><?php echo $theme->name; ?></h3>
+										<div class="theme-actions">
+											<a class="button button-secondary preview install-theme-preview" href="<?php echo $theme->href; ?>" target="_blank"><?php esc_html_e( 'Learn More', 'bestwebsoft' ); ?></a>
+										</div>
+										<?php if ( $installed_theme->exists() ) {
+											if ( $wp_version < '4.6' ) { ?>
+												<div class="theme-installed"><?php _e( 'Already Installed', 'bestwebsoft' ); ?></div>
+											<?php } else { ?>
+												<div class="notice notice-success notice-alt inline"><p><?php _e( 'Installed', 'bestwebsoft' ); ?></p></div>
+											<?php }
+										} ?>
+									</div>
+								<?php } ?>
+								<br class="clear" />
 							</div>
-						<?php } ?>
+						</div>
 						<p><a class="bws_browse_link" href="http://bestweblayout.com/categories/themes/" target="_blank"><?php _e( 'Browse Free WordPress Themes', 'bestwebsoft' ); ?> <span class="dashicons dashicons-arrow-right-alt2"></span></a></p>
 					</div>
 				<?php } elseif ( 'bws_system_status' == $page || 'system-status' == $tab ) { ?>
@@ -685,7 +664,7 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 										<strong>
 											<?php echo $info['name'];
 											if ( isset( $info['count'] ) )
-												echo ' (' . $info['count'] . ')'; ?>											
+												echo ' (' . $info['count'] . ')'; ?>
 										</strong>
 									</th>
 								</tr>
@@ -699,7 +678,7 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 								<?php } ?>
 							</tbody>
 						</table>
-					<?php } 
+					<?php }
 				} ?>
 			</div>
 		</div>
@@ -710,6 +689,7 @@ if ( ! function_exists( 'bws_get_banner_array' ) ) {
 	function bws_get_banner_array() {
 		global $bstwbsftwppdtplgns_banner_array;
 		$bstwbsftwppdtplgns_banner_array = array(
+			array( 'gglstpvrfctn_hide_banner_on_plugin_page', 'bws-google-2-step-verification/bws-google-2-step-verification.php', '1.0.0' ),
 			array( 'sclbttns_hide_banner_on_plugin_page', 'social-buttons-pack/social-buttons-pack.php', '1.1.0' ),
 			array( 'tmsht_hide_banner_on_plugin_page', 'timesheet/timesheet.php', '0.1.3' ),
 			array( 'pgntn_hide_banner_on_plugin_page', 'pagination/pagination.php', '1.0.6' ),

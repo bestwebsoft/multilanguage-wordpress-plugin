@@ -4,6 +4,7 @@
 */
 
 require( dirname( __FILE__ ) . '/deprecated.php' );
+require_once( dirname( __FILE__ ) . '/deactivation-form.php' );
 
 /**
  * Function to add 'bestwebsoft' slug for BWS_Menu MO file if BWS_Menu loaded from theme.
@@ -55,7 +56,7 @@ if ( ! function_exists ( 'bws_menu_url' ) ) {
 * Function check if plugin is compatible with current WP version
 * @return void
 */
-if ( ! function_exists ( 'bws_wp_min_version_check' ) ) {
+if ( ! function_exists( 'bws_wp_min_version_check' ) ) {
 	function bws_wp_min_version_check( $plugin_basename, $plugin_info, $require_wp, $min_wp = false ) {
 		global $wp_version, $bws_versions_notice_array;
 		if ( false == $min_wp )
@@ -124,7 +125,7 @@ if ( ! function_exists ( 'bws_plugin_update_row' ) ) {
 						<div class="update-message' . $div_class . '"' . $style . '>';
 						if ( $wp_version >= 4.6 )
 							echo '<p>';
-						echo '<strong>' . __( 'WARNING: Illegal use notification', 'bestwebsoft' ) . '.</strong> ' . __( 'You can use one license of the Pro plugin for one domain only. Please check and edit your license or domain if necessary using you personal Client Area. We strongly recommend you to solve the problem within 24 hours, otherwise the Pro plugin will be deactivated.', 'bestwebsoft' ) . ' <a target="_blank" href="https://support.bestwebsoft.com/hc/en-us/articles/204240089">' . __( 'Learn More', 'bestwebsoft' ) . '</a>';
+						echo '<strong>' . __( 'WARNING: Illegal use notification', 'bestwebsoft' ) . '.</strong> ' . __( 'You can use one license of the Pro plugin for one domain only. Please check and edit your license or domain if necessary using your personal Client Area. We strongly recommend you to solve the problem within 24 hours, otherwise the Pro plugin will be deactivated.', 'bestwebsoft' ) . ' <a target="_blank" href="https://support.bestwebsoft.com/hc/en-us/articles/204240089">' . __( 'Learn More', 'bestwebsoft' ) . '</a>';
 						if ( $wp_version >= 4.6 )
 							echo '</p>';
 						echo '</div>
@@ -544,7 +545,20 @@ if ( ! function_exists ( 'bws_plugins_admin_init' ) ) {
 				unset( $recent[ $plugin ] );
 				update_site_option( 'recently_activated', $recent );
 			}
-			wp_redirect( self_admin_url( 'admin.php?page=bws_panel&activate=true' ) );
+			/**
+			* @deprecated 1.9.8 (15.12.2016)
+			*/
+			$is_main_page = in_array( $_GET['page'], array( 'bws_panel', 'bws_themes', 'bws_system_status' ) );
+			$page = esc_attr( $_GET['page'] );
+			$tab = isset( $_GET['tab'] ) ? esc_attr( $_GET['tab'] ) : '';
+
+			if ( $is_main_page )
+				$current_page = 'admin.php?page=' . $page;
+			else
+				$current_page = isset( $_GET['tab'] ) ? 'admin.php?page=' . $page . '&tab=' . $tab : 'admin.php?page=' . $page;
+			/*end deprecated */
+
+			wp_redirect( self_admin_url( $current_page . '&activate=true' ) );
 			exit();
 		}
 
@@ -559,7 +573,7 @@ if ( ! function_exists ( 'bws_plugins_admin_init' ) ) {
 
 if ( ! function_exists ( 'bws_admin_enqueue_scripts' ) ) {
 	function bws_admin_enqueue_scripts() {
-		global $wp_scripts;
+		global $wp_scripts, $hook_suffix;
 
 		$jquery_version = isset( $wp_scripts->registered['jquery-ui-core']->ver ) ? $wp_scripts->registered['jquery-ui-core']->ver : '1.12.1';
 
@@ -573,6 +587,10 @@ if ( ! function_exists ( 'bws_admin_enqueue_scripts' ) ) {
 			wp_enqueue_script( 'theme-install' );
 			add_thickbox();
 			wp_enqueue_script( 'plugin-install' );
+		}
+		
+		if ( 'plugins.php' == $hook_suffix && ! defined( 'DOING_AJAX' ) ) {
+			wp_enqueue_style( 'bws-modal-css', bws_menu_url( 'css/modal.css' ) );
 		}
 	}
 }
@@ -652,12 +670,22 @@ if ( ! function_exists ( 'bws_plugins_admin_head' ) ) {
 					),
 					'set_timeout' => 2000
 				);
-				if ( $wp_version < '3.9' )
-					$tooltip_args['css_selector'] = '.mce_add_bws_shortcode';
 				bws_add_tooltip_in_admin( $tooltip_args );
 			}
 		}
     }
+}
+
+if ( ! function_exists ( 'bws_plugins_admin_footer' ) ) {
+	function bws_plugins_admin_footer() {
+		global $hook_suffix;
+
+		bws_shortcode_media_button_popup();
+
+		if ( 'plugins.php' == $hook_suffix && ! defined( 'DOING_AJAX' ) ) {
+			bws_add_deactivation_feedback_dialog_box();
+		}
+	}
 }
 
 if ( ! function_exists ( 'bws_plugins_include_codemirror' ) ) {
@@ -847,32 +875,8 @@ if ( ! function_exists( 'bws_shortcode_media_button_popup' ) ) {
 						<p><?php _e( 'The shortcode will be inserted', 'bestwebsoft' ); ?></p>
 						<div id="bws_shortcode_block"><div id="bws_shortcode_display"></div></div>
 					</div>
-					<?php if ( $wp_version < '3.9' ) { ?>
-						<p>
-							<button class="button-primary primary bws_shortcode_insert"><?php _e( 'Insert', 'bestwebsoft' ); ?></button>
-						</p>
-					<?php } ?>
 				</div>
 			</div>
-		<?php }
-		if ( $wp_version < '3.9' ) { ?>
-			<script type="text/javascript">
-				(function($){
-					$( '.bws_shortcode_insert' ).on( 'click',function() {
-						var shortcode = $( '#TB_ajaxContent #bws_shortcode_display' ).text();
-						if ( '' != shortcode ) {
-							/* insert shortcode to tinymce */
-							if ( !tinyMCE.activeEditor || tinyMCE.activeEditor.isHidden() ) {
-								$( 'textarea#content' ).val( shortcode );
-							} else {
-								tinyMCE.execCommand( 'mceInsertContent', false, shortcode );
-							}
-						}
-						/* close the thickbox after adding shortcode to editor */
-						self.parent.tb_remove();
-					});
-				})(jQuery);
-			</script>
 		<?php }
 	}
 }
@@ -1048,7 +1052,7 @@ if ( ! function_exists( 'bws_delete_plugin' ) ) {
 add_action( 'admin_init', 'bws_plugins_admin_init' );
 add_action( 'admin_enqueue_scripts', 'bws_admin_enqueue_scripts' );
 add_action( 'admin_head', 'bws_plugins_admin_head' );
-add_action( 'admin_footer','bws_shortcode_media_button_popup' );
+add_action( 'admin_footer','bws_plugins_admin_footer' );
 
 add_action( 'admin_notices', 'bws_admin_notices', 30 );
 

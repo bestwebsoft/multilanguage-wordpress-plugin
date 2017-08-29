@@ -35,6 +35,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 				'options' 			 => $mltlngg_options,
 				'is_network_options' => is_network_admin(),
 				'tabs' 				 => $tabs,
+				'doc_link' 			 => 'https://docs.google.com/document/d/1y_c25pWDedi4FghjWj7W2Qleb-JsC10fGFinw4hy8T0/',
 				'wp_slug'			 => 'multilanguage',
 				'pro_page' 			 => 'admin.php?page=mltlnggpr_settings',
 				'bws_license_plugin' => 'multilanguage-pro/multilanguage-pro.php',
@@ -108,13 +109,44 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 			<?php if ( ! $this->hide_pro_tabs ) { ?>
 				<div class="bws_pro_version_bloc">
 					<div class="bws_pro_version_table_bloc">
-						<button type="submit" name="bws_hide_premium_options" class="notice-dismiss bws_hide_premium_options" title="<?php _e( 'Close', 'limit-attempts' ); ?>"></button>
+						<button type="submit" name="bws_hide_premium_options" class="notice-dismiss bws_hide_premium_options" title="<?php _e( 'Close', 'multilanguage' ); ?>"></button>
 						<div class="bws_table_bg"></div>
 						<table class="form-table bws_pro_version">
 							<tr>
 								<th><?php _e( 'Switch Language Automatically', 'multilanguage' ); ?></th>
 								<td>
-									<input disabled="disabled" type="checkbox" name="mltlngg_determining_locale" value="1" /> <span class="bws_info"><?php _e( "Enable to determine user IP and switch website language automatically based on the location.", 'multilanguage' ); ?></span>
+									<input type="checkbox" <?php disabled( true ); ?> /> <span class="bws_info"><?php _e( "Enable to determine user IP and switch website language automatically based on the location.", 'multilanguage' ); ?></span>
+								</td>
+							</tr>
+							<tr>
+								<th><?php _e( "Slug Position in the URL", 'multilanguage' ); ?></th>
+								<td>
+									<fieldset class="mltlngg_slug_position">
+										<?php global $mltlngg_current_language;
+										$posts = get_posts( array( 'post_type' => 'page', 'posts_per_page' => 1 ) );
+										$url = get_permalink( $posts[0] );
+										$args = array(
+											'url'			=> $url,
+											'force'			=> 'display'
+										); ?>
+										<label>
+											<input type="radio" <?php disabled( true ); checked( false ); ?> />
+											<?php _e( 'Before', 'multilanguage' );
+											printf(
+												"&ensp;<code>%s</code>",
+												preg_replace( '~(://)~', '$0<b>en.</b>', $url )
+											); ?>
+										</label>
+										<br>
+										<label>
+											<input type="radio" <?php disabled( true ); checked( true ); ?> />
+											<?php _e( 'After', 'multilanguage' );
+											printf(
+												"&ensp;<code>%s</code>",
+												preg_replace( '~(?<=[/=])(' . $mltlngg_current_language . ')(?![\w\d-])~', '<b>en</b>', mltlngg_get_lang_link( $args ) )
+											); ?>
+										</label>
+									</fieldset>
 								</td>
 							</tr>
 						</table>

@@ -7,24 +7,27 @@ $bws_plugins_category = array(
 	'admin-tools'	=> array( 'name' => __( 'Admin Tools', 'bestwebsoft' ) ),
 	'content' 		=> array( 'name' => __( 'Content', 'bestwebsoft' ) ),
 	'ecommerce' 	=> array( 'name' => __( 'eCommerce', 'bestwebsoft' ) ),
-	'marketing' 	=> array( 'name' => __( 'Marketing', 'bestwebsoft' ) ),	
+	'marketing' 	=> array( 'name' => __( 'Marketing', 'bestwebsoft' ) ),
 	'navigation'	=> array( 'name' => __( 'Navigation', 'bestwebsoft' ) ),
 	'recommended'	=> array( 'name' => __( 'Recommended', 'bestwebsoft' ) ),
 	'security'		=> array( 'name' => __( 'Security', 'bestwebsoft' ) ),
 	'seo'			=> array( 'name' => __( 'SEO', 'bestwebsoft' ) ),
-	'smm'			=> array( 'name' => __( 'SMM', 'bestwebsoft' ) ),		
+	'smm'			=> array( 'name' => __( 'SMM', 'bestwebsoft' ) ),
 );
 
 $bws_plugins = array(
-	'captcha/captcha.php' => array(
+	/* captcha has pro version only */
+	'captcha-pro/captcha-pro.php' => array(
 		'category'		=> array( 'security', 'recommended' ),
 		'name'			=> 'Captcha',
 		'description'	=> __( 'Protect WordPress website forms from spam entries by means of math logic.', 'bestwebsoft' ),
-		'link'			=> 'https://bestwebsoft.com/products/wordpress/plugins/captcha/?k=d678516c0990e781edfb6a6c874f0b8a&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
-		'settings'		=> 'admin.php?page=captcha.php',
+		/*'link'			=> 'https://bestwebsoft.com/products/wordpress/plugins/captcha/?k=d678516c0990e781edfb6a6c874f0b8a&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version, */
+		'settings'		=> 'admin.php?page=captcha_pro.php',
+		'install_url'	=> 'https://bestwebsoft.com/products/wordpress/plugins/captcha/buy/?k=ff7d65e55e5e7f98f219be9ed711094e&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
 		'pro_version'	=> 'captcha-pro/captcha_pro.php',
 		'purchase'		=> 'https://bestwebsoft.com/products/wordpress/plugins/captcha/buy/?k=ff7d65e55e5e7f98f219be9ed711094e&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
-		'pro_settings'	=> 'admin.php?page=captcha_pro.php'
+		'pro_settings'	=> 'admin.php?page=captcha_pro.php',
+		'icon'			=> bws_menu_url( 'icons/plugins/' ) . 'captcha.png'
 	),
 	'car-rental/car-rental.php' => array(
 		'category'		=> array( 'ecommerce' ),
@@ -97,13 +100,6 @@ $bws_plugins = array(
 		'link'			=> 'https://bestwebsoft.com/products/wordpress/plugins/donate/?k=a8b2e2a56914fb1765dd20297c26401b&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
 		'settings'		=> 'admin.php?page=donate.php'
 	),
-	'email-queue/email-queue.php' => array(
-		'category'		=> array( 'admin-tools' ),
-		'name'			=> 'Email Queue',
-		'description'	=> __( 'Automatically add outgoing email messages to queue instead of sending them immediately.', 'bestwebsoft' ),
-		'link'			=> 'https://bestwebsoft.com/products/wordpress/plugins/email-queue/?k=e345e1b6623f0dca119bc2d9433b130b&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
-		'settings'		=> 'admin.php?page=mlq_settings'
-	),
 	'error-log-viewer/error-log-viewer.php' => array(
 		'category'		=> array( 'admin-tools' ),
 		'name'			=> 'Error Log Viewer',
@@ -131,13 +127,6 @@ $bws_plugins = array(
 		'purchase'		=> 'https://bestwebsoft.com/products/wordpress/plugins/gallery/buy/?k=382e5ce7c96a6391f5ffa5e116b37fe0&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
 		'pro_settings'	=> 'admin.php?page=gallery-plugin-pro.php'
 	),
-	'gallery-categories/gallery-categories.php' => array(
-		'category'		=> array( 'content' ),
-		'name'			=> 'Gallery Categories',
-		'description'	=> __( 'Add unlimited gallery categories. Organize images to make the navigation through content easier.', 'bestwebsoft' ),
-		'link'			=> 'https://bestwebsoft.com/products/wordpress/plugins/gallery-categories/?k=7d68c7bfec2486dc350c67fff57ad433&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
-		'settings'		=> ''
-	),
 	'google-one/google-plus-one.php' => array(
 		'category'		=> array( 'smm' ),
 		'name'			=> 'Google +1',
@@ -147,6 +136,16 @@ $bws_plugins = array(
 		'pro_version'	=> 'google-one-pro/google-plus-one-pro.php',
 		'purchase' 		=> 'https://bestwebsoft.com/products/wordpress/plugins/google-plus-one/buy/?k=f4b0a62d155c9df9601a0531ad5bd832&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
 		'pro_settings' 	=> 'admin.php?page=google-plus-one-pro.php'
+	),
+	'bws-google-2-step-verification/bws-google-2-step-verification.php' => array(
+		'category'		=> array( 'security' ),
+		'name'			=> 'Google 2-Step Verification',
+		'description'	=> __( 'Stronger security solution which protects your WordPress website from hacks and unauthorized login attempts.', 'bestwebsoft' ),
+		'link'			=> 'https://bestwebsoft.com/products/wordpress/plugins/google-2-step-verification/?k=78de1a525f968d56e39f7325908aa98e&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
+		'settings'		=> 'admin.php?page=google-2-step-verification.php',
+		'pro_version'	=> 'bws-google-2-step-verification-pro/bws-google-2-step-verification-pro.php',
+		'purchase' 		=> 'https://bestwebsoft.com/products/wordpress/plugins/google-2-step-verification/buy/?k=b5605ea9bb3628682cfa416e70e78410&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
+		'pro_settings' 	=> 'admin.php?page=google-2-step-verification-pro.php'
 	),
 	'adsense-plugin/adsense-plugin.php' => array(
 		'category'		=> array( 'marketing' ),
@@ -339,13 +338,6 @@ $bws_plugins = array(
 		'pro_version'	=> 'realty-pro/realty-pro.php',
 		'purchase' 		=> 'https://bestwebsoft.com/products/wordpress/plugins/realty/buy/?k=c7791f0a72acfb36f564a614dbccb474&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
 		'pro_settings'	=> 'admin.php?page=realty_pro_settings'
-	),
-	're-attacher/re-attacher.php' => array(
-		'category'		=> array( 'admin-tools' ),
-		'name'			=> 'Re-attacher',
-		'description'	=> __( 'Attach, un-attach and re-attach media files quickly to WordPress posts and pages.', 'bestwebsoft' ),
-		'link'			=> 'https://bestwebsoft.com/products/wordpress/plugins/re-attacher/?k=4d529f116d2b7f7df3a78018c383f975&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
-		'settings'		=> 'admin.php?page=re-attacher.php'
 	),
 	'relevant/related-posts-plugin.php' => array(
 		'category'		=> array( 'marketing', 'recommended' ),

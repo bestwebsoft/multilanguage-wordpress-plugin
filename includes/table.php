@@ -137,7 +137,7 @@ if ( ! class_exists( 'Mltlngg_List_Table' ) ) {
 			) );
 
 			$return = array();
-			$i = 0;
+
 			foreach ( $mltlngg_options['list_of_languages'] as $language ) {
 				if ( isset( $_GET['status'] ) ) {
 					if ( 'active' == $_GET['status'] && ! $language['enable'] )
@@ -149,7 +149,7 @@ if ( ! class_exists( 'Mltlngg_List_Table' ) ) {
 				$flag_src = ( empty( $language['flag'] ) ) ? plugins_url( 'images/flags/', dirname( __FILE__ ) ) . $language['locale'] . '.png' : $language['flag'];
 				$flag = "<img src=" . $flag_src . " alt=" . $language['name'] . " title=" . $language['name'] . ">";
 
-				$return[ $i ] = array(
+				$return[] = array(
 					'title'			=> $language['name'],
 					'locale'		=> $language['locale'],
 					'flag'			=> $flag,
@@ -157,7 +157,6 @@ if ( ! class_exists( 'Mltlngg_List_Table' ) ) {
 					'priority'		=> $language['priority'],
 					'bydefault'		=> ( $language['locale'] == $mltlngg_options['default_language'] )
 				);
-				$i++;
 			}
 			if ( ! empty( $return ) ) {
 				if ( isset( $_GET['orderby'] ) && isset( $_GET['order'] ) ) {
@@ -231,6 +230,11 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 		global $mltlngg_options, $wp_version, $mltlngg_plugin_info;
 
 		$error = $message = '';
+
+		if ( isset( $_POST['bws_hide_premium_options'] ) ) {
+			$hide_result = bws_hide_premium_options( $mltlngg_options );
+			$mltlngg_options = $hide_result['options'];
+		}
 
 		/* Adding language */
 		if (
@@ -323,7 +327,7 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 									$error = __( "Error: failed to move file.", 'multilanguage' );
 								}
 							} else {
-								$error = __( "Error: check image width or height.", 'multilanguage' );
+								$error = sprintf( __( "Error: image width and height should not exceed %s.", 'multilanguage' ), '50px' );
 							}
 						}
 					} else {
@@ -345,11 +349,13 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 
 				update_option( 'mltlngg_options', $mltlngg_options );
 				$message = __( 'Settings saved.', 'multilanguage' );
-			} ?>
-			<h1>
-				<?php _e( 'Edit Language', 'multilanguage' ); ?>: <?php echo $language_data["name"]; ?>
-			</h1>
-			<?php if ( ! empty( $error ) ) { ?>
+			}
+
+			echo ( version_compare( $wp_version, '4.0', '<' ) ) ? "<h2>" : "<h1>";
+				_e( 'Edit Language', 'multilanguage' ); ?>: <?php echo $language_data["name"];
+			echo ( version_compare( $wp_version, '4.0', '<' ) ) ? "</h2>" : "</h1>";
+
+			if ( ! empty( $error ) ) { ?>
 				<div class="error below-h2"><p><?php echo $error; ?></p></div>
 			<?php } elseif ( ! empty( $message ) ) { ?>
 				<div class="updated fade below-h2"><p><?php echo $message; ?></p></div>
@@ -366,10 +372,10 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 						<th><?php _e( 'Flag Image', 'multilanguage' ); ?></th>
 						<td>
 							<fieldset>
-								<label><input name="mltlngg_flag_option" type="radio" value="standart" <?php if ( empty( $language_data['flag'] ) ) echo 'checked'; ?> />
+								<label><input name="mltlngg_flag_option" type="radio" value="standart" <?php checked( empty( $language_data['flag'] ) ); ?> class="bws_option_affect" data-affect-hide=".mltlngg_flag_option_custom" />
 								&nbsp;<?php _e( 'Default', 'multilanguage' ); ?></label>
 								<br>
-								<label><input name="mltlngg_flag_option" type="radio" value="custom" <?php if ( ! empty( $language_data['flag'] ) ) echo 'checked'; ?> class="bws_option_affect" data-affect-show=".mltlngg_flag_option_custom" />
+								<label><input name="mltlngg_flag_option" type="radio" value="custom" <?php checked( ! empty( $language_data['flag'] ) ); ?> class="bws_option_affect" data-affect-show=".mltlngg_flag_option_custom" />
 								&nbsp;<?php _e( 'Custom', 'multilanguage' ); ?></label>
 							</fieldset>
 						</td>
@@ -385,7 +391,7 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 						<th></th>
 						<td>
 							<input type="file" name="mltlngg_upload_flag">
-							<div class="bws_info"><?php printf( __( 'Upload image with the maximum %s dimensions, JPG, JPEG or PNG formats (maximum file size - %s).', 'multilanguage' ), '50×50px', '32kb' ); ?></div>
+							<div class="bws_info"><?php printf( __( 'Upload image of %s maximum dimensions in JPG, JPEG or PNG formats (maximum file size - %s).', 'multilanguage' ), '50×50px', '32kb' ); ?></div>
 						</td>
 					</tr>
 					<tr>
@@ -398,6 +404,7 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 				<?php if ( ! bws_hide_premium_options_check( $mltlngg_options ) ) { ?>
 					<div class="bws_pro_version_bloc">
 						<div class="bws_pro_version_table_bloc">
+							<button type="submit" name="bws_hide_premium_options" class="notice-dismiss bws_hide_premium_options" title="<?php _e( 'Close', 'multilanguage' ); ?>"></button>
 							<div class="bws_table_bg"></div>
 							<table class="form-table bws_pro_version">
 								<tr>
@@ -451,7 +458,7 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 		<?php } else { ?>
 			<h1>
 				<?php _e( 'Languages', 'multilanguage' ); ?>
-				<a class="page-title-action hide-if-no-js" href="#" id="mltlngg-add-lang-link"><?php _e( 'Add New', 'multilanguage' ); ?></a>
+				<a class="page-title-action add-new-h2 hide-if-no-js" href="#" id="mltlngg-add-lang-link"><?php _e( 'Add New', 'multilanguage' ); ?></a>
 			</h1>
 			<?php if ( ! empty( $error ) ) { ?>
 				<div class="error below-h2"><p><?php echo $error; ?></p></div>

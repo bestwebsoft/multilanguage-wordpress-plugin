@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bestwebsoft\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-08 11:26+0300\n"
-"PO-Revision-Date: 2017-06-08 11:26+0300\n"
+"POT-Creation-Date: 2017-08-28 09:55+0300\n"
+"PO-Revision-Date: 2017-08-28 09:55+0300\n"
 "Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
 "Language-Team: Damian Dąbrowski <contact@codester.pl>\n"
 "Language: pl_PL\n"
@@ -18,11 +18,11 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: bws_functions.php:72 bws_functions.php:190
+#: bws_functions.php:73 bws_functions.php:191
 msgid "requires"
 msgstr "wymaga wersja"
 
-#: bws_functions.php:74
+#: bws_functions.php:75
 msgid ""
 "or higher, that is why it has been deactivated! Please upgrade WordPress and "
 "try again."
@@ -30,62 +30,57 @@ msgstr ""
 "lub nowsza, dlatego wtyczka została wyłączona. Zaktualizuj WordPress i "
 "spróbuj ponownie."
 
-#: bws_functions.php:75
+#: bws_functions.php:76
 msgid "Back to the WordPress"
 msgstr "Wróć do WordPress"
 
-#: bws_functions.php:77
+#: bws_functions.php:78
 msgid "Plugins page"
 msgstr "Wtyczki"
 
-#: bws_functions.php:91
+#: bws_functions.php:92
 #, fuzzy
 msgid "Like the plugin?"
 msgstr "Oceń wtyczkę"
 
-#: bws_functions.php:93
+#: bws_functions.php:94
 msgid "Rate it"
 msgstr ""
 
-#: bws_functions.php:102
+#: bws_functions.php:103
 msgid "Need help?"
 msgstr "Potrzebujesz pomocy?"
 
-#: bws_functions.php:103 bws_functions.php:907 class-bws-settings.php:1047
+#: bws_functions.php:104 bws_functions.php:911 class-bws-settings.php:1056
 msgid "Visit Help Center"
 msgstr ""
 
-#: bws_functions.php:106
+#: bws_functions.php:107
 #, fuzzy
 msgid "Want to support the plugin?"
 msgstr "Oceń wtyczkę"
 
-#: bws_functions.php:107 bws_menu.php:553
+#: bws_functions.php:108 bws_menu.php:553
 msgid "Donate"
 msgstr ""
 
-#: bws_functions.php:127
+#: bws_functions.php:128
 msgid "WARNING: Illegal use notification"
 msgstr "UWAGA: Odnotowano nielegalne użycie"
 
-#: bws_functions.php:127
+#: bws_functions.php:128
 msgid ""
 "You can use one license of the Pro plugin for one domain only. Please check "
-"and edit your license or domain if necessary using you personal Client Area. "
-"We strongly recommend you to solve the problem within 24 hours, otherwise "
-"the Pro plugin will be deactivated."
+"and edit your license or domain if necessary using your personal Client "
+"Area. We strongly recommend you to solve the problem within 24 hours, "
+"otherwise the Pro plugin will be deactivated."
 msgstr ""
-"Licencja wersji PRO może być wykorzystywana tylko na jednej domenie. Proszę "
-"sprawdź i edytuj klucz licencji lub domenę, jeśli to konieczne wykorzystaj "
-"Panel Klienta. Zalecamy rozwiązanie tego problemu w przeciągu 24 godzin, w "
-"przeciwnym wypadku wersja PRO zostanie zablokowana."
 
-#: bws_functions.php:127 bws_functions.php:339 bws_menu.php:627
-#: class-bws-settings.php:143
+#: bws_functions.php:128 bws_functions.php:340 class-bws-settings.php:144
 msgid "Learn More"
 msgstr "Dowiedz się więcej"
 
-#: bws_functions.php:144
+#: bws_functions.php:145
 #, fuzzy
 msgid ""
 "Notice: Your Pro Trial license has expired. To continue using the plugin, "
@@ -94,7 +89,7 @@ msgstr ""
 "Uwaga: Testowa wersja PRO niestety wygasła. Aby kontynuować korzystanie z "
 "naszej wtyczki powinieneś zakupić klucz licencji."
 
-#: bws_functions.php:146
+#: bws_functions.php:147
 #, fuzzy
 msgid ""
 "Your license has expired. To continue getting top-priority support and "
@@ -103,24 +98,24 @@ msgstr ""
 "Twoja licencja wygasła. Aby podtrzymać szybki dostęp do pomocy i "
 "aktualizacji powinieneś przedłużyć licencję."
 
-#: bws_functions.php:146 bws_functions.php:382 deprecated.php:584
+#: bws_functions.php:147 bws_functions.php:383 deprecated.php:584
 msgid "Learn more"
 msgstr "Dowiedz się więcej"
 
-#: bws_functions.php:164
+#: bws_functions.php:165
 #, php-format
 msgid "Notice: You are using the Pro Trial license of %s plugin."
 msgstr "Uwaga: Wykorzystujesz próbną licencję wersji PRO dla %s."
 
-#: bws_functions.php:166
+#: bws_functions.php:167
 msgid "Notice: You are using the Pro Trial license of plugin."
 msgstr "Uwaga: Wykorzystywana jest próbna licencja wtyczki."
 
-#: bws_functions.php:169
+#: bws_functions.php:170
 msgid "The Pro Trial license will expire on"
 msgstr "Licencja próbna wygaśnie"
 
-#: bws_functions.php:192
+#: bws_functions.php:193
 msgid ""
 "or higher! We do not guarantee that our plugin will work correctly. Please "
 "upgrade to WordPress latest version."
@@ -128,75 +123,75 @@ msgstr ""
 "lub nowsza! Nie gwarantujemy, że nasza wtyczka będzie działała poprawnie. "
 "Proszę zaktualizować WordPress do najnowszej wersji."
 
-#: bws_functions.php:207
+#: bws_functions.php:208
 #, php-format
 msgid "Thank you for installing %s plugin!"
 msgstr ""
 
-#: bws_functions.php:208
+#: bws_functions.php:209
 msgid "Let's get started"
 msgstr "Zaczynajmny"
 
-#: bws_functions.php:209 bws_functions.php:242 bws_menu.php:557
+#: bws_functions.php:210 bws_functions.php:243 bws_menu.php:557
 #: bws_menu.php:559
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: bws_functions.php:211 bws_menu.php:328 class-bws-settings.php:736
-#: class-bws-settings.php:1049 class-bws-settings.php:1059 deprecated.php:694
+#: bws_functions.php:212 bws_menu.php:328 class-bws-settings.php:745
+#: class-bws-settings.php:1058 class-bws-settings.php:1068 deprecated.php:694
 msgid "or"
 msgstr "lub"
 
-#: bws_functions.php:212 bws_functions.php:244
+#: bws_functions.php:213 bws_functions.php:245
 msgid "Add New"
 msgstr "Dodaj nowy"
 
-#: bws_functions.php:216 bws_functions.php:226 bws_functions.php:330
-#: bws_functions.php:378 bws_functions.php:480
+#: bws_functions.php:217 bws_functions.php:227 bws_functions.php:331
+#: bws_functions.php:379 bws_functions.php:481
 msgid "Close notice"
 msgstr "Zamknij powiadomienie"
 
-#: bws_functions.php:231
+#: bws_functions.php:232
 #, fuzzy
 msgid "Thank you for installing plugins by BestWebSoft!"
 msgstr "Dziękujemy za instalację"
 
-#: bws_functions.php:233
+#: bws_functions.php:234
 #, fuzzy
 msgid "More Details"
 msgstr "Szczegóły"
 
-#: bws_functions.php:234
+#: bws_functions.php:235
 #, fuzzy
 msgid "Less Details"
 msgstr "Szczegóły"
 
-#: bws_functions.php:262
+#: bws_functions.php:263
 msgid "Deprecated function(-s) is used on the site here:"
 msgstr ""
 
-#: bws_functions.php:276
+#: bws_functions.php:277
 msgid ""
 "This function(-s) will be removed over time. Please update the product(-s)."
 msgstr ""
 
-#: bws_functions.php:335
+#: bws_functions.php:336
 msgid "It’s time to upgrade your"
 msgstr "Czas by zaktualizować"
 
-#: bws_functions.php:335
+#: bws_functions.php:336
 msgid "to"
 msgstr "do"
 
-#: bws_functions.php:335
+#: bws_functions.php:336
 msgid "version!"
 msgstr "wersji!"
 
-#: bws_functions.php:336
+#: bws_functions.php:337
 msgid "Extend standard plugin functionality with new great options."
 msgstr "Rozszerz podstawowe funkcje wtyczki o nowe wspaniałe opcje."
 
-#: bws_functions.php:382
+#: bws_functions.php:383
 #, fuzzy, php-format
 msgid ""
 "Your license key for %s expires on %s and you won't be granted TOP-PRIORITY "
@@ -205,36 +200,36 @@ msgstr ""
 "zostaniesz wówczas pozbawiony SZYBKIEGO DOSTĘDO DO SUPPORTU oraz "
 "AKTUALIZACJI."
 
-#: bws_functions.php:475
+#: bws_functions.php:476
 #, php-format
 msgid "Thank you for choosing %s plugin!"
 msgstr ""
 
-#: bws_functions.php:476
+#: bws_functions.php:477
 msgid ""
 "If you have a feature, suggestion or idea you'd like to see in the plugin, "
 "we'd love to hear about it!"
 msgstr ""
 
-#: bws_functions.php:477
+#: bws_functions.php:478
 msgid "Suggest a Feature"
 msgstr ""
 
-#: bws_functions.php:493 class-bws-settings.php:533 class-bws-settings.php:536
-#: class-bws-settings.php:584 class-bws-settings.php:587
+#: bws_functions.php:494 class-bws-settings.php:538 class-bws-settings.php:541
+#: class-bws-settings.php:593 class-bws-settings.php:596
 msgid "Notice"
 msgstr "Uwaga"
 
-#: bws_functions.php:493
+#: bws_functions.php:494
 msgid "The plugin's settings have been changed."
 msgstr "Ustawienia wtyczki zostały zmienione."
 
-#: bws_functions.php:494 class-bws-settings.php:182 class-bws-settings.php:202
+#: bws_functions.php:495 class-bws-settings.php:183 class-bws-settings.php:203
 #: deprecated.php:640
 msgid "Save Changes"
 msgstr "Zapisz zmiany"
 
-#: bws_functions.php:508
+#: bws_functions.php:509
 #, fuzzy
 msgid ""
 "You can always look at premium options by checking the \"Pro Options\" in "
@@ -243,85 +238,81 @@ msgstr ""
 "Zawsze możesz sprawdzić funkcje premium poprzez kliknięcie \"Pokaż funkcje "
 "PRO\" w zakładce \"Go PRO\""
 
-#: bws_functions.php:629
+#: bws_functions.php:647
 msgid "Add BWS Shortcode"
 msgstr ""
 
-#: bws_functions.php:630
+#: bws_functions.php:648
 msgid "Add BWS Plugins Shortcode"
 msgstr "Dodaj BWS Shortcode"
 
-#: bws_functions.php:649
+#: bws_functions.php:667
 #, fuzzy
 msgid "Add shortcode"
 msgstr "Dodaj BWS Shortcode"
 
-#: bws_functions.php:649
+#: bws_functions.php:667
 msgid "Add BestWebSoft plugins' shortcodes using this button."
 msgstr ""
 
-#: bws_functions.php:695
+#: bws_functions.php:723
 msgid "Close"
 msgstr "Zamknij"
 
-#: bws_functions.php:787
+#: bws_functions.php:815
 #, fuzzy
 msgid "Are you sure you want to restore default settings?"
 msgstr ""
 "Czy jesteś pewien, że chcesz przywrócić wszystkie ustawienia do wartości "
 "domyślnych?"
 
-#: bws_functions.php:790
+#: bws_functions.php:818
 msgid "Yes, restore all settings"
 msgstr "Tak, przywróć wszystkie ustawienia"
 
-#: bws_functions.php:791
+#: bws_functions.php:819
 msgid "No, go back to the settings page"
 msgstr "Nie, wróć do ustawień"
 
-#: bws_functions.php:833
+#: bws_functions.php:861
 msgid "Plugin"
 msgstr "Wtyczka"
 
-#: bws_functions.php:842
+#: bws_functions.php:870
 msgid "Shortcode settings"
 msgstr "Ustawienia shortcode"
 
-#: bws_functions.php:847
+#: bws_functions.php:875
 msgid "The shortcode will be inserted"
 msgstr "Shortcode zostanie umieszczony"
 
-#: bws_functions.php:852
-msgid "Insert"
-msgstr "Umieść"
-
-#: bws_functions.php:912
+#: bws_functions.php:916
 msgid "FAQ"
 msgstr "FAQ"
 
-#: bws_functions.php:918
+#: bws_functions.php:922
 msgid "For more information:"
 msgstr ""
 
-#: bws_functions.php:919
+#: bws_functions.php:923
 msgid "Documentation"
 msgstr ""
 
-#: bws_functions.php:920
+#: bws_functions.php:924
 msgid "Video Instructions"
 msgstr ""
 
-#: bws_functions.php:921
+#: bws_functions.php:925
 #, fuzzy
 msgid "Submit a Request"
 msgstr "送信ボタン"
 
-#: bws_menu.php:101 class-bws-settings.php:781 deprecated.php:322
+#: bws_menu.php:101 class-bws-settings.php:790 deprecated.php:322
 msgid "Wrong license key"
 msgstr "Niepoprawny klucz licencji"
 
-#: bws_menu.php:122 class-bws-settings.php:807 class-bws-settings.php:874
-#: class-bws-settings.php:910 deprecated.php:133 deprecated.php:199
+#: bws_menu.php:122 class-bws-settings.php:816 class-bws-settings.php:883
+#: class-bws-settings.php:919 deprecated.php:133 deprecated.php:199
 #: deprecated.php:352
 msgid ""
 "Something went wrong. Please try again later. If the error appears again, "
@@ -330,13 +321,13 @@ msgstr ""
 "Coś poszło nie tak. Spróbuj ponownie później. Jeśli błąd pojawi się ponownie "
 "proszę skontaktować się z nami"
 
-#: bws_menu.php:122 class-bws-settings.php:807 class-bws-settings.php:874
-#: class-bws-settings.php:910 deprecated.php:133 deprecated.php:199
+#: bws_menu.php:122 class-bws-settings.php:816 class-bws-settings.php:883
+#: class-bws-settings.php:919 deprecated.php:133 deprecated.php:199
 #: deprecated.php:352
 msgid "We are sorry for inconvenience."
 msgstr "Przepraszamy za niedogodności."
 
-#: bws_menu.php:128 class-bws-settings.php:813 class-bws-settings.php:916
+#: bws_menu.php:128 class-bws-settings.php:822 class-bws-settings.php:925
 #: deprecated.php:139 deprecated.php:358
 msgid "Wrong license key."
 msgstr "Niepoprawny klucz licencji"
@@ -356,7 +347,7 @@ msgstr ""
 msgid "Unfortunately, you have exceeded the number of available tries per day."
 msgstr "Niestety, przekroczono dzienną liczbę dostępnych prób."
 
-#: bws_menu.php:134 class-bws-settings.php:922 deprecated.php:364
+#: bws_menu.php:134 class-bws-settings.php:931 deprecated.php:364
 #, fuzzy, php-format
 msgid ""
 "Unfortunately, Your license has expired. To continue getting top-priority "
@@ -365,7 +356,7 @@ msgstr ""
 "Niestety, Twoja licencja wygasła. By nadal korzystać z szybkiego dostępu do "
 "wsparcia oraz aktualizacji powinieneś przedłużyć licencję."
 
-#: bws_menu.php:136 class-bws-settings.php:924 deprecated.php:366
+#: bws_menu.php:136 class-bws-settings.php:933 deprecated.php:366
 msgid ""
 "Unfortunately, the Pro licence was already installed to this domain. The Pro "
 "Trial license can be installed only once."
@@ -373,11 +364,11 @@ msgstr ""
 "Niestety, licencja PRO była już przypisana do tej domeny. Licencja testowa "
 "może być wykorzystana tylko raz."
 
-#: bws_menu.php:142 class-bws-settings.php:828 deprecated.php:153
+#: bws_menu.php:142 class-bws-settings.php:837 deprecated.php:153
 msgid "The license key is valid."
 msgstr "Klucz licencji jest poprawny"
 
-#: bws_menu.php:144 class-bws-settings.php:831 deprecated.php:156
+#: bws_menu.php:144 class-bws-settings.php:840 deprecated.php:156
 msgid "Your license will expire on"
 msgstr "Twoja licencja wygaśnie"
 
@@ -386,7 +377,7 @@ msgstr "Twoja licencja wygaśnie"
 msgid "Congratulations! Pro Membership license is  activated successfully."
 msgstr "Gratulacje! Licencja do wersji PRO została aktywowana pomyślnie."
 
-#: bws_menu.php:153 class-bws-settings.php:996 deprecated.php:435
+#: bws_menu.php:153 class-bws-settings.php:1005 deprecated.php:435
 msgid ""
 "Something went wrong. Try again later or upload the plugin manually. We are "
 "sorry for inconvenience."
@@ -571,7 +562,7 @@ msgstr "Wtyczki"
 msgid "Themes"
 msgstr "Motywy"
 
-#: bws_menu.php:309 bws_menu.php:313 bws_menu.php:662
+#: bws_menu.php:309 bws_menu.php:313 bws_menu.php:641
 msgid "System status"
 msgstr "Status systemu"
 
@@ -593,7 +584,7 @@ msgstr ""
 msgid "Subscribe to Pro Membership"
 msgstr "有効なテーマ"
 
-#: bws_menu.php:336 bws_menu.php:347 class-bws-settings.php:749
+#: bws_menu.php:336 bws_menu.php:347 class-bws-settings.php:758
 #: deprecated.php:227
 msgid "Check license key"
 msgstr "Sprawdź klucz licencji"
@@ -604,7 +595,7 @@ msgid "Enter your license key"
 msgstr "Podaj klucz licencji"
 
 #: bws_menu.php:345 bws_menu.php:563 bws_menu.php:572
-#: class-bws-settings.php:728 deprecated.php:259 deprecated.php:267
+#: class-bws-settings.php:737 deprecated.php:259 deprecated.php:267
 #: deprecated.php:629 deprecated.php:700 deprecated.php:709
 msgid "Activate"
 msgstr "Aktywuj"
@@ -643,8 +634,8 @@ msgid "Downloading install package from"
 msgstr ""
 
 #: bws_menu.php:400 bws_menu.php:431 bws_menu.php:442
-#: class-bws-settings.php:948 class-bws-settings.php:970
-#: class-bws-settings.php:992 deprecated.php:387 deprecated.php:409
+#: class-bws-settings.php:957 class-bws-settings.php:979
+#: class-bws-settings.php:1001 deprecated.php:387 deprecated.php:409
 #: deprecated.php:431
 msgid "Failed to download the zip archive. Please, upload the plugin manually"
 msgstr ""
@@ -660,13 +651,13 @@ msgstr ""
 msgid "Installing the plugin"
 msgstr "Zainstalowane"
 
-#: bws_menu.php:417 class-bws-settings.php:960 deprecated.php:399
+#: bws_menu.php:417 class-bws-settings.php:969 deprecated.php:399
 msgid "Failed to open the zip archive. Please, upload the plugin manually"
 msgstr ""
 "Otwieranie archiwum zip zakończyło się niepowodzeniem. Proszę dodać wtyczkę "
 "manualnie"
 
-#: bws_menu.php:424 class-bws-settings.php:966 deprecated.php:405
+#: bws_menu.php:424 class-bws-settings.php:975 deprecated.php:405
 msgid ""
 "Your server does not support either ZipArchive or Phar. Please, upload the "
 "plugin manually"
@@ -678,7 +669,7 @@ msgstr ""
 msgid "The plugin %s is successfully installed."
 msgstr ""
 
-#: bws_menu.php:434 class-bws-settings.php:973 deprecated.php:412
+#: bws_menu.php:434 class-bws-settings.php:982 deprecated.php:412
 msgid "UploadDir is not writable. Please, upload the plugin manually"
 msgstr ""
 "Folder uploadu jest chroniony przez zapisem. Proszę dodać wtyczkę manualnie"
@@ -696,7 +687,7 @@ msgstr ""
 msgid "All"
 msgstr "Wszystko"
 
-#: bws_menu.php:450 bws_menu.php:650
+#: bws_menu.php:450 bws_menu.php:630
 msgid "Installed"
 msgstr "Zainstalowane"
 
@@ -732,7 +723,7 @@ msgstr "Aktualizuj do wersji %s"
 msgid "Install Now"
 msgstr "Instaluj teraz"
 
-#: bws_menu.php:549 class-bws-settings.php:156 class-bws-settings.php:1056
+#: bws_menu.php:549 class-bws-settings.php:157 class-bws-settings.php:1065
 msgid "Upgrade to Pro"
 msgstr ""
 
@@ -749,204 +740,204 @@ msgstr "Zainstalowane"
 msgid "Nothing found. Try another criteria."
 msgstr ""
 
-#: bws_menu.php:621 bws_menu.php:641
+#: bws_menu.php:621
 #, php-format
 msgid "By %s"
 msgstr "Od %s"
 
-#: bws_menu.php:648
+#: bws_menu.php:628
 msgid "Already Installed"
 msgstr "Zainstalowane"
 
-#: bws_menu.php:659
+#: bws_menu.php:638
 msgid "Browse Free WordPress Themes"
 msgstr ""
 
-#: bws_menu.php:668
+#: bws_menu.php:647
 msgid "Send to support"
 msgstr "Wyślij do supportu"
 
-#: bws_menu.php:675
+#: bws_menu.php:654
 msgid "Send to custom email &#187;"
 msgstr "Prześlij na własny adres &#187;"
 
-#: class-bws-settings.php:135
+#: class-bws-settings.php:136
 msgid "Information"
 msgstr ""
 
-#: class-bws-settings.php:143
+#: class-bws-settings.php:144
 #, fuzzy
 msgid "Inactive"
 msgstr "Nieaktywne wtyczki"
 
-#: class-bws-settings.php:151
+#: class-bws-settings.php:152
 msgid "Expired"
 msgstr ""
 
-#: class-bws-settings.php:154
+#: class-bws-settings.php:155
 #, php-format
 msgid "%s day(-s) left"
 msgstr ""
 
-#: class-bws-settings.php:160
+#: class-bws-settings.php:161
 #, fuzzy, php-format
 msgid "Expired on %s"
 msgstr "wygasa"
 
-#: class-bws-settings.php:160
+#: class-bws-settings.php:161
 msgid "Renew Now"
 msgstr ""
 
-#: class-bws-settings.php:162
+#: class-bws-settings.php:163
 #, fuzzy
 msgid "Active"
 msgstr "Aktywuj"
 
-#: class-bws-settings.php:167
+#: class-bws-settings.php:168
 #, fuzzy
 msgid "License"
 msgstr "Niepoprawny klucz licencji"
 
-#: class-bws-settings.php:170
+#: class-bws-settings.php:171
 #, fuzzy
 msgid "Status"
 msgstr "Status systemu"
 
-#: class-bws-settings.php:174
+#: class-bws-settings.php:175
 #, fuzzy
 msgid "Version"
 msgstr "wersji!"
 
-#: class-bws-settings.php:282
+#: class-bws-settings.php:285
 #, fuzzy
 msgid "All plugin settings were restored."
 msgstr "Ustawienia wtyczki zostały zmienione."
 
-#: class-bws-settings.php:420
+#: class-bws-settings.php:423
 msgid "Custom Code"
 msgstr ""
 
-#: class-bws-settings.php:424 deprecated.php:497
+#: class-bws-settings.php:427 deprecated.php:497
 msgid "You do not have sufficient permissions to edit plugins for this site."
 msgstr ""
 
-#: class-bws-settings.php:429 deprecated.php:618
+#: class-bws-settings.php:432 deprecated.php:618
 msgid "These styles will be added to the header on all pages of your site."
 msgstr ""
 
-#: class-bws-settings.php:432 deprecated.php:620
+#: class-bws-settings.php:435 deprecated.php:620
 #, php-format
 msgid ""
 "This PHP code will be hooked to the %s action and will be printed on front "
 "end only."
 msgstr ""
 
-#: class-bws-settings.php:435
+#: class-bws-settings.php:438
 msgid "These code will be added to the header on all pages of your site."
 msgstr ""
 
-#: class-bws-settings.php:443 deprecated.php:644
+#: class-bws-settings.php:446 deprecated.php:644
 #, php-format
 msgid ""
 "You need to make this files writable before you can save your changes. See "
 "%s the Codex %s for more information."
 msgstr ""
 
-#: class-bws-settings.php:453 deprecated.php:626
+#: class-bws-settings.php:456 deprecated.php:626
 msgid "Browsing"
 msgstr ""
 
-#: class-bws-settings.php:457
+#: class-bws-settings.php:461
 #, php-format
 msgid "Activate custom %s code."
 msgstr ""
 
-#: class-bws-settings.php:464 deprecated.php:633
+#: class-bws-settings.php:469 deprecated.php:633
 #, fuzzy, php-format
 msgid "Learn more about %s"
 msgstr "Dowiedz się więcej"
 
-#: class-bws-settings.php:524
+#: class-bws-settings.php:529
 msgid "Miscellaneous Settings"
 msgstr ""
 
-#: class-bws-settings.php:533 class-bws-settings.php:584
+#: class-bws-settings.php:538 class-bws-settings.php:593
 #, php-format
 msgid ""
 "It is prohibited to change %s settings on this site in the %s network "
 "settings."
 msgstr ""
 
-#: class-bws-settings.php:536 class-bws-settings.php:587
+#: class-bws-settings.php:541 class-bws-settings.php:596
 #, php-format
 msgid ""
 "It is prohibited to view %s settings on this site in the %s network settings."
 msgstr ""
 
-#: class-bws-settings.php:545
+#: class-bws-settings.php:550
 #, fuzzy
 msgid "Pro Options"
 msgstr "Pro Plugins"
 
-#: class-bws-settings.php:548
+#: class-bws-settings.php:554
 msgid "Enable to display plugin Pro options."
 msgstr ""
 
-#: class-bws-settings.php:553
+#: class-bws-settings.php:560
 msgid "Track Usage"
 msgstr ""
 
-#: class-bws-settings.php:556
+#: class-bws-settings.php:564
 msgid ""
 "Enable to allow tracking plugin usage anonymously in order to make it better."
 msgstr ""
 
-#: class-bws-settings.php:560
+#: class-bws-settings.php:569
 #, fuzzy
 msgid "Default Settings"
 msgstr "Ustawienia"
 
-#: class-bws-settings.php:562
+#: class-bws-settings.php:571
 #, fuzzy
 msgid "Restore Settings"
 msgstr "Przywróć ustawienia"
 
-#: class-bws-settings.php:563
+#: class-bws-settings.php:572
 #, fuzzy
 msgid "This will restore plugin settings to defaults."
 msgstr "Przywróć wszystkie ustawienia do wartości domyśłnych"
 
-#: class-bws-settings.php:575
+#: class-bws-settings.php:584
 msgid "Import / Export"
 msgstr ""
 
-#: class-bws-settings.php:691 class-bws-settings.php:724
-#: class-bws-settings.php:746
+#: class-bws-settings.php:700 class-bws-settings.php:733
+#: class-bws-settings.php:755
 #, fuzzy
 msgid "License Key"
 msgstr "Niepoprawny klucz licencji"
 
-#: class-bws-settings.php:714
+#: class-bws-settings.php:723
 #, fuzzy
 msgid "Congratulations! Pro license is activated successfully."
 msgstr "Gratulacje! Licencja do wersji PRO została aktywowana pomyślnie."
 
-#: class-bws-settings.php:715
+#: class-bws-settings.php:724
 #, php-format
 msgid "You will be automatically redirected to the %s in %s seconds."
 msgstr ""
 
-#: class-bws-settings.php:715
+#: class-bws-settings.php:724
 #, fuzzy
 msgid "Settings page"
 msgstr "設定保存."
 
-#: class-bws-settings.php:730
+#: class-bws-settings.php:739
 #, php-format
 msgid "Enter your license key to activate %s and get premium plugin features."
 msgstr ""
 
-#: class-bws-settings.php:733 class-bws-settings.php:920 deprecated.php:362
+#: class-bws-settings.php:742 class-bws-settings.php:929 deprecated.php:362
 #: deprecated.php:703
 msgid ""
 "Unfortunately, you have exceeded the number of available tries per day. "
@@ -955,12 +946,12 @@ msgstr ""
 "Niestety, przekroczono liczb dostępnych prób na dziś. Proszę dodać wtyczkę "
 "manualnie."
 
-#: class-bws-settings.php:736 deprecated.php:694
+#: class-bws-settings.php:745 deprecated.php:694
 #, php-format
 msgid "Start Your Free %s-Day Trial Now"
 msgstr "Rozpocznij swój darmowy %s-dniowy okres testowy"
 
-#: class-bws-settings.php:751
+#: class-bws-settings.php:760
 #, fuzzy
 msgid ""
 "If necessary, you can check if the license key is correct or reenter it in "
@@ -970,28 +961,28 @@ msgstr ""
 "w polu poniżej. Możesz znaleźć swój klucz na naszej stronie w strefie - "
 "Panel Klienta"
 
-#: class-bws-settings.php:756
+#: class-bws-settings.php:765
 msgid "Manage License Settings"
 msgstr ""
 
-#: class-bws-settings.php:758
+#: class-bws-settings.php:767
 #, fuzzy
 msgid "Login to Client Area"
 msgstr "Panel Klienta"
 
-#: class-bws-settings.php:760
+#: class-bws-settings.php:769
 msgid ""
 "Manage active licenses, download BWS products, and view your payment history "
 "using BestWebSoft Client Area."
 msgstr ""
 
-#: class-bws-settings.php:815 class-bws-settings.php:918 deprecated.php:141
+#: class-bws-settings.php:824 class-bws-settings.php:927 deprecated.php:141
 #: deprecated.php:360
 #, fuzzy
 msgid "This license key is bound to another site."
 msgstr "Klucz licencji został przypisany do innej strony."
 
-#: class-bws-settings.php:817 deprecated.php:143
+#: class-bws-settings.php:826 deprecated.php:143
 msgid ""
 "This license key is valid, but Your license has expired. If you want to "
 "update our plugin in future, you should extend the license."
@@ -999,11 +990,11 @@ msgstr ""
 "Klucz jest poprawny, jednak Twoja licencja wygasła. Jeśli chcesz "
 "aktualizować naszą wtyczkę w przyszłości powinieneś przedłużyć licencję."
 
-#: class-bws-settings.php:819 deprecated.php:145
+#: class-bws-settings.php:828 deprecated.php:145
 msgid "Unfortunately, you have exceeded the number of available tries."
 msgstr "Niestety, przekroczono liczbę dostępnych prób."
 
-#: class-bws-settings.php:821 deprecated.php:147
+#: class-bws-settings.php:830 deprecated.php:147
 msgid ""
 "Unfortunately, the Pro Trial licence was already installed to this domain. "
 "The Pro Trial license can be installed only once."
@@ -1011,11 +1002,11 @@ msgstr ""
 "Niestety, licencja PRO była już przypisana do tej domeny. Licencja testowa "
 "może być wykorzystana tylko raz."
 
-#: class-bws-settings.php:826 deprecated.php:151
+#: class-bws-settings.php:835 deprecated.php:151
 msgid "The Pro Trial license key is valid."
 msgstr "Klucz licencji do testowej wersji PRO jest poprawny."
 
-#: class-bws-settings.php:834 deprecated.php:159 deprecated.php:246
+#: class-bws-settings.php:843 deprecated.php:159 deprecated.php:246
 #, php-format
 msgid ""
 "In order to continue using the plugin it is necessary to buy a %s license."
@@ -1023,27 +1014,123 @@ msgstr ""
 "W celu dalszego wykorzystywania wtyczki niezbędne jest wykupienie licencji "
 "%s."
 
-#: class-bws-settings.php:1031 deprecated.php:463
+#: class-bws-settings.php:1040 deprecated.php:463
 msgid "Please, enter Your license key"
 msgstr "Proszę podać klucz licencji."
 
-#: class-bws-settings.php:1043
+#: class-bws-settings.php:1052
 #, fuzzy
 msgid "Need Help?"
 msgstr "Potrzebujesz pomocy?"
 
-#: class-bws-settings.php:1045
+#: class-bws-settings.php:1054
 msgid "Read the Instruction"
 msgstr ""
 
-#: class-bws-settings.php:1049
+#: class-bws-settings.php:1058
 msgid "Watch the Video"
 msgstr ""
 
-#: class-bws-settings.php:1060
+#: class-bws-settings.php:1069
 #, fuzzy
 msgid "Start Your Free Trial"
 msgstr "Rozpocznij swój darmowy %s-dniowy okres testowy"
+
+#: deactivation-form.php:26
+msgid "Need help? We are ready to answer your questions."
+msgstr ""
+
+#: deactivation-form.php:26
+msgid "Contact Support"
+msgstr ""
+
+#: deactivation-form.php:31
+msgid "The plugin is not working"
+msgstr ""
+
+#: deactivation-form.php:33
+msgid "Kindly share what didn't work so we can fix it in future updates..."
+msgstr ""
+
+#: deactivation-form.php:37
+msgid "The plugin didn't work as expected"
+msgstr ""
+
+#: deactivation-form.php:39
+msgid "What did you expect?"
+msgstr ""
+
+#: deactivation-form.php:43
+msgid "The plugin suddenly stopped working"
+msgstr ""
+
+#: deactivation-form.php:50
+msgid "The plugin broke my site"
+msgstr ""
+
+#: deactivation-form.php:57
+msgid "I couldn't understand how to get it work"
+msgstr ""
+
+#: deactivation-form.php:64
+msgid "I found a better plugin"
+msgstr ""
+
+#: deactivation-form.php:66
+msgid "What's the plugin name?"
+msgstr ""
+
+#: deactivation-form.php:70
+msgid "The plugin is great, but I need specific feature that you don't support"
+msgstr ""
+
+#: deactivation-form.php:72
+msgid "What feature?"
+msgstr ""
+
+#: deactivation-form.php:76
+msgid "I no longer need the plugin"
+msgstr ""
+
+#: deactivation-form.php:82
+msgid "It's a temporary deactivation, I'm just debugging an issue"
+msgstr ""
+
+#: deactivation-form.php:88
+msgid "Other"
+msgstr ""
+
+#: deactivation-form.php:122
+msgid "Quick Feedback"
+msgstr ""
+
+#: deactivation-form.php:123
+msgid "If you have a moment, please let us know why you are deactivating"
+msgstr ""
+
+#: deactivation-form.php:128
+msgid "Anonymous feedback"
+msgstr ""
+
+#: deactivation-form.php:130
+msgid "Cancel"
+msgstr ""
+
+#: deactivation-form.php:230
+msgid "Processing"
+msgstr ""
+
+#: deactivation-form.php:259
+msgid "Submit & Deactivate"
+msgstr ""
+
+#: deactivation-form.php:276
+msgid "Please tell us the reason so we can improve it."
+msgstr ""
+
+#: deactivation-form.php:344
+msgid "Deactivate"
+msgstr ""
 
 #: deprecated.php:93
 #, fuzzy
@@ -1191,291 +1278,293 @@ msgstr ""
 msgid "SMM"
 msgstr ""
 
-#: product_list.php:22
+#: product_list.php:23
 msgid ""
 "Protect WordPress website forms from spam entries by means of math logic."
 msgstr ""
 
-#: product_list.php:32
+#: product_list.php:35
 msgid "Create your personal car rental/booking and reservation website."
 msgstr ""
 
-#: product_list.php:42
+#: product_list.php:45
 msgid ""
 "Allow customers to reach you using secure contact form plugin any website "
 "must have."
 msgstr ""
 
-#: product_list.php:52
+#: product_list.php:55
 msgid "Add unlimited number of contact forms to WordPress website."
 msgstr ""
 
-#: product_list.php:62
+#: product_list.php:65
 msgid "Save and manage Contact Form messages. Never lose important data."
 msgstr ""
 
-#: product_list.php:72
+#: product_list.php:75
 msgid "Add unlimited custom pages to WordPress admin dashboard."
 msgstr ""
 
-#: product_list.php:79
+#: product_list.php:82
 msgid "Add custom fields to WordPress website search results."
 msgstr ""
 
-#: product_list.php:86
+#: product_list.php:89
 msgid ""
 "Add custom post types and taxonomies to WordPress website search results."
 msgstr ""
 
-#: product_list.php:96
+#: product_list.php:99
 msgid "Add PayPal and 2CO donate buttons to receive charity payments."
 msgstr ""
 
-#: product_list.php:103
-msgid ""
-"Automatically add outgoing email messages to queue instead of sending them "
-"immediately."
-msgstr ""
-
-#: product_list.php:110
+#: product_list.php:106
 msgid ""
 "Get latest error log messages to diagnose website problems. Define and fix "
 "issues faster."
 msgstr ""
 
-#: product_list.php:117
+#: product_list.php:113
 msgid ""
 "Add Facebook Follow, Like, and Share buttons to WordPress posts, pages, and "
 "widgets."
 msgstr ""
 
-#: product_list.php:127
+#: product_list.php:123
 msgid ""
 "Add beautiful galleries, albums & images to your WordPress website in a few "
 "clicks."
 msgstr ""
 
-#: product_list.php:137
-msgid ""
-"Add unlimited gallery categories. Organize images to make the navigation "
-"through content easier."
-msgstr ""
-
-#: product_list.php:144
+#: product_list.php:133
 msgid ""
 "Add Google +1, Share, Follow, Hangout buttons and profile badge to WordPress "
 "posts, pages and widgets."
 msgstr ""
 
-#: product_list.php:154
+#: product_list.php:143
+msgid ""
+"Stronger security solution which protects your WordPress website from hacks "
+"and unauthorized login attempts."
+msgstr ""
+
+#: product_list.php:153
 msgid ""
 "Add Adsense ads to WordPress website pages, posts, custom posts, search "
 "results, categories, tags, and widgets."
 msgstr ""
 
-#: product_list.php:164
+#: product_list.php:163
 msgid "Add Google Analytics code to WordPress website and track basic stats."
 msgstr ""
 
-#: product_list.php:174
+#: product_list.php:173
 msgid ""
 "Protect WordPress website forms from spam entries with Google Captcha "
 "(reCaptcha)."
 msgstr ""
 
-#: product_list.php:184
+#: product_list.php:183
 msgid "Add customized Google maps to WordPress posts, pages and widgets."
 msgstr ""
 
-#: product_list.php:194
+#: product_list.php:193
 msgid ""
 "Generate and add XML sitemap to WordPress website. Help search engines index "
 "your blog."
 msgstr ""
 
-#: product_list.php:204
+#: product_list.php:203
 msgid ""
 "Replace external WordPress website links with Google shortlinks and track "
 "click stats."
 msgstr ""
 
-#: product_list.php:211
+#: product_list.php:210
 msgid ""
 "Protect WordPress website – allow and deny access for certain IP addresses, "
 "hostnames, etc."
 msgstr ""
 
-#: product_list.php:221
+#: product_list.php:220
 msgid ""
 "Create your personal job board and listing WordPress website. Search jobs, "
 "submit CV/resumes, choose candidates."
 msgstr ""
 
-#: product_list.php:228
+#: product_list.php:227
 msgid ""
 "Protect WordPress website against brute force attacks. Limit rate of login "
 "attempts."
 msgstr ""
 
-#: product_list.php:238
+#: product_list.php:237
 msgid ""
 "Add LinkedIn Share and Follow buttons to WordPress posts, pages and widgets. "
 "5 plugins included – profile, insider, etc."
 msgstr ""
 
-#: product_list.php:248
+#: product_list.php:247
 msgid ""
 "Translate WordPress website content to other languages manually. Create "
 "multilingual pages, posts, widgets, menus, etc."
 msgstr ""
 
-#: product_list.php:258
+#: product_list.php:257
 msgid ""
 "Add customizable pagination to WordPress website. Split long content to "
 "multiple pages for better navigation."
 msgstr ""
 
-#: product_list.php:268
+#: product_list.php:267
 msgid ""
 "Generate PDF files and print WordPress posts/pages. Customize document "
 "header/footer styles and appearance."
 msgstr ""
 
-#: product_list.php:278
+#: product_list.php:277
 msgid ""
 "Add Pinterest Follow, Pin It buttons and profile widgets (Pin, Board, "
 "Profile) to WordPress posts, pages and widgets."
 msgstr ""
 
-#: product_list.php:288
+#: product_list.php:287
 msgid ""
 "Create your personal portfolio WordPress website. Manage and showcase past "
 "projects to get more clients."
 msgstr ""
 
-#: product_list.php:298
+#: product_list.php:297
 msgid "Export WordPress posts to CSV file format easily. Configure data order."
 msgstr ""
 
-#: product_list.php:305
+#: product_list.php:304
 msgid ""
 "Add extra fields to default WordPress user profile. The easiest way to "
 "create and manage additional custom values."
 msgstr ""
 
-#: product_list.php:312
+#: product_list.php:311
 msgid ""
 "Add and display HTML advertisement banner on WordPress website. Customize "
 "bar styles and appearance."
 msgstr ""
 
-#: product_list.php:322
+#: product_list.php:321
 msgid ""
 "Add customizable quotes and tips blocks to WordPress posts, pages and "
 "widgets."
 msgstr ""
 
-#: product_list.php:329
+#: product_list.php:328
 msgid ""
 "Add rating plugin to your WordPress website to receive feedback from your "
 "customers."
 msgstr ""
 
-#: product_list.php:336
+#: product_list.php:335
 msgid ""
 "Create your personal real estate WordPress website. Sell, rent and buy "
 "properties. Add, search and browse listings easily."
 msgstr ""
 
-#: product_list.php:346
-msgid ""
-"Attach, un-attach and re-attach media files quickly to WordPress posts and "
-"pages."
-msgstr ""
-
-#: product_list.php:353
+#: product_list.php:345
 msgid ""
 "Add related, featured, latest, and popular posts to your WordPress website. "
 "Connect your blog readers with a relevant content."
 msgstr ""
 
-#: product_list.php:360
+#: product_list.php:352
 msgid ""
 "Send bulk email messages to WordPress users. Custom templates, advanced "
 "settings and detailed reports."
 msgstr ""
 
-#: product_list.php:370
+#: product_list.php:362
 msgid ""
 "The best responsive slider plugin for your WordPress website. Create "
 "beautifully animated slides just in a few clicks."
 msgstr ""
 
-#: product_list.php:377
+#: product_list.php:369
 msgid ""
 "Configure SMTP server to receive email messages from WordPress to Gmail, "
 "Yahoo, Hotmail and other services."
 msgstr ""
 
-#: product_list.php:384
+#: product_list.php:376
 msgid ""
 "Add social media buttons and widgets to WordPress posts, pages and widgets. "
 "FB, Twitter, G+1, Pinterest, LinkedIn."
 msgstr ""
 
-#: product_list.php:394
+#: product_list.php:386
 msgid ""
 "Add social media login, registration, and commenting to your WordPress "
 "website."
 msgstr ""
 
-#: product_list.php:401
+#: product_list.php:393
 msgid ""
 "Add email newsletter sign up form to WordPress posts, pages and widgets. "
 "Collect data and subscribe your users."
 msgstr ""
 
-#: product_list.php:411
+#: product_list.php:403
 msgid ""
 "Add testimonials and feedbacks from your customers to WordPress website "
 "posts, pages, and widgets."
 msgstr ""
 
-#: product_list.php:418
+#: product_list.php:410
 msgid ""
 "Best timesheet plugin for WordPress. Track employee time, streamline "
 "attendance and generate reports."
 msgstr ""
 
-#: product_list.php:428
+#: product_list.php:420
 msgid ""
 "Add Twitter Follow, Tweet, Hashtag, and Mention buttons to WordPress posts "
 "and pages."
 msgstr ""
 
-#: product_list.php:438
+#: product_list.php:430
 msgid ""
 "Automatically check and update WordPress website core with all installed "
 "plugins and themes to the latest versions."
 msgstr ""
 
-#: product_list.php:448
+#: product_list.php:440
 msgid ""
 "Powerful user role management plugin for WordPress website. Create, edit, "
 "copy, and delete user roles."
 msgstr ""
 
-#: product_list.php:458
+#: product_list.php:450
 msgid ""
 "Display live count of online visitors who are currently browsing your "
 "WordPress website."
 msgstr ""
 
-#: product_list.php:468
+#: product_list.php:460
 msgid ""
 "Backup and export Zendesk Help Center content automatically to your "
 "WordPress website database."
 msgstr ""
+
+#~ msgid ""
+#~ "You can use one license of the Pro plugin for one domain only. Please "
+#~ "check and edit your license or domain if necessary using you personal "
+#~ "Client Area. We strongly recommend you to solve the problem within 24 "
+#~ "hours, otherwise the Pro plugin will be deactivated."
+#~ msgstr ""
+#~ "Licencja wersji PRO może być wykorzystywana tylko na jednej domenie. "
+#~ "Proszę sprawdź i edytuj klucz licencji lub domenę, jeśli to konieczne "
+#~ "wykorzystaj Panel Klienta. Zalecamy rozwiązanie tego problemu w przeciągu "
+#~ "24 godzin, w przeciwnym wypadku wersja PRO zostanie zablokowana."
+
+#~ msgid "Insert"
+#~ msgstr "Umieść"
 
 #, fuzzy
 #~ msgid "Site Stats"

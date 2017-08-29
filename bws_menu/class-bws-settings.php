@@ -8,11 +8,12 @@
 if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 	class Bws_Settings_Tabs {
 		private $tabs;		
-		private $plugin_basename;
-		private $prefix;
 		private $pro_plugin_is_activated = false;
 		private $custom_code_args = array();
-		private $wp_slug;
+
+		public $plugin_basename;
+		public $prefix;
+		public $wp_slug;
 				
 		public $options;
 		public $default_options;
@@ -261,8 +262,10 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 				if ( ! empty( $data['is_pro'] ) && $this->hide_pro_tabs )
 					continue; ?>
 				<div class="bws_tab ui-tabs-panel ui-widget-content ui-corner-bottom" id="<?php echo $this->prefix . '_' . $tab_slug; ?>_tab" aria-labelledby="ui-id-2" role="tabpanel" aria-hidden="false" style="display: block;">					
-					<?php if ( method_exists( $this, 'tab_' . str_replace( '-', '_', $tab_slug ) ) ) {
-						call_user_func( array( $this, 'tab_' . str_replace( '-', '_', $tab_slug ) ) );
+					<?php $tab_slug = str_replace( '-', '_', $tab_slug );
+					if ( method_exists( $this, 'tab_' . $tab_slug ) ) {
+						call_user_func( array( $this, 'tab_' . $tab_slug ) );
+						do_action_ref_array( __CLASS__ . '_after_tab_' . $tab_slug, array( &$this ) );
 					} ?>
 				</div>
 			<?php }
@@ -453,8 +456,10 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 						echo '(' . __( 'Browsing', 'bestwebsoft' ) . ')'; ?>
 				</big></p>
 				<p class="bws_info">
-					<input type="checkbox" name="bws_custom_<?php echo $extension; ?>_active" value="1" <?php if ( $this->custom_code_args["is_{$extension}_active"] ) echo "checked"; ?> /> 
-					<?php printf( __( 'Activate custom %s code.', 'bestwebsoft' ), $name ); ?>
+					<label>
+						<input type="checkbox" name="bws_custom_<?php echo $extension; ?>_active" value="1" <?php if ( $this->custom_code_args["is_{$extension}_active"] ) echo "checked"; ?> /> 
+						<?php printf( __( 'Activate custom %s code.', 'bestwebsoft' ), $name ); ?>
+					</label>
 				</p>
 				<textarea cols="70" rows="25" name="bws_newcontent_<?php echo $extension; ?>" id="bws_newcontent_<?php echo $extension; ?>"><?php if ( isset( $this->custom_code_args["content_{$extension}"] ) ) echo $this->custom_code_args["content_{$extension}"]; ?></textarea>
 				<p class="bws_info">
@@ -544,16 +549,20 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 						<tr>
 							<th scope="row"><?php _e( 'Pro Options', 'bestwebsoft' ); ?></th>
 							<td>
-								<input <?php echo $this->change_permission_attr; ?> name="bws_hide_premium_options_submit" type="checkbox" value="1" <?php if ( ! $this->hide_pro_tabs ) echo 'checked="checked "'; ?> /> 
-								<span class="bws_info"><?php _e( 'Enable to display plugin Pro options.', 'bestwebsoft' ); ?></span>
+								<label>
+									<input <?php echo $this->change_permission_attr; ?> name="bws_hide_premium_options_submit" type="checkbox" value="1" <?php if ( ! $this->hide_pro_tabs ) echo 'checked="checked "'; ?> /> 
+									<span class="bws_info"><?php _e( 'Enable to display plugin Pro options.', 'bestwebsoft' ); ?></span>
+								</label>
 							</td>
 						</tr>
 					<?php } ?>
 					<tr>
 						<th scope="row"><?php _e( 'Track Usage', 'bestwebsoft' ); ?></th>
 						<td>
-							<input <?php echo $this->change_permission_attr; ?> name="bws_track_usage" type="checkbox" value="1" <?php if ( ! empty( $bstwbsftwppdtplgns_options['track_usage']['products'][ $this->plugin_basename ] ) ) echo 'checked="checked "'; ?>/> 
-							<span class="bws_info"><?php _e( 'Enable to allow tracking plugin usage anonymously in order to make it better.', 'bestwebsoft' ); ?></span>
+							<label>
+								<input <?php echo $this->change_permission_attr; ?> name="bws_track_usage" type="checkbox" value="1" <?php if ( ! empty( $bstwbsftwppdtplgns_options['track_usage']['products'][ $this->plugin_basename ] ) ) echo 'checked="checked "'; ?>/> 
+								<span class="bws_info"><?php _e( 'Enable to allow tracking plugin usage anonymously in order to make it better.', 'bestwebsoft' ); ?></span>
+							</label>
 						</td>
 					</tr>
 					<tr>

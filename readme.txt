@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
 Requires at least: 3.9
-Tested up to: 4.8
-Stable tag: 1.2.4
+Tested up to: 4.8.1
+Stable tag: 1.2.5
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -68,10 +68,11 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 > 	* Widget titles
 > 	* Website title
 > 	* Website tagline
+> * Change language slug position in the website URL [NEW]
 > * Create separate menus for different languages
 > * Display/hide widgets for different languages
 > * Switch language automatically based on user’s IP
-> * Add short language code version to the URL
+> * Add short language slug to the URL
 > * Get answer to your support question within one business day ([Support Policy](https://bestwebsoft.com/support-policy/))
 >
 > [Upgrade to Pro Now](https://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=1d4576a3a2c4fc0f127ce2ee0341d81b)
@@ -89,7 +90,7 @@ Visit our Help Center if you have any questions, our friendly Support Team is ha
 
 = Translation =
 
-* Czech (cs_CZ) (thanks to [PaMaDeSSoft](mailto:info@pamadessoft.cz), www.pamadessoft.cz)
+* Czech (cs_CZ) (thanks to [Michal Kučera](mailto:kucerami@gmail.com), www.n0lim.it, [PaMaDeSSoft](mailto:info@pamadessoft.cz), www.pamadessoft.cz)
 * Polish (pl_PL) (thanks to [Emil Król](mailto:emiljo@tlen.pl))
 * Russian (ru_RU)
 * Ukrainian (uk)
@@ -161,12 +162,14 @@ When title and content fields in active language tab are empty when you are tryi
 
 = How can I change element's style in the frontend for certain language? =
 
-"mltlngg-{current language slug}" class type has been added to <body> tag for an ability to stylize content of certain language. For example, if you want to set a green color for <p> when the English language is selected, it is necessary to:
+"mltlngg-{current language slug}" class type has been added to &lt;body&gt; tag for an ability to stylize content of certain language. For example, if you want to set a green color for &lt;p&gt; when the English language is selected, it is necessary to:
 1. Go to WordPress admin panel "Multilanguage" -> "Custom Code";
 2. Check off "Activate" in "Editing bws-custom-code.css" block and enter the following code:
+
 `.mltlngg-en_US p {
 	color: green;
 }`
+
 3. Save changes.
 
 = I have some problems with the plugin's work. What Information should I provide to receive proper support? =
@@ -192,6 +195,13 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 11. Adding language switcher into site menu.
 
 == Changelog ==
+
+= V1.2.5 - 29.08.2017 =
+* Update : The compatibility with Visual Composer has been improved.
+* Bugfix : Bug with subdirectory WordPress installation has been fixed.
+* Bugfix : Bug with multiple lang slugs in the link has been fixed.
+* PRO : Ability to set language slug position in the URL has been added.
+* PRO : Bug with multiple text editors on the page has been fixed.
 
 = V1.2.4 - 13.06.2017 =
 * Update : The list of languages has been updated.
@@ -246,7 +256,7 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Update : Saving data for languages in admin panel has been improved.
 
 = V1.1.4 - 22.02.2016 =
-* NEW : Ability to add links to your current page for each language from your site into the tag <head> has been added.
+* NEW : Abiliy to add links to your current page for each language from your site into the tag <head> has been added.
 * NEW : Ability to hide link slug for default language has been added.
 * Update : Widget with languages switcher has been updated.
 
@@ -317,6 +327,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.2.5 =
+* The compatibility with Visual Composer improved.
+* Bugs fixed.
 
 = V1.2.4 =
 * Bugs fixed.
