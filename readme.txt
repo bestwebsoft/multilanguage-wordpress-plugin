@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
 Requires at least: 3.9
-Tested up to: 4.8.1
-Stable tag: 1.2.5
+Tested up to: 4.8.2
+Stable tag: 1.2.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -68,7 +68,7 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 > 	* Widget titles
 > 	* Website title
 > 	* Website tagline
-> * Change language slug position in the website URL [NEW]
+> * Change language slug position in the website URL
 > * Create separate menus for different languages
 > * Display/hide widgets for different languages
 > * Switch language automatically based on user’s IP
@@ -91,6 +91,7 @@ Visit our Help Center if you have any questions, our friendly Support Team is ha
 = Translation =
 
 * Czech (cs_CZ) (thanks to [Michal Kučera](mailto:kucerami@gmail.com), www.n0lim.it, [PaMaDeSSoft](mailto:info@pamadessoft.cz), www.pamadessoft.cz)
+* Spanish (es_ES) (thanks to Ibidem Translations, www.ibidem-translations.com/spanish.php)
 * Polish (pl_PL) (thanks to [Emil Król](mailto:emiljo@tlen.pl))
 * Russian (ru_RU)
 * Ukrainian (uk)
@@ -195,6 +196,12 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 11. Adding language switcher into site menu.
 
 == Changelog ==
+
+= V1.2.6 - 28.09.2017 =
+* Update : Spanish language file has been added.
+* Update : Czech language file has been updated.
+* Bugfix : Bug with terms translation has been fixed.
+* Bugfix : Bug with 'www.' in the URL has been fixed.
 
 = V1.2.5 - 29.08.2017 =
 * Update : The compatibility with Visual Composer has been improved.
@@ -327,6 +334,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.2.6 =
+* New languages added.
+* Bugs fixed.
 
 = V1.2.5 =
 * The compatibility with Visual Composer improved.

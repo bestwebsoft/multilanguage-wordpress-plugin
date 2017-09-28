@@ -134,11 +134,11 @@ if ( ! function_exists( 'bws_add_deactivation_feedback_dialog_box' ) ) {
 						    + '	</div>'
 						    + '</div>',
 					    $modal                = $( modalHtml ),
-					    $deactivateLink       = $( '#the-list .active[data-slug="<?php echo $slug; ?>"] .deactivate a' ),
+					    $deactivateLink       = $( '#the-list .active[data-plugin="<?php echo $basename; ?>"] .deactivate a' ),
 						$anonymousFeedback    = $modal.find( '.bws-modal-anonymous-label' ),
 						selectedReasonID      = false;
 
-					/* WP added data-slug attr after 4.2 version */
+					/* WP added data-plugin attr after 4.5 version/ In prev version was id attr */
 					if ( 0 == $deactivateLink.length )
 						$deactivateLink = $( '#the-list .active#<?php echo $plugin_id; ?> .deactivate a' );
 

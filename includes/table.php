@@ -411,19 +411,20 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 									<th><?php _e( 'URL Slug', 'multilanguage' ); ?></th>
 									<td>
 										<fieldset>
-											<?php if ( ! isset( $language_data['language_code'] ) || $language_data['language_code'] == $language_data['locale'] ) { ?>
+											<?php $exploded_locale = explode( '_', $language_data['locale'] );
+											if ( 1 == count( $exploded_locale ) ) { ?>
 												<label>
-													<input disabled="disabled" type="radio" name="mltlngg_link" value="1" checked="checked" />
+													<input disabled="disabled" type="radio" checked="checked" />
 													&nbsp;<?php echo $language_data['locale']; ?>
 												</label>
 											<?php } else { ?>
 												<label>
-													<input disabled="disabled" type="radio" name="mltlngg_link" value="0" />
-													&nbsp;<?php echo $language_data['language_code']; ?>
+													<input disabled="disabled" type="radio" />
+													&nbsp;<?php echo $exploded_locale[0]; ?>
 												</label>
 												<br>
 												<label>
-													<input checked="checked" disabled="disabled" type="radio" name="mltlngg_link" value="1" />
+													<input checked="checked" disabled="disabled" type="radio" />
 													&nbsp;<?php echo $language_data['locale']; ?>
 												</label>
 											<?php } ?>

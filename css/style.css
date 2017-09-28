@@ -85,13 +85,13 @@
 }
 .wp-list-table th[class*='column-mltlngg_language_'],
 .wp-list-table td[class*='column-mltlngg_language_'] {
-	text-align: center;
+	width: 5.5em;
 	padding: 8px 1px;
 }
 .wp-list-table th[class*='column-mltlngg_language_'] img,
 .wp-list-table td[class*='column-mltlngg_language_'] img {
 	max-height: 20px;
-	max-width: 100px;
+	max-width: 20px;
 }
 .wp-list-table th[class*='column-mltlngg_language_'] .dashicons-yes,
 .wp-list-table td[class*='column-mltlngg_language_'] .dashicons-yes {
