@@ -6,7 +6,7 @@ Description: Translate WordPress website content to other languages manually. Cr
 Author: BestWebSoft
 Text Domain: multilanguage
 Domain Path: /languages
-Version: 1.2.6
+Version: 1.2.7
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -578,18 +578,16 @@ if ( ! function_exists( 'mltlngg_parse_url' ) ) {
 
 		$scheme .= "://";
 		$host = parse_url( $url, PHP_URL_HOST );
+		$home_host = parse_url( $home_url, PHP_URL_HOST );
 		$port = parse_url( $url, PHP_URL_PORT );
 		$port = empty( $port ) ? '' : ":" . $port;
 
 		$full_host = $scheme . $host . $port;
 
-		$no_lang_host = preg_replace( "~^" . "((" . implode( "|", $mltlngg_enabled_languages_locale ) . ")\.)+~", '', $host );
-
-		$host_pattern = "~^(" . preg_quote( $scheme ) . "(.*)?" . preg_quote( $no_lang_host . $port ) . ")~";
-
+		$host_pattern = "~^((.*)" . preg_quote( $home_host . $port ) . ")~";
 		$home_dir = preg_replace( $host_pattern, '', $home_url );
 
-		$home_url_pattern = "~^(" . preg_quote( $full_host . $home_dir ) . ")~";
+		$home_url_pattern = "~^(" . preg_quote( $full_host . $home_dir ) . ")~U";
 		$request_uri = preg_replace( $home_url_pattern, '', $url );
 
 		$reg_exp = '~(?<=/)(' . implode( '|', $mltlngg_enabled_languages_locale ) . ')(?![\d\w-])~';
@@ -1318,8 +1316,11 @@ if ( ! function_exists( 'mltlngg_ajax_callback' ) ) {
 	function mltlngg_ajax_callback() {
 		global $wpdb, $mltlngg_options;
 		check_ajax_referer( 'mltlngg-ajax-nonce', 'security' );
+		if ( empty( $_POST['mltlngg_post_id'] ) ) {
+			die();
+		}
 		$mltlngg_old_excerpt = isset( $_POST['mltlngg_old_excerpt'] ) ? $_POST['mltlngg_old_excerpt'] :'';
-		$post_id = $_POST['mltlngg_post_id'];
+		$post_id = absint( $_POST['mltlngg_post_id'] );
 		/* Auto-update translation if it has been changed when autosave option is enabled */
 		if ( 'ajax' == $mltlngg_options['save_mode'] && ! empty( $_POST['old_lang'] ) ) {
 			/* Get translation data for previous language from database */

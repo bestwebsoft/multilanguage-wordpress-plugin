@@ -900,6 +900,8 @@ if ( ! function_exists( 'bws_shortcode_output' ) ) {
 /** 
  * output tooltip
  * @since 1.9.8
+ * @param   string   $content  - HTML content for the tooltip
+ * @param   string   $class  - Can be standart "bws-hide-for-mobile" (tooltip will be hidden in 782px) and "bws-auto-width" (need for img) or some custom class.
  */
 if ( ! function_exists( 'bws_add_help_box' ) ) {
 	function bws_add_help_box( $content, $class = '' ) {

@@ -121,15 +121,17 @@ if ( ! function_exists( 'bws_add_deactivation_feedback_dialog_box' ) ) {
 						    + '	<div class="bws-modal-dialog">'
 						    + '		<div class="bws-modal-body">'
 						    + '		    <h2><?php _e( 'Quick Feedback', 'bestwebsoft' ); ?></h2>'
-						    + '			<div class="bws-modal-panel active"><p><?php _e( 'If you have a moment, please let us know why you are deactivating', 'bestwebsoft' ); ?>:</p><ul>' + <?php echo json_encode( $reasons_list_items_html ); ?> + '</ul></div>'
+						    + '			<div class="bws-modal-panel active"><p><?php _e( 'If you have a moment, please let us know why you are deactivating', 'bestwebsoft' ); ?>:</p><ul>' + <?php echo json_encode( $reasons_list_items_html ); ?> + '</ul>'
+						    + '         <label class="bws-modal-anonymous-label">'
+							+ '				<input type="checkbox" checked="checked" />'
+							+ '				<?php _e( 'Send website data and allow to contact me back', 'bestwebsoft' ); ?>'
+							+ '			</label>'
+						    + '			</div>'
 						    + '		</div>'
 						    + '		<div class="bws-modal-footer">'
-							+ '         <label class="bws-modal-anonymous-label">'
-							+ '				<input type="checkbox" />'
-							+ '				<?php _e( 'Anonymous feedback', 'bestwebsoft' ); ?>'
-							+ '			</label>'
 						    + '			<a href="#" class="button button-secondary bws-modal-button-close"><?php _e(  'Cancel', 'bestwebsoft' ); ?></a>'
 						    + '			<a href="#" class="button button-primary bws-modal-button-deactivate"></a>'
+						    + '			<div class="clear"></div>'
 						    + '		</div>'
 						    + '	</div>'
 						    + '</div>',
@@ -205,13 +207,15 @@ if ( ! function_exists( 'bws_add_deactivation_feedback_dialog_box' ) ) {
 									return;
 								}
 
-								var $selected_reason = $radio.parents('li:first'),
+								var $selected_reason = $radio.parents( 'li:first' ),
 								    $input = $selected_reason.find( 'textarea, input[type="text"]' ),
 								    userReason = ( 0 !== $input.length ) ? $input.val().trim() : '';
 
 								if ( BwsModalIsReasonSelected( 'OTHER' ) && '' === userReason ) {
 									return;
 								}
+
+								var is_anonymous = ( $anonymousFeedback.find( 'input' ).is( ':checked' ) ) ? 0 : 1;
 
 								$.ajax({
 									url       : ajaxurl,
@@ -221,7 +225,7 @@ if ( ! function_exists( 'bws_add_deactivation_feedback_dialog_box' ) ) {
 										'plugin'			: '<?php echo $basename; ?>',
 										'reason_id'			: $radio.val(),
 										'reason_info'		: userReason,
-										'is_anonymous'		: ( $anonymousFeedback.find( 'input' ).prop( 'checked' ) ),
+										'is_anonymous'		: is_anonymous,
 										'bws_ajax_nonce'	: '<?php echo wp_create_nonce( 'bws_ajax_nonce' ); ?>'
 									},
 									beforeSend: function() {
@@ -316,7 +320,7 @@ if ( ! function_exists( 'bws_add_deactivation_feedback_dialog_box' ) ) {
 
 						$modal.find( '.message' ).hide();
 
-						$anonymousFeedback.find( 'input' ).prop( 'checked', false );
+						$anonymousFeedback.find( 'input' ).prop( 'checked', true );
 
 						/* Hide, since by default there is no selected reason.*/
 						$anonymousFeedback.hide();
@@ -353,7 +357,7 @@ if ( ! function_exists( 'bws_add_deactivation_feedback_dialog_box' ) ) {
  */
 if ( ! function_exists( 'bws_submit_uninstall_reason_action' ) ) {
 	function bws_submit_uninstall_reason_action() {
-		global $bstwbsftwppdtplgns_options, $wp_version, $bstwbsftwppdtplgns_active_plugins;
+		global $bstwbsftwppdtplgns_options, $wp_version, $bstwbsftwppdtplgns_active_plugins, $current_user;
 
 		wp_verify_nonce( $_REQUEST['bws_ajax_nonce'], 'bws_ajax_nonce' );
 
@@ -368,7 +372,7 @@ if ( ! function_exists( 'bws_submit_uninstall_reason_action' ) ) {
 		if ( ! empty( $reason_info ) ) {
 			$reason_info = substr( $reason_info, 0, 255 );
 		}
-		$is_anonymous = isset( $_REQUEST['is_anonymous'] ) && ( 1 == $_REQUEST['is_anonymous'] || 'true' == strtolower( $_REQUEST['is_anonymous'] ) );
+		$is_anonymous = isset( $_REQUEST['is_anonymous'] ) && 1 == $_REQUEST['is_anonymous'];
 
 		$options = array(
 			'product'		=> $basename,
@@ -389,6 +393,8 @@ if ( ! function_exists( 'bws_submit_uninstall_reason_action' ) ) {
 				$options['is_active'] = false;
 				$options['version'] = $bstwbsftwppdtplgns_active_plugins[ $basename ]['Version'];
 			}
+
+			$options['email'] = $current_user->data->user_email;
 		}
 
 		/* send data */

@@ -4,7 +4,7 @@ Donate link: https://bestwebsoft.com/donate/
 Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
 Requires at least: 3.9
 Tested up to: 4.8.2
-Stable tag: 1.2.6
+Stable tag: 1.2.7
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -197,6 +197,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
+= V1.2.7 - 05.10.2017 =
+* Bugfix : Bug with broken redirection connected with SSL has been fixed.
+* PRO : The compatibility with WooCommerce has been improved.
+
 = V1.2.6 - 28.09.2017 =
 * Update : Spanish language file has been added.
 * Update : Czech language file has been updated.
@@ -334,6 +338,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.2.7 =
+* Bugs fixed.
 
 = V1.2.6 =
 * New languages added.

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bestwebsoft\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-05 14:57+0300\n"
-"PO-Revision-Date: 2017-09-05 14:57+0300\n"
+"POT-Creation-Date: 2017-09-11 16:42+0300\n"
+"PO-Revision-Date: 2017-09-11 16:42+0300\n"
 "Last-Translator: Mik013\n"
 "Language-Team: Mik013\n"
 "Language: cs_CZ\n"
@@ -1108,27 +1108,27 @@ msgstr "Rychlá zpětná vazba"
 msgid "If you have a moment, please let us know why you are deactivating"
 msgstr "Máte-li chvilku, sdělte nám důvod, proč deaktivujete tento plugin"
 
-#: deactivation-form.php:129
-msgid "Anonymous feedback"
-msgstr "Anonymní zpětná vazba"
+#: deactivation-form.php:127
+msgid "Send website data and allow to contact me back"
+msgstr ""
 
-#: deactivation-form.php:131
+#: deactivation-form.php:132
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: deactivation-form.php:229
+#: deactivation-form.php:233
 msgid "Processing"
 msgstr "Zpracovává se"
 
-#: deactivation-form.php:258
+#: deactivation-form.php:262
 msgid "Submit & Deactivate"
 msgstr "Odeslat a vypnout"
 
-#: deactivation-form.php:273
+#: deactivation-form.php:277
 msgid "Please tell us the reason so we can improve it."
 msgstr "Prosím, prozraďte nám důvod, abychom jej mohli zlepšit."
 
-#: deactivation-form.php:341
+#: deactivation-form.php:345
 msgid "Deactivate"
 msgstr "Vypnout"
 
@@ -1270,17 +1270,15 @@ msgstr "SEO"
 msgid "SMM"
 msgstr "SMM"
 
-#: product_list.php:23
-msgid ""
-"Protect WordPress website forms from spam entries by means of math logic."
+#: product_list.php:22
+msgid "Best secure captcha plugin to protect your WordPress forms."
 msgstr ""
-"Chraňte WordPress webové formuláře před spamem pomocí matematické logiky."
 
-#: product_list.php:35
+#: product_list.php:32
 msgid "Create your personal car rental/booking and reservation website."
 msgstr "Vytvořte si osobní rezervační web - auta/hotely."
 
-#: product_list.php:45
+#: product_list.php:42
 msgid ""
 "Allow customers to reach you using secure contact form plugin any website "
 "must have."
@@ -1288,37 +1286,37 @@ msgstr ""
 "Umožněte zákazníkům kontaktovat vás pomocí pluginu zabezpečeného kontaktního "
 "formuláře, tohle musí mít každý web."
 
-#: product_list.php:55
+#: product_list.php:52
 msgid "Add unlimited number of contact forms to WordPress website."
 msgstr "Přidávejte neomezený počet kontaktních formulářů na WordPress web."
 
-#: product_list.php:65
+#: product_list.php:62
 msgid "Save and manage Contact Form messages. Never lose important data."
 msgstr ""
 "Ukládejte a spravujte zprávy z kontaktního formuláře. Už nikdy neztraťte "
 "důležitá data."
 
-#: product_list.php:75
+#: product_list.php:72
 msgid "Add unlimited custom pages to WordPress admin dashboard."
 msgstr ""
 "Přidávejte neomezený počet vlastních stránek do WordPress admin nástěnky."
 
-#: product_list.php:82
+#: product_list.php:79
 msgid "Add custom fields to WordPress website search results."
 msgstr "Přidávejte vlastní pole do výsledků vyhledání na webu WordPress."
 
-#: product_list.php:89
+#: product_list.php:86
 msgid ""
 "Add custom post types and taxonomies to WordPress website search results."
 msgstr ""
 "Přidávejte vlastní typy příspěvků a taxonomie do výsledků vyhledání na webu "
 "WordPress."
 
-#: product_list.php:99
+#: product_list.php:96
 msgid "Add PayPal and 2CO donate buttons to receive charity payments."
 msgstr "Přidávejte darovací tlačítka PayPal a 2CO pro příjem příspěvků."
 
-#: product_list.php:106
+#: product_list.php:103
 msgid ""
 "Get latest error log messages to diagnose website problems. Define and fix "
 "issues faster."
@@ -1326,7 +1324,7 @@ msgstr ""
 "Získejte nejnovější zprávy z error logu při diagnostice problémů s webem. "
 "Definujte a opravte problémy rychleji."
 
-#: product_list.php:113
+#: product_list.php:110
 msgid ""
 "Add Facebook Follow, Like, and Share buttons to WordPress posts, pages, and "
 "widgets."
@@ -1334,7 +1332,7 @@ msgstr ""
 "Přidávejte Facebooková tlačítka sledovat, to se mi líbí a sdílet do "
 "WordPress příspěvků, stránek a widgetů."
 
-#: product_list.php:123
+#: product_list.php:120
 msgid ""
 "Add beautiful galleries, albums & images to your WordPress website in a few "
 "clicks."
@@ -1342,7 +1340,7 @@ msgstr ""
 "Přidávejte na váš WordPress web krásné galerie, alba a obrázky během "
 "několika kliknutí."
 
-#: product_list.php:133
+#: product_list.php:130
 msgid ""
 "Add Google +1, Share, Follow, Hangout buttons and profile badge to WordPress "
 "posts, pages and widgets."
@@ -1350,7 +1348,7 @@ msgstr ""
 "Přidávejte Google +1 tlačítka sdílet, sledovat, Hangout a profile badge do "
 "WordPress příspěvků, stránek a widgetů."
 
-#: product_list.php:143
+#: product_list.php:140
 msgid ""
 "Stronger security solution which protects your WordPress website from hacks "
 "and unauthorized login attempts."
@@ -1358,7 +1356,7 @@ msgstr ""
 "Silnější bezpečnostní řešení, které chrání vaše webové stránky WordPress od "
 "hacků a pokusů o neoprávněné přihlášení."
 
-#: product_list.php:153
+#: product_list.php:150
 msgid ""
 "Add Adsense ads to WordPress website pages, posts, custom posts, search "
 "results, categories, tags, and widgets."
@@ -1366,13 +1364,13 @@ msgstr ""
 "Přidávejte reklamy Adsense do webu WordPress, příspěvky, vlastní příspěvky, "
 "výsledky vyhledávání, rubriky, štítky a widgety."
 
-#: product_list.php:163
+#: product_list.php:160
 msgid "Add Google Analytics code to WordPress website and track basic stats."
 msgstr ""
 "Přidávejte Google Analytics kód do WordPress webu a sledujte základní "
 "statistiky."
 
-#: product_list.php:173
+#: product_list.php:170
 msgid ""
 "Protect WordPress website forms from spam entries with Google Captcha "
 "(reCaptcha)."
@@ -1380,12 +1378,12 @@ msgstr ""
 "Chraňte WordPress webové formuláře před spamem s Google Captcha (\"reCAPTCHA"
 "\")."
 
-#: product_list.php:183
+#: product_list.php:180
 msgid "Add customized Google maps to WordPress posts, pages and widgets."
 msgstr ""
 "Přidávejte vlastní mapy Google do WordPress příspěvků, stránek a widgetů."
 
-#: product_list.php:193
+#: product_list.php:190
 msgid ""
 "Generate and add XML sitemap to WordPress website. Help search engines index "
 "your blog."
@@ -1393,7 +1391,7 @@ msgstr ""
 "Generujte a přidávejte sitemap.xml na vaše WordPress weby. Pomožte "
 "vyhledávačům indexovat váš blog."
 
-#: product_list.php:203
+#: product_list.php:200
 msgid ""
 "Replace external WordPress website links with Google shortlinks and track "
 "click stats."
@@ -1401,7 +1399,7 @@ msgstr ""
 "Nahradit externí odkazy WordPress webu pomocí Google shortlinks a sledujte "
 "statistiky kliknutí."
 
-#: product_list.php:210
+#: product_list.php:207
 msgid ""
 "Protect WordPress website – allow and deny access for certain IP addresses, "
 "hostnames, etc."
@@ -1409,7 +1407,7 @@ msgstr ""
 "Chráňte WordPress web– povolte či odepřete přístup pro určité IP adresy, "
 "hostnames, atd."
 
-#: product_list.php:220
+#: product_list.php:217
 msgid ""
 "Create your personal job board and listing WordPress website. Search jobs, "
 "submit CV/resumes, choose candidates."
@@ -1417,7 +1415,7 @@ msgstr ""
 "Vytvořte si osobní nástěnku pracovních míst na WordPress webu. Hledání "
 "zaměstnání, odeslání CV/životopisu, výběr kandidátů."
 
-#: product_list.php:227
+#: product_list.php:224
 msgid ""
 "Protect WordPress website against brute force attacks. Limit rate of login "
 "attempts."
@@ -1425,7 +1423,7 @@ msgstr ""
 "Chraňte WordPress web proti útokům hrubou silou. Omezte počet pokusů o "
 "přihlášení."
 
-#: product_list.php:237
+#: product_list.php:234
 msgid ""
 "Add LinkedIn Share and Follow buttons to WordPress posts, pages and widgets. "
 "5 plugins included – profile, insider, etc."
@@ -1433,7 +1431,7 @@ msgstr ""
 "Přidávejte LinkedIn tlačítka sdílet a sledovat do WordPress příspěvků, "
 "stránek a widgetů. 5 pluginů zahrnuje - profil, insider, atd."
 
-#: product_list.php:247
+#: product_list.php:244
 msgid ""
 "Translate WordPress website content to other languages manually. Create "
 "multilingual pages, posts, widgets, menus, etc."
@@ -1441,7 +1439,7 @@ msgstr ""
 "Přeložte manuálně obsah webu WordPress do jiných jazyků. Vytvořte "
 "vícejazyčné stránky, příspěvky, widgety, menu, atd."
 
-#: product_list.php:257
+#: product_list.php:254
 msgid ""
 "Add customizable pagination to WordPress website. Split long content to "
 "multiple pages for better navigation."
@@ -1449,7 +1447,7 @@ msgstr ""
 "Přidávejte nastavitelné stránkování na web WordPress. Pro lepší navigaci "
 "rozdělte dlouhý obsah na více stránek."
 
-#: product_list.php:267
+#: product_list.php:264
 msgid ""
 "Generate PDF files and print WordPress posts/pages. Customize document "
 "header/footer styles and appearance."
@@ -1457,7 +1455,7 @@ msgstr ""
 "Generujte PDF soubory a tiskněte WordPress příspěvky/stránky. Vlastní "
 "záhlaví/zápatí dokumentu, styly a vzhled."
 
-#: product_list.php:277
+#: product_list.php:274
 msgid ""
 "Add Pinterest Follow, Pin It buttons and profile widgets (Pin, Board, "
 "Profile) to WordPress posts, pages and widgets."
@@ -1465,7 +1463,7 @@ msgstr ""
 "Přidávejte Pinterest tlačítka sledovat a připnout a profilový widget (Pin, "
 "Board, Profile) do WordPress příspěvků, stránek a widgetů."
 
-#: product_list.php:287
+#: product_list.php:284
 msgid ""
 "Create your personal portfolio WordPress website. Manage and showcase past "
 "projects to get more clients."
@@ -1473,13 +1471,13 @@ msgstr ""
 "Vytvořte si osobní portfolio WordPress webů. Spravujte a představte své "
 "nedávné projekty a získejte více klientů."
 
-#: product_list.php:297
+#: product_list.php:294
 msgid "Export WordPress posts to CSV file format easily. Configure data order."
 msgstr ""
 "Exportujte snadno vaše WordPress příspěvky do souboru formátu CSV. "
 "Konfigurujte pořadí dat."
 
-#: product_list.php:304
+#: product_list.php:301
 msgid ""
 "Add extra fields to default WordPress user profile. The easiest way to "
 "create and manage additional custom values."
@@ -1487,7 +1485,7 @@ msgstr ""
 "Přidávejte další pole do výchozího profilu uživatele WordPress. "
 "Nejjednodušší způsob, jak vytvořit a spravovat vlastní hodnoty."
 
-#: product_list.php:311
+#: product_list.php:308
 msgid ""
 "Add and display HTML advertisement banner on WordPress website. Customize "
 "bar styles and appearance."
@@ -1495,7 +1493,7 @@ msgstr ""
 "Přidávejte a zobrazujte HTML reklamní banner na webu WordPress. Úpravte styl "
 "a vzhled lišt."
 
-#: product_list.php:321
+#: product_list.php:318
 msgid ""
 "Add customizable quotes and tips blocks to WordPress posts, pages and "
 "widgets."
@@ -1503,7 +1501,7 @@ msgstr ""
 "Přidávejte přizpůsobitelné nabídky a bloky s tipy do WordPress příspěvků, "
 "stránek a widgetů."
 
-#: product_list.php:328
+#: product_list.php:325
 msgid ""
 "Add rating plugin to your WordPress website to receive feedback from your "
 "customers."
@@ -1511,7 +1509,7 @@ msgstr ""
 "Přidávejte do vašeho WordPress webu plugin hodnocení k získání zpětné vazby "
 "od vašich zákazníků."
 
-#: product_list.php:335
+#: product_list.php:332
 msgid ""
 "Create your personal real estate WordPress website. Sell, rent and buy "
 "properties. Add, search and browse listings easily."
@@ -1520,7 +1518,7 @@ msgstr ""
 "pronajímejte a kupujte nemovitosti. Snadno přidejte hledání a procházení "
 "seznamy."
 
-#: product_list.php:345
+#: product_list.php:342
 msgid ""
 "Add related, featured, latest, and popular posts to your WordPress website. "
 "Connect your blog readers with a relevant content."
@@ -1528,7 +1526,7 @@ msgstr ""
 "Přidávejte související, nejlepší, nejnovější a populární příspěvky do vašeho "
 "WordPress webu. Propojte čtenáře vašeho blogu s příslušným obsahem."
 
-#: product_list.php:352
+#: product_list.php:349
 msgid ""
 "Send bulk email messages to WordPress users. Custom templates, advanced "
 "settings and detailed reports."
@@ -1536,7 +1534,7 @@ msgstr ""
 "Odesílejte hromadné e-maily WordPress uživatelům. Vlastní šablony, rozšířené "
 "nastavení a podrobné reporty."
 
-#: product_list.php:362
+#: product_list.php:359
 msgid ""
 "The best responsive slider plugin for your WordPress website. Create "
 "beautifully animated slides just in a few clicks."
@@ -1544,7 +1542,7 @@ msgstr ""
 "Nejlepší responzivní slider plugin pro váše WordPress web. Vytvořte krásné "
 "animované snímky během pár kliknutí."
 
-#: product_list.php:369
+#: product_list.php:366
 msgid ""
 "Configure SMTP server to receive email messages from WordPress to Gmail, "
 "Yahoo, Hotmail and other services."
@@ -1552,7 +1550,7 @@ msgstr ""
 "Konfigurujte SMTP server pro příjem e-mailových zpráv z WordPress na Gmail, "
 "Yahoo, Hotmail a dalších službách."
 
-#: product_list.php:376
+#: product_list.php:373
 msgid ""
 "Add social media buttons and widgets to WordPress posts, pages and widgets. "
 "FB, Twitter, G+1, Pinterest, LinkedIn."
@@ -1560,7 +1558,7 @@ msgstr ""
 "Přidávejte tlačítka sociálních sítí a widgety do WordPress příspěvků, "
 "stránek a widgetů. Facebook, Twitter, G+1, Pinterest, LinkedIn."
 
-#: product_list.php:386
+#: product_list.php:383
 msgid ""
 "Add social media login, registration, and commenting to your WordPress "
 "website."
@@ -1568,7 +1566,7 @@ msgstr ""
 "Přidávejte na váš WordPress web login, registraci či komentáře "
 "prostřednictvím sociálních sítí."
 
-#: product_list.php:393
+#: product_list.php:390
 msgid ""
 "Add email newsletter sign up form to WordPress posts, pages and widgets. "
 "Collect data and subscribe your users."
@@ -1577,7 +1575,7 @@ msgstr ""
 "příspěvků, stránek a widgetů. Shromažďujte data a přihlaste k odběru vaše "
 "uživatele."
 
-#: product_list.php:403
+#: product_list.php:400
 msgid ""
 "Add testimonials and feedbacks from your customers to WordPress website "
 "posts, pages, and widgets."
@@ -1585,7 +1583,7 @@ msgstr ""
 "Přidávejte potvrzení a zpětnou vazbu od vašich zákazníků do WordPress "
 "příspěvků, stránek a widgetů."
 
-#: product_list.php:410
+#: product_list.php:407
 msgid ""
 "Best timesheet plugin for WordPress. Track employee time, streamline "
 "attendance and generate reports."
@@ -1593,7 +1591,7 @@ msgstr ""
 "Nejlepší timesheet plugin pro WordPress. Sledujte časy zaměstnanců, "
 "kontrolujte jejich přítomnost a generujte sestavy."
 
-#: product_list.php:420
+#: product_list.php:417
 msgid ""
 "Add Twitter Follow, Tweet, Hashtag, and Mention buttons to WordPress posts "
 "and pages."
@@ -1601,7 +1599,7 @@ msgstr ""
 "Přidávejte Twitter tlačítka sledovat, twítnout a zmínit do WordPress "
 "příspěvků a stránek."
 
-#: product_list.php:430
+#: product_list.php:427
 msgid ""
 "Automatically check and update WordPress website core with all installed "
 "plugins and themes to the latest versions."
@@ -1609,7 +1607,7 @@ msgstr ""
 "Automaticky kontrolujte a aktualizujte na nejnovější verzi WordPress jádro i "
 "všechny nainstalované pluginy a šablony."
 
-#: product_list.php:440
+#: product_list.php:437
 msgid ""
 "Powerful user role management plugin for WordPress website. Create, edit, "
 "copy, and delete user roles."
@@ -1617,7 +1615,7 @@ msgstr ""
 "Plugin robustní správy užiatelů pro WordPress web. Vytvářejte, upravujte, "
 "kopírujte a odstraňujte uživatelské role."
 
-#: product_list.php:450
+#: product_list.php:447
 msgid ""
 "Display live count of online visitors who are currently browsing your "
 "WordPress website."
@@ -1625,13 +1623,21 @@ msgstr ""
 "Zobrazujte počet aktivních online návštěvníků, kteří dané chvíli procházejí "
 "váš WordPress web."
 
-#: product_list.php:460
+#: product_list.php:457
 msgid ""
 "Backup and export Zendesk Help Center content automatically to your "
 "WordPress website database."
 msgstr ""
 "Automaticky zálohujte a exportujte obsah centra nápovědy Zendesk do databáze "
 "vašeho WordPress webu."
+
+#~ msgid "Anonymous feedback"
+#~ msgstr "Anonymní zpětná vazba"
+
+#~ msgid ""
+#~ "Protect WordPress website forms from spam entries by means of math logic."
+#~ msgstr ""
+#~ "Chraňte WordPress webové formuláře před spamem pomocí matematické logiky."
 
 #~ msgid "Congratulations! Pro Membership license is  activated successfully."
 #~ msgstr "Gratulujeme! PRO členství bylo úspěšně aktivováno."

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: multilanguage\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-18 13:02+0300\n"
+"POT-Creation-Date: 2017-10-04 19:28+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: BestWebSoft team <wp@bestwebsoft.com>\n"
 "Language-Team: Emil Król <emiljo@tlen.pl>\n"
@@ -18,8 +18,8 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: includes/class-mltlngg-settings.php:24 multilanguage.php:38
-#: multilanguage.php:40 multilanguage.php:1118 multilanguage.php:2430
-#: multilanguage.php:2444
+#: multilanguage.php:40 multilanguage.php:1116 multilanguage.php:2431
+#: multilanguage.php:2445
 msgid "Settings"
 msgstr "Ustawienia"
 
@@ -36,42 +36,44 @@ msgid "License Key"
 msgstr ""
 
 #: includes/class-mltlngg-settings.php:67 includes/table.php:351
+#, fuzzy
 msgid "Settings saved."
-msgstr ""
+msgstr "Ustawienia zapisane"
 
 #: includes/class-mltlngg-settings.php:78
 msgid "Multilanguage Settings"
 msgstr "Ustawienia Multilanguage"
 
 #: includes/class-mltlngg-settings.php:83
-msgid "Language Switcher Type"
-msgstr ""
+#, fuzzy
+msgid "Shortcode Language Switcher Type"
+msgstr "Przełącznik języka"
 
 #: includes/class-mltlngg-settings.php:88
 #: includes/class-mltlngg-settings.php:93
-#: includes/class-mltlngg-settings.php:98 multilanguage.php:880
-#: multilanguage.php:881 multilanguage.php:882 multilanguage.php:959
-#: multilanguage.php:965 multilanguage.php:971
+#: includes/class-mltlngg-settings.php:98 multilanguage.php:878
+#: multilanguage.php:879 multilanguage.php:880 multilanguage.php:957
+#: multilanguage.php:963 multilanguage.php:969
 msgid "Drop-down list"
 msgstr ""
 
 #: includes/class-mltlngg-settings.php:88
-#: includes/class-mltlngg-settings.php:98 multilanguage.php:880
-#: multilanguage.php:882 multilanguage.php:959 multilanguage.php:971
+#: includes/class-mltlngg-settings.php:98 multilanguage.php:878
+#: multilanguage.php:880 multilanguage.php:957 multilanguage.php:969
 #, fuzzy
 msgid "flag"
 msgstr "Flaga"
 
 #: includes/class-mltlngg-settings.php:88
-#: includes/class-mltlngg-settings.php:93 multilanguage.php:877
-#: multilanguage.php:880 multilanguage.php:881 multilanguage.php:959
-#: multilanguage.php:965
+#: includes/class-mltlngg-settings.php:93 multilanguage.php:875
+#: multilanguage.php:878 multilanguage.php:879 multilanguage.php:957
+#: multilanguage.php:963
 #, fuzzy
 msgid "title"
 msgstr "Tytuł:"
 
 #: includes/class-mltlngg-settings.php:103 includes/table.php:39
-#: multilanguage.php:877 multilanguage.php:879 multilanguage.php:976
+#: multilanguage.php:875 multilanguage.php:877 multilanguage.php:974
 msgid "Flag"
 msgstr "Flaga"
 
@@ -99,8 +101,9 @@ msgid "Before"
 msgstr ""
 
 #: includes/class-mltlngg-settings.php:143
+#, fuzzy
 msgid "After"
-msgstr ""
+msgstr "po"
 
 #: includes/class-mltlngg-settings.php:159
 msgid "Default Language Slug"
@@ -167,12 +170,14 @@ msgid "Update GeoIP Every"
 msgstr ""
 
 #: includes/class-mltlngg-settings.php:230
+#, fuzzy
 msgid "months"
-msgstr ""
+msgstr "miesiące"
 
 #: includes/class-mltlngg-settings.php:231
+#, fuzzy
 msgid "Country table is not loaded yet."
-msgstr ""
+msgstr "Lista krajów nie została jeszcze załadowana"
 
 #: includes/class-mltlngg-settings.php:233
 msgid "Update Now"
@@ -229,7 +234,7 @@ msgstr "język"
 msgid "languages"
 msgstr "języki"
 
-#: includes/table.php:37 multilanguage.php:878
+#: includes/table.php:37 multilanguage.php:876
 #, fuzzy
 msgid "Title"
 msgstr "Tytuł:"
@@ -247,8 +252,9 @@ msgid "Default"
 msgstr "Domyślny"
 
 #: includes/table.php:62
+#, fuzzy
 msgid "Edit"
-msgstr ""
+msgstr "Edytuj"
 
 #: includes/table.php:68 includes/table.php:80 includes/table.php:91
 msgid "Enable"
@@ -342,8 +348,9 @@ msgid "Add New"
 msgstr ""
 
 #: includes/table.php:480
+#, fuzzy
 msgid "All"
-msgstr ""
+msgstr "Wszystkie obecne ustawienia na oddzielnych stronach zostaną zastąpione"
 
 #: includes/table.php:481
 msgid "Active"
@@ -381,17 +388,18 @@ msgstr "Wyłączony"
 #, fuzzy
 msgctxt "plural"
 msgid "deleted"
-msgstr "Usuń"
+msgstr "Zaznaczony wpis został usunięty z dziennika"
 
 #: includes/table.php:553
 #, fuzzy
 msgctxt "singular"
 msgid "deleted"
-msgstr "Usuń"
+msgstr "Zaznaczony wpis został usunięty z dziennika"
 
 #: includes/table.php:557
+#, fuzzy
 msgid "Unknown action"
-msgstr ""
+msgstr "Nieznana operacja"
 
 #: includes/table.php:561
 #, fuzzy, php-format
@@ -407,17 +415,17 @@ msgstr ""
 msgid "Choose a language"
 msgstr "Wybierz język"
 
-#: includes/table.php:604 multilanguage.php:1157
+#: includes/table.php:604 multilanguage.php:1155
 msgid "Add Language"
 msgstr ""
 
-#: multilanguage.php:121 multilanguage.php:886 multilanguage.php:2260
-#: multilanguage.php:2263
+#: multilanguage.php:121 multilanguage.php:884 multilanguage.php:2261
+#: multilanguage.php:2264
 #, fuzzy
 msgid "Multilanguage switcher"
 msgstr "Przełącznik języka"
 
-#: multilanguage.php:854
+#: multilanguage.php:852
 msgid ""
 "Attention!!! The changes will not be saved because Title and Content fields "
 "are empty on the current tab! It is recommended to fill in at least one "
@@ -427,60 +435,61 @@ msgstr ""
 "na bieżącej karcie! Zalecane jest, aby wypełnić co najmniej jedno pole lub "
 "przełączyć na zakładkę z pola, które są już wypełnione."
 
-#: multilanguage.php:855
+#: multilanguage.php:853
 msgid ""
 "Switching to another language, all unsaved data will be lost. Save data?"
 msgstr ""
 
-#: multilanguage.php:918
+#: multilanguage.php:916
 msgid "Content language switch"
 msgstr "Przełącznik języka Treści"
 
-#: multilanguage.php:950
+#: multilanguage.php:948
 msgid "Localization"
 msgstr "Region"
 
-#: multilanguage.php:953
+#: multilanguage.php:951
 msgid "Title:"
 msgstr "Tytuł:"
 
-#: multilanguage.php:1162
+#: multilanguage.php:1160
+#, fuzzy
 msgid "Attention"
-msgstr ""
+msgstr "UWAGA!"
 
-#: multilanguage.php:1162
+#: multilanguage.php:1160
 msgid ""
 "Please update the post before switching the language. Data is not saved "
 "automatically."
 msgstr ""
 
-#: multilanguage.php:1166
+#: multilanguage.php:1164
 msgid "Edit for language"
 msgstr "Edycja dla języka"
 
-#: multilanguage.php:1417 multilanguage.php:1478
+#: multilanguage.php:1418 multilanguage.php:1479
 msgid "Translations"
 msgstr "Tłumaczenia"
 
-#: multilanguage.php:1612
+#: multilanguage.php:1613
 #, php-format
 msgid "Protected: %s"
 msgstr "Zabezpieczony:%s"
 
-#: multilanguage.php:1615
+#: multilanguage.php:1616
 #, php-format
 msgid "Private: %s"
 msgstr "Prywatny:%s"
 
-#: multilanguage.php:1815 multilanguage.php:2343
+#: multilanguage.php:1816 multilanguage.php:2344
 msgid "(more&hellip;)"
 msgstr ""
 
-#: multilanguage.php:2445
+#: multilanguage.php:2446
 msgid "FAQ"
 msgstr "FAQ"
 
-#: multilanguage.php:2446
+#: multilanguage.php:2447
 msgid "Support"
 msgstr "Wsparcie"
 
@@ -560,9 +569,6 @@ msgstr "Wsparcie"
 #~ "Po zmianie języka w na stronie, region WordPress zostanie także zmieniony "
 #~ "(tylko w przypadku, gdy zainstalowane są dodatkowe pakiety językowe "
 #~ "WordPress)"
-
-#~ msgid "Language switcher"
-#~ msgstr "Przełącznik języka"
 
 #, fuzzy
 #~ msgid "selected language"

@@ -80,7 +80,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 			<hr>
 			<table class="form-table">
 				<tr>
-					<th><?php _e( 'Language Switcher Type', 'multilanguage' ); ?></th>
+					<th><?php _e( 'Shortcode Language Switcher Type', 'multilanguage' ); ?></th>
 					<td>
 						<fieldset>
 							<label>

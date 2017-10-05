@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bestwebsoft\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-05 14:58+0300\n"
-"PO-Revision-Date: 2017-09-05 14:58+0300\n"
+"POT-Creation-Date: 2017-09-11 16:43+0300\n"
+"PO-Revision-Date: 2017-09-11 16:43+0300\n"
 "Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
 "Language-Team: bestwebsoft.com <https://support.bestwebsoft.com>\n"
 "Language: nl_NL\n"
@@ -1114,27 +1114,27 @@ msgstr ""
 msgid "If you have a moment, please let us know why you are deactivating"
 msgstr ""
 
-#: deactivation-form.php:129
-msgid "Anonymous feedback"
+#: deactivation-form.php:127
+msgid "Send website data and allow to contact me back"
 msgstr ""
 
-#: deactivation-form.php:131
+#: deactivation-form.php:132
 msgid "Cancel"
 msgstr ""
 
-#: deactivation-form.php:229
+#: deactivation-form.php:233
 msgid "Processing"
 msgstr ""
 
-#: deactivation-form.php:258
+#: deactivation-form.php:262
 msgid "Submit & Deactivate"
 msgstr ""
 
-#: deactivation-form.php:273
+#: deactivation-form.php:277
 msgid "Please tell us the reason so we can improve it."
 msgstr ""
 
-#: deactivation-form.php:341
+#: deactivation-form.php:345
 msgid "Deactivate"
 msgstr ""
 
@@ -1281,275 +1281,274 @@ msgstr ""
 msgid "SMM"
 msgstr ""
 
-#: product_list.php:23
-msgid ""
-"Protect WordPress website forms from spam entries by means of math logic."
+#: product_list.php:22
+msgid "Best secure captcha plugin to protect your WordPress forms."
 msgstr ""
 
-#: product_list.php:35
+#: product_list.php:32
 msgid "Create your personal car rental/booking and reservation website."
 msgstr ""
 
-#: product_list.php:45
+#: product_list.php:42
 msgid ""
 "Allow customers to reach you using secure contact form plugin any website "
 "must have."
 msgstr ""
 
-#: product_list.php:55
+#: product_list.php:52
 msgid "Add unlimited number of contact forms to WordPress website."
 msgstr ""
 
-#: product_list.php:65
+#: product_list.php:62
 msgid "Save and manage Contact Form messages. Never lose important data."
 msgstr ""
 
-#: product_list.php:75
+#: product_list.php:72
 msgid "Add unlimited custom pages to WordPress admin dashboard."
 msgstr ""
 
-#: product_list.php:82
+#: product_list.php:79
 msgid "Add custom fields to WordPress website search results."
 msgstr ""
 
-#: product_list.php:89
+#: product_list.php:86
 msgid ""
 "Add custom post types and taxonomies to WordPress website search results."
 msgstr ""
 
-#: product_list.php:99
+#: product_list.php:96
 msgid "Add PayPal and 2CO donate buttons to receive charity payments."
 msgstr ""
 
-#: product_list.php:106
+#: product_list.php:103
 msgid ""
 "Get latest error log messages to diagnose website problems. Define and fix "
 "issues faster."
 msgstr ""
 
-#: product_list.php:113
+#: product_list.php:110
 msgid ""
 "Add Facebook Follow, Like, and Share buttons to WordPress posts, pages, and "
 "widgets."
 msgstr ""
 
-#: product_list.php:123
+#: product_list.php:120
 msgid ""
 "Add beautiful galleries, albums & images to your WordPress website in a few "
 "clicks."
 msgstr ""
 
-#: product_list.php:133
+#: product_list.php:130
 msgid ""
 "Add Google +1, Share, Follow, Hangout buttons and profile badge to WordPress "
 "posts, pages and widgets."
 msgstr ""
 
-#: product_list.php:143
+#: product_list.php:140
 msgid ""
 "Stronger security solution which protects your WordPress website from hacks "
 "and unauthorized login attempts."
 msgstr ""
 
-#: product_list.php:153
+#: product_list.php:150
 msgid ""
 "Add Adsense ads to WordPress website pages, posts, custom posts, search "
 "results, categories, tags, and widgets."
 msgstr ""
 
-#: product_list.php:163
+#: product_list.php:160
 msgid "Add Google Analytics code to WordPress website and track basic stats."
 msgstr ""
 
-#: product_list.php:173
+#: product_list.php:170
 msgid ""
 "Protect WordPress website forms from spam entries with Google Captcha "
 "(reCaptcha)."
 msgstr ""
 
-#: product_list.php:183
+#: product_list.php:180
 msgid "Add customized Google maps to WordPress posts, pages and widgets."
 msgstr ""
 
-#: product_list.php:193
+#: product_list.php:190
 msgid ""
 "Generate and add XML sitemap to WordPress website. Help search engines index "
 "your blog."
 msgstr ""
 
-#: product_list.php:203
+#: product_list.php:200
 msgid ""
 "Replace external WordPress website links with Google shortlinks and track "
 "click stats."
 msgstr ""
 
-#: product_list.php:210
+#: product_list.php:207
 msgid ""
 "Protect WordPress website – allow and deny access for certain IP addresses, "
 "hostnames, etc."
 msgstr ""
 
-#: product_list.php:220
+#: product_list.php:217
 msgid ""
 "Create your personal job board and listing WordPress website. Search jobs, "
 "submit CV/resumes, choose candidates."
 msgstr ""
 
-#: product_list.php:227
+#: product_list.php:224
 msgid ""
 "Protect WordPress website against brute force attacks. Limit rate of login "
 "attempts."
 msgstr ""
 
-#: product_list.php:237
+#: product_list.php:234
 msgid ""
 "Add LinkedIn Share and Follow buttons to WordPress posts, pages and widgets. "
 "5 plugins included – profile, insider, etc."
 msgstr ""
 
-#: product_list.php:247
+#: product_list.php:244
 msgid ""
 "Translate WordPress website content to other languages manually. Create "
 "multilingual pages, posts, widgets, menus, etc."
 msgstr ""
 
-#: product_list.php:257
+#: product_list.php:254
 msgid ""
 "Add customizable pagination to WordPress website. Split long content to "
 "multiple pages for better navigation."
 msgstr ""
 
-#: product_list.php:267
+#: product_list.php:264
 msgid ""
 "Generate PDF files and print WordPress posts/pages. Customize document "
 "header/footer styles and appearance."
 msgstr ""
 
-#: product_list.php:277
+#: product_list.php:274
 msgid ""
 "Add Pinterest Follow, Pin It buttons and profile widgets (Pin, Board, "
 "Profile) to WordPress posts, pages and widgets."
 msgstr ""
 
-#: product_list.php:287
+#: product_list.php:284
 msgid ""
 "Create your personal portfolio WordPress website. Manage and showcase past "
 "projects to get more clients."
 msgstr ""
 
-#: product_list.php:297
+#: product_list.php:294
 msgid "Export WordPress posts to CSV file format easily. Configure data order."
 msgstr ""
 
-#: product_list.php:304
+#: product_list.php:301
 msgid ""
 "Add extra fields to default WordPress user profile. The easiest way to "
 "create and manage additional custom values."
 msgstr ""
 
-#: product_list.php:311
+#: product_list.php:308
 msgid ""
 "Add and display HTML advertisement banner on WordPress website. Customize "
 "bar styles and appearance."
 msgstr ""
 
-#: product_list.php:321
+#: product_list.php:318
 msgid ""
 "Add customizable quotes and tips blocks to WordPress posts, pages and "
 "widgets."
 msgstr ""
 
-#: product_list.php:328
+#: product_list.php:325
 msgid ""
 "Add rating plugin to your WordPress website to receive feedback from your "
 "customers."
 msgstr ""
 
-#: product_list.php:335
+#: product_list.php:332
 msgid ""
 "Create your personal real estate WordPress website. Sell, rent and buy "
 "properties. Add, search and browse listings easily."
 msgstr ""
 
-#: product_list.php:345
+#: product_list.php:342
 msgid ""
 "Add related, featured, latest, and popular posts to your WordPress website. "
 "Connect your blog readers with a relevant content."
 msgstr ""
 
-#: product_list.php:352
+#: product_list.php:349
 msgid ""
 "Send bulk email messages to WordPress users. Custom templates, advanced "
 "settings and detailed reports."
 msgstr ""
 
-#: product_list.php:362
+#: product_list.php:359
 msgid ""
 "The best responsive slider plugin for your WordPress website. Create "
 "beautifully animated slides just in a few clicks."
 msgstr ""
 
-#: product_list.php:369
+#: product_list.php:366
 msgid ""
 "Configure SMTP server to receive email messages from WordPress to Gmail, "
 "Yahoo, Hotmail and other services."
 msgstr ""
 
-#: product_list.php:376
+#: product_list.php:373
 msgid ""
 "Add social media buttons and widgets to WordPress posts, pages and widgets. "
 "FB, Twitter, G+1, Pinterest, LinkedIn."
 msgstr ""
 
-#: product_list.php:386
+#: product_list.php:383
 msgid ""
 "Add social media login, registration, and commenting to your WordPress "
 "website."
 msgstr ""
 
-#: product_list.php:393
+#: product_list.php:390
 msgid ""
 "Add email newsletter sign up form to WordPress posts, pages and widgets. "
 "Collect data and subscribe your users."
 msgstr ""
 
-#: product_list.php:403
+#: product_list.php:400
 msgid ""
 "Add testimonials and feedbacks from your customers to WordPress website "
 "posts, pages, and widgets."
 msgstr ""
 
-#: product_list.php:410
+#: product_list.php:407
 msgid ""
 "Best timesheet plugin for WordPress. Track employee time, streamline "
 "attendance and generate reports."
 msgstr ""
 
-#: product_list.php:420
+#: product_list.php:417
 msgid ""
 "Add Twitter Follow, Tweet, Hashtag, and Mention buttons to WordPress posts "
 "and pages."
 msgstr ""
 
-#: product_list.php:430
+#: product_list.php:427
 msgid ""
 "Automatically check and update WordPress website core with all installed "
 "plugins and themes to the latest versions."
 msgstr ""
 
-#: product_list.php:440
+#: product_list.php:437
 msgid ""
 "Powerful user role management plugin for WordPress website. Create, edit, "
 "copy, and delete user roles."
 msgstr ""
 
-#: product_list.php:450
+#: product_list.php:447
 msgid ""
 "Display live count of online visitors who are currently browsing your "
 "WordPress website."
 msgstr ""
 
-#: product_list.php:460
+#: product_list.php:457
 msgid ""
 "Backup and export Zendesk Help Center content automatically to your "
 "WordPress website database."

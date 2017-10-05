@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: multilanguage\n"
-"POT-Creation-Date: 2017-09-27 15:01+0300\n"
-"PO-Revision-Date: 2017-09-27 15:01+0300\n"
+"POT-Creation-Date: 2017-10-04 19:28+0300\n"
+"PO-Revision-Date: 2017-10-04 19:28+0300\n"
 "Last-Translator: Nahuel Martino <nahuel@ibidemgroup.com>\n"
 "Language-Team: Mik013\n"
 "Language: es\n"
@@ -17,8 +17,8 @@ msgstr ""
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../includes/class-mltlngg-settings.php:24 ../multilanguage.php:38
-#: ../multilanguage.php:40 ../multilanguage.php:1118 ../multilanguage.php:2430
-#: ../multilanguage.php:2444
+#: ../multilanguage.php:40 ../multilanguage.php:1116 ../multilanguage.php:2431
+#: ../multilanguage.php:2445
 msgid "Settings"
 msgstr "Ajustes"
 
@@ -43,32 +43,33 @@ msgid "Multilanguage Settings"
 msgstr "Ajustes de Multilanguage"
 
 #: ../includes/class-mltlngg-settings.php:83
-msgid "Language Switcher Type"
+#, fuzzy
+msgid "Shortcode Language Switcher Type"
 msgstr "Tipo de Cambiador de Idiomas"
 
 #: ../includes/class-mltlngg-settings.php:88
 #: ../includes/class-mltlngg-settings.php:93
-#: ../includes/class-mltlngg-settings.php:98 ../multilanguage.php:880
-#: ../multilanguage.php:881 ../multilanguage.php:882 ../multilanguage.php:959
-#: ../multilanguage.php:965 ../multilanguage.php:971
+#: ../includes/class-mltlngg-settings.php:98 ../multilanguage.php:878
+#: ../multilanguage.php:879 ../multilanguage.php:880 ../multilanguage.php:957
+#: ../multilanguage.php:963 ../multilanguage.php:969
 msgid "Drop-down list"
 msgstr "Lista desplegable"
 
 #: ../includes/class-mltlngg-settings.php:88
-#: ../includes/class-mltlngg-settings.php:98 ../multilanguage.php:880
-#: ../multilanguage.php:882 ../multilanguage.php:959 ../multilanguage.php:971
+#: ../includes/class-mltlngg-settings.php:98 ../multilanguage.php:878
+#: ../multilanguage.php:880 ../multilanguage.php:957 ../multilanguage.php:969
 msgid "flag"
 msgstr "bandera"
 
 #: ../includes/class-mltlngg-settings.php:88
-#: ../includes/class-mltlngg-settings.php:93 ../multilanguage.php:877
-#: ../multilanguage.php:880 ../multilanguage.php:881 ../multilanguage.php:959
-#: ../multilanguage.php:965
+#: ../includes/class-mltlngg-settings.php:93 ../multilanguage.php:875
+#: ../multilanguage.php:878 ../multilanguage.php:879 ../multilanguage.php:957
+#: ../multilanguage.php:963
 msgid "title"
 msgstr "título"
 
 #: ../includes/class-mltlngg-settings.php:103 ../includes/table.php:39
-#: ../multilanguage.php:877 ../multilanguage.php:879 ../multilanguage.php:976
+#: ../multilanguage.php:875 ../multilanguage.php:877 ../multilanguage.php:974
 msgid "Flag"
 msgstr "Bandera"
 
@@ -244,7 +245,7 @@ msgstr "idioma"
 msgid "languages"
 msgstr "idiomas"
 
-#: ../includes/table.php:37 ../multilanguage.php:878
+#: ../includes/table.php:37 ../multilanguage.php:876
 msgid "Title"
 msgstr "Título"
 
@@ -256,7 +257,8 @@ msgstr "Slug de la URL"
 msgid "Order"
 msgstr "Orden"
 
-#: ../includes/table.php:58 ../includes/table.php:366 ../includes/table.php:376
+#: ../includes/table.php:58 ../includes/table.php:366
+#: ../includes/table.php:376
 msgid "Default"
 msgstr "Por defecto"
 
@@ -416,16 +418,16 @@ msgstr "Ninguno de los idiomas seleccionados ha sido %s"
 msgid "Choose a language"
 msgstr "Elige un idioma"
 
-#: ../includes/table.php:604 ../multilanguage.php:1157
+#: ../includes/table.php:604 ../multilanguage.php:1155
 msgid "Add Language"
 msgstr "Añadir idioma"
 
-#: ../multilanguage.php:121 ../multilanguage.php:886 ../multilanguage.php:2260
-#: ../multilanguage.php:2263
+#: ../multilanguage.php:121 ../multilanguage.php:884 ../multilanguage.php:2261
+#: ../multilanguage.php:2264
 msgid "Multilanguage switcher"
 msgstr "Cambiador de Idiomas de Multilanguage"
 
-#: ../multilanguage.php:854
+#: ../multilanguage.php:852
 msgid ""
 "Attention!!! The changes will not be saved because Title and Content fields "
 "are empty on the current tab! It is recommended to fill in at least one "
@@ -435,30 +437,30 @@ msgstr ""
 "Contenido están vacíos en la ficha actual. Se recomienda rellenar al menos "
 "un campo o desplázarse a la ficha con los campos que ya están rellenados."
 
-#: ../multilanguage.php:855
+#: ../multilanguage.php:853
 msgid ""
 "Switching to another language, all unsaved data will be lost. Save data?"
 msgstr ""
 "Al cambiar idioma, todos los datos no guardados se perderán. ¿Guardar los "
 "datos?"
 
-#: ../multilanguage.php:918
+#: ../multilanguage.php:916
 msgid "Content language switch"
 msgstr "Cambio de idiomas del contenido"
 
-#: ../multilanguage.php:950
+#: ../multilanguage.php:948
 msgid "Localization"
 msgstr "Localización"
 
-#: ../multilanguage.php:953
+#: ../multilanguage.php:951
 msgid "Title:"
 msgstr "Título:"
 
-#: ../multilanguage.php:1162
+#: ../multilanguage.php:1160
 msgid "Attention"
 msgstr "Atención"
 
-#: ../multilanguage.php:1162
+#: ../multilanguage.php:1160
 msgid ""
 "Please update the post before switching the language. Data is not saved "
 "automatically."
@@ -466,33 +468,33 @@ msgstr ""
 "Actualiza la entrada antes de cambiar el idioma. Los datos no se guardan "
 "automáticamente."
 
-#: ../multilanguage.php:1166
+#: ../multilanguage.php:1164
 msgid "Edit for language"
 msgstr "Editar para idioma"
 
-#: ../multilanguage.php:1417 ../multilanguage.php:1478
+#: ../multilanguage.php:1418 ../multilanguage.php:1479
 msgid "Translations"
 msgstr "Traducciones"
 
-#: ../multilanguage.php:1612
+#: ../multilanguage.php:1613
 #, php-format
 msgid "Protected: %s"
 msgstr "Protegido: %s"
 
-#: ../multilanguage.php:1615
+#: ../multilanguage.php:1616
 #, php-format
 msgid "Private: %s"
 msgstr "Privado: %s"
 
-#: ../multilanguage.php:1815 ../multilanguage.php:2343
+#: ../multilanguage.php:1816 ../multilanguage.php:2344
 msgid "(more&hellip;)"
 msgstr "(more&hellip;)"
 
-#: ../multilanguage.php:2445
+#: ../multilanguage.php:2446
 msgid "FAQ"
 msgstr "FAQ"
 
-#: ../multilanguage.php:2446
+#: ../multilanguage.php:2447
 msgid "Support"
 msgstr "Soporte"
 
