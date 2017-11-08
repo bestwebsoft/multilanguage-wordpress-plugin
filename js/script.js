@@ -5,7 +5,7 @@
 		$( '#mltlngg-add-lang-link' ).click( function() {
 			$( '#mltlngg-add-new-language-form' ).slideToggle();
 		});
-		
+
 		/* Do not save post if Title and Content is empty */
 		$( '#publish' ).on( 'click', function() {
 			var mltlnggCurrentTitle = $( '#title' ).val(),
@@ -34,7 +34,7 @@
 					.attr( 'id', 'cat-' + getLangContentDiv.find( 'a.nav-tab-active' ).data( 'lang' ) )
 					.attr( 'name', 'cat_' + getLangContentDiv.find( 'a.nav-tab-active' ).data( 'lang' ) )
 					.val( old_cat )
-				);	 
+				);
 			});
 
 			/* Function for click on another language tab to edit translation */
@@ -52,7 +52,7 @@
 					mltlnggOldTitle = inputTitle.val(), /* Get title from previous language tab */
 					mltlnggOldExcerpt = $( '#excerpt' ).val(),
 					mltlnggOldContent, data;
-				$( 'input[id^="in-category-"]' ).each( function( i,elem ) { 
+				$( 'input[id^="in-category-"]' ).each( function( i,elem ) {
 					cat_id[i] = $( elem ).val();
 				});
 				$( '#mltlngg-overlay' ).show();
@@ -76,14 +76,14 @@
 						inputContent.val( $( 'textarea#content-' + newLang ).val() ); /* Set content to Text editor */
 					}
 					inputExcerpt.val( $( 'input#excerpt-' + newLang ).val() );
-					$( 'li[id^="category-"]' ).each( function( i, elem ) { 
+					$( 'li[id^="category-"]' ).each( function( i, elem ) {
 						var html_object = $( elem ).find( 'label' );
 						var old_cat = html_object.text();
 						var content = html_object.html();
 						if ( $( elem ).find( 'input[id^="cat-' + newLang +'"]' ).length > 0 ) {
 							content = content.replace( old_cat, ' ' + $( elem ).find( 'input[id^="cat-' + newLang +'"]' ).val() )
 							$( html_object ).html( content );
-						}	
+						}
 					} );
 
 					data = {
@@ -98,7 +98,7 @@
 					};
 					$.post( ajaxurl, data, function ( response ) {
 						$( '#mltlngg-overlay' ).hide();
-					} );						
+					} );
 				} else {
 					/* If hidden blocks is not exist, get Title & Content from database, then create hidden blocks */
 					data = {
@@ -139,7 +139,7 @@
 									.attr( 'type', 'hidden' )
 									.attr( 'id', 'excerpt-' + newLang )
 									.attr( 'name', 'excerpt_' + newLang )
-									.val( mltlnggNew.post_excerpt )	
+									.val( mltlnggNew.post_excerpt )
 							);
 						} else {
 							/* when autosave is off and we come to post where multi has no date - do not lost default lang */
@@ -158,8 +158,9 @@
 						for( var key in mltlnggNew.cat_translate ) {
 							var html_object = $( '#category-' + key + ' label' );
 
-							if ( ! html_object.length )
+							if ( ! html_object.length ) {
 								continue;
+							}
 
 							var old_cat = html_object.text();
 							var content = html_object.html();
@@ -194,7 +195,7 @@
 			$( 'input[type=text]:visible:not(.newtag.form-input-tip),textarea:visible' ).on( 'change', function() {
 				changes_made = true;
 			});
-			
+
 			$( '#get-lang-content a.nav-tab' ).on( 'click', function( event ) {
 				if ( changes_made ) {
 					if ( window.confirm( mltlngg_vars.confirm_update_post ) ) {

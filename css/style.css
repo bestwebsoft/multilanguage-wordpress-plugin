@@ -346,6 +346,26 @@ li.mltlngg-menu-item > ul {
 	width: 100;
 	text-align: inherit;
 }
+
+/* Google Switcher */
+#mltlngg_google_switcher a,
+#mltlngg_google_switcher a img {
+	box-shadow: none;
+	webkit-box-shadow: none;
+	display: initial;
+	font-weight: initial;
+}
+.widget ul.mltlngg-lang-switch li a,
+.widget ul.mltlngg-lang-switch li a:hover,
+.widget ul.mltlngg-lang-switch li a:focus,
+.widget ul.mltlngg-lang-switch li a:active,
+#mltlngg_google_switcher a:hover,
+#mltlngg_google_switcher a:focus,
+#mltlngg_google_switcher a:active {
+	box-shadow: none;
+	webkit-box-shadow: none;
+	text-decoration: initial;
+}
 @media screen and (max-width: 782px) {
 	.mltlngg-menu-item-radio input {
 		width: 25px;

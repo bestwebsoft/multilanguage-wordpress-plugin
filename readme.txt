@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
 Requires at least: 3.9
-Tested up to: 4.8.2
-Stable tag: 1.2.7
+Tested up to: 4.8.3
+Stable tag: 1.2.8
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -15,8 +15,6 @@ Translate WordPress website content to other languages manually. Create multilin
 Multilanguage plugin is a great way to translate your WordPress website to other languages. Add translated content to pages, posts, widgets, menus, custom post types, taxonomies, etc. Let your visitors switch languages and browse content in their language.
 
 Create and manage your multilingual website today!
-
-**NOTE: Plugin does NOT translate texts automatically!** It works with themes and plugins developed according to WordPress Codex standards. It uses standard filters (the_title, the_content, get_terms, get_the_terms, get_term, wp_get_nav_menu_items).
 
 http://www.youtube.com/watch?v=Si6ulEWuY1E
 
@@ -43,6 +41,7 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 	* Drop-down flag icons
 	* Flag icons
 	* Languages list
+	* Google Auto Translate [NEW]
 * Choose language flag icon:
 	* Default
 	* Custom
@@ -116,7 +115,7 @@ Some of these translations are not complete. We are constantly adding new featur
 
 = Does Multilanguage plugin translate website content automatically? =
 
-No, it does not. It allows to manage relationships between website and translations, but it doesn’t change the content.
+Yes, you can add Google Auto Translate switcher using widget or via the corresponding shortcode.
 
 = How do I change the language my content is displayed in? =
 
@@ -196,6 +195,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 11. Adding language switcher into site menu.
 
 == Changelog ==
+
+= V1.2.8 - 08.11.2017 =
+* NEW : Google Auto Translate switcher type has been added.
 
 = V1.2.7 - 05.10.2017 =
 * Bugfix : Bug with broken redirection connected with SSL has been fixed.
@@ -338,6 +340,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.2.8 =
+* New features added.
 
 = V1.2.7 =
 * Bugs fixed.

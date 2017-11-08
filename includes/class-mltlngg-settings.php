@@ -19,7 +19,6 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 		public function __construct( $plugin_basename ) {
 			global $mltlngg_options, $mltlngg_plugin_info;
 
-
 			$tabs = array(
 				'settings' 		=> array( 'label' => __( 'Settings', 'multilanguage' ) ),
 				'misc' 			=> array( 'label' => __( 'Misc', 'multilanguage' ) ),
@@ -57,12 +56,23 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 		public function save_options() {
 			global $wpdb;
 
-			$this->options['save_mode']					= isset( $_POST['mltlngg_save_mode'] ) && 'ajax' == $_POST['mltlngg_save_mode'] ? 'ajax' : 'manual';
-			$this->options['display_alternative_link']	= isset( $_POST['mltlngg_display_alternative_link'] ) ? 1 : 0;
+			$this->options['language_switcher'] = ( isset( $_POST['mltlngg_language_switcher'] ) &&
+				in_array( $_POST['mltlngg_language_switcher'], array(
+					'drop-down-list',
+					'drop-down-titles',
+					'drop-down-icons',
+					'flags-icons',
+					'gt',
+					'gt-horizontal',
+					'gt-vertical' )
+				)
+			) ? $_POST['mltlngg_language_switcher'] : 'drop-down-list';
+
 			$this->options['hide_link_slug']			= isset( $_POST['mltlngg_hide_link_slug'] ) ? 0 : 1;
 			$this->options['wp_localization']			= isset( $_POST['mltlngg_wp_localization'] ) ? 1 : 0;
-			$this->options['language_switcher']			= isset( $_POST['mltlngg_language_switcher'] ) ? $_POST['mltlngg_language_switcher'] : 'drop-down-list';
-			$this->options['search']					= $_POST['mltlngg_search'];
+			$this->options['display_alternative_link']	= isset( $_POST['mltlngg_display_alternative_link'] ) ? 1 : 0;
+			$this->options['save_mode']					= isset( $_POST['mltlngg_save_mode'] ) && 'ajax' == $_POST['mltlngg_save_mode'] ? 'ajax' : 'manual';
+			$this->options['search']					= isset( $_POST['mltlngg_search'] ) && in_array( $_POST['mltlngg_search'], array( 'single', 'all' ) ) ? $_POST['mltlngg_search'] : 'single';
 
 			$message = __( 'Settings saved.', 'multilanguage' );
 
@@ -80,7 +90,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 			<hr>
 			<table class="form-table">
 				<tr>
-					<th><?php _e( 'Shortcode Language Switcher Type', 'multilanguage' ); ?></th>
+					<th><?php _e( 'Default Language Switcher Type', 'multilanguage' ); ?></th>
 					<td>
 						<fieldset>
 							<label>
@@ -101,6 +111,33 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 							<label>
 								<input name="mltlngg_language_switcher" type="radio" value="flags-icons" <?php checked( $this->options['language_switcher'], 'flags-icons' ); ?> />
 								<?php _e( 'Flag', 'multilanguage' ); ?>
+							</label>
+							<br/>
+							<label>
+								<input name="mltlngg_language_switcher" type="radio" value="gt" <?php checked( $this->options['language_switcher'], 'gt' ); ?> />
+								<?php printf(
+									'%s (%s)',
+									__( 'Google Auto Translate', 'multilanguage' ),
+									__( 'drop-down only', 'multilanguage' )
+								); ?>
+							</label>
+							<br/>
+							<label>
+								<input name="mltlngg_language_switcher" type="radio" value="gt-horizontal" <?php checked( $this->options['language_switcher'], 'gt-horizontal' ); ?> />
+								<?php printf(
+									'%s (%s)',
+									__( 'Google Auto Translate', 'multilanguage' ),
+									__( 'horizontal', 'multilanguage' )
+								); ?>
+							</label>
+							<br/>
+							<label>
+								<input name="mltlngg_language_switcher" type="radio" value="gt-vertical" <?php checked( $this->options['language_switcher'], 'gt-vertical' ); ?> />
+								<?php printf(
+									'%s (%s)',
+									__( 'Google Auto Translate', 'multilanguage' ),
+									__( 'vertical', 'multilanguage' )
+								); ?>
 							</label>
 						</fieldset>
 					</td>
@@ -190,7 +227,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 									<?php _e( 'Manual (Save Changes button)', 'multilanguage' ); ?>
 								</label>
 							</fieldset>
-							<span class="bws_info"><?php _e( "Enable Manual mode if you have some problems with saving translations using Auto mode.", 'multilanguage' ); ?></span>
+							<span class="bws_info"><?php _e( "Enable Manual mode if you have some problems with translations saving using Auto mode.", 'multilanguage' ); ?></span>
 						</td>
 					</tr>
 				<?php } ?>

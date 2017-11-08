@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: multilanguage\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-04 19:28+0300\n"
+"POT-Creation-Date: 2017-11-02 17:16+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: BestWebSoft team <wp@bestwebsoft.com>\n"
 "Language-Team: Emil Król <emiljo@tlen.pl>\n"
@@ -17,117 +17,145 @@ msgstr ""
 "X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: includes/class-mltlngg-settings.php:24 multilanguage.php:38
-#: multilanguage.php:40 multilanguage.php:1116 multilanguage.php:2431
-#: multilanguage.php:2445
+#: includes/class-mltlngg-settings.php:23 multilanguage.php:38
+#: multilanguage.php:40 multilanguage.php:1216 multilanguage.php:2620
+#: multilanguage.php:2634
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: includes/class-mltlngg-settings.php:25
+#: includes/class-mltlngg-settings.php:24
 msgid "Misc"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:26
+#: includes/class-mltlngg-settings.php:25
 msgid "Custom Code"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:27
+#: includes/class-mltlngg-settings.php:26
 msgid "License Key"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:67 includes/table.php:351
+#: includes/class-mltlngg-settings.php:77 includes/table.php:357
 #, fuzzy
 msgid "Settings saved."
 msgstr "Ustawienia zapisane"
 
-#: includes/class-mltlngg-settings.php:78
+#: includes/class-mltlngg-settings.php:88
 msgid "Multilanguage Settings"
 msgstr "Ustawienia Multilanguage"
 
-#: includes/class-mltlngg-settings.php:83
+#: includes/class-mltlngg-settings.php:93
 #, fuzzy
-msgid "Shortcode Language Switcher Type"
+msgid "Default Language Switcher Type"
 msgstr "Przełącznik języka"
 
-#: includes/class-mltlngg-settings.php:88
-#: includes/class-mltlngg-settings.php:93
-#: includes/class-mltlngg-settings.php:98 multilanguage.php:878
-#: multilanguage.php:879 multilanguage.php:880 multilanguage.php:957
-#: multilanguage.php:963 multilanguage.php:969
+#: includes/class-mltlngg-settings.php:98
+#: includes/class-mltlngg-settings.php:103
+#: includes/class-mltlngg-settings.php:108 multilanguage.php:915
+#: multilanguage.php:916 multilanguage.php:917 multilanguage.php:1009
+#: multilanguage.php:1015 multilanguage.php:1021 multilanguage.php:2568
+#: multilanguage.php:2572 multilanguage.php:2576
 msgid "Drop-down list"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:88
-#: includes/class-mltlngg-settings.php:98 multilanguage.php:878
-#: multilanguage.php:880 multilanguage.php:957 multilanguage.php:969
+#: includes/class-mltlngg-settings.php:98
+#: includes/class-mltlngg-settings.php:108 multilanguage.php:915
+#: multilanguage.php:917 multilanguage.php:1009 multilanguage.php:1021
+#: multilanguage.php:2568 multilanguage.php:2576
 #, fuzzy
 msgid "flag"
 msgstr "Flaga"
 
-#: includes/class-mltlngg-settings.php:88
-#: includes/class-mltlngg-settings.php:93 multilanguage.php:875
-#: multilanguage.php:878 multilanguage.php:879 multilanguage.php:957
-#: multilanguage.php:963
+#: includes/class-mltlngg-settings.php:98
+#: includes/class-mltlngg-settings.php:103 multilanguage.php:912
+#: multilanguage.php:915 multilanguage.php:916 multilanguage.php:1009
+#: multilanguage.php:1015 multilanguage.php:2568 multilanguage.php:2572
 #, fuzzy
 msgid "title"
 msgstr "Tytuł:"
 
-#: includes/class-mltlngg-settings.php:103 includes/table.php:39
-#: multilanguage.php:875 multilanguage.php:877 multilanguage.php:974
+#: includes/class-mltlngg-settings.php:113 includes/table.php:39
+#: multilanguage.php:912 multilanguage.php:914 multilanguage.php:1026
+#: multilanguage.php:2580
 msgid "Flag"
 msgstr "Flaga"
 
-#: includes/class-mltlngg-settings.php:112
-#: includes/class-mltlngg-settings.php:223 includes/table.php:407
+#: includes/class-mltlngg-settings.php:120
+#: includes/class-mltlngg-settings.php:129
+#: includes/class-mltlngg-settings.php:138 multilanguage.php:1033
+#: multilanguage.php:1042 multilanguage.php:1051 multilanguage.php:2584
+#: multilanguage.php:2588 multilanguage.php:2592
+#, fuzzy
+msgid "Google Auto Translate"
+msgstr "Тип посту для перекладу"
+
+#: includes/class-mltlngg-settings.php:121 multilanguage.php:1034
+#: multilanguage.php:2584
+#, fuzzy
+msgid "drop-down only"
+msgstr "Rozwijana lista flag"
+
+#: includes/class-mltlngg-settings.php:130 multilanguage.php:1043
+#: multilanguage.php:2588
+msgid "horizontal"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:139 multilanguage.php:1052
+#: multilanguage.php:2592
+msgid "vertical"
+msgstr ""
+
+#: includes/class-mltlngg-settings.php:149
+#: includes/class-mltlngg-settings.php:260 includes/table.php:413
 msgid "Close"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:116
+#: includes/class-mltlngg-settings.php:153
 msgid "Switch Language Automatically"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:118
+#: includes/class-mltlngg-settings.php:155
 msgid ""
 "Enable to determine user IP and switch website language automatically based "
 "on the location."
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:122
+#: includes/class-mltlngg-settings.php:159
 msgid "Slug Position in the URL"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:134
+#: includes/class-mltlngg-settings.php:171
 msgid "Before"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:143
+#: includes/class-mltlngg-settings.php:180
 #, fuzzy
 msgid "After"
 msgstr "po"
 
-#: includes/class-mltlngg-settings.php:159
+#: includes/class-mltlngg-settings.php:196
 msgid "Default Language Slug"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:161
+#: includes/class-mltlngg-settings.php:198
 msgid "Enable to show default language slug in the URL."
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:165
+#: includes/class-mltlngg-settings.php:202
 msgid "WordPress Language"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:167
+#: includes/class-mltlngg-settings.php:204
 msgid ""
 "Enable to switch WordPress language automatically when the language is "
 "changed in the front-end (installed WordPress language packs are required)."
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:171
+#: includes/class-mltlngg-settings.php:208
 msgid "hreflang Attribute"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:173
+#: includes/class-mltlngg-settings.php:210
 #, php-format
 msgid ""
 "Enable to add hreflang attribute used by search engines and display the "
@@ -135,55 +163,55 @@ msgid ""
 "automatically the respective link for each language within the %s section."
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:180
+#: includes/class-mltlngg-settings.php:217
 msgid "Translation Saving Mode"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:185
+#: includes/class-mltlngg-settings.php:222
 msgid "Auto"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:190
+#: includes/class-mltlngg-settings.php:227
 msgid "Manual (Save Changes button)"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:193
+#: includes/class-mltlngg-settings.php:230
 msgid ""
-"Enable Manual mode if you have some problems with saving translations using "
+"Enable Manual mode if you have some problems with translations saving using "
 "Auto mode."
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:198
+#: includes/class-mltlngg-settings.php:235
 msgid "Default Search by"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:202
+#: includes/class-mltlngg-settings.php:239
 msgid "Current language"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:206
+#: includes/class-mltlngg-settings.php:243
 msgid "All active languages"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:227
+#: includes/class-mltlngg-settings.php:264
 msgid "Update GeoIP Every"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:230
+#: includes/class-mltlngg-settings.php:267
 #, fuzzy
 msgid "months"
 msgstr "miesiące"
 
-#: includes/class-mltlngg-settings.php:231
+#: includes/class-mltlngg-settings.php:268
 #, fuzzy
 msgid "Country table is not loaded yet."
 msgstr "Lista krajów nie została jeszcze załadowana"
 
-#: includes/class-mltlngg-settings.php:233
+#: includes/class-mltlngg-settings.php:270
 msgid "Update Now"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:236
+#: includes/class-mltlngg-settings.php:273
 #, php-format
 msgid ""
 "Automatically download lists with registered IP addresses all over the world "
@@ -191,37 +219,37 @@ msgid ""
 "to which country it belongs to."
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:236
+#: includes/class-mltlngg-settings.php:273
 msgid "Learn More"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:267
+#: includes/class-mltlngg-settings.php:304
 msgid "Language Switcher"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:270
+#: includes/class-mltlngg-settings.php:307
 msgid "Add \"Multilanguage Switcher\" to a widget."
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:270
+#: includes/class-mltlngg-settings.php:307
 msgid "Navigate to Widgets"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:271
+#: includes/class-mltlngg-settings.php:308
 msgid "Add \"Multilanguage Switcher\" to a menu."
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:271
+#: includes/class-mltlngg-settings.php:308
 msgid "Navigate to Menus"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:272
+#: includes/class-mltlngg-settings.php:309
 msgid ""
 "Add a language switcher to your posts, pages or custom post types by using "
 "the following shortcode:"
 msgstr ""
 
-#: includes/class-mltlngg-settings.php:274
+#: includes/class-mltlngg-settings.php:311
 msgid ""
 "Add a language switcher to PHP template files by using the following code"
 msgstr ""
@@ -234,198 +262,198 @@ msgstr "język"
 msgid "languages"
 msgstr "języki"
 
-#: includes/table.php:37 multilanguage.php:876
+#: includes/table.php:37 multilanguage.php:913
 #, fuzzy
 msgid "Title"
 msgstr "Tytuł:"
 
-#: includes/table.php:38 includes/table.php:411
+#: includes/table.php:38 includes/table.php:417
 msgid "URL Slug"
 msgstr ""
 
-#: includes/table.php:40 includes/table.php:398
+#: includes/table.php:40 includes/table.php:404
 msgid "Order"
 msgstr ""
 
-#: includes/table.php:58 includes/table.php:366 includes/table.php:376
+#: includes/table.php:58 includes/table.php:372 includes/table.php:382
 msgid "Default"
 msgstr "Domyślny"
 
-#: includes/table.php:62
+#: includes/table.php:63
 #, fuzzy
 msgid "Edit"
 msgstr "Edytuj"
 
-#: includes/table.php:68 includes/table.php:80 includes/table.php:91
+#: includes/table.php:70 includes/table.php:82 includes/table.php:93
 msgid "Enable"
 msgstr "Włącz"
 
-#: includes/table.php:70 includes/table.php:81 includes/table.php:86
+#: includes/table.php:72 includes/table.php:83 includes/table.php:88
 msgid "Disable"
 msgstr "Wyłącz"
 
-#: includes/table.php:72 includes/table.php:82 includes/table.php:87
-#: includes/table.php:92
+#: includes/table.php:74 includes/table.php:84 includes/table.php:89
+#: includes/table.php:94
 msgid "Delete"
 msgstr "Usuń"
 
-#: includes/table.php:212 includes/table.php:461 multilanguage.php:42
+#: includes/table.php:216 includes/table.php:467 multilanguage.php:42
 msgid "Languages"
 msgstr "Języki"
 
-#: includes/table.php:247
+#: includes/table.php:251
 msgid "Language added"
 msgstr "Dodano język"
 
-#: includes/table.php:249
+#: includes/table.php:253
 msgid "Incorrect language data."
 msgstr ""
 
-#: includes/table.php:313
+#: includes/table.php:319
 #, php-format
 msgid "Error: File size > %s."
 msgstr ""
 
-#: includes/table.php:315
+#: includes/table.php:321
 msgid "Error: Invalid file type."
 msgstr ""
 
-#: includes/table.php:327
-msgid "Error: failed to move file."
+#: includes/table.php:333
+msgid "Error: Failed to move file."
 msgstr ""
 
-#: includes/table.php:330
+#: includes/table.php:336
 #, php-format
-msgid "Error: image width and height should not exceed %s."
+msgid "Error: Image width and height should not exceed %s."
 msgstr ""
 
-#: includes/table.php:334
-msgid "Uploading Error: check image properties."
+#: includes/table.php:340
+msgid "Uploading Error: Check image properties."
 msgstr ""
 
-#: includes/table.php:355
+#: includes/table.php:361
 msgid "Edit Language"
 msgstr ""
 
-#: includes/table.php:372
+#: includes/table.php:378
 msgid "Flag Image"
 msgstr ""
 
-#: includes/table.php:379
+#: includes/table.php:385
 msgid "Custom"
 msgstr ""
 
-#: includes/table.php:386
+#: includes/table.php:392
 msgid "Current flag"
 msgstr ""
 
-#: includes/table.php:394
+#: includes/table.php:400
 #, php-format
 msgid ""
 "Upload image of %s maximum dimensions in JPG, JPEG or PNG formats (maximum "
 "file size - %s)."
 msgstr ""
 
-#: includes/table.php:435
+#: includes/table.php:441
 #, fuzzy
 msgid "Site Title"
 msgstr "Tytuł:"
 
-#: includes/table.php:441
+#: includes/table.php:447
 msgid "Tagline"
 msgstr ""
 
-#: includes/table.php:449 multilanguage.php:48
+#: includes/table.php:455 multilanguage.php:48
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: includes/table.php:455
+#: includes/table.php:461
 msgid "Save changes"
 msgstr "Zapisz zmiany"
 
-#: includes/table.php:462
+#: includes/table.php:468
 msgid "Add New"
 msgstr ""
 
-#: includes/table.php:480
+#: includes/table.php:487
 #, fuzzy
 msgid "All"
 msgstr "Wszystkie obecne ustawienia na oddzielnych stronach zostaną zastąpione"
 
-#: includes/table.php:481
+#: includes/table.php:488
 msgid "Active"
 msgstr ""
 
-#: includes/table.php:482
+#: includes/table.php:489
 msgid "Disabled"
 msgstr "Wyłączony"
 
-#: includes/table.php:520
+#: includes/table.php:527
 #, fuzzy
 msgctxt "plural"
 msgid "enabled"
 msgstr "Włączony"
 
-#: includes/table.php:520
+#: includes/table.php:527
 #, fuzzy
 msgctxt "singular"
 msgid "enabled"
 msgstr "Włączony"
 
-#: includes/table.php:537
+#: includes/table.php:544
 #, fuzzy
 msgctxt "plural"
 msgid "disabled"
 msgstr "Wyłączony"
 
-#: includes/table.php:537
+#: includes/table.php:544
 #, fuzzy
 msgctxt "singular"
 msgid "disabled"
 msgstr "Wyłączony"
 
-#: includes/table.php:553
+#: includes/table.php:560
 #, fuzzy
 msgctxt "plural"
 msgid "deleted"
 msgstr "Zaznaczony wpis został usunięty z dziennika"
 
-#: includes/table.php:553
+#: includes/table.php:560
 #, fuzzy
 msgctxt "singular"
 msgid "deleted"
 msgstr "Zaznaczony wpis został usunięty z dziennika"
 
-#: includes/table.php:557
+#: includes/table.php:564
 #, fuzzy
 msgid "Unknown action"
 msgstr "Nieznana operacja"
 
-#: includes/table.php:561
+#: includes/table.php:568
 #, fuzzy, php-format
 msgid "Selected languages have been %s"
 msgstr "Dodaj język"
 
-#: includes/table.php:564
+#: includes/table.php:571
 #, php-format
 msgid "None of the selected languages has been %s"
 msgstr ""
 
-#: includes/table.php:585
+#: includes/table.php:592
 msgid "Choose a language"
 msgstr "Wybierz język"
 
-#: includes/table.php:604 multilanguage.php:1155
+#: includes/table.php:611 multilanguage.php:1255
 msgid "Add Language"
 msgstr ""
 
-#: multilanguage.php:121 multilanguage.php:884 multilanguage.php:2261
-#: multilanguage.php:2264
+#: multilanguage.php:123 multilanguage.php:921 multilanguage.php:2388
+#: multilanguage.php:2391
 #, fuzzy
 msgid "Multilanguage switcher"
 msgstr "Przełącznik języka"
 
-#: multilanguage.php:852
+#: multilanguage.php:889
 msgid ""
 "Attention!!! The changes will not be saved because Title and Content fields "
 "are empty on the current tab! It is recommended to fill in at least one "
@@ -435,61 +463,66 @@ msgstr ""
 "na bieżącej karcie! Zalecane jest, aby wypełnić co najmniej jedno pole lub "
 "przełączyć na zakładkę z pola, które są już wypełnione."
 
-#: multilanguage.php:853
-msgid ""
-"Switching to another language, all unsaved data will be lost. Save data?"
+#: multilanguage.php:890
+msgid "Switching to another language will remove all unsaved. Save data?"
 msgstr ""
 
-#: multilanguage.php:916
-msgid "Content language switch"
+#: multilanguage.php:968
+#, fuzzy
+msgid "Content language switcher"
 msgstr "Przełącznik języka Treści"
 
-#: multilanguage.php:948
+#: multilanguage.php:1000
 msgid "Localization"
 msgstr "Region"
 
-#: multilanguage.php:951
+#: multilanguage.php:1003
 msgid "Title:"
 msgstr "Tytuł:"
 
-#: multilanguage.php:1160
+#: multilanguage.php:1260
 #, fuzzy
 msgid "Attention"
 msgstr "UWAGA!"
 
-#: multilanguage.php:1160
+#: multilanguage.php:1260
 msgid ""
 "Please update the post before switching the language. Data is not saved "
 "automatically."
 msgstr ""
 
-#: multilanguage.php:1164
+#: multilanguage.php:1264
 msgid "Edit for language"
 msgstr "Edycja dla języka"
 
-#: multilanguage.php:1418 multilanguage.php:1479
+#: multilanguage.php:1521 multilanguage.php:1582
 msgid "Translations"
 msgstr "Tłumaczenia"
 
-#: multilanguage.php:1613
+#: multilanguage.php:1717
 #, php-format
 msgid "Protected: %s"
 msgstr "Zabezpieczony:%s"
 
-#: multilanguage.php:1616
+#: multilanguage.php:1720
 #, php-format
 msgid "Private: %s"
 msgstr "Prywatny:%s"
 
-#: multilanguage.php:1816 multilanguage.php:2344
+#: multilanguage.php:1928 multilanguage.php:2486
 msgid "(more&hellip;)"
 msgstr ""
 
-#: multilanguage.php:2446
+#: multilanguage.php:2564
+#, fuzzy
+msgid "Select Switcher Type"
+msgstr "Przełącznik języka"
+
+#: multilanguage.php:2636
 msgid "FAQ"
 msgstr "FAQ"
 
-#: multilanguage.php:2447
+#: multilanguage.php:2637
 msgid "Support"
 msgstr "Wsparcie"
 
@@ -503,9 +536,6 @@ msgstr "Wsparcie"
 
 #~ msgid "Drop-down languages list"
 #~ msgstr "Rozwijana lista języków"
-
-#~ msgid "Drop-down flag icons"
-#~ msgstr "Rozwijana lista flag"
 
 #~ msgid "Flag icons"
 #~ msgstr "Ikony flag"
@@ -652,6 +682,3 @@ msgstr "Wsparcie"
 
 #~ msgid "If there is something wrong about it, please contact us"
 #~ msgstr "Jeśli coś nie działa poprawnie, proszę skontaktuj się z nami"
-
-#~ msgid "Post types to translate"
-#~ msgstr "Тип посту для перекладу"

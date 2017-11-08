@@ -3,7 +3,6 @@
 
 <p>Multilanguage plugin is a great way to translate your WordPress website to other languages. Add translated content to pages, posts, widgets, menus, custom post types, taxonomies, etc. Let your visitors switch languages and browse content in their language.</p>
 <p>Create and manage your multilingual website today!</p>
-<p><strong>NOTE: Plugin does NOT translate texts automatically!</strong> It works with themes and plugins developed according to WordPress Codex standards. It uses standard filters (the_title, the_content, get_terms, get_the_terms, get_term, wp_get_nav_menu_items).</p>
 <p><span class="embed-youtube" style="text-align:center; display: block;"></span></p>
 <h4>Free Features</h4>
 <ul>
@@ -38,6 +37,7 @@
 <li>Drop-down flag icons</li>
 <li>Flag icons</li>
 <li>Languages list</li>
+<li>Google Auto Translate [NEW]</li>
 </ul>
 </li>
 <li>Choose language flag icon:

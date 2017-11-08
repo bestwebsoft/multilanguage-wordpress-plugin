@@ -54,15 +54,17 @@ if ( ! class_exists( 'Mltlngg_List_Table' ) ) {
 
 			$name = $item['title'];
 
-			if ( $item['bydefault'] )
+			if ( $item['bydefault'] ) {
 				$name .= ' — <span class="post-state">' . __( 'Default', 'multilanguage' ) . '</span>';
+			}
 
 			$name = '<strong>' . $name . '</strong>';
 
 			$actions['edit'] = '<a href="' . wp_nonce_url( '?page=multilanguage-languages.php&action=edit&mltlngg_language=' . $item["locale"], 'mltlngg-action' ) . '">' . __( 'Edit', 'multilanguage' ) . '</a>';
 
-			if ( $item['locale'] == $mltlngg_options['default_language'] )
+			if ( $item['locale'] == $mltlngg_options['default_language'] ) {
 				return sprintf( '%1$s %2$s', $name, $this->row_actions( $actions ) );
+			}
 
 			if ( ! $item['is_enabled'] ) {
 				$actions['enable'] = '<a href="' . wp_nonce_url( '?page=multilanguage-languages.php&action=enable&mltlngg_language=' . $item["locale"], 'mltlngg-action' ) . '">' . __( 'Enable', 'multilanguage' ) . '</a>';
@@ -140,10 +142,12 @@ if ( ! class_exists( 'Mltlngg_List_Table' ) ) {
 
 			foreach ( $mltlngg_options['list_of_languages'] as $language ) {
 				if ( isset( $_GET['status'] ) ) {
-					if ( 'active' == $_GET['status'] && ! $language['enable'] )
+					if ( 'active' == $_GET['status'] && ! $language['enable'] ) {
 						continue;
-					if ( 'inactive' == $_GET['status'] && $language['enable'] )
+					}
+					if ( 'inactive' == $_GET['status'] && $language['enable'] ) {
 						continue;
+					}
 				}
 
 				$flag_src = ( empty( $language['flag'] ) ) ? plugins_url( 'images/flags/', dirname( __FILE__ ) ) . $language['locale'] . '.png' : $language['flag'];
@@ -265,10 +269,12 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 
 		if ( isset( $action ) ) {
 			$action_result = in_array( $action, array( 'enable', 'disable', 'delete' ) ) ? mltlngg_actions( $action, $language ) : array();
-			if ( isset( $action_result['error'] ) )
+			if ( isset( $action_result['error'] ) ) {
 				$error .= $action_result['error'];
-			if ( isset( $action_result['success'] ) )
+			}
+			if ( isset( $action_result['success'] ) ) {
 				$message .= $action_result['success'];
+			}
 		}
 
 		if ( isset( $action ) && 'edit' == $action ) {
@@ -324,14 +330,14 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 								if ( move_uploaded_file( $_FILES['mltlngg_upload_flag']['tmp_name'], $uploadfile ) ) {
 									$language_data['flag'] = $upload_dir['baseurl'] . '/multilanguage/' . $namefile;
 								} else {
-									$error = __( "Error: failed to move file.", 'multilanguage' );
+									$error = __( "Error: Failed to move file.", 'multilanguage' );
 								}
 							} else {
-								$error = sprintf( __( "Error: image width and height should not exceed %s.", 'multilanguage' ), '50px' );
+								$error = sprintf( __( "Error: Image width and height should not exceed %s.", 'multilanguage' ), '50px' );
 							}
 						}
 					} else {
-						$error = __( "Uploading Error: check image properties.", 'multilanguage' );
+						$error = __( "Uploading Error: Check image properties.", 'multilanguage' );
 					}
 				}
 
@@ -471,10 +477,11 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 
 			$count_active_languages = $count_inactive_languages = 0;
 			foreach ( $mltlngg_options['list_of_languages'] as $language ) {
-				if ( $language['enable'] )
+				if ( $language['enable'] ) {
 					$count_active_languages++;
-				else
+				} else {
 					$count_inactive_languages++;
+				}
 			} ?>
 			<ul class="subsubsub">
 				<li class="all"><a href="admin.php?page=multilanguage-languages.php" <?php if ( ! isset( $_GET['status'] ) ) echo 'class="current"'; ?>><?php _e( 'All', 'multilanguage' ); ?> <span class="count">(<?php echo $count_active_languages + $count_inactive_languages; ?>)</span></a> |</li>
@@ -624,8 +631,9 @@ if ( ! function_exists( 'mltlngg_add_language' ) ) {
 		);
 		if ( ! empty( $mltlngg_options['list_of_languages'] ) ) {
 			foreach ( $mltlngg_options['list_of_languages'] as $item ) {
-				if ( $item['locale'] == $locale )
+				if ( $item['locale'] == $locale ) {
 					return false;
+				}
 			}
 		}
 		$mltlngg_options['list_of_languages'][] = $new_lang;

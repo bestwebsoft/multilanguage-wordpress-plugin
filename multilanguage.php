@@ -6,7 +6,7 @@ Description: Translate WordPress website content to other languages manually. Cr
 Author: BestWebSoft
 Text Domain: multilanguage
 Domain Path: /languages
-Version: 1.2.7
+Version: 1.2.8
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -43,11 +43,12 @@ if ( ! function_exists( 'mltlngg_admin_menu' ) ) {
 
 		add_submenu_page( 'mltlngg_settings', 'BWS Panel', 'BWS Panel', 'manage_options', 'mltlngg-bws-panel', 'bws_add_menu_render' );
 
-		if ( isset( $submenu['mltlngg_settings'] ) )
+		if ( isset( $submenu['mltlngg_settings'] ) ) {
 			$submenu['mltlngg_settings'][] = array(
 				'<span style="color:#d86463"> ' . __( 'Upgrade to Pro', 'multilanguage' ) . '</span>',
 				'manage_options',
 				'https://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=fa164f00821ed3a87e6f78cb3f5c277b&pn=143&v=' . $mltlngg_plugin_info["Version"] . '&wp_v=' . $wp_version );
+		}
 
 		mltlngg_add_menu_items();
 		add_action( 'load-' . $settings, 'mltlngg_add_tabs' );
@@ -64,8 +65,9 @@ if ( ! function_exists( 'mltlngg_init' ) ) {
 		bws_include_init( plugin_basename( __FILE__ ) );
 
 		if ( empty( $mltlngg_plugin_info ) ) {
-			if ( ! function_exists( 'get_plugin_data' ) )
+			if ( ! function_exists( 'get_plugin_data' ) ) {
 				require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+			}
 			$mltlngg_plugin_info = get_plugin_data( __FILE__ );
 		}
 
@@ -93,7 +95,7 @@ if ( ! function_exists( 'mltlngg_admin_init' ) ) {
 		}
 
 		/* add Multilanguage to global $bws_shortcode_list  */
-		$bws_shortcode_list['mltlngg'] = array( 'name' => 'Multilanguage' );
+		$bws_shortcode_list['mltlngg'] = array( 'name' => 'Multilanguage', 'js_function' => 'mltlngg_shortcode_init' );
 
 		/* Actions for categories & tags translation */
 		$mltlngg_taxonomies = get_object_taxonomies( 'post' );
@@ -173,8 +175,9 @@ if ( ! function_exists( 'mltlngg_register_settings' ) ) {
 			$update_option = true;
 		}
 
-		if ( isset( $update_option ) )
+		if ( isset( $update_option ) ) {
 			update_option( 'mltlngg_options', $mltlngg_options );
+		}
 	}
 }
 
@@ -191,8 +194,9 @@ if ( ! function_exists( 'mltlngg_get_options_default' ) ) {
 		}
 
 		/* If the language is not found or is not a standard, set English ('en_US') as the default language */
-		if ( ! isset( $language_default ) || NULL == $language_default )
+		if ( ! isset( $language_default ) || NULL == $language_default ) {
 			$language_default = array( 'en', 'en_US', 'English', '' );
+		}
 		/* Set the default options */
 		$options_default = array(
 			'plugin_option_version'		=> $mltlngg_plugin_info["Version"],
@@ -317,8 +321,9 @@ if ( ! function_exists( '_mltlngg_plugin_activate' ) ) {
 				update_option( 'widget_multi_language_widget', $widget_options );
 			}
 		}
-		if ( empty( $mltlngg_options ) )
+		if ( empty( $mltlngg_options ) ) {
 			$mltlngg_options = get_option( 'mltlngg_options' );
+		}
 
 		if ( isset( $mltlngg_options['deactivation'] ) ) {
 			/* update content */
@@ -384,8 +389,9 @@ if ( ! function_exists( 'mltlngg_plugin_db' ) ) {
 		dbDelta( $mltlngg_sql );
 
 		$column_exists = $wpdb->query( "SHOW COLUMNS FROM `" . $wpdb->prefix . "mltlngg_translate` LIKE 'post_excerpt';" );
-		if ( 0 == $column_exists )
+		if ( 0 == $column_exists ) {
 			$wpdb->query( 'ALTER TABLE `' . $wpdb->prefix . 'mltlngg_translate` ADD `post_excerpt` TEXT NOT NULL AFTER `post_content`' );
+		}
 	}
 }
 
@@ -481,7 +487,7 @@ if ( ! function_exists( 'mltlngg_get_display_language' ) ) {
 			$home_url_parsed = mltlngg_parse_url( $home_url );
 			$host = $home_url_parsed['host'];
 			$host = preg_replace( "~^(www\.)~", "", $host );
-			setcookie( 'mltlngg_language', $new_cookie, time() + 30*DAY_IN_SECONDS, '/', '.' . $host );
+			setcookie( 'mltlngg_language', $new_cookie, time() + 30*DAY_IN_SECONDS, '/', '.' . $host, is_ssl() );
 		}
 	}
 }
@@ -499,11 +505,13 @@ if ( ! function_exists( 'mltlngg_redirect' ) ) {
 	function mltlngg_redirect() {
 		global $mltlngg_enabled_languages, $mltlngg_options, $mltlngg_current_language, $mltlngg_get_default_language;
 
-		if ( empty( $mltlngg_options ) )
+		if ( empty( $mltlngg_options ) ) {
 			$mltlngg_options = get_option( 'mltlngg_options' );
+		}
 
-		if ( ! function_exists( 'is_plugin_active' ) )
+		if ( ! function_exists( 'is_plugin_active' ) ) {
 			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		}
 
 		if (
 			( isset( $_POST['wp_customize'] ) && $_POST['wp_customize'] == 'on' ) ||
@@ -524,7 +532,7 @@ if ( ! function_exists( 'mltlngg_redirect' ) ) {
 
 		$redirect = false;
 
-		if ( rtrim( $redirect_url, '/' ) != rtrim( $request_url, '/' ) ) {
+		if ( rtrim( preg_replace( "~^http(s)?://~U", "", $redirect_url ), '/' ) != rtrim( preg_replace( "~^http(s)?://~U", "", $request_url ), '/' ) ) {
 			$redirect = true;
 		}
 
@@ -573,8 +581,9 @@ if ( ! function_exists( 'mltlngg_parse_url' ) ) {
 		}
 
 		$scheme = parse_url( $url, PHP_URL_SCHEME );
-		if ( empty( $scheme ) )
+		if ( empty( $scheme ) ) {
 			$scheme = is_ssl() ? 'https' : 'http';
+		}
 
 		$scheme .= "://";
 		$host = parse_url( $url, PHP_URL_HOST );
@@ -650,18 +659,20 @@ if ( ! function_exists( 'mltlngg_get_lang_link' ) ) {
 
 		extract( wp_parse_args( $args, $defaults ) );
 
-		if ( empty( $mltlngg_options ) )
+		if ( empty( $mltlngg_options ) ) {
 			$mltlngg_options = get_option( 'mltlngg_options' );
+		}
 
 		$url_parsed = mltlngg_parse_url( $url );
 		$url = $url_parsed['full_url'];
 
-
-		if ( empty( $lang ) )
+		if ( empty( $lang ) ) {
 			$lang = $mltlngg_current_language;
+		}
 
-		if ( ! in_array( $lang, $mltlngg_enabled_languages_locale ) )
+		if ( ! in_array( $lang, $mltlngg_enabled_languages_locale ) ) {
 			$lang = $mltlngg_get_default_language;
+		}
 
 		$hide_lang = !! ( ( $force == 'hide' ) || ( $lang == $mltlngg_get_default_language && $mltlngg_options['hide_link_slug'] && $force != 'display' ) );
 		/* Clean all labguage slugs */
@@ -699,12 +710,33 @@ if ( ! function_exists( 'mltlngg_get_lang_link' ) ) {
 	}
 }
 
+/* Search in enabled languages for specified lang slug and return corresponding language code */
+if ( ! function_exists( 'mltlngg_get_lang_code' ) ) {
+	function mltlngg_get_lang_code( $lang_slug = '' ) {
+		global $mltlngg_languages, $mltlngg_enabled_languages, $mltlngg_current_language;
+
+		if ( empty( $lang_slug ) ) {
+			$lang_slug = $mltlngg_current_language;
+		}
+
+		foreach ( $mltlngg_languages as $language ) {
+			if ( isset( $mltlngg_enabled_languages[ $language[1] ] ) && $language[1] == $lang_slug ) {
+				return $language[0];
+			}
+		}
+
+		$parts = explode( '_', $lang_slug );
+		return strtolower( $parts[0] );
+	}
+}
+
 if ( ! function_exists( 'mltlngg_alternate_links' ) ) {
 	function mltlngg_alternate_links() {
 		global $mltlngg_enabled_languages, $mltlngg_get_default_language, $mltlngg_options;
 
-		if ( ! $mltlngg_options['display_alternative_link'] )
+		if ( ! $mltlngg_options['display_alternative_link'] ) {
 			return false;
+		}
 
 		$defaults            = array( 'x-default', $mltlngg_get_default_language );
 		$link_attr_args      = array(
@@ -725,12 +757,14 @@ if ( ! function_exists( 'mltlngg_alternate_links' ) ) {
 		 */
 		$link_attr_args = apply_filters( 'bwsplgns_mltlngg_add_alt_links', $link_attr_args );
 
-		if ( empty( $link_attr_args ) || ! is_array( $link_attr_args ) )
+		if ( empty( $link_attr_args ) || ! is_array( $link_attr_args ) ) {
 			return false;
+		}
 
 		foreach ( $link_attr_args as $item ) {
-			if ( empty( $item['hreflang'] ) || empty( $item['link_param'] ) )
+			if ( empty( $item['hreflang'] ) || empty( $item['link_param'] ) ) {
 				continue;
+			}
 
 			$args = array(
 				'lang' => $item['link_param'],
@@ -773,8 +807,9 @@ if ( ! function_exists( 'mltlngg_rewrite_rules' ) ) {
 	function mltlngg_rewrite_rules() {
 		global $wp_rewrite, $mltlngg_options;
 
-		if ( empty( $mltlngg_options ) )
+		if ( empty( $mltlngg_options ) ) {
 			$mltlngg_options = get_option( 'mltlngg_options' );
+		}
 
 		/* Array with codes of all enabled languages */
 		$mltlngg_enabled_languages_locale = array();
@@ -809,11 +844,13 @@ if ( ! function_exists( 'mltlngg_get_url_translated' ) ) {
 	function mltlngg_get_url_translated( $url ) {
 		global $mltlngg_current_language, $mltlngg_enabled_languages, $mltlngg_options;
 
-		if ( empty( $mltlngg_options ) )
+		if ( empty( $mltlngg_options ) ) {
 			$mltlngg_options = get_option( 'mltlngg_options' );
+		}
 
-		if ( ! function_exists( 'is_plugin_active' ) )
+		if ( ! function_exists( 'is_plugin_active' ) ) {
 			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		}
 
 		if (
 			(
@@ -850,7 +887,7 @@ if ( ! function_exists( 'mltlngg_script_style' ) ) {
 			wp_localize_script( 'mltlngg_script', 'mltlngg_vars',
 				array(
 					'update_post_error' => __( 'Attention!!! The changes will not be saved because Title and Content fields are empty on the current tab! It is recommended to fill in at least one field or switch to the tab with the fields that are already filled.', 'multilanguage' ),
-					'confirm_update_post'	=> __( "Switching to another language, all unsaved data will be lost. Save data?", 'multilanguage' ),
+					'confirm_update_post'	=> __( "Switching to another language will remove all unsaved. Save data?", 'multilanguage' ),
 					'ajax_nonce' 		=> wp_create_nonce( "mltlngg-ajax-nonce" )
 				)
 			);
@@ -893,6 +930,21 @@ if ( ! function_exists( 'mltlngg_script_style' ) ) {
 	}
 }
 
+/* Load scripts and styles */
+if ( ! function_exists( 'mltlngg_enqueue_google_script' ) ) {
+	function mltlngg_enqueue_google_script( $layout = 'dropdown' ) {
+		global $mltlngg_plugin_info, $mltlngg_current_language, $mltlngg_options;
+
+		wp_enqueue_script( 'mltlngg_google_script', plugins_url( 'js/google-script.js', __FILE__ ), array(), $mltlngg_plugin_info["Version"], true );
+
+		$lang = mltlngg_get_lang_code( $mltlngg_current_language );
+
+		wp_localize_script( 'mltlngg_google_script', 'mltlngg_lang_var', array( 'current_lang' => $lang, 'layout' => $layout ) );
+
+		wp_enqueue_script( 'mltlngg_google_translate_api', "//translate.google.com/translate_a/element.js?cb=mltlnggGoogleTranslateElementInit", array( 'mltlngg_google_script' ), false, true );
+	}
+}
+
 /* Function for disable autosave in post/page editor */
 if ( ! function_exists( 'mltlngg_disable_autosave_editor_script' ) ) {
 	function mltlngg_disable_autosave_editor_script() {
@@ -913,7 +965,7 @@ if ( ! class_exists( 'Mltlngg_Widget' ) ) {
 			parent::__construct(
 				'multi_language_widget', /* Base ID */
 				'Multilanguage', /* Name */
-				array( 'description' => __( 'Content language switch', 'multilanguage' ), ) /* Args */
+				array( 'description' => __( 'Content language switcher', 'multilanguage' ), ) /* Args */
 			);
 		}
 
@@ -974,6 +1026,33 @@ if ( ! class_exists( 'Mltlngg_Widget' ) ) {
 					<input id="<?php echo $this->get_field_id( 'flags-icons' ); ?>" name="<?php echo $this->get_field_name( 'mltlngg_language_switcher' ); ?>" type="radio" value="flags-icons" <?php checked( $mltlngg_language_switcher, 'flags-icons' ); ?> /><?php _e( 'Flag', 'multilanguage' ); ?>
 				</label>
 			</div>
+			<div style="clear: both;">
+				<label class="mltlngg_widget_label">
+					<input id="<?php echo $this->get_field_id( 'gt' ); ?>" name="<?php echo $this->get_field_name( 'mltlngg_language_switcher' ); ?>" type="radio" value="gt" <?php checked( $mltlngg_language_switcher, 'gt' ); ?>><?php printf(
+							'%s (%s)',
+							__( 'Google Auto Translate', 'multilanguage' ),
+							__( 'drop-down only', 'multilanguage' )
+						); ?>
+				</label>
+			</div>
+			<div style="clear: both;">
+				<label class="mltlngg_widget_label">
+					<input id="<?php echo $this->get_field_id( 'gt-horizontal' ); ?>" name="<?php echo $this->get_field_name( 'mltlngg_language_switcher' ); ?>" type="radio" value="gt-horizontal" <?php checked( $mltlngg_language_switcher, 'gt-horizontal' ); ?>><?php printf(
+							'%s (%s)',
+							__( 'Google Auto Translate', 'multilanguage' ),
+							__( 'horizontal', 'multilanguage' )
+						); ?>
+				</label>
+			</div>
+			<div style="clear: both;">
+				<label class="mltlngg_widget_label">
+					<input id="<?php echo $this->get_field_id( 'gt-vertical' ); ?>" name="<?php echo $this->get_field_name( 'mltlngg_language_switcher' ); ?>" type="radio" value="gt-vertical" <?php checked( $mltlngg_language_switcher, 'gt-vertical' ); ?>><?php printf(
+							'%s (%s)',
+							__( 'Google Auto Translate', 'multilanguage' ),
+							__( 'vertical', 'multilanguage' )
+						); ?>
+				</label>
+			</div>
 			<div style="clear: both;"></div>
 		<?php }
 
@@ -1008,38 +1087,18 @@ if ( ! function_exists( 'mltlngg_get_switcher_block' ) ) {
 	function mltlngg_get_switcher_block( $mltlngg_language_switcher = false ) {
 		global $mltlngg_current_language, $mltlngg_get_default_language, $mltlngg_enabled_languages, $current_blog, $mltlngg_options, $wp_customize;
 
-		if ( ! $mltlngg_language_switcher )
+		if ( ! $mltlngg_language_switcher ) {
 			$mltlngg_language_switcher = $mltlngg_options['language_switcher'];
+		}
 
-		$switcher = '<form class="mltlngg_switcher" name="mltlngg_change_language" method="post" action="">';
+		if ( isset( $mltlngg_language_switcher['layout'] ) ) {
+			$mltlngg_language_switcher = $mltlngg_language_switcher['layout'];
+		}
+
+		$switcher = '';
 
 		/* Language switcher style */
 		switch ( $mltlngg_language_switcher ) {
-			case 'drop-down-list':
-				$options = '';
-				foreach ( $mltlngg_enabled_languages as $item ) {
-					if ( $item['locale'] != $mltlngg_current_language ) {
-						$flag = ( empty( $item['flag'] ) ) ? plugins_url( 'images/flags/' , __FILE__ ) . $item['locale'] . '.png' : $item['flag'];
-						$options .= '<li>
-							<button class="mltlngg-lang-button-icons" name="mltlngg_change_display_lang" value="' . $item['locale'] . '" title="' . $item['name'] . '">
-								<img class="mltlngg-lang" src="' . $flag . '" alt="' . $item['name'] . '"> ' . $item['name'] .
-							'</button>
-						</li>';
-					} else {
-						$current_language_name = $item['name'];
-						$current_language_flag = ( empty( $item['flag'] ) ) ? plugins_url( 'images/flags/' , __FILE__ ) . $item['locale'] . '.png' : $item['flag'];
-					}
-				}
-				$switcher .=
-					'<ul class="mltlngg-lang-switch mltlngg-lang-switch-names">
-						<li>
-							<a>
-								<img src="' . $current_language_flag . '"> ' . $current_language_name .
-							'</a>
-							<ul>' . $options . '</ul>
-						</li>
-					</ul>';
-				break;
 			case 'drop-down-titles':
 				$options = '';
 				foreach ( $mltlngg_enabled_languages as $item ) {
@@ -1083,7 +1142,6 @@ if ( ! function_exists( 'mltlngg_get_switcher_block' ) ) {
 						</li>
 					</ul>';
 				break;
-			default:
 			case 'flags-icons':
 				foreach ( $mltlngg_enabled_languages as $item ) {
 					$flag = ( empty( $item['flag'] ) ) ? plugins_url( 'images/flags/' , __FILE__ ) . $item['locale'] . '.png' : $item['flag'];
@@ -1093,8 +1151,50 @@ if ( ! function_exists( 'mltlngg_get_switcher_block' ) ) {
 						</button>';
 				}
 				break;
+			case 'gt':
+				$switcher .= '<div id="mltlngg_google_switcher"></div>';
+				mltlngg_enqueue_google_script( 'dropdown' );
+				break;
+			case 'gt-horizontal':
+				$switcher .= '<div id="mltlngg_google_switcher"></div>';
+				mltlngg_enqueue_google_script( 'horizontal' );
+				break;
+			case 'gt-vertical':
+				$switcher .= '<div id="mltlngg_google_switcher"></div>';
+				mltlngg_enqueue_google_script( 'vertical' );
+				break;
+			case 'drop-down-list':
+			default:
+				$options = '';
+				foreach ( $mltlngg_enabled_languages as $item ) {
+					if ( $item['locale'] != $mltlngg_current_language ) {
+						$flag = ( empty( $item['flag'] ) ) ? plugins_url( 'images/flags/' , __FILE__ ) . $item['locale'] . '.png' : $item['flag'];
+						$options .= '<li>
+							<button class="mltlngg-lang-button-icons" name="mltlngg_change_display_lang" value="' . $item['locale'] . '" title="' . $item['name'] . '">
+								<img class="mltlngg-lang" src="' . $flag . '" alt="' . $item['name'] . '"> ' . $item['name'] .
+							'</button>
+						</li>';
+					} else {
+						$current_language_name = $item['name'];
+						$current_language_flag = ( empty( $item['flag'] ) ) ? plugins_url( 'images/flags/' , __FILE__ ) . $item['locale'] . '.png' : $item['flag'];
+					}
+				}
+				$switcher .=
+					'<ul class="mltlngg-lang-switch mltlngg-lang-switch-names">
+						<li>
+							<a>
+								<img src="' . $current_language_flag . '"> ' . $current_language_name .
+							'</a>
+							<ul>' . $options . '</ul>
+						</li>
+					</ul>';
+				break;
 		}
-		$switcher .= '</form>';
+
+		if ( ! in_array( $mltlngg_language_switcher, array( 'gt', 'gt-horizontal', 'gt-vertical' ) ) ) {
+			$switcher = '<form class="mltlngg_switcher" name="mltlngg_change_language" method="post" action="">' . $switcher . '</form>';
+		}
+
 		return $switcher;
 	}
 }
@@ -1166,8 +1266,9 @@ if ( ! function_exists( 'mltlngg_showup_language_tabs_in_editor' ) ) {
 			</h2>
 			<?php wp_nonce_field( 'mltlngg_translate_form', 'mltlngg_translate_form_field' ); ?>
 			<!-- Hidden fields with original Title, Content & Active language -->
-			<?php if ( is_admin() )
-				$mltlngg_current_language = ( isset( $_GET['lang'] ) ) ? $_GET['lang'] : ( ( isset( $mltlngg_active_language['locale'] ) ) ? $mltlngg_active_language['locale'] : $mltlngg_options['default_language'] ); ?>
+			<?php if ( is_admin() ) {
+				$mltlngg_current_language = ( isset( $_GET['lang'] ) ) ? $_GET['lang'] : ( ( isset( $mltlngg_active_language['locale'] ) ) ? $mltlngg_active_language['locale'] : $mltlngg_options['default_language'] );
+			} ?>
 			<input id="title-<?php echo $mltlngg_options['default_language']; ?>" type="hidden" value="<?php echo esc_html( $original_data['post_title'] ); ?>" name="title_<?php echo $mltlngg_options['default_language']; ?>">
 			<textarea id="content-<?php echo $mltlngg_options['default_language']; ?>" style="display: none;" name="content_<?php echo $mltlngg_options['default_language']; ?>"><?php echo esc_html( $original_data['post_content'] ); ?></textarea>
 			<input id="excerpt-<?php echo $mltlngg_options['default_language']; ?>" type="hidden" value="<?php echo esc_html( $original_data['post_excerpt'] ) ?>" name="excerpt_<?php echo $mltlngg_options['default_language']; ?>">
@@ -1385,11 +1486,13 @@ if ( ! function_exists( 'mltlngg_ajax_callback' ) ) {
 
 			if ( ! empty( $mltlngg_cat_data ) ) {
 				foreach ( $mltlngg_cat_data as $value ) {
-					if ( in_array( $value['term_ID'], $_POST['cat_id'] ) )
+					if ( in_array( $value['term_ID'], $_POST['cat_id'] ) ) {
 						$mltlngg_new_cat_mame[ $value['term_ID'] ] = $value['name'];
+					}
 				}
-				if ( ! empty( $mltlngg_new_cat_mame ) )
+				if ( ! empty( $mltlngg_new_cat_mame ) ) {
 					$mltlngg_new_cat_data = array( "cat_translate" => $mltlngg_new_cat_mame );
+				}
 			}
 			/* add comments before our results */
 			echo '<!--mltlngg-ajax-results-->';
@@ -1601,8 +1704,9 @@ if ( ! function_exists( 'mltlngg_the_title_filter' ) ) {
 				/* If current post type enabled to translation */
 				if ( $mltlngg_post_type == 'post' || $mltlngg_post_type == 'page' ) {
 					$is_admin = mltlngg_is_admin();
-					if ( $is_admin )
+					if ( $is_admin ) {
 						$mltlngg_current_language = ( ! empty( $_SESSION['current_language'] ) ) ? $_SESSION['current_language'] : ( ( isset( $_GET['lang'] ) && in_array( $_GET['lang'], $mltlngg_enabled_languages_locale ) ) ? $_GET['lang'] : ( ( ! isset( $_GET['message'] ) ) ? $mltlngg_options['default_language'] : $mltlngg_active_language['locale'] ) );
+					}
 
 					$new_title = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM `" . $wpdb->prefix . "mltlngg_translate` WHERE `post_ID` = %d AND `language` = %s", $id, $mltlngg_current_language ), ARRAY_A );
 					/* If translation is exist and not empty, filter title */
@@ -1633,8 +1737,9 @@ if ( ! function_exists( 'mltlngg_the_title_filter' ) ) {
 */
 if ( ! function_exists( 'mltlngg_nav_menu_items_filter' ) ) {
 	function mltlngg_nav_menu_items_filter( $items ) {
-		if ( function_exists( 'doing_action' ) && doing_action( 'customize_register' ) )
+		if ( function_exists( 'doing_action' ) && doing_action( 'customize_register' ) ) {
 			return $items;
+		}
 
 		global $mltlngg_options, $wpdb, $mltlngg_current_language, $mltlngg_enabled_languages, $mltlngg_get_default_language, $mltlngg_enabled_languages_locale;
 
@@ -1677,11 +1782,13 @@ if ( ! function_exists( 'mltlngg_nav_menu_items_filter' ) ) {
 				$is_title = in_array( $mltlngg_language_switcher, array( 'drop-down-titles', 'aligned-titles' ) );
 
 				$classes = array( 'mltlngg-menu-item' );
-				if ( 'drop-down-icons' == $mltlngg_language_switcher )
+				if ( 'drop-down-icons' == $mltlngg_language_switcher ) {
 					$classes[] = 'mltlngg-menu-item-icon';
+				}
 				$classes_current = array( 'mltlngg-menu-item-current' );
-				if ( ! $is_dropdown )
+				if ( ! $is_dropdown ) {
 					$classes_current[] = 'current-menu-item';
+				}
 				/* main li is a current language */
 				foreach ( $mltlngg_enabled_languages as $lang ) {
 					if ( $mltlngg_current_language == $lang['locale'] ) {
@@ -1708,8 +1815,9 @@ if ( ! function_exists( 'mltlngg_nav_menu_items_filter' ) ) {
 				}
 
 				foreach ( $mltlngg_enabled_languages as $lang ) {
-					if ( $mltlngg_current_language == $lang['locale'] && $is_dropdown )
+					if ( $mltlngg_current_language == $lang['locale'] && $is_dropdown ) {
 						continue;
+					}
 
 					$args = array(
 						'lang' => $lang['locale'],
@@ -1729,16 +1837,17 @@ if ( ! function_exists( 'mltlngg_nav_menu_items_filter' ) ) {
 						$flag_img = '<img class="mltlngg-lang" src="' . $flag . '" alt="' . $lang['name'] . '">';
 						$lang_item->title = ( $is_icon ) ? $flag_img : $flag_img . '&nbsp;' . esc_html( $lang['name'] );
 					}
-					if ( $mltlngg_current_language == $lang['locale'] )
+					if ( $mltlngg_current_language == $lang['locale'] ) {
 						$lang_item->classes = array_merge( $classes, $classes_current );
-					else
+					} else {
 						$lang_item->classes = $classes;
+					}
 					$lang_item->url = $language_link;
-					if ( $is_dropdown )
+					if ( $is_dropdown ) {
 						$lang_item->menu_item_parent = $main_id;
+					}
 					$lang_item->lang = $lang['locale'];
 					$lang_item->menu_order += $offset + $i++;
-
 
 					$new_items[] = $lang_item;
 				}
@@ -1773,18 +1882,21 @@ if ( ! function_exists( 'mltlngg_the_content_filter' ) ) {
 
 		$is_admin = mltlngg_is_admin();
 
-		if ( $is_admin && ! ( 'post.php' == $hook_suffix || 'post-new.php' == $hook_suffix ) )
+		if ( $is_admin && ! ( 'post.php' == $hook_suffix || 'post-new.php' == $hook_suffix ) ) {
 			return $content;
+		}
 
 		/* exclude filter for wp_editor() in 'Add new Comment' block */
-		if ( $is_admin && $wp_list_table && 'WP_Post_Comments_List_Table' == get_class( $wp_list_table ) )
+		if ( $is_admin && $wp_list_table && 'WP_Post_Comments_List_Table' == get_class( $wp_list_table ) ) {
 			return $content;
+		}
 
 		$mltlngg_post_type = get_post_type( $post->ID );
 		/* If current post type enabled to translation */
 		if ( $mltlngg_post_type == 'post' || $mltlngg_post_type == 'page' ) {
-			if ( $is_admin )
+			if ( $is_admin ) {
 				$mltlngg_current_language = ( isset( $_GET['lang'] ) ) ? $_GET['lang'] : ( ( isset( $mltlngg_active_language['locale'] ) ) ? $mltlngg_active_language['locale'] : $mltlngg_options['default_language'] );
+			}
 
 			$new_content = $wpdb->get_var( $wpdb->prepare( "SELECT `post_content` FROM `" . $wpdb->prefix . "mltlngg_translate` WHERE `post_ID` = %d AND `language` = %s ", $post->ID, $mltlngg_current_language ) );
 			if ( ! empty( $new_content ) ) {
@@ -1816,20 +1928,23 @@ if ( ! function_exists( 'mltlngg_the_content_filter' ) ) {
 							$more_link_text = __( '(more&hellip;)' );
 							$more_link = apply_filters( 'the_content_more_link', ' <a href="' . get_permalink() . "#more-{$post->ID}\" class=\"more-link\">$more_link_text</a>", $more_link_text );
 
-							if ( '' != $extended )
+							if ( '' != $extended ) {
 								$new_content .= $more_link;
+							}
 						} elseif ( is_page() ) {
 							$new_content .= $extended;
 						} else {
-							if ( $noteaser )
+							if ( $noteaser ) {
 								$new_content = '';
+							}
 
 							$new_content .= ( 0 != strlen( $new_content ) ) ? '<span id="more-' . $post->ID . '"></span>' . $extended : $extended;
 						}
 
 						/* if it is the_excerpt - remove shortcodes */
-						if ( ! empty( $wp_current_filter ) && in_array( 'get_the_excerpt', $wp_current_filter ) )
+						if ( ! empty( $wp_current_filter ) && in_array( 'get_the_excerpt', $wp_current_filter ) ) {
 							$new_content = strip_shortcodes( $new_content );
+						}
 
 						if ( 0 != strlen( $new_content ) ) {
 							return force_balance_tags( $new_content );
@@ -1867,8 +1982,9 @@ if ( ! function_exists( 'mltlngg_update_video_options' ) ) {
 
 			if ( empty( $mltlngg_options ) ) {
 				$mltlngg_options = get_option( 'mltlngg_options' );
-				if ( empty( $mltlngg_options ) )
+				if ( empty( $mltlngg_options ) ) {
 					mltlngg_register_settings();
+				}
 			}
 
 			require_once( ABSPATH . WPINC . '/class-oembed.php' );
@@ -1919,8 +2035,9 @@ if ( ! function_exists( 'mltlngg_fiter_terms_search' ) ) {
 				);"
 			);
 
-			if ( empty( $terms ) || ! is_array( $terms ) )
+			if ( empty( $terms ) || ! is_array( $terms ) ) {
 				return $cache;
+			}
 
 			$cache = array_merge( $cache, array_filter( $terms ) );
 			$cache = array_unique( $cache );
@@ -1957,8 +2074,9 @@ if ( ! function_exists( 'mltlngg_terms_filter' ) ) {
 				);"
 			);
 
-			if ( empty( $terms_array ) || ! is_array( $terms_array ) )
+			if ( empty( $terms_array ) || ! is_array( $terms_array ) ) {
 				return $terms;
+			}
 
 			$terms = array_merge( $terms, array_filter( $terms_array ) );
 			$terms = array_unique( $terms );
@@ -2005,8 +2123,9 @@ if ( ! function_exists( 'mltlngg_term_filter' ) ) {
 if ( ! function_exists( 'mltlngg_paginate_url_translate' ) ) {
 	function mltlngg_paginate_url_translate( $link ) {
 		global $mltlngg_current_language;
-		if ( strpos( $link, '?lang=' . $mltlngg_current_language . '/' ) )
+		if ( strpos( $link, '?lang=' . $mltlngg_current_language . '/' ) ) {
 			$link = str_replace( '?lang=' . $mltlngg_current_language . '/', '/', $link );
+		}
 		return $link;
 	}
 }
@@ -2027,8 +2146,9 @@ if ( ! function_exists( 'mltlngg_localize_excerpt' ) ) {
 		$post_type = get_post_type( $post->ID );
 		if ( in_array( $post_type, array( 'post', 'page' ) ) ) {
 			$excerpt_new = $wpdb->get_var( $wpdb->prepare( "SELECT `post_excerpt` FROM `" . $wpdb->prefix . "mltlngg_translate` WHERE `post_ID` = %d AND `language` = %s", $post->ID, $mltlngg_current_language ) );
-			if ( ! empty( $excerpt_new ) )
+			if ( ! empty( $excerpt_new ) ) {
 				return $excerpt_new;
+			}
 		}
 		return $excerpt;
 	}
@@ -2050,8 +2170,9 @@ if ( ! function_exists( 'mltlngg_composer_settings_filter' ) ) {
 			SELECT `post_content` FROM `{$wpdb->prefix}mltlngg_translate` WHERE `post_ID`={$post_id};"
 		);
 
-		if ( empty( $post_data ) )
+		if ( empty( $post_data ) ) {
 			return $settings;
+		}
 
 		/**
 		 * Fetch all grid settings from the post content for each language
@@ -2061,19 +2182,22 @@ if ( ! function_exists( 'mltlngg_composer_settings_filter' ) ) {
 			$data->post_content = stripslashes( $data->post_content );
 			$lang_settings = $grid->gridSavePostSettingsId( $settings, $post_id, $data );
 
-			if ( empty( $lang_settings['vc_grid_id']['shortcodes'] ) )
+			if ( empty( $lang_settings['vc_grid_id']['shortcodes'] ) ) {
 				continue;
+			}
 
 			$all_settings['vc_grid_id']['shortcodes'] = array_merge( $all_settings['vc_grid_id']['shortcodes'], $lang_settings['vc_grid_id']['shortcodes'] );
 		}
 
-		if ( empty( $all_settings['vc_grid_id']['shortcodes'] ) )
+		if ( empty( $all_settings['vc_grid_id']['shortcodes'] ) ) {
 			return $settings;
+		}
 
-		if ( empty( $settings['vc_grid_id']['shortcodes'] ) )
+		if ( empty( $settings['vc_grid_id']['shortcodes'] ) ) {
 			$settings['vc_grid_id']['shortcodes'] = $all_settings['vc_grid_id']['shortcodes'];
-		else
+		} else {
 			$settings['vc_grid_id']['shortcodes'] = array_merge( $all_settings['vc_grid_id']['shortcodes'], $settings['vc_grid_id']['shortcodes'] );
+		}
 
 		return $settings;
 	}
@@ -2159,14 +2283,16 @@ if ( ! function_exists( 'mltlngg_add_post_column' ) ) {
 */
 if ( ! function_exists( 'mltlngg_term_column' ) ) {
 	function mltlngg_term_column( $out, $column, $term_id ) {
-		if ( false === strpos( $column, 'mltlngg_language_' ) )
+		if ( false === strpos( $column, 'mltlngg_language_' ) ) {
 			return $out;
+		}
 
 		$post_type = isset( $GLOBALS['post_type'] ) ? $GLOBALS['post_type'] : $_REQUEST['post_type'];
 		$taxonomy = isset( $GLOBALS['taxonomy'] ) ? $GLOBALS['taxonomy'] : $_REQUEST['taxonomy'];
 
-		if ( ! post_type_exists( $post_type ) || ! taxonomy_exists( $taxonomy ) )
+		if ( ! post_type_exists( $post_type ) || ! taxonomy_exists( $taxonomy ) ) {
 			return $out;
+		}
 
 		global $wpdb;
 
@@ -2196,8 +2322,9 @@ if ( ! function_exists( 'mltlngg_term_column' ) ) {
 */
 if ( ! function_exists( 'mltlngg_post_column' ) ) {
 	function mltlngg_post_column( $column, $post_id ) {
-		if ( defined( 'DOING_AJAX' ) || false === strpos( $column, 'mltlngg_language_' ) )
+		if ( defined( 'DOING_AJAX' ) || false === strpos( $column, 'mltlngg_language_' ) ) {
 			return;
+		}
 
 		global $wpdb;
 
@@ -2285,18 +2412,33 @@ if ( ! function_exists( 'mltlngg_language_switcher_box' ) ) {
  */
 if ( ! function_exists( 'mltlngg_wp_update_nav_menu_item' ) ) {
 	function mltlngg_wp_update_nav_menu_item( $menu_id = 0, $menu_item_db_id = 0 ) {
-		if ( empty( $_POST['menu-item-url'][ $menu_item_db_id ] ) || '#mltlngg-switcher' != $_POST['menu-item-url'][ $menu_item_db_id ] )
+		if ( empty( $_POST['menu-item-url'][ $menu_item_db_id ] ) || '#mltlngg-switcher' != $_POST['menu-item-url'][ $menu_item_db_id ] ) {
 			return;
+		}
 
 		if ( current_user_can( 'edit_theme_options' ) ) {
 			check_admin_referer( 'update-nav_menu', 'update-nav-menu-nonce' );
 
 			/* js form has not been displayed */
 			if ( empty( $_POST['menu-item-mltlngg-nonce'][ $menu_item_db_id ] ) ) {
-				if ( ! get_post_meta( $menu_item_db_id, '_mltlngg_menu_item', true ) )
+				if ( ! get_post_meta( $menu_item_db_id, '_mltlngg_menu_item', true ) ) {
 					update_post_meta( $menu_item_db_id, '_mltlngg_menu_item', 'drop-down-list' );
+				}
 			} else {
-				$value = ( ! empty( $_POST[ 'menu-item-mltlngg-switcher' ][ $menu_item_db_id ] ) && in_array( $_POST[ 'menu-item-mltlngg-switcher' ][ $menu_item_db_id ], array( 'drop-down-list', 'drop-down-titles', 'drop-down-icons', 'aligned-icons', 'aligned-list', 'aligned-titles' ) ) ) ? $_POST[ 'menu-item-mltlngg-switcher' ][ $menu_item_db_id ] : 'drop-down-list';
+				$value = (
+					! empty( $_POST[ 'menu-item-mltlngg-switcher' ][ $menu_item_db_id ] ) &&
+					in_array(
+						$_POST[ 'menu-item-mltlngg-switcher' ][ $menu_item_db_id ],
+						array(
+							'drop-down-list',
+							'drop-down-titles',
+							'drop-down-icons',
+							'aligned-icons',
+							'aligned-list',
+							'aligned-titles'
+						)
+					)
+				) ? $_POST[ 'menu-item-mltlngg-switcher' ][ $menu_item_db_id ] : 'drop-down-list';
 				update_post_meta( $menu_item_db_id, '_mltlngg_menu_item', $value );
 			}
 		}
@@ -2344,20 +2486,23 @@ if ( ! function_exists( 'mltlngg_pdf_print_content_filter' ) ) {
 						$more_link_text = __( '(more&hellip;)' );
 						$more_link = apply_filters( 'the_content_more_link', ' <a href="' . get_permalink() . "#more-{$post->ID}\" class=\"more-link\">$more_link_text</a>", $more_link_text );
 
-						if ( '' != $extended )
+						if ( '' != $extended ) {
 							$new_content .= $more_link;
+						}
 					} elseif ( is_page() ) {
 						$new_content .= $extended;
 					} else {
-						if ( $noteaser )
+						if ( $noteaser ) {
 							$new_content = '';
+						}
 
 						$new_content .= ( 0 != strlen( $new_content ) ) ? '<span id="more-' . $object->ID . '"></span>' . $extended : $extended;
 					}
 
 					/* if it is the_excerpt - remove shortcodes */
-					if ( ! empty( $wp_current_filter ) && in_array( 'get_the_excerpt', $wp_current_filter ) )
+					if ( ! empty( $wp_current_filter ) && in_array( 'get_the_excerpt', $wp_current_filter ) ) {
 						$new_content = strip_shortcodes( $new_content );
+					}
 
 					if ( 0 != strlen( $new_content ) ) {
 						return force_balance_tags( $new_content );
@@ -2383,8 +2528,9 @@ if ( ! function_exists( 'mltlngg_pdf_print_title_filter' ) ) {
 			if ( $object->post_type == 'post' || $object->post_type == 'page' ) {
 				$new_title = $wpdb->get_var( $wpdb->prepare( "SELECT `post_title` FROM `" . $wpdb->prefix . "mltlngg_translate` WHERE `post_ID` = %d AND `language` = %s", $object->ID, $mltlngg_current_language ) );
 
-				if ( ! empty( $new_title ) )
+				if ( ! empty( $new_title ) ) {
 					return $new_title;
+				}
 			}
 		}
 		return $title;
@@ -2412,10 +2558,53 @@ if ( ! function_exists( 'mltlngg_add_tabs' ) ) {
 
 /* add shortcode content  */
 if ( ! function_exists( 'mltlngg_shortcode_button_content' ) ) {
-	function mltlngg_shortcode_button_content( $content ) { ?>
+	function mltlngg_shortcode_button_content( $content ) {
+		global $mltlngg_options; ?>
 		<div id="mltlngg" style="display:none;">
-			<input class="bws_default_shortcode" type="hidden" name="default" value="[multilanguage_switcher]" />
+			<h3><?php _e( 'Select Switcher Type', 'multilanguage' ); ?>:</h3>
+			<fieldset class="mltlngg-shortcode">
+				<label>
+					<input name="mltlngg_language_switcher" type="radio" value="drop-down-list" <?php checked( $mltlngg_options['language_switcher'], 'drop-down-list' ); ?> />
+					<?php _e( 'Drop-down list', 'multilanguage' ); ?> (<?php _e( 'flag', 'multilanguage' ); ?> + <?php _e( 'title', 'multilanguage' ); ?>)
+				</label><br/>
+				<label>
+					<input name="mltlngg_language_switcher" type="radio" value="drop-down-titles" <?php checked( $mltlngg_options['language_switcher'], 'drop-down-titles' ); ?> />
+					<?php _e( 'Drop-down list', 'multilanguage' ); ?> (<?php _e( 'title', 'multilanguage' ); ?>)
+				</label><br/>
+				<label>
+					<input name="mltlngg_language_switcher" type="radio" value="drop-down-icons" <?php checked( $mltlngg_options['language_switcher'], 'drop-down-icons' ); ?> />
+					<?php _e( 'Drop-down list', 'multilanguage' ); ?> (<?php _e( 'flag', 'multilanguage' ); ?>)
+				</label><br/>
+				<label>
+					<input name="mltlngg_language_switcher" type="radio" value="flags-icons" <?php checked( $mltlngg_options['language_switcher'], 'flags-icons' ); ?> />
+					<?php _e( 'Flag', 'multilanguage' ); ?>
+				</label><br/>
+				<label>
+					<input name="mltlngg_language_switcher" type="radio" value="gt" <?php checked( $mltlngg_options['language_switcher'], 'gt' ); ?> />
+					<?php _e( 'Google Auto Translate', 'multilanguage' ); ?> (<?php _e( 'drop-down only', 'multilanguage' ); ?>)
+				</label><br/>
+				<label>
+					<input name="mltlngg_language_switcher" type="radio" value="gt-horizontal" <?php checked( $mltlngg_options['language_switcher'], 'gt-horizontal' ); ?> />
+					<?php _e( 'Google Auto Translate', 'multilanguage' ); ?> (<?php _e( 'horizontal', 'multilanguage' ); ?>)
+				</label><br/>
+				<label>
+					<input name="mltlngg_language_switcher" type="radio" value="gt-vertical" <?php checked( $mltlngg_options['language_switcher'], 'gt-vertical' ); ?> />
+					<?php _e( 'Google Auto Translate', 'multilanguage' ); ?> (<?php _e( 'vertical', 'multilanguage' ); ?>)
+				</label>
+			</fieldset>
+			<input class="bws_default_shortcode" type="hidden" name="default" value='[multilanguage_switcher]' />
 			<div class="clear"></div>
+			<script type="text/javascript">
+				function mltlngg_shortcode_init() {
+					(function($) {
+						$( '.mce-reset [name="mltlngg_language_switcher"]' ).on( 'click', function() {
+							var layout = $( this ).val(),
+							shortcode = '[multilanguage_switcher layout="' + layout + '"]';
+							$( '.mce-reset #bws_shortcode_display' ).text( shortcode );
+						});
+					})(jQuery);
+				}
+			</script>
 		</div>
 	<?php }
 }
@@ -2441,8 +2630,9 @@ if ( ! function_exists( 'mltlngg_register_plugin_links' ) ) {
 	function mltlngg_register_plugin_links( $links, $file ) {
 		$base = plugin_basename( __FILE__ );
 		if ( $file == $base ) {
-			if ( ! is_network_admin() )
+			if ( ! is_network_admin() ) {
 				$links[]	= '<a href="admin.php?page=mltlngg_settings">' . __( 'Settings', 'multilanguage' ) . '</a>';
+			}
 			$links[]	= '<a href="http://wordpress.org/plugins/multilanguage/faq/" target="_blank">' . __( 'FAQ', 'multilanguage' ) . '</a>';
 			$links[]	= '<a href="https://support.bestwebsoft.com">' . __( 'Support', 'multilanguage' ) . '</a>';
 		}
@@ -2465,8 +2655,9 @@ if ( ! function_exists( 'mltlngg_delete_blog' ) ) {
 	function mltlngg_delete_blog( $blog_id ) {
 		global $wpdb;
 		if ( is_plugin_active_for_network( 'multilanguage/multilanguage.php' ) ) {
-			if ( ! function_exists( 'get_plugins' ) )
+			if ( ! function_exists( 'get_plugins' ) ) {
 				require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+			}
 			$all_plugins = get_plugins();
 			$pro_exist = array_key_exists( 'multilanguage-pro/multilanguage-pro.php', $all_plugins );
 
@@ -2483,8 +2674,9 @@ if ( ! function_exists( 'mltlngg_delete_options' ) ) {
 	function mltlngg_delete_options() {
 		global $wpdb;
 
-		if ( ! function_exists( 'get_plugins' ) )
+		if ( ! function_exists( 'get_plugins' ) ) {
 			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		}
 		$all_plugins = get_plugins();
 		$pro_exist = array_key_exists( 'multilanguage-pro/multilanguage-pro.php', $all_plugins );
 
@@ -2543,8 +2735,9 @@ if ( ! function_exists ( 'mltlngg_plugin_banner' ) ) {
 	function mltlngg_plugin_banner() {
 		global $hook_suffix, $mltlngg_plugin_info, $mltlngg_options;
 		if ( 'plugins.php' == $hook_suffix ) {
-			if ( isset( $mltlngg_options['first_install'] ) && strtotime( '-1 week' ) > $mltlngg_options['first_install'] )
+			if ( isset( $mltlngg_options['first_install'] ) && strtotime( '-1 week' ) > $mltlngg_options['first_install'] ) {
 				bws_plugin_banner( $mltlngg_plugin_info, 'mltlngg', 'multilanguage', '0419dafcc237fe35489c8db63c899a38', '143', '//ps.w.org/multilanguage/assets/icon-128x128.png' );
+			}
 
 			bws_plugin_banner_to_settings( $mltlngg_plugin_info, 'mltlngg_options', 'multilanguage', 'admin.php?page=mltlngg_settings' );
 		}
