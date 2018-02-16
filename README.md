@@ -3,6 +3,7 @@
 
 <p>Multilanguage plugin is a great way to translate your WordPress website to other languages. Add translated content to pages, posts, widgets, menus, custom post types, taxonomies, etc. Let your visitors switch languages and browse content in their language.</p>
 <p>Create and manage your multilingual website today!</p>
+<p><a href="https://bestwebsoft.com/demo-for-multilanguage/" rel="nofollow">View Demo</a></p>
 <p><span class="embed-youtube" style="text-align:center; display: block;"></span></p>
 <h4>Free Features</h4>
 <ul>
@@ -10,8 +11,8 @@
 <ul>
 <li>Pages</li>
 <li>Posts</li>
-<li>Post categories</li>
-<li>Post tags</li>
+<li>Post category names</li>
+<li>Post tag names</li>
 <li>Menus (partially)</li>
 </ul>
 </li>
@@ -37,7 +38,7 @@
 <li>Drop-down flag icons</li>
 <li>Flag icons</li>
 <li>Languages list</li>
-<li>Google Auto Translate [NEW]</li>
+<li>Google Auto Translate</li>
 </ul>
 </li>
 <li>Choose language flag icon:
@@ -46,6 +47,7 @@
 <li>Custom</li>
 </ul>
 </li>
+<li>Translate Open Graph meta tags [NEW]</li>
 <li>Display translation availability in the posts and taxonomy lists</li>
 <li>Add hreflang links to  section</li>
 <li>Hide link slug for the default language</li>
@@ -69,6 +71,7 @@
 </li>
 <li>Translate:
 <ul>
+<li>Post category and tag descriptions [NEW]</li>
 <li>Widget titles</li>
 <li>Website title</li>
 <li>Website tagline</li>
@@ -90,7 +93,7 @@
 <li><a href="https://docs.google.com/document/d/1y_c25pWDedi4FghjWj7W2Qleb-JsC10fGFinw4hy8T0/" rel="nofollow">[Doc] How to use</a></li>
 </ul>
 <h4>Help &amp; Support</h4>
-<p>Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <a href="https://support.bestwebsoft.com/" rel="nofollow">https://support.bestwebsoft.com/</a></p>
+<p>Visit our Help Center if you have any questions, our friendly Support Team is happy to help &#8211; <a href="https://support.bestwebsoft.com/" rel="nofollow">https://support.bestwebsoft.com/</a></p>
 <h4>Translation</h4>
 <ul>
 <li>Czech (cs_CZ) (thanks to <a href="mailto:&#107;&#117;&#x63;&#x65;&#114;&#x61;&#x6d;&#105;&#064;&#x67;&#109;&#097;&#x69;&#108;&#046;&#x63;&#x6f;&#109;" rel="nofollow">Michal Kučera</a>, www.n0lim.it, <a href="mailto:&#105;&#110;&#102;&#111;&#064;&#x70;&#x61;&#x6d;&#x61;&#x64;&#x65;&#115;&#115;&#111;&#102;&#116;.&#x63;&#x7a;" rel="nofollow">PaMaDeSSoft</a>, www.pamadessoft.cz)</li>

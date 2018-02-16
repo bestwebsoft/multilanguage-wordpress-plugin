@@ -36,8 +36,8 @@ if ( ! class_exists( 'Mltlngg_List_Table' ) ) {
 				'cb'		=> '<input type="checkbox" />',
 				'title'		=> __( 'Title', 'multilanguage' ),
 				'locale'	=> __( 'URL Slug', 'multilanguage' ),
-				'flag'      => __( 'Flag', 'multilanguage' ),
-				'priority'  => __( 'Order', 'multilanguage' )
+				'flag'		=> __( 'Flag', 'multilanguage' ),
+				'priority'	=> __( 'Order', 'multilanguage' )
 			);
 			return $columns;
 		}
@@ -45,7 +45,7 @@ if ( ! class_exists( 'Mltlngg_List_Table' ) ) {
 		/* function for column cb */
 		function column_cb( $item ) {
 			global $mltlngg_options;
-			return $item['locale'] == $mltlngg_options['default_language'] ? '' : sprintf( '<input type="checkbox"  name="mltlngg_language[]" value="%s" />', $item['locale'] );
+			return $item['locale'] == $mltlngg_options['default_language'] ? '' : sprintf( '<input type="checkbox" name="mltlngg_language[]" value="%s" />', $item['locale'] );
 		}
 
 		function column_title( $item ) {
@@ -178,7 +178,7 @@ if ( ! function_exists( 'mltlngg_sort_data' ) ) {
 		$order_by = ( ! empty( $_GET['orderby'] ) ) ? $_GET['orderby'] : 'title';
 		$order = ( ! empty( $_GET['order'] ) ) ? $_GET['order'] : 'asc';
 		foreach ( $data_to_sort as $key => $row ) {
-			$name[ $key ]  = $row['title'];
+			$name[ $key ] = $row['title'];
 			$priority[ $key ] = $row['priority'];
 		}
 		$name_lowercase = array_map( 'strtolower', $name );
@@ -256,15 +256,15 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 		/* Actions for table of languages */
 		if ( isset( $_POST['mltlngg_language'] ) && check_admin_referer( 'mltlngg_current_languages_form', 'mltlngg_current_languages_field' ) ) {
 			if ( isset( $_POST['action'] ) && -1 != $_POST['action'] ) {
-				$action   = $_POST['action'];
-				$language = $_POST['mltlngg_language'];
+				$action		= $_POST['action'];
+				$language	= $_POST['mltlngg_language'];
 			} elseif ( isset( $_POST['action2'] ) && -1 != $_POST['action2'] ) {
-				$action   = $_POST['action2'];
-				$language = $_POST['mltlngg_language'];
+				$action		= $_POST['action2'];
+				$language	= $_POST['mltlngg_language'];
 			}
 		} elseif ( isset( $_GET['mltlngg_language'] ) && wp_verify_nonce( $_GET['_wpnonce'], 'mltlngg-action' ) ) {
-			$action   = $_GET['action'];
-			$language = $_GET['mltlngg_language'];
+			$action		= $_GET['action'];
+			$language	= $_GET['mltlngg_language'];
 		}
 
 		if ( isset( $action ) ) {
@@ -309,12 +309,12 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 					$max_image_width	= 50;
 					$max_image_height	= 50;
 					$max_image_size		= 32 * 1024;
-					$valid_types 		= array( 'jpg', 'jpeg', 'png' );
+					$valid_types		= array( 'jpg', 'jpeg', 'png' );
 
 					/* Checking is allowed download file given parameters */
 					if ( is_uploaded_file( $_FILES['mltlngg_upload_flag']['tmp_name'] ) ) {
-						$filename	=	$_FILES['mltlngg_upload_flag']['tmp_name'];
-						$ext		=	substr( $_FILES['mltlngg_upload_flag']['name'], 1 + strrpos( $_FILES['mltlngg_upload_flag']['name'], '.' ) );
+						$filename	= $_FILES['mltlngg_upload_flag']['tmp_name'];
+						$ext		= substr( $_FILES['mltlngg_upload_flag']['name'], 1 + strrpos( $_FILES['mltlngg_upload_flag']['name'], '.' ) );
 						if ( filesize( $filename ) > $max_image_size ) {
 							$error	= sprintf( __( "Error: File size > %s.", 'multilanguage' ), '32K' );
 						} elseif ( ! in_array( strtolower( $ext ), $valid_types ) ) {
@@ -506,8 +506,8 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 if ( ! function_exists( 'mltlngg_actions' ) ) {
 	function mltlngg_actions( $action, $array_locale ) {
 		global $mltlngg_options;
-		$result = array();
-		$flag   = false;
+		$result	= array();
+		$flag	= false;
 
 		switch ( $action ) {
 

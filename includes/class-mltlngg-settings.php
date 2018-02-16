@@ -20,26 +20,26 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 			global $mltlngg_options, $mltlngg_plugin_info;
 
 			$tabs = array(
-				'settings' 		=> array( 'label' => __( 'Settings', 'multilanguage' ) ),
-				'misc' 			=> array( 'label' => __( 'Misc', 'multilanguage' ) ),
-				'custom_code' 	=> array( 'label' => __( 'Custom Code', 'multilanguage' ) ),
+				'settings'		=> array( 'label' => __( 'Settings', 'multilanguage' ) ),
+				'misc'			=> array( 'label' => __( 'Misc', 'multilanguage' ) ),
+				'custom_code'	=> array( 'label' => __( 'Custom Code', 'multilanguage' ) ),
 				'license'		=> array( 'label' => __( 'License Key', 'multilanguage' ) )
 			);
 
 			parent::__construct( array(
-				'plugin_basename' 	 => $plugin_basename,
-				'plugins_info'		 => $mltlngg_plugin_info,
-				'prefix' 			 => 'mltlngg',
-				'default_options' 	 => mltlngg_get_options_default(),
-				'options' 			 => $mltlngg_options,
-				'is_network_options' => is_network_admin(),
-				'tabs' 				 => $tabs,
-				'doc_link' 			 => 'https://docs.google.com/document/d/1y_c25pWDedi4FghjWj7W2Qleb-JsC10fGFinw4hy8T0/',
-				'wp_slug'			 => 'multilanguage',
-				'pro_page' 			 => 'admin.php?page=mltlnggpr_settings',
-				'bws_license_plugin' => 'multilanguage-pro/multilanguage-pro.php',
-				'link_key' 			 => 'fa164f00821ed3a87e6f78cb3f5c277b',
-				'link_pn' 			 => '143'
+				'plugin_basename'	=> $plugin_basename,
+				'plugins_info'		=> $mltlngg_plugin_info,
+				'prefix'			=> 'mltlngg',
+				'default_options'	=> mltlngg_get_options_default(),
+				'options'			=> $mltlngg_options,
+				'is_network_options'=> is_network_admin(),
+				'tabs'				=> $tabs,
+				'doc_link'			=> 'https://docs.google.com/document/d/1y_c25pWDedi4FghjWj7W2Qleb-JsC10fGFinw4hy8T0/',
+				'wp_slug'			=> 'multilanguage',
+				'pro_page'			=> 'admin.php?page=mltlnggpr_settings',
+				'bws_license_plugin'=> 'multilanguage-pro/multilanguage-pro.php',
+				'link_key'			=> 'fa164f00821ed3a87e6f78cb3f5c277b',
+				'link_pn'			=> '143'
 			) );
 
 			add_filter( get_parent_class( $this ) . '_additional_restore_options', array( $this, 'additional_restore_options' ) );
@@ -70,6 +70,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 
 			$this->options['hide_link_slug']			= isset( $_POST['mltlngg_hide_link_slug'] ) ? 0 : 1;
 			$this->options['wp_localization']			= isset( $_POST['mltlngg_wp_localization'] ) ? 1 : 0;
+			$this->options['translate_open_graph']		= isset( $_POST['mltlngg_translate_open_graph'] ) ? 1 : 0;
 			$this->options['display_alternative_link']	= isset( $_POST['mltlngg_display_alternative_link'] ) ? 1 : 0;
 			$this->options['save_mode']					= isset( $_POST['mltlngg_save_mode'] ) && 'ajax' == $_POST['mltlngg_save_mode'] ? 'ajax' : 'manual';
 			$this->options['search']					= isset( $_POST['mltlngg_search'] ) && in_array( $_POST['mltlngg_search'], array( 'single', 'all' ) ) ? $_POST['mltlngg_search'] : 'single';
@@ -205,11 +206,22 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 					</td>
 				</tr>
 				<tr>
-					<th><?php _e( 'hreflang Attribute', 'multilanguage' ); ?></th>
+					<th><?php _e( 'Open Graph Markup', 'multilanguage' ); ?></th>
+					<td>
+						<input type="checkbox" name="mltlngg_translate_open_graph" value="1" <?php checked( $this->options['translate_open_graph'] ); ?> />
+						<span class="bws_info">
+							<?php printf(
+								__( 'Enable to add the ability to translate %s.', 'multilanguage' ) . ' ',
+								'<a href="http://ogp.me/" target="_blank">' . __( 'open graf meta tags', 'multilanguage' ) . '</a>'
+							);
+							printf( __( 'This option automatically adds metadata for each language in the %s section. Facebook and other social networks use this data when your pages are shared.', 'multilanguage' ), '&lt;head&gt;' ); ?>
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<th><?php _e( 'Hreflang Attribute', 'multilanguage' ); ?></th>
 					<td>
 						<input type="checkbox" name="mltlngg_display_alternative_link" value="1" <?php checked( 1, $this->options['display_alternative_link'] ); ?> /> <span class="bws_info"><?php printf( __( 'Enable to add hreflang attribute used by search engines and display the correct language or regional URL in search results. This option inserts automatically the respective link for each language within the %s section.', 'multilanguage' ), '&lt;head&gt;' ); ?></span>
-							</div>
-						</div>
 					</td>
 				</tr>
 				<?php if ( ! defined( 'ET_BUILDER_THEME' ) && ! defined( 'WPB_VC_VERSION' ) ) { ?>

@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
 Requires at least: 3.9
-Tested up to: 4.8.3
-Stable tag: 1.2.8
+Tested up to: 4.9.4
+Stable tag: 1.2.9
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -16,6 +16,8 @@ Multilanguage plugin is a great way to translate your WordPress website to other
 
 Create and manage your multilingual website today!
 
+[View Demo](https://bestwebsoft.com/demo-for-multilanguage/)
+
 http://www.youtube.com/watch?v=Si6ulEWuY1E
 
 = Free Features =
@@ -23,8 +25,8 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 * Manually translate:
 	* Pages
 	* Posts
-	* Post categories
-	* Post tags
+	* Post category names
+	* Post tag names
 	* Menus (partially)
 * 80+ pre-installed languages
 * Add new languages
@@ -41,10 +43,11 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 	* Drop-down flag icons
 	* Flag icons
 	* Languages list
-	* Google Auto Translate [NEW]
+	* Google Auto Translate
 * Choose language flag icon:
 	* Default
 	* Custom
+* Translate Open Graph meta tags [NEW]
 * Display translation availability in the posts and taxonomy lists
 * Add hreflang links to <head> section
 * Hide link slug for the default language
@@ -64,6 +67,7 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 > 	* Taxonomies
 > 	* Fields
 > * Translate:
+> 	* Post category and tag descriptions [NEW]
 > 	* Widget titles
 > 	* Website title
 > 	* Website tagline
@@ -85,7 +89,7 @@ If you have a feature suggestion or idea you'd like to see in the plugin, we'd l
 
 = Help & Support =
 
-Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <https://support.bestwebsoft.com/>
+Visit our Help Center if you have any questions, our friendly Support Team is happy to help - <https://support.bestwebsoft.com/>
 
 = Translation =
 
@@ -106,7 +110,7 @@ Some of these translations are not complete. We are constantly adding new featur
 
 1. Upload the `multilanguage` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin using the 'Plugins' menu in your WordPress admin panel.
-3. You can adjust the necessary settings using your WordPress admin panel in "BWS Panel" > "Multilanguage".
+3. You can adjust the necessary settings using your WordPress admin panel > "Multilanguage".
 4. Plugin page is located in main menu.
 
 [View a Step-by-step Instruction on Multilanguage Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
@@ -195,6 +199,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 11. Adding language switcher into site menu.
 
 == Changelog ==
+
+= V1.2.9 - 16.02.2018 =
+* NEW : Ability to translate Open Graph metadata has been added.
+* PRO : Ability to translate post category and tag descriptions has been added.
 
 = V1.2.8 - 08.11.2017 =
 * NEW : Google Auto Translate switcher type has been added.
@@ -340,6 +348,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.2.9 =
+* New features added.
 
 = V1.2.8 =
 * New features added.

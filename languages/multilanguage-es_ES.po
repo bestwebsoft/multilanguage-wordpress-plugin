@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: multilanguage\n"
-"POT-Creation-Date: 2017-11-02 17:16+0200\n"
-"PO-Revision-Date: 2017-11-02 17:16+0200\n"
+"POT-Creation-Date: 2018-02-14 14:59+0200\n"
+"PO-Revision-Date: 2018-02-14 14:59+0200\n"
 "Last-Translator: Nahuel Martino <nahuel@ibidemgroup.com>\n"
 "Language-Team: Mik013\n"
 "Language: es\n"
@@ -17,8 +17,8 @@ msgstr ""
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../includes/class-mltlngg-settings.php:23 ../multilanguage.php:38
-#: ../multilanguage.php:40 ../multilanguage.php:1216 ../multilanguage.php:2620
-#: ../multilanguage.php:2634
+#: ../multilanguage.php:40 ../multilanguage.php:1321 ../multilanguage.php:2741
+#: ../multilanguage.php:2755
 msgid "Settings"
 msgstr "Ajustes"
 
@@ -34,86 +34,86 @@ msgstr "Código personalizado"
 msgid "License Key"
 msgstr "Clave de licencia"
 
-#: ../includes/class-mltlngg-settings.php:77 ../includes/table.php:357
+#: ../includes/class-mltlngg-settings.php:78 ../includes/table.php:357
 msgid "Settings saved."
 msgstr "Ajustes guardados."
 
-#: ../includes/class-mltlngg-settings.php:88
+#: ../includes/class-mltlngg-settings.php:89
 msgid "Multilanguage Settings"
 msgstr "Ajustes de Multilanguage"
 
-#: ../includes/class-mltlngg-settings.php:93
+#: ../includes/class-mltlngg-settings.php:94
 #, fuzzy
 msgid "Default Language Switcher Type"
 msgstr "Tipo de Cambiador de Idiomas"
 
-#: ../includes/class-mltlngg-settings.php:98
-#: ../includes/class-mltlngg-settings.php:103
-#: ../includes/class-mltlngg-settings.php:108 ../multilanguage.php:915
-#: ../multilanguage.php:916 ../multilanguage.php:917 ../multilanguage.php:1009
-#: ../multilanguage.php:1015 ../multilanguage.php:1021
-#: ../multilanguage.php:2568 ../multilanguage.php:2572
-#: ../multilanguage.php:2576
+#: ../includes/class-mltlngg-settings.php:99
+#: ../includes/class-mltlngg-settings.php:104
+#: ../includes/class-mltlngg-settings.php:109 ../multilanguage.php:1020
+#: ../multilanguage.php:1021 ../multilanguage.php:1022
+#: ../multilanguage.php:1114 ../multilanguage.php:1120
+#: ../multilanguage.php:1126 ../multilanguage.php:2689
+#: ../multilanguage.php:2693 ../multilanguage.php:2697
 msgid "Drop-down list"
 msgstr "Lista desplegable"
 
-#: ../includes/class-mltlngg-settings.php:98
-#: ../includes/class-mltlngg-settings.php:108 ../multilanguage.php:915
-#: ../multilanguage.php:917 ../multilanguage.php:1009
-#: ../multilanguage.php:1021 ../multilanguage.php:2568
-#: ../multilanguage.php:2576
+#: ../includes/class-mltlngg-settings.php:99
+#: ../includes/class-mltlngg-settings.php:109 ../multilanguage.php:1020
+#: ../multilanguage.php:1022 ../multilanguage.php:1114
+#: ../multilanguage.php:1126 ../multilanguage.php:2689
+#: ../multilanguage.php:2697
 msgid "flag"
 msgstr "bandera"
 
-#: ../includes/class-mltlngg-settings.php:98
-#: ../includes/class-mltlngg-settings.php:103 ../multilanguage.php:912
-#: ../multilanguage.php:915 ../multilanguage.php:916 ../multilanguage.php:1009
-#: ../multilanguage.php:1015 ../multilanguage.php:2568
-#: ../multilanguage.php:2572
+#: ../includes/class-mltlngg-settings.php:99
+#: ../includes/class-mltlngg-settings.php:104 ../multilanguage.php:1017
+#: ../multilanguage.php:1020 ../multilanguage.php:1021
+#: ../multilanguage.php:1114 ../multilanguage.php:1120
+#: ../multilanguage.php:2689 ../multilanguage.php:2693
 msgid "title"
 msgstr "título"
 
-#: ../includes/class-mltlngg-settings.php:113 ../includes/table.php:39
-#: ../multilanguage.php:912 ../multilanguage.php:914 ../multilanguage.php:1026
-#: ../multilanguage.php:2580
+#: ../includes/class-mltlngg-settings.php:114 ../includes/table.php:39
+#: ../multilanguage.php:1017 ../multilanguage.php:1019
+#: ../multilanguage.php:1131 ../multilanguage.php:2701
 msgid "Flag"
 msgstr "Bandera"
 
-#: ../includes/class-mltlngg-settings.php:120
-#: ../includes/class-mltlngg-settings.php:129
-#: ../includes/class-mltlngg-settings.php:138 ../multilanguage.php:1033
-#: ../multilanguage.php:1042 ../multilanguage.php:1051
-#: ../multilanguage.php:2584 ../multilanguage.php:2588
-#: ../multilanguage.php:2592
+#: ../includes/class-mltlngg-settings.php:121
+#: ../includes/class-mltlngg-settings.php:130
+#: ../includes/class-mltlngg-settings.php:139 ../multilanguage.php:1138
+#: ../multilanguage.php:1147 ../multilanguage.php:1156
+#: ../multilanguage.php:2705 ../multilanguage.php:2709
+#: ../multilanguage.php:2713
 msgid "Google Auto Translate"
 msgstr ""
 
-#: ../includes/class-mltlngg-settings.php:121 ../multilanguage.php:1034
-#: ../multilanguage.php:2584
+#: ../includes/class-mltlngg-settings.php:122 ../multilanguage.php:1139
+#: ../multilanguage.php:2705
 #, fuzzy
 msgid "drop-down only"
 msgstr "Lista desplegable"
 
-#: ../includes/class-mltlngg-settings.php:130 ../multilanguage.php:1043
-#: ../multilanguage.php:2588
+#: ../includes/class-mltlngg-settings.php:131 ../multilanguage.php:1148
+#: ../multilanguage.php:2709
 msgid "horizontal"
 msgstr ""
 
-#: ../includes/class-mltlngg-settings.php:139 ../multilanguage.php:1052
-#: ../multilanguage.php:2592
+#: ../includes/class-mltlngg-settings.php:140 ../multilanguage.php:1157
+#: ../multilanguage.php:2713
 msgid "vertical"
 msgstr ""
 
-#: ../includes/class-mltlngg-settings.php:149
-#: ../includes/class-mltlngg-settings.php:260 ../includes/table.php:413
+#: ../includes/class-mltlngg-settings.php:150
+#: ../includes/class-mltlngg-settings.php:272 ../includes/table.php:413
 msgid "Close"
 msgstr "Descartar"
 
-#: ../includes/class-mltlngg-settings.php:153
+#: ../includes/class-mltlngg-settings.php:154
 msgid "Switch Language Automatically"
 msgstr "Cambiar idioma automáticamente"
 
-#: ../includes/class-mltlngg-settings.php:155
+#: ../includes/class-mltlngg-settings.php:156
 msgid ""
 "Enable to determine user IP and switch website language automatically based "
 "on the location."
@@ -121,31 +121,31 @@ msgstr ""
 "Activa para determinar la IP del usuario y cambiar el idioma del sitio "
 "automáticamente basándose en la ubicación."
 
-#: ../includes/class-mltlngg-settings.php:159
+#: ../includes/class-mltlngg-settings.php:160
 msgid "Slug Position in the URL"
 msgstr "Posición del slug en la URL"
 
-#: ../includes/class-mltlngg-settings.php:171
+#: ../includes/class-mltlngg-settings.php:172
 msgid "Before"
 msgstr "Antes"
 
-#: ../includes/class-mltlngg-settings.php:180
+#: ../includes/class-mltlngg-settings.php:181
 msgid "After"
 msgstr "Después"
 
-#: ../includes/class-mltlngg-settings.php:196
+#: ../includes/class-mltlngg-settings.php:197
 msgid "Default Language Slug"
 msgstr "Slug del idioma por defecto"
 
-#: ../includes/class-mltlngg-settings.php:198
+#: ../includes/class-mltlngg-settings.php:199
 msgid "Enable to show default language slug in the URL."
 msgstr "Activa para mostrar el slug del idioma por defecto en la URL."
 
-#: ../includes/class-mltlngg-settings.php:202
+#: ../includes/class-mltlngg-settings.php:203
 msgid "WordPress Language"
 msgstr "Idioma de WordPress"
 
-#: ../includes/class-mltlngg-settings.php:204
+#: ../includes/class-mltlngg-settings.php:205
 msgid ""
 "Enable to switch WordPress language automatically when the language is "
 "changed in the front-end (installed WordPress language packs are required)."
@@ -154,11 +154,32 @@ msgstr ""
 "se cambia en el front-end (es necesario tener instalados los paquetes de "
 "idiomas de WordPress)."
 
-#: ../includes/class-mltlngg-settings.php:208
-msgid "hreflang Attribute"
+#: ../includes/class-mltlngg-settings.php:209
+msgid "Open Graph Markup"
+msgstr ""
+
+#: ../includes/class-mltlngg-settings.php:214
+#, php-format
+msgid "Enable to add the ability to translate %s."
+msgstr ""
+
+#: ../includes/class-mltlngg-settings.php:215
+msgid "open graf meta tags"
+msgstr ""
+
+#: ../includes/class-mltlngg-settings.php:217
+#, php-format
+msgid ""
+"This option automatically adds metadata for each language in the %s section. "
+"Facebook and other social networks use this data when your pages are shared."
+msgstr ""
+
+#: ../includes/class-mltlngg-settings.php:222
+#, fuzzy
+msgid "Hreflang Attribute"
 msgstr "Atributo hreflang"
 
-#: ../includes/class-mltlngg-settings.php:210
+#: ../includes/class-mltlngg-settings.php:224
 #, php-format
 msgid ""
 "Enable to add hreflang attribute used by search engines and display the "
@@ -170,19 +191,19 @@ msgstr ""
 "búsqueda. Esta opción inserta automáticamente el enlace correspondiente para "
 "cada idioma dentro de la sección %s."
 
-#: ../includes/class-mltlngg-settings.php:217
+#: ../includes/class-mltlngg-settings.php:229
 msgid "Translation Saving Mode"
 msgstr "Modo de guardado de traducciones"
 
-#: ../includes/class-mltlngg-settings.php:222
+#: ../includes/class-mltlngg-settings.php:234
 msgid "Auto"
 msgstr "Automático"
 
-#: ../includes/class-mltlngg-settings.php:227
+#: ../includes/class-mltlngg-settings.php:239
 msgid "Manual (Save Changes button)"
 msgstr "Manual (botón Guardar cambios)"
 
-#: ../includes/class-mltlngg-settings.php:230
+#: ../includes/class-mltlngg-settings.php:242
 #, fuzzy
 msgid ""
 "Enable Manual mode if you have some problems with translations saving using "
@@ -191,35 +212,35 @@ msgstr ""
 "Activa el Modo manual si tienes problemas con guardado de las traducciones "
 "en el Modo automático."
 
-#: ../includes/class-mltlngg-settings.php:235
+#: ../includes/class-mltlngg-settings.php:247
 msgid "Default Search by"
 msgstr "Búsqueda por defecto por"
 
-#: ../includes/class-mltlngg-settings.php:239
+#: ../includes/class-mltlngg-settings.php:251
 msgid "Current language"
 msgstr "Idioma actual"
 
-#: ../includes/class-mltlngg-settings.php:243
+#: ../includes/class-mltlngg-settings.php:255
 msgid "All active languages"
 msgstr "Todos los idiomas activos"
 
-#: ../includes/class-mltlngg-settings.php:264
+#: ../includes/class-mltlngg-settings.php:276
 msgid "Update GeoIP Every"
 msgstr "Actualizar GeoIP cada"
 
-#: ../includes/class-mltlngg-settings.php:267
+#: ../includes/class-mltlngg-settings.php:279
 msgid "months"
 msgstr "meses"
 
-#: ../includes/class-mltlngg-settings.php:268
+#: ../includes/class-mltlngg-settings.php:280
 msgid "Country table is not loaded yet."
 msgstr "La tabla de país no está cargada todavía."
 
-#: ../includes/class-mltlngg-settings.php:270
+#: ../includes/class-mltlngg-settings.php:282
 msgid "Update Now"
 msgstr "Actualizar ahora"
 
-#: ../includes/class-mltlngg-settings.php:273
+#: ../includes/class-mltlngg-settings.php:285
 #, php-format
 msgid ""
 "Automatically download lists with registered IP addresses all over the world "
@@ -230,31 +251,31 @@ msgstr ""
 "mundo (desde %s) a la base de datos. Recibe información sobre cada dirección "
 "IP y a qué país pertenece."
 
-#: ../includes/class-mltlngg-settings.php:273
+#: ../includes/class-mltlngg-settings.php:285
 msgid "Learn More"
 msgstr "Aprende más"
 
-#: ../includes/class-mltlngg-settings.php:304
+#: ../includes/class-mltlngg-settings.php:316
 msgid "Language Switcher"
 msgstr "Cambiador de Idiomas"
 
-#: ../includes/class-mltlngg-settings.php:307
+#: ../includes/class-mltlngg-settings.php:319
 msgid "Add \"Multilanguage Switcher\" to a widget."
 msgstr "Agrega \"Cambiador de Idiomas de Multilanguage\" a un widget."
 
-#: ../includes/class-mltlngg-settings.php:307
+#: ../includes/class-mltlngg-settings.php:319
 msgid "Navigate to Widgets"
 msgstr "Desplázate a Widgets"
 
-#: ../includes/class-mltlngg-settings.php:308
+#: ../includes/class-mltlngg-settings.php:320
 msgid "Add \"Multilanguage Switcher\" to a menu."
 msgstr "Agrega \"Cambiador de Idiomas de Multilanguage\" a un menú."
 
-#: ../includes/class-mltlngg-settings.php:308
+#: ../includes/class-mltlngg-settings.php:320
 msgid "Navigate to Menus"
 msgstr "Desplázate a Menús"
 
-#: ../includes/class-mltlngg-settings.php:309
+#: ../includes/class-mltlngg-settings.php:321
 msgid ""
 "Add a language switcher to your posts, pages or custom post types by using "
 "the following shortcode:"
@@ -262,7 +283,7 @@ msgstr ""
 "Agrega un cambiador de idiomas a tus entradas, páginas o tipos de entrada "
 "personalizados usando el siguiente código:"
 
-#: ../includes/class-mltlngg-settings.php:311
+#: ../includes/class-mltlngg-settings.php:323
 msgid ""
 "Add a language switcher to PHP template files by using the following code"
 msgstr ""
@@ -277,7 +298,7 @@ msgstr "idioma"
 msgid "languages"
 msgstr "idiomas"
 
-#: ../includes/table.php:37 ../multilanguage.php:913
+#: ../includes/table.php:37 ../multilanguage.php:1018
 msgid "Title"
 msgstr "Título"
 
@@ -452,16 +473,16 @@ msgstr "Ninguno de los idiomas seleccionados ha sido %s"
 msgid "Choose a language"
 msgstr "Elige un idioma"
 
-#: ../includes/table.php:611 ../multilanguage.php:1255
+#: ../includes/table.php:611 ../multilanguage.php:1360
 msgid "Add Language"
 msgstr "Añadir idioma"
 
-#: ../multilanguage.php:123 ../multilanguage.php:921 ../multilanguage.php:2388
-#: ../multilanguage.php:2391
+#: ../multilanguage.php:125 ../multilanguage.php:1026
+#: ../multilanguage.php:2509 ../multilanguage.php:2512
 msgid "Multilanguage switcher"
 msgstr "Cambiador de Idiomas de Multilanguage"
 
-#: ../multilanguage.php:889
+#: ../multilanguage.php:994
 msgid ""
 "Attention!!! The changes will not be saved because Title and Content fields "
 "are empty on the current tab! It is recommended to fill in at least one "
@@ -471,31 +492,31 @@ msgstr ""
 "Contenido están vacíos en la ficha actual. Se recomienda rellenar al menos "
 "un campo o desplázarse a la ficha con los campos que ya están rellenados."
 
-#: ../multilanguage.php:890
+#: ../multilanguage.php:995
 #, fuzzy
 msgid "Switching to another language will remove all unsaved. Save data?"
 msgstr ""
 "Al cambiar idioma, todos los datos no guardados se perderán. ¿Guardar los "
 "datos?"
 
-#: ../multilanguage.php:968
+#: ../multilanguage.php:1073
 #, fuzzy
 msgid "Content language switcher"
 msgstr "Cambio de idiomas del contenido"
 
-#: ../multilanguage.php:1000
+#: ../multilanguage.php:1105
 msgid "Localization"
 msgstr "Localización"
 
-#: ../multilanguage.php:1003
+#: ../multilanguage.php:1108
 msgid "Title:"
 msgstr "Título:"
 
-#: ../multilanguage.php:1260
+#: ../multilanguage.php:1365
 msgid "Attention"
 msgstr "Atención"
 
-#: ../multilanguage.php:1260
+#: ../multilanguage.php:1365
 msgid ""
 "Please update the post before switching the language. Data is not saved "
 "automatically."
@@ -503,40 +524,43 @@ msgstr ""
 "Actualiza la entrada antes de cambiar el idioma. Los datos no se guardan "
 "automáticamente."
 
-#: ../multilanguage.php:1264
+#: ../multilanguage.php:1369
 msgid "Edit for language"
 msgstr "Editar para idioma"
 
-#: ../multilanguage.php:1521 ../multilanguage.php:1582
+#: ../multilanguage.php:1627 ../multilanguage.php:1691
 msgid "Translations"
 msgstr "Traducciones"
 
-#: ../multilanguage.php:1717
+#: ../multilanguage.php:1826
 #, php-format
 msgid "Protected: %s"
 msgstr "Protegido: %s"
 
-#: ../multilanguage.php:1720
+#: ../multilanguage.php:1829
 #, php-format
 msgid "Private: %s"
 msgstr "Privado: %s"
 
-#: ../multilanguage.php:1928 ../multilanguage.php:2486
+#: ../multilanguage.php:2049 ../multilanguage.php:2607
 msgid "(more&hellip;)"
 msgstr "(more&hellip;)"
 
-#: ../multilanguage.php:2564
+#: ../multilanguage.php:2685
 #, fuzzy
 msgid "Select Switcher Type"
 msgstr "Tipo de Cambiador de Idiomas"
 
-#: ../multilanguage.php:2636
+#: ../multilanguage.php:2757
 msgid "FAQ"
 msgstr "FAQ"
 
-#: ../multilanguage.php:2637
+#: ../multilanguage.php:2758
 msgid "Support"
 msgstr "Soporte"
+
+#~ msgid "hreflang Attribute"
+#~ msgstr "Atributo hreflang"
 
 #~ msgid "Wordpress Language"
 #~ msgstr "Jazyk WordPressu"
