@@ -47,7 +47,7 @@
 <li>Custom</li>
 </ul>
 </li>
-<li>Translate Open Graph meta tags [NEW]</li>
+<li>Translate Open Graph meta tags</li>
 <li>Display translation availability in the posts and taxonomy lists</li>
 <li>Add hreflang links to  section</li>
 <li>Hide link slug for the default language</li>
@@ -71,7 +71,7 @@
 </li>
 <li>Translate:
 <ul>
-<li>Post category and tag descriptions [NEW]</li>
+<li>Post category and tag descriptions</li>
 <li>Widget titles</li>
 <li>Website title</li>
 <li>Website tagline</li>

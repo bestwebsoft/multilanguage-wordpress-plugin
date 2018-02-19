@@ -4,7 +4,7 @@ Donate link: https://bestwebsoft.com/donate/
 Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
 Requires at least: 3.9
 Tested up to: 4.9.4
-Stable tag: 1.2.9
+Stable tag: 1.3.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -47,7 +47,7 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 * Choose language flag icon:
 	* Default
 	* Custom
-* Translate Open Graph meta tags [NEW]
+* Translate Open Graph meta tags
 * Display translation availability in the posts and taxonomy lists
 * Add hreflang links to <head> section
 * Hide link slug for the default language
@@ -67,7 +67,7 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 > 	* Taxonomies
 > 	* Fields
 > * Translate:
-> 	* Post category and tag descriptions [NEW]
+> 	* Post category and tag descriptions
 > 	* Widget titles
 > 	* Website title
 > 	* Website tagline
@@ -200,7 +200,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
-= V1.2.9 - 16.02.2018 =
+= V1.3.0 - 19.02.2018 =
+* Bugfix : Bug related to the incorrect homepage URL has been fixed.
+
+= V1.2.9 - 14.02.2018 =
 * NEW : Ability to translate Open Graph metadata has been added.
 * PRO : Ability to translate post category and tag descriptions has been added.
 
@@ -348,6 +351,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.3.0 =
+* Bugs fixed.
 
 = V1.2.9 =
 * New features added.

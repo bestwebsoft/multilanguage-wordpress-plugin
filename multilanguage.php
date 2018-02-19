@@ -6,7 +6,7 @@ Description: Translate WordPress website content to other languages manually. Cr
 Author: BestWebSoft
 Text Domain: multilanguage
 Domain Path: /languages
-Version: 1.2.9
+Version: 1.3.0
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -604,10 +604,10 @@ if ( ! function_exists( 'mltlngg_parse_url' ) ) {
 
 		$full_host = $scheme . $host . $port;
 
-		$host_pattern = "~^((.*)" . preg_quote( $home_host . $port, '~' ) . ")~";
+		$host_pattern = "~^((.*)" . preg_quote( $home_host . $port ) . ")~";
 		$home_dir = preg_replace( $host_pattern, '', $home_url );
 
-		$home_url_pattern = "~^(" . preg_quote( $full_host . $home_dir, '~' ) . ")~U";
+		$home_url_pattern = "~^(" . preg_quote( $full_host . $home_dir ) . ")~U";
 		$request_uri = preg_replace( $home_url_pattern, '', $url );
 
 		$reg_exp = '~(?<=/)(' . implode( '|', $mltlngg_enabled_languages_locale ) . ')(?![\d\w-])~';
@@ -972,7 +972,7 @@ if ( ! function_exists( 'mltlngg_get_url_translated' ) ) {
 
 			if ( $is_custom_permalink ) {
 				$homeurl	= get_option( 'home' );
-				$url_parsed	= str_replace( $homeurl, $homeurl . '/' . $mltlngg_current_language, $url );
+				$url	= str_replace( $homeurl, $homeurl . '/' . $mltlngg_current_language, $url );
 			} else {
 				$url	= add_query_arg( 'lang', $mltlngg_current_language, $url );
 			}
