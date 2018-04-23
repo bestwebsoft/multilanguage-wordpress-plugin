@@ -212,7 +212,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 						<span class="bws_info">
 							<?php printf(
 								__( 'Enable to add the ability to translate %s.', 'multilanguage' ) . ' ',
-								'<a href="http://ogp.me/" target="_blank">' . __( 'open graf meta tags', 'multilanguage' ) . '</a>'
+								'<a href="http://ogp.me/" target="_blank">' . __( 'open graph meta tags', 'multilanguage' ) . '</a>'
 							);
 							printf( __( 'This option automatically adds metadata for each language in the %s section. Facebook and other social networks use this data when your pages are shared.', 'multilanguage' ), '&lt;head&gt;' ); ?>
 						</span>

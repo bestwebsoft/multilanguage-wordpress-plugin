@@ -6,7 +6,7 @@ Description: Translate WordPress website content to other languages manually. Cr
 Author: BestWebSoft
 Text Domain: multilanguage
 Domain Path: /languages
-Version: 1.3.0
+Version: 1.3.1
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -82,8 +82,19 @@ if ( ! function_exists( 'mltlngg_init' ) ) {
 			unset( $mltlngg_options['flush_rewrite_rules'] );
 			update_option( 'mltlngg_options', $mltlngg_options );
 		}
-
+		if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+			/*Adding Woocommerce compatibility*/
+			add_filter( 'woocommerce_ajax_get_endpoint', 'mltlngg_wcmmrc', 10, 2 );
+		}
 		mltlngg_add_meta_filters();
+	}
+}
+
+if ( ! function_exists( 'mltlngg_wcmmrc' ) ) {
+	function mltlngg_wcmmrc( $ajax, $request ) {
+		/*function delete language slug from woocommerce's ajax request*/
+		$request = esc_url_raw( add_query_arg( 'wc-ajax', $request, remove_query_arg( array( 'remove_item', 'add-to-cart', 'added-to-cart' ), home_url( '/' ) ) ) );
+		return $request;
 	}
 }
 
@@ -604,10 +615,10 @@ if ( ! function_exists( 'mltlngg_parse_url' ) ) {
 
 		$full_host = $scheme . $host . $port;
 
-		$host_pattern = "~^((.*)" . preg_quote( $home_host . $port ) . ")~";
+		$host_pattern = "~^((.*)" . preg_quote( $home_host . $port, '~') . ")~";
 		$home_dir = preg_replace( $host_pattern, '', $home_url );
 
-		$home_url_pattern = "~^(" . preg_quote( $full_host . $home_dir ) . ")~U";
+		$home_url_pattern = "~^(" . preg_quote( $full_host . $home_dir, '~') . ")~U";
 		$request_uri = preg_replace( $home_url_pattern, '', $url );
 
 		$reg_exp = '~(?<=/)(' . implode( '|', $mltlngg_enabled_languages_locale ) . ')(?![\d\w-])~';
@@ -2268,6 +2279,11 @@ if ( ! function_exists( 'mltlngg_localize_excerpt' ) ) {
 		if ( in_array( $post_type, array( 'post', 'page' ) ) ) {
 			$excerpt_new = $wpdb->get_var( $wpdb->prepare( "SELECT `post_excerpt` FROM `" . $wpdb->prefix . "mltlngg_translate` WHERE `post_ID` = %d AND `language` = %s", $post->ID, $mltlngg_current_language ) );
 			if ( ! empty( $excerpt_new ) ) {
+				return $excerpt_new;
+			} else {
+				$excerpt_new = $wpdb->get_var( $wpdb->prepare( "SELECT `post_content` FROM `" . $wpdb->prefix . "mltlngg_translate` WHERE `post_ID` = %d AND `language` = %s", $post->ID, $mltlngg_current_language ) );
+				$excerpt_new = mb_strimwidth( $excerpt_new, 0, 250 );
+				$excerpt_new = $excerpt_new . '...';
 				return $excerpt_new;
 			}
 		}

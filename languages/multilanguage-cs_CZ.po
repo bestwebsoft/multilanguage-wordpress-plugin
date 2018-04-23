@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: multilanguage\n"
-"POT-Creation-Date: 2018-02-14 14:59+0200\n"
-"PO-Revision-Date: 2018-02-14 14:59+0200\n"
+"POT-Creation-Date: 2018-04-20 14:04+0300\n"
+"PO-Revision-Date: 2018-04-20 14:04+0300\n"
 "Last-Translator: Mik013\n"
 "Language-Team: Mik013\n"
 "Language: cs_CZ\n"
@@ -17,8 +17,8 @@ msgstr ""
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../includes/class-mltlngg-settings.php:23 ../multilanguage.php:38
-#: ../multilanguage.php:40 ../multilanguage.php:1321 ../multilanguage.php:2741
-#: ../multilanguage.php:2755
+#: ../multilanguage.php:40 ../multilanguage.php:1332 ../multilanguage.php:2757
+#: ../multilanguage.php:2771
 msgid "Settings"
 msgstr "Nastavení"
 
@@ -43,68 +43,64 @@ msgid "Multilanguage Settings"
 msgstr "Multilanguage nastavení"
 
 #: ../includes/class-mltlngg-settings.php:94
-#, fuzzy
 msgid "Default Language Switcher Type"
-msgstr "Vzhled přepínače jazyků"
+msgstr "Výchozí vzhled přepínače jazyků"
 
 #: ../includes/class-mltlngg-settings.php:99
 #: ../includes/class-mltlngg-settings.php:104
-#: ../includes/class-mltlngg-settings.php:109 ../multilanguage.php:1020
-#: ../multilanguage.php:1021 ../multilanguage.php:1022
-#: ../multilanguage.php:1114 ../multilanguage.php:1120
-#: ../multilanguage.php:1126 ../multilanguage.php:2689
-#: ../multilanguage.php:2693 ../multilanguage.php:2697
+#: ../includes/class-mltlngg-settings.php:109 ../multilanguage.php:1031
+#: ../multilanguage.php:1032 ../multilanguage.php:1033
+#: ../multilanguage.php:1125 ../multilanguage.php:1131
+#: ../multilanguage.php:1137 ../multilanguage.php:2705
+#: ../multilanguage.php:2709 ../multilanguage.php:2713
 msgid "Drop-down list"
 msgstr "Rozbalovací seznam"
 
 #: ../includes/class-mltlngg-settings.php:99
-#: ../includes/class-mltlngg-settings.php:109 ../multilanguage.php:1020
-#: ../multilanguage.php:1022 ../multilanguage.php:1114
-#: ../multilanguage.php:1126 ../multilanguage.php:2689
-#: ../multilanguage.php:2697
+#: ../includes/class-mltlngg-settings.php:109 ../multilanguage.php:1031
+#: ../multilanguage.php:1033 ../multilanguage.php:1125
+#: ../multilanguage.php:1137 ../multilanguage.php:2705
+#: ../multilanguage.php:2713
 msgid "flag"
 msgstr "vlajka"
 
 #: ../includes/class-mltlngg-settings.php:99
-#: ../includes/class-mltlngg-settings.php:104 ../multilanguage.php:1017
-#: ../multilanguage.php:1020 ../multilanguage.php:1021
-#: ../multilanguage.php:1114 ../multilanguage.php:1120
-#: ../multilanguage.php:2689 ../multilanguage.php:2693
+#: ../includes/class-mltlngg-settings.php:104 ../multilanguage.php:1028
+#: ../multilanguage.php:1031 ../multilanguage.php:1032
+#: ../multilanguage.php:1125 ../multilanguage.php:1131
+#: ../multilanguage.php:2705 ../multilanguage.php:2709
 msgid "title"
 msgstr "titulek"
 
 #: ../includes/class-mltlngg-settings.php:114 ../includes/table.php:39
-#: ../multilanguage.php:1017 ../multilanguage.php:1019
-#: ../multilanguage.php:1131 ../multilanguage.php:2701
+#: ../multilanguage.php:1028 ../multilanguage.php:1030
+#: ../multilanguage.php:1142 ../multilanguage.php:2717
 msgid "Flag"
 msgstr "Vlajka"
 
 #: ../includes/class-mltlngg-settings.php:121
 #: ../includes/class-mltlngg-settings.php:130
-#: ../includes/class-mltlngg-settings.php:139 ../multilanguage.php:1138
-#: ../multilanguage.php:1147 ../multilanguage.php:1156
-#: ../multilanguage.php:2705 ../multilanguage.php:2709
-#: ../multilanguage.php:2713
+#: ../includes/class-mltlngg-settings.php:139 ../multilanguage.php:1149
+#: ../multilanguage.php:1158 ../multilanguage.php:1167
+#: ../multilanguage.php:2721 ../multilanguage.php:2725
+#: ../multilanguage.php:2729
 msgid "Google Auto Translate"
-msgstr ""
+msgstr "Google Auto Translate"
 
-#: ../includes/class-mltlngg-settings.php:122 ../multilanguage.php:1139
-#: ../multilanguage.php:2705
-#, fuzzy
+#: ../includes/class-mltlngg-settings.php:122 ../multilanguage.php:1150
+#: ../multilanguage.php:2721
 msgid "drop-down only"
-msgstr "Rozbalovací seznam"
+msgstr "Pouze rozbalovací seznam"
 
-#: ../includes/class-mltlngg-settings.php:131 ../multilanguage.php:1148
-#: ../multilanguage.php:2709
-#, fuzzy
+#: ../includes/class-mltlngg-settings.php:131 ../multilanguage.php:1159
+#: ../multilanguage.php:2725
 msgid "horizontal"
-msgstr "Horizontálně"
+msgstr "vodorovné"
 
-#: ../includes/class-mltlngg-settings.php:140 ../multilanguage.php:1157
-#: ../multilanguage.php:2713
-#, fuzzy
+#: ../includes/class-mltlngg-settings.php:140 ../multilanguage.php:1168
+#: ../multilanguage.php:2729
 msgid "vertical"
-msgstr "Vertikálně"
+msgstr "svislé"
 
 #: ../includes/class-mltlngg-settings.php:150
 #: ../includes/class-mltlngg-settings.php:272 ../includes/table.php:413
@@ -157,16 +153,16 @@ msgstr ""
 
 #: ../includes/class-mltlngg-settings.php:209
 msgid "Open Graph Markup"
-msgstr ""
+msgstr "Open Graph Markup"
 
 #: ../includes/class-mltlngg-settings.php:214
 #, php-format
 msgid "Enable to add the ability to translate %s."
-msgstr ""
+msgstr "Povolit přidání možnosti přeložit %s."
 
 #: ../includes/class-mltlngg-settings.php:215
-msgid "open graf meta tags"
-msgstr ""
+msgid "open graph meta tags"
+msgstr "Open Graph meta štítky"
 
 #: ../includes/class-mltlngg-settings.php:217
 #, php-format
@@ -174,11 +170,13 @@ msgid ""
 "This option automatically adds metadata for each language in the %s section. "
 "Facebook and other social networks use this data when your pages are shared."
 msgstr ""
+"Tato možnost automaticky přidá metadata pro jednotlivé jazyky v sekci %s. "
+"Facebook a další sociální sítě používají tato data, když jsou vaše stránky "
+"sdíleny."
 
 #: ../includes/class-mltlngg-settings.php:222
-#, fuzzy
 msgid "Hreflang Attribute"
-msgstr "hreflang Atribut"
+msgstr "Atribut hreflang"
 
 #: ../includes/class-mltlngg-settings.php:224
 #, php-format
@@ -204,7 +202,6 @@ msgid "Manual (Save Changes button)"
 msgstr "Manuální (tlačítko Uložit změny)"
 
 #: ../includes/class-mltlngg-settings.php:242
-#, fuzzy
 msgid ""
 "Enable Manual mode if you have some problems with translations saving using "
 "Auto mode."
@@ -295,7 +292,7 @@ msgstr "jazyk"
 msgid "languages"
 msgstr "jazyky"
 
-#: ../includes/table.php:37 ../multilanguage.php:1018
+#: ../includes/table.php:37 ../multilanguage.php:1029
 msgid "Title"
 msgstr "Název"
 
@@ -307,8 +304,7 @@ msgstr "Název v URL"
 msgid "Order"
 msgstr "Pořadí"
 
-#: ../includes/table.php:58 ../includes/table.php:372
-#: ../includes/table.php:382
+#: ../includes/table.php:58 ../includes/table.php:372 ../includes/table.php:382
 msgid "Default"
 msgstr "Výchozí"
 
@@ -351,17 +347,15 @@ msgid "Error: Invalid file type."
 msgstr "Chyba: Neplatný typ souboru."
 
 #: ../includes/table.php:333
-#, fuzzy
 msgid "Error: Failed to move file."
 msgstr "Chyba: Soubor se nepodařilo přesunout."
 
 #: ../includes/table.php:336
-#, fuzzy, php-format
+#, php-format
 msgid "Error: Image width and height should not exceed %s."
 msgstr "Chyba: šířka a výška obrázku by neměly přesáhnout %s."
 
 #: ../includes/table.php:340
-#, fuzzy
 msgid "Uploading Error: Check image properties."
 msgstr "Chyba nahrávání: zkontrolujte vlastnosti obrázku."
 
@@ -423,37 +417,31 @@ msgid "Disabled"
 msgstr "Zakázán"
 
 #: ../includes/table.php:527
-#, fuzzy
 msgctxt "plural"
 msgid "enabled"
 msgstr "povoleny"
 
 #: ../includes/table.php:527
-#, fuzzy
 msgctxt "singular"
 msgid "enabled"
 msgstr "povoleny"
 
 #: ../includes/table.php:544
-#, fuzzy
 msgctxt "plural"
 msgid "disabled"
 msgstr "zakázány"
 
 #: ../includes/table.php:544
-#, fuzzy
 msgctxt "singular"
 msgid "disabled"
 msgstr "zakázány"
 
 #: ../includes/table.php:560
-#, fuzzy
 msgctxt "plural"
 msgid "deleted"
 msgstr "smazány"
 
 #: ../includes/table.php:560
-#, fuzzy
 msgctxt "singular"
 msgid "deleted"
 msgstr "smazány"
@@ -476,16 +464,16 @@ msgstr "Žádný z vybraných jazyků nebyl %s"
 msgid "Choose a language"
 msgstr "Zvolte jazyk"
 
-#: ../includes/table.php:611 ../multilanguage.php:1360
+#: ../includes/table.php:611 ../multilanguage.php:1371
 msgid "Add Language"
 msgstr "Přidat jazyk"
 
-#: ../multilanguage.php:125 ../multilanguage.php:1026
-#: ../multilanguage.php:2509 ../multilanguage.php:2512
+#: ../multilanguage.php:136 ../multilanguage.php:1037 ../multilanguage.php:2525
+#: ../multilanguage.php:2528
 msgid "Multilanguage switcher"
 msgstr "Multilanguage Přepínač jazyků"
 
-#: ../multilanguage.php:994
+#: ../multilanguage.php:1005
 msgid ""
 "Attention!!! The changes will not be saved because Title and Content fields "
 "are empty on the current tab! It is recommended to fill in at least one "
@@ -495,31 +483,29 @@ msgstr ""
 "Doporučujeme vyplnit alespoň jedno pole, nebo přejděte na záložku s poli, "
 "která jsou již vyplněná."
 
-#: ../multilanguage.php:995
-#, fuzzy
+#: ../multilanguage.php:1006
 msgid "Switching to another language will remove all unsaved. Save data?"
 msgstr ""
 "Přepnutím do jiného jazyka, dojde ke ztrátě všech neuložených dat. Uložit "
 "data?"
 
-#: ../multilanguage.php:1073
-#, fuzzy
+#: ../multilanguage.php:1084
 msgid "Content language switcher"
 msgstr "Přepínač jazyka obsahu"
 
-#: ../multilanguage.php:1105
+#: ../multilanguage.php:1116
 msgid "Localization"
 msgstr "Lokalizace"
 
-#: ../multilanguage.php:1108
+#: ../multilanguage.php:1119
 msgid "Title:"
 msgstr "Název:"
 
-#: ../multilanguage.php:1365
+#: ../multilanguage.php:1376
 msgid "Attention"
 msgstr "Upozornění"
 
-#: ../multilanguage.php:1365
+#: ../multilanguage.php:1376
 msgid ""
 "Please update the post before switching the language. Data is not saved "
 "automatically."
@@ -527,56 +513,43 @@ msgstr ""
 "Před přepnutím jazyka aktualizujte příspěvek. Data nejsou ukládána "
 "automaticky."
 
-#: ../multilanguage.php:1369
+#: ../multilanguage.php:1380
 msgid "Edit for language"
 msgstr "Úpravy pro jazyk"
 
-#: ../multilanguage.php:1627 ../multilanguage.php:1691
+#: ../multilanguage.php:1638 ../multilanguage.php:1702
 msgid "Translations"
 msgstr "Překlady"
 
-#: ../multilanguage.php:1826
+#: ../multilanguage.php:1837
 #, php-format
 msgid "Protected: %s"
 msgstr "Chráněné: %s"
 
-#: ../multilanguage.php:1829
+#: ../multilanguage.php:1840
 #, php-format
 msgid "Private: %s"
 msgstr "Soukromé: %s"
 
-#: ../multilanguage.php:2049 ../multilanguage.php:2607
+#: ../multilanguage.php:2060 ../multilanguage.php:2623
 msgid "(more&hellip;)"
 msgstr "(více&pomoc;)"
 
-#: ../multilanguage.php:2685
-#, fuzzy
+#: ../multilanguage.php:2701
 msgid "Select Switcher Type"
 msgstr "Vzhled přepínače jazyků"
 
-#: ../multilanguage.php:2757
+#: ../multilanguage.php:2773
 msgid "FAQ"
-msgstr "Často kladené otázky"
+msgstr ""
+"Časté dotazy <acronym title=\"Frequently asked questions\">(FAQ)</acronym>"
 
-#: ../multilanguage.php:2758
+#: ../multilanguage.php:2774
 msgid "Support"
 msgstr "Podpora"
 
+#~ msgid "open graf meta tags"
+#~ msgstr "Open Graph meta štítky"
+
 #~ msgid "hreflang Attribute"
 #~ msgstr "hreflang Atribut"
-
-#~ msgid "Error: check image width or height."
-#~ msgstr "Chyba: zkontrolujte šířku nebo výšku obrázku."
-
-#~ msgid ""
-#~ "Upload image with the maximum %s dimensions, JPG, JPEG or PNG formats "
-#~ "(maximum file size - %s)."
-#~ msgstr ""
-#~ "Nahrát obrázek s maximálními rozměry %s, JPG, JPEG nebo PNG (maximální "
-#~ "velikost souboru - %s)."
-
-#~ msgid "Wordpress Language"
-#~ msgstr "Jazyk WordPressu"
-
-#~ msgid "No one from selected languages has not been %s"
-#~ msgstr "Žádný z vybraných jazyků nebyl %s"
