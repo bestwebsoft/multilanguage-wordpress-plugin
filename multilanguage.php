@@ -6,12 +6,12 @@ Description: Translate WordPress website content to other languages manually. Cr
 Author: BestWebSoft
 Text Domain: multilanguage
 Domain Path: /languages
-Version: 1.3.1
+Version: 1.3.2
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
 
-/*  © Copyright 2017  BestWebSoft  ( https://support.bestwebsoft.com )
+/*  © Copyright 2018  BestWebSoft  ( https://support.bestwebsoft.com )
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -973,7 +973,7 @@ if ( ! function_exists( 'mltlngg_get_url_translated' ) ) {
 				false === strpos( $url, content_url() ) &&
 				false === strpos( $url, includes_url() )
 			) &&
-			count( $mltlngg_enabled_languages ) > 1 &&
+			count( ( array ) $mltlngg_enabled_languages ) > 1 &&
 			! ( mltlngg_is_admin() ) &&
 			false === strpos( $_SERVER['REQUEST_URI'], 'wp-login.php' ) &&
 			! ( $mltlngg_current_language === $mltlngg_options['default_language'] && $mltlngg_options['hide_link_slug'] ) &&
@@ -2910,7 +2910,7 @@ add_shortcode( 'multilanguage_switcher', 'mltlngg_get_switcher_block' );
 add_filter( 'home_url', 'mltlngg_get_url_translated' );
 
 /* Actions for page/post editor */
-add_action( 'wp_print_scripts', 'mltlngg_disable_autosave_editor_script', 100 );
+//add_action( 'wp_print_scripts', 'mltlngg_disable_autosave_editor_script', 100 );
 add_action( 'edit_form_top', 'mltlngg_showup_language_tabs_in_editor' );	/* Add languages tabs to post editor */
 add_filter( 'title_edit_pre', 'mltlngg_the_title_filter', 10, 2 );
 add_filter( 'excerpt_edit_pre', 'mltlngg_localize_excerpt', 10, 1 );

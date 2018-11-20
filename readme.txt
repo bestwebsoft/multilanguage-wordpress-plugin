@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
 Requires at least: 3.9
-Tested up to: 4.9.5
-Stable tag: 1.3.1
+Tested up to: 4.9.8
+Stable tag: 1.3.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -200,6 +200,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
+= V1.3.2 - 20.11.2018 =
+* Budfix : Plugin optimization has been completed.
+* PRO : Bug related to the custom fields was fixed.
+
 = V1.3.1 - 23.04.2018 =
 * Bugfix : The compatibility with WooCommerce has been improved.
 * Bugfix : The bug with paragraphs was fixed.
@@ -356,6 +360,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.3.2 =
+* Bugs fixed.
 
 = V1.3.1 =
 * Bugs fixed.

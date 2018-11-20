@@ -45,6 +45,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 			add_filter( get_parent_class( $this ) . '_additional_restore_options', array( $this, 'additional_restore_options' ) );
 			add_action( get_parent_class( $this ) . '_display_metabox', array( $this, 'display_metabox' ) );
 			add_action( get_parent_class( $this ) . '_additional_misc_options_affected', array( $this, 'additional_misc_options_affected' ) );
+			add_action( get_parent_class( $this ) . '_display_custom_messages', array( $this, 'display_custom_messages' ) );
 		}
 
 		/**
@@ -162,7 +163,9 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 									<fieldset class="mltlngg_slug_position">
 										<?php global $mltlngg_current_language;
 										$posts = get_posts( array( 'post_type' => 'page', 'posts_per_page' => 1 ) );
-										$url = get_permalink( $posts[0] );
+										if ( isset( $posts ) ) {
+											$url = get_permalink( $posts[0] );
+										}
 										$args = array(
 											'url'			=> $url,
 											'force'			=> 'display'
@@ -325,5 +328,14 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 				</div>
 			</div>
 		<?php }
+
+		public function display_custom_messages() { ?>
+			<noscript>
+				<div class="error below-h2">
+					<p><strong><?php _e( "Please enable JavaScript in your browser.", 'multilanguage' ); ?></strong></p>
+				</div>
+			</noscript>
+			<?php
+		}
 	}
 }

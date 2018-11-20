@@ -467,6 +467,23 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 				<?php _e( 'Languages', 'multilanguage' ); ?>
 				<a class="page-title-action add-new-h2 hide-if-no-js" href="#" id="mltlngg-add-lang-link"><?php _e( 'Add New', 'multilanguage' ); ?></a>
 			</h1>
+			<?php
+			// functionality for adding notice when user choose same order for two languages
+			$counter = 0;
+			$lang_order = array();
+			$array = array();
+			$array_to_search = $mltlngg_options['list_of_languages'];
+			foreach ( $array_to_search as $array_key => $array_value ) {
+				$counter++;
+				$lang_order[] = $array_value['priority'];
+			}
+			$array = range( 0, $counter );
+			$result = array_diff( (array)$array, $lang_order  );
+
+			?>
+			<?php if ( ! empty( $result )  ) { ?>
+				<div class="notice notice-warning below-h2"><p><?php echo __( 'You have the same order for two or more languages.', 'multilanguage' ); ?></p></div>
+			<?php } ?>
 			<?php if ( ! empty( $error ) ) { ?>
 				<div class="error below-h2"><p><?php echo $error; ?></p></div>
 			<?php } elseif ( ! empty( $message ) ) { ?>
@@ -593,7 +610,7 @@ if ( ! function_exists( 'mltlngg_add_language_form' ) ) {
 					</th>
 					<td>
 						<select name="mltlngg_lang_list" id="mltlngg_lang_list">
-							<option value=""></option>
+							<option value="" selected disabled hidden><?php echo __( 'Choose language from list below', 'multilanguage' ) ;?></option>
 							<?php foreach ( $mltlngg_languages as $lg ) {
 								if ( ! in_array( $lg[1], $list_of_added_languages ) ) { /* Do not display option if the language was added */
 									printf(
