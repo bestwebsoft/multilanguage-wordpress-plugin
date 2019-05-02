@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
 Requires at least: 3.9
-Tested up to: 4.9.8
-Stable tag: 1.3.2
+Tested up to: 5.1.1
+Stable tag: 1.3.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -71,6 +71,7 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 > 	* Widget titles
 > 	* Website title
 > 	* Website tagline
+> * Compatible with Elementor Page Builder [NEW]
 > * Change language slug position in the website URL
 > * Create separate menus for different languages
 > * Display/hide widgets for different languages
@@ -199,6 +200,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 11. Adding language switcher into site menu.
 
 == Changelog ==
+
+= V1.3.3 - 02.05.2019 =
+* PRO : The compatibility with page builder Elementor has been added.
+* Update : All functionality for WordPress 5.1.1 has been updated.
 
 = V1.3.2 - 20.11.2018 =
 * Budfix : Plugin optimization has been completed.
@@ -360,6 +365,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.3.3 =
+* New features added.
+* Bugs fixed.
 
 = V1.3.2 =
 * Bugs fixed.

@@ -77,6 +77,7 @@
 <li>Website tagline</li>
 </ul>
 </li>
+<li>Compatible with Elementor Page Builder [NEW]</li>
 <li>Change language slug position in the website URL</li>
 <li>Create separate menus for different languages</li>
 <li>Display/hide widgets for different languages</li>
