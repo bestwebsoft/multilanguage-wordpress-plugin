@@ -6,7 +6,7 @@ Description: Translate WordPress website content to other languages manually. Cr
 Author: BestWebSoft
 Text Domain: multilanguage
 Domain Path: /languages
-Version: 1.3.3
+Version: 1.3.4
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */

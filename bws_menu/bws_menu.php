@@ -1,7 +1,7 @@
 <?php
 /*
 * Function for displaying BestWebSoft menu
-* Version: 2.1.7
+* Version: 2.2.0
 */
 
 if ( ! function_exists ( 'bws_admin_enqueue_scripts' ) )
@@ -734,7 +734,9 @@ if ( ! function_exists( 'bws_get_banner_array' ) ) {
 			array( 'cntctfrm_for_ctfrmtdb_hide_banner_on_plugin_page', 'contact-form-plugin/contact_form.php', '3.62' ),
             array( 'bwscrrntl_hide_banner_on_plugin_page', 'bws-car-rental/bws-car-rental.php', '0.0.1' ),
 			array( 'rtng_hide_banner_on_plugin_page', 'rating-bws/rating-bws.php', '1.0.0' ),
-			array( 'prflxtrflds_hide_banner_on_plugin_page', 'profile-extra-fields/profile-extra-fields.php', '1.1.3' )
+			array( 'prflxtrflds_hide_banner_on_plugin_page', 'profile-extra-fields/profile-extra-fields.php', '1.1.3' ),
+			array( 'psttcsv_hide_banner_on_plugin_page', 'post-to-csv/post-to-csv.php', '1.3.4' ),
+			array( 'cstmdmnpg_hide_banner_on_plugin_page', 'custom-admin-page/custom-admin-page.php', '1.0.0' )
 		);
 	}
 }

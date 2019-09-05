@@ -2,9 +2,9 @@
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
-Requires at least: 3.9
-Tested up to: 5.1.1
-Stable tag: 1.3.3
+Requires at least: 4.0
+Tested up to: 5.2.2
+Stable tag: 1.3.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -201,6 +201,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
+= V1.3.4 - 04.09.2019 =
+* Update: The deactivation feedback has been changed. Misleading buttons have been removed.
+
 = V1.3.3 - 02.05.2019 =
 * PRO : The compatibility with page builder Elementor has been added.
 * Update : All functionality for WordPress 5.1.1 has been updated.
@@ -365,6 +368,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.3.4 =
+* Usability improved
 
 = V1.3.3 =
 * New features added.
