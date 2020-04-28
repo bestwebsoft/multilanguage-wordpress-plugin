@@ -179,7 +179,47 @@ if ( ! function_exists ( 'bws_plugin_update_row' ) ) {
 
 if ( ! function_exists( 'bws_admin_notices' ) ) {
 	function bws_admin_notices() {
-		global $bws_versions_notice_array, $bws_plugin_banner_to_settings, $bstwbsftwppdtplgns_options;
+		global $bws_versions_notice_array, $bws_plugin_banner_to_settings, $bstwbsftwppdtplgns_options, $bws_plugin_banner_go_pro, $bstwbsftwppdtplgns_banner_array, $bws_plugin_banner_timeout;
+
+		/* bws_plugin_banner_go_pro */
+		if ( ! empty( $bws_plugin_banner_go_pro ) ) {
+			foreach ( $bstwbsftwppdtplgns_banner_array as $value ) {
+				if ( isset( $bws_plugin_banner_go_pro[ $value[0] ] ) && ! isset( $_COOKIE[ $value[0] ] ) ) {
+					$single_banner_value = $bws_plugin_banner_go_pro[ $value[0] ]; ?>
+					<div class="updated" style="padding: 0; margin: 0; border: none; background: none;">
+						<div class="<?php echo $single_banner_value['prefix']; ?>_message bws_banner_on_plugin_page bws_go_pro_banner" style="display: none;">
+							<button class="<?php echo $single_banner_value['prefix']; ?>_close_icon close_icon notice-dismiss bws_hide_settings_notice" title="<?php _e( 'Close notice', 'bestwebsoft' ); ?>"></button>
+							<div class="icon">
+								<img title="" src="<?php echo esc_attr( $single_banner_value['banner_url'] ); ?>" alt="" />
+							</div>
+							<div class="text">
+								<?php _e( 'It’s time to upgrade your', 'bestwebsoft' ); ?> <strong><?php echo $single_banner_value['plugin_info']['Name']; ?> plugin</strong> <?php _e( 'to', 'bestwebsoft' ); ?> <strong>Pro</strong> <?php _e( 'version!', 'bestwebsoft' ); ?><br />
+								<span><?php _e( 'Extend standard plugin functionality with new great options.', 'bestwebsoft' ); ?></span>
+							</div>
+							<div class="button_div">
+								<a class="button" target="_blank" href="<?php echo $single_banner_value['bws_link']; ?>"><?php _e( 'Learn More', 'bestwebsoft' ); ?></a>
+							</div>
+						</div>
+					</div>
+					<?php break;
+				}
+			}
+		}
+
+		/* $bws_plugin_banner_timeout */
+		if ( ! empty( $bws_plugin_banner_timeout ) ) {
+			foreach ( $bws_plugin_banner_timeout as $banner_value ) { ?>
+				<div class="updated" style="padding: 0; margin: 0; border: none; background: none;">
+					<div class="<?php echo $banner_value['prefix']; ?>_message_timeout bws_banner_on_plugin_page bws_banner_timeout" style="display:none;">
+						<button class="<?php echo $banner_value['prefix']; ?>_close_icon close_icon notice-dismiss bws_hide_settings_notice" title="<?php _e( 'Close notice', 'bestwebsoft' ); ?>"></button>
+						<div class="icon">
+							<img title="" src="<?php echo esc_attr( $banner_value['banner_url'] ); ?>" alt="" />
+						</div>
+						<div class="text"><?php printf( __( "Your license key for %s expires on %s and you won't be granted TOP-PRIORITY SUPPORT or UPDATES.", 'bestwebsoft' ), '<strong>' . $banner_value['plugin_name'] . '</strong>', $bstwbsftwppdtplgns_options['time_out'][ $banner_value['plugin_key'] ] ); ?> <a target="_new" href="https://support.bestwebsoft.com/entries/53487136"><?php _e( "Learn more", 'bestwebsoft' ); ?></a></div>
+					</div>
+				</div>
+			<?php }
+		}
 
 		/*  versions notice */
 		if ( ! empty( $bws_versions_notice_array ) ) {
@@ -285,111 +325,51 @@ if ( ! function_exists( 'bws_admin_notices' ) ) {
 	}
 }
 
-if ( ! function_exists( 'bws_plugin_banner' ) ) {
-	function bws_plugin_banner( $plugin_info, $this_banner_prefix, $link_slug, $link_key, $link_pn, $banner_url_or_slug ) {
-		global $wp_version, $bstwbsftwppdtplgns_cookie_add, $bstwbsftwppdtplgns_banner_array;
+if ( ! function_exists( 'bws_plugin_banner_go_pro' ) ) {
+	function bws_plugin_banner_go_pro( $plugin_options, $plugin_info, $this_banner_prefix, $bws_link_slug, $link_key, $link_pn, $banner_url_or_slug ) {
+		global $bws_plugin_banner_go_pro, $wp_version, $bstwbsftwppdtplgns_banner_array;
+
+		if ( ! isset( $plugin_options['first_install'] ) || strtotime( '-1 week' ) < $plugin_options['first_install'] )
+			return;
+
+		$bws_link = esc_url( 'https://bestwebsoft.com/products/wordpress/plugins/' . $bws_link_slug . '/?k=' . $link_key . '&pn=' . $link_pn . '&v=' . $plugin_info["Version"] . '&wp_v=' . $wp_version );
+
+		if ( false == strrpos( $banner_url_or_slug, '/' ) ) {
+			$banner_url_or_slug = '//ps.w.org/' . $banner_url_or_slug . '/assets/icon-128x128.png';
+		}
+
+		$bws_plugin_banner_go_pro[ $this_banner_prefix . '_hide_banner_on_plugin_page' ] = array(
+			'plugin_info'	=> $plugin_info,
+			'prefix'		=> $this_banner_prefix,
+			'bws_link'		=> $bws_link,
+			'banner_url'	=> $banner_url_or_slug
+		);
 
 		if ( empty( $bstwbsftwppdtplgns_banner_array ) ) {
 			if ( ! function_exists( 'bws_get_banner_array' ) )
 				require_once( dirname( __FILE__ ) . '/bws_menu.php' );
 			bws_get_banner_array();
 		}
-
-		if ( false == strrpos( $banner_url_or_slug, '/' ) ) {
-			$banner_url_or_slug = '//ps.w.org/' . $banner_url_or_slug . '/assets/icon-128x128.png';
-		}
-
-		if ( ! function_exists( 'is_plugin_active' ) )
-			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-
-		$all_plugins = get_plugins();
-
-		$this_banner = $this_banner_prefix . '_hide_banner_on_plugin_page';
-		foreach ( $bstwbsftwppdtplgns_banner_array as $key => $value ) {
-			if ( $this_banner == $value[0] ) {
-				if ( ! isset( $bstwbsftwppdtplgns_cookie_add ) ) {
-					echo '<script type="text/javascript" src="' . bws_menu_url( 'js/c_o_o_k_i_e.js' ) . '"></script>';
-					$bstwbsftwppdtplgns_cookie_add = true;
-				} ?>
-				<script type="text/javascript">
-					(function($) {
-						$(document).ready( function() {
-							var hide_message = $.cookie( '<?php echo $this_banner_prefix; ?>_hide_banner_on_plugin_page' );
-							if ( hide_message == "true" ) {
-								$( ".<?php echo $this_banner_prefix; ?>_message" ).css( "display", "none" );
-							} else {
-								$( ".<?php echo $this_banner_prefix; ?>_message" ).css( "display", "block" );
-							};
-							$( ".<?php echo $this_banner_prefix; ?>_close_icon" ).click( function() {
-								$( ".<?php echo $this_banner_prefix; ?>_message" ).css( "display", "none" );
-								$.cookie( "<?php echo $this_banner_prefix; ?>_hide_banner_on_plugin_page", "true", { expires: 32 } );
-							});
-						});
-					})(jQuery);
-				</script>
-				<div class="updated" style="padding: 0; margin: 0; border: none; background: none;">
-					<div class="<?php echo $this_banner_prefix; ?>_message bws_banner_on_plugin_page bws_go_pro_banner" style="display: none;">
-						<button class="<?php echo $this_banner_prefix; ?>_close_icon close_icon notice-dismiss bws_hide_settings_notice" title="<?php _e( 'Close notice', 'bestwebsoft' ); ?>"></button>
-						<div class="icon">
-							<img title="" src="<?php echo esc_attr( $banner_url_or_slug ); ?>" alt="" />
-						</div>
-						<div class="text">
-							<?php _e( 'It’s time to upgrade your', 'bestwebsoft' ); ?> <strong><?php echo $plugin_info['Name']; ?> plugin</strong> <?php _e( 'to', 'bestwebsoft' ); ?> <strong>Pro</strong> <?php _e( 'version!', 'bestwebsoft' ); ?><br />
-							<span><?php _e( 'Extend standard plugin functionality with new great options.', 'bestwebsoft' ); ?></span>
-						</div>
-						<div class="button_div">
-							<a class="button" target="_blank" href="<?php echo esc_url( 'https://bestwebsoft.com/products/wordpress/plugins/' . $link_slug . '/?k=' . $link_key . '&pn=' . $link_pn . '&v=' . $plugin_info["Version"] . '&wp_v=' . $wp_version ); ?>"><?php _e( 'Learn More', 'bestwebsoft' ); ?></a>
-						</div>
-					</div>
-				</div>
-				<?php break;
-			}
-			if ( isset( $all_plugins[ $value[1] ] ) && $all_plugins[ $value[1] ]["Version"] >= $value[2] && is_plugin_active( $value[1] ) && ! isset( $_COOKIE[ $value[0] ] ) ) {
-				break;
-			}
-		}
 	}
 }
 
-if ( ! function_exists ( 'bws_plugin_banner_timeout' ) ) {
-	function bws_plugin_banner_timeout( $plugin_key, $plugin_prefix, $plugin_name, $banner_url_or_slug = false ) {
-		global $bstwbsftwppdtplgns_options, $bstwbsftwppdtplgns_cookie_add;
-		if ( isset( $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] ) && ( strtotime( $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] ) < strtotime( date("m/d/Y") . '+1 month' ) ) && ( strtotime( $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] ) > strtotime( date("m/d/Y") ) ) ) {
+if ( ! function_exists( 'bws_add_plugin_banner_timeout' ) ) {
+	function bws_add_plugin_banner_timeout( $plugin_key, $plugin_prefix, $plugin_name, $banner_url_or_slug ) {
+		global $bws_plugin_banner_timeout;
 
-			if ( $banner_url_or_slug && false == strrpos( $banner_url_or_slug, '/' ) ) {
+		if ( isset( $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] ) && ( strtotime( $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] ) < strtotime( date("m/d/Y") . '+1 month' ) ) && ( strtotime( $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] ) > strtotime( date("m/d/Y") ) ) ) {			
+
+			if ( false == strrpos( $banner_url_or_slug, '/' ) ) {
 				$banner_url_or_slug = '//ps.w.org/' . $banner_url_or_slug . '/assets/icon-128x128.png';
 			}
 
-			if ( ! isset( $bstwbsftwppdtplgns_cookie_add ) ) {
-				echo '<script type="text/javascript" src="' . bws_menu_url( 'js/c_o_o_k_i_e.js' ) . '"></script>';
-				$bstwbsftwppdtplgns_cookie_add = true;
-			} ?>
-			<script type="text/javascript">
-				(function($) {
-					$(document).ready( function() {
-						var hide_message = $.cookie( "<?php echo $plugin_prefix; ?>_timeout_hide_banner_on_plugin_page" );
-						if ( hide_message == "true" ) {
-							$( ".<?php echo $plugin_prefix; ?>_message_timeout" ).css( "display", "none" );
-						} else {
-							$( ".<?php echo $plugin_prefix; ?>_message_timeout" ).css( "display", "block" );
-						}
-						$( ".<?php echo $plugin_prefix; ?>_close_icon" ).click( function() {
-							$( ".<?php echo $plugin_prefix; ?>_message_timeout" ).css( "display", "none" );
-							$.cookie( "<?php echo $plugin_prefix; ?>_timeout_hide_banner_on_plugin_page", "true", { expires: 30 } );
-						});
-					});
-				})(jQuery);
-			</script>
-			<div class="updated" style="padding: 0; margin: 0; border: none; background: none;">
-				<div class="<?php echo $plugin_prefix; ?>_message_timeout bws_banner_on_plugin_page bws_banner_timeout" style="display:none;">
-					<button class="<?php echo $plugin_prefix; ?>_close_icon close_icon notice-dismiss bws_hide_settings_notice" title="<?php _e( 'Close notice', 'bestwebsoft' ); ?>"></button>
-					<div class="icon">
-						<img title="" src="<?php echo esc_attr( $banner_url_or_slug ); ?>" alt="" />
-					</div>
-					<div class="text"><?php printf( __( "Your license key for %s expires on %s and you won't be granted TOP-PRIORITY SUPPORT or UPDATES.", 'bestwebsoft' ), '<strong>' . $plugin_name . '</strong>', $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] ); ?> <a target="_new" href="https://support.bestwebsoft.com/entries/53487136"><?php _e( "Learn more", 'bestwebsoft' ); ?></a></div>
-				</div>
-			</div>
-		<?php }
+			$bws_plugin_banner_timeout[] = array(
+				'plugin_key'	=> $plugin_key,
+				'prefix'		=> $plugin_prefix,
+				'plugin_name'	=> $plugin_name,
+				'banner_url'	=> $banner_url_or_slug
+			);
+		}
 	}
 }
 
@@ -555,8 +535,8 @@ if ( ! function_exists ( 'bws_plugins_admin_init' ) ) {
 			* @deprecated 1.9.8 (15.12.2016)
 			*/
 			$is_main_page = in_array( $_GET['page'], array( 'bws_panel', 'bws_themes', 'bws_system_status' ) );
-			$page = esc_attr( $_GET['page'] );
-			$tab = isset( $_GET['tab'] ) ? esc_attr( $_GET['tab'] ) : '';
+			$page = wp_unslash( $_GET['page'] );
+			$tab = isset( $_GET['tab'] ) ? wp_unslash( $_GET['tab'] ) : '';
 
 			if ( $is_main_page )
 				$current_page = 'admin.php?page=' . $page;
@@ -564,7 +544,7 @@ if ( ! function_exists ( 'bws_plugins_admin_init' ) ) {
 				$current_page = isset( $_GET['tab'] ) ? 'admin.php?page=' . $page . '&tab=' . $tab : 'admin.php?page=' . $page;
 			/*end deprecated */
 
-			wp_redirect( self_admin_url( $current_page . '&activate=true' ) );
+			wp_redirect( self_admin_url( esc_url( $current_page . '&activate=true' ) ) );
 			exit();
 		}
 
@@ -579,11 +559,13 @@ if ( ! function_exists ( 'bws_plugins_admin_init' ) ) {
 
 if ( ! function_exists ( 'bws_admin_enqueue_scripts' ) ) {
 	function bws_admin_enqueue_scripts() {
-		global $wp_scripts, $hook_suffix;
+		global $wp_scripts, $hook_suffix,
+			$post_type,
+			$bws_plugin_banner_go_pro, $bws_plugin_banner_timeout, $bstwbsftwppdtplgns_banner_array,
+			$bws_shortcode_list;
 
-		$jquery_version = isset( $wp_scripts->registered['jquery-ui-core']->ver ) ? $wp_scripts->registered['jquery-ui-core']->ver : '1.12.1';
-
-		wp_enqueue_style( 'jquery-ui-style', '//code.jquery.com/ui/' . $jquery_version . '/themes/smoothness/jquery-ui.min.css', array(), $jquery_version );
+		$jquery_ui_version = isset( $wp_scripts->registered['jquery-ui-core']->ver ) ? $wp_scripts->registered['jquery-ui-core']->ver : '1.12.1';
+		wp_enqueue_style( 'jquery-ui-style', bws_menu_url( 'css/jquery-ui-styles/' . $jquery_ui_version . '/jquery-ui.css' ) );
 		wp_enqueue_style( 'bws-admin-css', bws_menu_url( 'css/general_style.css' ) );
 		wp_enqueue_script( 'bws-admin-scripts', bws_menu_url( 'js/general_script.js' ), array( 'jquery', 'jquery-ui-tooltip' ) );
 
@@ -595,8 +577,105 @@ if ( ! function_exists ( 'bws_admin_enqueue_scripts' ) ) {
 			wp_enqueue_script( 'plugin-install' );
 		}
 
-		if ( 'plugins.php' == $hook_suffix && ! defined( 'DOING_AJAX' ) ) {
-			wp_enqueue_style( 'bws-modal-css', bws_menu_url( 'css/modal.css' ) );
+		if ( 'plugins.php' == $hook_suffix ) {
+			if ( ! empty( $bws_plugin_banner_go_pro ) || ! empty( $bws_plugin_banner_timeout ) ) {
+				wp_enqueue_script( 'bws_menu_cookie', bws_menu_url( 'js/c_o_o_k_i_e.js' ) );
+
+				if ( ! empty( $bws_plugin_banner_go_pro ) ) {
+
+					foreach ( $bstwbsftwppdtplgns_banner_array as $value ) {
+						if ( isset( $bws_plugin_banner_go_pro[ $value[0] ] ) && ! isset( $_COOKIE[ $value[0] ] ) ) {
+							$prefix = $bws_plugin_banner_go_pro[ $value[0] ]['prefix'];
+
+							$script = "(function($) {
+								$(document).ready( function() {
+									var hide_message = $.cookie( '" . $prefix . "_hide_banner_on_plugin_page' );
+									if ( hide_message == 'true' ) {
+										$( '." . $prefix . "_message' ).css( 'display', 'none' );
+									} else {
+										$( '." . $prefix . "_message' ).css( 'display', 'block' );
+									};
+									$( '." . $prefix . "_close_icon' ).click( function() {
+										$( '." . $prefix . "_message' ).css( 'display', 'none' );
+										$.cookie( '" . $prefix . "_hide_banner_on_plugin_page', 'true', { expires: 32 } );
+									});
+								});
+							})(jQuery);";
+
+							wp_register_script( $prefix . '_hide_banner_on_plugin_page', '' );
+							wp_enqueue_script( $prefix . '_hide_banner_on_plugin_page' );
+							wp_add_inline_script( $prefix . '_hide_banner_on_plugin_page', sprintf( $script ) );
+							break;
+						}
+					}
+				}
+
+				if ( ! empty( $bws_plugin_banner_timeout ) ) {
+					$script = '(function($) {
+							$(document).ready( function() {';
+
+					foreach ( $bws_plugin_banner_timeout as $banner_value ) {
+						$script .= "var hide_message = $.cookie( '" . $banner_value['prefix'] . "_timeout_hide_banner_on_plugin_page' );
+							if ( hide_message == 'true' ) {
+								$( '." . $banner_value['prefix'] . "_message_timeout' ).css( 'display', 'none' );
+							} else {
+								$( '." . $banner_value['prefix'] . "_message_timeout' ).css( 'display', 'block' );
+							}
+							$( '." . $banner_value['prefix'] . "_close_icon' ).click( function() {
+								$( '." . $banner_value['prefix'] . "_message_timeout' ).css( 'display', 'none' );
+								$.cookie( '" . $banner_value['prefix'] . "_timeout_hide_banner_on_plugin_page', 'true', { expires: 30 } );
+							});";
+					}
+
+					$script .= "});
+						})(jQuery);";
+
+					wp_register_script( 'plugin_banner_timeout_hide', '' );
+					wp_enqueue_script( 'plugin_banner_timeout_hide' );
+					wp_add_inline_script( 'plugin_banner_timeout_hide', sprintf( $script ) );
+				}
+			}
+
+			if ( ! defined( 'DOING_AJAX' ) ) {
+				wp_enqueue_style( 'bws-modal-css', bws_menu_url( 'css/modal.css' ) );
+
+				bws_add_deactivation_feedback_dialog_box();
+			}
+		}
+
+		if ( ! empty( $bws_shortcode_list ) ) {
+			/* TinyMCE Shortcode Plugin */
+			$script = "var bws_shortcode_button = {
+					'label': '" . esc_attr__( "Add BWS Shortcode", "bestwebsoft" ) . "',
+					'title': '" . esc_attr__( "Add BWS Plugins Shortcode", "bestwebsoft" ) . "',
+					'function_name': [";
+						foreach ( $bws_shortcode_list as $value ) {
+							if ( isset( $value['js_function'] ) )
+								$script .= "'" . $value['js_function'] . "',";
+						}
+					$script .= "]
+				};";
+			wp_register_script( 'bws_shortcode_button', '' );
+			wp_enqueue_script( 'bws_shortcode_button' );
+			wp_add_inline_script( 'bws_shortcode_button', sprintf( $script ) );
+
+			/* TinyMCE Shortcode Plugin */
+			if ( isset( $post_type ) && in_array( $post_type, array( 'post', 'page' ) ) ) {
+				$tooltip_args = array(
+					'tooltip_id'	=> 'bws_shortcode_button_tooltip',
+					'css_selector' 	=> '.mce-bws_shortcode_button',
+					'actions' 		=> array(
+						'click' 	=> false,
+						'onload' 	=> true
+					),
+					'content' 		=> '<h3>' . __( 'Add shortcode', 'bestwebsoft' ) . '</h3><p>' . __( "Add BestWebSoft plugins' shortcodes using this button.", 'bestwebsoft' ) . '</p>',
+					'position' => array(
+						'edge' 		=> 'right'
+					),
+					'set_timeout' => 2000
+				);
+				bws_add_tooltip_in_admin( $tooltip_args );
+			}
 		}
 	}
 }
@@ -615,7 +694,6 @@ if ( ! function_exists( 'bws_enqueue_settings_scripts' ) ) {
 
 if ( ! function_exists ( 'bws_plugins_admin_head' ) ) {
 	function bws_plugins_admin_head() {
-		global $bws_shortcode_list, $wp_version, $post_type;
 		if ( isset( $_GET['page'] ) && $_GET['page'] == "bws_panel" ) { ?>
 			<noscript>
 				<style type="text/css">
@@ -625,79 +703,26 @@ if ( ! function_exists ( 'bws_plugins_admin_head' ) ) {
 				</style>
 			</noscript>
 		<?php }
-		if ( 4.2 > $wp_version ) { ?>
-			<style type="text/css">
-				.bws_hide_settings_notice,
-				.bws_hide_premium_options {
-					width: 11px;
-					height: 11px;
-					border: none;
-					background: url("<?php echo bws_menu_url( 'images/close_banner.png' ); ?>") no-repeat center center;
-					box-shadow: none;
-					float: right;
-					margin: 8px;
-				}
-				.bws_hide_settings_notice:hover,
-				.bws_hide_premium_options:hover {
-					cursor: pointer;
-				}
-				.bws_hide_premium_options {
-					position: relative;
-				}
-			</style>
-		<?php }
-		if ( ! empty( $bws_shortcode_list ) ) { ?>
-			<!-- TinyMCE Shortcode Plugin -->
-			<script type='text/javascript'>
-				var bws_shortcode_button = {
-					'label': '<?php esc_attr_e( "Add BWS Shortcode", "bestwebsoft" ); ?>',
-					'title': '<?php esc_attr_e( "Add BWS Plugins Shortcode", "bestwebsoft" ); ?>',
-					'function_name': [
-						<?php foreach ( $bws_shortcode_list as $key => $value ) {
-							if ( isset( $value['js_function'] ) )
-								echo "'" . $value['js_function'] . "',";
-						} ?>
-					],
-					'wp_version' : '<?php echo $wp_version; ?>'
-				};
-			</script>
-			<!-- TinyMCE Shortcode Plugin -->
-			<?php if ( isset( $post_type ) && in_array( $post_type, array( 'post', 'page' ) ) ) {
-				$tooltip_args = array(
-					'tooltip_id'	=> 'bws_shortcode_button_tooltip',
-					'css_selector' 	=> '.mce-bws_shortcode_button',
-					'actions' 		=> array(
-						'click' 	=> false,
-						'onload' 	=> true
-					),
-					'content' 		=> '<h3>' . __( 'Add shortcode', 'bestwebsoft' ) . '</h3><p>' . __( "Add BestWebSoft plugins' shortcodes using this button.", 'bestwebsoft' ) . '</p>',
-					'position' => array(
-						'edge' 		=> 'right'
-					),
-					'set_timeout' => 2000
-				);
-				bws_add_tooltip_in_admin( $tooltip_args );
-			}
-		}
     }
 }
 
 if ( ! function_exists ( 'bws_plugins_admin_footer' ) ) {
 	function bws_plugins_admin_footer() {
-		global $hook_suffix;
-
 		bws_shortcode_media_button_popup();
-
-		if ( 'plugins.php' == $hook_suffix && ! defined( 'DOING_AJAX' ) ) {
-			bws_add_deactivation_feedback_dialog_box();
-		}
 	}
 }
 
 if ( ! function_exists ( 'bws_plugins_include_codemirror' ) ) {
 	function bws_plugins_include_codemirror() {
-		wp_enqueue_style( 'codemirror.css', bws_menu_url( 'css/codemirror.css' ) );
-		wp_enqueue_script( 'codemirror.js', bws_menu_url( 'js/codemirror.js' ), array( 'jquery' ) );
+		global $wp_version;
+		if ( version_compare( $wp_version, '4.9.0',  '>=' ) ) {
+			wp_enqueue_style( 'wp-codemirror' );
+			wp_enqueue_script( 'wp-codemirror' );
+        } else {
+			wp_enqueue_style( 'codemirror.css', bws_menu_url( 'css/codemirror.css' ) );
+			wp_enqueue_script( 'codemirror.js', bws_menu_url( 'js/codemirror.js' ), array( 'jquery' ) );
+        }
+
     }
 }
 
@@ -715,6 +740,8 @@ if ( ! class_exists( 'BWS_admin_tooltip' ) ) {
 		private $tooltip_args;
 
 		public function __construct( $tooltip_args ) {
+			global $bstwbsftwppdtplgns_tooltip_script_add;
+
 			/* Default arguments */
 			$tooltip_args_default = array(
 				'tooltip_id'	=> false,
@@ -791,27 +818,21 @@ if ( ! class_exists( 'BWS_admin_tooltip' ) ) {
 			wp_enqueue_style( 'wp-pointer' );
 			wp_enqueue_script( 'wp-pointer' );
 			/* add script that displays our tooltip */
-			add_action( 'admin_print_footer_scripts', array( $this, 'add_scripts' ) );
-		}
-
-		/**
-		 * Display tooltip
-		 */
-		public function add_scripts() {
-			global $bstwbsftwppdtplgns_tooltip_script_add;
 			if ( ! isset( $bstwbsftwppdtplgns_tooltip_script_add ) ) {
-				echo '<script type="text/javascript" src="' . bws_menu_url( 'js/bws_tooltip.js' ) . '"></script>';
+				wp_enqueue_script( 'bws-tooltip-script', bws_menu_url( 'js/bws_tooltip.js' ) );
 				$bstwbsftwppdtplgns_tooltip_script_add = true;
 			}
-			$tooltip_args = $this->tooltip_args; ?>
-			<script type="text/javascript">
-				(function($) {
+			$tooltip_args = $this->tooltip_args;
+
+			$script = "(function($) {
 					$(document).ready( function() {
-						$.bwsTooltip( <?php echo json_encode( $tooltip_args ); ?> );
+						$.bwsTooltip( " . json_encode( $tooltip_args ) . " );
 					})
-				})(jQuery);
-			</script>
-		<?php }
+				})(jQuery);";
+			wp_register_script( 'bws-tooltip-script-single-' . $this->tooltip_args['tooltip_id'], '' );
+			wp_enqueue_script( 'bws-tooltip-script-single-' . $this->tooltip_args['tooltip_id'] );
+			wp_add_inline_script( 'bws-tooltip-script-single-' . $this->tooltip_args['tooltip_id'], sprintf( $script ) );
+		}
 	}
 }
 
@@ -858,7 +879,7 @@ if ( ! function_exists( 'bws_register_buttons' ) ) {
 /* Generate inline content for the popup window when the "bws shortcode" button is clicked */
 if ( ! function_exists( 'bws_shortcode_media_button_popup' ) ) {
 	function bws_shortcode_media_button_popup() {
-		global $bws_shortcode_list, $wp_version;
+		global $bws_shortcode_list;
 
 		if ( ! empty( $bws_shortcode_list ) ) { ?>
 			<div id="bws_shortcode_popup" style="display:none;">
@@ -929,7 +950,7 @@ if ( ! function_exists( 'bws_help_tab' ) ) {
 		$screen->set_help_sidebar(
 			'<p><strong>' . __( 'For more information:', 'bestwebsoft' ) . '</strong></p>' .
 			'<p><a href="https://drive.google.com/folderview?id=0B5l8lO-CaKt9VGh0a09vUjNFNjA&usp=sharing#list" target="_blank">' . __( 'Documentation', 'bestwebsoft' ) . '</a></p>' .
-			'<p><a href="http://www.youtube.com/user/bestwebsoft/playlists?flow=grid&sort=da&view=1" target="_blank">' . __( 'Video Instructions', 'bestwebsoft' ) . '</a></p>' .
+			'<p><a href="https://www.youtube.com/user/bestwebsoft/playlists?flow=grid&sort=da&view=1" target="_blank">' . __( 'Video Instructions', 'bestwebsoft' ) . '</a></p>' .
 			'<p><a href="https://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">' . __( 'Submit a Request', 'bestwebsoft' ) . '</a></p>'
 		);
 	}

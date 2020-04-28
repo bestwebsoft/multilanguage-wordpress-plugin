@@ -6,12 +6,12 @@ Description: Translate WordPress website content to other languages manually. Cr
 Author: BestWebSoft
 Text Domain: multilanguage
 Domain Path: /languages
-Version: 1.3.4
+Version: 1.3.5
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
 
-/*  © Copyright 2019  BestWebSoft  ( https://support.bestwebsoft.com )
+/*  © Copyright 2020  BestWebSoft  ( https://support.bestwebsoft.com )
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -72,7 +72,7 @@ if ( ! function_exists( 'mltlngg_init' ) ) {
 		}
 
 		/* check WordPress version */
-		bws_wp_min_version_check( plugin_basename( __FILE__ ), $mltlngg_plugin_info, '3.9' );
+		bws_wp_min_version_check( plugin_basename( __FILE__ ), $mltlngg_plugin_info, '4.5' );
 
 		mltlngg_register_settings();
 
@@ -101,7 +101,7 @@ if ( ! function_exists( 'mltlngg_wcmmrc' ) ) {
 /* Plugin initialization in backend */
 if ( ! function_exists( 'mltlngg_admin_init' ) ) {
 	function mltlngg_admin_init() {
-		global $bws_plugin_info, $mltlngg_plugin_info, $bws_shortcode_list, $mltlngg_options;
+		global $pagenow, $bws_plugin_info, $mltlngg_plugin_info, $bws_shortcode_list, $mltlngg_options;
 
 		if ( empty( $bws_plugin_info ) ) {
 			$bws_plugin_info = array( 'id' => '143', 'version' => $mltlngg_plugin_info["Version"] );
@@ -134,6 +134,11 @@ if ( ! function_exists( 'mltlngg_admin_init' ) ) {
 		/* add 'Multilanguage switcher' into the Menu */
 		add_action( 'wp_update_nav_menu_item', 'mltlngg_wp_update_nav_menu_item', 10, 2 );
 		add_meta_box( 'mltlngg_language_switcher_box', __( 'Multilanguage switcher', 'multilanguage' ), 'mltlngg_language_switcher_box', 'nav-menus', 'side', 'high' );
+
+		if ( 'plugins.php' == $pagenow ) {
+			if ( function_exists( 'bws_plugin_banner_go_pro' ) )
+				bws_plugin_banner_go_pro( $mltlngg_options, $mltlngg_plugin_info, 'mltlngg', 'multilanguage', '0419dafcc237fe35489c8db63c899a38', '143', 'multilanguage' );
+		}
 	}
 }
 
@@ -1327,6 +1332,8 @@ if ( ! function_exists( 'mltlngg_settings_page' ) ) {
 		global $wpdb, $mltlngg_options, $mltlngg_languages, $mltlngg_plugin_info; ?>
 		<div class="wrap" id="mltlngg-settings">
 			<?php if ( 'mltlngg_settings' == $_GET['page'] ) { /* Showing settings tab */
+				if ( ! class_exists( 'Bws_Settings_Tabs' ) )
+                	require_once( dirname( __FILE__ ) . '/bws_menu/class-bws-settings.php' );
 				require_once( dirname( __FILE__ ) . '/includes/class-mltlngg-settings.php' );
 				$page = new Mltlngg_Settings_Tabs( plugin_basename( __FILE__ ) ); ?>
 				<h1>Multilanguage <?php _e( 'Settings', 'multilanguage' ); ?></h1>
@@ -2870,17 +2877,27 @@ if ( ! function_exists( '_mltlngg_delete_options' ) ) {
 
 if ( ! function_exists ( 'mltlngg_plugin_banner' ) ) {
 	function mltlngg_plugin_banner() {
-		global $hook_suffix, $mltlngg_plugin_info, $mltlngg_options;
+		global $hook_suffix, $mltlngg_plugin_info;
 		if ( 'plugins.php' == $hook_suffix ) {
-			if ( isset( $mltlngg_options['first_install'] ) && strtotime( '-1 week' ) > $mltlngg_options['first_install'] ) {
-				bws_plugin_banner( $mltlngg_plugin_info, 'mltlngg', 'multilanguage', '0419dafcc237fe35489c8db63c899a38', '143', '//ps.w.org/multilanguage/assets/icon-128x128.png' );
-			}
-
 			bws_plugin_banner_to_settings( $mltlngg_plugin_info, 'mltlngg_options', 'multilanguage', 'admin.php?page=mltlngg_settings' );
 		}
 
 		if ( isset( $_GET['page'] ) && 'mltlngg_settings' == $_GET['page'] ) {
 			bws_plugin_suggest_feature_banner( $mltlngg_plugin_info, 'mltlngg_options', 'multilanguage' );
+
+			if ( ! is_plugin_active( 'classic-editor/classic-editor.php' ) ) { ?>
+				<div class="notice notice-info">
+					<p>
+						<strong><?php _e( 'Note', 'multilanguage' ); ?></strong>: <?php _e( "Multilanguage plugin doesn't support Gutenberg editor. You need to install and activate Classic Editor plugin for Multilanguage correct work.", 'multilanguage' ); ?> 
+						<?php $all_plugins = get_plugins();
+						if ( ! array_key_exists( 'classic-editor/classic-editor.php', $all_plugins ) ) { ?>				
+							<a href="<?php echo self_admin_url( 'plugin-install.php?tab=search&type=term&s=Classic Editor&plugin-search-input=Search+Plugins' ); ?>"><?php _e( 'Install', 'multilanguage' ); ?></a>
+						<?php } else { ?>
+			 				<a href="plugins.php"><?php _e( 'Activate', 'multilanguage' ); ?></a>
+			 			<?php } ?>			
+					</p>
+				</div>
+			<?php }
 		}
 	}
 }

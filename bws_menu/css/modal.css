@@ -46,10 +46,22 @@
 }
 .bws-modal .bws-modal-footer {
     border-top: #eeeeee solid 1px;
-    text-align: right;   
+}
+.bws-modal .bws-modal-footer .bws-modal-skip-link {
+    text-decoration: none;
+    float: right;
+    display: inline-block;
+    padding: 7px;
 }
 .bws-modal .bws-modal-footer .button {
     margin: 0 7px;    
+    float: left;
+}
+.rtl .bws-modal .bws-modal-footer .bws-modal-skip-link {
+    float: left;
+}
+.rtl .bws-modal .bws-modal-footer .button {
+    float: right;
 }
 .bws-modal .bws-modal-footer .button:first-child {
     margin: 0;

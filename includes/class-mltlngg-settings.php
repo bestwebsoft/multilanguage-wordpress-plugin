@@ -2,9 +2,6 @@
 /**
  * Displays the content on the plugin settings page
  */
-
-require_once( dirname( dirname( __FILE__ ) ) . '/bws_menu/class-bws-settings.php' );
-
 if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 	class Mltlngg_Settings_Tabs extends Bws_Settings_Tabs {
 		/**
@@ -56,6 +53,8 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 		 */
 		public function save_options() {
 			global $wpdb;
+
+			$message = $notice = $error = '';
 
 			$this->options['language_switcher'] = ( isset( $_POST['mltlngg_language_switcher'] ) &&
 				in_array( $_POST['mltlngg_language_switcher'], array(
@@ -163,9 +162,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 									<fieldset class="mltlngg_slug_position">
 										<?php global $mltlngg_current_language;
 										$posts = get_posts( array( 'post_type' => 'page', 'posts_per_page' => 1 ) );
-										if ( isset( $posts ) ) {
-											$url = get_permalink( $posts[0] );
-										}
+										$url = ( ! empty( $posts ) ) ? get_permalink( $posts[0] ) : home_url();
 										$args = array(
 											'url'			=> $url,
 											'force'			=> 'display'

@@ -61,8 +61,11 @@ div.bws_info {
 .bws_info_small {
     font-size: 11px !important;
 }
-div.updated.bws-notice {
+body:not(.rtl) div.updated.bws-notice {
     border-left: 4px solid #ffba00;
+}
+.rtl div.updated.bws-notice {
+    border-right: 4px solid #ffba00;
 }
 /*
 * styles for rate-support div on the settings page

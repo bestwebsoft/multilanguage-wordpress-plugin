@@ -1,7 +1,7 @@
 <?php
 /*
 * Function for displaying BestWebSoft menu
-* Version: 2.2.0
+* Version: 2.2.9
 */
 
 if ( ! function_exists ( 'bws_admin_enqueue_scripts' ) )
@@ -16,8 +16,8 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 		 * @deprecated 1.9.8 (15.12.2016)
 		 */
 		$is_main_page = in_array( $_GET['page'], array( 'bws_panel', 'bws_themes', 'bws_system_status' ) );
-		$page = esc_attr( $_GET['page'] );
-		$tab = isset( $_GET['tab'] ) ? esc_attr( $_GET['tab'] ) : '';
+		$page = wp_unslash( $_GET['page'] );
+		$tab = isset( $_GET['tab'] ) ? wp_unslash( $_GET['tab'] ) : '';
 
 		if ( $is_main_page )
 			$current_page = 'admin.php?page=' . $page;
@@ -116,12 +116,13 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 							'timeout' => ( ( defined('DOING_CRON') && DOING_CRON ) ? 30 : 3 ),
 							'body' => array( 'plugins' => serialize( $to_send ) ),
 							'user-agent' => 'WordPress/' . $wp_version . '; ' . get_bloginfo( 'url' ) );
-						$raw_response = wp_remote_post( 'http://bestwebsoft.com/wp-content/plugins/paid-products/plugins/update-check/1.0/', $options );
+						$raw_response = wp_remote_post( 'https://bestwebsoft.com/wp-content/plugins/paid-products/plugins/pro-license-check/1.0/', $options );
 
 						if ( is_wp_error( $raw_response ) || 200 != wp_remote_retrieve_response_code( $raw_response ) ) {
 							$error = __( "Something went wrong. Please try again later. If the error appears again, please contact us", 'bestwebsoft' ) . ' <a href="https://support.bestwebsoft.com">BestWebSoft</a>. ' . __( "We are sorry for inconvenience.", 'bestwebsoft' );
 						} else {
 							$response = maybe_unserialize( wp_remote_retrieve_body( $raw_response ) );
+
 							if ( is_array( $response ) && !empty( $response ) ) {
 								foreach ( $response as $key => $value ) {
 									if ( "wrong_license_key" == $value->package ) {
@@ -137,7 +138,6 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 									} elseif ( is_array( $value->package ) && ! empty( $value->package ) ) {
 										$plugins_array = $_SESSION['bws_membership_list'] = $value->package;
 										$_SESSION['bws_membership_time_check'] = strtotime( 'now' );
-
 										if ( isset( $bstwbsftwppdtplgns_options[ $bws_license_plugin ] ) && $bws_license_key == $bstwbsftwppdtplgns_options[ $bws_license_plugin ] ) {
 											$message = __( 'The license key is valid.', 'bestwebsoft' );
 											if ( isset( $value->time_out ) && $value->time_out != '' )
@@ -179,7 +179,7 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 			$max_execution_time = ( ini_get( 'max_execution_time' ) ) ? ini_get( 'max_execution_time' ) : __( 'N/A', 'bestwebsoft' );
 			$memory_limit = ( ini_get( 'memory_limit' ) ) ? ini_get( 'memory_limit' ) : __( 'N/A', 'bestwebsoft' );
 			$wp_memory_limit = ( defined( 'WP_MEMORY_LIMIT' ) ) ? WP_MEMORY_LIMIT : __( 'N/A', 'bestwebsoft' );
-			$memory_usage = ( function_exists( 'memory_get_usage' ) ) ? round( memory_get_usage() / 1024 / 1024, 2 ) . __( ' Mb', 'bestwebsoft' ) : __( 'N/A', 'bestwebsoft' );
+			$memory_usage = ( function_exists( 'memory_get_usage' ) ) ? round( memory_get_usage() / 1024 / 1024, 2 ) . ' ' . __( 'Mb', 'bestwebsoft' ) : __( 'N/A', 'bestwebsoft' );
 			$exif_read_data = ( is_callable( 'exif_read_data' ) ) ? __( 'Yes', 'bestwebsoft' ) . " ( V" . substr( phpversion( 'exif' ), 0,4 ) . ")" : __( 'No', 'bestwebsoft' );
 			$iptcparse = ( is_callable( 'iptcparse' ) ) ? __( 'Yes', 'bestwebsoft' ) : __( 'No', 'bestwebsoft' );
 			$xml_parser_create = ( is_callable( 'xml_parser_create' ) ) ? __( 'Yes', 'bestwebsoft' ) : __( 'No', 'bestwebsoft' );
@@ -372,77 +372,45 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 
 						$bws_license_plugin = sanitize_text_field( $_POST['bws_install_plugin'] );
 
-						echo '<h2>' . __( 'Installing Plugin', 'bestwebsoft' ) . ': ' . $plugins_array[ $bws_license_plugin ]['name'] . '</h2>';
-
 						$bstwbsftwppdtplgns_options[ $bws_license_plugin ] = $bws_license_key;
+						if ( is_multisite() )
+							update_site_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options );
+						else
+							update_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options );
 
-						$url = $plugins_array[ $bws_license_plugin ]['link'] . '&download_from=5';
-
-						echo '<p>' . __( "Downloading install package from", 'bestwebsoft' ) . ' ' . $url . '</p>';
-
-						$uploadDir = wp_upload_dir();
-						$zip_name = explode( '/', $bws_license_plugin );
-
-						if ( !function_exists( 'curl_init' ) ) {
-							$received_content = file_get_contents( $url );
-						} else {
-							$ch = curl_init();
-							curl_setopt( $ch, CURLOPT_URL, $url );
-							curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-							curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, true );
-							$received_content = curl_exec( $ch );
-							curl_close( $ch );
-						}
-
-						if ( ! $received_content ) {
-							$error = __( "Failed to download the zip archive. Please, upload the plugin manually", 'bestwebsoft' );
-						} else {
-							if ( is_writable( $uploadDir["path"] ) ) {
-								$file_put_contents = $uploadDir["path"] . "/" . $zip_name[0] . ".zip";
-
-								if ( file_put_contents( $file_put_contents, $received_content ) ) {
-									@chmod( $file_put_contents, octdec( 755 ) );
-
-									echo '<p>' . __( 'Unpacking the package', 'bestwebsoft' ) . '...</p>';
-
-									if ( class_exists( 'ZipArchive' ) ) {
-										$zip = new ZipArchive();
-										if ( $zip->open( $file_put_contents ) === TRUE ) {
-											echo '<p>' . __( 'Installing the plugin', 'bestwebsoft' ) . '...</p>';
-											$zip->extractTo( WP_PLUGIN_DIR );
-											$zip->close();
-										} else {
-											$error = __( "Failed to open the zip archive. Please, upload the plugin manually", 'bestwebsoft' );
-										}
-									} elseif ( class_exists( 'Phar' ) ) {
-										$phar = new PharData( $file_put_contents );
-										echo '<p>' . __( 'Installing the plugin', 'bestwebsoft' ) . '...</p>';
-										$phar->extractTo( WP_PLUGIN_DIR );
-									} else {
-										$error = __( "Your server does not support either ZipArchive or Phar. Please, upload the plugin manually", 'bestwebsoft' );
-									}
-									if ( empty( $error ) )
-										echo '<p>' . sprintf( __( 'The plugin %s is successfully installed.', 'bestwebsoft' ), '<strong>' . $plugins_array[ $bws_license_plugin ]['name'] . '</strong>' ) . '</p>';
-
-									@unlink( $file_put_contents );
-								} else {
-									$error = __( "Failed to download the zip archive. Please, upload the plugin manually", 'bestwebsoft' );
-								}
-							} else {
-								$error = __( "UploadDir is not writable. Please, upload the plugin manually", 'bestwebsoft' );
-							}
-						}
-
-						if ( file_exists( WP_PLUGIN_DIR . '/' . $zip_name[0] ) ) {
-							echo '<p><a href="' . esc_url( wp_nonce_url( self_admin_url( $current_page . '&bws_activate_plugin=' . $bws_license_plugin ), 'bws_activate_plugin' . $bws_license_plugin ) ) . '" target="_parent">' . __( 'Activate Plugin', 'bestwebsoft' ) . '</a> | <a href="' . esc_url( self_admin_url( $current_page ) ) . '" target="_parent">' . __( 'Return to BestWebSoft Panel', 'bestwebsoft' ) . '</a></p>';
-						} else {
-							if ( empty( $error ) )
-								$error = __( "Failed to download the zip archive. Please, upload the plugin manually", 'bestwebsoft' );
-
-							echo '<p class="error">' . $error . '</p>';
-							echo '<p><a href="' . esc_url( self_admin_url( $current_page ) ) . '" target="_parent">' . __( 'Return to BestWebSoft Panel', 'bestwebsoft' ) . '</a></p>';
-						}
-					} else {
+						$url = $plugins_array[ $bws_license_plugin ]['link'] . '&download_from=5'; ?>
+						<h2><?php _e( 'Download Pro Plugin', 'bestwebsoft' ); ?></h2>		
+						<p>
+							<strong><?php _e( 'Your Pro plugin is ready', 'bestwebsoft' ); ?></strong>
+							<br>
+							<?php _e( 'Your plugin has been zipped, and now is ready to download.', 'bestwebsoft' ); ?>
+						</p>
+						<p>
+							<a class="button button-secondary" target="_parent" href="<?php echo esc_url( $url ); ?>"><?php _e( 'Download Now', 'bestwebsoft' ); ?></a>
+						</p>
+						<br>
+						<p>
+							<strong><?php _e( 'Need help installing the plugin?', 'bestwebsoft' ); ?></strong>
+							<br>
+							<a target="_blank" href="https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/"><?php _e( 'How to install WordPress plugin from your admin Dashboard (ZIP archive)', 'bestwebsoft' ); ?></a>
+						</p>						
+						<p>
+							<strong><?php _e( 'Get Started', 'bestwebsoft' ); ?></strong>
+							<br>
+							<a target="_blank" href="https://drive.google.com/drive/u/0/folders/0B5l8lO-CaKt9VGh0a09vUjNFNjA"><?php _e( 'Documentation', 'bestwebsoft' ); ?></a>
+							<br>
+							<a target="_blank" href="https://www.youtube.com/user/bestwebsoft"><?php _e( 'Video Instructions', 'bestwebsoft' ); ?></a>
+							<br>
+							<a target="_blank" href="https://support.bestwebsoft.com"><?php _e( 'Knowledge Base', 'bestwebsoft' ); ?></a>
+						</p>
+						<p>
+							<strong><?php _e( 'Licenses & Domains', 'bestwebsoft' ); ?></strong>
+							<br>
+							<?php printf( 'Manage your license(-s) and change domain names using the %s at BestWebSoft.',
+							'<a target="_blank" href="https://bestwebsoft.com/client-area">' . __( 'Client Area', 'bestwebsoft' ) . '</a>' ); ?>
+						</p>
+						<p><a href="<?php echo esc_url( self_admin_url( $current_page ) ); ?>" target="_parent"><?php _e( 'Return to BestWebSoft Panel', 'bestwebsoft' ); ?></a></p>
+					<?php } else {
 						$category_href = $current_page;
 						if ( 'all' != $plugin_category )
 							$category_href .= '&category=' . $plugin_category; ?>
@@ -547,7 +515,7 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 													if ( ! $is_pro_installed ) {
 														if ( ! empty( $plugins_array ) && array_key_exists( $value_plugin['pro_version'], $plugins_array ) ) { ?>
                                                             <form method="post" action="">
-                                                                <input type="submit" class="button button-secondary" value="<?php _e( 'Install Now', 'bestwebsoft' ); ?>" />
+                                                                <input type="submit" class="button button-secondary" value="<?php _e( 'Get Pro', 'bestwebsoft' ); ?>" />
                                                                 <input type="hidden" name="bws_plugin_action_submit" value="submit" />
                                                                 <input type="hidden" name="bws_install_plugin" value="<?php echo $value_plugin['pro_version']; ?>" />
 																<?php wp_nonce_field( plugin_basename(__FILE__), 'bws_license_install_nonce_name' ); ?>
@@ -570,7 +538,7 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
                                                     <a class="button button-secondary" href="<?php echo esc_url( wp_nonce_url( self_admin_url( $current_page . '&bws_activate_plugin=' . $value_plugin['pro_version'] ), 'bws_activate_plugin' . $value_plugin['pro_version'] ) ); ?>" title="<?php _e( 'Activate this plugin', 'bestwebsoft' ); ?>"><?php _e( 'Activate', 'bestwebsoft' ); ?></a>
 												<?php } elseif ( ! empty( $plugins_array ) && isset( $value_plugin['pro_version'] ) && array_key_exists( $value_plugin['pro_version'], $plugins_array ) ) { ?>
                                                     <form method="post" action="">
-                                                        <input type="submit" class="button button-secondary" value="<?php _e( 'Install Now', 'bestwebsoft' ); ?>" />
+                                                        <input type="submit" class="button button-secondary" value="<?php _e( 'Get Pro', 'bestwebsoft' ); ?>" />
                                                         <input type="hidden" name="bws_plugin_action_submit" value="submit" />
                                                         <input type="hidden" name="bws_install_plugin" value="<?php echo $value_plugin['pro_version']; ?>" />
 														<?php wp_nonce_field( plugin_basename(__FILE__), 'bws_license_install_nonce_name' ); ?>
@@ -578,7 +546,7 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 												<?php } elseif ( $is_installed ) { ?>
                                                     <a class="button button-secondary" href="<?php echo esc_url( wp_nonce_url( self_admin_url( $current_page . '&bws_activate_plugin=' . $key_plugin ), 'bws_activate_plugin' . $key_plugin ) ); ?>" title="<?php _e( 'Activate this plugin', 'bestwebsoft' ); ?>"><?php _e( 'Activate', 'bestwebsoft' ); ?></a>
 												<?php } else {
-													$install_url = isset( $value_plugin['install_url'] ) ? $value_plugin['install_url'] : self_admin_url( 'plugin-install.php?tab=search&type=term&s=' . str_replace( ' ', '+', str_replace( '-', '', $value_plugin['name'] ) ) . '+BestWebSoft&plugin-search-input=Search+Plugins' ); ?>
+													$install_url = isset( $value_plugin['install_url'] ) ? $value_plugin['install_url'] : self_admin_url( 'plugin-install.php?tab=search&type=term&s=' . str_replace( array( ' ', '-' ), '+', str_replace( '&', '', $value_plugin['name'] ) ) . '+BestWebSoft&plugin-search-input=Search+Plugins' ); ?>
                                                     <a class="button button-secondary" href="<?php echo esc_url( $install_url ); ?>" title="<?php _e( 'Install this plugin', 'bestwebsoft' ); ?>" target="_blank"><?php _e( 'Install Now', 'bestwebsoft' ); ?></a>
 												<?php }
 											} ?>
@@ -725,7 +693,6 @@ if ( ! function_exists( 'bws_get_banner_array' ) ) {
 			array( 'fcbkbttn_hide_banner_on_plugin_page', 'facebook-button-plugin/facebook-button-plugin.php', '2.29' ),
 			array( 'twttr_hide_banner_on_plugin_page', 'twitter-plugin/twitter.php', '2.34' ),
 			array( 'pdfprnt_hide_banner_on_plugin_page', 'pdf-print/pdf-print.php', '1.7.1' ),
-			array( 'gglplsn_hide_banner_on_plugin_page', 'google-one/google-plus-one.php', '1.1.4' ),
 			array( 'gglstmp_hide_banner_on_plugin_page', 'google-sitemap-plugin/google-sitemap-plugin.php', '2.8.4' ),
 			array( 'cntctfrmpr_for_ctfrmtdb_hide_banner_on_plugin_page', 'contact-form-pro/contact_form_pro.php', '1.14' ),
 			array( 'cntctfrm_hide_banner_on_plugin_page', 'contact-form-plugin/contact_form.php', '3.47' ),

@@ -469,22 +469,14 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 			</h1>
 			<?php
 			// functionality for adding notice when user choose same order for two languages
-			$counter = 0;
 			$lang_order = array();
-			$array = array();
-			$array_to_search = $mltlngg_options['list_of_languages'];
-			foreach ( $array_to_search as $array_key => $array_value ) {
-				$counter++;
+			foreach ( $mltlngg_options['list_of_languages'] as $array_value ) {
 				$lang_order[] = $array_value['priority'];
 			}
-			$array = range( 0, $counter );
-			$result = array_diff( (array)$array, $lang_order  );
-
-			?>
-			<?php if ( ! empty( $result )  ) { ?>
-				<div class="notice notice-warning below-h2"><p><?php echo __( 'You have the same order for two or more languages.', 'multilanguage' ); ?></p></div>
-			<?php } ?>
-			<?php if ( ! empty( $error ) ) { ?>
+			if ( count( array_unique( $lang_order ) ) != count( $lang_order ) ) { ?>
+				<div class="notice notice-warning below-h2"><p><?php _e( 'You have the same order for two or more languages.', 'multilanguage' ); ?></p></div>
+			<?php }
+			if ( ! empty( $error ) ) { ?>
 				<div class="error below-h2"><p><?php echo $error; ?></p></div>
 			<?php } elseif ( ! empty( $message ) ) { ?>
 				<div class="updated fade below-h2"><p><?php echo $message; ?></p></div>
