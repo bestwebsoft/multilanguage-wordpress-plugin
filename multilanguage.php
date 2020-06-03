@@ -6,7 +6,7 @@ Description: Translate WordPress website content to other languages manually. Cr
 Author: BestWebSoft
 Text Domain: multilanguage
 Domain Path: /languages
-Version: 1.3.5
+Version: 1.3.6
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -59,7 +59,7 @@ if ( ! function_exists( 'mltlngg_admin_menu' ) ) {
 /* Plugin initialization in backend and frontend */
 if ( ! function_exists( 'mltlngg_init' ) ) {
 	function mltlngg_init() {
-		global $wpdb, $mltlngg_options, $mltlngg_plugin_info;
+		global $mltlngg_options, $mltlngg_plugin_info;
 
 		require_once( dirname( __FILE__ ) . '/bws_menu/bws_include.php' );
 		bws_include_init( plugin_basename( __FILE__ ) );
@@ -87,6 +87,28 @@ if ( ! function_exists( 'mltlngg_init' ) ) {
 			add_filter( 'woocommerce_ajax_get_endpoint', 'mltlngg_wcmmrc', 10, 2 );
 		}
 		mltlngg_add_meta_filters();
+
+		/* Actions for categories & tags translation */
+		$mltlngg_taxonomies = get_object_taxonomies( 'post' );
+		if ( is_array( $mltlngg_taxonomies ) ) {
+			foreach ( $mltlngg_taxonomies as $mltlngg_taxonomy ) {
+				add_action( $mltlngg_taxonomy . '_add_form_fields', 'mltlngg_new_terms_translate' );
+				add_action( 'created_' . $mltlngg_taxonomy, 'mltlngg_new_terms_created' );
+				add_action( $mltlngg_taxonomy . '_edit_form_fields', 'mltlngg_terms_translate' );
+				add_action( 'edited_' . $mltlngg_taxonomy, 'mltlngg_terms_update' );
+				add_action( 'delete_' . $mltlngg_taxonomy, 'mltlngg_delete_term' );
+
+				/* Add language column in the taxonomy wp_list_table to display if language is translated */
+				add_filter( 'manage_edit-' . $mltlngg_taxonomy . '_columns', 'mltlngg_add_term_column' );
+				add_filter( 'manage_' . $mltlngg_taxonomy . '_custom_column', 'mltlngg_term_column', 10, 3 );
+			}
+		}
+		/* Add language column in the post wp_list_table to display if language is translated */
+		foreach ( array( 'post', 'page' ) as $post_type ) {
+			add_filter( 'manage_edit-' . $post_type . '_columns', 'mltlngg_add_post_column' );
+			add_filter( 'manage_' . $post_type . '_posts_custom_column', 'mltlngg_post_column', 10, 3 );
+			add_action( "rest_after_insert_" . $post_type, 'mltlngg_rest_after_insert_post', 10, 3 ); // after rest-api apdate
+		}
 	}
 }
 
@@ -108,28 +130,7 @@ if ( ! function_exists( 'mltlngg_admin_init' ) ) {
 		}
 
 		/* add Multilanguage to global $bws_shortcode_list */
-		$bws_shortcode_list['mltlngg'] = array( 'name' => 'Multilanguage', 'js_function' => 'mltlngg_shortcode_init' );
-
-		/* Actions for categories & tags translation */
-		$mltlngg_taxonomies = get_object_taxonomies( 'post' );
-		if ( is_array( $mltlngg_taxonomies ) ) {
-			foreach ( $mltlngg_taxonomies as $mltlngg_taxonomy ) {
-				add_action( $mltlngg_taxonomy . '_add_form_fields', 'mltlngg_new_terms_translate' );
-				add_action( 'created_' . $mltlngg_taxonomy, 'mltlngg_new_terms_created' );
-				add_action( $mltlngg_taxonomy . '_edit_form_fields', 'mltlngg_terms_translate' );
-				add_action( 'edited_' . $mltlngg_taxonomy, 'mltlngg_terms_update' );
-				add_action( 'delete_' . $mltlngg_taxonomy, 'mltlngg_delete_term' );
-
-				/* Add language column in the taxonomy wp_list_table to display if language is translated */
-				add_filter( 'manage_edit-' . $mltlngg_taxonomy . '_columns', 'mltlngg_add_term_column' );
-				add_filter( 'manage_' . $mltlngg_taxonomy . '_custom_column', 'mltlngg_term_column', 10, 3 );
-			}
-		}
-		/* Add language column in the post wp_list_table to display if language is translated */
-		add_filter( 'manage_edit-post_columns', 'mltlngg_add_post_column' );
-		add_filter( 'manage_post_posts_custom_column', 'mltlngg_post_column', 10, 3 );
-		add_filter( 'manage_edit-page_columns', 'mltlngg_add_post_column' );
-		add_filter( 'manage_page_posts_custom_column', 'mltlngg_post_column', 10, 3 );
+		$bws_shortcode_list['mltlngg'] = array( 'name' => 'Multilanguage', 'js_function' => 'mltlngg_shortcode_init' );		
 
 		/* add 'Multilanguage switcher' into the Menu */
 		add_action( 'wp_update_nav_menu_item', 'mltlngg_wp_update_nav_menu_item', 10, 2 );
@@ -138,6 +139,17 @@ if ( ! function_exists( 'mltlngg_admin_init' ) ) {
 		if ( 'plugins.php' == $pagenow ) {
 			if ( function_exists( 'bws_plugin_banner_go_pro' ) )
 				bws_plugin_banner_go_pro( $mltlngg_options, $mltlngg_plugin_info, 'mltlngg', 'multilanguage', '0419dafcc237fe35489c8db63c899a38', '143', 'multilanguage' );
+		}		
+	}
+}
+
+if ( ! function_exists( 'mltlngg_current_screen' ) ) {
+	function mltlngg_current_screen() {
+		global $mltlngg_current_language;
+		if ( is_admin() ) {
+			if ( mltlngg_is_gutenberg_active() ) {
+				mltlngg_setcookie( $mltlngg_current_language );
+			}
 		}
 	}
 }
@@ -187,8 +199,6 @@ if ( ! function_exists( 'mltlngg_register_settings' ) ) {
 		}
 
 		if ( ! isset( $mltlngg_options['plugin_db_version'] ) || $mltlngg_options['plugin_db_version'] != $db_version ) {
-			global $wpdb;
-
 			mltlngg_plugin_db();
 
 			$mltlngg_options['plugin_db_version'] = $db_version;
@@ -212,8 +222,8 @@ if ( ! function_exists( 'mltlngg_get_options_default' ) ) {
 		global $mltlngg_plugin_info, $wp_version, $mltlngg_languages;
 		/* Set the default language is the same as the language of the Wordpress localization */
 		foreach ( $mltlngg_languages as $one_lang ) { /* Search locale in the array of standard languages, source - languages.php */
-			$mltlngg_is_lang_exist = array_search( get_locale(), $one_lang );
-			if ( false != $mltlngg_is_lang_exist ) { /* If the locale is found set the default language */
+			$is_lang_exist = array_search( get_locale(), $one_lang );
+			if ( false != $is_lang_exist ) { /* If the locale is found set the default language */
 				$language_default = $one_lang;
 				break;
 			}
@@ -247,7 +257,6 @@ if ( ! function_exists( 'mltlngg_get_options_default' ) ) {
 			'translate_open_graph'		=> 0,
 			'display_alternative_link'	=> 0,
 			'hide_link_slug'			=> 0
-
 		);
 		return $options_default;
 	}
@@ -510,12 +519,18 @@ if ( ! function_exists( 'mltlngg_get_display_language' ) ) {
 		}
 
 		if ( isset( $new_cookie ) ) {
-			$home_url = get_option( 'home' );
-			$home_url_parsed = mltlngg_parse_url( $home_url );
-			$host = $home_url_parsed['host'];
-			$host = preg_replace( "~^(www\.)~", "", $host );
-			setcookie( 'mltlngg_language', $new_cookie, time() + 30*DAY_IN_SECONDS, '/', '.' . $host, is_ssl() );
+			mltlngg_setcookie( $new_cookie );
 		}
+	}
+}
+
+if ( ! function_exists( 'mltlngg_setcookie' ) ) {
+	function mltlngg_setcookie( $new_cookie ) {
+		$home_url = get_option( 'home' );
+		$home_url_parsed = mltlngg_parse_url( $home_url );
+		$host = $home_url_parsed['host'];
+		$host = preg_replace( "~^(www\.)~", "", $host );
+		setcookie( 'mltlngg_language', $new_cookie, time() + 30*DAY_IN_SECONDS, '/', '.' . $host, is_ssl() );
 	}
 }
 
@@ -531,6 +546,11 @@ if ( ! function_exists( 'mltlngg_switch_wp_locale' ) ) {
 if ( ! function_exists( 'mltlngg_redirect' ) ) {
 	function mltlngg_redirect() {
 		global $mltlngg_enabled_languages, $mltlngg_options, $mltlngg_current_language, $mltlngg_get_default_language;
+
+		/* gutenberg save post */
+	    if ( mltlngg_is_rest_api() ) {
+			return;
+    	}
 
 		if ( empty( $mltlngg_options ) ) {
 			$mltlngg_options = get_option( 'mltlngg_options' );
@@ -1000,21 +1020,53 @@ if ( ! function_exists( 'mltlngg_get_url_translated' ) ) {
 /* Load scripts and styles */
 if ( ! function_exists( 'mltlngg_script_style' ) ) {
 	function mltlngg_script_style() {
-		global $hook_suffix, $mltlngg_options, $mltlngg_plugin_info;
+		global $hook_suffix, $mltlngg_options, $mltlngg_plugin_info, $mltlngg_enabled_languages, $mltlngg_current_language, $mltlngg_get_default_language;
+
 		wp_enqueue_style( 'mltlngg_stylesheet', plugins_url( 'css/style.css', __FILE__ ), array(), $mltlngg_plugin_info["Version"] );
 
 		if ( is_admin() ) {
-			wp_enqueue_script( 'mltlngg_script', plugins_url( 'js/script.js', __FILE__ ), array( 'jquery' ), $mltlngg_plugin_info["Version"] );
-			wp_localize_script( 'mltlngg_script', 'mltlngg_vars',
-				array(
-					'update_post_error'		=> __( 'Attention!!! The changes will not be saved because Title and Content fields are empty on the current tab! It is recommended to fill in at least one field or switch to the tab with the fields that are already filled.', 'multilanguage' ),
-					'confirm_update_post'	=> __( "Switching to another language will remove all unsaved. Save data?", 'multilanguage' ),
-					'ajax_nonce'			=> wp_create_nonce( "mltlngg-ajax-nonce" )
-				)
-			);
+			if ( mltlngg_is_gutenberg_active() ) {
+				if ( ! empty( $mltlngg_enabled_languages ) ) {
+					wp_enqueue_script( 'mltlngg_script_gutenberg', plugins_url( 'js/gutenberg-script.js', __FILE__ ), array( 'jquery' ), $mltlngg_plugin_info["Version"], true );
+					wp_localize_script( 'mltlngg_script_gutenberg', 'mltlngg_vars',
+						array(
+							'ajax_nonce'			=> wp_create_nonce( "mltlngg-ajax-nonce" ),
+							'default_language'		=> $mltlngg_get_default_language,
+							'current_language' 		=> $mltlngg_current_language,
+							'active_language_list'	=> $mltlngg_enabled_languages,
+							'add_new_lang_link'		=> admin_url( 'admin.php?page=multilanguage-languages.php' ),
+						)
+					);
+				}
+			} else {		
+				wp_enqueue_script( 'mltlngg_script', plugins_url( 'js/script.js', __FILE__ ), array( 'jquery' ), $mltlngg_plugin_info["Version"], true );
+				wp_localize_script( 'mltlngg_script', 'mltlngg_vars',
+					array(
+						'update_post_error'		=> __( 'Attention!!! The changes will not be saved because Title and Content fields are empty on the current tab! It is recommended to fill in at least one field or switch to the tab with the fields that are already filled.', 'multilanguage' ),
+						'confirm_update_post'	=> __( "Switching to another language will remove all unsaved. Save data?", 'multilanguage' ),
+						'ajax_nonce'			=> wp_create_nonce( "mltlngg-ajax-nonce" )
+					)
+				);
+			}
 
 			if ( 'nav-menus.php' == $hook_suffix ) {
-				wp_enqueue_script( 'mltlngg_nav_menu', plugins_url( 'js/nav-menu.js', __FILE__ ), array( 'jquery' ), $mltlngg_plugin_info["Version"] );
+				wp_enqueue_script( 'mltlngg_nav_menu', plugins_url( 'js/nav-menu.js', __FILE__ ), array( 'jquery' ), $mltlngg_plugin_info["Version"], true );
+
+				/* the options values for the language switcher */
+				$data = array(
+					'title' => __( 'Multilanguage switcher', 'multilanguage' ),
+					'value' => array(),
+					'switcher' => array(
+						'input' => array(
+							'aligned-list'		=> __( 'Flag', 'multilanguage' ) . ' + ' . __( 'title', 'multilanguage' ),
+							'aligned-titles'	=> __( 'Title', 'multilanguage' ),
+							'aligned-icons'		=> __( 'Flag', 'multilanguage' ),
+							'drop-down-list'	=> __( 'Drop-down list', 'multilanguage' ) . ' (' . __( 'flag', 'multilanguage' ) . ' + ' . __( 'title', 'multilanguage-pro' ) . ')',
+							'drop-down-titles'	=> __( 'Drop-down list', 'multilanguage' ) . ' (' . __( 'title', 'multilanguage' ) . ')',
+							'drop-down-icons'	=> __( 'Drop-down list', 'multilanguage' ) . ' (' . __( 'flag', 'multilanguage' ) . ')'
+						)
+					)
+				);
 
 				$items = get_posts( array(
 					'numberposts'	=> -1,
@@ -1022,24 +1074,10 @@ if ( ! function_exists( 'mltlngg_script_style' ) ) {
 					'post_type'		=> 'nav_menu_item',
 					'fields'		=> 'ids',
 					'meta_key'		=> '_mltlngg_menu_item',
-				) );
-				/* the options values for the language switcher */
-				$data['value'] = array();
+				) );				
 				foreach ( $items as $item ) {
 					$data['value'][ $item ] = get_post_meta( $item, '_mltlngg_menu_item', true );
 				}
-				$data['switcher'] = array(
-					'input' => array(
-						'aligned-list'		=> __( 'Flag', 'multilanguage' ) . ' + ' . __( 'title', 'multilanguage' ),
-						'aligned-titles'	=> __( 'Title', 'multilanguage' ),
-						'aligned-icons'		=> __( 'Flag', 'multilanguage' ),
-						'drop-down-list'	=> __( 'Drop-down list', 'multilanguage' ) . ' (' . __( 'flag', 'multilanguage' ) . ' + ' . __( 'title', 'multilanguage' ) . ')',
-						'drop-down-titles' 	=> __( 'Drop-down list', 'multilanguage' ) . ' (' . __( 'title', 'multilanguage' ) . ')',
-						'drop-down-icons' 	=> __( 'Drop-down list', 'multilanguage' ) . ' (' . __( 'flag', 'multilanguage' ) . ')'
-
-					)
-				);
-				$data['title'] = __( 'Multilanguage switcher', 'multilanguage' );
 				wp_localize_script( 'mltlngg_nav_menu', 'mltlngg_var', $data );
 			}
 
@@ -1212,7 +1250,7 @@ if ( ! function_exists( 'mltlngg_get_switcher_block' ) ) {
 			$mltlngg_language_switcher = $mltlngg_options['language_switcher'];
 		}
 
-		if ( isset( $mltlngg_language_switcher['layout'] ) ) {
+		if ( is_array( $mltlngg_language_switcher ) && isset( $mltlngg_language_switcher['layout'] ) ) {
 			$mltlngg_language_switcher = $mltlngg_language_switcher['layout'];
 		}
 
@@ -1400,6 +1438,52 @@ if ( ! function_exists( 'mltlngg_showup_language_tabs_in_editor' ) ) {
 	}
 }
 
+/**
+ * Check if Block editor is active.
+ *
+ * @return bool
+ */
+if ( ! function_exists( 'mltlngg_is_gutenberg_active' ) ) {
+	function mltlngg_is_gutenberg_active() {
+		if ( ! is_admin() )
+			return false;
+	
+		/* Gutenberg plugin is installed and activated. */
+		if ( function_exists( 'is_gutenberg_page' ) && is_gutenberg_page() ) {
+	        /* The Gutenberg plugin is on. */
+	        return true;
+	    }
+	    
+	    if ( function_exists( 'get_current_screen' ) ) {
+		    $current_screen = get_current_screen();
+		    
+		    if ( method_exists( $current_screen, 'is_block_editor' ) && $current_screen->is_block_editor() ) {
+		        /* Gutenberg/Block editor since 5.0. */
+		        return true;
+		    }
+		}
+
+	    return false;
+	}
+}
+
+if ( ! function_exists( 'mltlngg_is_rest_api' ) ) {
+	function mltlngg_is_rest_api() {
+		/* gutenberg save post 
+		If REST_REQUEST is defined (by WordPress) and is a TRUE, then it's a REST API request. - defined( 'REST_REQUEST' ) return false here
+		the save feature in Gutenberg is done using the REST API, and because of how is_admin() works checking it won’t work. defined( 'DOING_AJAX' ) && DOING_AJAX also won’t work
+		*/
+		$pagesajax = 'wp-json/wp/v2/pages';
+    	$postsajax = 'wp-json/wp/v2/posts';
+	    if ( ! empty( $_SERVER['REQUEST_URI'] ) &&
+	        strpos( $_SERVER['REQUEST_URI'], $pagesajax ) !== false ||
+	        strpos( $_SERVER['REQUEST_URI'], $postsajax ) !== false ) {
+			return true;
+    	}
+    	return false;
+    }
+}
+
 /* Function for save post/page changes to translations tables */
 if ( ! function_exists( 'mltlngg_save_post' ) ) {
 	function mltlngg_save_post( $post_id ) {
@@ -1407,7 +1491,7 @@ if ( ! function_exists( 'mltlngg_save_post' ) ) {
 
 		$current_posttype = get_post_type( $post_id );
 		if ( $current_posttype == 'post' || $current_posttype == 'page' ) {
-			if ( ( isset( $_POST['save'] ) || isset( $_POST['publish'] ) ) && check_admin_referer( 'mltlngg_translate_form', 'mltlngg_translate_form_field' ) ) {
+			if ( ( isset( $_POST['save'] ) || isset( $_POST['publish'] ) ) && isset( $_POST['mltlngg_active_language'] ) && check_admin_referer( 'mltlngg_translate_form', 'mltlngg_translate_form_field' ) ) {
 				$_SESSION['current_language'] = $_POST['mltlngg_active_language'];
 
 				/* If autosave option is disabled save all changes */
@@ -1511,7 +1595,7 @@ if ( ! function_exists( 'mltlngg_save_post' ) ) {
 				}
 
 				/* Save Title & Content to original post */
-				if ( $mltlngg_options['default_language'] != $_POST['mltlngg_active_language'] && isset( $_POST['title_' . $mltlngg_options['default_language']] ) && isset( $_POST['content_' . $mltlngg_options['default_language']] ) ) {
+				if ( $mltlngg_options['default_language'] != $_POST['mltlngg_active_language'] && isset( $_POST['title_' . $mltlngg_options['default_language'] ] ) && isset( $_POST['content_' . $mltlngg_options['default_language'] ] ) ) {
 					$default_excerpt = isset( $_POST['excerpt_' . $mltlngg_options['default_language'] ] ) ? $_POST['excerpt_' . $mltlngg_options['default_language'] ] : '';
 					$post = array(
 						'ID'			=> $post_id,
@@ -1535,18 +1619,53 @@ if ( ! function_exists( 'mltlngg_save_post' ) ) {
 	}
 }
 
+/* Callback function for REST API (gutenberg saving post use it) */
+if ( ! function_exists( 'mltlngg_rest_after_insert_post' ) ) {
+	function mltlngg_rest_after_insert_post( $post, $request, $creating ) {
+		global $wpdb, $mltlngg_get_default_language;
+
+		if ( $_COOKIE['mltlngg_language'] != $mltlngg_get_default_language ) {
+
+			$default_language_data = $wpdb->get_row( $wpdb->prepare(
+				"SELECT *
+				 FROM `" . $wpdb->prefix . "mltlngg_translate`
+				 WHERE `post_ID` = %d AND `language` = %s
+				", $post->ID, $mltlngg_get_default_language
+			) );
+
+			if ( ! empty( $default_language_data ) ) {
+				$wpdb->update(
+					$wpdb->posts,
+					array(
+						'post_content'	=> $default_language_data->post_content,
+						'post_title'	=> $default_language_data->post_title,
+						'post_excerpt'	=> $default_language_data->post_excerpt,
+					),
+					array(
+						'ID'	=> $post->ID
+					),
+					array( '%s', '%s', '%s' ),
+					array( '%d' )
+				);
+			}
+		}
+	}
+}
+
 /* Callback function for AJAX function */
 if ( ! function_exists( 'mltlngg_ajax_callback' ) ) {
 	function mltlngg_ajax_callback() {
 		global $wpdb, $mltlngg_options;
 		check_ajax_referer( 'mltlngg-ajax-nonce', 'security' );
+
 		if ( empty( $_POST['mltlngg_post_id'] ) ) {
 			die();
 		}
+
 		$mltlngg_old_excerpt = isset( $_POST['mltlngg_old_excerpt'] ) ? $_POST['mltlngg_old_excerpt'] :'';
 		$post_id = absint( $_POST['mltlngg_post_id'] );
 		/* Auto-update translation if it has been changed when autosave option is enabled */
-		if ( 'ajax' == $mltlngg_options['save_mode'] && ! empty( $_POST['old_lang'] ) ) {
+		if ( ! empty( $_POST['old_lang'] ) && ( 'ajax' == $mltlngg_options['save_mode'] || ! empty( $_POST['is_gutenberg'] ) ) ) {
 			/* Get translation data for previous language from database */
 			$mltlngg_result_old = $wpdb->get_row( $wpdb->prepare(
 				"SELECT *
@@ -1589,6 +1708,10 @@ if ( ! function_exists( 'mltlngg_ajax_callback' ) ) {
 		}
 		/* If received request for a translation for current language */
 		if ( isset( $_POST['get_data'] ) && ! empty( $_POST['new_lang'] ) ) {
+
+			if ( ! empty( $_POST['is_gutenberg'] ) )
+				mltlngg_setcookie( $_POST['new_lang'] );
+
 			$mltlngg_new_cat_data = array( "cat_translate" => "" );
 
 			 /* Get translation data for current language from database */
@@ -1617,18 +1740,28 @@ if ( ! function_exists( 'mltlngg_ajax_callback' ) ) {
 					$mltlngg_new_cat_data = array( "cat_translate" => $mltlngg_new_cat_mame );
 				}
 			}
+			
+			if ( ! ( isset( $mltlngg_post_data['post_content'] ) && isset( $mltlngg_post_data['post_title'] ) ) ) {
+				/* If translation is not exist, send empty translation to ajax */
+				if ( ! empty( $_POST['is_gutenberg'] ) && $_POST['new_lang'] == $mltlngg_options['default_language'] ) {
+					/* get initial data */
+					$mltlngg_post_data = $wpdb->get_row( $wpdb->prepare(
+						"SELECT `post_content`, `post_title`, `post_excerpt`
+							FROM $wpdb->posts
+							WHERE
+								$wpdb->posts.`ID` = %d", $post_id ), ARRAY_A );
+				} else {
+					$mltlngg_post_data = array(
+						'post_content' => "",
+						'post_title'   => "",
+						'post_excerpt' => ""
+					);
+				}
+			}
+
 			/* add comments before our results */
 			echo '<!--mltlngg-ajax-results-->';
-			if ( isset( $mltlngg_post_data['post_content'] ) && isset( $mltlngg_post_data['post_title'] ) ) { /* If translation is exist, send translation to ajax */
-				echo json_encode( array_merge( $mltlngg_post_data, $mltlngg_new_cat_data ) );
-			} else { /* If translation is not exist, send empty translation to ajax */
-				$mltlngg_post_data = array(
-					'post_content'	=> "",
-					'post_title'	=> "",
-					'post_excerpt'	=> ""
-				);
-				echo json_encode( array_merge( $mltlngg_post_data, $mltlngg_new_cat_data ) );
-			}
+			echo json_encode( array_merge( $mltlngg_post_data, $mltlngg_new_cat_data ) );
 			/* add comments after our results */
 			echo '<!--end-mltlngg-ajax-results-->';
 		}
@@ -2280,7 +2413,7 @@ if ( ! function_exists( 'mltlngg_author_url_fix' ) ) {
 
 if ( ! function_exists( 'mltlngg_localize_excerpt' ) ) {
 	function mltlngg_localize_excerpt( $excerpt ) {
-		global $wpdb, $post, $mltlngg_current_language, $mltlngg_get_default_language;
+		global $wpdb, $post, $mltlngg_current_language;
 		/* If current post type enabled to translation */
 		$post_type = get_post_type( $post->ID );
 		if ( in_array( $post_type, array( 'post', 'page' ) ) ) {
@@ -2884,20 +3017,6 @@ if ( ! function_exists ( 'mltlngg_plugin_banner' ) ) {
 
 		if ( isset( $_GET['page'] ) && 'mltlngg_settings' == $_GET['page'] ) {
 			bws_plugin_suggest_feature_banner( $mltlngg_plugin_info, 'mltlngg_options', 'multilanguage' );
-
-			if ( ! is_plugin_active( 'classic-editor/classic-editor.php' ) ) { ?>
-				<div class="notice notice-info">
-					<p>
-						<strong><?php _e( 'Note', 'multilanguage' ); ?></strong>: <?php _e( "Multilanguage plugin doesn't support Gutenberg editor. You need to install and activate Classic Editor plugin for Multilanguage correct work.", 'multilanguage' ); ?> 
-						<?php $all_plugins = get_plugins();
-						if ( ! array_key_exists( 'classic-editor/classic-editor.php', $all_plugins ) ) { ?>				
-							<a href="<?php echo self_admin_url( 'plugin-install.php?tab=search&type=term&s=Classic Editor&plugin-search-input=Search+Plugins' ); ?>"><?php _e( 'Install', 'multilanguage' ); ?></a>
-						<?php } else { ?>
-			 				<a href="plugins.php"><?php _e( 'Activate', 'multilanguage' ); ?></a>
-			 			<?php } ?>			
-					</p>
-				</div>
-			<?php }
 		}
 	}
 }
@@ -2915,6 +3034,7 @@ add_filter( 'query_vars', 'mltlngg_add_query_vars' );
 add_action( 'admin_menu', 'mltlngg_admin_menu' );
 add_action( 'init', 'mltlngg_init', 9 );
 add_action( 'admin_init', 'mltlngg_admin_init' );
+add_action( 'current_screen', 'mltlngg_current_screen' );
 add_filter( 'language_attributes', 'mltlngg_language_attributes', PHP_INT_MAX );
 add_action( 'wp_head', 'mltlngg_wp_head', PHP_INT_MAX );
 add_action( 'admin_enqueue_scripts', 'mltlngg_script_style' );

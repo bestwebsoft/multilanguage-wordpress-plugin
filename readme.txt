@@ -1,10 +1,10 @@
-﻿=== Multilanguage by BestWebSoft ===
+=== Multilanguage by BestWebSoft ===
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
 Requires at least: 4.5
-Tested up to: 5.4
-Stable tag: 1.3.5
+Tested up to: 5.4.1
+Stable tag: 1.3.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -49,6 +49,9 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 	* Custom
 * Translate Open Graph meta tags
 * Display translation availability in the posts and taxonomy lists
+* Compatible with:
+	* Classic Editor
+	* Block Editor (Gutenberg) [NEW]
 * Add hreflang links to <head> section
 * Hide link slug for the default language
 * Translation-ready admin dashboard
@@ -72,7 +75,7 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 > 	* Website title
 > 	* Website tagline
 > * Compatible with Elementor Page Builder
-> * Compatible with Advanced Custom Fields [NEW]
+> * Compatible with Advanced Custom Fields
 > * Change language slug position in the website URL
 > * Create separate menus for different languages
 > * Display/hide widgets for different languages
@@ -87,7 +90,7 @@ If you have a feature suggestion or idea you'd like to see in the plugin, we'd l
 = Documentation & Videos =
 
 * [[Doc] Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
-* [[Doc] How to use](https://docs.google.com/document/d/1y_c25pWDedi4FghjWj7W2Qleb-JsC10fGFinw4hy8T0/)
+* [[Doc] User Guide](https://docs.google.com/document/d/1y_c25pWDedi4FghjWj7W2Qleb-JsC10fGFinw4hy8T0/)
 
 = Help & Support =
 
@@ -193,14 +196,18 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 3. Plugin settings page.
 4. Plugin languages page.
 5. Edit language page.
-6. Post/page editor with translation tabs.
-7. Translation form for adding a new category.
-8. Translation form for editing a category.
-9. Translation form for adding a new tag.
-10. Adding and configuring language switcher widget in the admin panel.
-11. Adding language switcher into site menu.
+6. Post/page editor (Gutenberg).
+7. Post/page editor with translation tabs (Classic Editor).
+8. Translation form for adding a new category.
+9. Translation form for editing a category.
+10. Translation form for adding a new tag.
+11. Adding and configuring language switcher widget in the admin panel.
+12. Adding language switcher into site menu.
 
 == Changelog ==
+
+= V1.3.6 - 03.06.2020 =
+* NEW: The compatibility with page builder Gutenberg has been added.
 
 = V1.3.5 - 27.04.2020 =
 * PRO: The compatibility with Advanced Custom Fields has been added.
@@ -374,6 +381,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.3.6 =
+* New features added.
 
 = V1.3.5 =
 * Bugs fixed.

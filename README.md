@@ -49,6 +49,12 @@
 </li>
 <li>Translate Open Graph meta tags</li>
 <li>Display translation availability in the posts and taxonomy lists</li>
+<li>Compatible with:
+<ul>
+<li>Classic Editor</li>
+<li>Block Editor (Gutenberg) [NEW]</li>
+</ul>
+</li>
 <li>Add hreflang links to  section</li>
 <li>Hide link slug for the default language</li>
 <li>Translation-ready admin dashboard</li>
@@ -78,7 +84,7 @@
 </ul>
 </li>
 <li>Compatible with Elementor Page Builder</li>
-<li>Compatible with Advanced Custom Fields [NEW]</li>
+<li>Compatible with Advanced Custom Fields</li>
 <li>Change language slug position in the website URL</li>
 <li>Create separate menus for different languages</li>
 <li>Display/hide widgets for different languages</li>
@@ -92,7 +98,7 @@
 <h4>Documentation &amp; Videos</h4>
 <ul>
 <li><a href="https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/" rel="nofollow ugc">[Doc] Installation</a></li>
-<li><a href="https://docs.google.com/document/d/1y_c25pWDedi4FghjWj7W2Qleb-JsC10fGFinw4hy8T0/" rel="nofollow ugc">[Doc] How to use</a></li>
+<li><a href="https://docs.google.com/document/d/1y_c25pWDedi4FghjWj7W2Qleb-JsC10fGFinw4hy8T0/" rel="nofollow ugc">[Doc] User Guide</a></li>
 </ul>
 <h4>Help &amp; Support</h4>
 <p>Visit our Help Center if you have any questions, our friendly Support Team is happy to help &#8211; <a href="https://support.bestwebsoft.com/" rel="nofollow ugc">https://support.bestwebsoft.com/</a></p>

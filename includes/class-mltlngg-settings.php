@@ -226,7 +226,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 				</tr>
 				<?php if ( ! defined( 'ET_BUILDER_THEME' ) && ! defined( 'WPB_VC_VERSION' ) ) { ?>
 					<tr>
-						<th><?php _e( 'Translation Saving Mode', 'multilanguage' ); ?></th>
+						<th><?php _e( 'Translation Saving Mode for Classic Editor', 'multilanguage' ); ?></th>
 						<td>
 							<fieldset>
 								<label>

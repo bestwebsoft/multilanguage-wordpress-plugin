@@ -260,7 +260,7 @@ table.bws-system-info tbody tr:nth-child(odd) {
     box-shadow: none;
 }
 .bws_product_image img {
-    height: 60px;
+    height: 64px;
 }
 .bws_product_content {
     max-width: 200px;

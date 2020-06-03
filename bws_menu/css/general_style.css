@@ -330,7 +330,7 @@ div.bws_banner_on_plugin_page .icon {
     margin: 12px 8px 8px 12px;
 }
 .bws_banner_on_plugin_page .icon img {
-    max-width: 60px;
+    max-width: 64px;
 }
 .bws_go_pro_banner .icon:before {
     content: 'PRO';

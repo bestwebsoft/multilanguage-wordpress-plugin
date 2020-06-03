@@ -1,7 +1,7 @@
 <?php
 /*
 * Function for displaying BestWebSoft menu
-* Version: 2.2.9
+* Version: 2.3.0
 */
 
 if ( ! function_exists ( 'bws_admin_enqueue_scripts' ) )
@@ -9,7 +9,7 @@ if ( ! function_exists ( 'bws_admin_enqueue_scripts' ) )
 
 if ( ! function_exists( 'bws_add_menu_render' ) ) {
 	function bws_add_menu_render() {
-		global $wpdb, $wp_version, $bws_plugin_info, $bstwbsftwppdtplgns_options;
+		global $wpdb, $wp_version, $bstwbsftwppdtplgns_options;
 		$error = $message = '';
 
 		/**
@@ -138,6 +138,7 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 									} elseif ( is_array( $value->package ) && ! empty( $value->package ) ) {
 										$plugins_array = $_SESSION['bws_membership_list'] = $value->package;
 										$_SESSION['bws_membership_time_check'] = strtotime( 'now' );
+
 										if ( isset( $bstwbsftwppdtplgns_options[ $bws_license_plugin ] ) && $bws_license_key == $bstwbsftwppdtplgns_options[ $bws_license_plugin ] ) {
 											$message = __( 'The license key is valid.', 'bestwebsoft' );
 											if ( isset( $value->time_out ) && $value->time_out != '' )
@@ -459,7 +460,7 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 
 								$key_plugin_explode = explode( '/', $key_plugin );
 
-								$icon = isset( $value_plugin['icon'] ) ? $value_plugin['icon'] : '//ps.w.org/' . $key_plugin_explode[0] . '/assets/icon-128x128.png';
+								$icon = isset( $value_plugin['icon'] ) ? $value_plugin['icon'] : '//ps.w.org/' . $key_plugin_explode[0] . '/assets/icon-256x256.png';
 								$is_pro_isset = isset( $value_plugin['pro_version'] );
 								$is_installed = array_key_exists( $key_plugin, $all_plugins );
 								$is_active = in_array( $key_plugin, $active_plugins ) || isset( $sitewide_active_plugins[ $key_plugin ] );

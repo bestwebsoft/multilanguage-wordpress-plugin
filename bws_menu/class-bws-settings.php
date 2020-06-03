@@ -112,7 +112,7 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 				$this->licenses[ $this->plugins_info['TextDomain'] ] = array(
 					'name'          => $this->plugins_info['Name'],
 					'slug'          => $this->plugins_info['TextDomain'],
-					'pro_slug'      => stristr( $this->bws_license_plugin, '/', TRUE ),
+					'pro_slug'      => substr( $this->bws_license_plugin, 0, stripos( $this->bws_license_plugin, '/' ) ),
 					'basename'      => $this->plugin_basename,
 					'pro_basename'  => $this->bws_license_plugin
 				);
@@ -155,7 +155,7 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
                                             <div class="submitbox" id="submitpost">
                                                 <div id="minor-publishing">
                                                     <div id="misc-publishing-actions">
-														<?php if ( $this->is_pro ) {															
+														<?php if ( $this->is_pro ) {
 															if ( isset( $bstwbsftwppdtplgns_options['wrong_license_key'][ $this->plugin_basename ] ) || empty( $bstwbsftwppdtplgns_options['time_out'] ) || ! array_key_exists( $this->plugin_basename, $bstwbsftwppdtplgns_options['time_out'] ) ) {
 																$license_type = 'Pro';
 																$license_status = __( 'Inactive', 'bestwebsoft' ) . ' <a href="#' . $this->prefix . '_license_tab" class="bws_trigger_tab_click">' . __( 'Learn More', 'bestwebsoft' ) . '</a>';
@@ -768,6 +768,7 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 						     $bstwbsftwppdtplgns_options['go_pro'][ $this->bws_license_plugin ]['time'] > ( time() - ( 24 * 60 * 60 ) ) )
 							$attr = 'disabled="disabled"';
 
+
 						$license_key = '';
 						if( ! empty( $single_license['pro_basename'] ) ) {
 							$license_key = ! empty( $bstwbsftwppdtplgns_options[ $single_license['pro_basename'] ] ) ? $bstwbsftwppdtplgns_options[ $single_license['pro_basename'] ] : '';
@@ -832,6 +833,7 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 		private function save_options_license_key() {
 			global $wp_version, $bstwbsftwppdtplgns_options;
 			/*$empty_field_error - added to avoid error when 1 field is empty while another field contains license key*/
+			
 			$error = $message = $empty_field_error = '';
 			
 			foreach ( $this->licenses as $single_license) {
@@ -855,7 +857,7 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 							if ( ! empty( $this->all_plugins ) && ! empty( $current ) && isset( $current->response ) && is_array( $current->response ) ) {
 								$to_send = array();
 								$to_send["plugins"][ $single_license['basename'] ] = $this->all_plugins[ $single_license['basename'] ];
-								$to_send["plugins"][ $single_license['basename'] ]["bws_license_key"]    = $bws_license_key;
+								$to_send["plugins"][ $single_license['basename'] ]["bws_license_key"] = $bws_license_key;
 								$to_send["plugins"][ $single_license['basename'] ]["bws_illegal_client"] = true;
 								$options                                                            = array(
 									'timeout'    => ( ( defined( 'DOING_CRON' ) && DOING_CRON ) ? 30 : 3 ),

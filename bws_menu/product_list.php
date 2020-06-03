@@ -2,6 +2,7 @@
 /*
 * BestWebSoft product list
 */
+global $bws_plugin_info, $wp_version;
 
 $bws_plugins_category = array(
 	'admin-tools'	=> array( 'name' => __( 'Admin Tools', 'bestwebsoft' ) ),
@@ -70,10 +71,10 @@ $bws_plugins = array(
 		'name'			=> 'Contact Form to DB',
 		'description'	=> __( 'Save and manage Contact Form messages. Never lose important data.', 'bestwebsoft' ),
 		'link'			=> 'https://bestwebsoft.com/products/wordpress/plugins/contact-form-to-db/?k=ba3747d317c2692e4136ca096a8989d6&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
-		'settings'		=> 'admin.php?page=cntctfrmtdb_settings',
+		'settings'		=> 'admin.php?page=contact_form_to_db.php',
 		'pro_version'	=> 'contact-form-to-db-pro/contact_form_to_db_pro.php',
 		'purchase' 		=> 'https://bestwebsoft.com/products/wordpress/plugins/contact-form-to-db/buy/?k=6ce5f4a9006ec906e4db643669246c6a&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
-		'pro_settings' 	=> 'admin.php?page=cntctfrmtdbpr_settings'
+		'pro_settings' 	=> 'admin.php?page=contact_form_to_db_pro.php'
 	),
 	'custom-admin-page/custom-admin-page.php' => array(
 		'category'		=> array( 'admin-tools' ),
@@ -83,7 +84,7 @@ $bws_plugins = array(
 		'settings'		=> 'edit.php?post_type=bws-admin_page&page=custom-admin-page.php',
 		'pro_version'	=> 'custom-admin-page-pro/custom-admin-page-pro.php',
 		'purchase' 		=> 'https://bestwebsoft.com/products/wordpress/plugins/custom-admin-page/buy/?k=b986f456dba092b537f1a7755a363be9&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
-		'pro_settings' 	=> 'edit.php?post_type=bws-admin_page&page=custom-admin-page.php'
+		'pro_settings' 	=> 'edit.php?post_type=bws-admin_page&page=custom-admin-page-pro.php'
 	),
 	'custom-search-plugin/custom-search-plugin.php' => array(
 		'category'		=> array( 'navigation' ),
@@ -141,7 +142,7 @@ $bws_plugins = array(
 	),
 	'adsense-plugin/adsense-plugin.php' => array(
 		'category'		=> array( 'marketing' ),
-		'name'			=> 'Ads',
+		'name'			=> 'Google Ads',
 		'description'	=> __( 'Add Adsense ads to WordPress website pages, posts, custom posts, search results, categories, tags, and widgets.', 'bestwebsoft' ),
 		'link'			=> 'https://bestwebsoft.com/products/wordpress/plugins/google-adsense/?k=60e3979921e354feb0347e88e7d7b73d&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
 		'settings'		=> 'admin.php?page=adsense-plugin.php',
@@ -379,7 +380,7 @@ $bws_plugins = array(
 		'settings'		=> 'admin.php?page=social-buttons.php',
 		'pro_version'	=> 'social-buttons-pack-pro/social-buttons-pack-pro.php',
 		'purchase' 		=> 'https://bestwebsoft.com/products/wordpress/plugins/social-buttons-pack/buy/?k=e7059cacde0d275b224a5d995c9160fd&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
-		'pro_settings'	=> 'admin.php?page=social-buttons.php'
+		'pro_settings'	=> 'admin.php?page=social-buttons-pro.php'
 	),
 	'social-login-bws/social-login-bws.php' => array(
 		'category'		=> array( 'smm' ),
@@ -393,10 +394,10 @@ $bws_plugins = array(
 		'name'			=> 'Subscriber',
 		'description'	=> __( 'Add email newsletter sign up form to WordPress posts, pages and widgets. Collect data and subscribe your users.', 'bestwebsoft' ),
 		'link'			=> 'https://bestwebsoft.com/products/wordpress/plugins/subscriber/?k=a4ecc1b7800bae7329fbe8b4b04e9c88&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
-		'settings'		=> 'admin.php?page=sbscrbr_settings_page',
+		'settings'		=> 'admin.php?page=subscriber.php',
 		'pro_version'	=> 'subscriber-pro/subscriber-pro.php',
 		'purchase' 		=> 'https://bestwebsoft.com/products/wordpress/plugins/subscriber/buy/?k=02dbb8b549925d9b74e70adc2a7282e4&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
-		'pro_settings' 	=> 'admin.php?page=sbscrbrpr_settings_page'
+		'pro_settings' 	=> 'admin.php?page=subscriber-pro.php'
 	),
 	'bws-testimonials/bws-testimonials.php' => array(
 		'category'		=> array( 'marketing', 'recommended' ),
@@ -460,10 +461,10 @@ $bws_plugins = array(
 		'name'			=> 'Help Center',
 		'description'	=> __( 'Backup and export Zendesk Help Center content automatically to your WordPress website database.', 'bestwebsoft' ),
 		'link'			=> 'https://bestwebsoft.com/products/wordpress/plugins/zendesk-help-center/?k=2a5fd2f4b2f4bde46f2ca44b8d15846d&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
-		'settings'		=> 'admin.php?page=zendesk_hc.php&action=settings',
+		'settings'		=> 'admin.php?page=zendesk_hc.php',
 		'pro_version'	=> 'zendesk-help-center-pro/zendesk-help-center-pro.php',
 		'purchase' 		=> 'https://bestwebsoft.com/products/wordpress/plugins/zendesk-help-center/buy/?k=45199e4538b5befe4d9566868a61a3aa&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
-		'pro_settings'	=> 'admin.php?page=zendesk_hc_pro.php&tab=settings'
+		'pro_settings'	=> 'admin.php?page=zendesk_hc_pro.php'
 	)
 );
 
