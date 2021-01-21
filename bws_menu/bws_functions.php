@@ -605,7 +605,7 @@ if ( ! function_exists ( 'bws_admin_enqueue_scripts' ) ) {
 									};
 									$( '." . $prefix . "_close_icon' ).click( function() {
 										$( '." . $prefix . "_message' ).css( 'display', 'none' );
-										$.cookie( '" . $prefix . "_hide_banner_on_plugin_page', 'true', { expires: 32 } );
+										$.cookie( '" . $prefix . "_hide_banner_on_plugin_page', 'true', { expires: 32, secure: true } );
 									});
 								});
 							})(jQuery);";
@@ -631,7 +631,7 @@ if ( ! function_exists ( 'bws_admin_enqueue_scripts' ) ) {
 							}
 							$( '." . $banner_value['prefix'] . "_close_icon' ).click( function() {
 								$( '." . $banner_value['prefix'] . "_message_timeout' ).css( 'display', 'none' );
-								$.cookie( '" . $banner_value['prefix'] . "_timeout_hide_banner_on_plugin_page', 'true', { expires: 30 } );
+								$.cookie( '" . $banner_value['prefix'] . "_timeout_hide_banner_on_plugin_page', 'true', { expires: 30, secure: true } );
 							});";
 					}
 

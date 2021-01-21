@@ -358,7 +358,7 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 			}
 
 			echo ( version_compare( $wp_version, '4.0', '<' ) ) ? "<h2>" : "<h1>";
-				_e( 'Edit Language', 'multilanguage' ); ?>: <?php echo $language_data["name"];
+				_e( 'Edit Language', 'multilanguage' );
 			echo ( version_compare( $wp_version, '4.0', '<' ) ) ? "</h2>" : "</h1>";
 
 			if ( ! empty( $error ) ) { ?>
@@ -368,10 +368,16 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 			<?php } ?>
 			<form class="bws_form" method="post" action="" enctype="multipart/form-data">
 				<table class="form-table">
+                    <tr>
+                        <th><?php _e( 'Title', 'multilanguage' ); ?></th>
+                        <td>
+                            <input type="text" name="mltlngg_title" value="<?php echo $language_data["name"]; ?>" disabled />
+                        </td>
+                    </tr>
 					<tr>
 						<th><?php _e( 'Default', 'multilanguage' ); ?></th>
 						<td>
-							<input type="checkbox" name="mltlngg_default_lang" value="1" <?php checked( $language_data['locale'], $mltlngg_options['default_language'] ); ?> />
+							<input type="checkbox" name="mltlngg_default_lang" value="1" <?php checked( $language_data['locale'], $mltlngg_options['default_language'] ); ?> /> <span class="bws_info"><?php _e( "Enable to use it as a default language.", 'multilanguage' ); ?></span>
 						</td>
 					</tr>
 					<tr>
@@ -571,13 +577,6 @@ if ( ! function_exists( 'mltlngg_actions' ) ) {
 
 			default:
 				return array( 'error' => __( 'Unknown action', 'multilanguage' ) );
-		}
-
-		if ( $flag ) {
-			$result['success'] = sprintf( __( 'Selected languages have been %s', 'multilanguage' ), $action );
-			$mltlngg_options['flush_rewrite_rules'] = 1;
-		} else {
-			$result['error'] = sprintf( __( 'None of the selected languages has been %s', 'multilanguage' ), $action );
 		}
 
 		update_option( 'mltlngg_options', $mltlngg_options );

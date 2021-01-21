@@ -6,6 +6,33 @@
 			$( '#mltlngg-add-new-language-form' ).slideToggle();
 		});
 
+		var mltlngg_translate = ['drop-down-list', 'drop-down-titles', 'drop-down-icons', 'flags-icons'];
+		var mltlngg_translate_google = ['gt', 'gt-horizontal', 'gt-vertical'];
+
+		function mltlngg_google_auto_translate() {
+			if ( $(  'input[name="mltlngg_google_auto_translate"]' ).is( ':checked' ) ) {
+				mltlngg_translate.forEach(function( item) {
+					$( 'select[name="mltlngg_language_switcher"] option[value = '+ item + ']' ).attr( 'disabled', true );
+				});
+				mltlngg_translate_google.forEach(function( item, i,arr  ) {
+					$( 'select[name="mltlngg_language_switcher"] option[value = '+ item + ']' ).attr( 'disabled', false );
+					$( 'select[name="mltlngg_language_switcher"] option[value = '+ arr[0] + ']' ).attr( 'selected', true );
+				});
+			} else {
+				mltlngg_translate.forEach(function (item, i, arr) {
+					$('select[name="mltlngg_language_switcher"] option[value = ' + item + ']').attr('disabled', false);
+					$('select[name="mltlngg_language_switcher"] option[value = ' + arr[0] + ']').attr('selected', true);
+				});
+				mltlngg_translate_google.forEach(function (item) {
+					$('select[name="mltlngg_language_switcher"] option[value = ' + item + ']').attr('disabled', true);
+				});
+			}
+		}
+		mltlngg_google_auto_translate();
+		$( 'input[name="mltlngg_google_auto_translate"]' ).on( 'click', function() {
+			mltlngg_google_auto_translate();
+		} );
+
 		/* Do not save post if Title and Content is empty */
 		$( '#publish' ).on( 'click', function() {
 			var mltlnggCurrentTitle = $( '#title' ).val(),

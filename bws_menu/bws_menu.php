@@ -1,7 +1,7 @@
 <?php
 /*
 * Function for displaying BestWebSoft menu
-* Version: 2.3.0
+* Version: 2.3.6
 */
 
 if ( ! function_exists ( 'bws_admin_enqueue_scripts' ) )
@@ -547,7 +547,7 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 												<?php } elseif ( $is_installed ) { ?>
                                                     <a class="button button-secondary" href="<?php echo esc_url( wp_nonce_url( self_admin_url( $current_page . '&bws_activate_plugin=' . $key_plugin ), 'bws_activate_plugin' . $key_plugin ) ); ?>" title="<?php _e( 'Activate this plugin', 'bestwebsoft' ); ?>"><?php _e( 'Activate', 'bestwebsoft' ); ?></a>
 												<?php } else {
-													$install_url = isset( $value_plugin['install_url'] ) ? $value_plugin['install_url'] : self_admin_url( 'plugin-install.php?tab=search&type=term&s=' . str_replace( array( ' ', '-' ), '+', str_replace( '&', '', $value_plugin['name'] ) ) . '+BestWebSoft&plugin-search-input=Search+Plugins' ); ?>
+													$install_url = isset( $value_plugin['install_url'] ) ? $value_plugin['install_url'] : network_admin_url( 'plugin-install.php?tab=search&type=term&s=' . str_replace( array( ' ', '-' ), '+', str_replace( '&', '', $value_plugin['name'] ) ) . '+BestWebSoft&plugin-search-input=Search+Plugins' ); ?>
                                                     <a class="button button-secondary" href="<?php echo esc_url( $install_url ); ?>" title="<?php _e( 'Install this plugin', 'bestwebsoft' ); ?>" target="_blank"><?php _e( 'Install Now', 'bestwebsoft' ); ?></a>
 												<?php }
 											} ?>

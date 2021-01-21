@@ -4,6 +4,7 @@
  */
 if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 	class Mltlngg_Settings_Tabs extends Bws_Settings_Tabs {
+	    private $language_switcher_name;
 		/**
 		 * Constructor.
 		 *
@@ -33,11 +34,18 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 				'tabs'				=> $tabs,
 				'doc_link'			=> 'https://docs.google.com/document/d/1y_c25pWDedi4FghjWj7W2Qleb-JsC10fGFinw4hy8T0/',
 				'wp_slug'			=> 'multilanguage',
-				'pro_page'			=> 'admin.php?page=mltlnggpr_settings',
-				'bws_license_plugin'=> 'multilanguage-pro/multilanguage-pro.php',
 				'link_key'			=> 'fa164f00821ed3a87e6f78cb3f5c277b',
 				'link_pn'			=> '143'
 			) );
+
+			$this->language_switcher_name = array(
+                'drop-down-list' => __( 'Drop-down list (flag + title)', 'multilanguage' ),
+                'drop-down-titles' => __( 'Drop-down list (title)', 'multilanguage' ),
+                'drop-down-icons' => __( 'Drop-down list (flag)', 'multilanguage' ),
+                'flags-icons' => __( 'Flag', 'multilanguage' ),
+                'gt' => __( 'Google Auto Translate (drop-down only)', 'multilanguage' ),
+                'gt-horizontal' => __( 'Google Auto Translate (horizontal)', 'multilanguage' ),
+                'gt-vertical' => __( 'Google Auto Translate (vertical)', 'multilanguage' ) );
 
 			add_filter( get_parent_class( $this ) . '_additional_restore_options', array( $this, 'additional_restore_options' ) );
 			add_action( get_parent_class( $this ) . '_display_metabox', array( $this, 'display_metabox' ) );
@@ -57,19 +65,12 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 			$message = $notice = $error = '';
 
 			$this->options['language_switcher'] = ( isset( $_POST['mltlngg_language_switcher'] ) &&
-				in_array( $_POST['mltlngg_language_switcher'], array(
-					'drop-down-list',
-					'drop-down-titles',
-					'drop-down-icons',
-					'flags-icons',
-					'gt',
-					'gt-horizontal',
-					'gt-vertical' )
-				)
+				array_key_exists( $_POST['mltlngg_language_switcher'], $this->language_switcher_name )
 			) ? $_POST['mltlngg_language_switcher'] : 'drop-down-list';
 
 			$this->options['hide_link_slug']			= isset( $_POST['mltlngg_hide_link_slug'] ) ? 0 : 1;
 			$this->options['wp_localization']			= isset( $_POST['mltlngg_wp_localization'] ) ? 1 : 0;
+			$this->options['google_auto_translate']		= isset( $_POST['mltlngg_google_auto_translate'] ) ? 1 : 0;
 			$this->options['translate_open_graph']		= isset( $_POST['mltlngg_translate_open_graph'] ) ? 1 : 0;
 			$this->options['display_alternative_link']	= isset( $_POST['mltlngg_display_alternative_link'] ) ? 1 : 0;
 			$this->options['save_mode']					= isset( $_POST['mltlngg_save_mode'] ) && 'ajax' == $_POST['mltlngg_save_mode'] ? 'ajax' : 'manual';
@@ -90,59 +91,22 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 			<?php $this->help_phrase(); ?>
 			<hr>
 			<table class="form-table">
+			<tr>
+                    <th><?php _e( 'Google Auto Translate', 'multilanguage' ); ?></th>
+                    <td>
+                        <input type="checkbox" name="mltlngg_google_auto_translate"  value="1" <?php checked( 1, $this->options['google_auto_translate'] ); ?> /> <span class="bws_info"><?php _e( "Enable to activate webpages auto translate. When google auto translate is enabled, a Google language switcher is displayed on the page allowing visitors to translate the page content automatically.", 'multilanguage' ); ?></span>
+                    </td>
+                </tr>
 				<tr>
-					<th><?php _e( 'Default Language Switcher Type', 'multilanguage' ); ?></th>
-					<td>
-						<fieldset>
-							<label>
-								<input name="mltlngg_language_switcher" type="radio" value="drop-down-list" <?php checked( $this->options['language_switcher'], 'drop-down-list' ); ?> />
-								<?php _e( 'Drop-down list', 'multilanguage' ); ?> (<?php _e( 'flag', 'multilanguage' ); ?> + <?php _e( 'title', 'multilanguage' ); ?>)
-							</label>
-							<br/>
-							<label>
-								<input name="mltlngg_language_switcher" type="radio" value="drop-down-titles" <?php checked( $this->options['language_switcher'], 'drop-down-titles' ); ?> />
-								<?php _e( 'Drop-down list', 'multilanguage' ); ?> (<?php _e( 'title', 'multilanguage' ); ?>)
-							</label>
-							<br/>
-							<label>
-								<input name="mltlngg_language_switcher" type="radio" value="drop-down-icons" <?php checked( $this->options['language_switcher'], 'drop-down-icons' ); ?> />
-								<?php _e( 'Drop-down list', 'multilanguage' ); ?> (<?php _e( 'flag', 'multilanguage' ); ?>)
-							</label>
-							<br/>
-							<label>
-								<input name="mltlngg_language_switcher" type="radio" value="flags-icons" <?php checked( $this->options['language_switcher'], 'flags-icons' ); ?> />
-								<?php _e( 'Flag', 'multilanguage' ); ?>
-							</label>
-							<br/>
-							<label>
-								<input name="mltlngg_language_switcher" type="radio" value="gt" <?php checked( $this->options['language_switcher'], 'gt' ); ?> />
-								<?php printf(
-									'%s (%s)',
-									__( 'Google Auto Translate', 'multilanguage' ),
-									__( 'drop-down only', 'multilanguage' )
-								); ?>
-							</label>
-							<br/>
-							<label>
-								<input name="mltlngg_language_switcher" type="radio" value="gt-horizontal" <?php checked( $this->options['language_switcher'], 'gt-horizontal' ); ?> />
-								<?php printf(
-									'%s (%s)',
-									__( 'Google Auto Translate', 'multilanguage' ),
-									__( 'horizontal', 'multilanguage' )
-								); ?>
-							</label>
-							<br/>
-							<label>
-								<input name="mltlngg_language_switcher" type="radio" value="gt-vertical" <?php checked( $this->options['language_switcher'], 'gt-vertical' ); ?> />
-								<?php printf(
-									'%s (%s)',
-									__( 'Google Auto Translate', 'multilanguage' ),
-									__( 'vertical', 'multilanguage' )
-								); ?>
-							</label>
-						</fieldset>
-					</td>
-				</tr>
+                    <th><?php _e( 'Default Language Switcher Type', 'multilanguage' ); ?></th>
+                    <td>
+                        <select name="mltlngg_language_switcher">
+                            <?php foreach ( $this->language_switcher_name as $key => $value  ) { ?>
+                                <option <?php selected( $this->options['language_switcher'], $key ) ?> value="<?php echo $key; ?>"><?php echo $value; ?></option>
+                            <?php } ?>
+                        </select>
+                    </td>
+                </tr>
 			</table>
 			<?php if ( ! $this->hide_pro_tabs ) { ?>
 				<div class="bws_pro_version_bloc">
@@ -202,7 +166,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 				<tr>
 					<th><?php _e( 'WordPress Language', 'multilanguage' ); ?></th>
 					<td>
-						<input name="mltlngg_wp_localization" type="checkbox" value="1" <?php checked( 1, $this->options['wp_localization'] ); ?>> <span class="bws_info"><?php _e( "Enable to switch WordPress language automatically when the language is changed in the front-end (installed WordPress language packs are required).", 'multilanguage' ); ?></span>
+						<input name="mltlngg_wp_localization" type="checkbox" value="1" <?php checked( 1, $this->options['wp_localization'] ); ?>> <span class="bws_info"><?php _e( "Enable to switch WordPress language automatically when the language is changed in the front-end. Installed WordPress language packs are required. To install a new language simply go to the Settings > General and choose it in the Site Language option.", 'multilanguage' ); ?></span>
 					</td>
 				</tr>
 				<tr>

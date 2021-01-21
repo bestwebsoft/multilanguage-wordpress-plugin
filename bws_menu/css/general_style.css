@@ -661,6 +661,9 @@ span.bws_code {
 #bws_settings_tabs li.bws-tab-notifications a:before {
     content: "\f466";
 }
+#bws_settings_tabs li.bws-tab-reports a:before {
+    content: "\f535";
+}
 #bws_settings_tabs li.bws-tab-output a:before {
     content: "\f498";
 }

@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
 Requires at least: 4.5
-Tested up to: 5.4.1
-Stable tag: 1.3.6
+Tested up to: 5.6
+Stable tag: 1.3.7
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -89,8 +89,8 @@ If you have a feature suggestion or idea you'd like to see in the plugin, we'd l
 
 = Documentation & Videos =
 
-* [[Doc] Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
 * [[Doc] User Guide](https://docs.google.com/document/d/1y_c25pWDedi4FghjWj7W2Qleb-JsC10fGFinw4hy8T0/)
+* [[Doc] Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
 
 = Help & Support =
 
@@ -205,6 +205,14 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 12. Adding language switcher into site menu.
 
 == Changelog ==
+
+= V1.3.7 - 22.01.2021 =
+* Update : BWS Panel section was updated.
+* PRO: Functionality for downloading and updating the country table was updated.
+* Update : The plugin settings page was changed.
+* Update : All functionality for WordPress 5.6 has been updated.
+* Bugfix : Bug with displaying the language switcher in the admin panel has been fixed.
+* Bugfix : Bug with tags was fixed.
 
 = V1.3.6 - 03.06.2020 =
 * NEW: The compatibility with page builder Gutenberg has been added.
@@ -381,6 +389,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.3.7 =
+* Functionality improved.
+* Plugin optimization completed.
+* Bugs fixed.
 
 = V1.3.6 =
 * New features added.

@@ -9,7 +9,7 @@
 			/* extend pointer options - add close button */
 			pointer_options = $.extend( pointer_options, {
 				buttons: function(event, t) {
-					var button;
+					var button = '';
 					/* check and add dismiss-type buttons */
 					for ( var but in pointer_buttons ) {
 						if ( typeof pointer_buttons[ but ]['type'] != 'undefined' && pointer_buttons[ but ]['type'] == 'dismiss' && typeof pointer_buttons[ but ]['text'] != 'undefined' && pointer_buttons[ but ]['text'] != '' ) {

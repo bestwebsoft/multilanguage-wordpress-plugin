@@ -9,7 +9,7 @@
 	(function( $ ) {
 
 		$( window ).on( 'load', function() {
-
+			var timescript = window.performance;
 			/* React componenets we will needed */
 			var getPost 					= wp.data.select( 'core/editor' ),
 				editPost 					= wp.data.dispatch( 'core/editor' ),
@@ -26,7 +26,7 @@
 				editNotice.removeNotice( 'mltlnggInfo' );
 				editNotice.createNotice(
 					'warning',
-					i18n.__( 'Updating language', 'multilanguage-pro' ) + ': ' + currentLangName + ' ... ',
+					i18n.__( 'Updating language', 'multilanguage' ) + ': ' + currentLangName + ' ... ',
 					{
 						id : 'mltlnggUpdate',
 						isDismissible : false
@@ -38,7 +38,7 @@
 
 				editNotice.createNotice(
 					'info',
-					i18n.__( 'Edit for language', 'multilanguage-pro' ) + ': ' + currentLangName,
+					i18n.__( 'Edit for language', 'multilanguage' ) + ': ' + currentLangName,
 					{
 						id : 'mltlnggInfo',
 						isDismissible : false
@@ -148,27 +148,29 @@
 	                        	},
 		                        element.createElement(components.ExternalLink, {
 		                        	href: mltlngg_vars.add_new_lang_link
-		                        }, i18n.__( 'Add Language', 'multilanguage-pro' ) )
+		                        }, i18n.__( 'Add Language', 'multilanguage' ) )
 	                        )
 	                    )
                     }
                 })
-            }; 
+            };
 
-			var e = document.querySelector(".edit-post-header-toolbar");
-			if (e) {
-			    var t = document.createElement("div");
-			    e.appendChild(t), Object(element.render)(element.createElement(dropdownMenu, null), t)
-			}
-
-			editNotice.createNotice(
-				'info',
-				i18n.__( 'Edit for language', 'multilanguage-pro' ) + ': ' + currentLangName,
-				{
-					id : 'mltlnggInfo',
-					isDismissible : false
+			setTimeout(function() {
+				e = document.querySelector(".edit-post-header-toolbar");
+				if (e) {
+					var t = document.createElement("div");
+					e.appendChild(t), Object(element.render)(element.createElement(dropdownMenu, null), t)
 				}
-			);
+
+				editNotice.createNotice(
+					'info',
+					i18n.__( 'Edit for language', 'multilanguage' ) + ': ' + currentLangName,
+					{
+						id : 'mltlnggInfo',
+						isDismissible : false
+					}
+				);
+			}, timescript) ;
 
 			var is_saving = false;
 			const unsubscribe = wp.data.subscribe( function() {

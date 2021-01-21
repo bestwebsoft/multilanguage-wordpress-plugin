@@ -360,7 +360,7 @@ if ( ! function_exists( 'bws_submit_uninstall_reason_action' ) ) {
 			exit;
 		}
 
-		$reason_info = isset( $_REQUEST['reason_info'] ) ? stripcslashes( sanitize_textarea_field( $_REQUEST['reason_info'] ) ) : '';
+		$reason_info = isset( $_REQUEST['reason_info'] ) ? stripcslashes( sanitize_text_field( $_REQUEST['reason_info'] ) ) : '';
 		if ( ! empty( $reason_info ) ) {
 			$reason_info = substr( $reason_info, 0, 255 );
 		}

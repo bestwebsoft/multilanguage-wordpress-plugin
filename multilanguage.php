@@ -6,12 +6,12 @@ Description: Translate WordPress website content to other languages manually. Cr
 Author: BestWebSoft
 Text Domain: multilanguage
 Domain Path: /languages
-Version: 1.3.6
+Version: 1.3.7
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
 
-/*  © Copyright 2020  BestWebSoft  ( https://support.bestwebsoft.com )
+/*  © Copyright 2021  BestWebSoft  ( https://support.bestwebsoft.com )
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -182,6 +182,18 @@ if ( ! function_exists( 'mltlngg_register_settings' ) ) {
 		/* Array merge incase this version has added new options */
 		if ( ! isset( $mltlngg_options['plugin_option_version'] ) || $mltlngg_options['plugin_option_version'] != $mltlngg_plugin_info["Version"] ) {
 
+            /**
+             * @deprecated since 1.3.7
+             * @todo remove after 21.07.2021
+             */
+            if ( ! isset( $mltlngg_options['google_auto_translate'] ) ) {
+                if ( in_array( $mltlngg_options['language_switcher'], array( 'gt', 'gt-horizontal', 'gt-vertical' ) ) ) {
+                    $mltlngg_options['google_auto_translate'] = 1;
+                } else {
+                    $mltlngg_options['google_auto_translate'] = 0;
+                }
+            }
+
 			$options_default = mltlngg_get_options_default();
 			$mltlngg_options = array_merge( $options_default, $mltlngg_options );
 			$mltlngg_options['plugin_option_version'] = $mltlngg_plugin_info["Version"];
@@ -212,7 +224,7 @@ if ( ! function_exists( 'mltlngg_register_settings' ) ) {
 		}
 
 		if ( isset( $update_option ) ) {
-			update_option( 'mltlngg_options', $mltlngg_options );
+		    update_option( 'mltlngg_options', $mltlngg_options );
 		}
 	}
 }
@@ -256,7 +268,8 @@ if ( ! function_exists( 'mltlngg_get_options_default' ) ) {
 			'video_providers'			=> array(),
 			'translate_open_graph'		=> 0,
 			'display_alternative_link'	=> 0,
-			'hide_link_slug'			=> 0
+			'hide_link_slug'			=> 0,
+            'google_auto_translate'     => 0
 		);
 		return $options_default;
 	}
@@ -1020,9 +1033,10 @@ if ( ! function_exists( 'mltlngg_get_url_translated' ) ) {
 /* Load scripts and styles */
 if ( ! function_exists( 'mltlngg_script_style' ) ) {
 	function mltlngg_script_style() {
-		global $hook_suffix, $mltlngg_options, $mltlngg_plugin_info, $mltlngg_enabled_languages, $mltlngg_current_language, $mltlngg_get_default_language;
+		global $hook_suffix, $mltlngg_options, $mltlngg_plugin_info, $mltlngg_enabled_languages, $mltlngg_current_language, $mltlngg_get_default_language, $wp_version;
 
 		wp_enqueue_style( 'mltlngg_stylesheet', plugins_url( 'css/style.css', __FILE__ ), array(), $mltlngg_plugin_info["Version"] );
+
 
 		if ( is_admin() ) {
 			if ( mltlngg_is_gutenberg_active() ) {
@@ -1037,7 +1051,24 @@ if ( ! function_exists( 'mltlngg_script_style' ) ) {
 							'add_new_lang_link'		=> admin_url( 'admin.php?page=multilanguage-languages.php' ),
 						)
 					);
-				}
+                    if ( $wp_version >= '5.6' ) {
+                        wp_enqueue_script(
+                            'ugb-block-js-vendor',
+                            plugins_url('js/editor_vendor.js', __FILE__),
+                            array(),
+                            $mltlngg_plugin_info["Version"]
+                        );
+                        wp_enqueue_script(
+                            'ugb-block-js',
+                            plugins_url('js/editor_blocks.js', __FILE__),
+                            array( 'ugb-block-js-vendor', 'code-editor', 'wp-blocks', 'wp-element', 'wp-components', 'wp-editor', 'wp-util', 'wp-plugins', 'wp-edit-post', 'wp-i18n', 'wp-api' ),
+                            $mltlngg_plugin_info["Version"]
+                        );
+                        wp_localize_script('ugb-block-js-vendor', 'stackable', array(
+                            'disabledBlocks' => 'false',
+                        ));
+                    }
+                }
 			} else {		
 				wp_enqueue_script( 'mltlngg_script', plugins_url( 'js/script.js', __FILE__ ), array( 'jquery' ), $mltlngg_plugin_info["Version"], true );
 				wp_localize_script( 'mltlngg_script', 'mltlngg_vars',
@@ -1156,6 +1187,15 @@ if ( ! class_exists( 'Mltlngg_Widget' ) ) {
 		 */
 		public function form( $instance ) {
 			global $mltlngg_options;
+            $language_switcher_name = array(
+                'drop-down-list' => __( 'Drop-down list (flag + title)', 'multilanguage' ),
+                'drop-down-titles' => __( 'Drop-down list (title)', 'multilanguage' ),
+                'drop-down-icons' => __( 'Drop-down list (flag)', 'multilanguage' ),
+                'flags-icons' => __( 'Flag', 'multilanguage' ),
+                'gt' => __( 'Google Auto Translate (drop-down only)', 'multilanguage' ),
+                'gt-horizontal' => __( 'Google Auto Translate (horizontal)', 'multilanguage' ),
+                'gt-vertical' => __( 'Google Auto Translate (vertical)', 'multilanguage' ) );
+
 			$title = ( isset( $instance['title'] ) ) ? $instance['title'] : __( 'Localization', 'multilanguage' );
 			$mltlngg_language_switcher = ( isset( $instance['mltlngg_language_switcher'] ) ) ? $instance['mltlngg_language_switcher'] : $mltlngg_options['language_switcher']; ?>
 			<p>
@@ -1163,57 +1203,14 @@ if ( ! class_exists( 'Mltlngg_Widget' ) ) {
 					<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 				</label>
 			</p>
-			<div style="clear: both;">
-				<label class="mltlngg_widget_label">
-					<input id="<?php echo $this->get_field_id( 'drop-down-list' ); ?>" name="<?php echo $this->get_field_name( 'mltlngg_language_switcher' ); ?>" type="radio" value="drop-down-list" <?php checked( $mltlngg_language_switcher, 'drop-down-list' ); ?> /><?php _e( 'Drop-down list', 'multilanguage' ); ?> (<?php _e( 'flag', 'multilanguage' ); ?> + <?php _e( 'title', 'multilanguage' ); ?>)
-
-				</label>
-			</div>
-			<div style="clear: both;">
-				<label class="mltlngg_widget_label">
-					<input id="<?php echo $this->get_field_id( 'drop-down-titles' ); ?>" name="<?php echo $this->get_field_name( 'mltlngg_language_switcher' ); ?>" type="radio" value="drop-down-titles" <?php checked( $mltlngg_language_switcher, 'drop-down-titles' ); ?> /><?php _e( 'Drop-down list', 'multilanguage' ); ?> (<?php _e( 'title', 'multilanguage' ); ?>)
-
-				</label>
-			</div>
-			<div style="clear: both;">
-				<label class="mltlngg_widget_label">
-					<input id="<?php echo $this->get_field_id( 'drop-down-icons' ); ?>" name="<?php echo $this->get_field_name( 'mltlngg_language_switcher' ); ?>" type="radio" value="drop-down-icons" <?php checked( $mltlngg_language_switcher, 'drop-down-icons' ); ?> /><?php _e( 'Drop-down list', 'multilanguage' ); ?> (<?php _e( 'flag', 'multilanguage' ); ?>)
-				</label>
-			</div>
-			<div style="clear: both;">
-				<label class="mltlngg_widget_label">
-					<input id="<?php echo $this->get_field_id( 'flags-icons' ); ?>" name="<?php echo $this->get_field_name( 'mltlngg_language_switcher' ); ?>" type="radio" value="flags-icons" <?php checked( $mltlngg_language_switcher, 'flags-icons' ); ?> /><?php _e( 'Flag', 'multilanguage' ); ?>
-				</label>
-			</div>
-			<div style="clear: both;">
-				<label class="mltlngg_widget_label">
-					<input id="<?php echo $this->get_field_id( 'gt' ); ?>" name="<?php echo $this->get_field_name( 'mltlngg_language_switcher' ); ?>" type="radio" value="gt" <?php checked( $mltlngg_language_switcher, 'gt' ); ?>><?php printf(
-							'%s (%s)',
-							__( 'Google Auto Translate', 'multilanguage' ),
-							__( 'drop-down only', 'multilanguage' )
-						); ?>
-				</label>
-			</div>
-			<div style="clear: both;">
-				<label class="mltlngg_widget_label">
-					<input id="<?php echo $this->get_field_id( 'gt-horizontal' ); ?>" name="<?php echo $this->get_field_name( 'mltlngg_language_switcher' ); ?>" type="radio" value="gt-horizontal" <?php checked( $mltlngg_language_switcher, 'gt-horizontal' ); ?>><?php printf(
-							'%s (%s)',
-							__( 'Google Auto Translate', 'multilanguage' ),
-							__( 'horizontal', 'multilanguage' )
-						); ?>
-				</label>
-			</div>
-			<div style="clear: both;">
-				<label class="mltlngg_widget_label">
-					<input id="<?php echo $this->get_field_id( 'gt-vertical' ); ?>" name="<?php echo $this->get_field_name( 'mltlngg_language_switcher' ); ?>" type="radio" value="gt-vertical" <?php checked( $mltlngg_language_switcher, 'gt-vertical' ); ?>><?php printf(
-							'%s (%s)',
-							__( 'Google Auto Translate', 'multilanguage' ),
-							__( 'vertical', 'multilanguage' )
-						); ?>
-				</label>
-			</div>
-			<div style="clear: both;"></div>
-		<?php }
+            <p>
+                <select name="<?php echo $this->get_field_name( 'mltlngg_language_switcher' ); ?>">
+                    <?php foreach ( $language_switcher_name as $key => $value  ) { ?>
+                        <option <?php selected( $mltlngg_language_switcher, $key ) ?> value="<?php echo $key; ?>"><?php echo $value; ?></option>
+                    <?php } ?>
+                </select>
+            </p>
+        <?php }
 
 		/**
 		 * Sanitize widget form values as they are saved.
@@ -1417,8 +1414,8 @@ if ( ! function_exists( 'mltlngg_showup_language_tabs_in_editor' ) ) {
 			</h2> <!-- #get-lang-content .nav-tab-wrapper -->
 			<?php /* compability with DIVI Builder */
 			if ( 'ajax' != $mltlngg_options['save_mode'] || defined( 'ET_BUILDER_THEME' ) || defined( 'WPB_VC_VERSION' ) ) { ?>
-				<div id="mltlngg-disable-ajax-tabs" class="update-nag inline hide-if-no-js" style="margin: 0;">
-					<div><strong><?php _e( 'Attention', 'multilanguage' ); ?></strong>: <?php _e( 'Please update the post before switching the language. Data is not saved automatically.', 'multilanguage' ); ?></div>
+				<div id="mltlngg-disable-ajax-tabs" class="notice notice-info inline hide-if-no-js" style="margin: 0;">
+					<p><strong><?php _e( 'Attention', 'multilanguage' ); ?></strong>: <?php _e( 'Please update the post before switching the language. Data is not saved automatically.', 'multilanguage' ); ?></p>
 				</div>
 			<?php } ?>
 			<h2>
@@ -1779,17 +1776,21 @@ if ( ! function_exists( 'mltlngg_new_terms_translate' ) ) {
 			<!-- Translations form for all enabled languages -->
 			<table class="form-table" border="0" style="background-color: #fff; width: 95%;">
 				<tbody>
-				<?php foreach ( $mltlngg_enabled_languages as $one_language ) {
-					$flag = ( empty( $one_language['flag'] ) ) ? plugins_url( 'images/flags/' , __FILE__ ) . $one_language['locale'] . '.png' : $one_language['flag']; ?>
-					<tr class="form-field" <?php if( $locale_name == $one_language['locale'] ) echo 'style="display:none"'; ?>>
-						<td>
-							<label for="mltlngg_translate_<?php echo $one_language['locale']; ?>"><img style="margin: auto 5px;" src="<?php echo $flag; ?>" alt="<?php echo $one_language['name']; ?>" title="<?php echo $one_language['name']; ?>" /><?php echo $one_language['name']; ?></label>
-						</td>
-						<td>
-							<input type="text" aria-required="true" size="40" value="" id="mltlngg_translate_<?php echo $one_language['locale']; ?>" name="mltlngg_translate_<?php echo $one_language['locale']; ?>">
-						</td>
-					</tr>
-				<?php } ?>
+                <?php if ( count( $mltlngg_enabled_languages ) == 1 ) { ?>
+                    <div class="bws_info"><?php printf( __( 'Add and enable a new language using %s the Languages page.%s', 'multilanguage' ), wp_sprintf( '<a href=%s>', esc_url( 'admin.php?page=multilanguage-languages.php' )), '</a>' ); ?></div>
+                <?php } ?>
+
+                <?php foreach ( $mltlngg_enabled_languages as $one_language ) {
+                    $flag = ( empty( $one_language['flag'] ) ) ? plugins_url( 'images/flags/' , __FILE__ ) . $one_language['locale'] . '.png' : $one_language['flag']; ?>
+                    <tr class="form-field" <?php if( $locale_name == $one_language['locale'] ) echo 'style="display:none"'; ?>>
+                        <td>
+                            <label for="mltlngg_translate_<?php echo $one_language['locale']; ?>"><img style="margin: auto 5px;" src="<?php echo $flag; ?>" alt="<?php echo $one_language['name']; ?>" title="<?php echo $one_language['name']; ?>" /><?php echo $one_language['name']; ?></label>
+                        </td>
+                        <td>
+                            <input type="text" aria-required="true" size="40" value="" id="mltlngg_translate_<?php echo $one_language['locale']; ?>" name="mltlngg_translate_<?php echo $one_language['locale']; ?>">
+                        </td>
+                    </tr>
+                <?php } ?>
 				</tbody>
 			</table><!-- .form-table -->
 			<?php wp_nonce_field( 'mltlngg_translate_terms_form', 'mltlngg_translate_terms_form_field' ); ?>
@@ -1834,7 +1835,11 @@ if ( ! function_exists( 'mltlngg_terms_translate' ) ) {
 				 WHERE `term_ID` = %d AND `language` = %s
 				", $tag_ID, $one_language['locale']
 			), ARRAY_A );
-			$mltlngg_term[ $one_language['locale'] ] = $mltlngg_term_result['name'];
+            if ( ! empty( $mltlngg_term_result ) ) {
+                $mltlngg_term[$one_language['locale']] = $mltlngg_term_result['name'];
+            } else {
+                $mltlngg_term[$one_language['locale']] = '';
+            }
 		} ?>
 		<table class="form-table">
 			<tbody>
@@ -1843,17 +1848,21 @@ if ( ! function_exists( 'mltlngg_terms_translate' ) ) {
 				<td>
 					<table class="form-table" border="0" style="background-color: #fff; width: 95%;">
 						<tbody>
-						<?php foreach ( $mltlngg_enabled_languages as $one_language ) {
-							$flag = ( empty( $one_language['flag'] ) ) ? plugins_url( 'images/flags/' , __FILE__ ) . $one_language['locale'] . '.png' : $one_language['flag']; ?>
-							<tr class="form-field" <?php if( $locale_name == $one_language['locale'] ) echo 'style="display:none"'; ?>>
-								<td>
-									<label for="mltlngg_translate_<?php echo $one_language['locale']; ?>"><img style="margin: auto 5px;" src="<?php echo $flag; ?>" alt="<?php echo $one_language['name']; ?>" title="<?php echo $one_language['name']; ?>" /><?php echo $one_language['name']; ?></label>
-								</td>
-								<td>
-									<input type="text" aria-required="true" size="40" value="<?php echo $mltlngg_term[ $one_language['locale'] ]; ?>" id="mltlngg_translate_<?php echo $one_language['locale']; ?>" name="mltlngg_translate_<?php echo $one_language['locale']; ?>">
-								</td>
-							</tr>
-						<?php } ?>
+                        <?php if ( count( $mltlngg_enabled_languages ) == 1 ) { ?>
+                            <div class="bws_info"><?php printf( __( 'Add and enable a new language using %s the Languages page.%s', 'multilanguage' ), wp_sprintf( '<a href=%s>', esc_url( 'admin.php?page=multilanguage-languages.php' )), '</a>' ); ?></div>
+                        <?php } ?>
+
+                        <?php foreach ( $mltlngg_enabled_languages as $one_language ) {
+                            $flag = ( empty( $one_language['flag'] ) ) ? plugins_url( 'images/flags/' , __FILE__ ) . $one_language['locale'] . '.png' : $one_language['flag']; ?>
+                            <tr class="form-field" <?php if( $locale_name == $one_language['locale'] ) echo 'style="display:none"'; ?>>
+                                <td>
+                                    <label for="mltlngg_translate_<?php echo $one_language['locale']; ?>"><img style="margin: auto 5px;" src="<?php echo $flag; ?>" alt="<?php echo $one_language['name']; ?>" title="<?php echo $one_language['name']; ?>" /><?php echo $one_language['name']; ?></label>
+                                </td>
+                                <td>
+                                    <input type="text" aria-required="true" size="40" value="<?php echo $mltlngg_term[ $one_language['locale'] ]; ?>" id="mltlngg_translate_<?php echo $one_language['locale']; ?>" name="mltlngg_translate_<?php echo $one_language['locale']; ?>">
+                                </td>
+                            </tr>
+                        <?php } ?>
 						</tbody>
 					</table><!-- .form-table -->
 				</td>
@@ -3032,7 +3041,7 @@ add_action( 'generate_rewrite_rules', 'mltlngg_rewrite_rules' );
 add_filter( 'query_vars', 'mltlngg_add_query_vars' );
 
 add_action( 'admin_menu', 'mltlngg_admin_menu' );
-add_action( 'init', 'mltlngg_init', 9 );
+add_action( 'init', 'mltlngg_init', 10 );
 add_action( 'admin_init', 'mltlngg_admin_init' );
 add_action( 'current_screen', 'mltlngg_current_screen' );
 add_filter( 'language_attributes', 'mltlngg_language_attributes', PHP_INT_MAX );
