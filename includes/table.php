@@ -12,8 +12,8 @@ if ( ! class_exists( 'Mltlngg_List_Table' ) ) {
 			global $mltlngg_options;
 
 			parent::__construct( array(
-				'singular'	=> __( 'language', 'multilanguage' ),	/* singular name of the listed records */
-				'plural'	=> __( 'languages', 'multilanguage' ),	/* plural name of the listed records */
+				'singular'	=> esc_html__( 'language', 'multilanguage' ),	/* singular name of the listed records */
+				'plural'	=> esc_html__( 'languages', 'multilanguage' ),	/* plural name of the listed records */
 				'ajax'		=> true	/* does this table support ajax? */
 			) );
 		}
@@ -34,10 +34,10 @@ if ( ! class_exists( 'Mltlngg_List_Table' ) ) {
 		function get_columns() {
 			$columns = array(
 				'cb'		=> '<input type="checkbox" />',
-				'title'		=> __( 'Title', 'multilanguage' ),
-				'locale'	=> __( 'URL Slug', 'multilanguage' ),
-				'flag'		=> __( 'Flag', 'multilanguage' ),
-				'priority'	=> __( 'Order', 'multilanguage' )
+				'title'		=> esc_html__( 'Title', 'multilanguage' ),
+				'locale'	=> esc_html__( 'URL Slug', 'multilanguage' ),
+				'flag'		=> esc_html__( 'Flag', 'multilanguage' ),
+				'priority'	=> esc_html__( 'Order', 'multilanguage' )
 			);
 			return $columns;
 		}
@@ -55,23 +55,23 @@ if ( ! class_exists( 'Mltlngg_List_Table' ) ) {
 			$name = $item['title'];
 
 			if ( $item['bydefault'] ) {
-				$name .= ' — <span class="post-state">' . __( 'Default', 'multilanguage' ) . '</span>';
+				$name .= ' — <span class="post-state">' . esc_html__( 'Default', 'multilanguage' ) . '</span>';
 			}
 
 			$name = '<strong>' . $name . '</strong>';
 
-			$actions['edit'] = '<a href="' . wp_nonce_url( '?page=multilanguage-languages.php&action=edit&mltlngg_language=' . $item["locale"], 'mltlngg-action' ) . '">' . __( 'Edit', 'multilanguage' ) . '</a>';
+			$actions['edit'] = '<a href="' . wp_nonce_url( '?page=multilanguage-languages.php&action=edit&mltlngg_language=' . $item["locale"], 'mltlngg-action' ) . '">' . esc_html__( 'Edit', 'multilanguage' ) . '</a>';
 
 			if ( $item['locale'] == $mltlngg_options['default_language'] ) {
 				return sprintf( '%1$s %2$s', $name, $this->row_actions( $actions ) );
 			}
 
 			if ( ! $item['is_enabled'] ) {
-				$actions['enable'] = '<a href="' . wp_nonce_url( '?page=multilanguage-languages.php&action=enable&mltlngg_language=' . $item["locale"], 'mltlngg-action' ) . '">' . __( 'Enable', 'multilanguage' ) . '</a>';
+				$actions['enable'] = '<a href="' . wp_nonce_url( '?page=multilanguage-languages.php&action=enable&mltlngg_language=' . $item["locale"], 'mltlngg-action' ) . '">' . esc_html__( 'Enable', 'multilanguage' ) . '</a>';
 			} else {
-				$actions['disable'] = '<a href="' . wp_nonce_url( '?page=multilanguage-languages.php&action=disable&mltlngg_language=' . $item["locale"], 'mltlngg-action' ) . '">' . __( 'Disable', 'multilanguage' ) . '</a>';
+				$actions['disable'] = '<a href="' . wp_nonce_url( '?page=multilanguage-languages.php&action=disable&mltlngg_language=' . $item["locale"], 'mltlngg-action' ) . '">' . esc_html__( 'Disable', 'multilanguage' ) . '</a>';
 			}
-			$actions['delete'] = '<a href="' . wp_nonce_url( '?page=multilanguage-languages.php&action=delete&mltlngg_language=' . $item["locale"], 'mltlngg-action' ) . '">' . __( 'Delete', 'multilanguage' ) . '</a>';
+			$actions['delete'] = '<a href="' . wp_nonce_url( '?page=multilanguage-languages.php&action=delete&mltlngg_language=' . $item["locale"], 'mltlngg-action' ) . '">' . esc_html__( 'Delete', 'multilanguage' ) . '</a>';
 			return sprintf( '%1$s %2$s', $name, $this->row_actions( $actions ) );
 		}
 
@@ -79,19 +79,19 @@ if ( ! class_exists( 'Mltlngg_List_Table' ) ) {
 		function get_bulk_actions() {
 			if ( ! isset( $_GET['status'] ) ) {
 				$actions = array(
-					'enable'	=> __( 'Enable', 'multilanguage' ),
-					'disable'	=> __( 'Disable', 'multilanguage' ),
-					'delete'	=> __( 'Delete', 'multilanguage' )
+					'enable'	=> esc_html__( 'Enable', 'multilanguage' ),
+					'disable'	=> esc_html__( 'Disable', 'multilanguage' ),
+					'delete'	=> esc_html__( 'Delete', 'multilanguage' )
 				);
 			} elseif ( 'active' == $_GET['status'] ) {
 				$actions = array(
-					'disable'	=> __( 'Disable', 'multilanguage' ),
-					'delete'	=> __( 'Delete', 'multilanguage' )
+					'disable'	=> esc_html__( 'Disable', 'multilanguage' ),
+					'delete'	=> esc_html__( 'Delete', 'multilanguage' )
 				);
 			} else {
 				$actions = array(
-					'enable'	=> __( 'Enable', 'multilanguage' ),
-					'delete'	=> __( 'Delete', 'multilanguage' )
+					'enable'	=> esc_html__( 'Enable', 'multilanguage' ),
+					'delete'	=> esc_html__( 'Delete', 'multilanguage' )
 				);
 			}
 			return $actions;
@@ -213,7 +213,7 @@ if ( ! function_exists( 'mltlngg_add_options' ) ) {
 		global $mltlngg_list_table;
 		$option = 'per_page';
 		$args = array(
-			'label'		=> __( 'Languages', 'multilanguage' ),
+			'label'		=> esc_html__( 'Languages', 'multilanguage' ),
 			'default'	=> 10,
 			'option'	=> 'languages_per_page'
 		);
@@ -248,9 +248,9 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 		) {
 			if ( preg_match( '/^([a-z]{2,3}|[a-z]{2,3}[_][A-Z]{2,3})-(.+?)$/u', $_POST['mltlngg_lang_list'], $matches ) ) { /* If language data is correct */
 				mltlngg_add_language( $matches[1], $matches[2] ); /* Add new language (locale, name) */
-				$message = __( 'Language added', 'multilanguage' );
+				$message = esc_html__( 'Language added', 'multilanguage' );
 			} else { /* If language data is incorrect */
-				$error = __( 'Incorrect language data.', 'multilanguage' );
+				$error = esc_html__( 'Incorrect language data.', 'multilanguage' );
 			}
 		}
 		/* Actions for table of languages */
@@ -281,6 +281,8 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 			foreach ( $mltlngg_options['list_of_languages'] as $language_key => $value ) {
 				/* if language data have been finded */
 				if ( array_search( $language, $value, true ) ) {
+					if ( isset( $_POST['mltlngg_title'] ) )
+						$mltlngg_options['list_of_languages'][ $language_key ]['name'] = trim( esc_html( $_POST['mltlngg_title'] ) );
 					$language_data = $mltlngg_options['list_of_languages'][ $language_key ];
 					break;
 				}
@@ -316,9 +318,9 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 						$filename	= $_FILES['mltlngg_upload_flag']['tmp_name'];
 						$ext		= substr( $_FILES['mltlngg_upload_flag']['name'], 1 + strrpos( $_FILES['mltlngg_upload_flag']['name'], '.' ) );
 						if ( filesize( $filename ) > $max_image_size ) {
-							$error	= sprintf( __( "Error: File size > %s.", 'multilanguage' ), '32K' );
+							$error	= sprintf( esc_html__( "Error: File size > %s.", 'multilanguage' ), '32K' );
 						} elseif ( ! in_array( strtolower( $ext ), $valid_types ) ) {
-							$error	= __( "Error: Invalid file type.", 'multilanguage' );
+							$error	= esc_html__( "Error: Invalid file type.", 'multilanguage' );
 						} else {
 							$size	= GetImageSize( $filename );
 							if ( $size && $size[0] <= $max_image_width && $size[1] <= $max_image_height ) {
@@ -330,14 +332,14 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 								if ( move_uploaded_file( $_FILES['mltlngg_upload_flag']['tmp_name'], $uploadfile ) ) {
 									$language_data['flag'] = $upload_dir['baseurl'] . '/multilanguage/' . $namefile;
 								} else {
-									$error = __( "Error: Failed to move file.", 'multilanguage' );
+									$error = esc_html__( "Error: Failed to move file.", 'multilanguage' );
 								}
 							} else {
-								$error = sprintf( __( "Error: Image width and height should not exceed %s.", 'multilanguage' ), '50px' );
+								$error = sprintf( esc_html__( "Error: Image width and height should not exceed %s.", 'multilanguage' ), '50px' );
 							}
 						}
 					} else {
-						$error = __( "Uploading Error: Check image properties.", 'multilanguage' );
+						$error = esc_html__( "Uploading Error: Check image properties.", 'multilanguage' );
 					}
 				}
 
@@ -354,11 +356,11 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 				$mltlngg_options['flush_rewrite_rules'] = 1;
 
 				update_option( 'mltlngg_options', $mltlngg_options );
-				$message = __( 'Settings saved.', 'multilanguage' );
+				$message = esc_html__( 'Settings saved.', 'multilanguage' );
 			}
 
 			echo ( version_compare( $wp_version, '4.0', '<' ) ) ? "<h2>" : "<h1>";
-				_e( 'Edit Language', 'multilanguage' );
+            esc_html_e( 'Edit Language', 'multilanguage' );
 			echo ( version_compare( $wp_version, '4.0', '<' ) ) ? "</h2>" : "</h1>";
 
 			if ( ! empty( $error ) ) { ?>
@@ -369,33 +371,33 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 			<form class="bws_form" method="post" action="" enctype="multipart/form-data">
 				<table class="form-table">
                     <tr>
-                        <th><?php _e( 'Title', 'multilanguage' ); ?></th>
+                        <th><?php esc_html_e( 'Title', 'multilanguage' ); ?></th>
                         <td>
-                            <input type="text" name="mltlngg_title" value="<?php echo $language_data["name"]; ?>" disabled />
+                            <input type="text" name="mltlngg_title" value="<?php echo $language_data["name"]; ?>"/>
                         </td>
                     </tr>
 					<tr>
-						<th><?php _e( 'Default', 'multilanguage' ); ?></th>
+						<th><?php esc_html_e( 'Default', 'multilanguage' ); ?></th>
 						<td>
-							<input type="checkbox" name="mltlngg_default_lang" value="1" <?php checked( $language_data['locale'], $mltlngg_options['default_language'] ); ?> /> <span class="bws_info"><?php _e( "Enable to use it as a default language.", 'multilanguage' ); ?></span>
+							<input type="checkbox" name="mltlngg_default_lang" value="1" <?php checked( $language_data['locale'], $mltlngg_options['default_language'] ); ?> /> <span class="bws_info"><?php esc_html_e( "Enable to use it as a default language.", 'multilanguage' ); ?></span>
 						</td>
 					</tr>
 					<tr>
-						<th><?php _e( 'Flag Image', 'multilanguage' ); ?></th>
+						<th><?php esc_html_e( 'Flag Image', 'multilanguage' ); ?></th>
 						<td>
 							<fieldset>
 								<label><input name="mltlngg_flag_option" type="radio" value="standart" <?php checked( empty( $language_data['flag'] ) ); ?> class="bws_option_affect" data-affect-hide=".mltlngg_flag_option_custom" />
-								&nbsp;<?php _e( 'Default', 'multilanguage' ); ?></label>
+								&nbsp;<?php esc_html_e( 'Default', 'multilanguage' ); ?></label>
 								<br>
 								<label><input name="mltlngg_flag_option" type="radio" value="custom" <?php checked( ! empty( $language_data['flag'] ) ); ?> class="bws_option_affect" data-affect-show=".mltlngg_flag_option_custom" />
-								&nbsp;<?php _e( 'Custom', 'multilanguage' ); ?></label>
+								&nbsp;<?php esc_html_e( 'Custom', 'multilanguage' ); ?></label>
 							</fieldset>
 						</td>
 					</tr>
 					<tr>
 						<th></th>
 						<td>
-							<?php _e( 'Current flag', 'multilanguage' ); ?>:&nbsp;&nbsp;
+							<?php esc_html_e( 'Current flag', 'multilanguage' ); ?>:&nbsp;&nbsp;
 							<img src="<?php echo ( empty( $language_data['flag'] ) ) ? plugins_url( 'images/flags/', dirname( __FILE__ ) ) . $language_data['locale'] . '.png' : $language_data['flag']; ?>" />
 						</td>
 					</tr>
@@ -403,24 +405,25 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 						<th></th>
 						<td>
 							<input type="file" name="mltlngg_upload_flag">
-							<div class="bws_info"><?php printf( __( 'Upload image of %s maximum dimensions in JPG, JPEG or PNG formats (maximum file size - %s).', 'multilanguage' ), '50×50px', '32kb' ); ?></div>
+							<div class="bws_info"><?php printf( esc_html__( 'Upload image of %s maximum dimensions in JPG, JPEG or PNG formats (maximum file size - %s).', 'multilanguage' ), '50×50px', '32kb' ); ?></div>
 						</td>
 					</tr>
 					<tr>
-						<th><?php _e( 'Order', 'multilanguage' ); ?></th>
+						<th><?php esc_html_e( 'Order', 'multilanguage' ); ?></th>
 						<td>
 							<input type="number" min="1" max="200" name="mltlngg_priority" value="<?php echo $language_data["priority"]; ?>" />
 						</td>
 					</tr>
 				</table>
+                <!-- pls -->
 				<?php if ( ! bws_hide_premium_options_check( $mltlngg_options ) ) { ?>
 					<div class="bws_pro_version_bloc">
 						<div class="bws_pro_version_table_bloc">
-							<button type="submit" name="bws_hide_premium_options" class="notice-dismiss bws_hide_premium_options" title="<?php _e( 'Close', 'multilanguage' ); ?>"></button>
+							<button type="submit" name="bws_hide_premium_options" class="notice-dismiss bws_hide_premium_options" title="<?php esc_html_e( 'Close', 'multilanguage' ); ?>"></button>
 							<div class="bws_table_bg"></div>
 							<table class="form-table bws_pro_version">
 								<tr>
-									<th><?php _e( 'URL Slug', 'multilanguage' ); ?></th>
+									<th><?php esc_html_e( 'URL Slug', 'multilanguage' ); ?></th>
 									<td>
 										<fieldset>
 											<?php $exploded_locale = explode( '_', $language_data['locale'] );
@@ -444,13 +447,13 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 									</td>
 								</tr>
 								<tr>
-									<th><?php _e( 'Site Title', 'multilanguage' ); ?></th>
+									<th><?php esc_html_e( 'Site Title', 'multilanguage' ); ?></th>
 									<td>
 										<textarea disabled name="mltlngg_blogname"></textarea>
 									</td>
 								</tr>
 								<tr>
-									<th><?php _e( 'Tagline', 'multilanguage' ); ?></th>
+									<th><?php esc_html_e( 'Tagline', 'multilanguage' ); ?></th>
 									<td>
 										<textarea disabled name="mltlngg_blogdescription"></textarea>
 									</td>
@@ -458,20 +461,21 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 							</table>
 						</div>
 						<div class="bws_pro_version_tooltip">
-							<a class="bws_button" href="<?php echo $mltlngg_plugin_info['PluginURI']; ?>?k=fa164f00821ed3a87e6f78cb3f5c277b&amp;pn=143&amp;v=<?php echo $mltlngg_plugin_info["Version"]; ?>&amp;wp_v=<?php echo $wp_version; ?>" target="_blank" title="<?php echo $mltlngg_plugin_info["Name"]; ?>"><?php _e( 'Upgrade to Pro', 'multilanguage' ); ?></a>
+							<a class="bws_button" href="<?php echo $mltlngg_plugin_info['PluginURI']; ?>?k=fa164f00821ed3a87e6f78cb3f5c277b&amp;pn=143&amp;v=<?php echo $mltlngg_plugin_info["Version"]; ?>&amp;wp_v=<?php echo $wp_version; ?>" target="_blank" title="<?php echo $mltlngg_plugin_info["Name"]; ?>"><?php esc_html_e( 'Upgrade to Pro', 'multilanguage' ); ?></a>
 							<div class="clear"></div>
 						</div>
 					</div>
 				<?php } ?>
+                <!-- end pls -->
 				<p class="submit">
-					<input type="submit" name="mltlngg_edit_language_form" class="button-primary" value="<?php _e( 'Save changes', 'multilanguage' ); ?>">
+					<input type="submit" name="mltlngg_edit_language_form" class="button-primary" value="<?php esc_html_e( 'Save changes', 'multilanguage' ); ?>">
 					<?php wp_nonce_field( 'mltlngg_edit_language_form', 'mltlngg_edit_language_form' ); ?>
 				</p>
 			</form>
 		<?php } else { ?>
 			<h1>
-				<?php _e( 'Languages', 'multilanguage' ); ?>
-				<a class="page-title-action add-new-h2 hide-if-no-js" href="#" id="mltlngg-add-lang-link"><?php _e( 'Add New', 'multilanguage' ); ?></a>
+				<?php esc_html_e( 'Languages', 'multilanguage' ); ?>
+				<a class="page-title-action add-new-h2 hide-if-no-js" href="#" id="mltlngg-add-lang-link"><?php esc_html_e( 'Add New', 'multilanguage' ); ?></a>
 			</h1>
 			<?php
 			// functionality for adding notice when user choose same order for two languages
@@ -480,7 +484,7 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 				$lang_order[] = $array_value['priority'];
 			}
 			if ( count( array_unique( $lang_order ) ) != count( $lang_order ) ) { ?>
-				<div class="notice notice-warning below-h2"><p><?php _e( 'You have the same order for two or more languages.', 'multilanguage' ); ?></p></div>
+				<div class="notice notice-warning below-h2"><p><?php esc_html_e( 'You have the same order for two or more languages.', 'multilanguage' ); ?></p></div>
 			<?php }
 			if ( ! empty( $error ) ) { ?>
 				<div class="error below-h2"><p><?php echo $error; ?></p></div>
@@ -499,9 +503,9 @@ if ( ! function_exists( 'mltlngg_table' ) ) {
 				}
 			} ?>
 			<ul class="subsubsub">
-				<li class="all"><a href="admin.php?page=multilanguage-languages.php" <?php if ( ! isset( $_GET['status'] ) ) echo 'class="current"'; ?>><?php _e( 'All', 'multilanguage' ); ?> <span class="count">(<?php echo $count_active_languages + $count_inactive_languages; ?>)</span></a> |</li>
-				<li class="active"><a href="admin.php?page=multilanguage-languages.php&status=active" <?php if ( isset( $_GET['status'] ) && 'active' == $_GET['status'] ) echo 'class="current"'; ?>><?php _e( 'Active', 'multilanguage' ); ?> <span class="count">(<?php echo $count_active_languages; ?>)</span></a> |</li>
-				<li class="inactive"><a href="admin.php?page=multilanguage-languages.php&status=inactive" <?php if ( isset( $_GET['status'] ) && 'inactive' == $_GET['status'] ) echo 'class="current"'; ?>><?php _e( 'Disabled', 'multilanguage' ); ?> <span class="count">(<?php echo $count_inactive_languages; ?>)</span></a></li>
+				<li class="all"><a href="admin.php?page=multilanguage-languages.php" <?php if ( ! isset( $_GET['status'] ) ) echo 'class="current"'; ?>><?php esc_html_e( 'All', 'multilanguage' ); ?> <span class="count">(<?php echo $count_active_languages + $count_inactive_languages; ?>)</span></a> |</li>
+				<li class="active"><a href="admin.php?page=multilanguage-languages.php&status=active" <?php if ( isset( $_GET['status'] ) && 'active' == $_GET['status'] ) echo 'class="current"'; ?>><?php esc_html_e( 'Active', 'multilanguage' ); ?> <span class="count">(<?php echo $count_active_languages; ?>)</span></a> |</li>
+				<li class="inactive"><a href="admin.php?page=multilanguage-languages.php&status=inactive" <?php if ( isset( $_GET['status'] ) && 'inactive' == $_GET['status'] ) echo 'class="current"'; ?>><?php esc_html_e( 'Disabled', 'multilanguage' ); ?> <span class="count">(<?php echo $count_inactive_languages; ?>)</span></a></li>
 			</ul>
 			<form class="bws_form" method="post" action="">
 				<!-- display table of languages, source - table.php -->
@@ -576,7 +580,7 @@ if ( ! function_exists( 'mltlngg_actions' ) ) {
 				break;
 
 			default:
-				return array( 'error' => __( 'Unknown action', 'multilanguage' ) );
+				return array( 'error' => esc_html__( 'Unknown action', 'multilanguage' ) );
 		}
 
 		update_option( 'mltlngg_options', $mltlngg_options );
@@ -597,11 +601,11 @@ if ( ! function_exists( 'mltlngg_add_language_form' ) ) {
 			<table class="form-table">
 				<tr valign="top">
 					<th scope="row">
-						<?php _e( 'Choose a language', 'multilanguage' ); ?>
+						<?php esc_html_e( 'Choose a language', 'multilanguage' ); ?>
 					</th>
 					<td>
 						<select name="mltlngg_lang_list" id="mltlngg_lang_list">
-							<option value="" selected disabled hidden><?php echo __( 'Choose language from list below', 'multilanguage' ) ;?></option>
+							<option value="" selected disabled hidden><?php echo esc_html__( 'Choose language from list below', 'multilanguage' ) ;?></option>
 							<?php foreach ( $mltlngg_languages as $lg ) {
 								if ( ! in_array( $lg[1], $list_of_added_languages ) ) { /* Do not display option if the language was added */
 									printf(
@@ -614,9 +618,12 @@ if ( ! function_exists( 'mltlngg_add_language_form' ) ) {
 							} ?>
 						</select>
 						<br/>
+						<div class="bws_info"><?php printf( esc_html__( 'In order to add a language that is not in the list use %s the instruction. %s', 'multilanguage' ), 
+                		'<a target="_blank" href="https://support.bestwebsoft.com/hc/en-us/articles/360018257597">', 
+                		'</a>' ); ?></div>
 						<input type="hidden" name="mltlngg_add_new_language_form_was_send" value="send">
 						<p class="submit">
-							<input class="button button-primary action" name="mltlngg_add_lang" id="mltlngg_add_lang" type="submit" value="<?php _e( 'Add Language', 'multilanguage' ); ?>">
+							<input class="button button-primary action" name="mltlngg_add_lang" id="mltlngg_add_lang" type="submit" value="<?php esc_html_e( 'Add Language', 'multilanguage' ); ?>">
 						</p>
 					</td>
 				</tr>

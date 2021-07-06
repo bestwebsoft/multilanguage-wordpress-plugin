@@ -1,7 +1,7 @@
 <?php
 /*
 * Function for displaying BestWebSoft menu
-* Version: 2.3.6
+* Version: 2.3.9
 */
 
 if ( ! function_exists ( 'bws_admin_enqueue_scripts' ) )
@@ -393,12 +393,12 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 						<p>
 							<strong><?php _e( 'Need help installing the plugin?', 'bestwebsoft' ); ?></strong>
 							<br>
-							<a target="_blank" href="https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/"><?php _e( 'How to install WordPress plugin from your admin Dashboard (ZIP archive)', 'bestwebsoft' ); ?></a>
+							<a target="_blank" href="https://bestwebsoft.com/documentation/how-to-install-a-wordpress-product/how-to-install-a-wordpress-plugin/"><?php _e( 'How to install WordPress plugin from your admin Dashboard (ZIP archive)', 'bestwebsoft' ); ?></a>
 						</p>						
 						<p>
 							<strong><?php _e( 'Get Started', 'bestwebsoft' ); ?></strong>
 							<br>
-							<a target="_blank" href="https://drive.google.com/drive/u/0/folders/0B5l8lO-CaKt9VGh0a09vUjNFNjA"><?php _e( 'Documentation', 'bestwebsoft' ); ?></a>
+							<a target="_blank" href="https://bestwebsoft.com/documentation/"><?php _e( 'Documentation', 'bestwebsoft' ); ?></a>
 							<br>
 							<a target="_blank" href="https://www.youtube.com/user/bestwebsoft"><?php _e( 'Video Instructions', 'bestwebsoft' ); ?></a>
 							<br>

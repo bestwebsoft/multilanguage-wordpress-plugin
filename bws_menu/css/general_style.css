@@ -483,6 +483,27 @@ span.bws_code {
 .bws-tooltip-content a {
     color: #00a0d2;
 }
+/*
+* styles for Request a Feature link near screen-meta
+*/
+#bws_request_feature {
+    margin-top: 0;
+}
+#bws_request_feature button {
+    border: 1px solid #ccd0d4;
+    border-top: none;
+    height: auto;
+    margin-bottom: 0;
+    color: #fff;
+    border-radius: 0 0 4px 4px;
+    background-color: #0071a1;
+    line-height: 1.7;
+    box-shadow: 0 0 0 transparent;
+    transition: box-shadow .1s linear;
+}
+#bws_request_feature button:hover {
+    background-color: #00a0d2;
+}
 /* 
 * bws shortcode insert
 */

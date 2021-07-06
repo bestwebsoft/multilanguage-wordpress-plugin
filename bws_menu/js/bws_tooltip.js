@@ -17,7 +17,7 @@
 						}
 					}
 					button = jQuery( button );
-					button.bind('click.pointer', function () {
+					button.on('click.pointer', function () {
 						t.element.pointer('close');
 					});
 					return button;

@@ -18,10 +18,12 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 			global $mltlngg_options, $mltlngg_plugin_info;
 
 			$tabs = array(
-				'settings'		=> array( 'label' => __( 'Settings', 'multilanguage' ) ),
-				'misc'			=> array( 'label' => __( 'Misc', 'multilanguage' ) ),
-				'custom_code'	=> array( 'label' => __( 'Custom Code', 'multilanguage' ) ),
-				'license'		=> array( 'label' => __( 'License Key', 'multilanguage' ) )
+				'settings'		=> array( 'label' => esc_html__( 'Settings', 'multilanguage' ) ),
+				'misc'			=> array( 'label' => esc_html__( 'Misc', 'multilanguage' ) ),
+				'custom_code'	=> array( 'label' => esc_html__( 'Custom Code', 'multilanguage' ) ),
+				/*pls */
+				'license'		=> array( 'label' => esc_html__( 'License Key', 'multilanguage' ) )
+				/* pls*/
 			);
 
 			parent::__construct( array(
@@ -32,24 +34,25 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 				'options'			=> $mltlngg_options,
 				'is_network_options'=> is_network_admin(),
 				'tabs'				=> $tabs,
-				'doc_link'			=> 'https://docs.google.com/document/d/1y_c25pWDedi4FghjWj7W2Qleb-JsC10fGFinw4hy8T0/',
+				'doc_link'			=> 'https://bestwebsoft.com/documentation/multilanguage/multilanguage-user-guide/',
+				/*pls */
 				'wp_slug'			=> 'multilanguage',
 				'link_key'			=> 'fa164f00821ed3a87e6f78cb3f5c277b',
 				'link_pn'			=> '143'
+				/* pls*/
 			) );
 
 			$this->language_switcher_name = array(
-                'drop-down-list' => __( 'Drop-down list (flag + title)', 'multilanguage' ),
-                'drop-down-titles' => __( 'Drop-down list (title)', 'multilanguage' ),
-                'drop-down-icons' => __( 'Drop-down list (flag)', 'multilanguage' ),
-                'flags-icons' => __( 'Flag', 'multilanguage' ),
-                'gt' => __( 'Google Auto Translate (drop-down only)', 'multilanguage' ),
-                'gt-horizontal' => __( 'Google Auto Translate (horizontal)', 'multilanguage' ),
-                'gt-vertical' => __( 'Google Auto Translate (vertical)', 'multilanguage' ) );
+                'drop-down-list' => esc_html__( 'Drop-down list (flag + title)', 'multilanguage' ),
+                'drop-down-titles' => esc_html__( 'Drop-down list (title)', 'multilanguage' ),
+                'drop-down-icons' => esc_html__( 'Drop-down list (flag)', 'multilanguage' ),
+                'flags-icons' => esc_html__( 'Flag', 'multilanguage' ),
+                'gt' => esc_html__( 'Google Auto Translate (drop-down only)', 'multilanguage' ),
+                'gt-horizontal' => esc_html__( 'Google Auto Translate (horizontal)', 'multilanguage' ),
+                'gt-vertical' => esc_html__( 'Google Auto Translate (vertical)', 'multilanguage' ) );
 
 			add_filter( get_parent_class( $this ) . '_additional_restore_options', array( $this, 'additional_restore_options' ) );
 			add_action( get_parent_class( $this ) . '_display_metabox', array( $this, 'display_metabox' ) );
-			add_action( get_parent_class( $this ) . '_additional_misc_options_affected', array( $this, 'additional_misc_options_affected' ) );
 			add_action( get_parent_class( $this ) . '_display_custom_messages', array( $this, 'display_custom_messages' ) );
 		}
 
@@ -76,7 +79,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 			$this->options['save_mode']					= isset( $_POST['mltlngg_save_mode'] ) && 'ajax' == $_POST['mltlngg_save_mode'] ? 'ajax' : 'manual';
 			$this->options['search']					= isset( $_POST['mltlngg_search'] ) && in_array( $_POST['mltlngg_search'], array( 'single', 'all' ) ) ? $_POST['mltlngg_search'] : 'single';
 
-			$message = __( 'Settings saved.', 'multilanguage' );
+			$message = esc_html__( 'Settings saved.', 'multilanguage' );
 
 			update_option( 'mltlngg_options', $this->options );
 
@@ -87,18 +90,18 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 		 *
 		 */
 		public function tab_settings() { ?>
-			<h3 class="bws_tab_label"><?php _e( 'Multilanguage Settings', 'multilanguage' ); ?></h3>
+			<h3 class="bws_tab_label"><?php esc_html_e( 'Multilanguage Settings', 'multilanguage' ); ?></h3>
 			<?php $this->help_phrase(); ?>
 			<hr>
 			<table class="form-table">
 			<tr>
-                    <th><?php _e( 'Google Auto Translate', 'multilanguage' ); ?></th>
+                    <th><?php esc_html_e( 'Google Auto Translate', 'multilanguage' ); ?></th>
                     <td>
-                        <input type="checkbox" name="mltlngg_google_auto_translate"  value="1" <?php checked( 1, $this->options['google_auto_translate'] ); ?> /> <span class="bws_info"><?php _e( "Enable to activate webpages auto translate. When google auto translate is enabled, a Google language switcher is displayed on the page allowing visitors to translate the page content automatically.", 'multilanguage' ); ?></span>
+                        <input type="checkbox" name="mltlngg_google_auto_translate"  value="1" <?php checked( 1, $this->options['google_auto_translate'] ); ?> /> <span class="bws_info"><?php esc_html_e( "Enable to activate webpages auto translate. When google auto translate is enabled, a Google language switcher is displayed on the page allowing visitors to translate the page content automatically.", 'multilanguage' ); ?></span>
                     </td>
                 </tr>
 				<tr>
-                    <th><?php _e( 'Default Language Switcher Type', 'multilanguage' ); ?></th>
+                    <th><?php esc_html_e( 'Default Language Switcher Type', 'multilanguage' ); ?></th>
                     <td>
                         <select name="mltlngg_language_switcher">
                             <?php foreach ( $this->language_switcher_name as $key => $value  ) { ?>
@@ -108,20 +111,21 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
                     </td>
                 </tr>
 			</table>
+			 <!-- pls -->
 			<?php if ( ! $this->hide_pro_tabs ) { ?>
 				<div class="bws_pro_version_bloc">
 					<div class="bws_pro_version_table_bloc">
-						<button type="submit" name="bws_hide_premium_options" class="notice-dismiss bws_hide_premium_options" title="<?php _e( 'Close', 'multilanguage' ); ?>"></button>
+						<button type="submit" name="bws_hide_premium_options" class="notice-dismiss bws_hide_premium_options" title="<?php esc_html_e( 'Close', 'multilanguage' ); ?>"></button>
 						<div class="bws_table_bg"></div>
 						<table class="form-table bws_pro_version">
 							<tr>
-								<th><?php _e( 'Switch Language Automatically', 'multilanguage' ); ?></th>
+								<th><?php esc_html_e( 'Switch Language Automatically', 'multilanguage' ); ?></th>
 								<td>
-									<input type="checkbox" <?php disabled( true ); ?> /> <span class="bws_info"><?php _e( "Enable to determine user IP and switch website language automatically based on the location.", 'multilanguage' ); ?></span>
+									<input type="checkbox" <?php disabled( true ); ?> /> <span class="bws_info"><?php esc_html_e( "Enable to identify user IP and switch website language automatically based on the location.", 'multilanguage' ); ?></span>
 								</td>
 							</tr>
 							<tr>
-								<th><?php _e( "Slug Position in the URL", 'multilanguage' ); ?></th>
+								<th><?php esc_html_e( "Slug Position in the URL", 'multilanguage' ); ?></th>
 								<td>
 									<fieldset class="mltlngg_slug_position">
 										<?php global $mltlngg_current_language;
@@ -133,7 +137,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 										); ?>
 										<label>
 											<input type="radio" <?php disabled( true ); checked( false ); ?> />
-											<?php _e( 'Before', 'multilanguage' );
+											<?php esc_html_e( 'Before', 'multilanguage' );
 											printf(
 												"&ensp;<code>%s</code>",
 												preg_replace( '~(://)~', '$0<b>en.</b>', $url )
@@ -142,7 +146,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 										<br>
 										<label>
 											<input type="radio" <?php disabled( true ); checked( true ); ?> />
-											<?php _e( 'After', 'multilanguage' );
+											<?php esc_html_e( 'After', 'multilanguage' );
 											printf(
 												"&ensp;<code>%s</code>",
 												preg_replace( '~(?<=[/=])(' . $mltlngg_current_language . ')(?![\w\d-])~', '<b>en</b>', mltlngg_get_lang_link( $args ) )
@@ -151,72 +155,79 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 									</fieldset>
 								</td>
 							</tr>
+							<tr>
+								<th><?php esc_html_e( 'Permalink Translation', 'multilanguage' ); ?></th>
+								<td>
+									<input type="checkbox" <?php disabled( true ); ?> /> <span class="bws_info"><?php esc_html_e( "Enable to translate pages, posts, and custom posts slugs in different languages.", 'multilanguage' ); ?></span>
+								</td>
+							</tr>
 						</table>
 					</div>
 					<?php $this->bws_pro_block_links(); ?>
 				</div>
 			<?php } ?>
+			<!-- end pls -->
 			<table class="form-table">
 				<tr>
-					<th><?php _e( "Default Language Slug", 'multilanguage' ); ?></th>
+					<th><?php esc_html_e( "Default Language Slug", 'multilanguage' ); ?></th>
 					<td>
-						<input type="checkbox" name="mltlngg_hide_link_slug" value="1" <?php checked( 0, $this->options['hide_link_slug'] ); ?> /> <span class="bws_info"><?php _e( "Enable to show default language slug in the URL.", 'multilanguage' ); ?></span>
+						<input type="checkbox" name="mltlngg_hide_link_slug" value="1" <?php checked( 0, $this->options['hide_link_slug'] ); ?> /> <span class="bws_info"><?php esc_html_e( "Enable to show default language slug in the URL.", 'multilanguage' ); ?></span>
 					</td>
 				</tr>
 				<tr>
-					<th><?php _e( 'WordPress Language', 'multilanguage' ); ?></th>
+					<th><?php esc_html_e( 'WordPress Language', 'multilanguage' ); ?></th>
 					<td>
-						<input name="mltlngg_wp_localization" type="checkbox" value="1" <?php checked( 1, $this->options['wp_localization'] ); ?>> <span class="bws_info"><?php _e( "Enable to switch WordPress language automatically when the language is changed in the front-end. Installed WordPress language packs are required. To install a new language simply go to the Settings > General and choose it in the Site Language option.", 'multilanguage' ); ?></span>
+						<input name="mltlngg_wp_localization" type="checkbox" value="1" <?php checked( 1, $this->options['wp_localization'] ); ?>> <span class="bws_info"><?php esc_html_e( "Enable to switch WordPress language automatically when the language is changed in the front-end. Installed WordPress language packs are required. To install a new language simply go to the Settings > General and choose it in the Site Language option.", 'multilanguage' ); ?></span>
 					</td>
 				</tr>
 				<tr>
-					<th><?php _e( 'Open Graph Markup', 'multilanguage' ); ?></th>
+					<th><?php esc_html_e( 'Open Graph Markup', 'multilanguage' ); ?></th>
 					<td>
 						<input type="checkbox" name="mltlngg_translate_open_graph" value="1" <?php checked( $this->options['translate_open_graph'] ); ?> />
 						<span class="bws_info">
 							<?php printf(
-								__( 'Enable to add the ability to translate %s.', 'multilanguage' ) . ' ',
-								'<a href="http://ogp.me/" target="_blank">' . __( 'open graph meta tags', 'multilanguage' ) . '</a>'
+								esc_html__( 'Enable to add the ability to translate %s.', 'multilanguage' ) . ' ',
+								'<a href="http://ogp.me/" target="_blank">' . esc_html__( 'open graph meta tags', 'multilanguage' ) . '</a>'
 							);
-							printf( __( 'This option automatically adds metadata for each language in the %s section. Facebook and other social networks use this data when your pages are shared.', 'multilanguage' ), '&lt;head&gt;' ); ?>
+							printf( esc_html__( 'This option automatically adds metadata for each language in the %s section. Facebook and other social networks use this data when your pages are shared.', 'multilanguage' ), '&lt;head&gt;' ); ?>
 						</span>
 					</td>
 				</tr>
 				<tr>
-					<th><?php _e( 'Hreflang Attribute', 'multilanguage' ); ?></th>
+					<th><?php esc_html_e( 'Hreflang Attribute', 'multilanguage' ); ?></th>
 					<td>
-						<input type="checkbox" name="mltlngg_display_alternative_link" value="1" <?php checked( 1, $this->options['display_alternative_link'] ); ?> /> <span class="bws_info"><?php printf( __( 'Enable to add hreflang attribute used by search engines and display the correct language or regional URL in search results. This option inserts automatically the respective link for each language within the %s section.', 'multilanguage' ), '&lt;head&gt;' ); ?></span>
+						<input type="checkbox" name="mltlngg_display_alternative_link" value="1" <?php checked( 1, $this->options['display_alternative_link'] ); ?> /> <span class="bws_info"><?php printf( esc_html__( 'Enable to add hreflang attribute used by search engines and display the correct language or regional URL in search results. This option inserts automatically the respective link for each language within the %s section.', 'multilanguage' ), '&lt;head&gt;' ); ?></span>
 					</td>
 				</tr>
 				<?php if ( ! defined( 'ET_BUILDER_THEME' ) && ! defined( 'WPB_VC_VERSION' ) ) { ?>
 					<tr>
-						<th><?php _e( 'Translation Saving Mode for Classic Editor', 'multilanguage' ); ?></th>
+						<th><?php esc_html_e( 'Translation Saving Mode for Classic Editor', 'multilanguage' ); ?></th>
 						<td>
 							<fieldset>
 								<label>
 									<input name="mltlngg_save_mode" type="radio" value="ajax" <?php checked( 'ajax', $this->options['save_mode'] ); ?> />
-									<?php _e( 'Auto', 'multilanguage' ); ?> (AJAX)
+									<?php esc_html_e( 'Auto', 'multilanguage' ); ?> (AJAX)
 								</label>
 								<br>
 								<label>
 									<input name="mltlngg_save_mode" type="radio" value="manual" <?php checked( 'manual', $this->options['save_mode'] ); ?> />
-									<?php _e( 'Manual (Save Changes button)', 'multilanguage' ); ?>
+									<?php esc_html_e( 'Manual (Save Changes button)', 'multilanguage' ); ?>
 								</label>
 							</fieldset>
-							<span class="bws_info"><?php _e( "Enable Manual mode if you have some problems with translations saving using Auto mode.", 'multilanguage' ); ?></span>
+							<span class="bws_info"><?php esc_html_e( "Enable Manual mode if you have some problems with translations saving using Auto mode.", 'multilanguage' ); ?></span>
 						</td>
 					</tr>
 				<?php } ?>
 				<tr>
-					<th><?php _e( 'Default Search by', 'multilanguage' ); ?></th>
+					<th><?php esc_html_e( 'Default Search by', 'multilanguage' ); ?></th>
 					<td>
 						<fieldset>
 							<label>
-								<input type="radio" name="mltlngg_search" value="single" <?php checked( 'single', $this->options['search'] ); ?> /> <?php _e( 'Current language', 'multilanguage' ); ?>
+								<input type="radio" name="mltlngg_search" value="single" <?php checked( 'single', $this->options['search'] ); ?> /> <?php esc_html_e( 'Current language', 'multilanguage' ); ?>
 							</label>
 							<br>
 							<label>
-								<input type="radio" name="mltlngg_search" value="all" <?php checked( 'all', $this->options['search'] ); ?> /> <?php _e( 'All active languages', 'multilanguage' ); ?>
+								<input type="radio" name="mltlngg_search" value="all" <?php checked( 'all', $this->options['search'] ); ?> /> <?php esc_html_e( 'All active languages', 'multilanguage' ); ?>
 							</label>
 						</fieldset>
 					</td>
@@ -228,25 +239,27 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 		 * Display custom options on the 'misc' tab
 		 * @access public
 		 */
-		public function additional_misc_options_affected() { ?>
+		public function additional_misc_options_affected() {
+		    do_action( 'mltlngg_settings_page_misc_action', $this->options );?>
 			</table>
+			<!-- pls -->
 			<?php if ( ! $this->hide_pro_tabs ) { ?>
 				<div class="bws_pro_version_bloc">
 					<div class="bws_pro_version_table_bloc">
-						<button type="submit" name="bws_hide_premium_options" class="notice-dismiss bws_hide_premium_options" title="<?php _e( 'Close', 'limit-attempts' ); ?>"></button>
+						<button type="submit" name="bws_hide_premium_options" class="notice-dismiss bws_hide_premium_options" title="<?php esc_html_e( 'Close', 'limit-attempts' ); ?>"></button>
 						<div class="bws_table_bg"></div>
 						<table class="form-table bws_pro_version">
 							<tr>
-								<th><?php _e( 'Update GeoIP Every', 'multilanguage' ); ?></th>
+								<th><?php esc_html_e( 'Update GeoIP Every', 'multilanguage' ); ?></th>
 								<td>
 									<fieldset>
-										<input disabled="disabled" type="number" min="0" max="12" step="1" name="bwscntrtbl_loading_country" value="3" style="width: 50px;"/>&nbsp;<?php _e( 'months', 'multilanguage' ); ?>
-										<p id="bwscntrtbl_message" class="bws_info_small"><?php _e( 'Country table is not loaded yet.', 'multilanguage' ); ?></p>
+										<input disabled="disabled" type="number" min="0" max="12" step="1" name="bwscntrtbl_loading_country" value="3" style="width: 50px;"/>&nbsp;<?php esc_html_e( 'months', 'multilanguage' ); ?>
+										<p id="bwscntrtbl_message" class="bws_info_small"><?php esc_html_e( 'Country table is not loaded yet.', 'multilanguage' ); ?></p>
 										<p>
-											<input disabled="disabled" type="submit" name="bwscntrtbl_button_import" class="button button-secondary bwsplgns_need_disable" value="<?php _e( 'Update Now', 'multilanguage' ); ?>" />
+											<input disabled="disabled" type="submit" name="bwscntrtbl_button_import" class="button button-secondary bwsplgns_need_disable" value="<?php esc_html_e( 'Update Now', 'multilanguage' ); ?>" />
 										</p>
 										<div class="bws_info">
-											<?php printf( __( 'Automatically download lists with registered IP addresses all over the world (from %s) to the database. Receive an information about each IP address, and to which country it belongs to.', 'multilanguage' ), '<a href="https://www.maxmind.com/" target="_blank">GeoIP</a>' ); ?>&nbsp;<a href="https://www.maxmind.com/en/geoip2-services-and-databases" target="_blank"><?php _e( 'Learn More', 'multilanguage' ); ?></a>
+											<?php printf( esc_html__( 'Automatically download lists with registered IP addresses all over the world (from %s) to the database. Receive an information about each IP address, and to which country it belongs to.', 'multilanguage' ), '<a href="https://www.maxmind.com/" target="_blank">GeoIP</a>' ); ?>&nbsp;<a href="https://www.maxmind.com/en/geoip2-services-and-databases" target="_blank"><?php esc_html_e( 'Learn More', 'multilanguage' ); ?></a>
 										</div>
 									</fieldset>
 								</td>
@@ -256,6 +269,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 					<?php $this->bws_pro_block_links(); ?>
 				</div>
 			<?php } ?>
+			<!-- end pls -->
 			<table class="form-table">
 		<?php }
 
@@ -277,14 +291,14 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 		public function display_metabox() { ?>
 			<div class="postbox">
 				<h3 class="hndle">
-					<?php _e( 'Language Switcher', 'multilanguage' ); ?>
+					<?php esc_html_e( 'Language Switcher', 'multilanguage' ); ?>
 				</h3>
 				<div class="inside">
-					<p><?php _e( 'Add "Multilanguage Switcher" to a widget.', 'multilanguage' ); ?> <a href="widgets.php"><?php _e( 'Navigate to Widgets', 'multilanguage' ); ?></a></p>
-					<p><?php _e( 'Add "Multilanguage Switcher" to a menu.', 'multilanguage' ); ?> <a href="nav-menus.php"><?php _e( 'Navigate to Menus', 'multilanguage' ); ?></a></p>
-					<?php _e( "Add a language switcher to your posts, pages or custom post types by using the following shortcode:", 'multilanguage' ); ?>
+					<p><?php esc_html_e( 'Add "Multilanguage Switcher" to a widget.', 'multilanguage' ); ?> <a href="widgets.php"><?php esc_html_e( 'Navigate to Widgets', 'multilanguage' ); ?></a></p>
+					<p><?php esc_html_e( 'Add "Multilanguage Switcher" to a menu.', 'multilanguage' ); ?> <a href="nav-menus.php"><?php esc_html_e( 'Navigate to Menus', 'multilanguage' ); ?></a></p>
+					<?php esc_html_e( "Add a language switcher to your posts, pages or custom post types by using the following shortcode:", 'multilanguage' ); ?>
 					<?php bws_shortcode_output( '[multilanguage_switcher]' ); ?>
-					<p><?php _e( 'Add a language switcher to PHP template files by using the following code', 'multilanguage' ); ?>:</p>
+					<p><?php esc_html_e( 'Add a language switcher to PHP template files by using the following code', 'multilanguage' ); ?>:</p>
 					<code>&#60;?php if ( function_exists( 'mltlngg_display_switcher' ) ) mltlngg_display_switcher(); ?&#62;</code>
 				</div>
 			</div>
@@ -293,7 +307,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 		public function display_custom_messages() { ?>
 			<noscript>
 				<div class="error below-h2">
-					<p><strong><?php _e( "Please enable JavaScript in your browser.", 'multilanguage' ); ?></strong></p>
+					<p><strong><?php esc_html_e( "Please enable JavaScript in your browser.", 'multilanguage' ); ?></strong></p>
 				</div>
 			</noscript>
 			<?php

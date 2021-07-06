@@ -767,13 +767,13 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 									<p>
 										<strong><?php _e( 'Need help installing the plugin?', 'bestwebsoft' ); ?></strong>
 										<br>
-										<a target="_blank" href="https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/"><?php _e( 'How to install WordPress plugin from your admin Dashboard (ZIP archive)', 'bestwebsoft' ); ?></a>
+										<a target="_blank" href="https://bestwebsoft.com/documentation/how-to-install-a-wordpress-product/how-to-install-a-wordpress-plugin/"><?php _e( 'How to install WordPress plugin from your admin Dashboard (ZIP archive)', 'bestwebsoft' ); ?></a>
 									</p>
 									<br>					
 									<p>
 										<strong><?php _e( 'Get Started', 'bestwebsoft' ); ?></strong>
 										<br>
-										<a target="_blank" href="https://drive.google.com/drive/u/0/folders/0B5l8lO-CaKt9VGh0a09vUjNFNjA"><?php _e( 'Documentation', 'bestwebsoft' ); ?></a>
+										<a target="_blank" href="https://bestwebsoft.com/documentation/"><?php _e( 'Documentation', 'bestwebsoft' ); ?></a>
 										<br>
 										<a target="_blank" href="https://www.youtube.com/user/bestwebsoft"><?php _e( 'Video Instructions', 'bestwebsoft' ); ?></a>
 										<br>
@@ -1124,5 +1124,203 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 				update_option( $this->prefix . '_options', $this->options );
 			}
 		}
+
+		public function add_request_feature() { ?>
+			<div id="bws_request_feature" class="widget-access-link">
+				<button type="button" class="button" ><?php _e( 'Request a Feature', 'bestwebsoft' ); ?></button>
+			</div>
+			<?php $modal_html = '<div class="bws-modal bws-modal-deactivation-feedback bws-modal-request-feature">
+		    	<div class="bws-modal-dialog">
+		    		<div class="bws-modal-body">
+		    			<h2>' . sprintf( __( 'How can we improve %s?', 'bestwebsoft' ), $this->plugins_info['Name'] ) . '</h2>
+		    			<div class="bws-modal-panel active">
+		    				<p>' . __( 'We look forward to hear your ideas.', 'bestwebsoft' ) . '</p>
+		    				<p>
+		    					<textarea placeholder="' . __( 'Describe your idea', 'bestwebsoft' ) . '..."></textarea>
+		    				</p>
+		    				<label class="bws-modal-anonymous-label">
+			    				<input type="checkbox" /> ' . __( 'Send website data and allow to contact me back', 'bestwebsoft' ) . '
+							</label>
+						</div>
+					</div>
+					<div class="bws-modal-footer">
+						<a href="#" class="button disabled bws-modal-button button-primary">' . __( 'Submit', 'bestwebsoft' ) . '</a>
+						<span class="bws-modal-processing hidden">' . __( 'Processing', 'bestwebsoft' ) . '...</span>
+						<span class="bws-modal-thank-you hidden">' . __( 'Thank you!', 'bestwebsoft' ) . '</span>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>';
+
+			$script = "(function($) {
+				var modalHtml = " . json_encode( $modal_html ) . ",
+					\$modal = $( modalHtml );
+				
+				\$modal.appendTo( $( 'body' ) );
+
+				$( '#bws_request_feature .button' ).on( 'click', function() {
+					/* Display the dialog box.*/
+					\$modal.addClass( 'active' );
+					$( 'body' ).addClass( 'has-bws-modal' );				
+				});
+
+				\$modal.on( 'keypress', 'textarea', function( evt ) {
+					BwsModalEnableButton();
+				});
+
+				\$modal.on( 'click', '.bws-modal-footer .button', function( evt ) {
+					evt.preventDefault();
+
+					if ( $( this ).hasClass( 'disabled' ) ) {
+						return;
+					}
+					var info = \$modal.find( 'textarea' ).val();
+
+					if ( info.length == 0 ) {
+						return;
+					}
+
+					var _parent = $( this ).parents( '.bws-modal:first' ),
+						_this =  $( this );
+
+					var is_anonymous = ( \$modal.find( '.bws-modal-anonymous-label' ).find( 'input' ).is( ':checked' ) ) ? 0 : 1;
+
+					$.ajax({
+						url       : ajaxurl,
+						method    : 'POST',
+						data      : {
+							'action'			: 'bws_submit_request_feature_action',
+							'plugin'			: '" . $this->plugin_basename . "',
+							'info'				: info,
+							'is_anonymous'		: is_anonymous,
+							'bws_ajax_nonce'	: '" . wp_create_nonce( 'bws_ajax_nonce' ) . "'
+						},
+						beforeSend: function() {
+							_parent.find( '.bws-modal-footer .bws-modal-button' ).hide();
+							_parent.find( '.bws-modal-footer .bws-modal-processing' ).show();
+							_parent.find( 'textarea, input' ).attr( 'disabled', 'disabled' );
+						},
+						complete  : function( message ) {
+							_parent.find( '.bws-modal-footer .bws-modal-processing' ).hide();
+							_parent.find( '.bws-modal-footer .bws-modal-thank-you' ).show();
+						}
+					});
+				});
+
+				/* If the user has clicked outside the window, cancel it. */
+				\$modal.on( 'click', function( evt ) {
+					var \$target = $( evt.target );
+
+					/* If the user has clicked anywhere in the modal dialog, just return. */
+					if ( \$target.hasClass( 'bws-modal-body' ) || \$target.hasClass( 'bws-modal-footer' ) ) {
+						return;
+					}
+
+					/* If the user has not clicked the close button and the clicked element is inside the modal dialog, just return. */
+					if ( ! \$target.hasClass( 'bws-modal-button-close' ) && ( \$target.parents( '.bws-modal-body' ).length > 0 || \$target.parents( '.bws-modal-footer' ).length > 0 ) ) {
+						return;
+					}
+
+					/* Close the modal dialog */
+					\$modal.removeClass( 'active' );
+					$( 'body' ).removeClass( 'has-bws-modal' );
+
+					return false;
+				});
+
+				function BwsModalEnableButton() {
+					\$modal.find( '.bws-modal-button' ).removeClass( 'disabled' ).show();
+					\$modal.find( '.bws-modal-processing' ).hide();
+				}
+
+				function BwsModalDisableButton() {
+					\$modal.find( '.bws-modal-button' ).addClass( 'disabled' );
+				}
+
+				function BwsModalShowPanel() {
+					\$modal.find( '.bws-modal-panel' ).addClass( 'active' );
+				}
+			})(jQuery);";
+
+			/* add script in FOOTER */
+			wp_register_script( 'bws-request-feature-dialog', '', array( 'jquery' ), false, true );
+			wp_enqueue_script( 'bws-request-feature-dialog' );
+			wp_add_inline_script( 'bws-request-feature-dialog', sprintf( $script ) );
+		}
 	}
 }
+
+
+/**
+ * Called after the user has submitted his reason for deactivating the plugin.
+ *
+ * @since  2.1.3
+ */
+if ( ! function_exists( 'bws_submit_request_feature_action' ) ) {
+	function bws_submit_request_feature_action() {
+		global $bstwbsftwppdtplgns_options, $wp_version, $bstwbsftwppdtplgns_active_plugins, $current_user;
+
+		wp_verify_nonce( $_REQUEST['bws_ajax_nonce'], 'bws_ajax_nonce' );
+
+		$basename = isset( $_REQUEST['plugin'] ) ? stripcslashes( sanitize_text_field( $_REQUEST['plugin'] ) ) : '';
+		$info = stripcslashes( sanitize_text_field( $_REQUEST['info'] ) );
+
+		if ( empty( $info ) || empty( $basename ) ) {
+			exit;
+		}
+		
+		$info = substr( $info, 0, 255 );
+		$is_anonymous = isset( $_REQUEST['is_anonymous'] ) && 1 == $_REQUEST['is_anonymous'];
+
+		$options = array(
+			'product'	=> $basename,
+			'info'		=> $info,
+		);
+
+		if ( ! $is_anonymous ) {
+			if ( ! isset( $bstwbsftwppdtplgns_options ) )
+				$bstwbsftwppdtplgns_options = ( is_multisite() ) ? get_site_option( 'bstwbsftwppdtplgns_options' ) : get_option( 'bstwbsftwppdtplgns_options' );
+
+			if ( ! empty( $bstwbsftwppdtplgns_options['track_usage']['usage_id'] ) ) {
+				$options['usage_id'] = $bstwbsftwppdtplgns_options['track_usage']['usage_id'];
+			} else {
+				$options['usage_id'] = false;
+				$options['url'] = get_bloginfo( 'url' );
+				$options['wp_version'] = $wp_version;
+				$options['is_active'] = false;
+				$options['version'] = $bstwbsftwppdtplgns_active_plugins[ $basename ]['Version'];
+			}
+
+			$options['email'] = $current_user->data->user_email;
+		}
+
+		/* send data */
+		$raw_response = wp_remote_post( 'https://bestwebsoft.com/wp-content/plugins/products-statistics/request-feature/', array(
+			'method'  => 'POST',
+			'body'    => $options,
+			'timeout' => 15,
+		) );
+
+		if ( ! is_wp_error( $raw_response ) && 200 == wp_remote_retrieve_response_code( $raw_response ) ) {
+			if ( ! $is_anonymous ) {
+				$response = maybe_unserialize( wp_remote_retrieve_body( $raw_response ) );			
+
+				if ( is_array( $response ) && ! empty( $response['usage_id'] ) && $response['usage_id'] != $options['usage_id'] ) {
+					$bstwbsftwppdtplgns_options['track_usage']['usage_id'] = $response['usage_id'];
+
+					if ( is_multisite() )
+						update_site_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options );
+					else
+						update_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options );
+				}
+			}
+
+			echo 'done';
+		} else {
+			echo $response->get_error_code() . ': ' . $response->get_error_message();
+		}
+		exit;
+	}
+}
+
+add_action( 'wp_ajax_bws_submit_request_feature_action', 'bws_submit_request_feature_action' );

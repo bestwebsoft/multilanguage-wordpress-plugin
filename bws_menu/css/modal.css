@@ -83,7 +83,8 @@ body.has-bws-modal {
 .bws-modal.bws-modal-deactivation-feedback .bws-modal-reason-input input,
 .bws-modal.bws-modal-deactivation-feedback .bws-modal-reason-input textarea,
 .bws-modal.bws-modal-deactivation-feedback .bws-modal-internal-message input,
-.bws-modal.bws-modal-deactivation-feedback .bws-modal-internal-message textarea {
+.bws-modal.bws-modal-deactivation-feedback .bws-modal-internal-message textarea,
+.bws-modal.bws-modal-request-feature textarea {
     width: 100%;
 }
 .bws-modal.bws-modal-deactivation-feedback li.bws-modal-reason.has-internal-message .bws-modal-internal-message {

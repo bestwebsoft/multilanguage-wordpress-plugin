@@ -697,6 +697,7 @@ if ( ! function_exists( 'bws_enqueue_settings_scripts' ) ) {
 	function bws_enqueue_settings_scripts() {
 		wp_enqueue_script( 'jquery-ui-resizable' );
 		wp_enqueue_script( 'jquery-ui-tabs' );
+		wp_enqueue_style( 'bws-modal-css', bws_menu_url( 'css/modal.css' ) );
 	}
 }
 
@@ -799,7 +800,7 @@ if ( ! class_exists( 'BWS_admin_tooltip' ) ) {
 				if ( ! in_array( $tooltip_args['position']['edge'], array( 'left', 'right', 'top', 'bottom' ) )  ) {
 					$tooltip_args['position']['edge'] = 'top';
 				}
-				if ( ! in_array( $tooltip_args['position']['align'], array( 'top', 'bottom', 'left', 'right', 'center', ) ) ) {
+				if ( ! in_array( $tooltip_args['position']['align'], array( 'top', 'bottom', 'left', 'right', 'center' ) ) ) {
 					$tooltip_args['position']['align'] = 'center';
 				}
 			}
@@ -957,7 +958,7 @@ if ( ! function_exists( 'bws_help_tab' ) ) {
 
 		$screen->set_help_sidebar(
 			'<p><strong>' . __( 'For more information:', 'bestwebsoft' ) . '</strong></p>' .
-			'<p><a href="https://drive.google.com/folderview?id=0B5l8lO-CaKt9VGh0a09vUjNFNjA&usp=sharing#list" target="_blank">' . __( 'Documentation', 'bestwebsoft' ) . '</a></p>' .
+			'<p><a href="https://bestwebsoft.com/documentation/" target="_blank">' . __( 'Documentation', 'bestwebsoft' ) . '</a></p>' .
 			'<p><a href="https://www.youtube.com/user/bestwebsoft/playlists?flow=grid&sort=da&view=1" target="_blank">' . __( 'Video Instructions', 'bestwebsoft' ) . '</a></p>' .
 			'<p><a href="https://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">' . __( 'Submit a Request', 'bestwebsoft' ) . '</a></p>'
 		);
