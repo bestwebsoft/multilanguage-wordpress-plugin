@@ -52,7 +52,7 @@
 <li>Compatible with:
 <ul>
 <li>Classic Editor</li>
-<li>Block Editor (Gutenberg) [NEW]</li>
+<li>Block Editor (Gutenberg)</li>
 </ul>
 </li>
 <li>Add hreflang links to  section</li>
@@ -78,6 +78,7 @@
 <li>Translate:
 <ul>
 <li>Post category and tag descriptions</li>
+<li>Post slugs</li>
 <li>Widget titles</li>
 <li>Website title</li>
 <li>Website tagline</li>
@@ -85,6 +86,7 @@
 </li>
 <li>Compatible with Elementor Page Builder</li>
 <li>Compatible with Advanced Custom Fields</li>
+<li>Compatible with Yoast SEO</li>
 <li>Change language slug position in the website URL</li>
 <li>Create separate menus for different languages</li>
 <li>Display/hide widgets for different languages</li>
@@ -97,8 +99,8 @@
 <p>If you have a feature suggestion or idea you&#8217;d like to see in the plugin, we&#8217;d love to hear about it! <a href="https://support.bestwebsoft.com/hc/en-us/requests/new" rel="nofollow ugc">Suggest a Feature</a></p>
 <h4>Documentation &amp; Videos</h4>
 <ul>
-<li><a href="https://docs.google.com/document/d/1y_c25pWDedi4FghjWj7W2Qleb-JsC10fGFinw4hy8T0/" rel="nofollow ugc">[Doc] User Guide</a></li>
-<li><a href="https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/" rel="nofollow ugc">[Doc] Installation</a></li>
+<li><a href="https://bestwebsoft.com/documentation/multilanguage/multilanguage-user-guide/" rel="nofollow ugc">[Doc] User Guide</a></li>
+<li><a href="https://bestwebsoft.com/documentation/how-to-install-a-wordpress-product/how-to-install-a-wordpress-plugin/" rel="nofollow ugc">[Doc] Installation</a></li>
 </ul>
 <h4>Help &amp; Support</h4>
 <p>Visit our Help Center if you have any questions, our friendly Support Team is happy to help &#8211; <a href="https://support.bestwebsoft.com/" rel="nofollow ugc">https://support.bestwebsoft.com/</a></p>
