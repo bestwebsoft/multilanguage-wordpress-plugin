@@ -6,7 +6,7 @@ Description: Translate WordPress website content to other languages manually. Cr
 Author: BestWebSoft
 Text Domain: multilanguage
 Domain Path: /languages
-Version: 1.3.8
+Version: 1.4.0
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -479,6 +479,9 @@ if ( ! function_exists( 'mltlngg_plugin_load' ) ) {
 			/* Internationalization */
 			load_plugin_textdomain( 'multilanguage', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
+			if ( strpos( $_SERVER['REQUEST_URI'], "wp-json" ) ) 
+				return;
+			
 			/*
 			 * if not admin panel
 			 * and not login/logout/ page
@@ -1479,16 +1482,19 @@ if ( ! function_exists( 'mltlngg_is_gutenberg_active' ) ) {
 
 if ( ! function_exists( 'mltlngg_is_rest_api' ) ) {
 	function mltlngg_is_rest_api() {
+		global $wpdb;
 		/* gutenberg save post 
 		If REST_REQUEST is defined (by WordPress) and is a TRUE, then it's a REST API request. - defined( 'REST_REQUEST' ) return false here
 		the save feature in Gutenberg is done using the REST API, and because of how is_admin() works checking it won’t work. defined( 'DOING_AJAX' ) && DOING_AJAX also won’t work
 		*/
-		$pagesajax = 'wp-json/wp/v2/pages';
-    	$postsajax = 'wp-json/wp/v2/posts';
-	    if ( ! empty( $_SERVER['REQUEST_URI'] ) &&
-	        strpos( $_SERVER['REQUEST_URI'], $pagesajax ) !== false ||
-	        strpos( $_SERVER['REQUEST_URI'], $postsajax ) !== false ) {
-			return true;
+		$post_types_ajax = $wpdb->get_col( "SELECT DISTINCT `post_type` FROM {$wpdb->prefix}posts WHERE `post_status` = 'publish'" );
+    	
+	    if ( ! empty( $_SERVER['REQUEST_URI'] ) ) {
+	    	foreach ( $post_types_ajax as $post_type ) {
+	    		if ( strpos( $_SERVER['REQUEST_URI'], $post_type ) !== false ) {
+	    			return true;
+	    		}
+			}
     	}
     	return false;
     }
@@ -2459,9 +2465,11 @@ if ( ! function_exists( 'mltlngg_localize_excerpt' ) ) {
 				return $excerpt_new;
 			} else {
 				$excerpt_new = $wpdb->get_var( $wpdb->prepare( "SELECT `post_content` FROM `" . $wpdb->prefix . "mltlngg_translate` WHERE `post_ID` = %d AND `language` = %s", $post->ID, $mltlngg_current_language ) );
-				$excerpt_new = mb_strimwidth( $excerpt_new, 0, 250 );
-				$excerpt_new = $excerpt_new . '...';
-				return $excerpt_new;
+				if ( ! empty( $excerpt_new ) ) {
+					$excerpt_new = mb_strimwidth( $excerpt_new, 0, 250 );
+					$excerpt_new = $excerpt_new . '...';
+					return $excerpt_new;
+				}
 			}
 		}
 		return $excerpt;

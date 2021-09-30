@@ -22,7 +22,7 @@ $bws_plugins = array(
 		'name'			=> 'Bike Rental',
 		'description'	=> __( 'Give a birth for your bike rental and booking WordPress website.', 'bestwebsoft' ),
 		'link'			=> 'https://bestwebsoft.com/products/wordpress/plugins/bike-rental/?k=04387cfc31fc8b9553e4741392762231&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
-		'settings'		=> 'edit.php?post_type=bws_bike&page=bike-rental-settings',
+		'settings'		=> 'edit.php?post_type=bws_bike&page=bkng_general_settings',
 		'pro_version'	=> 'bike-rental-pro/bike-rental-pro.php',
 		'purchase'		=> 'https://bestwebsoft.com/products/wordpress/plugins/bike-rental/buy/?k=9b3222b005340035eaead38a7a495a0d&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
 		'pro_settings'	=> 'edit.php?post_type=bws_bike&page=bkrntl_bws_bike_settings',

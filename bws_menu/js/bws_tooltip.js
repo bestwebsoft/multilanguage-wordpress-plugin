@@ -3,6 +3,7 @@
  *
  */
 (function($) {
+	"use strict";
 	$(document).ready( function() {
 		jQuery.bwsTooltip = function( pointer_options ) {
 			var pointer_buttons = pointer_options['buttons'];
@@ -51,6 +52,9 @@
 					};
 				}
 				/* adjust position of pointer */
+				var topPos,
+					leftPos,
+					pointerZindex;
 				topPos = parseInt( $( "." + pointer_options["tooltip_id"] ).css("top") ) + parseInt( pointer_options['position']['pos-top'] );
 				leftPos = parseInt( $( "." + pointer_options["tooltip_id"] ).css("left") ) + parseInt( pointer_options['position']['pos-left'] );
 				if ( pointer_options['position']['align'] == 'left' ) {

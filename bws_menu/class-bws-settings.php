@@ -230,7 +230,10 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 									<?php /**
 									 * action - Display custom metabox
 									 */
-									do_action( __CLASS__ . '_display_metabox' ); ?>
+									do_action( __CLASS__ . '_display_metabox' );
+
+									if ( function_exists( 'bws_affiliate_postbox' ) )
+										bws_affiliate_postbox(); ?>
                                 </div>
                             </div>
                             <div id="postbox-container-2" class="postbox-container">

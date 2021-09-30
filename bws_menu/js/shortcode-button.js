@@ -1,4 +1,5 @@
 (function($) {
+    "use strict";
     if ( typeof bws_shortcode_button != 'undefined' ) {
     	var win;
 

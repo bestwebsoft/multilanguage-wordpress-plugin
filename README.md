@@ -105,7 +105,7 @@
 <h4>Help &amp; Support</h4>
 <p>Visit our Help Center if you have any questions, our friendly Support Team is happy to help &#8211; <a href="https://support.bestwebsoft.com/" rel="nofollow ugc">https://support.bestwebsoft.com/</a></p>
 <h4>Affiliate Program</h4>
-<p>Earn 20% commission by selling the premium WordPress plugins and themes by BestWebSoft — <a href="https://bestwebsoft.com/affiliate/" rel="nofollow">https://bestwebsoft.com/affiliate/</a></p>
+<p>Earn 20% commission by selling the premium WordPress plugins and themes by BestWebSoft — <a href="https://bestwebsoft.com/affiliate/?utm_source=plugin&amp;utm_medium=readme&amp;utm_campaign=affiliate_program" rel="nofollow ugc">https://bestwebsoft.com/affiliate/</a></p>
 <h4>Translation</h4>
 <ul>
 <li>Czech (cs_CZ) (thanks to <a href="mailto:&#107;&#117;&#x63;&#x65;&#114;&#x61;&#x6d;&#105;&#064;&#x67;&#109;&#097;&#x69;&#108;&#046;&#x63;&#x6f;&#109;" rel="nofollow ugc">Michal Kučera</a>, www.n0lim.it, <a href="mailto:&#105;&#110;&#102;&#111;&#064;&#x70;&#x61;&#x6d;&#x61;&#x64;&#x65;&#115;&#115;&#111;&#102;&#116;.&#x63;&#x7a;" rel="nofollow ugc">PaMaDeSSoft</a>, www.pamadessoft.cz)</li>

@@ -152,7 +152,7 @@ body[class*="-bws-panel"] .update-nag {
     text-align: left;
     line-height: 1;
 }
-.bws-membership .bws-button {
+.bws-button {
     background: #dd6930;
     color: #fff;
     text-align: center;

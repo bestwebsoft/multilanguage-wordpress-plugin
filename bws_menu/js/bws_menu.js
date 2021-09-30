@@ -1,4 +1,5 @@
 (function($) {
+	"use strict";
 	$(document).ready( function() {
 		var product = $( '.bws_product_box' ),
 			max = 0;

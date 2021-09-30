@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
 Requires at least: 4.5
-Tested up to: 5.7.2
-Stable tag: 1.3.8
+Tested up to: 5.8.1
+Stable tag: 1.4.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -71,13 +71,13 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 > 	* Fields
 > * Translate:
 > 	* Post category and tag descriptions
->	* Post slugs [NEW]
+>	* Post slugs
 > 	* Widget titles
 > 	* Website title
 > 	* Website tagline
 > * Compatible with Elementor Page Builder
 > * Compatible with Advanced Custom Fields
-> * Compatible with Yoast SEO [NEW]
+> * Compatible with Yoast SEO
 > * Change language slug position in the website URL
 > * Create separate menus for different languages
 > * Display/hide widgets for different languages
@@ -97,6 +97,10 @@ If you have a feature suggestion or idea you'd like to see in the plugin, we'd l
 = Help & Support =
 
 Visit our Help Center if you have any questions, our friendly Support Team is happy to help - <https://support.bestwebsoft.com/>
+
+= Affiliate Program =
+
+Earn 20% commission by selling the premium WordPress plugins and themes by BestWebSoft — [https://bestwebsoft.com/affiliate/](https://bestwebsoft.com/affiliate/?utm_source=plugin&utm_medium=readme&utm_campaign=affiliate_program)
 
 = Translation =
 
@@ -221,6 +225,17 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 12. Adding language switcher into site menu.
 
 == Changelog ==
+
+= V1.4.0 - 23.09.2021 =
+* Pro : The issue with compatibility with Elementor has been fixed.
+* Bugfix : The issue with rest api has been fixed.
+* Bugfix : The issue with localize exerpt has been fixed.
+* Update : BWS Panel section was updated.
+* Update : All functionality for WordPress 5.8.1 has been updated.
+
+= V1.3.9 - 30.08.2021 =
+* Pro : Functionality for downloading and updating the country table was updated.
+* Update : All functionality for WordPress 5.8 has been updated.
 
 = V1.3.8 - 06.07.2021 =
 * NEW: The ability to edit the title of language has been added.
@@ -413,6 +428,14 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.4.0 =
+* Plugin optimization completed.
+* The compatibility with new WordPress version updated.
+* Bugs fixed.
+
+= V1.3.9 =
+* The compatibility with new WordPress version updated.
 
 = V1.3.8 =
 * New features added.

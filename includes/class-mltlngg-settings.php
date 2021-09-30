@@ -54,6 +54,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 			add_filter( get_parent_class( $this ) . '_additional_restore_options', array( $this, 'additional_restore_options' ) );
 			add_action( get_parent_class( $this ) . '_display_metabox', array( $this, 'display_metabox' ) );
 			add_action( get_parent_class( $this ) . '_display_custom_messages', array( $this, 'display_custom_messages' ) );
+			add_action( get_parent_class( $this ) . '_additional_misc_options_affected', array( $this, 'additional_misc_options_affected' ) );
 		}
 
 		/**
@@ -250,20 +251,28 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 						<div class="bws_table_bg"></div>
 						<table class="form-table bws_pro_version">
 							<tr>
-								<th><?php esc_html_e( 'Update GeoIP Every', 'multilanguage' ); ?></th>
-								<td>
-									<fieldset>
-										<input disabled="disabled" type="number" min="0" max="12" step="1" name="bwscntrtbl_loading_country" value="3" style="width: 50px;"/>&nbsp;<?php esc_html_e( 'months', 'multilanguage' ); ?>
-										<p id="bwscntrtbl_message" class="bws_info_small"><?php esc_html_e( 'Country table is not loaded yet.', 'multilanguage' ); ?></p>
-										<p>
-											<input disabled="disabled" type="submit" name="bwscntrtbl_button_import" class="button button-secondary bwsplgns_need_disable" value="<?php esc_html_e( 'Update Now', 'multilanguage' ); ?>" />
-										</p>
-										<div class="bws_info">
-											<?php printf( esc_html__( 'Automatically download lists with registered IP addresses all over the world (from %s) to the database. Receive an information about each IP address, and to which country it belongs to.', 'multilanguage' ), '<a href="https://www.maxmind.com/" target="_blank">GeoIP</a>' ); ?>&nbsp;<a href="https://www.maxmind.com/en/geoip2-services-and-databases" target="_blank"><?php esc_html_e( 'Learn More', 'multilanguage' ); ?></a>
-										</div>
-									</fieldset>
-								</td>
-							</tr>
+                                <th><?php _e( 'Import Database', 'multilanguage' ); ?></th>
+                                <td>
+                                    <fieldset>
+                                        <?php if ( $this->is_multisite && ! is_network_admin() ) { ?>
+                                            <p class="update-nag" style="padding: 3px;font-size: 12px;"><?php printf( __( 'This option is common to all subdomains.%sWe recommend you do not change this option without the consent of the administrator of your network.', 'multilanguage' ), '<br/>' ); ?></p>
+                                        <?php } ?>
+                                        <p id="bwscntrtbl_message" class="bws_info_small"><?php printf( __( 'Please upload the files manually using the following link %s.', 'multilanguage' ), '<a href="https://dev.maxmind.com/geoip/geolite2-free-geolocation-data" target="_blank">http://geolite.maxmind.com</a>' ); ?>                                        	
+                                        </p>
+                                        <div>
+                                            <input <?php disabled( true ); ?> type="file" name="bwscntrtbl_upload_file" />
+                                            <br>
+                                            <input type="submit" name="bwscntrtbl_button_import" <?php disabled( true ); ?> class="button button-secondary" value="<?php _e( 'Import Now', 'multilanguage' ); ?>" />
+                                        </div>
+                                        <div class="bws_info">
+                                            <?php  _e( 'Receive an information about each IP address, and to which country it belongs to.', 'multilanguage' ); ?>
+                                        </div>
+                                        <div class="bws_info">
+				                            <?php echo __( 'Follow this instruction to download or update the country table', 'multilanguage' ) . '&nbsp;-&nbsp;<a href="https://bestwebsoft.com/documentation/admin-panel-issues/how-to-import-or-update-the-country-table/" target="_blank">' . __( 'How to import or update the Country Table', 'multilanguage' ) . '</a>'; ?>
+				                        </div>
+                                    </fieldset>
+                                </td>
+                            </tr>
 						</table>
 					</div>
 					<?php $this->bws_pro_block_links(); ?>

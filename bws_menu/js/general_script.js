@@ -1,4 +1,5 @@
 function bws_show_settings_notice() {
+	"use strict";
 	(function($) {
 		$( '.updated.fade:not(.bws_visible), .error:not(.bws_visible)' ).css( 'display', 'none' );
 		$( '#bws_save_settings_notice' ).css( 'display', 'block' );
@@ -6,6 +7,7 @@ function bws_show_settings_notice() {
 }
 
 (function($) {
+	"use strict";
 	$( document ).ready( function() {
 		/**
 		 * add notice about changing on the settings page 

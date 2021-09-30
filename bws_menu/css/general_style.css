@@ -425,6 +425,56 @@ div.bws_banner_on_plugin_page .icon {
         padding: 15px 20px 21px;
     }
 }
+/* 
+* affiliate postbox
+*/
+#bws-affiliate-postbox {
+    background: url("../images/affiliate-background.png") no-repeat center #1a3e59;     
+    overflow: hidden;
+    position: relative;
+    padding: 12px;
+    color: #ffffff;
+    text-align: center;
+}
+#bws-affiliate-postbox .notice-dismiss:active:before,
+#bws-affiliate-postbox .notice-dismiss:focus:before,
+#bws-affiliate-postbox .notice-dismiss:hover:before {
+    color: #fff;
+}
+#bws-affiliate-postbox h3 {
+    color: #ffffff;
+    font-size: 1.3em;
+}
+.bws-affiliate-get {
+    color: #f67f48;
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+#bws-affiliate-postbox img {
+    max-width: 65px;
+    margin-bottom: 5px;
+}
+.bws-row {
+    margin-top: 25px;
+}
+.bws-cell {
+    float: left;
+    width: 33.33%;
+}
+.bws-cell div {
+    margin: 5px;
+}
+#bws-affiliate-postbox .button {
+    background: #dd6930;
+    border-color: #dd6930;
+    color: #fff;
+    margin-top: 5px;
+    font-weight: bold;
+}
+#bws-affiliate-postbox .button:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
 /* display code */
 span.bws_code {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0.07);

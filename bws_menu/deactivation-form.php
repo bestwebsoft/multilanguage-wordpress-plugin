@@ -338,7 +338,7 @@ if ( ! function_exists( 'bws_add_deactivation_feedback_dialog_box' ) ) {
 		/* add script in FOOTER */
 		wp_register_script( 'bws-deactivation-feedback-dialog-boxes', '', array( 'jquery' ), false, true );
 		wp_enqueue_script( 'bws-deactivation-feedback-dialog-boxes' );
-		wp_add_inline_script( 'bws-deactivation-feedback-dialog-boxes', sprintf( $script ) );		
+		wp_add_inline_script( 'bws-deactivation-feedback-dialog-boxes', $script );		
 	}
 }
 
