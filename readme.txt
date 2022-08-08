@@ -1,10 +1,10 @@
-=== Multilanguage by BestWebSoft ===
+=== Multilanguage by BestWebSoft - WordPress Translation Plugin and Language Switcher ===
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
 Requires at least: 4.5
-Tested up to: 5.8.1
-Stable tag: 1.4.0
+Tested up to: 6.0
+Stable tag: 1.4.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -226,6 +226,18 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
+= V1.4.1 - 08.08.2022 =
+* Update : BWS Panel section was updated.
+* Update : All functionality for WordPress 6.0 has been updated.
+* Bugfix : "Headers already sent" bug has been fixed.
+* Bugfix : Default Language Switcher Type bug has been fixed.
+* Bugfix : Permalinks bug has been fixed.
+* Bugfix : Same content for two languages issue has been fixed.
+* Bugfix : Message in the widget removed.
+* Pro : Fixed Switch Language Automatically option.
+* Pro : Elementor bug has been fixed.
+* Pro : ACF bug has been fixed.
+
 = V1.4.0 - 23.09.2021 =
 * Pro : The issue with compatibility with Elementor has been fixed.
 * Bugfix : The issue with rest api has been fixed.
@@ -428,6 +440,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.4.1 =
+* The compatibility with new WordPress version updated.
+* Bugs fixed.
 
 = V1.4.0 =
 * Plugin optimization completed.

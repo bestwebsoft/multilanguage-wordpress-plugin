@@ -1,11 +1,13 @@
 <?php
 /**
  * Displays the content of the dialog box when the user clicks on the "Deactivate" link on the plugin settings page
+ *
  * @package BestWebSoft
  * @since 2.1.3
  */
-if ( ! defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
 
 /**
  * Displays a confirmation and feedback dialog box when the user clicks on the "Deactivate" link on the plugins
@@ -16,8 +18,9 @@ if ( ! defined( 'ABSPATH' ) )
 if ( ! function_exists( 'bws_add_deactivation_feedback_dialog_box' ) ) {
 	function bws_add_deactivation_feedback_dialog_box() {
 		global $bstwbsftwppdtplgns_active_plugins;
-		if ( empty( $bstwbsftwppdtplgns_active_plugins ) )
-			return;		
+		if ( empty( $bstwbsftwppdtplgns_active_plugins ) ) {
+			return;
+		}
 
 		$contact_support_template = __( 'Need help? We are ready to answer your questions.', 'bestwebsoft' ) . ' <a href="https://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">' . __( 'Contact Support', 'bestwebsoft' ) . '</a>';
 
@@ -26,65 +29,65 @@ if ( ! function_exists( 'bws_add_deactivation_feedback_dialog_box' ) ) {
 				'id'                => 'NOT_WORKING',
 				'text'              => __( 'The plugin is not working', 'bestwebsoft' ),
 				'input_type'        => 'textarea',
-				'input_placeholder' => esc_attr__( "Kindly share what didn't work so we can fix it in future updates...", 'bestwebsoft' )
+				'input_placeholder' => __( "Kindly share what didn't work so we can fix it in future updates...", 'bestwebsoft' ),
 			),
 			array(
 				'id'                => 'DIDNT_WORK_AS_EXPECTED',
 				'text'              => __( "The plugin didn't work as expected", 'bestwebsoft' ),
 				'input_type'        => 'textarea',
-				'input_placeholder' => esc_attr__( 'What did you expect?', 'bestwebsoft' )
+				'input_placeholder' => __( 'What did you expect?', 'bestwebsoft' ),
 			),
 			array(
 				'id'                => 'SUDDENLY_STOPPED_WORKING',
 				'text'              => __( 'The plugin suddenly stopped working', 'bestwebsoft' ),
 				'input_type'        => '',
 				'input_placeholder' => '',
-				'internal_message'  => $contact_support_template
+				'internal_message'  => $contact_support_template,
 			),
 			array(
 				'id'                => 'BROKE_MY_SITE',
 				'text'              => __( 'The plugin broke my site', 'bestwebsoft' ),
 				'input_type'        => '',
 				'input_placeholder' => '',
-				'internal_message'  => $contact_support_template
+				'internal_message'  => $contact_support_template,
 			),
 			array(
 				'id'                => 'COULDNT_MAKE_IT_WORK',
 				'text'              => __( "I couldn't understand how to get it work", 'bestwebsoft' ),
 				'input_type'        => '',
 				'input_placeholder' => '',
-				'internal_message'  => $contact_support_template
+				'internal_message'  => $contact_support_template,
 			),
 			array(
 				'id'                => 'FOUND_A_BETTER_PLUGIN',
 				'text'              => __( 'I found a better plugin', 'bestwebsoft' ),
 				'input_type'        => 'textfield',
-				'input_placeholder' => esc_attr__( "What's the plugin name?", 'bestwebsoft' )
+				'input_placeholder' => __( "What's the plugin name?", 'bestwebsoft' ),
 			),
 			array(
 				'id'                => 'GREAT_BUT_NEED_SPECIFIC_FEATURE',
 				'text'              => __( "The plugin is great, but I need specific feature that you don't support", 'bestwebsoft' ),
 				'input_type'        => 'textarea',
-				'input_placeholder' => esc_attr__( 'What feature?', 'bestwebsoft' )
+				'input_placeholder' => __( 'What feature?', 'bestwebsoft' ),
 			),
 			array(
 				'id'                => 'NO_LONGER_NEEDED',
 				'text'              => __( 'I no longer need the plugin', 'bestwebsoft' ),
 				'input_type'        => '',
-				'input_placeholder' => ''
+				'input_placeholder' => '',
 			),
 			array(
 				'id'                => 'TEMPORARY_DEACTIVATION',
 				'text'              => __( "It's a temporary deactivation, I'm just debugging an issue", 'bestwebsoft' ),
 				'input_type'        => '',
-				'input_placeholder' => ''
+				'input_placeholder' => '',
 			),
 			array(
 				'id'                => 'OTHER',
 				'text'              => __( 'Other', 'bestwebsoft' ),
 				'input_type'        => 'textfield',
-				'input_placeholder' => ''
-			)				
+				'input_placeholder' => '',
+			),
 		);
 
 		$modal_html = '<div class="bws-modal bws-modal-deactivation-feedback">
@@ -92,13 +95,13 @@ if ( ! function_exists( 'bws_add_deactivation_feedback_dialog_box' ) ) {
 	    		<div class="bws-modal-body">
 	    			<h2>' . __( 'Quick Feedback', 'bestwebsoft' ) . '</h2>
 	    			<div class="bws-modal-panel active">
-	    				<p>' . __( 'If you have a moment, please let us know why you are deactivating', 'bestwebsoft' ) . ":</p><ul>";
+	    				<p>' . __( 'If you have a moment, please let us know why you are deactivating', 'bestwebsoft' ) . ':</p><ul>';
 
 		foreach ( $reasons as $reason ) {
 			$list_item_classes = 'bws-modal-reason' . ( ! empty( $reason['input_type'] ) ? ' has-input' : '' );
 
 			if ( ! empty( $reason['internal_message'] ) ) {
-				$list_item_classes .= ' has-internal-message';
+				$list_item_classes      .= ' has-internal-message';
 				$reason_internal_message = $reason['internal_message'];
 			} else {
 				$reason_internal_message = '';
@@ -134,11 +137,11 @@ if ( ! function_exists( 'bws_add_deactivation_feedback_dialog_box' ) ) {
 
 		foreach ( $bstwbsftwppdtplgns_active_plugins as $basename => $plugin_data ) {
 
-			$slug = dirname( $basename );
+			$slug      = dirname( $basename );
 			$plugin_id = sanitize_title( $plugin_data['Name'] );
 
 			$script .= "(function($) {
-					var modalHtml = " . json_encode( $modal_html ) . ",
+					var modalHtml = " . wp_json_encode( $modal_html ) . ",
 					    \$modal                = $( modalHtml ),
 					    \$deactivateLink       = $( '#the-list .active[data-plugin=\"" . $basename . "\"] .deactivate a' ),
 						\$anonymousFeedback    = \$modal.find( '.bws-modal-anonymous-label' ),
@@ -269,7 +272,7 @@ if ( ! function_exists( 'bws_add_deactivation_feedback_dialog_box' ) ) {
 								_parent.find( 'input, textarea' ).attr( 'placeholder', _parent.data( 'input-placeholder' ) ).focus();
 
 								if ( BwsModalIsReasonSelected( 'OTHER' ) ) {
-									\$modal.find( '.message' ).text( '" . __( 'Please tell us the reason so we can improve it.', 'bestwebsoft' ) . "' ).show();
+									\$modal.find( '.message' ).text( '" . esc_html__( 'Please tell us the reason so we can improve it.', 'bestwebsoft' ) . "' ).show();
 								}
 							}
 						});
@@ -338,7 +341,7 @@ if ( ! function_exists( 'bws_add_deactivation_feedback_dialog_box' ) ) {
 		/* add script in FOOTER */
 		wp_register_script( 'bws-deactivation-feedback-dialog-boxes', '', array( 'jquery' ), false, true );
 		wp_enqueue_script( 'bws-deactivation-feedback-dialog-boxes' );
-		wp_add_inline_script( 'bws-deactivation-feedback-dialog-boxes', $script );		
+		wp_add_inline_script( 'bws-deactivation-feedback-dialog-boxes', $script );
 	}
 }
 
@@ -351,68 +354,76 @@ if ( ! function_exists( 'bws_submit_uninstall_reason_action' ) ) {
 	function bws_submit_uninstall_reason_action() {
 		global $bstwbsftwppdtplgns_options, $wp_version, $bstwbsftwppdtplgns_active_plugins, $current_user;
 
-		wp_verify_nonce( $_REQUEST['bws_ajax_nonce'], 'bws_ajax_nonce' );
+		if ( isset( $_REQUEST['bws_ajax_nonce'] ) ) {
 
-		$reason_id = isset( $_REQUEST['reason_id'] ) ? stripcslashes( sanitize_text_field( $_REQUEST['reason_id'] ) ) : '';
-		$basename = isset( $_REQUEST['plugin'] ) ? stripcslashes( sanitize_text_field( $_REQUEST['plugin'] ) ) : '';
+			wp_verify_nonce( sanitize_text_field( wp_unslash( $_REQUEST['bws_ajax_nonce'] ) ), 'bws_ajax_nonce' );
 
-		if ( empty( $reason_id ) || empty( $basename ) ) {
-			exit;
-		}
+			$reason_id = isset( $_REQUEST['reason_id'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['reason_id'] ) ) : '';
+			$basename  = isset( $_REQUEST['plugin'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['plugin'] ) ) : '';
 
-		$reason_info = isset( $_REQUEST['reason_info'] ) ? stripcslashes( sanitize_text_field( $_REQUEST['reason_info'] ) ) : '';
-		if ( ! empty( $reason_info ) ) {
-			$reason_info = substr( $reason_info, 0, 255 );
-		}
-		$is_anonymous = isset( $_REQUEST['is_anonymous'] ) && 1 == $_REQUEST['is_anonymous'];
-
-		$options = array(
-			'product'		=> $basename,
-			'reason_id'		=> $reason_id,
-			'reason_info'	=> $reason_info,
-		);
-
-		if ( ! $is_anonymous ) {
-			if ( ! isset( $bstwbsftwppdtplgns_options ) )
-				$bstwbsftwppdtplgns_options = ( is_multisite() ) ? get_site_option( 'bstwbsftwppdtplgns_options' ) : get_option( 'bstwbsftwppdtplgns_options' );
-
-			if ( ! empty( $bstwbsftwppdtplgns_options['track_usage']['usage_id'] ) ) {
-				$options['usage_id'] = $bstwbsftwppdtplgns_options['track_usage']['usage_id'];
-			} else {
-				$options['usage_id'] = false;
-				$options['url'] = get_bloginfo( 'url' );
-				$options['wp_version'] = $wp_version;
-				$options['is_active'] = false;
-				$options['version'] = $bstwbsftwppdtplgns_active_plugins[ $basename ]['Version'];
+			if ( empty( $reason_id ) || empty( $basename ) ) {
+				exit;
 			}
 
-			$options['email'] = $current_user->data->user_email;
-		}
+			$reason_info = isset( $_REQUEST['reason_info'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['reason_info'] ) ) : '';
+			if ( ! empty( $reason_info ) ) {
+				$reason_info = substr( $reason_info, 0, 255 );
+			}
+			$is_anonymous = isset( $_REQUEST['is_anonymous'] ) && 1 === intval( $_REQUEST['is_anonymous'] );
 
-		/* send data */
-		$raw_response = wp_remote_post( 'https://bestwebsoft.com/wp-content/plugins/products-statistics/deactivation-feedback/', array(
-			'method'  => 'POST',
-			'body'    => $options,
-			'timeout' => 15,
-		) );
+			$options = array(
+				'product'     => $basename,
+				'reason_id'   => $reason_id,
+				'reason_info' => $reason_info,
+			);
 
-		if ( ! is_wp_error( $raw_response ) && 200 == wp_remote_retrieve_response_code( $raw_response ) ) {
 			if ( ! $is_anonymous ) {
-				$response = maybe_unserialize( wp_remote_retrieve_body( $raw_response ) );			
-
-				if ( is_array( $response ) && ! empty( $response['usage_id'] ) && $response['usage_id'] != $options['usage_id'] ) {
-					$bstwbsftwppdtplgns_options['track_usage']['usage_id'] = $response['usage_id'];
-
-					if ( is_multisite() )
-						update_site_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options );
-					else
-						update_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options );
+				if ( ! isset( $bstwbsftwppdtplgns_options ) ) {
+					$bstwbsftwppdtplgns_options = ( is_multisite() ) ? get_site_option( 'bstwbsftwppdtplgns_options' ) : get_option( 'bstwbsftwppdtplgns_options' );
 				}
-			}			
 
-			echo 'done';
-		} else {
-			echo $response->get_error_code() . ': ' . $response->get_error_message();
+				if ( ! empty( $bstwbsftwppdtplgns_options['track_usage']['usage_id'] ) ) {
+					$options['usage_id'] = $bstwbsftwppdtplgns_options['track_usage']['usage_id'];
+				} else {
+					$options['usage_id']   = false;
+					$options['url']        = get_bloginfo( 'url' );
+					$options['wp_version'] = $wp_version;
+					$options['is_active']  = false;
+					$options['version']    = $bstwbsftwppdtplgns_active_plugins[ $basename ]['Version'];
+				}
+
+				$options['email'] = $current_user->data->user_email;
+			}
+
+			/* send data */
+			$raw_response = wp_remote_post(
+				'https://bestwebsoft.com/wp-content/plugins/products-statistics/deactivation-feedback/',
+				array(
+					'method'  => 'POST',
+					'body'    => $options,
+					'timeout' => 15,
+				)
+			);
+
+			if ( ! is_wp_error( $raw_response ) && 200 === intval( wp_remote_retrieve_response_code( $raw_response ) ) ) {
+				if ( ! $is_anonymous ) {
+					$response = maybe_unserialize( wp_remote_retrieve_body( $raw_response ) );
+
+					if ( is_array( $response ) && ! empty( $response['usage_id'] ) && $response['usage_id'] !== $options['usage_id'] ) {
+						$bstwbsftwppdtplgns_options['track_usage']['usage_id'] = $response['usage_id'];
+
+						if ( is_multisite() ) {
+							update_site_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options );
+						} else {
+							update_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options );
+						}
+					}
+				}
+
+				echo 'done';
+			} else {
+				echo wp_kses_data( $response->get_error_code() ) . ': ' . wp_kses_data( $response->get_error_message() );
+			}
 		}
 		exit;
 	}

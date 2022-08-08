@@ -34,7 +34,7 @@
 				);
 
 				single = mltlngg_vars.active_language_list[newLang];
-		        currentLangName = single.name;
+				currentLangName = single.name;
 
 				editNotice.createNotice(
 					'info',
@@ -49,7 +49,6 @@
 					postEditedContent	= getPost.getEditedPostAttribute( 'content' ), /* Get the edited content from the Block editor */
 					postEditedExcerpt	= getPost.getEditedPostAttribute( 'excerpt' ),/* Get the edited excerpt from the Block editor editor */
 					postEditedMeta		= getPost.getEditedPostAttribute( 'meta' ); /* Get the edited meta data from the Block editor editor */
-
 				data = {
 					'action': 'mltlngg_ajax_callback',
 					'is_gutenberg': true,
@@ -87,8 +86,8 @@
 					currentLang = newLang;
 
 					is_saving = false;
-				} );							
-			}						
+				} );
+			}
 
 			/* Adding switcher to the Gutenberg editor */
 			var dropdownMenu = function() {
@@ -102,89 +101,132 @@
 					var single = mltlngg_vars.active_language_list[language];
 					languageChoice[i] = { 
 						value: single.locale,
-						label: single.name,							
+						label: single.name,
 					};
 					if ( language == currentLang )
 						currentLangName = single.name;
 					i++;					
 				}
 				function MyMenuItemsChoice( { lang, choices, setState } ) {
-                	return element.createElement( components.MenuItemsChoice, {
-                            value: lang,			                            
-                            choices: choices,
-                            onSelect: function(value) {	                            		                            	
-                            	onLangChange( value );
-                            	setState({ lang: value });                            	
-                            }
-                        } )
-                    };
+					return element.createElement( components.MenuItemsChoice, {
+							value: lang,
+							choices: choices,
+							onSelect: function(value) {
+								onLangChange( value );
+								setState({ lang: value });
+							}
+						} )
+					};
 
-	            return element.createElement(components.Dropdown, {
-                    className: 'mltlngg-components-dropdown',
-                    renderToggle: function(_ref) {
-                    	var isOpen = _ref.isOpen,
-          					onToggle = _ref.onToggle;
-                        return element.createElement(components.Button, {
-                            icon: mltlnggIcon,
-                            onClick: onToggle,
-                            "aria-expanded": isOpen,
-                            label: i18n.__( 'Select Language', 'multilanguage' )
-                        }, currentLangName )
-                    },
-                    renderContent: function() {
-                        return element.createElement(element.Fragment, null, element.createElement(
-	                        components.NavigableMenu, {
-	                            	role: "menu"
-		                        }, 
-		                        element.createElement(
-		                        	compose.withState({ 
-	                        			lang: currentLang,
-	                        			choices: languageChoice
-	                        		})( MyMenuItemsChoice )				                        
-		                    	)
-	                    	),
-                        	element.createElement("div", {
-                            		className: "block-editor-tool-selector__help"
-	                        	},
-		                        element.createElement(components.ExternalLink, {
-		                        	href: mltlngg_vars.add_new_lang_link
-		                        }, i18n.__( 'Add Language', 'multilanguage' ) )
-	                        )
-	                    )
-                    }
-                })
-            };
-
-			setTimeout(function() {
-				e = document.querySelector(".edit-post-header-toolbar");
-				if (e) {
-					var t = document.createElement("div");
-					e.appendChild(t), Object(element.render)(element.createElement(dropdownMenu, null), t)
-				}
-
-				editNotice.createNotice(
-					'info',
-					i18n.__( 'Edit for language', 'multilanguage' ) + ': ' + currentLangName,
-					{
-						id : 'mltlnggInfo',
-						isDismissible : false
+				return element.createElement(components.Dropdown, {
+					className: 'mltlngg-components-dropdown',
+					renderToggle: function(_ref) {
+						var isOpen = _ref.isOpen,
+		  					onToggle = _ref.onToggle;
+						return element.createElement(components.Button, {
+							icon: mltlnggIcon,
+							onClick: onToggle,
+							"aria-expanded": isOpen,
+							label: i18n.__( 'Select Language', 'multilanguage' )
+						}, currentLangName )
+					},
+					renderContent: function() {
+						return element.createElement(element.Fragment, null, element.createElement(
+							components.NavigableMenu, {
+									role: "menu"
+								}, 
+								element.createElement(
+									compose.withState({ 
+										lang: currentLang,
+										choices: languageChoice
+									})( MyMenuItemsChoice )
+								)
+							),
+							element.createElement("div", {
+									className: "block-editor-tool-selector__help"
+								},
+								element.createElement(components.ExternalLink, {
+									href: mltlngg_vars.add_new_lang_link
+								}, i18n.__( 'Add Language', 'multilanguage' ) )
+							)
+						)
 					}
-				);
-			}, timescript) ;
+				})
+			};
+			
+			if( ! document.body.classList.contains( 'widgets-php' ) ) {
+				setTimeout(function() {
+					e = document.querySelector(".edit-post-header-toolbar");
+					if (e) {
+						var postData = getPost.getCurrentPost(),
+							data;
+						var postEditedTitle 	= getPost.getEditedPostAttribute( 'title' ), /* Get the edited title from the Block editor */
+							postEditedContent	= getPost.getEditedPostAttribute( 'content' ), /* Get the edited content from the Block editor */
+							postEditedExcerpt	= getPost.getEditedPostAttribute( 'excerpt' ),/* Get the edited excerpt from the Block editor editor */
+							postEditedMeta		= getPost.getEditedPostAttribute( 'meta' ); /* Get the edited meta data from the Block editor editor */
+						data = {
+							'action': 'mltlngg_ajax_callback',
+							'is_gutenberg': true,
+							'get_data': 'get_data',
+							'new_lang': mltlngg_vars.default_language,
+							'mltlngg_post_id': postData.id,
+							'mltlngg_old_title': postEditedTitle,
+							'mltlngg_old_content': postEditedContent,
+							'mltlngg_old_excerpt': postEditedExcerpt,
+							'security': mltlngg_vars.ajax_nonce
+						};
+
+						$.post( ajaxurl, data, function( response ) {			
+
+							/* get only content in multilanguage comments */
+							var regExp = /<!--mltlngg-ajax-results-->([^]+)<!--end-mltlngg-ajax-results-->/,
+								matches = regExp.exec( response );
+							if ( matches ) {
+								response = matches[1];
+							}
+
+							let mltlnggNew = JSON.parse( response );
+
+							let blocks = wp.blocks.parse( mltlnggNew.post_content );
+							wp.data.dispatch( 'core/block-editor' ).resetBlocks( blocks );
+							
+							editPost.editPost( {
+								title: mltlnggNew.post_title,
+								excerpt: mltlnggNew.post_excerpt
+							} );
+
+							currentLang = mltlngg_vars.default_language;
+
+							is_saving = false;
+						} );
+						var t = document.createElement("div");
+						e.appendChild(t), Object(element.render)(element.createElement(dropdownMenu, null), t)
+					}
+
+					editNotice.createNotice(
+						'info',
+						i18n.__( 'Edit for language', 'multilanguage' ) + ': ' + currentLangName,
+						{
+							id : 'mltlnggInfo',
+							isDismissible : false
+						}
+					);
+				}, timescript) ;
+			}
 
 			var is_saving = false;
 			const unsubscribe = wp.data.subscribe( function() {
 				if ( !is_saving ) {
-		            var isSavingPost = getPost.isSavingPost();
-		            var isAutosavingPost = getPost.isAutosavingPost();
-		            var didPostSaveRequestSucceed = getPost.didPostSaveRequestSucceed();
+					var isSavingPost = getPost.isSavingPost();
+					var isAutosavingPost = getPost.isAutosavingPost();
+					var didPostSaveRequestSucceed = getPost.didPostSaveRequestSucceed();
 
-		            if (isSavingPost && !isAutosavingPost && !is_saving) {
-		            	is_saving = true;
+					if (isSavingPost && !isAutosavingPost && !is_saving) {
+						is_saving = true;
 						onLangChange( currentLang );
 					}
-				}		            
-    		}); 		
+				}
+			});
 		} );
 	})( jQuery );
 } )(

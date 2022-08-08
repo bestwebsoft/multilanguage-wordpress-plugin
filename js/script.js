@@ -16,16 +16,21 @@
 				});
 				mltlngg_translate_google.forEach(function( item, i,arr  ) {
 					$( 'select[name="mltlngg_language_switcher"] option[value = '+ item + ']' ).attr( 'disabled', false );
-					$( 'select[name="mltlngg_language_switcher"] option[value = '+ arr[0] + ']' ).attr( 'selected', true );
+					if ( 0 < $( 'select[name="mltlngg_language_switcher"] option:selected:disabled' ).length ) {
+						$( 'select[name="mltlngg_language_switcher"] option[value = ' + arr[0] + ']' ).attr( 'selected', true );
+					}	
 				});
 			} else {
 				mltlngg_translate.forEach(function (item, i, arr) {
-					$('select[name="mltlngg_language_switcher"] option[value = ' + item + ']').attr('disabled', false);
-					$('select[name="mltlngg_language_switcher"] option[value = ' + arr[0] + ']').attr('selected', true);
+					$('select[name="mltlngg_language_switcher"] option[value = ' + item + ']').attr('disabled', false);					
 				});
 				mltlngg_translate_google.forEach(function (item) {
 					$('select[name="mltlngg_language_switcher"] option[value = ' + item + ']').attr('disabled', true);
 				});
+				$( 'select[name="mltlngg_language_switcher"] option:selected:disabled' ).removeAttr('selected');
+				if( 0 < $( 'select[name="mltlngg_language_switcher"] option:selected' ).length ) {
+					$( 'select[name="mltlngg_language_switcher"] option:selected' ).attr( 'selected', 'selected' );
+				}
 			}
 		}
 		mltlngg_google_auto_translate();
