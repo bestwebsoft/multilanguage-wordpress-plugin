@@ -6,7 +6,7 @@ Description: Translate WordPress website content to other languages manually. Cr
 Author: BestWebSoft
 Text Domain: multilanguage
 Domain Path: /languages
-Version: 1.4.1
+Version: 1.4.4
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
  */
@@ -172,6 +172,13 @@ if ( ! function_exists( 'mltlngg_current_screen' ) ) {
 
 if ( ! function_exists( 'mltlngg_language_attributes' ) ) {
 	function mltlngg_language_attributes( $output = '' ) {
+		global $mltlngg_current_language;
+		if ( false !== strpos( $output, 'lang="' ) ) {
+			$output_lang = trim( $output, 'lang="' );
+			if ( $mltlngg_current_language !== $output_lang ) {
+				$output = str_replace( 'lang="' . $output_lang . '"', 'lang="' . str_replace( '_', '-', $mltlngg_current_language ) . '"', $output );
+			}
+		}
 		if ( false === strpos( $output, 'http://ogp.me/ns' ) ) {
 			$prefix  = 'prefix="og: http://ogp.me/ns#"';
 			$output .= "\n\t" . $prefix;
@@ -505,7 +512,11 @@ if ( ! function_exists( 'mltlngg_plugin_load' ) ) {
 			$is_admin = mltlngg_is_admin();
 
 			if ( $is_admin && empty( session_id() ) ) {
-				session_start();
+				session_start(
+					array(
+						'read_and_close' => true
+					)
+				);
 			}
 
 			/* Switch display language function */
@@ -612,7 +623,6 @@ if ( ! function_exists( 'mltlngg_switch_wp_locale' ) ) {
 if ( ! function_exists( 'mltlngg_redirect' ) ) {
 	function mltlngg_redirect() {
 		global $mltlngg_enabled_languages, $mltlngg_options, $mltlngg_current_language, $mltlngg_get_default_language;
-
 		/* gutenberg save post */
 		if ( mltlngg_is_rest_api() ) {
 			return;
@@ -637,6 +647,10 @@ if ( ! function_exists( 'mltlngg_redirect' ) ) {
 		if ( is_plugin_active( 'woocommerce/woocommerce.php' ) && isset( $_SERVER['REQUEST_URI'] ) && preg_match( '/\/wc-api\/v([1-3]{1})(.*)?/', sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) ) ) {
 			/* WooCommerce REST API */
 			return;
+		}
+
+		if ( strpos( $_SERVER['REQUEST_URI'], 'wp-json' ) ) {
+				return;
 		}
 
 		$url_parts   = mltlngg_parse_url();
@@ -892,11 +906,17 @@ if ( ! function_exists( 'mltlngg_alternate_links' ) ) {
 				'force' => 'display',
 			);
 
+			$permalink_structure = get_option( 'permalink_structure' );
+			
+			$permalink_structure_last_symbol = substr( $permalink_structure, -1 );
+
+			$hreflang = explode( '_', $item['hreflang'] );
+
 			$language_link = mltlngg_get_lang_link( $args );
 			printf(
 				'<link rel="alternate" hreflang="%1$s" href="%2$s" />',
-				esc_attr( strtolower( str_replace( '_', '-', $item['hreflang'] ) ) ),
-				esc_url( rtrim( $language_link, '/' ) )
+				strtolower( esc_attr( $hreflang[0] ) ),
+				'/' === $permalink_structure_last_symbol ? esc_url( $language_link ) : esc_url( rtrim( $language_link, '/' ) )
 			);
 		}
 	}
@@ -906,14 +926,13 @@ if ( ! function_exists( 'mltlngg_add_meta_filters' ) ) {
 	function mltlngg_add_meta_filters() {
 		global $mltlngg_current_language, $mltlngg_options;
 
-		if ( 1 === intval( $mltlngg_options['translate_open_graph'] ) && $mltlngg_current_language !== $mltlngg_options['default_language'] ) {
-
+		if ( 1 === intval( $mltlngg_options['translate_open_graph'] ) ) {
 			if ( is_plugin_active( 'facebook-button-plugin/facebook-button-plugin.php' ) || is_plugin_active( 'facebook-button-plus/facebook-button-plus.php' ) || is_plugin_active( 'facebook-button-pro/facebook-button-pro.php' ) ) {
 				add_filter( 'fcbkbttn_meta_title', 'mltlngg_the_title_filter' );
 				add_filter( 'fcbkbttn_meta_description', 'mltlngg_localize_excerpt' );
 			}
-
 			if ( is_plugin_active( 'all-in-one-seo-pack/all_in_one_seo_pack.php' ) || is_plugin_active( 'all-in-one-seo-pack-pro/all_in_one_seo_pack_pro.php' ) ) {
+				add_filter( 'aioseo_description', 'mltlngg_localize_excerpt' );
 				add_filter( 'aioseop_description', 'mltlngg_localize_excerpt' );
 				add_filter( 'aioseop_opengraph_placeholder', 'mltlngg_the_title_filter' );
 			}
@@ -943,6 +962,7 @@ if ( ! function_exists( 'mltlngg_add_translated_meta_tags' ) ) {
 			$meta_filters = array(
 				'fcbkbttn_meta_title',
 				'fcbkbttn_meta_description',
+				'aioseo_description',
 				'aioseop_description',
 				'aioseop_opengraph_placeholder',
 				'wpseo_opengraph_title',
@@ -1119,7 +1139,7 @@ if ( ! function_exists( 'mltlngg_script_style' ) ) {
 						wp_enqueue_script(
 							'ugb-block-js',
 							plugins_url( 'js/editor_blocks.js', __FILE__ ),
-							array( 'ugb-block-js-vendor', 'code-editor', 'wp-blocks', 'wp-element', 'wp-components', 'wp-editor', 'wp-util', 'wp-plugins', 'wp-edit-post', 'wp-i18n', 'wp-api' ),
+							array( 'ugb-block-js-vendor', 'code-editor', 'wp-blocks', 'wp-element', 'wp-components', 'wp-editor', 'wp-util', 'wp-plugins', 'wp-edit-post', 'wp-i18n', 'wp-api', 'lodash' ),
 							$mltlngg_plugin_info['Version'],
 							true
 						);
@@ -1809,7 +1829,7 @@ if ( ! function_exists( 'mltlngg_rest_after_insert_post' ) ) {
 				)
 			);
 
-			if ( ! empty( $default_language_data ) ) {
+			if ( ! empty( $default_language_data ) && ! empty( $post_slug ) ) {
 				$wpdb->update(
 					$wpdb->posts,
 					array(
@@ -2208,7 +2228,7 @@ if ( ! function_exists( 'mltlngg_the_title_filter' ) ) {
 					$check_posttype = apply_filters( 'mltlngg_posttype_compability', $check_posttype, $mltlngg_post_type );
 				if ( $check_posttype ) {
 					$is_admin = mltlngg_is_admin();
-					if ( $is_admin ) {
+					if ( $is_admin && ! empty( $mltlngg_active_language ) ) {
 						$mltlngg_current_language = ( ! empty( $_SESSION['current_language'] ) ) ? sanitize_text_field( wp_unslash( $_SESSION['current_language'] ) ) : ( ( isset( $_GET['lang'] ) && in_array( $_GET['lang'], $mltlngg_enabled_languages_locale, true ) ) ? sanitize_text_field( wp_unslash( $_GET['lang'] ) ) : ( ( ! isset( $_GET['message'] ) ) ? $mltlngg_options['default_language'] : $mltlngg_active_language['locale'] ) );
 					}
 

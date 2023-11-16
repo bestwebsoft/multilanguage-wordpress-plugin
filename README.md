@@ -78,8 +78,8 @@
 <li>Translate:
 <ul>
 <li>Post category and tag descriptions</li>
-<li>Post slugs</li>
-<li>Widget titles</li>
+<li>Post slugs (only in Classic Editor)</li>
+<li>Widget titles (Legacy widgets)</li>
 <li>Website title</li>
 <li>Website tagline</li>
 </ul>
@@ -89,7 +89,7 @@
 <li>Compatible with Yoast SEO</li>
 <li>Change language slug position in the website URL</li>
 <li>Create separate menus for different languages</li>
-<li>Display/hide widgets for different languages</li>
+<li>Display/hide widgets for different languages (Legacy widgets)</li>
 <li>Switch language automatically based on user’s IP</li>
 <li>Add short language slug to the URL</li>
 <li>Get answer to your support question within one business day (<a href="https://bestwebsoft.com/support-policy/" rel="nofollow ugc">Support Policy</a>)</li>
@@ -113,6 +113,11 @@
 <li>Polish (pl_PL) (thanks to <a href="mailto:&#101;&#x6d;&#105;&#108;&#x6a;&#111;&#x40;&#116;&#x6c;&#x65;&#110;&#x2e;&#112;&#x6c;" rel="nofollow ugc">Emil Król</a>)</li>
 <li>Russian (ru_RU)</li>
 <li>Ukrainian (uk)</li>
+<li>German (de_DE)</li>
+<li>French (fr_FR)</li>
+<li>Italian (it_IT)</li>
+<li>Japanese (ja)</li>
+<li>Portuguese (pt_BR)</li>
 </ul>
 <p>Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send <a href="https://codex.wordpress.org/Translating_WordPress" rel="nofollow ugc">the text of PO and MO files</a> to <a href="https://support.bestwebsoft.com/hc/en-us/requests/new" rel="nofollow ugc">BestWebSoft</a> and we&#8217;ll add it to the plugin. You can download the latest version of the program for work with PO and MO <a href="http://www.poedit.net/download.php" rel="nofollow ugc">files Poedit</a>.</p>
 <h4>Recommended Plugins</h4>

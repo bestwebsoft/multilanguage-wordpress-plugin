@@ -153,14 +153,14 @@ $bws_plugins = array(
 		'purchase'     => 'https://bestwebsoft.com/products/wordpress/plugins/google-2-step-verification/buy/?k=b5605ea9bb3628682cfa416e70e78410&pn=' . $bws_plugin_info['id'] . '&v=' . $bws_plugin_info['version'] . '&wp_v=' . $wp_version,
 		'pro_settings' => 'admin.php?page=google-2-step-verification-pro.php',
 	),
-	'adsense-plugin/adsense-plugin.php'                 => array(
+	'bws-adsense/bws-adsense.php'                       => array(
 		'category'     => array( 'marketing' ),
-		'name'         => 'Google Ads',
+		'name'         => 'AdS',
 		'description'  => __( 'Add Adsense ads to WordPress website pages, posts, custom posts, search results, categories, tags, and widgets.', 'bestwebsoft' ),
-		'link'         => 'https://bestwebsoft.com/products/wordpress/plugins/google-adsense/?k=60e3979921e354feb0347e88e7d7b73d&pn=' . $bws_plugin_info['id'] . '&v=' . $bws_plugin_info['version'] . '&wp_v=' . $wp_version,
-		'settings'     => 'admin.php?page=adsense-plugin.php',
+		'link'         => 'https://bestwebsoft.com/products/wordpress/plugins/google-adsense/?k=9d719e415eee289845b00843e8847bc9&pn=' . $bws_plugin_info['id'] . '&v=' . $bws_plugin_info['version'] . '&wp_v=' . $wp_version,
+		'settings'     => 'admin.php?page=bws-adsense.php',
 		'pro_version'  => 'adsense-pro/adsense-pro.php',
-		'purchase'     => 'https://bestwebsoft.com/products/wordpress/plugins/google-adsense/buy/?k=c23889b293d62aa1ad2c96513405f0e1&pn=' . $bws_plugin_info['id'] . '&v=' . $bws_plugin_info['version'] . '&wp_v=' . $wp_version,
+		'purchase'     => 'https://bestwebsoft.com/products/wordpress/plugins/google-adsense/buy/?k=60e3979921e354feb0347e88e7d7b73d&pn=' . $bws_plugin_info['id'] . '&v=' . $bws_plugin_info['version'] . '&wp_v=' . $wp_version,
 		'pro_settings' => 'admin.php?page=adsense-pro.php',
 	),
 	'bws-google-analytics/bws-google-analytics.php'     => array(

@@ -1,7 +1,7 @@
 <?php
 /**
  * Function for displaying BestWebSoft menu
- * Version: 2.4.2
+ * Version: 2.4.3
  */
 
 if ( ! function_exists( 'bws_admin_enqueue_scripts' ) ) {
@@ -567,7 +567,7 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 								}
 
 								$key_plugin_explode = explode( '/', $key_plugin );
-								if ( in_array( $key_plugin_explode[0], array( 'car-rental', 'contact-form-multi', 'custom-admin-page', 'adsense-plugin', 'zendesk-help-center' ) ) ) {
+								if ( in_array( $key_plugin_explode[0], array( 'car-rental', 'contact-form-multi', 'custom-admin-page', 'adsense-plugin', 'zendesk-help-center', 'bws-adsense' ) ) ) {
 									$icon         = isset( $value_plugin['icon'] ) ? $value_plugin['icon'] : '//ps.w.org/' . $key_plugin_explode[0] . '/assets/icon-256x256.png';
 								} else {
 									$icon         = isset( $value_plugin['icon'] ) ? $value_plugin['icon'] : '//ps.w.org/' . $key_plugin_explode[0] . '/assets/icon-256x256.gif';
@@ -588,7 +588,11 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 									continue;
 								}
 
-								$link_attr = isset( $value_plugin['install_url'] ) ? 'href="' . esc_url( $value_plugin['install_url'] ) . '" target="_blank"' : 'href="' . esc_url( self_admin_url( 'plugin-install.php?tab=plugin-information&plugin=' . $key_plugin_explode[0] . '&from=import&TB_iframe=true&width=600&height=550' ) ) . '" class="thickbox open-plugin-details-modal"';
+								if ( is_multisite() ) {
+									$link_attr = isset( $value_plugin['install_url'] ) ? 'href="' . esc_url( $value_plugin['install_url'] ) . '" target="_blank"' : 'href="' . esc_url( network_admin_url( 'plugin-install.php?tab=plugin-information&plugin=' . $key_plugin_explode[0] . '&from=import&TB_iframe=true&width=600&height=550' ) ) . '" class="thickbox open-plugin-details-modal"';
+								} else {
+									$link_attr = isset( $value_plugin['install_url'] ) ? 'href="' . esc_url( $value_plugin['install_url'] ) . '" target="_blank"' : 'href="' . esc_url( self_admin_url( 'plugin-install.php?tab=plugin-information&plugin=' . $key_plugin_explode[0] . '&from=import&TB_iframe=true&width=600&height=550' ) ) . '" class="thickbox open-plugin-details-modal"';
+								}
 
 								$nothing_found = false;
 								?>
@@ -845,7 +849,7 @@ if ( ! function_exists( 'bws_get_banner_array' ) ) {
 			array( 'zndskhc_hide_banner_on_plugin_page', 'zendesk-help-center/zendesk-help-center.php', '1.0.0' ),
 			array( 'gglcptch_hide_banner_on_plugin_page', 'google-captcha/google-captcha.php', '1.18' ),
 			array( 'mltlngg_hide_banner_on_plugin_page', 'multilanguage/multilanguage.php', '1.1.1' ),
-			array( 'adsns_hide_banner_on_plugin_page', 'adsense-plugin/adsense-plugin.php', '1.36' ),
+			array( 'adsns_hide_banner_on_plugin_page', 'bws-adsense/bws-adsense.php', '1.36' ),
 			array( 'vstrsnln_hide_banner_on_plugin_page', 'visitors-online/visitors-online.php', '0.2' ),
 			array( 'cstmsrch_hide_banner_on_plugin_page', 'custom-search-plugin/custom-search-plugin.php', '1.28' ),
 			array( 'prtfl_hide_banner_on_plugin_page', 'portfolio/portfolio.php', '2.33' ),

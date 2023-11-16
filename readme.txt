@@ -2,9 +2,9 @@
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
-Requires at least: 4.5
-Tested up to: 6.0
-Stable tag: 1.4.1
+Requires at least: 5.6
+Tested up to: 6.4
+Stable tag: 1.4.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -71,8 +71,8 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 > 	* Fields
 > * Translate:
 > 	* Post category and tag descriptions
->	* Post slugs
-> 	* Widget titles
+>	* Post slugs (only in Classic Editor)
+> 	* Widget titles (Legacy widgets)
 > 	* Website title
 > 	* Website tagline
 > * Compatible with Elementor Page Builder
@@ -80,7 +80,7 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 > * Compatible with Yoast SEO
 > * Change language slug position in the website URL
 > * Create separate menus for different languages
-> * Display/hide widgets for different languages
+> * Display/hide widgets for different languages (Legacy widgets)
 > * Switch language automatically based on user’s IP
 > * Add short language slug to the URL
 > * Get answer to your support question within one business day ([Support Policy](https://bestwebsoft.com/support-policy/))
@@ -109,6 +109,11 @@ Earn 20% commission by selling the premium WordPress plugins and themes by BestW
 * Polish (pl_PL) (thanks to [Emil Król](mailto:emiljo@tlen.pl))
 * Russian (ru_RU)
 * Ukrainian (uk)
+* German (de_DE)
+* French (fr_FR)
+* Italian (it_IT)
+* Japanese (ja)
+* Portuguese (pt_BR)
 
 Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send [the text of PO and MO files](http://codex.wordpress.org/Translating_WordPress) to [BestWebSoft](https://support.bestwebsoft.com/hc/en-us/requests/new) and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO [files Poedit](http://www.poedit.net/download.php).
 
@@ -225,6 +230,18 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 12. Adding language switcher into site menu.
 
 == Changelog ==
+
+= V1.4.4 - 16.11.2023 =
+* Bugfix : Language switcher in Gutenberg has been fixed.
+* Update : All functionality for WordPress 6.4 has been updated.
+
+= V1.4.2 - 10.05.2023 =
+* Update : BWS Panel section was updated.
+* Update : All functionality for WordPress 6.2 has been updated.
+* Bugfix : Page Not Found bug for widget Multilanguage Switcher has been fixed.
+* Bugfix : The issue with compatibility with All in One SEO (Open Graph Markup) has been fixed.
+* Pro : The issue with compatibility with All in One SEO (Open Graph Markup) has been fixed.
+* Pro : Elementor bug has been fixed.
 
 = V1.4.1 - 08.08.2022 =
 * Update : BWS Panel section was updated.
@@ -440,6 +457,15 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.4.4 =
+* The compatibility with new WordPress version updated.
+* Bugs fixed.
+
+= V1.4.2 =
+* Functionality improved.
+* The compatibility with new WordPress version updated.
+* Bugs fixed.
 
 = V1.4.1 =
 * The compatibility with new WordPress version updated.
