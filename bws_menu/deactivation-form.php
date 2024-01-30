@@ -5,17 +5,18 @@
  * @package BestWebSoft
  * @since 2.1.3
  */
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/**
- * Displays a confirmation and feedback dialog box when the user clicks on the "Deactivate" link on the plugins
- * page.
- *
- * @since  2.1.3
- */
 if ( ! function_exists( 'bws_add_deactivation_feedback_dialog_box' ) ) {
+	/**
+	 * Displays a confirmation and feedback dialog box when the user clicks on the "Deactivate" link on the plugins
+	 * page.
+	 *
+	 * @since  2.1.3
+	 */
 	function bws_add_deactivation_feedback_dialog_box() {
 		global $bstwbsftwppdtplgns_active_plugins;
 		if ( empty( $bstwbsftwppdtplgns_active_plugins ) ) {
@@ -345,12 +346,12 @@ if ( ! function_exists( 'bws_add_deactivation_feedback_dialog_box' ) ) {
 	}
 }
 
-/**
- * Called after the user has submitted his reason for deactivating the plugin.
- *
- * @since  2.1.3
- */
 if ( ! function_exists( 'bws_submit_uninstall_reason_action' ) ) {
+	/**
+	 * Called after the user has submitted his reason for deactivating the plugin.
+	 *
+	 * @since  2.1.3
+	 */
 	function bws_submit_uninstall_reason_action() {
 		global $bstwbsftwppdtplgns_options, $wp_version, $bstwbsftwppdtplgns_active_plugins, $current_user;
 

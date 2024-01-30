@@ -1,9 +1,15 @@
 <?php
-/**
- * Get latest version
- */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 if ( ! function_exists( 'bws_include_init' ) ) {
+	/**
+	 * Get latest version
+	 *
+	 * @param string $base            Base name for plugin.
+	 * @param string $bws_menu_source BWS product.
+	 */
 	function bws_include_init( $base, $bws_menu_source = 'plugins' ) {
 		global $bstwbsftwppdtplgns_options, $bstwbsftwppdtplgns_added_menu, $bstwbsftwppdtplgns_active_plugins;
 		if ( ! function_exists( 'get_plugin_data' ) ) {

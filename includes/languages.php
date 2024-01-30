@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /*
  * for each language:
  * [0] => ISO 639-1 language code
@@ -24,7 +28,7 @@ $mltlngg_languages = array(
 	array( 'ba', 'ba', 'башҡорт теле', '' ),
 	array( 'eu', 'eu', 'Euskara', '' ),
 	array( 'be', 'be_BY', 'Беларуская мова', '' ),
-	array( 'bn', 'bn_BD', 'বাংলা', '' ), 
+	array( 'bn', 'bn_BD', 'বাংলা', '' ),
 	array( 'bg', 'bg_BG', 'Български', '' ),
 	array( 'bs', 'bs_BA', 'Bosanski', '' ),
 	array( 'br', 'bre', 'Brezhoneg', '' ),
@@ -96,12 +100,12 @@ $mltlngg_languages = array(
 	array( 'ko', 'ko_KR', '한국어', '' ),
 	array( 'ku', 'ckb', 'کوردی', 'rtl' ),
 	array( 'kg', 'kg', 'تئلى', 'rtl' ),
-	array( 'kh', 'kh', 'ភាសាខ្មែរ', '' ),	
-	array( 'lb', 'lb_LU', 'Lëtzebuergesch', '' ),	
+	array( 'kh', 'kh', 'ភាសាខ្មែរ', '' ),
+	array( 'lb', 'lb_LU', 'Lëtzebuergesch', '' ),
 	array( 'li', 'li', 'Limburgs', '' ),
 	array( 'ln', 'lin', 'Lingála', '' ),
 	array( 'lo', 'lo', 'ພາສາລາວ', '' ),
-	array( 'lt', 'lt_LT', 'Lietuviškai', ''),
+	array( 'lt', 'lt_LT', 'Lietuviškai', '' ),
 	array( 'lv', 'lv', 'Latviešu valoda', '' ),
 	array( 'mg', 'mg_MG', 'Malagasy', '' ),
 	array( 'mk', 'mk_MK', 'Македонски јазик', '' ),
@@ -154,7 +158,7 @@ $mltlngg_languages = array(
 	array( 'ta', 'ta_LK', 'தமிழ்', '' ),
 	array( 'tt', 'tt_RU', 'Татар теле', '' ),
 	array( 'te', 'te', 'తెలుగు', '' ),
-	array( 'th', 'th', 'ไทย', '',  ),
+	array( 'th', 'th', 'ไทย', '' ),
 	array( 'bo', 'bo', 'བོད་སྐད', '' ),
 	array( 'ti', 'tir', 'ትግርኛ', '' ),
 	array( 'tr', 'tr_TR', 'Türkçe', '' ),

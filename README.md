@@ -125,3 +125,8 @@
 <li><a href="https://bestwebsoft.com/products/wordpress/plugins/updater/?k=3a06ca59d129f65a2259ac56620ce27e" rel="nofollow ugc">Updater</a> &#8211; Automatically check and update WordPress website core with all installed plugins and themes to the latest versions.</li>
 <li><a href="https://bestwebsoft.com/products/wordpress/plugins/pdf-print/?k=e7f954c2040303cfe69904409d8ba2ed" rel="nofollow ugc">PDF &amp; Print</a> &#8211; Generate PDF files and print WordPress posts/pages. Customize document header/footer styles and appearance.</li>
 </ul>
+<h4>Credits</h4>
+<ul>
+<li>The plugin uses Google Translate (Google LLC) services to process website data for translation. <a href="https://translate.google.com/" rel="nofollow ugc">https://translate.google.com/</a> Terms of service <a href="https://policies.google.com/terms" rel="nofollow ugc">https://policies.google.com/terms</a>. Privacy Policy <a href="https://policies.google.com/privacy" rel="nofollow ugc">https://policies.google.com/privacy</a>.</li>
+<li>This plugin incorporates a license verification mechanism to ensure the authenticity of your license key and provide access to premium features and updates. The verification process involves connecting securely to our external service hosted at BestWebSoft website <a href="https://bestwebsoft.com" rel="nofollow ugc">https://bestwebsoft.com</a>. Privacy Policy <a href="https://bestwebsoft.com/privacy-policy/" rel="nofollow ugc">https://bestwebsoft.com/privacy-policy/</a>. End user license agreement <a href="https://bestwebsoft.com/end-user-license-agreement/" rel="nofollow ugc">https://bestwebsoft.com/end-user-license-agreement/</a>.</li>
+</ul>

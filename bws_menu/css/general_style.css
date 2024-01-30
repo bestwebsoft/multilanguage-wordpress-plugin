@@ -715,6 +715,9 @@ span.bws_code {
 #bws_settings_tabs li.bws-tab-images a:before {
 	content: "\f128";
 }
+#bws_settings_tabs li.bws-tab-reviews a:before {
+	content: "\f18b";
+}
 #bws_settings_tabs li.bws-tab-cover a:before {
 	content: "\f318";
 }
@@ -743,7 +746,12 @@ span.bws_code {
 #bws_settings_tabs li.bws-tab-output a:before {
 	content: "\f498";
 }
-
+#bws_settings_tabs li.bws-tab-recommend-button a:before {
+	content: "\f529";
+}
+#bws_settings_tabs li.bws-tab-recommend-settings a:before {
+	content: "\f100";
+}
 #bws_settings_tabs li:last-child a {
 	border-bottom: none;
 }

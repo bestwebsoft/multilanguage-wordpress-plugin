@@ -1,9 +1,13 @@
 <?php
 /**
  * @package BWS Menu
- * @version 2.4.2
+ * @version 2.4.3
  * Main functions
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * General functions for BestWebSoft plugins
@@ -17,6 +21,8 @@ if ( ! function_exists( 'bws_get_mofile' ) ) {
 	 * Function to add 'bestwebsoft' slug for BWS_Menu MO file if BWS_Menu loaded from theme.
 	 *
 	 * @since 1.9.7
+	 * @param string $mofile Mo file name.
+	 * @param string $domain Domain name.
 	 */
 	function bws_get_mofile( $mofile, $domain ) {
 		if ( 'bestwebsoft' === $domain ) {
@@ -41,12 +47,13 @@ if ( isset( $bws_menu_source ) && 'themes' === $bws_menu_source ) {
 	load_plugin_textdomain( 'bestwebsoft', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 }
 
-/**
- * Function to getting url to current BWS_Menu.
- *
- * @since 1.9.7
- */
 if ( ! function_exists( 'bws_menu_url' ) ) {
+	/**
+	 * Function to getting url to current BWS_Menu.
+	 *
+	 * @since 1.9.7
+	 * @param string $path Plugin path.
+	 */
 	if ( ! isset( $bws_menu_source ) || 'plugins' === $bws_menu_source ) {
 		function bws_menu_url( $path = '' ) {
 			return plugins_url( $path, __FILE__ );
@@ -62,12 +69,15 @@ if ( ! function_exists( 'bws_menu_url' ) ) {
 	}
 }
 
-/**
- * Function check if plugin is compatible with current WP version
- *
- * @return void
- */
 if ( ! function_exists( 'bws_wp_min_version_check' ) ) {
+	/**
+	 * Function check if plugin is compatible with current WP version
+	 *
+	 * @param string $plugin_basename Plugin basename.
+	 * @param array  $plugin_info Plugin info.
+	 * @param string $require_wp Wp version.
+	 * @param string $min_wp (Optional) Flag for min WP version.
+	 */
 	function bws_wp_min_version_check( $plugin_basename, $plugin_info, $require_wp, $min_wp = false ) {
 		global $wp_version, $bws_versions_notice_array;
 		if ( false === $min_wp ) {
@@ -100,12 +110,14 @@ if ( ! function_exists( 'bws_wp_min_version_check' ) ) {
 	}
 }
 
-/**
- * Function display review block
- *
- * @echo string
- */
 if ( ! function_exists( 'bws_plugin_reviews_block' ) ) {
+	/**
+	 * Function display review block
+	 *
+	 * @param string $plugin_name Plugin name.
+	 * @param string $plugin_slug Plugin slug.
+	 * @echo string
+	 */
 	function bws_plugin_reviews_block( $plugin_name, $plugin_slug ) { ?>
 		<div class="bws-plugin-reviews">
 			<div class="bws-plugin-reviews-rate">
@@ -132,12 +144,15 @@ if ( ! function_exists( 'bws_plugin_reviews_block' ) ) {
 	}
 }
 
-/**
- * Function display license notification
- *
- * @echo string
- */
 if ( ! function_exists( 'bws_plugin_update_row' ) ) {
+	/**
+	 * Function display license notification
+	 *
+	 * @param string $plugin_key       Plugin key.
+	 * @param string $link_slug        (Optional) Link slug.
+	 * @param string $free_plugin_name (Optional) Free version plugin name.
+	 * @echo string
+	 */
 	function bws_plugin_update_row( $plugin_key, $link_slug = false, $free_plugin_name = false ) {
 		global $bstwbsftwppdtplgns_options, $wp_version;
 		$wp_list_table = _get_list_table( 'WP_Plugins_List_Table' );
@@ -210,12 +225,12 @@ if ( ! function_exists( 'bws_plugin_update_row' ) ) {
 	}
 }
 
-/**
- * Function display admin notices
- *
- * @echo string
- */
 if ( ! function_exists( 'bws_admin_notices' ) ) {
+	/**
+	 * Function display admin notices
+	 *
+	 * @echo string
+	 */
 	function bws_admin_notices() {
 		global $bws_versions_notice_array, $bws_plugin_banner_to_settings, $bstwbsftwppdtplgns_options, $bws_plugin_banner_go_pro, $bstwbsftwppdtplgns_banner_array, $bws_plugin_banner_timeout;
 
@@ -264,7 +279,7 @@ if ( ! function_exists( 'bws_admin_notices' ) ) {
 						<div class="icon">
 							<img title="" src="<?php echo esc_url( $banner_value['banner_url'] ); ?>" alt="" />
 						</div>
-						<div class="text"><?php printf( esc_html__( "Your license key for %1\$s expires on %2\$s and you won't be granted TOP-PRIORITY SUPPORT or UPDATES.", 'bestwebsoft' ), '<strong>' . esc_html__( $banner_value['plugin_name'] ) . '</strong>', esc_html__( $bstwbsftwppdtplgns_options['time_out'][ $banner_value['plugin_key'] ] ) ); ?> <a target="_new" href="https://support.bestwebsoft.com/entries/53487136"><?php esc_html_e( 'Learn more', 'bestwebsoft' ); ?></a></div>
+						<div class="text"><?php printf( esc_html__( "Your license key for %1\$s expires on %2\$s and you won't be granted TOP-PRIORITY SUPPORT or UPDATES.", 'bestwebsoft' ), '<strong>' . esc_html( $banner_value['plugin_name'] ) . '</strong>', esc_html( $bstwbsftwppdtplgns_options['time_out'][ $banner_value['plugin_key'] ] ) ); ?> <a target="_new" href="https://support.bestwebsoft.com/entries/53487136"><?php esc_html_e( 'Learn more', 'bestwebsoft' ); ?></a></div>
 					</div>
 				</div>
 				<?php
@@ -279,9 +294,9 @@ if ( ! function_exists( 'bws_admin_notices' ) ) {
 					<?php
 					printf(
 						'<strong>%s</strong> %s <strong>WordPress %s</strong> %s',
-						esc_html__( $value['name'] ),
+						esc_html( $value['name'] ),
 						esc_html__( 'requires', 'bestwebsoft' ),
-						esc_html__( $value['version'] ),
+						esc_html( $value['version'] ),
 						esc_html__( 'or higher! We do not guarantee that our plugin will work correctly. Please upgrade to WordPress latest version.', 'bestwebsoft' )
 					);
 					?>
@@ -389,12 +404,19 @@ if ( ! function_exists( 'bws_admin_notices' ) ) {
 	}
 }
 
-/**
- * Function display banner
- *
- * @return array
- */
 if ( ! function_exists( 'bws_plugin_banner_go_pro' ) ) {
+	/**
+	 * Function display banner
+	 *
+	 * @param array  $plugin_options     Plugin options array.
+	 * @param array  $plugin_info        Plugin info array.
+	 * @param string $this_banner_prefix Banner prefix.
+	 * @param string $bws_link_slug      Slug for link.
+	 * @param string $link_key           Key for plugin.
+	 * @param string $link_pn            PN for plugin.
+	 * @param string $banner_url_or_slug Url or slug for icon.
+	 * @return array
+	 */
 	function bws_plugin_banner_go_pro( $plugin_options, $plugin_info, $this_banner_prefix, $bws_link_slug, $link_key, $link_pn, $banner_url_or_slug ) {
 		global $bws_plugin_banner_go_pro, $wp_version, $bstwbsftwppdtplgns_banner_array;
 
@@ -424,12 +446,15 @@ if ( ! function_exists( 'bws_plugin_banner_go_pro' ) ) {
 	}
 }
 
-/**
- * Function update banner params
- *
- * @return global array
- */
 if ( ! function_exists( 'bws_add_plugin_banner_timeout' ) ) {
+	/**
+	 * Function update banner params
+	 *
+	 * @param string $plugin_key         Plugin key.
+	 * @param string $plugin_prefix      Plugin prefix.
+	 * @param string $plugin_name        Plugin name.
+	 * @param string $banner_url_or_slug Url or slug for icon.
+	 */
 	function bws_add_plugin_banner_timeout( $plugin_key, $plugin_prefix, $plugin_name, $banner_url_or_slug ) {
 		global $bws_plugin_banner_timeout;
 
@@ -449,12 +474,17 @@ if ( ! function_exists( 'bws_add_plugin_banner_timeout' ) ) {
 	}
 }
 
-/**
- * Function settings for banner
- *
- * @return global array
- */
 if ( ! function_exists( 'bws_plugin_banner_to_settings' ) ) {
+	/**
+	 * Function settings for banner
+	 *
+	 * @param array $plugin_info              Plugin info.
+	 * @param array $plugin_options_name      Plugin option name.
+	 * @param array $banner_url_or_slug       Url or slug for icon.
+	 * @param array $settings_url             Url for settings.
+	 * @param array $post_type_url (Optional) Url for banner.
+	 * @return global array
+	 */
 	function bws_plugin_banner_to_settings( $plugin_info, $plugin_options_name, $banner_url_or_slug, $settings_url, $post_type_url = false ) {
 		global $bws_plugin_banner_to_settings;
 
@@ -490,12 +520,15 @@ if ( ! function_exists( 'bws_plugin_banner_to_settings' ) ) {
 	}
 }
 
-/**
- * Function display for feature banner
- *
- * @echo string
- */
 if ( ! function_exists( 'bws_plugin_suggest_feature_banner' ) ) {
+	/**
+	 * Function display for feature banner
+	 *
+	 * @param array $plugin_info              Plugin info.
+	 * @param array $plugin_options_name      Plugin option name.
+	 * @param array $banner_url_or_slug       Url or slug for icon.
+	 * @echo string
+	 */
 	function bws_plugin_suggest_feature_banner( $plugin_info, $plugin_options_name, $banner_url_or_slug ) {
 		$is_network_admin = is_network_admin();
 
@@ -507,17 +540,20 @@ if ( ! function_exists( 'bws_plugin_suggest_feature_banner' ) ) {
 
 		if ( ! isset( $plugin_options['first_install'] ) ) {
 			$plugin_options['first_install'] = strtotime( 'now' );
-			$update_option                   = $return = true;
+			$update_option                   = true;
+			$return                          = true;
 		} elseif ( strtotime( '-2 week' ) < $plugin_options['first_install'] ) {
 			$return = true;
 		}
 
 		if ( ! isset( $plugin_options['go_settings_counter'] ) ) {
 			$plugin_options['go_settings_counter'] = 1;
-			$update_option                         = $return = true;
+			$update_option                         = true;
+			$return                                = true;
 		} elseif ( 20 > $plugin_options['go_settings_counter'] ) {
 			$plugin_options['go_settings_counter'] = $plugin_options['go_settings_counter'] + 1;
-			$update_option                         = $return = true;
+			$update_option                         = true;
+			$return                                = true;
 		}
 
 		if ( isset( $update_option ) ) {
@@ -567,12 +603,12 @@ if ( ! function_exists( 'bws_plugin_suggest_feature_banner' ) ) {
 	}
 }
 
-/**
- * Function display affiliate postbox
- *
- * @echo string
- */
 if ( ! function_exists( 'bws_affiliate_postbox' ) ) {
+	/**
+	 * Function display affiliate postbox
+	 *
+	 * @echo string
+	 */
 	function bws_affiliate_postbox() {
 
 		$dismissed = get_user_meta( get_current_user_id(), '_bws_affiliate_postbox_dismissed', true );
@@ -621,12 +657,12 @@ if ( ! function_exists( 'bws_affiliate_postbox' ) ) {
 	}
 }
 
-/**
- * Function display settings notice
- *
- * @echo string
- */
 if ( ! function_exists( 'bws_show_settings_notice' ) ) {
+	/**
+	 * Function display settings notice
+	 *
+	 * @echo string
+	 */
 	function bws_show_settings_notice() {
 		?>
 		<div id="bws_save_settings_notice" class="updated fade below-h2" style="display:none;">
@@ -639,12 +675,13 @@ if ( ! function_exists( 'bws_show_settings_notice' ) ) {
 	}
 }
 
-/**
- * Function for hide premium options
- *
- * @echo string
- */
 if ( ! function_exists( 'bws_hide_premium_options' ) ) {
+	/**
+	 * Function for hide premium options
+	 *
+	 * @param array $options Plugin options.
+	 * @echo string
+	 */
 	function bws_hide_premium_options( $options ) {
 		if ( ! isset( $options['hide_premium_options'] ) || ! is_array( $options['hide_premium_options'] ) ) {
 			$options['hide_premium_options'] = array();
@@ -659,12 +696,13 @@ if ( ! function_exists( 'bws_hide_premium_options' ) ) {
 	}
 }
 
-/**
- * Function for check checkbox for hide premium options
- *
- * @return bool
- */
 if ( ! function_exists( 'bws_hide_premium_options_check' ) ) {
+	/**
+	 * Function for check checkbox for hide premium options
+	 *
+	 * @param array $options Plugin options.
+	 * @return bool
+	 */
 	function bws_hide_premium_options_check( $options ) {
 		if ( ! empty( $options['hide_premium_options'] ) && in_array( get_current_user_id(), $options['hide_premium_options'] ) ) {
 			return true;
@@ -674,10 +712,10 @@ if ( ! function_exists( 'bws_hide_premium_options_check' ) ) {
 	}
 }
 
-/**
- * Function init fir dashboard
- */
 if ( ! function_exists( 'bws_plugins_admin_init' ) ) {
+	/**
+	 * Function init fir dashboard
+	 */
 	function bws_plugins_admin_init() {
 		$page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
 		if ( isset( $_GET['bws_activate_plugin'] ) && check_admin_referer( 'bws_activate_plugin' . sanitize_text_field( wp_unslash( $_GET['bws_activate_plugin'] ) ) ) ) {
@@ -730,31 +768,47 @@ if ( ! function_exists( 'bws_plugins_admin_init' ) ) {
 	}
 }
 
-/**
- * Function add scripts ans syles for dashboard
- */
 if ( ! function_exists( 'bws_admin_enqueue_scripts' ) ) {
+	/**
+	 * Function add scripts ans syles for dashboard
+	 */
 	function bws_admin_enqueue_scripts() {
-		global $wp_scripts, $hook_suffix,
+		global $wp_scripts,
+			$hook_suffix,
 			$post_type,
 			$bws_plugin_banner_go_pro, $bws_plugin_banner_timeout, $bstwbsftwppdtplgns_banner_array,
 			$bws_shortcode_list,
-			$wp_filesystem;
+			$wp_filesystem,
+			$bws_plugins,
+			$pagenow;
 
 		$page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
 
-		$jquery_ui_version = isset( $wp_scripts->registered['jquery-ui-core']->ver ) ? $wp_scripts->registered['jquery-ui-core']->ver : '1.12.1';
-		WP_Filesystem();
-		if ( ! $wp_filesystem->exists( dirname( __FILE__ ) . '/css/jquery-ui-styles/' . $jquery_ui_version . '/' ) ) {
-			$jquery_ui_version = '1.12.1';
-		}
-		if ( 'et_divi_options' !== $page ) {
-			wp_enqueue_style( 'jquery-ui-style', bws_menu_url( 'css/jquery-ui-styles/' . $jquery_ui_version . '/jquery-ui.css', array(), $jquery_ui_version ) );
-		}
 		wp_enqueue_style( 'bws-admin-css', bws_menu_url( 'css/general_style.css' ), array(), '2.4.2' );
 		wp_enqueue_script( 'bws-admin-scripts', bws_menu_url( 'js/general_script.js' ), array( 'jquery', 'jquery-ui-tooltip' ) );
 
-		if ( in_array( $page, array( 'bws_panel', 'bws_themes', 'bws_system_status' ) ) || strpos( $page, '-bws-panel' ) ) {
+		$plugin_dir  = explode( '/', plugin_basename( __FILE__ ) )[0];
+		$plugin_file = array_keys( get_plugins( "/$plugin_dir" ) )[0];
+
+		$include_jquery_ui = false;
+		if ( ! empty( $bws_plugins ) ) {
+			$admin_page_free = $pagenow . '?page=' . str_replace( '-pro', '', $page );
+
+			foreach ( $bws_plugins as $bws_plugin ) {
+				if ( $admin_page_free === $bws_plugin['settings'] ) {
+					$include_jquery_ui = true;
+					break;
+				}
+			}
+		}
+
+		if ( in_array( $page, array( 'bws_panel', 'bws_themes', 'bws_system_status', $plugin_file ) ) || $include_jquery_ui || strpos( $page, '-bws-panel' ) ) {
+			$jquery_ui_version = isset( $wp_scripts->registered['jquery-ui-core']->ver ) ? $wp_scripts->registered['jquery-ui-core']->ver : '1.12.1';
+			WP_Filesystem();
+			if ( ! $wp_filesystem->exists( dirname( __FILE__ ) . '/css/jquery-ui-styles/' . $jquery_ui_version . '/' ) ) {
+				$jquery_ui_version = '1.12.1';
+			}
+			wp_enqueue_style( 'jquery-ui-style', bws_menu_url( 'css/jquery-ui-styles/' . $jquery_ui_version . '/jquery-ui.css', array(), $jquery_ui_version ) );
 			wp_enqueue_style( 'bws_menu_style', bws_menu_url( 'css/style.css' ), array(), '2.4.2' );
 			wp_enqueue_script( 'bws_menu_script', bws_menu_url( 'js/bws_menu.js' ), array(), '2.4.2', true );
 			wp_enqueue_script( 'theme-install' );
@@ -870,12 +924,12 @@ if ( ! function_exists( 'bws_admin_enqueue_scripts' ) ) {
 	}
 }
 
-/**
-* add styles and scripts for Bws_Settings_Tabs
-*
-* @since 1.9.8
-*/
 if ( ! function_exists( 'bws_enqueue_settings_scripts' ) ) {
+	/**
+	 * Add styles and scripts for Bws_Settings_Tabs
+	 *
+	 * @since 1.9.8
+	 */
 	function bws_enqueue_settings_scripts() {
 		wp_enqueue_script( 'jquery-ui-resizable' );
 		wp_enqueue_script( 'jquery-ui-tabs' );
@@ -883,16 +937,16 @@ if ( ! function_exists( 'bws_enqueue_settings_scripts' ) ) {
 	}
 }
 
-/**
- * Function add syles into admin head
- *
- * @since 1.9.8
- */
 if ( ! function_exists( 'bws_plugins_admin_head' ) ) {
+	/**
+	 * Function add syles into admin head
+	 *
+	 * @since 1.9.8
+	 */
 	function bws_plugins_admin_head() {
 		$page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
 
-		if ( $page === 'bws_panel' ) {
+		if ( 'bws_panel' === $page ) {
 			?>
 			<noscript>
 				<style type="text/css">
@@ -906,26 +960,26 @@ if ( ! function_exists( 'bws_plugins_admin_head' ) ) {
 	}
 }
 
-/**
- * Function add syles into admin footer
- *
- * @since 1.9.8
- */
 if ( ! function_exists( 'bws_plugins_admin_footer' ) ) {
+	/**
+	 * Function add syles into admin footer
+	 *
+	 * @since 1.9.8
+	 */
 	function bws_plugins_admin_footer() {
 		$screen = get_current_screen();
-		if ( $screen->parent_base == 'edit' ) {
+		if ( 'edit' === $screen->parent_base ) {
 			bws_shortcode_media_button_popup();
 		}
 	}
 }
 
-/**
- * Function add style and scripts for older version
- *
- * @since 1.9.8
- */
 if ( ! function_exists( 'bws_plugins_include_codemirror' ) ) {
+	/**
+	 * Function add style and scripts for older version
+	 *
+	 * @since 1.9.8
+	 */
 	function bws_plugins_include_codemirror() {
 		global $wp_version;
 		if ( version_compare( $wp_version, '4.9.0', '>=' ) ) {
@@ -935,24 +989,31 @@ if ( ! function_exists( 'bws_plugins_include_codemirror' ) ) {
 	}
 }
 
-/**
- * Tooltip block
- */
 if ( ! function_exists( 'bws_add_tooltip_in_admin' ) ) {
+	/**
+	 * Tooltip block
+	 *
+	 * @param array $tooltip_args Args for tooltip.
+	 */
 	function bws_add_tooltip_in_admin( $tooltip_args = array() ) {
 		new BWS_Admin_Tooltip( $tooltip_args );
 	}
 }
 
-/**
- * Class for Tooltip
- *
- * @since 1.9.8
- */
 if ( ! class_exists( 'BWS_Admin_Tooltip' ) ) {
+	/**
+	 * Class for Tooltip
+	 *
+	 * @since 1.9.8
+	 */
 	class BWS_Admin_Tooltip {
 		private $tooltip_args;
 
+		/**
+		 * Tooltip construct
+		 *
+		 * @param array $tooltip_args Args for tooltip.
+		 */
 		public function __construct( $tooltip_args ) {
 			global $bstwbsftwppdtplgns_tooltip_script_add;
 
@@ -1050,12 +1111,13 @@ if ( ! class_exists( 'BWS_Admin_Tooltip' ) ) {
 	}
 }
 
-/**
- * Function display confirm
- *
- * @since 1.9.8
- */
 if ( ! function_exists( 'bws_form_restore_default_confirm' ) ) {
+	/**
+	 * Function display confirm
+	 *
+	 * @since 1.9.8
+	 * @param string $plugin_basename Plugin basename.
+	 */
 	function bws_form_restore_default_confirm( $plugin_basename ) {
 		?>
 		<div>
@@ -1072,12 +1134,12 @@ if ( ! function_exists( 'bws_form_restore_default_confirm' ) ) {
 	}
 }
 
-/**
- * Function for shortcode
- *
- * @since 1.9.8
- */
 if ( ! function_exists( 'bws_add_editor_buttons' ) ) {
+	/**
+	 * Function for shortcode
+	 *
+	 * @since 1.9.8
+	 */
 	function bws_add_editor_buttons() {
 		global $bws_shortcode_list;
 		if ( ! empty( $bws_shortcode_list ) && current_user_can( 'edit_posts' ) && current_user_can( 'edit_pages' ) ) {
@@ -1087,36 +1149,38 @@ if ( ! function_exists( 'bws_add_editor_buttons' ) ) {
 	}
 }
 
-/**
- * Function add button for editor
- *
- * @since 1.9.8
- */
 if ( ! function_exists( 'bws_add_buttons' ) ) {
+	/**
+	 * Function add button for editor
+	 *
+	 * @since 1.9.8
+	 * @param array $plugin_array Editor scripts.
+	 */
 	function bws_add_buttons( $plugin_array ) {
 		$plugin_array['add_bws_shortcode'] = bws_menu_url( 'js/shortcode-button.js' );
 		return $plugin_array;
 	}
 }
 
-/**
- * Function register button for editor
- *
- * @since 1.9.8
- */
 if ( ! function_exists( 'bws_register_buttons' ) ) {
+	/**
+	 * Function register button for editor
+	 *
+	 * @since 1.9.8
+	 * @param array $buttons Editor buttons.
+	 */
 	function bws_register_buttons( $buttons ) {
 		array_push( $buttons, 'add_bws_shortcode' ); /* dropcap', 'recentposts */
 		return $buttons;
 	}
 }
 
-/**
- * Function Generate inline content for the popup window when the "bws shortcode" button is clicked
- *
- * @since 1.9.8
- */
 if ( ! function_exists( 'bws_shortcode_media_button_popup' ) ) {
+	/**
+	 * Function Generate inline content for the popup window when the "bws shortcode" button is clicked
+	 *
+	 * @since 1.9.8
+	 */
 	function bws_shortcode_media_button_popup() {
 		global $bws_shortcode_list;
 
@@ -1149,12 +1213,13 @@ if ( ! function_exists( 'bws_shortcode_media_button_popup' ) ) {
 	}
 }
 
-/**
- * Output shortcode in a special block
- *
- * @since 1.9.8
- */
 if ( ! function_exists( 'bws_shortcode_output' ) ) {
+	/**
+	 * Output shortcode in a special block
+	 *
+	 * @since 1.9.8
+	 * @param string $shortcode Shortcode string.
+	 */
 	function bws_shortcode_output( $shortcode ) {
 		?>
 		<span class="bws_shortcode_output"><input type="text" onfocus="this.select();" readonly="readonly" value="<?php echo esc_attr( $shortcode ); ?>" class="large-text bws_no_bind_notice"></span>
@@ -1162,14 +1227,14 @@ if ( ! function_exists( 'bws_shortcode_output' ) ) {
 	}
 }
 
-/**
- * Output tooltip
- *
- * @since 1.9.8
- * @param   string   $content  - HTML content for the tooltip
- * @param   string   $class  - Can be standart "bws-hide-for-mobile" (tooltip will be hidden in 782px) and "bws-auto-width" (need for img) or some custom class.
- */
 if ( ! function_exists( 'bws_add_help_box' ) ) {
+	/**
+	 * Output tooltip
+	 *
+	 * @since 1.9.8
+	 * @param string $content HTML content for the tooltip.
+	 * @param string $class   Can be standart "bws-hide-for-mobile" (tooltip will be hidden in 782px) and "bws-auto-width" (need for img) or some custom class.
+	 */
 	function bws_add_help_box( $content, $class = '' ) {
 		return '<span class="bws_help_box dashicons dashicons-editor-help ' . $class . ' hide-if-no-js">
 			<span class="bws_hidden_help_text">' . $content . '</span>
@@ -1177,12 +1242,14 @@ if ( ! function_exists( 'bws_add_help_box' ) ) {
 	}
 }
 
-/**
- * Function add help tab
- *
- * @since 1.9.8
- */
 if ( ! function_exists( 'bws_help_tab' ) ) {
+	/**
+	 * Function add help tab
+	 *
+	 * @since 1.9.8
+	 * @param string $screen Screen name.
+	 * @param array  $args   Args for screen.
+	 */
 	function bws_help_tab( $screen, $args ) {
 		$url = ( ! empty( $args['section'] ) ) ? 'https://support.bestwebsoft.com/hc/en-us/sections/' . $args['section'] : 'https://support.bestwebsoft.com/';
 
@@ -1205,12 +1272,12 @@ if ( ! function_exists( 'bws_help_tab' ) ) {
 	}
 }
 
-/**
- * Function add css and js
- *
- * @since 1.9.8
- */
 if ( ! function_exists( 'bws_enqueue_custom_code_css_js' ) ) {
+	/**
+	 * Function add css and js
+	 *
+	 * @since 1.9.8
+	 */
 	function bws_enqueue_custom_code_css_js() {
 		global $bstwbsftwppdtplgns_options;
 
@@ -1239,12 +1306,12 @@ if ( ! function_exists( 'bws_enqueue_custom_code_css_js' ) ) {
 	}
 }
 
-/**
- * Function add custom php code
- *
- * @since 1.9.8
- */
 if ( ! function_exists( 'bws_enqueue_custom_code_php' ) ) {
+	/**
+	 * Function add custom php code
+	 *
+	 * @since 1.9.8
+	 */
 	function bws_enqueue_custom_code_php() {
 		if ( is_admin() ) {
 			return;
@@ -1296,12 +1363,13 @@ if ( ! function_exists( 'bws_enqueue_custom_code_php' ) ) {
 	}
 }
 
-/**
- * Function delete plugin
- *
- * @since 1.9.8
- */
 if ( ! function_exists( 'bws_delete_plugin' ) ) {
+	/**
+	 * Function delete plugin
+	 *
+	 * @since 1.9.8
+	 * @param string $basename Plugin basename.
+	 */
 	function bws_delete_plugin( $basename ) {
 		global $bstwbsftwppdtplgns_options;
 

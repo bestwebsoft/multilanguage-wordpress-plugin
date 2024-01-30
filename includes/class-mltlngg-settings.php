@@ -2,8 +2,18 @@
 /**
  * Displays the content on the plugin settings page
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 	class Mltlngg_Settings_Tabs extends Bws_Settings_Tabs {
+		/**
+		 * Name for language switcher
+		 *
+		 * @var string
+		 */
 		private $language_switcher_name;
 		/**
 		 * Constructor.
@@ -12,7 +22,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 		 *
 		 * @see Bws_Settings_Tabs::__construct() for more information on default arguments.
 		 *
-		 * @param string $plugin_basename
+		 * @param string $plugin_basename Plugin basename.
 		 */
 		public function __construct( $plugin_basename ) {
 			global $mltlngg_options, $mltlngg_plugin_info;
@@ -21,9 +31,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 				'settings'    => array( 'label' => esc_html__( 'Settings', 'multilanguage' ) ),
 				'misc'        => array( 'label' => esc_html__( 'Misc', 'multilanguage' ) ),
 				'custom_code' => array( 'label' => esc_html__( 'Custom Code', 'multilanguage' ) ),
-				/*pls */
 				'license'     => array( 'label' => esc_html__( 'License Key', 'multilanguage' ) ),
-				/* pls*/
 			);
 
 			parent::__construct(
@@ -36,11 +44,9 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 					'is_network_options' => is_network_admin(),
 					'tabs'               => $tabs,
 					'doc_link'           => 'https://bestwebsoft.com/documentation/multilanguage/multilanguage-user-guide/',
-					/*pls */
 					'wp_slug'            => 'multilanguage',
 					'link_key'           => 'fa164f00821ed3a87e6f78cb3f5c277b',
 					'link_pn'            => '143',
-				/* pls*/
 				)
 			);
 
@@ -64,14 +70,15 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 		 * Save plugin options to the database
 		 *
 		 * @access public
-		 * @param  void
 		 * @return array    The action results
 		 */
 		public function save_options() {
 			global $wpdb;
 
-			$message = $notice = $error = '';
-
+			$message = '';
+			$notice  = '';
+			$error   = '';
+		error_log( print_r( $_POST, true ) . PHP_EOL, 3, dirname( __FILE__ ) . '/error.log' );
 			if ( isset( $_POST['mltlngg_nonce_admin'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['mltlngg_nonce_admin'] ) ), plugin_basename( __FILE__ ) ) ) {
 
 				$this->options['language_switcher'] = ( isset( $_POST['mltlngg_language_switcher'] ) &&
@@ -95,7 +102,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 		}
 
 		/**
-		 *
+		 * Display Settings tab
 		 */
 		public function tab_settings() { ?>
 			<h3 class="bws_tab_label"><?php esc_html_e( 'Multilanguage Settings', 'multilanguage' ); ?></h3>
@@ -119,7 +126,6 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 						</td>
 				</tr>
 			</table>
-			 <!-- pls -->
 			<?php if ( ! $this->hide_pro_tabs ) { ?>
 				<div class="bws_pro_version_bloc">
 					<div class="bws_pro_version_table_bloc">
@@ -161,7 +167,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 											esc_html_e( 'Before', 'multilanguage' );
 											printf(
 												'&ensp;<code>%s</code>',
-												preg_replace( '~(://)~', '$0<b>en.</b>', $url )
+												esc_url( preg_replace( '~(://)~', '$0<b>en.</b>', $url ) )
 											);
 											?>
 										</label>
@@ -177,7 +183,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 											esc_html_e( 'After', 'multilanguage' );
 											printf(
 												'&ensp;<code>%s</code>',
-												preg_replace( '~(?<=[/=])(' . $mltlngg_current_language . ')(?![\w\d-])~', '<b>en</b>', mltlngg_get_lang_link( $args ) )
+												esc_url( preg_replace( '~(?<=[/=])(' . $mltlngg_current_language . ')(?![\w\d-])~', '<b>en</b>', mltlngg_get_lang_link( $args ) ) )
 											);
 											?>
 										</label>
@@ -195,7 +201,6 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 					<?php $this->bws_pro_block_links(); ?>
 				</div>
 			<?php } ?>
-			<!-- end pls -->
 			<table class="form-table">
 				<tr>
 					<th><?php esc_html_e( 'Default Language Slug', 'multilanguage' ); ?></th>
@@ -219,7 +224,10 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 								esc_html__( 'Enable to add the ability to translate %s.', 'multilanguage' ) . ' ',
 								'<a href="http://ogp.me/" target="_blank">' . esc_html__( 'open graph meta tags', 'multilanguage' ) . '</a>'
 							);
-							printf( esc_html__( 'This option automatically adds metadata for each language in the %s section. Facebook and other social networks use this data when your pages are shared.', 'multilanguage' ), '&lt;head&gt;' );
+							printf(
+								esc_html__( 'This option automatically adds metadata for each language in the %s section. Facebook and other social networks use this data when your pages are shared.', 'multilanguage' ),
+								'&lt;head&gt;'
+							);
 							?>
 						</span>
 					</td>
@@ -237,12 +245,12 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 							<fieldset>
 								<label>
 									<input name="mltlngg_save_mode" type="radio" value="ajax" <?php checked( 'ajax', $this->options['save_mode'] ); ?> />
-									<?php _e( 'Auto', 'multilanguage' ); ?> (AJAX) <span class="bws_info"><?php _e( 'If this option is selected, there may be a problem with custom post types.', 'multilanguage' ); ?></span>
+									<?php esc_html_e( 'Auto', 'multilanguage' ); ?> (AJAX) <span class="bws_info"><?php esc_html_e( 'If this option is selected, there may be a problem with custom post types.', 'multilanguage' ); ?></span>
 								</label>
 								<br>
 								<label>
 									<input name="mltlngg_save_mode" type="radio" value="manual" <?php checked( 'manual', $this->options['save_mode'] ); ?> />
-									<?php _e( 'Manual (Save Changes button)', 'multilanguage' ); ?> (<?php _e( 'Recommended', 'multilanguage' ); ?>)
+									<?php esc_html_e( 'Manual (Save Changes button)', 'multilanguage' ); ?> (<?php esc_html_e( 'Recommended', 'multilanguage' ); ?>)
 								</label>
 							</fieldset>
 							<span class="bws_info"><?php esc_html_e( 'Enable Manual mode if you have some problems with translations saving using Auto mode.', 'multilanguage' ); ?></span>
@@ -265,7 +273,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 				</tr>
 			</table><!-- .form-table -->
 			<?php
-			echo wp_nonce_field( plugin_basename( __FILE__ ), 'mltlngg_nonce_admin', true, false );
+			wp_nonce_field( plugin_basename( __FILE__ ), 'mltlngg_nonce_admin', true, true );
 		}
 
 		/**
@@ -321,6 +329,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 		 * Custom functions for "Restore plugin options to defaults"
 		 *
 		 * @access public
+		 * @param array $default_options Default options.
 		 */
 		public function additional_restore_options( $default_options ) {
 			$default_options['list_of_languages'] = $this->options['list_of_languages'];
@@ -331,8 +340,6 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 		 * Display custom metabox
 		 *
 		 * @access public
-		 * @param  void
-		 * @return void
 		 */
 		public function display_metabox() {
 			?>
@@ -352,6 +359,11 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 			<?php
 		}
 
+		/**
+		 * Display custom message
+		 *
+		 * @access public
+		 */
 		public function display_custom_messages() {
 			?>
 			<noscript>

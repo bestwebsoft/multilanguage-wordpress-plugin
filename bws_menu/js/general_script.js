@@ -15,8 +15,8 @@ function bws_show_settings_notice() {
 				*/
 				$( '.bws_form input, .bws_form textarea, .bws_form select' ).on(
 					"change paste select",
-					function() {
-						if ( $( this ).attr( 'type' ) != 'submit' && ! $( this ).hasClass( 'bws_no_bind_notice' ) ) {
+					function( e ) {
+						if ( $( this ).attr( 'type' ) != 'submit' && ! $( this ).hasClass( 'bws_no_bind_notice' ) && typeof ( e.originalEvent ) != 'undefined' ) {
 							bws_show_settings_notice();
 						};
 					}

@@ -3,6 +3,10 @@
  * BestWebSoft product list
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 global $bws_plugin_info, $wp_version;
 
 $bws_plugins_category = array(
@@ -209,6 +213,17 @@ $bws_plugins = array(
 		'description' => __( 'Replace external WordPress website links with Google shortlinks and track click stats.', 'bestwebsoft' ),
 		'link'        => 'https://bestwebsoft.com/products/wordpress/plugins/google-shortlink/?k=afcf3eaed021bbbbeea1090e16bc22db&pn=' . $bws_plugin_info['id'] . '&v=' . $bws_plugin_info['version'] . '&wp_v=' . $wp_version,
 		'settings'    => 'admin.php?page=gglshrtlnk_options',
+	),
+	'gpt-ai-content-creator/gpt-ai-content-creator.php' => array(
+		'category'     => array( 'content', 'recommended' ),
+		'name'         => 'GPT AI Content Creator',
+		'description'  => __( 'Create Content with GPT.', 'bestwebsoft' ),
+		'link'         => 'https://bestwebsoft.com/products/wordpress/plugins/gpt-ai-content-creator/?k=f1ef1b7d7d05f93c570b940cc9acfe15&pn=' . $bws_plugin_info['id'] . '&v=' . $bws_plugin_info['version'] . '&wp_v=' . $wp_version,
+		'settings'     => 'admin.php?page=gpt-ai-content-creator.php',
+		'icon'         => bws_menu_url( 'icons/plugins/' ) . 'gpt-ai-content-creator.png',
+		'pro_version'  => 'gpt-ai-content-creator-pro/gpt-ai-content-creator-pro.php',
+		'purchase'     => 'https://bestwebsoft.com/products/wordpress/plugins/gpt-ai-content-creator/buy/?k=8b19619d4a36f8b42c5d4fbcbd9775bb&pn=' . $bws_plugin_info['id'] . '&v=' . $bws_plugin_info['version'] . '&wp_v=' . $wp_version,
+		'pro_settings' => 'admin.php?page=gpt-ai-content-creator-pro.php',
 	),
 	'htaccess/htaccess.php'                             => array(
 		'category'     => array( 'security' ),
@@ -418,6 +433,9 @@ $bws_plugins = array(
 		'description' => __( 'Add testimonials and feedbacks from your customers to WordPress website posts, pages, and widgets.', 'bestwebsoft' ),
 		'link'        => 'https://bestwebsoft.com/products/wordpress/plugins/testimonials/?k=3fe4bb89dc901c98e43a113e08f8db73&pn=' . $bws_plugin_info['id'] . '&v=' . $bws_plugin_info['version'] . '&wp_v=' . $wp_version,
 		'settings'    => 'admin.php?page=testimonials.php',
+		'pro_version'  => 'bws-testimonials-pro/bws-testimonials-pro.php',
+		'purchase'     => 'https://bestwebsoft.com/products/wordpress/plugins/testimonials/buy/?k=3fe4bb89dc901c98e43a113e08f8db73&pn=' . $bws_plugin_info['id'] . '&v=' . $bws_plugin_info['version'] . '&wp_v=' . $wp_version,
+		'pro_settings' => 'edit.php?post_type=bws-testimonial&page=testimonials-ro.php',
 	),
 	'timesheet/timesheet.php'                           => array(
 		'category'     => array( 'admin-tools' ),

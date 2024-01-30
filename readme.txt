@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
 Requires at least: 5.6
-Tested up to: 6.4
-Stable tag: 1.4.4
+Tested up to: 6.4.2
+Stable tag: 1.4.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -122,6 +122,11 @@ Some of these translations are not complete. We are constantly adding new featur
 * [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=3a06ca59d129f65a2259ac56620ce27e) - Automatically check and update WordPress website core with all installed plugins and themes to the latest versions.
 * [PDF & Print](https://bestwebsoft.com/products/wordpress/plugins/pdf-print/?k=e7f954c2040303cfe69904409d8ba2ed) - Generate PDF files and print WordPress posts/pages. Customize document header/footer styles and appearance.
 
+= Credits =
+
+* The plugin uses Google Translate (Google LLC) services to process website data for translation. <https://translate.google.com/> Terms of service <https://policies.google.com/terms>. Privacy Policy <https://policies.google.com/privacy>.
+* This plugin incorporates a license verification mechanism to ensure the authenticity of your license key and provide access to premium features and updates. The verification process involves connecting securely to our external service hosted at BestWebSoft website <https://bestwebsoft.com>. Privacy Policy <https://bestwebsoft.com/privacy-policy/>. End user license agreement <https://bestwebsoft.com/end-user-license-agreement/>.
+
 == Installation ==
 
 1. Upload the `multilanguage` folder to the `/wp-content/plugins/` directory.
@@ -230,6 +235,14 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 12. Adding language switcher into site menu.
 
 == Changelog ==
+
+= V1.4.6 - 29.01.2024 =
+* Bugfix : Widget language switcher has been fixed.
+* Update : Plugin optimization comleated.
+
+= V1.4.5 - 01.01.2024 =
+* Bugfix : Syntax errors has been fixed.
+* Update : Plugin optimization comleated.
 
 = V1.4.4 - 16.11.2023 =
 * Bugfix : Language switcher in Gutenberg has been fixed.
@@ -457,6 +470,12 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.4.6 =
+* Bugs fixed.
+
+= V1.4.5 =
+* Bugs fixed.
 
 = V1.4.4 =
 * The compatibility with new WordPress version updated.
