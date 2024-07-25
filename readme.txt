@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
 Requires at least: 5.6
-Tested up to: 6.4.2
-Stable tag: 1.4.6
+Tested up to: 6.6
+Stable tag: 1.4.8
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -235,6 +235,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 12. Adding language switcher into site menu.
 
 == Changelog ==
+
+= V1.4.8 - 25.07.2024 =
+* Update : Plugin optimization comleated.
+* Update : All functionality for WordPress 6.6 has been updated.
+* Bugfix : Fixed bug with Gutenbert language select.
 
 = V1.4.6 - 29.01.2024 =
 * Bugfix : Widget language switcher has been fixed.
@@ -470,6 +475,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.4.7 =
+* The compatibility with new WordPress version updated.
+* Functionality improved.
+* Bugs fixed.
 
 = V1.4.6 =
 * Bugs fixed.

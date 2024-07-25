@@ -78,7 +78,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 			$message = '';
 			$notice  = '';
 			$error   = '';
-		error_log( print_r( $_POST, true ) . PHP_EOL, 3, dirname( __FILE__ ) . '/error.log' );
+
 			if ( isset( $_POST['mltlngg_nonce_admin'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['mltlngg_nonce_admin'] ) ), plugin_basename( __FILE__ ) ) ) {
 
 				$this->options['language_switcher'] = ( isset( $_POST['mltlngg_language_switcher'] ) &&

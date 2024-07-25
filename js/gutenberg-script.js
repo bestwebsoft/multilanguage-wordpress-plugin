@@ -9,7 +9,7 @@
 	(function( $ ) {
 
 		$( window ).on( 'load', function() {
-			var timescript = window.performance;
+			var timescript = /*window.performance*/ 1000;
 			/* React componenets we will needed */
 			var getPost 					= wp.data.select( 'core/editor' ),
 				editPost 					= wp.data.dispatch( 'core/editor' ),
@@ -156,7 +156,10 @@
 			
 			if( ! document.body.classList.contains( 'widgets-php' ) ) {
 				setTimeout(function() {
-					e = document.querySelector(".edit-post-header-toolbar");
+					e = document.querySelector(".editor-header__toolbar");
+					if ( ! e ) {
+						e = document.querySelector(".edit-post-header-toolbar");
+					}
 					if (e) {
 						var postData = getPost.getCurrentPost(),
 							data;
@@ -200,7 +203,7 @@
 							is_saving = false;
 						} );
 						var t = document.createElement("div");
-						e.appendChild(t), Object(element.render)(element.createElement(dropdownMenu, null), t)
+						e.prepend(t), Object(element.render)(element.createElement(dropdownMenu, null), t)
 					}
 
 					editNotice.createNotice(

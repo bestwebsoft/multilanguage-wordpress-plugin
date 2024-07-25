@@ -6,7 +6,7 @@ Description: Translate WordPress website content to other languages manually. Cr
 Author: BestWebSoft
 Text Domain: multilanguage
 Domain Path: /languages
-Version: 1.4.6
+Version: 1.4.8
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
  */
@@ -904,7 +904,11 @@ if ( ! function_exists( 'mltlngg_get_lang_link' ) ) {
 		if ( $is_custom_permalink ) {
 			$home_url      = get_option( 'home' );
 			$locale_string = ( $hide_lang ) ? '' : '/' . $lang;
-			$url           = $home_url . $locale_string . $url_parsed['request_uri'];
+			if ( ! $hide_lang ) {
+				$url           = $home_url . $locale_string . $url_parsed['request_uri'];
+			} else {
+				$url           = $home_url . $url_parsed['request_uri'];
+			}
 		} else {
 			if ( ! $hide_lang ) {
 				$url = add_query_arg( 'lang', $lang, $url );
@@ -1005,10 +1009,17 @@ if ( ! function_exists( 'mltlngg_alternate_links' ) ) {
 				continue;
 			}
 
-			$args = array(
-				'lang'  => $item['link_param'],
-				'force' => 'display',
-			);
+			if ( 'x-default' === $item['hreflang'] || $mltlngg_get_default_language === $item['hreflang'] ) {
+				$args = array(
+					'lang'  => $item['link_param'],
+					'force' => 'false',
+				);
+			} else {
+				$args = array(
+					'lang'  => $item['link_param'],
+					'force' => 'display',
+				);
+			}
 
 			$permalink_structure = get_option( 'permalink_structure' );
 
@@ -1255,7 +1266,7 @@ if ( ! function_exists( 'mltlngg_script_style' ) ) {
 		if ( is_admin() ) {
 			if ( mltlngg_is_gutenberg_active() ) {
 				if ( ! empty( $mltlngg_enabled_languages ) ) {
-					wp_enqueue_script( 'mltlngg_script_gutenberg', plugins_url( 'js/gutenberg-script.js', __FILE__ ), array( 'jquery' ), $mltlngg_plugin_info['Version'], true );
+					wp_enqueue_script( 'mltlngg_script_gutenberg', plugins_url( 'js/gutenberg-script.js', __FILE__ ), array( 'jquery' ), $mltlngg_plugin_info['Version'] . '.3', true );
 					wp_localize_script(
 						'mltlngg_script_gutenberg',
 						'mltlngg_vars',
@@ -1435,6 +1446,9 @@ if ( ! class_exists( 'Mltlngg_Widget' ) ) {
 			$title                     = ( ! empty( $instance['title'] ) ) ? apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base ) : '';
 			echo wp_kses_post( $args['before_widget'] );
 			echo wp_kses_post( $args['before_title'] ) . esc_html( $title ) . wp_kses_post( $args['after_title'] );
+			if ( in_array( $mltlngg_options['language_switcher'], array( 'gt', 'gt-horizontal', 'gt-vertical' ) ) && ! in_array( $mltlngg_language_switcher, array( 'gt', 'gt-horizontal', 'gt-vertical' ) ) ) {
+				$mltlngg_language_switcher = $mltlngg_options['language_switcher'];
+			}
 			/* Language switcher style */
 			echo mltlngg_get_switcher_block( $mltlngg_language_switcher );
 			echo wp_kses_post( $args['after_widget'] );
@@ -1468,9 +1482,16 @@ if ( ! class_exists( 'Mltlngg_Widget' ) ) {
 			</p>
 			<p>
 				<select name="<?php echo esc_attr( $this->get_field_name( 'mltlngg_language_switcher' ) ); ?>">
-					<?php foreach ( $language_switcher_name as $key => $value ) { ?>
-						<option <?php selected( $mltlngg_language_switcher, $key ); ?> value="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $value ); ?></option>
-					<?php } ?>
+					<?php
+					foreach ( $language_switcher_name as $key => $value ) {
+						$disabled = '';
+						if ( in_array( $mltlngg_options['language_switcher'], array( 'gt', 'gt-horizontal', 'gt-vertical' ) ) && ! in_array( $key, array( 'gt', 'gt-horizontal', 'gt-vertical' ) ) ) {
+							$disabled = 'disabled="disabled"';
+						} ?>
+						<option <?php selected( $mltlngg_language_switcher, $key ); ?> <?php echo esc_html( $disabled ); ?> value="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $value ); ?></option>
+						<?php
+					}
+					?>
 				</select>
 			</p>
 			<?php
@@ -1541,6 +1562,19 @@ if ( ! function_exists( 'register_mltlngg_widget' ) ) {
 	 */
 	function register_mltlngg_widget() {
 		register_widget( 'Mltlngg_Widget' );
+	}
+}
+
+if ( ! function_exists( 'mltlngg_post_tag_labels' ) ) {
+	/**
+	 * Add text for separate_items_with_commas
+	 *
+	 * @param object $labels Taxonomy object.
+	 * @return object $labels Taxonomy object.
+	 */
+	function mltlngg_post_tag_labels( $labels ) {
+		$labels->separate_items_with_commas .= '<p style="color: red;">' . wp_sprintf( __( 'Translate Post Tags only on the %sTags%s page', 'multilanguage' ),  wp_sprintf( '<a href=%s>', esc_url( admin_url( 'edit-tags.php?taxonomy=post_tag' ) ) ), '</a>' ) . '</p>';
+		return $labels;
 	}
 }
 
@@ -1714,6 +1748,7 @@ if ( ! function_exists( 'mltlngg_showup_language_tabs_in_editor' ) ) {
 		$current_posttype = get_post_type( $post->ID );
 		$check_posttype   = ( 'post' === $current_posttype || 'page' === $current_posttype );
 		$check_posttype   = apply_filters( 'mltlngg_posttype_compability', $check_posttype, $current_posttype );
+
 		if ( $check_posttype ) {
 			$original_data = $wpdb->get_row(
 				$wpdb->prepare(
@@ -2851,6 +2886,10 @@ if ( ! function_exists( 'mltlngg_terms_filter' ) ) {
 	function mltlngg_terms_filter( $terms ) {
 		global $wpdb, $mltlngg_current_language;
 
+		if ( is_admin() ) {
+			return $terms;
+		}
+
 		/* Filter the search of terms during the post editing */
 		if (
 			isset( $_GET['action'] ) && 'ajax-tag-search' === sanitize_text_field( wp_unslash( $_GET['action'] ) ) &&
@@ -2915,6 +2954,11 @@ if ( ! function_exists( 'mltlngg_term_filter' ) ) {
 	 */
 	function mltlngg_term_filter( $term ) {
 		global $wpdb, $mltlngg_current_language;
+
+		if ( is_admin() ) {
+			return $term;
+		}
+
 		$mltlngg_term_name = $wpdb->get_var(
 			$wpdb->prepare(
 				'SELECT `name`
@@ -3691,6 +3735,7 @@ add_action( 'wp_head', 'mltlngg_wp_head', PHP_INT_MAX );
 add_action( 'admin_enqueue_scripts', 'mltlngg_script_style' );
 add_action( 'wp_enqueue_scripts', 'mltlngg_script_style' );
 add_action( 'widgets_init', 'register_mltlngg_widget' );
+add_filter( 'taxonomy_labels_post_tag', 'mltlngg_post_tag_labels' );
 
 add_shortcode( 'multilanguage_switcher', 'mltlngg_get_switcher_block' );
 
