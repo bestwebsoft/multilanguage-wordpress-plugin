@@ -1,7 +1,9 @@
 function mltlnggGoogleTranslateElementInit() {
 	var options = {
 		pageLanguage: mltlngg_lang_var.current_lang,
+		includedLanguages: mltlngg_lang_var.include_languages,
 	};
+
 	switch ( mltlngg_lang_var.layout ) {
 		case 'dropdown':
 			options.layout = google.translate.TranslateElement.InlineLayout.SIMPLE;

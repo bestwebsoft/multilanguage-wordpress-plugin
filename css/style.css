@@ -347,7 +347,20 @@ li.mltlngg-menu-item > ul {
 	width: 100;
 	text-align: inherit;
 }
-
+/* List format */
+.list-format {
+	cursor: default;
+}
+.list-format button {
+	color: inherit;
+}
+.list-format img {
+	vertical-align: baseline;
+}
+.mltlngg-lang-current {
+	cursor: default;
+	font-family: inherit;
+}
 /* Google Switcher */
 #mltlngg_google_switcher a,
 #mltlngg_google_switcher a img {

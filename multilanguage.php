@@ -6,7 +6,7 @@ Description: Translate WordPress website content to other languages manually. Cr
 Author: BestWebSoft
 Text Domain: multilanguage
 Domain Path: /languages
-Version: 1.4.8
+Version: 1.4.9
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
  */
@@ -695,9 +695,10 @@ if ( ! function_exists( 'mltlngg_redirect' ) ) {
 	function mltlngg_redirect() {
 		global $mltlngg_enabled_languages, $mltlngg_options, $mltlngg_current_language, $mltlngg_get_default_language;
 		/* gutenberg save post */
-		if ( mltlngg_is_rest_api() ) {
+		/* Maybe remove because it prevents the url from changing if there is a post type in the title */
+		/*if ( mltlngg_is_rest_api() ) {
 			return;
-		}
+		}*/
 
 		if ( empty( $mltlngg_options ) ) {
 			$mltlngg_options = get_option( 'mltlngg_options' );
@@ -730,7 +731,7 @@ if ( ! function_exists( 'mltlngg_redirect' ) ) {
 		$redirect_url = apply_filters( 'mltlngg_redirect_url', mltlngg_get_lang_link() );
 
 		$redirect = false;
-
+		
 		if ( rtrim( preg_replace( '~^http(s)?://~U', '', $redirect_url ), '/' ) !== rtrim( preg_replace( '~^http(s)?://~U', '', $request_url ), '/' ) ) {
 			$redirect = true;
 		}
@@ -1218,7 +1219,7 @@ if ( ! function_exists( 'mltlngg_get_url_translated' ) ) {
 	 */
 	function mltlngg_get_url_translated( $url ) {
 		global $mltlngg_current_language, $mltlngg_enabled_languages, $mltlngg_options;
-		if ( isset( $_REQUEST['_locale'] ) ) {
+		if ( isset( $_REQUEST['_locale'] ) || strpos( sanitize_text_field( wp_unslash( $url ) ), 'wp-json' ) ) {
 			return $url;
 		}
 		if ( empty( $mltlngg_options ) ) {
@@ -1364,12 +1365,20 @@ if ( ! function_exists( 'mltlngg_enqueue_google_script' ) ) {
 
 		$lang = mltlngg_get_lang_code( $mltlngg_current_language );
 
+		$all_lang = $mltlngg_options['list_of_languages'];
+		$all_lang_codes = array_column( $all_lang, 'locale' );
+		foreach( $all_lang_codes as $key => $code ) {
+			$code = explode( '_', $code );
+			$all_lang_codes[ $key ] = $code[0];
+		}
+
 		wp_localize_script(
 			'mltlngg_google_script',
 			'mltlngg_lang_var',
 			array(
-				'current_lang' => $lang,
-				'layout'       => $layout,
+				'current_lang'      => $lang,
+				'layout'            => $layout,
+				'include_languages' => implode( ',', $all_lang_codes ),
 			)
 		);
 
@@ -1467,6 +1476,9 @@ if ( ! class_exists( 'Mltlngg_Widget' ) ) {
 				'drop-down-list'   => __( 'Drop-down list (flag + title)', 'multilanguage' ),
 				'drop-down-titles' => __( 'Drop-down list (title)', 'multilanguage' ),
 				'drop-down-icons'  => __( 'Drop-down list (flag)', 'multilanguage' ),
+				'list-flag-title'  => __( 'List (flag + title)', 'multilanguage' ),
+				'list-titles'      => __( 'List (title)', 'multilanguage' ),
+				'list-short-title' => __( 'List (short title)', 'multilanguage' ),
 				'flags-icons'      => __( 'Flag', 'multilanguage' ),
 				'gt'               => __( 'Google Auto Translate (drop-down only)', 'multilanguage' ),
 				'gt-horizontal'    => __( 'Google Auto Translate (horizontal)', 'multilanguage' ),
@@ -1641,6 +1653,57 @@ if ( ! function_exists( 'mltlngg_get_switcher_block' ) ) {
 							<ul>' . $options . '</ul>
 						</li>
 					</ul>';
+				break;
+			case 'list-flag-title':
+				$options = '';
+				foreach ( $mltlngg_enabled_languages as $item ) {
+					if ( $item['locale'] !== $mltlngg_current_language ) {
+						$flag     = ( empty( $item['flag'] ) ) ? plugins_url( 'images/flags/', __FILE__ ) . $item['locale'] . '.png' : $item['flag'];
+						$options .= '<div class="mltlngg-lang-' . $item['locale'] . '">
+							<button class="mltlngg-lang-button-icons" name="mltlngg_change_display_lang" value="' . $item['locale'] . '" title="' . $item['name'] . '">
+								<img class="mltlngg-lang" src="' . $flag . '" alt="' . $item['name'] . '"> ' . $item['name'] .
+							'</button>
+						</div>';
+					} else {
+						$current_language_flag = '<div class="mltlngg-lang-current"><img src="' . ( empty( $item['flag'] ) ? plugins_url( 'images/flags/', __FILE__ ) . $item['locale'] . '.png' : $item['flag'] ) . '" /> ' . $item['name'] . '</div>';
+					}
+				}
+				$switcher .=
+					'<div class="mltlngg-lang-switch list-format">' . $current_language_flag . $options . '</div>';
+				break;
+			case 'list-titles':
+				$options = '';
+				foreach ( $mltlngg_enabled_languages as $item ) {
+					if ( $item['locale'] !== $mltlngg_current_language ) {
+						$flag     = ( empty( $item['flag'] ) ) ? plugins_url( 'images/flags/', __FILE__ ) . $item['locale'] . '.png' : $item['flag'];
+						$options .= '<div>
+							<button class="mltlngg-lang-button-icons" name="mltlngg_change_display_lang" value="' . $item['locale'] . '" title="' . $item['name'] . '">'
+								. $item['name'] .
+							'</button>
+						</div>';
+					} else {
+						$current_language_name = '<div class="mltlngg-lang-current">' . $item['name'] . '</div>';
+					}
+				}
+				$switcher .=
+					'<div class="mltlngg-lang-switch list-format">' . $current_language_name . ' ' . $options . '</div>';
+				break;
+			case 'list-short-title':
+				$options = '';
+				foreach ( $mltlngg_enabled_languages as $item ) {
+					if ( $item['locale'] !== $mltlngg_current_language ) {
+						$flag     = ( empty( $item['flag'] ) ) ? plugins_url( 'images/flags/', __FILE__ ) . $item['locale'] . '.png' : $item['flag'];
+						$options .= '<div class="mltlngg-lang-' . $item['locale'] . '">
+							<button class="mltlngg-lang-button-icons" name="mltlngg_change_display_lang" value="' . $item['locale'] . '" title="' . strtoupper( $item['locale'] ) . '">'
+								. strtoupper( $item['locale'] ) .
+							'</button>
+						</div>';
+					} else {
+						$current_language_name = '<div class="mltlngg-lang-current">' . strtoupper( $item['locale'] ) . '</div>';
+					}
+				}
+				$switcher .=
+					'<div class="mltlngg-lang-switch list-format">' . $current_language_name . ' ' . $options . '</div>';
 				break;
 			case 'flags-icons':
 				foreach ( $mltlngg_enabled_languages as $item ) {

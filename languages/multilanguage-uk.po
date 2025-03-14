@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: multilanguage\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-30 08:57+0300\n"
+"POT-Creation-Date: 2025-03-14 16:37+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: BestWebSoft team <wp@bestwebsoft.com>\n"
 "Language-Team: BestWebSoft <wp@bestwebsoft.com>\n"
@@ -10,79 +10,90 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c;esc_html__;esc_html_e\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: bws_menu\n"
 "X-Poedit-SearchPathExcluded-1: js/editor_blocks.js\n"
 "X-Poedit-SearchPathExcluded-2: js/editor_vendor.js\n"
 
-#: includes/class-mltlngg-settings.php:21 multilanguage.php:38
-#: multilanguage.php:40 multilanguage.php:1383 multilanguage.php:2934
-#: multilanguage.php:2948
+#: includes/class-mltlngg-settings.php:31 multilanguage.php:46
+#: multilanguage.php:48 multilanguage.php:1791 multilanguage.php:3634
+#: multilanguage.php:3654
 msgid "Settings"
 msgstr "Налаштування"
 
-#: includes/class-mltlngg-settings.php:22
+#: includes/class-mltlngg-settings.php:32
 msgid "Misc"
 msgstr "Різне"
 
-#: includes/class-mltlngg-settings.php:23
+#: includes/class-mltlngg-settings.php:33
 msgid "Custom Code"
 msgstr "Користувацький код"
 
-#: includes/class-mltlngg-settings.php:25
+#: includes/class-mltlngg-settings.php:34
 msgid "License Key"
 msgstr "Ліцензійний ключ"
 
-#: includes/class-mltlngg-settings.php:46 multilanguage.php:1197
+#: includes/class-mltlngg-settings.php:54 multilanguage.php:1476
 msgid "Drop-down list (flag + title)"
 msgstr "Випадаючий список (назва +  прапор)"
 
-#: includes/class-mltlngg-settings.php:47 multilanguage.php:1198
+#: includes/class-mltlngg-settings.php:55 multilanguage.php:1477
 msgid "Drop-down list (title)"
 msgstr "Розкривний список (назва)"
 
-#: includes/class-mltlngg-settings.php:48 multilanguage.php:1199
+#: includes/class-mltlngg-settings.php:56 multilanguage.php:1478
 msgid "Drop-down list (flag)"
 msgstr "Розкривний список (прапор)"
 
-#: includes/class-mltlngg-settings.php:49 includes/table.php:39
-#: multilanguage.php:1098 multilanguage.php:1100 multilanguage.php:1200
-#: multilanguage.php:2894
+#: includes/class-mltlngg-settings.php:57 multilanguage.php:1479
+msgid "List (flag + title)"
+msgstr "Список (прапор + назва)"
+
+#: includes/class-mltlngg-settings.php:58 multilanguage.php:1480
+msgid "List (title)"
+msgstr "Список (назва)"
+
+#: includes/class-mltlngg-settings.php:59 multilanguage.php:1481
+msgid "List (short title)"
+msgstr "Список (коротка назва)"
+
+#: includes/class-mltlngg-settings.php:60 includes/table.php:58
+#: multilanguage.php:1482 multilanguage.php:3585
 msgid "Flag"
 msgstr "Прапор"
 
-#: includes/class-mltlngg-settings.php:50 multilanguage.php:1201
+#: includes/class-mltlngg-settings.php:61 multilanguage.php:1483
 msgid "Google Auto Translate (drop-down only)"
 msgstr "Авто перекладач Google (випадаючий список)"
 
-#: includes/class-mltlngg-settings.php:51 multilanguage.php:1202
+#: includes/class-mltlngg-settings.php:62 multilanguage.php:1484
 msgid "Google Auto Translate (horizontal)"
 msgstr "Авто перекладач Google (горизонтально)"
 
-#: includes/class-mltlngg-settings.php:52 multilanguage.php:1203
+#: includes/class-mltlngg-settings.php:63 multilanguage.php:1485
 msgid "Google Auto Translate (vertical)"
 msgstr "Авто перекладач Google (вертикально)"
 
-#: includes/class-mltlngg-settings.php:83 includes/table.php:359
+#: includes/class-mltlngg-settings.php:99 includes/table.php:426
 msgid "Settings saved."
 msgstr "Налаштування збережено."
 
-#: includes/class-mltlngg-settings.php:94
+#: includes/class-mltlngg-settings.php:111
 msgid "Multilanguage Settings"
 msgstr "Налаштування Multilanguage"
 
-#: includes/class-mltlngg-settings.php:99 multilanguage.php:2898
-#: multilanguage.php:2902 multilanguage.php:2906
+#: includes/class-mltlngg-settings.php:116 multilanguage.php:3589
+#: multilanguage.php:3593 multilanguage.php:3597
 msgid "Google Auto Translate"
 msgstr "Авто перекладач Google"
 
-#: includes/class-mltlngg-settings.php:101
+#: includes/class-mltlngg-settings.php:118
 msgid ""
 "Enable to activate webpages auto translate. When google auto translate is "
 "enabled, a Google language switcher is displayed on the page allowing "
@@ -92,20 +103,20 @@ msgstr ""
 "автоматичний переклад Google, на сторінці відображається перемикач мови "
 "Google, що дозволяє відвідувачам автоматично перекладати вміст сторінки."
 
-#: includes/class-mltlngg-settings.php:105
-msgid "Default Language Switcher Type"
-msgstr "Тип перемикача мови за замовчуванням"
+#: includes/class-mltlngg-settings.php:122
+msgid "Default Language Switcher Type (for shortcode only)"
+msgstr "Тип перемикача мови за замовчуванням (тільки для шорткоду)"
 
-#: includes/class-mltlngg-settings.php:119
-#: includes/class-mltlngg-settings.php:250 includes/table.php:422
+#: includes/class-mltlngg-settings.php:135
+#: includes/class-mltlngg-settings.php:295 includes/table.php:489
 msgid "Close"
 msgstr "Закрити"
 
-#: includes/class-mltlngg-settings.php:123
+#: includes/class-mltlngg-settings.php:139
 msgid "Switch Language Automatically"
 msgstr "Перемикати мову автоматично"
 
-#: includes/class-mltlngg-settings.php:125
+#: includes/class-mltlngg-settings.php:141
 msgid ""
 "Enable to identify user IP and switch website language automatically based "
 "on the location."
@@ -113,23 +124,23 @@ msgstr ""
 "Увімкніть ідентифікацію IP-адреси користувача та автоматичне перемикання "
 "мови веб-сайту на основі місцезнаходження."
 
-#: includes/class-mltlngg-settings.php:129
+#: includes/class-mltlngg-settings.php:145
 msgid "Slug Position in the URL"
 msgstr "Позиція слаґу в URL-адресі"
 
-#: includes/class-mltlngg-settings.php:141
+#: includes/class-mltlngg-settings.php:170
 msgid "Before"
 msgstr "Перед"
 
-#: includes/class-mltlngg-settings.php:150
+#: includes/class-mltlngg-settings.php:186
 msgid "After"
 msgstr "Після"
 
-#: includes/class-mltlngg-settings.php:160
+#: includes/class-mltlngg-settings.php:197
 msgid "Permalink Translation"
 msgstr "Переклади Пермалінків"
 
-#: includes/class-mltlngg-settings.php:162
+#: includes/class-mltlngg-settings.php:199
 msgid ""
 "Enable to translate pages, posts, and custom posts slugs in different "
 "languages."
@@ -137,20 +148,20 @@ msgstr ""
 "Увімкніть переклад сторінок, публікацій та користувацьких повідомлень на "
 "різні мови."
 
-#: includes/class-mltlngg-settings.php:173
+#: includes/class-mltlngg-settings.php:209
 msgid "Default Language Slug"
 msgstr "Слаґ стандартної мови"
 
-#: includes/class-mltlngg-settings.php:175
+#: includes/class-mltlngg-settings.php:211
 msgid "Enable to show default language slug in the URL."
 msgstr ""
 "Увімкніть для відображення слаґа в URL-адресі для мови за замовчуванням."
 
-#: includes/class-mltlngg-settings.php:179
+#: includes/class-mltlngg-settings.php:215
 msgid "WordPress Language"
 msgstr "Мова WordPress"
 
-#: includes/class-mltlngg-settings.php:181
+#: includes/class-mltlngg-settings.php:217
 msgid ""
 "Enable to switch WordPress language automatically when the language is "
 "changed in the front-end. Installed WordPress language packs are required. "
@@ -161,20 +172,20 @@ msgstr ""
 "енді. Потрібні встановлені мовні пакети WordPress. Щоб встановити нову мову, "
 "просто перейдіть до Налаштування> Загальне та виберіть її в опції Мова сайту."
 
-#: includes/class-mltlngg-settings.php:185
+#: includes/class-mltlngg-settings.php:221
 msgid "Open Graph Markup"
 msgstr "Розмітка open graph"
 
-#: includes/class-mltlngg-settings.php:190
+#: includes/class-mltlngg-settings.php:227
 #, php-format
 msgid "Enable to add the ability to translate %s."
 msgstr "Увімкніть для додавання перекладу %s."
 
-#: includes/class-mltlngg-settings.php:191
+#: includes/class-mltlngg-settings.php:228
 msgid "open graph meta tags"
 msgstr "open graph мета тегів"
 
-#: includes/class-mltlngg-settings.php:193
+#: includes/class-mltlngg-settings.php:231
 #, php-format
 msgid ""
 "This option automatically adds metadata for each language in the %s section. "
@@ -184,11 +195,11 @@ msgstr ""
 "інші соціальні мережі використовують ці дані, коли хтось ділиться вашою "
 "сторінкою."
 
-#: includes/class-mltlngg-settings.php:198
+#: includes/class-mltlngg-settings.php:239
 msgid "Hreflang Attribute"
 msgstr "Атрибут hreflang"
 
-#: includes/class-mltlngg-settings.php:200
+#: includes/class-mltlngg-settings.php:241
 #, php-format
 msgid ""
 "Enable to add hreflang attribute used by search engines and display the "
@@ -200,19 +211,30 @@ msgstr ""
 "регіональної URL-адреси. Ця опція автоматично додає відповідне посилання у "
 "блок %s."
 
-#: includes/class-mltlngg-settings.php:205
+#: includes/class-mltlngg-settings.php:246
 msgid "Translation Saving Mode for Classic Editor"
 msgstr "Режим збереження перекладів для класичного редактора"
 
-#: includes/class-mltlngg-settings.php:210
+#: includes/class-mltlngg-settings.php:251
 msgid "Auto"
 msgstr "Автоматичний"
 
-#: includes/class-mltlngg-settings.php:215
+#: includes/class-mltlngg-settings.php:251
+msgid ""
+"If this option is selected, there may be a problem with custom post types."
+msgstr ""
+"Якщо цей параметр вибрано, можуть виникнути проблеми з кастомними типами "
+"дописів."
+
+#: includes/class-mltlngg-settings.php:256
 msgid "Manual (Save Changes button)"
 msgstr "Ручний (кнопка «Зберегти зміни»)"
 
-#: includes/class-mltlngg-settings.php:218
+#: includes/class-mltlngg-settings.php:256
+msgid "Recommended"
+msgstr "Рекомендовані"
+
+#: includes/class-mltlngg-settings.php:259
 msgid ""
 "Enable Manual mode if you have some problems with translations saving using "
 "Auto mode."
@@ -220,23 +242,23 @@ msgstr ""
 "Увімкніть ручний режим, якщо виникли проблеми зі збереженням перекладів в "
 "автоматичному режимі."
 
-#: includes/class-mltlngg-settings.php:223
+#: includes/class-mltlngg-settings.php:264
 msgid "Default Search by"
 msgstr "Стандартний пошук для"
 
-#: includes/class-mltlngg-settings.php:227
+#: includes/class-mltlngg-settings.php:268
 msgid "Current language"
 msgstr "Поточної мови"
 
-#: includes/class-mltlngg-settings.php:231
+#: includes/class-mltlngg-settings.php:272
 msgid "All active languages"
 msgstr "Усіх активних мов"
 
-#: includes/class-mltlngg-settings.php:254
-msgid "Import database"
-msgstr "Імпорт бази даних"
+#: includes/class-mltlngg-settings.php:299
+msgid "Import Database"
+msgstr "Імпорт таблиці країн"
 
-#: includes/class-mltlngg-settings.php:258
+#: includes/class-mltlngg-settings.php:303
 #, php-format
 msgid ""
 "This option is common to all subdomains.%sWe recommend you do not change "
@@ -245,56 +267,52 @@ msgstr ""
 "Цей параметр є загальним для всіх субдоменів.%sРекомендуємо не змінювати цей "
 "параметр без згоди адміністратора вашої мережі."
 
-#: includes/class-mltlngg-settings.php:260
-msgid "Please upload the files manually using the following link"
-msgstr "Будь ласка, завантажте файли вручну, використовуючи наступне посилання"
+#: includes/class-mltlngg-settings.php:305
+#, php-format
+msgid "Please upload the files manually using the following link %s."
+msgstr "Будь ласка, завантажте файли вручну за наступним посиланням %s."
 
-#: includes/class-mltlngg-settings.php:260
-msgid "Instructions on downloading and updating the country table"
-msgstr "Вказівки щодо завантаження та оновлення таблиці країн"
-
-#: includes/class-mltlngg-settings.php:260
-msgid "here"
-msgstr "тут"
-
-#: includes/class-mltlngg-settings.php:262
+#: includes/class-mltlngg-settings.php:310
 msgid "Import Now"
 msgstr "Імпортувати зараз"
 
-#: includes/class-mltlngg-settings.php:266
+#: includes/class-mltlngg-settings.php:313
 msgid ""
 "Receive an information about each IP address, and to which country it "
 "belongs to."
 msgstr ""
 "Отримуйте інформацію про кожну IP-адресу та до якої країни вона належить."
 
-#: includes/class-mltlngg-settings.php:269
-msgid ""
-"Due to the fact that JavaScript is disabled, GeoIP will be updated via "
-"wp_cron."
-msgstr "Через те, що JavaScript вимкнено, GeoIP буде оновлено через wp_cron."
+#: includes/class-mltlngg-settings.php:316
+msgid "Follow this instruction to download or update the country table"
+msgstr ""
+"Дотримуйтесь цієї інструкції, щоб завантажити або оновити таблицю країн"
 
-#: includes/class-mltlngg-settings.php:301
+#: includes/class-mltlngg-settings.php:316
+msgid "How to import or update the Country Table"
+msgstr "Як імпортувати або оновити таблицю країн"
+
+#: includes/class-mltlngg-settings.php:351
 msgid "Language Switcher"
 msgstr "Перемикач мови"
 
-#: includes/class-mltlngg-settings.php:304
+#: includes/class-mltlngg-settings.php:354
 msgid "Add \"Multilanguage Switcher\" to a widget."
 msgstr "Додайте \"Перемикач мови\" у віджети."
 
-#: includes/class-mltlngg-settings.php:304
+#: includes/class-mltlngg-settings.php:354
 msgid "Navigate to Widgets"
 msgstr "Перейти до віджетів"
 
-#: includes/class-mltlngg-settings.php:305
+#: includes/class-mltlngg-settings.php:355
 msgid "Add \"Multilanguage Switcher\" to a menu."
 msgstr "Додайте \"Перемикач мови\" у меню."
 
-#: includes/class-mltlngg-settings.php:305
+#: includes/class-mltlngg-settings.php:355
 msgid "Navigate to Menus"
 msgstr "Перейти до меню"
 
-#: includes/class-mltlngg-settings.php:306
+#: includes/class-mltlngg-settings.php:356
 msgid ""
 "Add a language switcher to your posts, pages or custom post types by using "
 "the following shortcode:"
@@ -302,207 +320,207 @@ msgstr ""
 "Додати перемикач мови на ваші записи, сторінки або користувацькі типи "
 "записів за допомогою даного шорткода:"
 
-#: includes/class-mltlngg-settings.php:308
+#: includes/class-mltlngg-settings.php:358
 msgid ""
 "Add a language switcher to PHP template files by using the following code"
 msgstr ""
 "Додайте перемикач мови в файли шаблонів PHP, використовуючи наступний код"
 
-#: includes/class-mltlngg-settings.php:317
+#: includes/class-mltlngg-settings.php:374
 msgid "Please enable JavaScript in your browser."
 msgstr "Будь ласка, увімкніть JavaScript у вашому браузері."
 
-#: includes/table.php:15
+#: includes/table.php:24
 msgid "language"
 msgstr "мова"
 
-#: includes/table.php:16
+#: includes/table.php:25
 msgid "languages"
 msgstr "мови"
 
-#: includes/table.php:37 includes/table.php:374 multilanguage.php:1099
+#: includes/table.php:56 includes/table.php:441
 msgid "Title"
 msgstr "Заголовок"
 
-#: includes/table.php:38 includes/table.php:426
+#: includes/table.php:57 includes/table.php:493
 msgid "URL Slug"
 msgstr "URL слаґ"
 
-#: includes/table.php:40 includes/table.php:412
+#: includes/table.php:59 includes/table.php:479
 msgid "Order"
 msgstr "Порядок"
 
-#: includes/table.php:58 includes/table.php:380 includes/table.php:390
+#: includes/table.php:88 includes/table.php:447 includes/table.php:457
 msgid "Default"
 msgstr "За замовчуванням"
 
-#: includes/table.php:63
+#: includes/table.php:93
 msgid "Edit"
 msgstr "Редагувати"
 
-#: includes/table.php:70 includes/table.php:82 includes/table.php:93
+#: includes/table.php:100 includes/table.php:114 includes/table.php:125
 msgid "Enable"
 msgstr "Увімкнути"
 
-#: includes/table.php:72 includes/table.php:83 includes/table.php:88
+#: includes/table.php:102 includes/table.php:115 includes/table.php:120
 msgid "Disable"
 msgstr "Вимкнути"
 
-#: includes/table.php:74 includes/table.php:84 includes/table.php:89
-#: includes/table.php:94
+#: includes/table.php:104 includes/table.php:116 includes/table.php:121
+#: includes/table.php:126
 msgid "Delete"
 msgstr "Видалити"
 
-#: includes/table.php:216 includes/table.php:477 multilanguage.php:42
+#: includes/table.php:271 includes/table.php:546 multilanguage.php:50
 msgid "Languages"
 msgstr "Мови"
 
-#: includes/table.php:251
+#: includes/table.php:317
 msgid "Language added"
 msgstr "Мову додано"
 
-#: includes/table.php:253
+#: includes/table.php:319
 msgid "Incorrect language data."
 msgstr "Невірні дані мови."
 
-#: includes/table.php:321
+#: includes/table.php:388
 #, php-format
 msgid "Error: File size > %s."
 msgstr "Помилка: Розмір файлу > %s."
 
-#: includes/table.php:323
+#: includes/table.php:390
 msgid "Error: Invalid file type."
 msgstr "Помилка: Невірний тип файлу."
 
-#: includes/table.php:335
+#: includes/table.php:402
 msgid "Error: Failed to move file."
 msgstr "Помилка: переміщення файлу не вдалося."
 
-#: includes/table.php:338
+#: includes/table.php:405
 #, php-format
 msgid "Error: Image width and height should not exceed %s."
 msgstr "Помилка: ширина та висота зображення не повинні перевищувати %s."
 
-#: includes/table.php:342
+#: includes/table.php:409
 msgid "Uploading Error: Check image properties."
 msgstr "Помилка завантаження: перевірте властивості зображення."
 
-#: includes/table.php:363
+#: includes/table.php:430
 msgid "Edit Language"
 msgstr "Редагувати мову"
 
-#: includes/table.php:382
+#: includes/table.php:449
 msgid "Enable to use it as a default language."
 msgstr "Увімкніть для відображення мови за замовчуванням."
 
-#: includes/table.php:386
+#: includes/table.php:453
 msgid "Flag Image"
 msgstr "Зображення прапора"
 
-#: includes/table.php:393
+#: includes/table.php:460
 msgid "Custom"
 msgstr "Користувацьке"
 
-#: includes/table.php:400
+#: includes/table.php:467
 msgid "Current flag"
 msgstr "Поточний прапор"
 
-#: includes/table.php:408
+#: includes/table.php:475
 #, php-format
 msgid ""
-"Upload image of %s maximum dimensions in JPG, JPEG or PNG formats (maximum "
-"file size - %s)."
+"Upload image of %1$s maximum dimensions in JPG, JPEG or PNG formats (maximum "
+"file size - %2$s)."
 msgstr ""
-"Завантажуйте зображення максимальних розмірів %s в форматах JPG, JPEG або "
-"PNG (максимальний розмір файлу - %s)."
+"Завантажте зображення максимальних розмірів %1$s у форматах JPG, JPEG або "
+"PNG (максимальний розмір файлу - %2$s)."
 
-#: includes/table.php:450
+#: includes/table.php:519
 msgid "Site Title"
 msgstr "Назва сайту"
 
-#: includes/table.php:456
+#: includes/table.php:525
 msgid "Tagline"
 msgstr "Ключова фраза"
 
-#: includes/table.php:464 multilanguage.php:48
+#: includes/table.php:533 multilanguage.php:56
 msgid "Upgrade to Pro"
 msgstr "Оновити до Pro"
 
-#: includes/table.php:471
+#: includes/table.php:540
 msgid "Save changes"
 msgstr "Зберегти зміни"
 
-#: includes/table.php:478
+#: includes/table.php:547
 msgid "Add New"
 msgstr "Додати нову"
 
-#: includes/table.php:487
+#: includes/table.php:557
 msgid "You have the same order for two or more languages."
 msgstr "Ви обрали однакове положення для двох або більше мов."
 
-#: includes/table.php:506
+#: includes/table.php:587
 msgid "All"
 msgstr "Всі"
 
-#: includes/table.php:507
+#: includes/table.php:594
 msgid "Active"
 msgstr "Активні"
 
-#: includes/table.php:508
+#: includes/table.php:601
 msgid "Disabled"
 msgstr "Вимкнені"
 
-#: includes/table.php:546
+#: includes/table.php:647
 msgctxt "plural"
 msgid "enabled"
 msgstr "увімкнені"
 
-#: includes/table.php:546
+#: includes/table.php:647
 msgctxt "singular"
 msgid "enabled"
 msgstr "увімкнено"
 
-#: includes/table.php:563
+#: includes/table.php:664
 msgctxt "plural"
 msgid "disabled"
 msgstr "вимкнені"
 
-#: includes/table.php:563
+#: includes/table.php:664
 msgctxt "singular"
 msgid "disabled"
 msgstr "вимкнено"
 
-#: includes/table.php:579
+#: includes/table.php:680
 msgctxt "plural"
 msgid "deleted"
-msgstr "видаленi"
+msgstr "видалено"
 
-#: includes/table.php:579
+#: includes/table.php:680
 msgctxt "singular"
 msgid "deleted"
 msgstr "видалено"
 
-#: includes/table.php:583
+#: includes/table.php:684
 msgid "Unknown action"
 msgstr "Невідома дія"
 
-#: includes/table.php:604
+#: includes/table.php:708
 msgid "Choose a language"
 msgstr "Вибрати мову"
 
-#: includes/table.php:608
+#: includes/table.php:712
 msgid "Choose language from list below"
 msgstr "Вибрати мову"
 
-#: includes/table.php:621
+#: includes/table.php:730
 #, php-format
 msgid ""
-"In order to add a language that is not in the list use %s the instruction. %s"
+"In order to add a language that is not in the list use %1$s the instruction. "
+"%2$s"
 msgstr ""
-"Для того, щоб додати мову, якої немає у списку, використовуйте %s "
-"інструкцію . %s"
+"Щоб додати мову, якої немає у списку, використовуйте інструкцію %1$s. %2$s"
 
-#: includes/table.php:626 js/gutenberg-script.js:151 multilanguage.php:1426
+#: includes/table.php:738 js/gutenberg-script.js:150 multilanguage.php:1844
 msgid "Add Language"
 msgstr "Додати мову"
 
@@ -510,20 +528,20 @@ msgstr "Додати мову"
 msgid "Updating language"
 msgstr "Оновлення мови"
 
-#: js/gutenberg-script.js:41 js/gutenberg-script.js:167 multilanguage.php:1435
+#: js/gutenberg-script.js:41 js/gutenberg-script.js:211 multilanguage.php:1855
 msgid "Edit for language"
 msgstr "Редагувати для мови"
 
-#: js/gutenberg-script.js:131
+#: js/gutenberg-script.js:130
 msgid "Select Language"
 msgstr "Оберіть мову"
 
-#: multilanguage.php:142 multilanguage.php:1094 multilanguage.php:2702
-#: multilanguage.php:2705
+#: multilanguage.php:170 multilanguage.php:1321 multilanguage.php:3374
+#: multilanguage.php:3377
 msgid "Multilanguage switcher"
 msgstr "Мовний перемикач"
 
-#: multilanguage.php:1081
+#: multilanguage.php:1308
 msgid ""
 "Attention!!! The changes will not be saved because Title and Content fields "
 "are empty on the current tab! It is recommended to fill in at least one "
@@ -533,96 +551,118 @@ msgstr ""
 "вкладці порожні! Рекомендуємо заповнити принаймні одне поле або "
 "переключитись на вкладку, де поля заповнені."
 
-#: multilanguage.php:1082
+#: multilanguage.php:1309
 msgid "Switching to another language will remove all unsaved. Save data?"
 msgstr ""
 "При перемиканні на іншу мову усі незбережені дані будуть втрачені. Зберегти "
 "дані?"
 
-#: multilanguage.php:1098 multilanguage.php:1101 multilanguage.php:1102
-#: multilanguage.php:2882 multilanguage.php:2886
-msgid "title"
-msgstr "назва"
-
-#: multilanguage.php:1101 multilanguage.php:1102 multilanguage.php:1103
-#: multilanguage.php:2882 multilanguage.php:2886 multilanguage.php:2890
+#: multilanguage.php:1325 multilanguage.php:1326 multilanguage.php:1327
+#: multilanguage.php:3573 multilanguage.php:3577 multilanguage.php:3581
 msgid "Drop-down list"
 msgstr "Розкривний список"
 
-#: multilanguage.php:1101 multilanguage.php:1103 multilanguage.php:2882
-#: multilanguage.php:2890
+#: multilanguage.php:1325 multilanguage.php:1327 multilanguage.php:3573
+#: multilanguage.php:3581
 msgid "flag"
 msgstr "прапор"
 
-#: multilanguage.php:1164
+#: multilanguage.php:1326 multilanguage.php:1327 multilanguage.php:3573
+#: multilanguage.php:3577
+msgid "title"
+msgstr "назва"
+
+#: multilanguage.php:1411
 msgid "Content language switcher"
 msgstr "Перемикач мови для змісту"
 
-#: multilanguage.php:1205
+#: multilanguage.php:1488
 msgid "Localization"
 msgstr "Локалізація"
 
-#: multilanguage.php:1208
+#: multilanguage.php:1491 multilanguage.php:1521
 msgid "Title:"
 msgstr "Назва:"
 
-#: multilanguage.php:1431
+#: multilanguage.php:1526
+msgid "Content:"
+msgstr "Зміст:"
+
+#: multilanguage.php:1539
+msgid "Some HTML tags are not permitted, including:"
+msgstr "Деякі HTML-теги заборонені, зокрема:"
+
+#: multilanguage.php:1588
+#, php-format
+msgid "Translate Post Tags only on the %sTags%s page"
+msgstr "Перекладати теги дописів лише на %sTags% сторінці "
+
+#: multilanguage.php:1851
 msgid "Attention"
 msgstr "Увага"
 
-#: multilanguage.php:1431
+#: multilanguage.php:1851
 msgid ""
 "Please update the post before switching the language. Data is not saved "
 "automatically."
 msgstr ""
 "Оновіть сторінку перед перемиканням мови. Дані не зберігаються автоматично."
 
-#: multilanguage.php:1798 multilanguage.php:1870
+#: multilanguage.php:2278 multilanguage.php:2371
 msgid "Translations"
 msgstr "Переклади"
 
-#: multilanguage.php:1803 multilanguage.php:1875
+#: multilanguage.php:2283 multilanguage.php:2376
 #, php-format
-msgid "Add and enable a new language using %s the Languages page.%s"
-msgstr "Додайте та ввімкніть нову мову за допомогою%s сторінки \"Мови\".%s"
+msgid "Add and enable a new language using %1$s the Languages page.%2$s"
+msgstr "Додайте і ввімкніть нову мову за допомогою %1$s на сторінці Мови%2$s"
 
-#: multilanguage.php:2012
+#: multilanguage.php:2548
 #, php-format
 msgid "Protected: %s"
 msgstr "Захищено: %s"
 
-#: multilanguage.php:2015
+#: multilanguage.php:2551
 #, php-format
 msgid "Private: %s"
 msgstr "Особисте: %s"
 
-#: multilanguage.php:2237 multilanguage.php:2800
+#: multilanguage.php:2799 multilanguage.php:3476
 msgid "(more&hellip;)"
 msgstr "(докладніше&hellip;)"
 
-#: multilanguage.php:2878
+#: multilanguage.php:3569
 msgid "Select Switcher Type"
 msgstr "Оберіть тип перемикача"
 
-#: multilanguage.php:2898
+#: multilanguage.php:3589
 msgid "drop-down only"
 msgstr "лише розкривний список"
 
-#: multilanguage.php:2902
+#: multilanguage.php:3593
 msgid "horizontal"
 msgstr "горизонтальний"
 
-#: multilanguage.php:2906
+#: multilanguage.php:3597
 msgid "vertical"
 msgstr "вертикальний"
 
-#: multilanguage.php:2950
+#: multilanguage.php:3656
 msgid "FAQ"
 msgstr "FAQ"
 
-#: multilanguage.php:2951
+#: multilanguage.php:3657
 msgid "Support"
 msgstr "Підтримка"
+
+#~ msgid "here"
+#~ msgstr "тут"
+
+#~ msgid ""
+#~ "Due to the fact that JavaScript is disabled, GeoIP will be updated via "
+#~ "wp_cron."
+#~ msgstr ""
+#~ "Через те, що JavaScript вимкнено, GeoIP буде оновлено через wp_cron."
 
 #~ msgid "Update GeoIP Every"
 #~ msgstr "Оновлювати GeoIP кожен(кожні)"
@@ -1044,8 +1084,8 @@ msgstr "Підтримка"
 #~ "світу до бази даних (з сайту"
 
 #~ msgid ""
-#~ "If you need to update GeoIP immediately, please click on the \"Update now"
-#~ "\" button and wait until the operation is finished"
+#~ "If you need to update GeoIP immediately, please click on the \"Update "
+#~ "now\" button and wait until the operation is finished"
 #~ msgstr ""
 #~ "Якщо Вам необхідно негайно оновити GeoIP, будь-ласка натисніть на кнопку "
 #~ "\"Оновити негайно\" та зачекайте доки операцію буде завершено"

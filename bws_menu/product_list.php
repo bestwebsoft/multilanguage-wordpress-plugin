@@ -214,14 +214,14 @@ $bws_plugins = array(
 		'link'        => 'https://bestwebsoft.com/products/wordpress/plugins/google-shortlink/?k=afcf3eaed021bbbbeea1090e16bc22db&pn=' . $bws_plugin_info['id'] . '&v=' . $bws_plugin_info['version'] . '&wp_v=' . $wp_version,
 		'settings'    => 'admin.php?page=gglshrtlnk_options',
 	),
-	'gpt-ai-content-creator/gpt-ai-content-creator.php' => array(
+	'gpt-ai-content-creator-by-bestwebsoft/gpt-ai-content-creator-by-bestwebsoft.php' => array(
 		'category'     => array( 'content', 'recommended' ),
 		'name'         => 'GPT AI Content Creator',
 		'description'  => __( 'Create Content with GPT.', 'bestwebsoft' ),
 		'link'         => 'https://bestwebsoft.com/products/wordpress/plugins/gpt-ai-content-creator/?k=f1ef1b7d7d05f93c570b940cc9acfe15&pn=' . $bws_plugin_info['id'] . '&v=' . $bws_plugin_info['version'] . '&wp_v=' . $wp_version,
 		'settings'     => 'admin.php?page=gpt-ai-content-creator.php',
 		'icon'         => bws_menu_url( 'icons/plugins/' ) . 'gpt-ai-content-creator.png',
-		'pro_version'  => 'gpt-ai-content-creator-pro/gpt-ai-content-creator-pro.php',
+		'pro_version'  => 'gpt-ai-content-creator-pro-by-bestwebsoft/gpt-ai-content-creator-pro-by-bestwebsoft.php',
 		'purchase'     => 'https://bestwebsoft.com/products/wordpress/plugins/gpt-ai-content-creator/buy/?k=8b19619d4a36f8b42c5d4fbcbd9775bb&pn=' . $bws_plugin_info['id'] . '&v=' . $bws_plugin_info['version'] . '&wp_v=' . $wp_version,
 		'pro_settings' => 'admin.php?page=gpt-ai-content-creator-pro.php',
 	),
@@ -348,6 +348,9 @@ $bws_plugins = array(
 		'description' => __( 'Add customizable quotes and tips blocks to WordPress posts, pages and widgets.', 'bestwebsoft' ),
 		'link'        => 'https://bestwebsoft.com/products/wordpress/plugins/quotes-and-tips/?k=5738a4e85a798c4a5162240c6515098d&pn=' . $bws_plugin_info['id'] . '&v=' . $bws_plugin_info['version'] . '&wp_v=' . $wp_version,
 		'settings'    => 'admin.php?page=quotes-and-tips.php',
+		'pro_version'  => 'quotes-and-tips-pro/quotes-and-tips-pro.php',
+		'purchase'     => 'https://bestwebsoft.com/products/wordpress/plugins/quotes-and-tips/buy/?k=75347ac9699d9e965a81673fbbb80876&pn=' . $bws_plugin_info['id'] . '&v=' . $bws_plugin_info['version'] . '&wp_v=' . $wp_version,
+		'pro_settings' => 'admin.php?page=quotes-and-tips-pro.php',
 	),
 	'rating-bws/rating-bws.php'                         => array(
 		'category'     => array( 'marketing' ),
@@ -375,7 +378,10 @@ $bws_plugins = array(
 		'description' => __( 'Add related, featured, latest, and popular posts to your WordPress website. Connect your blog readers with a relevant content.', 'bestwebsoft' ),
 		'link'        => 'https://bestwebsoft.com/products/wordpress/plugins/related-posts/?k=73fb737037f7141e66415ec259f7e426&pn=' . $bws_plugin_info['id'] . '&v=' . $bws_plugin_info['version'] . '&wp_v=' . $wp_version,
 		'settings'    => 'admin.php?page=related-posts-plugin.php',
-	),
+		'pro_version'  => 'relevant-pro/related-posts-pro.php',
+		'purchase'     => 'https://bestwebsoft.com/products/wordpress/plugins/related-posts/buy/?k=16368e8d55909c4852dd0fe39f89ed556&pn=' . $bws_plugin_info['id'] . '&v=' . $bws_plugin_info['version'] . '&wp_v=' . $wp_version,
+		'pro_settings' => 'admin.php?page=related-posts-pro.php',
+),
 	'sender/sender.php'                                 => array(
 		'category'     => array( 'marketing', 'recommended' ),
 		'name'         => 'Sender',

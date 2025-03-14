@@ -232,7 +232,7 @@ if ( ! function_exists( 'bws_admin_notices' ) ) {
 	 * @echo string
 	 */
 	function bws_admin_notices() {
-		global $bws_versions_notice_array, $bws_plugin_banner_to_settings, $bstwbsftwppdtplgns_options, $bws_plugin_banner_go_pro, $bstwbsftwppdtplgns_banner_array, $bws_plugin_banner_timeout;
+		global $bws_versions_notice_array, $bws_plugin_banner_to_settings, $bstwbsftwppdtplgns_options, $bws_plugin_banner_go_pro, $bstwbsftwppdtplgns_banner_array, $bws_plugin_banner_timeout, $bws_plugin_banner_to_promo;
 
 		/* bws_plugin_banner_go_pro */
 		if ( ! empty( $bws_plugin_banner_go_pro ) ) {
@@ -366,6 +366,33 @@ if ( ! function_exists( 'bws_admin_notices' ) ) {
 			}
 		}
 
+		/*  banner_to_setting_promo */
+		if ( ! empty( $bws_plugin_banner_to_promo ) ) {
+			$key = rand( 0, count( $bws_plugin_banner_to_promo ) - 1 );
+			?>
+			<div class="updated" style="padding: 0; margin: 0; border: none; background: none;">
+				<div class="bws_banner_on_plugin_page bws_banner_to_settings">
+					<div class="icon">
+						<img title="" src="<?php echo esc_url( $bws_plugin_banner_to_promo[$key]['banner_url'] ); ?>" alt="" />
+					</div>
+					<div class="text">
+						<strong><?php echo esc_html( $bws_plugin_banner_to_promo[$key]['message'][0] ); ?></strong>
+						<br />
+						<?php echo esc_html( $bws_plugin_banner_to_promo[$key]['message'][1] ); ?>
+					</div>
+					<div class="button_div">
+						<a class="button" href="<?php echo esc_url( self_admin_url( $bws_plugin_banner_to_promo[$key]['settings_url'] ) ); ?>"><?php esc_html_e( 'Go to Settings', 'bestwebsoft' ); ?></a>
+					</div>
+					<form action="" method="post">
+						<button class="notice-dismiss bws_hide_promo_notice" title="<?php esc_html_e( 'Close notice', 'bestwebsoft' ); ?>"></button>
+						<input type="hidden" name="bws_hide_settings_promo_notice_<?php echo esc_html( $bws_plugin_banner_to_promo[$key]['plugin_options_name'] ); ?>" value="hide" />
+						<?php wp_nonce_field( plugin_basename( __FILE__ ), 'bws_settings_nonce_name' ); ?>
+					</form>
+				</div>
+			</div>
+			<?php
+		}
+
 		/**
 		 * Show notices about deprecated_function
 		 *
@@ -427,7 +454,7 @@ if ( ! function_exists( 'bws_plugin_banner_go_pro' ) ) {
 		$bws_link = esc_url( 'https://bestwebsoft.com/products/wordpress/plugins/' . $bws_link_slug . '/?k=' . $link_key . '&pn=' . $link_pn . '&v=' . $plugin_info['Version'] . '&wp_v=' . $wp_version );
 
 		if ( false === strrpos( $banner_url_or_slug, '/' ) ) {
-			$banner_url_or_slug = '//ps.w.org/' . $banner_url_or_slug . '/assets/icon-256x256.png';
+			$banner_url_or_slug = '//ps.w.org/' . $banner_url_or_slug . '/assets/icon-256x256.gif';
 		}
 
 		$bws_plugin_banner_go_pro[ $this_banner_prefix . '_hide_banner_on_plugin_page' ] = array(
@@ -461,7 +488,7 @@ if ( ! function_exists( 'bws_add_plugin_banner_timeout' ) ) {
 		if ( isset( $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] ) && ( strtotime( $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] ) < strtotime( gmdate( 'm/d/Y' ) . '+1 month' ) ) && ( strtotime( $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] ) > strtotime( gmdate( 'm/d/Y' ) ) ) ) {
 
 			if ( false === strrpos( $banner_url_or_slug, '/' ) ) {
-				$banner_url_or_slug = '//ps.w.org/' . $banner_url_or_slug . '/assets/icon-256x256.png';
+				$banner_url_or_slug = '//ps.w.org/' . $banner_url_or_slug . '/assets/icon-256x256.gif';
 			}
 
 			$bws_plugin_banner_timeout[] = array(
@@ -507,7 +534,7 @@ if ( ! function_exists( 'bws_plugin_banner_to_settings' ) ) {
 		}
 
 		if ( false === strrpos( $banner_url_or_slug, '/' ) ) {
-			$banner_url_or_slug = '//ps.w.org/' . $banner_url_or_slug . '/assets/icon-256x256.png';
+			$banner_url_or_slug = '//ps.w.org/' . $banner_url_or_slug . '/assets/icon-256x256.gif';
 		}
 
 		$bws_plugin_banner_to_settings[] = array(
@@ -515,6 +542,63 @@ if ( ! function_exists( 'bws_plugin_banner_to_settings' ) ) {
 			'plugin_options_name' => $plugin_options_name,
 			'banner_url'          => $banner_url_or_slug,
 			'settings_url'        => $settings_url,
+			'post_type_url'       => $post_type_url,
+		);
+	}
+}
+
+if ( ! function_exists( 'bws_plugin_banner_to_promo' ) ) {
+	/**
+	 * Function settings for banner
+	 *
+	 * @param array $plugin_info              Plugin info.
+	 * @param array $plugin_options_name      Plugin option name.
+	 * @param array $banner_url_or_slug       Url or slug for icon.
+	 * @param array $settings_url             Url for settings.
+	 * @param array $post_type_url (Optional) Url for banner.
+	 * @return global array
+	 */
+	function bws_plugin_banner_to_promo( $plugin_info, $plugin_options_name, $banner_url_or_slug, $settings_url, $message = array(), $post_type_url = false ) {
+		global $bws_plugin_banner_to_promo;
+
+		$is_network_admin = is_network_admin();
+
+		$plugin_options = $is_network_admin ? get_site_option( $plugin_options_name ) : get_option( $plugin_options_name );
+
+		if ( isset( $plugin_options['display_promo_time'] ) && $plugin_options['display_promo_time'] + 604800000 < time() ) {
+			$plugin_options['display_promo_notice'] = 1;
+			if ( $is_network_admin ) {
+				update_site_option( $plugin_options_name, $plugin_options );
+			} else {
+				update_option( $plugin_options_name, $plugin_options );
+			}
+		}
+
+		if ( isset( $plugin_options['display_promo_notice'] ) && 0 === $plugin_options['display_promo_notice'] ) {
+			return;
+		}
+
+		if ( isset( $_POST[ 'bws_hide_settings_promo_notice_' . $plugin_options_name ] ) && check_admin_referer( plugin_basename( __FILE__ ), 'bws_settings_nonce_name' ) ) {
+			$plugin_options['display_promo_notice'] = 0;
+			$plugin_options['display_promo_time'] = time();
+			if ( $is_network_admin ) {
+				update_site_option( $plugin_options_name, $plugin_options );
+			} else {
+				update_option( $plugin_options_name, $plugin_options );
+			}
+			return;
+		}
+
+		if ( false === strrpos( $banner_url_or_slug, '/' ) ) {
+			$banner_url_or_slug = '//ps.w.org/' . $banner_url_or_slug . '/assets/icon-256x256.gif';
+		}
+
+		$bws_plugin_banner_to_promo[] = array(
+			'plugin_info'         => $plugin_info,
+			'plugin_options_name' => $plugin_options_name,
+			'banner_url'          => $banner_url_or_slug,
+			'settings_url'        => $settings_url,
+			'message'             => $message,
 			'post_type_url'       => $post_type_url,
 		);
 	}
@@ -579,7 +663,7 @@ if ( ! function_exists( 'bws_plugin_suggest_feature_banner' ) ) {
 		}
 
 		if ( false === strrpos( $banner_url_or_slug, '/' ) ) {
-			$banner_url_or_slug = '//ps.w.org/' . $banner_url_or_slug . '/assets/icon-256x256.png';
+			$banner_url_or_slug = '//ps.w.org/' . $banner_url_or_slug . '/assets/icon-256x256.gif';
 		}
 		?>
 		<div class="updated" style="padding: 0; margin: 0; border: none; background: none;">
@@ -600,6 +684,70 @@ if ( ! function_exists( 'bws_plugin_suggest_feature_banner' ) ) {
 			</div>
 		</div>
 		<?php
+	}
+}
+
+if ( ! function_exists( 'bws_plugin_promo_banner' ) ) {
+	/**
+	 * Function display for feature banner
+	 *
+	 * @param array $plugin_info              Plugin info.
+	 * @param array $plugin_options_name      Plugin option name.
+	 * @param array $banner_url_or_slug       Url or slug for icon.
+	 * @echo string
+	 */
+	function bws_plugin_promo_banner( $plugin_info, $plugin_options_name, $banner_url_or_slug, $plugin_url ) {
+		$is_network_admin = is_network_admin();
+
+		$promo_plugins = array( 'google-captcha', 'contact-form-plugin' );
+
+		$plugin_options = $is_network_admin ? get_site_option( $plugin_options_name ) : get_option( $plugin_options_name );
+
+		if ( in_array( $banner_url_or_slug, $promo_plugins ) ) {
+			if ( isset( $plugin_options['display_promo_banner_time'] ) && $plugin_options['display_promo_banner_time'] + 604800000 < time() ) {
+				$plugin_options['display_promo_banner'] = 1;
+				if ( $is_network_admin ) {
+					update_site_option( $plugin_options_name, $plugin_options );
+				} else {
+					update_option( $plugin_options_name, $plugin_options );
+				}
+			}
+			if ( isset( $plugin_options['display_promo_banner'] ) && 0 === $plugin_options['display_promo_banner'] ) {
+				return;
+			}
+
+			if ( isset( $_POST[ 'bws_hide_promo_banner_' . $plugin_options_name ] ) && check_admin_referer( $plugin_info['Name'], 'bws_settings_nonce_name' ) ) {
+				$plugin_options['display_promo_banner'] = 0;
+				$plugin_options['display_promo_banner_time'] = time();
+				if ( $is_network_admin ) {
+					update_site_option( $plugin_options_name, $plugin_options );
+				} else {
+					update_option( $plugin_options_name, $plugin_options );
+				}
+				return;
+			}
+			?>
+			<div style="padding: 0; margin: 0; border: none; background: none; position: relative;">
+				<div class="bws_banner_on_plugin_page bws_promo_banner">
+					<div class="promo-banner-left">
+						<div class="promo-banner-upgrade"><?php esc_html_e( 'Upgrade to pro', 'bestwebsoft' ); ?></div>
+						<div class="promo-banner-off"><?php esc_html_e( '30% OFF', 'bestwebsoft' ); ?></div>
+					</div>
+					<div class="promo-banner-text">
+						<div class="promo-banner-text-top"><?php esc_html_e( 'Get exclusive Pro features and premium support.', 'bestwebsoft' ); ?></div>
+						<div class="promo-banner-text-bottom"><?php printf( '%s <span>%s</span> %s', esc_html__( 'Use', 'bestwebsoft' ), esc_html__( 'UPGRADE', 'bestwebsoft' ), esc_html__( 'promo code for instant savings!', 'bestwebsoft' ) ); ?></div>
+					</div>
+					<div class="promo-banner-get-pro"><?php esc_html_e( 'Get PRO NOW', 'bestwebsoft' ); ?></div>
+				</div>
+				<a href="<?php echo esc_url( $plugin_url ); ?>" class="promo-banner-link"></a>
+				<form action="" method="post">
+					<button class="notice-dismiss bws_hide_settings_notice bws_hide_promo_notice" title="Close notice"></button>
+					<input type="hidden" name="bws_hide_promo_banner_gglcptch_options" value="hide">
+					<?php wp_nonce_field( $plugin_info['Name'], 'bws_settings_nonce_name' ); ?>
+				</form>
+			</div>
+			<?php
+		}
 	}
 }
 
@@ -1199,7 +1347,12 @@ if ( ! function_exists( 'bws_shortcode_media_button_popup' ) ) {
 					<div class="clear"></div>
 					<div id="bws_shortcode_content">
 						<h4><?php esc_html_e( 'Shortcode settings', 'bestwebsoft' ); ?></h4>
-						<?php echo wp_kses_post( apply_filters( 'bws_shortcode_button_content', '' ) ); ?>
+						<?php
+						$ws_shortcode_button_content = apply_filters( 'bws_shortcode_button_content', '' );
+						if ( ! empty( $ws_shortcode_button_content ) ) {
+							echo wp_kses_post( $ws_shortcode_button_content );
+						}
+						?>
 					</div>
 					<div class="clear"></div>
 					<div id="bws_shortcode_content_bottom">

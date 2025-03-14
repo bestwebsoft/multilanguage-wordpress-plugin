@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: multilanguage\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-24 16:37+0300\n"
+"POT-Creation-Date: 2025-03-14 16:38+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: BestWebSoft team <wp@bestwebsoft.com>\n"
 "Language-Team: BestWebSoft <info@bestwebsoft.com>\n"
@@ -16,13 +16,13 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;esc_html_e;_nx:4c,1,2;"
 "esc_attr__;esc_attr_e;esc_html__\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: bws_menu\n"
 
 #: includes/class-mltlngg-settings.php:31 multilanguage.php:46
-#: multilanguage.php:48 multilanguage.php:1704 multilanguage.php:3537
-#: multilanguage.php:3557
+#: multilanguage.php:48 multilanguage.php:1791 multilanguage.php:3634
+#: multilanguage.php:3654
 msgid "Settings"
 msgstr "الإعدادات"
 
@@ -38,49 +38,61 @@ msgstr "كود مخصص"
 msgid "License Key"
 msgstr "مفتاح الترخيص"
 
-#: includes/class-mltlngg-settings.php:54 multilanguage.php:1456
+#: includes/class-mltlngg-settings.php:54 multilanguage.php:1476
 msgid "Drop-down list (flag + title)"
 msgstr "قائمة منسدلة بأيقونات الأعلام"
 
-#: includes/class-mltlngg-settings.php:55 multilanguage.php:1457
+#: includes/class-mltlngg-settings.php:55 multilanguage.php:1477
 msgid "Drop-down list (title)"
 msgstr "قائمة منسدلة باللغات"
 
-#: includes/class-mltlngg-settings.php:56 multilanguage.php:1458
+#: includes/class-mltlngg-settings.php:56 multilanguage.php:1478
 msgid "Drop-down list (flag)"
 msgstr "قائمة منسدلة بأيقونات الأعلام"
 
-#: includes/class-mltlngg-settings.php:57 includes/table.php:58
-#: multilanguage.php:1459 multilanguage.php:3488
+#: includes/class-mltlngg-settings.php:57 multilanguage.php:1479
+msgid "List (flag + title)"
+msgstr "قائمة منسدلة بأيقونات الأعلام"
+
+#: includes/class-mltlngg-settings.php:58 multilanguage.php:1480
+msgid "List (title)"
+msgstr "القائمة (العنوان)"
+
+#: includes/class-mltlngg-settings.php:59 multilanguage.php:1481
+msgid "List (short title)"
+msgstr "القائمة (عنوان مختصر)"
+
+#: includes/class-mltlngg-settings.php:60 includes/table.php:58
+#: multilanguage.php:1482 multilanguage.php:3585
 msgid "Flag"
 msgstr "الشعار"
 
-#: includes/class-mltlngg-settings.php:58 multilanguage.php:1460
+#: includes/class-mltlngg-settings.php:61 multilanguage.php:1483
 msgid "Google Auto Translate (drop-down only)"
 msgstr "الترجمة التلقائية من Google (القائمة المنسدلة فقط)"
 
-#: includes/class-mltlngg-settings.php:59 multilanguage.php:1461
+#: includes/class-mltlngg-settings.php:62 multilanguage.php:1484
 msgid "Google Auto Translate (horizontal)"
 msgstr "الترجمة التلقائية من Google (أفقيا)"
 
-#: includes/class-mltlngg-settings.php:60 multilanguage.php:1462
+#: includes/class-mltlngg-settings.php:63 multilanguage.php:1485
 msgid "Google Auto Translate (vertical)"
 msgstr "الترجمة التلقائية من Google (عمودي)"
 
-#: includes/class-mltlngg-settings.php:96 includes/table.php:426
+#: includes/class-mltlngg-settings.php:99 includes/table.php:426
 msgid "Settings saved."
 msgstr "تم حفظ الإعدادات."
 
-#: includes/class-mltlngg-settings.php:108
+#: includes/class-mltlngg-settings.php:111
 msgid "Multilanguage Settings"
 msgstr "الإعدادات"
 
-#: includes/class-mltlngg-settings.php:113 multilanguage.php:3492
-#: multilanguage.php:3496 multilanguage.php:3500
+#: includes/class-mltlngg-settings.php:116 multilanguage.php:3589
+#: multilanguage.php:3593 multilanguage.php:3597
 msgid "Google Auto Translate"
 msgstr "الترجمة التلقائية من Google"
 
-#: includes/class-mltlngg-settings.php:115
+#: includes/class-mltlngg-settings.php:118
 msgid ""
 "Enable to activate webpages auto translate. When google auto translate is "
 "enabled, a Google language switcher is displayed on the page allowing "
@@ -90,61 +102,61 @@ msgstr ""
 "Google ، يتم عرض محول لغة Google على الصفحة مما يسمح للزوار بترجمة محتوى "
 "الصفحة تلقائيا."
 
-#: includes/class-mltlngg-settings.php:119
+#: includes/class-mltlngg-settings.php:122
 msgid "Default Language Switcher Type (for shortcode only)"
 msgstr "نوع محول اللغة الافتراضي (للرمز القصير فقط)"
 
-#: includes/class-mltlngg-settings.php:132
-#: includes/class-mltlngg-settings.php:292 includes/table.php:489
+#: includes/class-mltlngg-settings.php:135
+#: includes/class-mltlngg-settings.php:295 includes/table.php:489
 msgid "Close"
 msgstr "إغلاق"
 
-#: includes/class-mltlngg-settings.php:136
+#: includes/class-mltlngg-settings.php:139
 msgid "Switch Language Automatically"
 msgstr "تبديل اللغة تلقائيا"
 
-#: includes/class-mltlngg-settings.php:138
+#: includes/class-mltlngg-settings.php:141
 msgid ""
 "Enable to identify user IP and switch website language automatically based "
 "on the location."
 msgstr ""
 "تمكين لتحديد IP المستخدم وتبديل لغة موقع الويب تلقائيا بناء على الموقع."
 
-#: includes/class-mltlngg-settings.php:142
+#: includes/class-mltlngg-settings.php:145
 msgid "Slug Position in the URL"
 msgstr "موضع سبيكة في عنوان URL"
 
-#: includes/class-mltlngg-settings.php:167
+#: includes/class-mltlngg-settings.php:170
 msgid "Before"
 msgstr "قبل"
 
-#: includes/class-mltlngg-settings.php:183
+#: includes/class-mltlngg-settings.php:186
 msgid "After"
 msgstr "بعد"
 
-#: includes/class-mltlngg-settings.php:194
+#: includes/class-mltlngg-settings.php:197
 msgid "Permalink Translation"
 msgstr "الترجمات"
 
-#: includes/class-mltlngg-settings.php:196
+#: includes/class-mltlngg-settings.php:199
 msgid ""
 "Enable to translate pages, posts, and custom posts slugs in different "
 "languages."
 msgstr "تمكين ترجمة الصفحات والمشاركات والمشاركات المخصصة بلغات مختلفة."
 
-#: includes/class-mltlngg-settings.php:206
+#: includes/class-mltlngg-settings.php:209
 msgid "Default Language Slug"
 msgstr "سبيكة اللغة الافتراضية"
 
-#: includes/class-mltlngg-settings.php:208
+#: includes/class-mltlngg-settings.php:211
 msgid "Enable to show default language slug in the URL."
 msgstr "تمكين لإظهار سبيكة اللغة الافتراضية في عنوان URL."
 
-#: includes/class-mltlngg-settings.php:212
+#: includes/class-mltlngg-settings.php:215
 msgid "WordPress Language"
 msgstr "لغة ووردبريس الإفتراضية"
 
-#: includes/class-mltlngg-settings.php:214
+#: includes/class-mltlngg-settings.php:217
 msgid ""
 "Enable to switch WordPress language automatically when the language is "
 "changed in the front-end. Installed WordPress language packs are required. "
@@ -155,20 +167,20 @@ msgstr ""
 "مطلوب حزم لغة WordPress المثبتة. لتثبيت لغة جديدة ، ما عليك سوى الانتقال إلى "
 "الإعدادات > عام واختيارها في خيار لغة الموقع."
 
-#: includes/class-mltlngg-settings.php:218
+#: includes/class-mltlngg-settings.php:221
 msgid "Open Graph Markup"
 msgstr "فتح توصيف الرسم البياني"
 
-#: includes/class-mltlngg-settings.php:224
+#: includes/class-mltlngg-settings.php:227
 #, php-format
 msgid "Enable to add the ability to translate %s."
 msgstr "تمكين لإضافة القدرة على ترجمة %s."
 
-#: includes/class-mltlngg-settings.php:225
+#: includes/class-mltlngg-settings.php:228
 msgid "open graph meta tags"
 msgstr "فتح العلامات الوصفية للرسم البياني"
 
-#: includes/class-mltlngg-settings.php:228
+#: includes/class-mltlngg-settings.php:231
 #, php-format
 msgid ""
 "This option automatically adds metadata for each language in the %s section. "
@@ -177,11 +189,11 @@ msgstr ""
 "يضيف هذا الخيار تلقائيا بيانات التعريف لكل لغة في قسم %s. يستخدم Facebook "
 "والشبكات الاجتماعية الأخرى هذه البيانات عند مشاركة صفحاتك."
 
-#: includes/class-mltlngg-settings.php:236
+#: includes/class-mltlngg-settings.php:239
 msgid "Hreflang Attribute"
 msgstr "سمة Hreflang"
 
-#: includes/class-mltlngg-settings.php:238
+#: includes/class-mltlngg-settings.php:241
 #, php-format
 msgid ""
 "Enable to add hreflang attribute used by search engines and display the "
@@ -192,29 +204,29 @@ msgstr ""
 "عنوان URL الإقليمي في نتائج البحث. يقوم هذا الخيار بإدراج الرابط الخاص بكل "
 "لغة تلقائيًا داخل القسم %s."
 
-#: includes/class-mltlngg-settings.php:243
+#: includes/class-mltlngg-settings.php:246
 msgid "Translation Saving Mode for Classic Editor"
 msgstr "وضع حفظ الترجمة للمحرر الكلاسيكي"
 
-#: includes/class-mltlngg-settings.php:248
+#: includes/class-mltlngg-settings.php:251
 msgid "Auto"
 msgstr "تلقائي"
 
-#: includes/class-mltlngg-settings.php:248
+#: includes/class-mltlngg-settings.php:251
 msgid ""
 "If this option is selected, there may be a problem with custom post types."
 msgstr ""
 "إذا تم تحديد هذا الخيار، فقد تكون هناك مشكلة في أنواع المنشورات المخصصة."
 
-#: includes/class-mltlngg-settings.php:253
+#: includes/class-mltlngg-settings.php:256
 msgid "Manual (Save Changes button)"
 msgstr "يدوي (زر حفظ التغييرات)"
 
-#: includes/class-mltlngg-settings.php:253
+#: includes/class-mltlngg-settings.php:256
 msgid "Recommended"
 msgstr "موصى به"
 
-#: includes/class-mltlngg-settings.php:256
+#: includes/class-mltlngg-settings.php:259
 msgid ""
 "Enable Manual mode if you have some problems with translations saving using "
 "Auto mode."
@@ -222,23 +234,23 @@ msgstr ""
 "قم بتمكين الوضع اليدوي إذا كنت تواجه بعض المشكلات في حفظ الترجمات باستخدام "
 "الوضع التلقائي."
 
-#: includes/class-mltlngg-settings.php:261
+#: includes/class-mltlngg-settings.php:264
 msgid "Default Search by"
 msgstr "البحث الافتراضي عن طريق"
 
-#: includes/class-mltlngg-settings.php:265
+#: includes/class-mltlngg-settings.php:268
 msgid "Current language"
 msgstr "اللغة الحالية"
 
-#: includes/class-mltlngg-settings.php:269
+#: includes/class-mltlngg-settings.php:272
 msgid "All active languages"
 msgstr "جميع اللغات النشطة"
 
-#: includes/class-mltlngg-settings.php:296
+#: includes/class-mltlngg-settings.php:299
 msgid "Import Database"
 msgstr "استيراد قاعدة البيانات"
 
-#: includes/class-mltlngg-settings.php:300
+#: includes/class-mltlngg-settings.php:303
 #, php-format
 msgid ""
 "This option is common to all subdomains.%sWe recommend you do not change "
@@ -247,16 +259,16 @@ msgstr ""
 "هذا الخيار شائع في جميع النطاقات الفرعية. %s نوصي بعدم تغيير هذا الخيار دون "
 "موافقة مسؤول شبكتك."
 
-#: includes/class-mltlngg-settings.php:302
+#: includes/class-mltlngg-settings.php:305
 #, php-format
 msgid "Please upload the files manually using the following link %s."
 msgstr "يرجى تحميل الملفات يدويا باستخدام الرابط التالي %s."
 
-#: includes/class-mltlngg-settings.php:307
+#: includes/class-mltlngg-settings.php:310
 msgid "Import Now"
 msgstr "استيراد الآن"
 
-#: includes/class-mltlngg-settings.php:310
+#: includes/class-mltlngg-settings.php:313
 msgid ""
 "Receive an information about each IP address, and to which country it "
 "belongs to."
@@ -264,35 +276,35 @@ msgstr ""
 "هنا، تحصل على معلومات حول كل عنوان آيبي، ولأي بلد ينتمي، ويمكنك اختيار "
 "التردد المطلوب لتحديث قاعدة بيانات الآيبيات."
 
-#: includes/class-mltlngg-settings.php:313
+#: includes/class-mltlngg-settings.php:316
 msgid "Follow this instruction to download or update the country table"
 msgstr "اتبع هذه التعليمات لتنزيل جدول البلدان أو تحديثه"
 
-#: includes/class-mltlngg-settings.php:313
+#: includes/class-mltlngg-settings.php:316
 msgid "How to import or update the Country Table"
 msgstr "كيفية استيراد جدول البلدان أو تحديثه"
 
-#: includes/class-mltlngg-settings.php:348
+#: includes/class-mltlngg-settings.php:351
 msgid "Language Switcher"
 msgstr "محول اللغة"
 
-#: includes/class-mltlngg-settings.php:351
+#: includes/class-mltlngg-settings.php:354
 msgid "Add \"Multilanguage Switcher\" to a widget."
 msgstr "أضف \"محول متعدد اللغات\" إلى عنصر واجهة مستخدم."
 
-#: includes/class-mltlngg-settings.php:351
+#: includes/class-mltlngg-settings.php:354
 msgid "Navigate to Widgets"
 msgstr "انتقل إلى الأدوات"
 
-#: includes/class-mltlngg-settings.php:352
+#: includes/class-mltlngg-settings.php:355
 msgid "Add \"Multilanguage Switcher\" to a menu."
 msgstr "أضف \"محول متعدد اللغات\" إلى قائمة."
 
-#: includes/class-mltlngg-settings.php:352
+#: includes/class-mltlngg-settings.php:355
 msgid "Navigate to Menus"
 msgstr "انتقل إلى القوائم"
 
-#: includes/class-mltlngg-settings.php:353
+#: includes/class-mltlngg-settings.php:356
 msgid ""
 "Add a language switcher to your posts, pages or custom post types by using "
 "the following shortcode:"
@@ -300,12 +312,12 @@ msgstr ""
 "أضف محول لغة إلى منشوراتك أو صفحاتك أو أنواع منشوراتك المخصصة باستخدام الرمز "
 "القصير التالي:"
 
-#: includes/class-mltlngg-settings.php:355
+#: includes/class-mltlngg-settings.php:358
 msgid ""
 "Add a language switcher to PHP template files by using the following code"
 msgstr "إضافة محول لغة إلى ملفات قالب PHP باستخدام التعليمات البرمجية التالية"
 
-#: includes/class-mltlngg-settings.php:371
+#: includes/class-mltlngg-settings.php:374
 msgid "Please enable JavaScript in your browser."
 msgstr "الرجاء تمكين جافا سكريبت في متصفحك."
 
@@ -498,7 +510,7 @@ msgid ""
 "%2$s"
 msgstr "لإضافة لغة غير موجودة في القائمة ، استخدم %1$s التعليمات. %2$s"
 
-#: includes/table.php:738 js/gutenberg-script.js:150 multilanguage.php:1756
+#: includes/table.php:738 js/gutenberg-script.js:150 multilanguage.php:1844
 msgid "Add Language"
 msgstr "إضافة لغة"
 
@@ -506,7 +518,7 @@ msgstr "إضافة لغة"
 msgid "Updating language"
 msgstr "إضافة لغة"
 
-#: js/gutenberg-script.js:41 js/gutenberg-script.js:208 multilanguage.php:1767
+#: js/gutenberg-script.js:41 js/gutenberg-script.js:211 multilanguage.php:1855
 msgid "Edit for language"
 msgstr "تحرير اللغة"
 
@@ -514,12 +526,12 @@ msgstr "تحرير اللغة"
 msgid "Select Language"
 msgstr "اختيار اللغة"
 
-#: multilanguage.php:170 multilanguage.php:1309 multilanguage.php:3277
-#: multilanguage.php:3280
+#: multilanguage.php:170 multilanguage.php:1321 multilanguage.php:3374
+#: multilanguage.php:3377
 msgid "Multilanguage switcher"
 msgstr "محول اللغات"
 
-#: multilanguage.php:1296
+#: multilanguage.php:1308
 msgid ""
 "Attention!!! The changes will not be saved because Title and Content fields "
 "are empty on the current tab! It is recommended to fill in at least one "
@@ -529,104 +541,109 @@ msgstr ""
 "الحالي، نوصي بملئ حقل واحد على الأقل، أو الانتقال إلى تبويب آخر تكون فيه كل "
 "الحقول ممتلئة."
 
-#: multilanguage.php:1297
+#: multilanguage.php:1309
 msgid "Switching to another language will remove all unsaved. Save data?"
 msgstr ""
 "سيؤدي التبديل إلى لغة أخرى إلى إزالة جميع العناصر غير المحفوظة. حفظ البيانات؟"
 
-#: multilanguage.php:1313 multilanguage.php:1314 multilanguage.php:1315
-#: multilanguage.php:3476 multilanguage.php:3480 multilanguage.php:3484
+#: multilanguage.php:1325 multilanguage.php:1326 multilanguage.php:1327
+#: multilanguage.php:3573 multilanguage.php:3577 multilanguage.php:3581
 msgid "Drop-down list"
 msgstr "قائمه منسدلة"
 
-#: multilanguage.php:1313 multilanguage.php:1315 multilanguage.php:3476
-#: multilanguage.php:3484
+#: multilanguage.php:1325 multilanguage.php:1327 multilanguage.php:3573
+#: multilanguage.php:3581
 msgid "flag"
 msgstr "الشعار"
 
-#: multilanguage.php:1314 multilanguage.php:1315 multilanguage.php:3476
-#: multilanguage.php:3480
+#: multilanguage.php:1326 multilanguage.php:1327 multilanguage.php:3573
+#: multilanguage.php:3577
 msgid "title"
 msgstr "العنوان"
 
-#: multilanguage.php:1391
+#: multilanguage.php:1411
 msgid "Content language switcher"
 msgstr "محول اللغات"
 
-#: multilanguage.php:1465
+#: multilanguage.php:1488
 msgid "Localization"
 msgstr "الترجمة"
 
-#: multilanguage.php:1468 multilanguage.php:1498
+#: multilanguage.php:1491 multilanguage.php:1521
 msgid "Title:"
 msgstr "العنوان:"
 
-#: multilanguage.php:1503
+#: multilanguage.php:1526
 msgid "Content:"
 msgstr "المحتوى:"
 
-#: multilanguage.php:1516
+#: multilanguage.php:1539
 msgid "Some HTML tags are not permitted, including:"
 msgstr "بعض علامات HTML غير مسموح بها، بما في ذلك:"
 
-#: multilanguage.php:1763
+#: multilanguage.php:1588
+#, php-format
+msgid "Translate Post Tags only on the %sTags%s page"
+msgstr "ترجمة علامات النشر فقط على صفحة %sTags% فقط"
+
+#: multilanguage.php:1851
 msgid "Attention"
 msgstr "انتباه"
 
-#: multilanguage.php:1763
+#: multilanguage.php:1851
 msgid ""
 "Please update the post before switching the language. Data is not saved "
 "automatically."
 msgstr "يرجى تحديث المنشور قبل تبديل اللغة. لا يتم حفظ البيانات تلقائيا."
 
-#: multilanguage.php:2190 multilanguage.php:2283
+#: multilanguage.php:2278 multilanguage.php:2371
 msgid "Translations"
 msgstr "الترجمات"
 
-#: multilanguage.php:2195 multilanguage.php:2288
+#: multilanguage.php:2283 multilanguage.php:2376
 #, php-format
 msgid "Add and enable a new language using %1$s the Languages page.%2$s"
 msgstr "إضافة لغة جديدة وتمكينها باستخدام %1$s صفحة اللغات. %2$s"
 
-#: multilanguage.php:2460
+#: multilanguage.php:2548
 #, php-format
 msgid "Protected: %s"
 msgstr "محمي: %s"
 
-#: multilanguage.php:2463
+#: multilanguage.php:2551
 #, php-format
 msgid "Private: %s"
 msgstr "خاص: %s"
 
-#: multilanguage.php:2711 multilanguage.php:3379
+#: multilanguage.php:2799 multilanguage.php:3476
 msgid "(more&hellip;)"
 msgstr "(أكثر&hellip;)"
 
-#: multilanguage.php:3288
+#: multilanguage.php:3385
 msgid "Add to Menu"
 msgstr "اضافة الى القائمة"
 
-#: multilanguage.php:3472
+#: multilanguage.php:3569
 msgid "Select Switcher Type"
 msgstr "حدد نوع الجلاد"
 
-#: multilanguage.php:3492
+#: multilanguage.php:3589
 msgid "drop-down only"
 msgstr "القائمة المنسدلة فقط"
 
-#: multilanguage.php:3496
+#: multilanguage.php:3593
 msgid "horizontal"
 msgstr "أفقي"
 
-#: multilanguage.php:3500
+#: multilanguage.php:3597
 msgid "vertical"
 msgstr "عمودي"
 
-#: multilanguage.php:3559
+#: multilanguage.php:3656
 msgid "FAQ"
 msgstr "الأسئلة الشائعة"
 
-#: multilanguage.php:3560
+#: multilanguage.php:3657
 msgid "Support"
 msgstr "الدعم"
 

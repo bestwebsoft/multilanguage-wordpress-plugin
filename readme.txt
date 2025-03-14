@@ -1,20 +1,20 @@
 === Multilanguage by BestWebSoft - WordPress Translation Plugin and Language Switcher ===
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
-Tags: add translation, bilingual, multilanguage, multilanguage plugin, translate, translate posts, international, international plugin, multilingual, language switcher, switcher, translation-ready
+Tags: language switcher, wordpress translation plugin, language translator, multilanguage wordpress, translate wordpress
 Requires at least: 5.6
-Tested up to: 6.6
-Stable tag: 1.4.8
+Tested up to: 6.7
+Stable tag: 1.4.9
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Translate WordPress website content to other languages manually. Create multilingual pages, posts, widgets, menus, etc.
+The ultimate WordPress translation solution with built-in language translator. Create multilingual content, switch languages, and translate your entire website manually or automatically.
 
 == Description ==
 
-Multilanguage plugin is a great way to translate your WordPress website to other languages. Add translated content to pages, posts, widgets, menus, custom post types, taxonomies, etc. Let your visitors switch languages and browse content in their language.
+Multilanguage is a powerful WordPress translation plugin that combines advanced language translator capabilities with Google Translate integration. Perfect for creating multilingual websites, it allows you to translate pages, posts, custom post types, and manage language switching effortlessly. Whether you need professional manual translations or quick automated translations, this plugin provides the complete toolkit for making your WordPress website multilingual.
 
-Create and manage your multilingual website today!
+Create a fully translated WordPress website today with our comprehensive language translator solution!
 
 [View Demo](https://bestwebsoft.com/demo-for-multilanguage/)
 
@@ -22,68 +22,58 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 
 = Free Features =
 
-* Manually translate:
-	* Pages
-	* Posts
-	* Post category names
-	* Post tag names
-	* Menus (partially)
-* 80+ pre-installed languages
-* Add new languages
-* Choose the default language
-* Search website content by:
-	* Current language
-	* All languages
-* Add language switcher to:
-	* Navigation menu
-	* Widgets
-* Change display order in the language switcher
-* Multiple language switcher layouts
-	* Drop-down list with languages and icons
-	* Drop-down flag icons
-	* Flag icons
-	* Languages list
-	* Google Auto Translate
-* Choose language flag icon:
-	* Default
-	* Custom
-* Translate Open Graph meta tags
-* Display translation availability in the posts and taxonomy lists
-* Compatible with:
-	* Classic Editor
-	* Block Editor (Gutenberg)
-* Add hreflang links to <head> section
-* Hide link slug for the default language
-* Translation-ready admin dashboard
-* Add custom code via plugin settings page
-* Compatible with latest WordPress version
-* Incredibly simple settings for fast setup without modifying code
-* Detailed step-by-step documentation and videos
-* Multilingual and RTL ready
+* Complete Translation Management:
+	* Translate pages and posts with a user-friendly interface
+	* Translate post categories and tags seamlessly
+	* Full menu translation support
+	* Widget content translation
+	* Google Translate integration for instant translations
+* Advanced Language Options:
+	* 80+ pre-installed languages with language packs
+	* Custom language addition capability
+	* Default language selection
+	* Smart language detection
+* Professional Language Switcher:
+	* Multiple switcher layouts including flags and text
+	* Customizable language display order
+	* Widget and menu integration
+	* Google Auto Translate switcher
+* SEO-Friendly Features:
+	* Automatic hreflang tag generation
+	* Optimized URL structure for languages
+	* Translation availability indicators
+	* Open Graph meta tags translation
+* Universal Compatibility:
+	* Works with Classic Editor
+	* Full Gutenberg support
+	* Compatible with major SEO plugins
+	* RTL language support
+	* Translation-ready admin interface
 
 > **Pro Features**
 >
 > All features from Free version included plus:
 >
-> * Translate custom:
-> 	* Post types
-> 	* Taxonomies
-> 	* Fields
-> * Translate:
-> 	* Post category and tag descriptions
->	* Post slugs (only in Classic Editor)
-> 	* Widget titles (Legacy widgets)
-> 	* Website title
-> 	* Website tagline
-> * Compatible with Elementor Page Builder
-> * Compatible with Advanced Custom Fields
-> * Compatible with Yoast SEO
-> * Change language slug position in the website URL
-> * Create separate menus for different languages
-> * Display/hide widgets for different languages (Legacy widgets)
-> * Switch language automatically based on user’s IP
-> * Add short language slug to the URL
-> * Get answer to your support question within one business day ([Support Policy](https://bestwebsoft.com/support-policy/))
+> * Advanced Translation Capabilities:
+> 	* Custom post types translation
+> 	* Custom taxonomy translation
+> 	* Advanced custom fields support
+> 	* Category and tag description translation
+> 	* Post slug translation support
+> * Enhanced Website Elements:
+> 	* Website title and tagline translation
+> 	* Widget title translation
+> 	* Custom menu per language
+> 	* Language-specific widgets
+> * Premium Integrations:
+> 	* Elementor Page Builder compatibility
+> 	* Advanced Custom Fields support
+> 	* Yoast SEO integration
+> 	* WooCommerce compatibility
+> * Smart Features:
+> 	* IP-based automatic language switching
+> 	* Custom URL structure for languages
+> 	* Priority support within one business day
 >
 > [Upgrade to Pro Now](https://bestwebsoft.com/products/wordpress/plugins/multilanguage/?k=1d4576a3a2c4fc0f127ce2ee0341d81b)
 
@@ -138,21 +128,48 @@ Some of these translations are not complete. We are constantly adding new featur
 
 == Frequently Asked Questions ==
 
-= Does Multilanguage plugin translate website content automatically? =
+= How does the translation process work? =
 
-Yes, you can add Google Auto Translate switcher using widget or via the corresponding shortcode.
+You have two options: manual translation or automatic translation via Google Translate integration. For manual translation, you can edit content in different languages using our intuitive interface. For automatic translation, you can use the Google Auto Translate switcher widget or shortcode.
+
+= What translation methods are supported? =
+
+The plugin supports both manual and automatic translation methods:
+1. Manual translation - perfect for professional, accurate content
+2. Google Translate integration - ideal for quick translations
+3. Hybrid approach - manually translate important pages while using automatic translation for others
+
+= How many languages can I add to my website? =
+
+You can add unlimited languages from our pre-installed collection of 80+ languages. Additionally, you can manually add custom languages not included in the default list.
+
+= Does the plugin support RTL languages? =
+
+Yes, the plugin fully supports RTL (Right-to-Left) languages such as Arabic, Hebrew, and Persian. The admin interface automatically adjusts for RTL languages.
+
+= Is the plugin compatible with page builders? =
+
+Yes, the plugin works seamlessly with:
+- WordPress Block Editor (Gutenberg)
+- Classic Editor
+- Major page builders
+- Popular SEO plugins
 
 = How do I change the language my content is displayed in? =
 
-You can change content display language through the widget, which is activated automatically when you activate the plugin if you have an active sidebar. If you have several active sidebars, the widget is added to the sidebar, which features a search widget. But if you do not have an active sidebar, you need to create it and add Multilanguage widget manually.
+You can switch languages through:
+1. The widget (automatically activated with plugin)
+2. Menu language switcher
+3. Shortcode placement
+4. Programmatic switching via API
 
-= Where do I get these language packs of the extra languages? =
+= Where can I find language packs for additional languages? =
 
 You can find all official translation files in [WordPress language repository](http://i18n.svn.wordpress.org/).
 
-= So whenever I change the language for my content, WordPress localization in the frontend also changes? =
+= Does switching languages affect WordPress admin panel? =
 
-In the plugin settings, you can enable/disable an option to switch WordPress localization when the language is changed in the frontend. If you enable this option, you must install additional language packs for WordPress to have this function working. However, in the backend, WordPress localization corresponds to the default language, and cannot be changed.
+In the plugin settings, you can enable/disable WordPress localization switching for the frontend. The backend always uses the default language for consistency and security.
 
 = There is no adding block for Multilanguage switcher in Edit Menus =
 
@@ -219,6 +236,47 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 - The version of your WordPress installation
 - Copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://bestwebsoft.com/documentation/admin-panel-issues/system-status/)
 
+= How does the admin translation interface work? =
+
+The admin translation interface provides a user-friendly environment where you can:
+1. Translate all admin elements including menus and widgets
+2. Switch between languages while editing content
+3. Preview translations in real-time
+4. Manage translation permissions for different user roles
+5. Access translation memory for consistent translations
+
+= Can I integrate the language switcher with contact forms? =
+
+Yes, the plugin works seamlessly with popular WordPress contact form plugins. The language switcher automatically detects the current language and displays form labels, placeholders, and validation messages in the correct language. This ensures a consistent multilingual experience throughout your website.
+
+= How does the integration with Google Translate (GTranslate) work? =
+
+The plugin offers two ways to use Google Translate:
+1. Automatic translation widget - visitors can instantly translate content using Google's translation service
+2. Backend translation assistant - administrators can use Google Translate as a starting point for professional translations
+
+= What makes this plugin different from other WordPress translation solutions? =
+
+Our plugin stands out by offering:
+1. Combined manual and automatic translation capabilities
+2. Seamless integration with WordPress core features
+3. No external translation services required (unless using Google Translate)
+4. Full control over your content and translations
+5. Regular updates and compatibility maintenance
+
+= How does the built-in language translator compare to other translation services? =
+
+Our language translator functionality provides several advantages:
+1. Direct integration with WordPress - no need for external services
+2. Two translation approaches:
+   * Manual translator interface for precise translations
+   * Automated translator powered by Google Translate
+3. Support for bulk content translation
+4. Translation memory to maintain consistency
+5. No per-word translation fees
+6. Works offline for manual translations
+7. Translates all website elements including menus, widgets, and forms
+
 == Screenshots ==
 
 1. Language switcher widget in the frontend.
@@ -235,6 +293,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 12. Adding language switcher into site menu.
 
 == Changelog ==
+
+= V1.4.9 - 14.03.2025 =
+* Update : Google Translate language list appearance change.
+* Bugfix : ACF bugfix.
 
 = V1.4.8 - 25.07.2024 =
 * Update : Plugin optimization comleated.
@@ -475,6 +537,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.4.9 =
+* Bugs fixed.
+* Functionality improved.
 
 = V1.4.7 =
 * The compatibility with new WordPress version updated.

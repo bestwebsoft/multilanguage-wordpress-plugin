@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: multilanguage\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-24 16:50+0300\n"
+"POT-Creation-Date: 2025-03-14 16:38+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: BestWebSoft team <wp@bestwebsoft.com>\n"
 "Language-Team: BestWebSoft <wp@bestwebsoft.com>\n"
@@ -16,15 +16,15 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;esc_html__;esc_html_e;"
 "esc_attr__;esc_attr_e\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: bws_menu\n"
 "X-Poedit-SearchPathExcluded-1: js/editor_blocks.js\n"
 "X-Poedit-SearchPathExcluded-2: js/editor_vendor.js\n"
 
 #: includes/class-mltlngg-settings.php:31 multilanguage.php:46
-#: multilanguage.php:48 multilanguage.php:1704 multilanguage.php:3537
-#: multilanguage.php:3557
+#: multilanguage.php:48 multilanguage.php:1791 multilanguage.php:3634
+#: multilanguage.php:3654
 msgid "Settings"
 msgstr "Настройки"
 
@@ -40,49 +40,61 @@ msgstr "Пользовательский код"
 msgid "License Key"
 msgstr "Лицензионный ключ"
 
-#: includes/class-mltlngg-settings.php:54 multilanguage.php:1456
+#: includes/class-mltlngg-settings.php:54 multilanguage.php:1476
 msgid "Drop-down list (flag + title)"
 msgstr "Выпадающий список (название + флаг)"
 
-#: includes/class-mltlngg-settings.php:55 multilanguage.php:1457
+#: includes/class-mltlngg-settings.php:55 multilanguage.php:1477
 msgid "Drop-down list (title)"
 msgstr "Выпадающий список (название)"
 
-#: includes/class-mltlngg-settings.php:56 multilanguage.php:1458
+#: includes/class-mltlngg-settings.php:56 multilanguage.php:1478
 msgid "Drop-down list (flag)"
 msgstr "Выпадающий список (флаг)"
 
-#: includes/class-mltlngg-settings.php:57 includes/table.php:58
-#: multilanguage.php:1459 multilanguage.php:3488
+#: includes/class-mltlngg-settings.php:57 multilanguage.php:1479
+msgid "List (flag + title)"
+msgstr "Список (флаг + название)"
+
+#: includes/class-mltlngg-settings.php:58 multilanguage.php:1480
+msgid "List (title)"
+msgstr "Список (название)"
+
+#: includes/class-mltlngg-settings.php:59 multilanguage.php:1481
+msgid "List (short title)"
+msgstr "Список (краткое название)"
+
+#: includes/class-mltlngg-settings.php:60 includes/table.php:58
+#: multilanguage.php:1482 multilanguage.php:3585
 msgid "Flag"
 msgstr "Флаг"
 
-#: includes/class-mltlngg-settings.php:58 multilanguage.php:1460
+#: includes/class-mltlngg-settings.php:61 multilanguage.php:1483
 msgid "Google Auto Translate (drop-down only)"
 msgstr "Авто переводчик Google (выпадающий список)"
 
-#: includes/class-mltlngg-settings.php:59 multilanguage.php:1461
+#: includes/class-mltlngg-settings.php:62 multilanguage.php:1484
 msgid "Google Auto Translate (horizontal)"
 msgstr "Авто переводчик Google (горизонтально)"
 
-#: includes/class-mltlngg-settings.php:60 multilanguage.php:1462
+#: includes/class-mltlngg-settings.php:63 multilanguage.php:1485
 msgid "Google Auto Translate (vertical)"
 msgstr "Авто переводчик Google (вертикально)"
 
-#: includes/class-mltlngg-settings.php:96 includes/table.php:426
+#: includes/class-mltlngg-settings.php:99 includes/table.php:426
 msgid "Settings saved."
 msgstr "Настройки сохранены."
 
-#: includes/class-mltlngg-settings.php:108
+#: includes/class-mltlngg-settings.php:111
 msgid "Multilanguage Settings"
 msgstr "Настройки Multilanguage"
 
-#: includes/class-mltlngg-settings.php:113 multilanguage.php:3492
-#: multilanguage.php:3496 multilanguage.php:3500
+#: includes/class-mltlngg-settings.php:116 multilanguage.php:3589
+#: multilanguage.php:3593 multilanguage.php:3597
 msgid "Google Auto Translate"
 msgstr "Авто переводчик Google"
 
-#: includes/class-mltlngg-settings.php:115
+#: includes/class-mltlngg-settings.php:118
 msgid ""
 "Enable to activate webpages auto translate. When google auto translate is "
 "enabled, a Google language switcher is displayed on the page allowing "
@@ -93,20 +105,20 @@ msgstr ""
 "переключатель языка Google, позволяющий посетителям автоматически переводить "
 "содержимое страницы."
 
-#: includes/class-mltlngg-settings.php:119
+#: includes/class-mltlngg-settings.php:122
 msgid "Default Language Switcher Type (for shortcode only)"
 msgstr "Тип переключателя языков по умолчанию (только для шорткода)"
 
-#: includes/class-mltlngg-settings.php:132
-#: includes/class-mltlngg-settings.php:292 includes/table.php:489
+#: includes/class-mltlngg-settings.php:135
+#: includes/class-mltlngg-settings.php:295 includes/table.php:489
 msgid "Close"
 msgstr "Закрыть"
 
-#: includes/class-mltlngg-settings.php:136
+#: includes/class-mltlngg-settings.php:139
 msgid "Switch Language Automatically"
 msgstr "Переключать язык автоматически"
 
-#: includes/class-mltlngg-settings.php:138
+#: includes/class-mltlngg-settings.php:141
 msgid ""
 "Enable to identify user IP and switch website language automatically based "
 "on the location."
@@ -114,23 +126,23 @@ msgstr ""
 "Включить определение IP-адреса пользователя и автоматическое переключение "
 "языка веб-сайта в зависимости от местоположения."
 
-#: includes/class-mltlngg-settings.php:142
+#: includes/class-mltlngg-settings.php:145
 msgid "Slug Position in the URL"
 msgstr "Позиция слага в URL-адресе"
 
-#: includes/class-mltlngg-settings.php:167
+#: includes/class-mltlngg-settings.php:170
 msgid "Before"
 msgstr "Перед"
 
-#: includes/class-mltlngg-settings.php:183
+#: includes/class-mltlngg-settings.php:186
 msgid "After"
 msgstr "После"
 
-#: includes/class-mltlngg-settings.php:194
+#: includes/class-mltlngg-settings.php:197
 msgid "Permalink Translation"
 msgstr "Переводы Пермалинков"
 
-#: includes/class-mltlngg-settings.php:196
+#: includes/class-mltlngg-settings.php:199
 msgid ""
 "Enable to translate pages, posts, and custom posts slugs in different "
 "languages."
@@ -138,19 +150,19 @@ msgstr ""
 "Включите перевод страниц, публикаций и настраиваемых ярлыков сообщений на "
 "разные языки."
 
-#: includes/class-mltlngg-settings.php:206
+#: includes/class-mltlngg-settings.php:209
 msgid "Default Language Slug"
 msgstr "Слаг стандартного языка"
 
-#: includes/class-mltlngg-settings.php:208
+#: includes/class-mltlngg-settings.php:211
 msgid "Enable to show default language slug in the URL."
 msgstr "Включите, чтобы отображать слаг в URL-адресе для языка по умолчанию."
 
-#: includes/class-mltlngg-settings.php:212
+#: includes/class-mltlngg-settings.php:215
 msgid "WordPress Language"
 msgstr "Язык Wordpress"
 
-#: includes/class-mltlngg-settings.php:214
+#: includes/class-mltlngg-settings.php:217
 msgid ""
 "Enable to switch WordPress language automatically when the language is "
 "changed in the front-end. Installed WordPress language packs are required. "
@@ -160,20 +172,20 @@ msgstr ""
 "Включите для автоматического переключения языка WordPress при изменении "
 "языка в интерфейсе (требуются установленные языковые пакеты WordPress)."
 
-#: includes/class-mltlngg-settings.php:218
+#: includes/class-mltlngg-settings.php:221
 msgid "Open Graph Markup"
 msgstr "Разметка open graph"
 
-#: includes/class-mltlngg-settings.php:224
+#: includes/class-mltlngg-settings.php:227
 #, php-format
 msgid "Enable to add the ability to translate %s."
 msgstr "Включите, чтобы добавить возможность перевода %s."
 
-#: includes/class-mltlngg-settings.php:225
+#: includes/class-mltlngg-settings.php:228
 msgid "open graph meta tags"
 msgstr "open graph мета тегов"
 
-#: includes/class-mltlngg-settings.php:228
+#: includes/class-mltlngg-settings.php:231
 #, php-format
 msgid ""
 "This option automatically adds metadata for each language in the %s section. "
@@ -183,11 +195,11 @@ msgstr ""
 "Facebook и другие социальные сети используют эти данные, когда кто-то "
 "делится вашей страницей."
 
-#: includes/class-mltlngg-settings.php:236
+#: includes/class-mltlngg-settings.php:239
 msgid "Hreflang Attribute"
 msgstr "Атрибут hreflang"
 
-#: includes/class-mltlngg-settings.php:238
+#: includes/class-mltlngg-settings.php:241
 #, php-format
 msgid ""
 "Enable to add hreflang attribute used by search engines and display the "
@@ -198,30 +210,30 @@ msgstr ""
 "правильного языка или регионального URL-адреса. Эта опция автоматически "
 "вставляет соответствующую ссылку для каждого языка в блоке %s."
 
-#: includes/class-mltlngg-settings.php:243
+#: includes/class-mltlngg-settings.php:246
 msgid "Translation Saving Mode for Classic Editor"
 msgstr "Режим сохранения переводов для классического редактора"
 
-#: includes/class-mltlngg-settings.php:248
+#: includes/class-mltlngg-settings.php:251
 msgid "Auto"
 msgstr "Автоматический"
 
-#: includes/class-mltlngg-settings.php:248
+#: includes/class-mltlngg-settings.php:251
 msgid ""
 "If this option is selected, there may be a problem with custom post types."
 msgstr ""
 "Если эта опция выбрана, возможно, возникла проблема с пользовательскими "
 "типами постов."
 
-#: includes/class-mltlngg-settings.php:253
+#: includes/class-mltlngg-settings.php:256
 msgid "Manual (Save Changes button)"
 msgstr "Ручной (кнопка «Сохранить изменения»)"
 
-#: includes/class-mltlngg-settings.php:253
+#: includes/class-mltlngg-settings.php:256
 msgid "Recommended"
 msgstr "Рекомендованные"
 
-#: includes/class-mltlngg-settings.php:256
+#: includes/class-mltlngg-settings.php:259
 msgid ""
 "Enable Manual mode if you have some problems with translations saving using "
 "Auto mode."
@@ -229,23 +241,23 @@ msgstr ""
 "Включите ручной режим, если возникли проблемы с сохранением переводов в "
 "автоматическом режиме."
 
-#: includes/class-mltlngg-settings.php:261
+#: includes/class-mltlngg-settings.php:264
 msgid "Default Search by"
 msgstr "Выполнять поиск по содержимому"
 
-#: includes/class-mltlngg-settings.php:265
+#: includes/class-mltlngg-settings.php:268
 msgid "Current language"
 msgstr "Для текущего языка"
 
-#: includes/class-mltlngg-settings.php:269
+#: includes/class-mltlngg-settings.php:272
 msgid "All active languages"
 msgstr "Для всех активных языков"
 
-#: includes/class-mltlngg-settings.php:296
+#: includes/class-mltlngg-settings.php:299
 msgid "Import Database"
 msgstr "Импорт базы данных"
 
-#: includes/class-mltlngg-settings.php:300
+#: includes/class-mltlngg-settings.php:303
 #, php-format
 msgid ""
 "This option is common to all subdomains.%sWe recommend you do not change "
@@ -254,16 +266,16 @@ msgstr ""
 "Этот параметр является общим для всех поддоменов.%s Мы рекомендуем не "
 "изменять этот параметр без согласия администратора вашей сети."
 
-#: includes/class-mltlngg-settings.php:302
+#: includes/class-mltlngg-settings.php:305
 #, php-format
 msgid "Please upload the files manually using the following link %s."
 msgstr "Пожалуйста, загрузите файлы вручную по следующей ссылке %s."
 
-#: includes/class-mltlngg-settings.php:307
+#: includes/class-mltlngg-settings.php:310
 msgid "Import Now"
 msgstr "Импортировать сейчас"
 
-#: includes/class-mltlngg-settings.php:310
+#: includes/class-mltlngg-settings.php:313
 msgid ""
 "Receive an information about each IP address, and to which country it "
 "belongs to."
@@ -271,35 +283,35 @@ msgstr ""
 "Получите информацию о каждом IP-адресе и о том, к какой стране он "
 "принадлежит."
 
-#: includes/class-mltlngg-settings.php:313
+#: includes/class-mltlngg-settings.php:316
 msgid "Follow this instruction to download or update the country table"
 msgstr "Следуйте этой инструкции, чтобы загрузить или обновить таблицу стран"
 
-#: includes/class-mltlngg-settings.php:313
+#: includes/class-mltlngg-settings.php:316
 msgid "How to import or update the Country Table"
 msgstr "Как импортировать или обновить таблицу стран"
 
-#: includes/class-mltlngg-settings.php:348
+#: includes/class-mltlngg-settings.php:351
 msgid "Language Switcher"
 msgstr "Переключатель языка"
 
-#: includes/class-mltlngg-settings.php:351
+#: includes/class-mltlngg-settings.php:354
 msgid "Add \"Multilanguage Switcher\" to a widget."
 msgstr "Добавьте 'Переключатель языка' в виджет."
 
-#: includes/class-mltlngg-settings.php:351
+#: includes/class-mltlngg-settings.php:354
 msgid "Navigate to Widgets"
 msgstr "Перейти к виджетам"
 
-#: includes/class-mltlngg-settings.php:352
+#: includes/class-mltlngg-settings.php:355
 msgid "Add \"Multilanguage Switcher\" to a menu."
 msgstr "Добавьте 'Переключатель языка' в меню."
 
-#: includes/class-mltlngg-settings.php:352
+#: includes/class-mltlngg-settings.php:355
 msgid "Navigate to Menus"
 msgstr "Перейти к меню"
 
-#: includes/class-mltlngg-settings.php:353
+#: includes/class-mltlngg-settings.php:356
 msgid ""
 "Add a language switcher to your posts, pages or custom post types by using "
 "the following shortcode:"
@@ -307,13 +319,13 @@ msgstr ""
 "Добавьте переключатель языка на ваши записи, страницы или пользовательские "
 "типы записей с помощью данного шорткода:"
 
-#: includes/class-mltlngg-settings.php:355
+#: includes/class-mltlngg-settings.php:358
 msgid ""
 "Add a language switcher to PHP template files by using the following code"
 msgstr ""
 "Добавьте переключатель языка в файлы шаблонов PHP, используя следующий код"
 
-#: includes/class-mltlngg-settings.php:371
+#: includes/class-mltlngg-settings.php:374
 msgid "Please enable JavaScript in your browser."
 msgstr "Пожалуйста, включите JavaScript в вашем браузере."
 
@@ -461,7 +473,7 @@ msgstr "Отключенные"
 #: includes/table.php:647
 msgctxt "plural"
 msgid "enabled"
-msgstr "включены"
+msgstr "включено"
 
 #: includes/table.php:647
 msgctxt "singular"
@@ -508,7 +520,7 @@ msgid ""
 msgstr ""
 "Чтобы добавить язык, которого нет в списке, используйте инструкцию %1$s. %2$s"
 
-#: includes/table.php:738 js/gutenberg-script.js:150 multilanguage.php:1756
+#: includes/table.php:738 js/gutenberg-script.js:150 multilanguage.php:1844
 msgid "Add Language"
 msgstr "Добавить язык"
 
@@ -516,7 +528,7 @@ msgstr "Добавить язык"
 msgid "Updating language"
 msgstr "Обновление языка"
 
-#: js/gutenberg-script.js:41 js/gutenberg-script.js:208 multilanguage.php:1767
+#: js/gutenberg-script.js:41 js/gutenberg-script.js:211 multilanguage.php:1855
 msgid "Edit for language"
 msgstr "Редактировать для языка"
 
@@ -524,12 +536,12 @@ msgstr "Редактировать для языка"
 msgid "Select Language"
 msgstr "Выберите язык"
 
-#: multilanguage.php:170 multilanguage.php:1309 multilanguage.php:3277
-#: multilanguage.php:3280
+#: multilanguage.php:170 multilanguage.php:1321 multilanguage.php:3374
+#: multilanguage.php:3377
 msgid "Multilanguage switcher"
 msgstr "Переключатель языка"
 
-#: multilanguage.php:1296
+#: multilanguage.php:1308
 msgid ""
 "Attention!!! The changes will not be saved because Title and Content fields "
 "are empty on the current tab! It is recommended to fill in at least one "
@@ -539,52 +551,57 @@ msgstr ""
 "вкладке заголовок и содержание пустые! Рекомендуется заполнить хотя бы 1 "
 "поле или переключиться на вкладку с заполненными полями."
 
-#: multilanguage.php:1297
+#: multilanguage.php:1309
 msgid "Switching to another language will remove all unsaved. Save data?"
 msgstr ""
 "При переключении на другой язык все несохраненные данные будут потеряны. "
 "Сохранить данные?"
 
-#: multilanguage.php:1313 multilanguage.php:1314 multilanguage.php:1315
-#: multilanguage.php:3476 multilanguage.php:3480 multilanguage.php:3484
+#: multilanguage.php:1325 multilanguage.php:1326 multilanguage.php:1327
+#: multilanguage.php:3573 multilanguage.php:3577 multilanguage.php:3581
 msgid "Drop-down list"
 msgstr "Выпадающий список"
 
-#: multilanguage.php:1313 multilanguage.php:1315 multilanguage.php:3476
-#: multilanguage.php:3484
+#: multilanguage.php:1325 multilanguage.php:1327 multilanguage.php:3573
+#: multilanguage.php:3581
 msgid "flag"
 msgstr "флаг"
 
-#: multilanguage.php:1314 multilanguage.php:1315 multilanguage.php:3476
-#: multilanguage.php:3480
+#: multilanguage.php:1326 multilanguage.php:1327 multilanguage.php:3573
+#: multilanguage.php:3577
 msgid "title"
 msgstr "заголовок"
 
-#: multilanguage.php:1391
+#: multilanguage.php:1411
 msgid "Content language switcher"
 msgstr "Переключатель языка для содержимого"
 
-#: multilanguage.php:1465
+#: multilanguage.php:1488
 msgid "Localization"
 msgstr "Локализация"
 
-#: multilanguage.php:1468 multilanguage.php:1498
+#: multilanguage.php:1491 multilanguage.php:1521
 msgid "Title:"
 msgstr "Заголовок:"
 
-#: multilanguage.php:1503
+#: multilanguage.php:1526
 msgid "Content:"
 msgstr "Содержание:"
 
-#: multilanguage.php:1516
+#: multilanguage.php:1539
 msgid "Some HTML tags are not permitted, including:"
 msgstr "Некоторые HTML-теги не разрешены, в том числе:"
 
-#: multilanguage.php:1763
+#: multilanguage.php:1588
+#, php-format
+msgid "Translate Post Tags only on the %sTags%s page"
+msgstr "Переводите теги постов только на %sTags%-й странице"
+
+#: multilanguage.php:1851
 msgid "Attention"
 msgstr "Внимание"
 
-#: multilanguage.php:1763
+#: multilanguage.php:1851
 msgid ""
 "Please update the post before switching the language. Data is not saved "
 "automatically."
@@ -592,54 +609,54 @@ msgstr ""
 "Обновите страницу перед переключением языка. Данные не сохраняются "
 "автоматически."
 
-#: multilanguage.php:2190 multilanguage.php:2283
+#: multilanguage.php:2278 multilanguage.php:2371
 msgid "Translations"
 msgstr "Переводы"
 
-#: multilanguage.php:2195 multilanguage.php:2288
+#: multilanguage.php:2283 multilanguage.php:2376
 #, php-format
 msgid "Add and enable a new language using %1$s the Languages page.%2$s"
 msgstr "Добавьте и включите новый язык, используя %1$s страницу \"Языки\".%2$s"
 
-#: multilanguage.php:2460
+#: multilanguage.php:2548
 #, php-format
 msgid "Protected: %s"
 msgstr "Защищено: %s"
 
-#: multilanguage.php:2463
+#: multilanguage.php:2551
 #, php-format
 msgid "Private: %s"
 msgstr "Личное: %s"
 
-#: multilanguage.php:2711 multilanguage.php:3379
+#: multilanguage.php:2799 multilanguage.php:3476
 msgid "(more&hellip;)"
 msgstr "(детальнее&hellip;)"
 
-#: multilanguage.php:3288
+#: multilanguage.php:3385
 msgid "Add to Menu"
 msgstr "Добавить в меню"
 
-#: multilanguage.php:3472
+#: multilanguage.php:3569
 msgid "Select Switcher Type"
 msgstr "Выберите тип переключателя"
 
-#: multilanguage.php:3492
+#: multilanguage.php:3589
 msgid "drop-down only"
 msgstr "только выпадающий список"
 
-#: multilanguage.php:3496
+#: multilanguage.php:3593
 msgid "horizontal"
 msgstr "горизонтальный"
 
-#: multilanguage.php:3500
+#: multilanguage.php:3597
 msgid "vertical"
 msgstr "вертикальный"
 
-#: multilanguage.php:3559
+#: multilanguage.php:3656
 msgid "FAQ"
 msgstr "FAQ"
 
-#: multilanguage.php:3560
+#: multilanguage.php:3657
 msgid "Support"
 msgstr "Поддержка"
 
