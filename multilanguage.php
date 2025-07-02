@@ -6,7 +6,7 @@ Description: Translate WordPress website content to other languages manually. Cr
 Author: BestWebSoft
 Text Domain: multilanguage
 Domain Path: /languages
-Version: 1.4.9
+Version: 1.5.0
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
  */
@@ -1585,7 +1585,9 @@ if ( ! function_exists( 'mltlngg_post_tag_labels' ) ) {
 	 * @return object $labels Taxonomy object.
 	 */
 	function mltlngg_post_tag_labels( $labels ) {
+		if ( is_admin() && class_exists( 'Classic_Editor' ) ) {
 		$labels->separate_items_with_commas .= '<p style="color: red;">' . wp_sprintf( __( 'Translate Post Tags only on the %sTags%s page', 'multilanguage' ),  wp_sprintf( '<a href=%s>', esc_url( admin_url( 'edit-tags.php?taxonomy=post_tag' ) ) ), '</a>' ) . '</p>';
+		}
 		return $labels;
 	}
 }
