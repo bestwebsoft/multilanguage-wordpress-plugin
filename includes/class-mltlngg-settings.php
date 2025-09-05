@@ -25,7 +25,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 		 * @param string $plugin_basename Plugin basename.
 		 */
 		public function __construct( $plugin_basename ) {
-			global $mltlngg_options, $mltlngg_plugin_info;
+			global $mltlngg_options, $mltlngg_plugin_info, $wp_roles;
 
 			$tabs = array(
 				'settings'    => array( 'label' => esc_html__( 'Settings', 'multilanguage' ) ),
@@ -63,6 +63,15 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 				'gt-vertical'      => esc_html__( 'Google Auto Translate (vertical)', 'multilanguage' ),
 			);
 
+			$enabled_roles = array();
+			$roles         = $wp_roles->roles;
+			foreach ( $roles as $key => $role ) {
+				if ( ! empty( $role['capabilities']['edit_posts'] ) ) {
+					$enabled_roles[ $key ] = $role;
+				}
+			}
+			$this->enabled_roles = $enabled_roles;
+
 			add_filter( get_parent_class( $this ) . '_additional_restore_options', array( $this, 'additional_restore_options' ) );
 			add_action( get_parent_class( $this ) . '_display_metabox', array( $this, 'display_metabox' ) );
 			add_action( get_parent_class( $this ) . '_display_custom_messages', array( $this, 'display_custom_messages' ) );
@@ -95,6 +104,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 				$this->options['display_alternative_link'] = isset( $_POST['mltlngg_display_alternative_link'] ) ? 1 : 0;
 				$this->options['save_mode']                = isset( $_POST['mltlngg_save_mode'] ) && 'ajax' === sanitize_text_field( wp_unslash( $_POST['mltlngg_save_mode'] ) ) ? 'ajax' : 'manual';
 				$this->options['search']                   = isset( $_POST['mltlngg_search'] ) && in_array( sanitize_text_field( wp_unslash( $_POST['mltlngg_search'] ) ), array( 'single', 'all' ), true ) ? sanitize_text_field( wp_unslash( $_POST['mltlngg_search'] ) ) : 'single';
+				$this->options['enabled_roles']            = isset( $_POST['mltlngg_enabled_roles'] ) ? array_map( 'sanitize_text_field', array_map( 'wp_unslash', $_POST['mltlngg_enabled_roles'] ) ) : array();
 
 				$message = esc_html__( 'Settings saved.', 'multilanguage' );
 
@@ -271,6 +281,26 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 							<label>
 								<input type="radio" name="mltlngg_search" value="all" <?php checked( 'all', $this->options['search'] ); ?> /> <?php esc_html_e( 'All active languages', 'multilanguage' ); ?>
 							</label>
+						</fieldset>
+					</td>
+				</tr>
+				<tr>
+					<th><?php esc_html_e( 'Enable translate for', 'multilanguage' ); ?></th>
+					<td>
+						<fieldset>
+							<label class=hide-if-no-js>
+								<input type="checkbox" class="mltlngg_select_all" /><strong><?php esc_html_e( 'All', 'multilanguage' ); ?></strong>
+							</label><br />
+							<?php
+							foreach ( $this->enabled_roles as $role => $fields ) {
+								printf(
+									'<label><input type="checkbox" name="mltlngg_enabled_roles[]" class="mltlngg_role" value="%1$s" %2$s /> %3$s</label><br/>',
+									esc_attr( $role ),
+									checked( in_array( $role, $this->options['enabled_roles'] ), true, false ),
+									esc_attr( translate_user_role( $fields['name'] ) )
+								);
+							}
+							?>
 						</fieldset>
 					</td>
 				</tr>

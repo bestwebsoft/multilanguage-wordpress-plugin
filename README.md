@@ -49,6 +49,7 @@
 <li>Translation-ready admin interface</li>
 </ul>
 </li>
+<li>Enable translation for any user role</li>
 </ul>
 <blockquote>
 <p><strong>Pro Features</strong></p>

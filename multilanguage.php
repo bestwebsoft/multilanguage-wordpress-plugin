@@ -6,7 +6,7 @@ Description: Translate WordPress website content to other languages manually. Cr
 Author: BestWebSoft
 Text Domain: multilanguage
 Domain Path: /languages
-Version: 1.5.0
+Version: 1.5.1
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
  */
@@ -299,7 +299,7 @@ if ( ! function_exists( 'mltlngg_get_options_default' ) ) {
 	 * @return array $options_default
 	 */
 	function mltlngg_get_options_default() {
-		global $mltlngg_plugin_info, $wp_version, $mltlngg_languages;
+		global $mltlngg_plugin_info, $wp_version, $mltlngg_languages, $wp_roles;
 		/* Set the default language is the same as the language of the WordPress localization */
 		foreach ( $mltlngg_languages as $one_lang ) { /* Search locale in the array of standard languages, source - languages.php */
 			$is_lang_exist = array_search( get_locale(), $one_lang );
@@ -321,6 +321,15 @@ if ( ! function_exists( 'mltlngg_get_options_default' ) ) {
 		if ( ! isset( $language_default ) || null === $language_default ) {
 			$language_default = array( 'en', 'en_US', 'English', '' );
 		}
+
+		$enabled_roles = array();
+		$roles         = $wp_roles->roles;
+		foreach ( $roles as $key => $role ) {
+			if ( ! empty( $role['capabilities']['edit_posts'] ) ) {
+				$enabled_roles[ $key ] = 1;
+			}
+		}
+
 		/* Set the default options */
 		$options_default = array(
 			'plugin_option_version'    => $mltlngg_plugin_info['Version'],
@@ -347,6 +356,7 @@ if ( ! function_exists( 'mltlngg_get_options_default' ) ) {
 			'display_alternative_link' => 0,
 			'hide_link_slug'           => 0,
 			'google_auto_translate'    => 0,
+			'enabled_roles'            => $enabled_roles,
 		);
 		return $options_default;
 	}
@@ -1265,7 +1275,19 @@ if ( ! function_exists( 'mltlngg_script_style' ) ) {
 		wp_enqueue_style( 'mltlngg_stylesheet', plugins_url( 'css/style.css', __FILE__ ), array(), $mltlngg_plugin_info['Version'] );
 
 		if ( is_admin() ) {
-			if ( mltlngg_is_gutenberg_active() ) {
+			$enable_translate_flag = false;
+			if ( ! empty( $mltlngg_options['enabled_roles'] ) ) {
+				$current_user = wp_get_current_user();
+				foreach( $mltlngg_options['enabled_roles'] as $role ) {
+					if ( in_array( $role, $current_user->roles ) ) {
+						$enable_translate_flag = true;
+						break;
+					}
+				}
+			} else {
+				$enable_translate_flag = true;
+			}
+			if ( mltlngg_is_gutenberg_active() && true === $enable_translate_flag ) {				
 				if ( ! empty( $mltlngg_enabled_languages ) ) {
 					wp_enqueue_script( 'mltlngg_script_gutenberg', plugins_url( 'js/gutenberg-script.js', __FILE__ ), array( 'jquery' ), $mltlngg_plugin_info['Version'] . '.3', true );
 					wp_localize_script(
@@ -1303,7 +1325,7 @@ if ( ! function_exists( 'mltlngg_script_style' ) ) {
 						);
 					}
 				}
-			} else {
+			} elseif ( true === $enable_translate_flag ) {
 				$mltlngg_vars = array(
 					'update_post_error'   => esc_html__( 'Attention!!! The changes will not be saved because Title and Content fields are empty on the current tab! It is recommended to fill in at least one field or switch to the tab with the fields that are already filled.', 'multilanguage' ),
 					'confirm_update_post' => esc_html__( 'Switching to another language will remove all unsaved. Save data?', 'multilanguage' ),
@@ -1312,6 +1334,8 @@ if ( ! function_exists( 'mltlngg_script_style' ) ) {
 				wp_enqueue_script( 'mltlngg_script', plugins_url( 'js/script.js', __FILE__ ), array( 'jquery' ), $mltlngg_plugin_info['Version'], true );
 				wp_localize_script( 'mltlngg_script', 'mltlngg_vars', apply_filters( 'mltlngg_add_metadata', $mltlngg_vars, $post ) );
 			}
+
+			wp_enqueue_script( 'mltlngg_admin_script', plugins_url( 'js/admin-script.js', __FILE__ ), array( 'jquery' ), $mltlngg_plugin_info['Version'], true );
 
 			if ( 'nav-menus.php' === $hook_suffix ) {
 				wp_enqueue_script( 'mltlngg_nav_menu', plugins_url( 'js/nav-menu.js', __FILE__ ), array( 'jquery' ), $mltlngg_plugin_info['Version'], true );
@@ -1814,7 +1838,20 @@ if ( ! function_exists( 'mltlngg_showup_language_tabs_in_editor' ) ) {
 		$check_posttype   = ( 'post' === $current_posttype || 'page' === $current_posttype );
 		$check_posttype   = apply_filters( 'mltlngg_posttype_compability', $check_posttype, $current_posttype );
 
-		if ( $check_posttype ) {
+		$enable_translate_flag = false;
+		if ( ! empty( $mltlngg_options['enabled_roles'] ) ) {
+			$current_user = wp_get_current_user();
+			foreach( $mltlngg_options['enabled_roles'] as $role ) {
+				if ( in_array( $role, $current_user->roles ) ) {
+					$enable_translate_flag = true;
+					break;
+				}
+			}
+		} else {
+			$enable_translate_flag = true;
+		}
+
+		if ( $check_posttype && $enable_translate_flag ) {
 			$original_data = $wpdb->get_row(
 				$wpdb->prepare(
 					"SELECT `post_content`, `post_title`, `post_excerpt`

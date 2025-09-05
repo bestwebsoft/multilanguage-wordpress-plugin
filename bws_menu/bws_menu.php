@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Function for displaying BestWebSoft menu
- * Version: 2.4.3
+ * Version: 2.4.4
  */
 if ( ! function_exists( 'bws_admin_enqueue_scripts' ) ) {
 	require_once dirname( __FILE__ ) . '/bws_functions.php';

@@ -2,9 +2,9 @@
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: language switcher, wordpress translation plugin, language translator, multilanguage wordpress, translate wordpress
-Requires at least: 5.6
-Tested up to: 6.8
-Stable tag: 1.5.0
+Requires at least: 6.4
+Tested up to: 6.8.2
+Stable tag: 1.5.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -49,6 +49,7 @@ http://www.youtube.com/watch?v=Si6ulEWuY1E
 	* Compatible with major SEO plugins
 	* RTL language support
 	* Translation-ready admin interface
+* Enable translation for any user role
 
 > **Pro Features**
 >
@@ -293,6 +294,12 @@ Our language translator functionality provides several advantages:
 12. Adding language switcher into site menu.
 
 == Changelog ==
+
+= V1.5.1 - 12.08.2025 =
+* NEW : Enable translation for any user role.
+* Update : All functionality for WordPress 6.8.2 has been updated.
+* Update : Plugin optimization comleated.
+* Bugfix : Fixing bugs with Elementor.
 
 = V1.5.0 - 02.07.2025 =
 * Bugfix : Gutenberg slug issue has been fixed.
@@ -541,6 +548,11 @@ Our language translator functionality provides several advantages:
 * Release date of Multilanguage.
 
 == Upgrade Notice ==
+
+= V1.5.1 =
+* The compatibility with new WordPress version updated.
+* New features added.
+* Functionality improved.
 
 = V1.5.0 =
 * Bugs fixed.
