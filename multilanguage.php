@@ -6,7 +6,7 @@ Description: Translate WordPress website content to other languages manually. Cr
 Author: BestWebSoft
 Text Domain: multilanguage
 Domain Path: /languages
-Version: 1.5.1
+Version: 1.5.2
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
  */
@@ -357,6 +357,7 @@ if ( ! function_exists( 'mltlngg_get_options_default' ) ) {
 			'hide_link_slug'           => 0,
 			'google_auto_translate'    => 0,
 			'enabled_roles'            => $enabled_roles,
+			'translate_menu'           => 1,
 		);
 		return $options_default;
 	}
@@ -498,7 +499,7 @@ if ( ! function_exists( '_mltlngg_plugin_activate' ) ) {
 				$wpdb->update(
 					$wpdb->prefix . 'mltlngg_translate',
 					array(
-						'post_content' => $value->post_content,
+						'post_content' => wp_encode_emoji( $value->post_content ),
 						'post_title'   => $value->post_title,
 						'post_excerpt' => $value->post_excerpt,
 					),
@@ -2031,7 +2032,7 @@ if ( ! function_exists( 'mltlngg_save_post' ) ) {
 									$wpdb->prefix . 'mltlngg_translate',
 									array(
 										'post_ID'      => $post_id,
-										'post_content' => sanitize_post_field( 'post_content', wp_unslash( $mltlngg_translate['content'] ), 0, 'db' ),
+										'post_content' => wp_encode_emoji( sanitize_post_field( 'post_content', wp_unslash( $mltlngg_translate['content'] ), 0, 'db' ) ),
 										'post_title'   => sanitize_text_field( wp_unslash( $mltlngg_translate['title'] ) ),
 										'post_excerpt' => sanitize_text_field( wp_unslash( $excerpt ) ),
 										'language'     => $mltlngg_translate['lang'],
@@ -2065,7 +2066,7 @@ if ( ! function_exists( 'mltlngg_save_post' ) ) {
 						$wpdb->update(
 							$wpdb->prefix . 'mltlngg_translate',
 							array(
-								'post_content' => sanitize_post_field( 'post_content', wp_unslash( $_POST['content'] ), 0, 'db' ),
+								'post_content' => wp_encode_emoji( sanitize_post_field( 'post_content', wp_unslash( $_POST['content'] ), 0, 'db' ) ),
 								'post_title'   => sanitize_text_field( wp_unslash( $_POST['post_title'] ) ),
 								'post_excerpt' => $excerpt,
 							),
@@ -2082,7 +2083,7 @@ if ( ! function_exists( 'mltlngg_save_post' ) ) {
 						$wpdb->prefix . 'mltlngg_translate',
 						array(
 							'post_ID'      => $post_id,
-							'post_content' => sanitize_post_field( 'post_content', wp_unslash( $_POST['content'] ), 0, 'db' ),
+							'post_content' => wp_encode_emoji( sanitize_post_field( 'post_content', wp_unslash( $_POST['content'] ), 0, 'db' ) ),
 							'post_title'   => sanitize_text_field( wp_unslash( $_POST['post_title'] ) ),
 							'post_excerpt' => wp_specialchars_decode( $excerpt, ENT_COMPAT ),
 							'language'     => sanitize_text_field( wp_unslash( $_POST['mltlngg_active_language'] ) ),
@@ -2098,14 +2099,14 @@ if ( ! function_exists( 'mltlngg_save_post' ) ) {
 						'ID'           => $post_id,
 						'post_title'   => wp_specialchars_decode( sanitize_text_field( wp_unslash( $_POST[ 'title_' . $mltlngg_options['default_language'] ] ), ENT_COMPAT ) ),
 						'post_excerpt' => wp_specialchars_decode( $default_excerpt, ENT_COMPAT ),
-						'post_content' => wp_specialchars_decode( sanitize_post_field( 'post_content', wp_unslash( $_POST[ 'content_' . $mltlngg_options['default_language'] ] ), ENT_COMPAT ), 0, 'db' ),
+						'post_content' => wp_encode_emoji( wp_specialchars_decode( sanitize_post_field( 'post_content', wp_unslash( $_POST[ 'content_' . $mltlngg_options['default_language'] ] ), ENT_COMPAT ), 0, 'db' ) ),
 					);
 				} else {
 					$post = array(
 						'ID'           => $post_id,
 						'post_title'   => wp_specialchars_decode( sanitize_text_field( wp_unslash( $_POST['post_title'] ) ) ),
 						'post_excerpt' => wp_specialchars_decode( $excerpt, ENT_COMPAT ),
-						'post_content' => wp_specialchars_decode( sanitize_post_field( 'post_content', wp_unslash( $_POST['content'] ), 0, 'db' ), ENT_COMPAT ),
+						'post_content' => wp_encode_emoji( wp_specialchars_decode( sanitize_post_field( 'post_content', wp_unslash( $_POST['content'] ), 0, 'db' ), ENT_COMPAT ) ),
 					);
 				}
 				/* function for saving custom fields (default WP field) */
@@ -2146,7 +2147,7 @@ if ( ! function_exists( 'mltlngg_rest_after_insert_post' ) ) {
 				$wpdb->update(
 					$wpdb->posts,
 					array(
-						'post_content' => $default_language_data->post_content,
+						'post_content' => wp_encode_emoji( $default_language_data->post_content ),
 						'post_title'   => $default_language_data->post_title,
 						'post_excerpt' => $default_language_data->post_excerpt,
 					),
@@ -2195,7 +2196,7 @@ if ( ! function_exists( 'mltlngg_ajax_callback' ) ) {
 					$wpdb->update(
 						$wpdb->prefix . 'mltlngg_translate',
 						array(
-							'post_content' => sanitize_post_field( 'post_content', wp_unslash( $_POST['mltlngg_old_content'] ), 0, 'db' ),
+							'post_content' => wp_encode_emoji( sanitize_post_field( 'post_content', wp_unslash( $_POST['mltlngg_old_content'] ), 0, 'db' ) ),
 							/*'post_content' => htmlentities( wp_unslash( $_POST['mltlngg_old_content'] ) ), */
 							'post_title'   => sanitize_text_field( wp_unslash( $_POST['mltlngg_old_title'] ) ),
 							'post_excerpt' => $mltlngg_old_excerpt,
@@ -2214,7 +2215,7 @@ if ( ! function_exists( 'mltlngg_ajax_callback' ) ) {
 					$wpdb->prefix . 'mltlngg_translate',
 					array(
 						'post_ID'      => $post_id,
-						'post_content' => sanitize_post_field( 'post_content', wp_unslash( $_POST['mltlngg_old_content'] ), 0, 'db' ),
+						'post_content' => wp_encode_emoji( sanitize_post_field( 'post_content', wp_unslash( $_POST['mltlngg_old_content'] ), 0, 'db' ) ),
 						'post_title'   => sanitize_text_field( wp_unslash( $_POST['mltlngg_old_title'] ) ),
 						'post_excerpt' => $mltlngg_old_excerpt,
 						'language'     => sanitize_text_field( wp_unslash( $_POST['old_lang'] ) ),
@@ -2563,6 +2564,7 @@ if ( ! function_exists( 'mltlngg_the_title_filter' ) ) {
 	 */
 	function mltlngg_the_title_filter( $title, $post_id = null ) {
 		global $mltlngg_options, $wpdb, $mltlngg_current_language, $mltlngg_enabled_languages_locale, $mltlngg_active_language, $post;
+
 		if ( ! empty( $post_id ) ) {
 			$id = ( $post_id instanceof WP_Post ) ? $post_id->ID : $post_id;
 
@@ -2637,20 +2639,49 @@ if ( ! function_exists( 'mltlngg_nav_menu_items_filter' ) ) {
 
 		foreach ( $items as $key => $item ) {
 			if ( 'taxonomy' === $item->type ) {
-				$new_title = $wpdb->get_var(
-					$wpdb->prepare(
-						'SELECT `name`
-						 FROM `' . $wpdb->prefix . 'mltlngg_terms_translate`
-						 WHERE `term_ID` = %d AND `language` = %s
-						',
-						$item->object_id,
-						$mltlngg_current_language
-					)
-				);
-				if ( isset( $new_title ) && '' !== $new_title ) { /* If translation is exist and not empty, filter menu item */
-					$item->title = $new_title;
+				if ( 0 == $mltlngg_options['translate_menu'] ) {
+					$new_title = $wpdb->get_var(
+						$wpdb->prepare(
+							'SELECT `name`
+							 FROM `' . $wpdb->prefix . 'mltlngg_terms_translate`
+							 WHERE `term_ID` = %d AND `language` = %s
+							',
+							$item->object_id,
+							$mltlngg_get_default_language
+						)
+					);
+					if ( isset( $new_title ) && '' !== $new_title ) { /* If translation is exist and not empty, filter menu item */
+						$item->title = $new_title;
+					} else {
+						$new_title = $wpdb->get_var(
+							$wpdb->prepare(
+								'SELECT `name`
+								 FROM `' . $wpdb->terms . '`
+								 WHERE `term_id` = %d
+								',
+								$item->object_id
+							)
+						);
+						if ( isset( $new_title ) && '' !== $new_title ) { /* If translation is exist and not empty, filter menu item */
+							$item->title = $new_title;
+						}
+					}
+				} else {
+					$new_title = $wpdb->get_var(
+						$wpdb->prepare(
+							'SELECT `name`
+							 FROM `' . $wpdb->prefix . 'mltlngg_terms_translate`
+							 WHERE `term_ID` = %d AND `language` = %s
+							',
+							$item->object_id,
+							$mltlngg_current_language
+						)
+					);
+					if ( isset( $new_title ) && '' !== $new_title ) { /* If translation is exist and not empty, filter menu item */
+						$item->title = $new_title;
+					}
 				}
-			} elseif ( 'post_type' === $item->type && ( 'post' === $item->object || 'page' === $item->object ) ) {
+			} elseif ( 'post_type' === $item->type && ( 'post' === $item->object || 'page' === $item->object ) && 0 != $mltlngg_options['translate_menu'] ) {
 				$new_title = $wpdb->get_var(
 					$wpdb->prepare(
 						'SELECT `post_title`

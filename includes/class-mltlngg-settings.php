@@ -102,6 +102,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 				$this->options['google_auto_translate']    = isset( $_POST['mltlngg_google_auto_translate'] ) ? 1 : 0;
 				$this->options['translate_open_graph']     = isset( $_POST['mltlngg_translate_open_graph'] ) ? 1 : 0;
 				$this->options['display_alternative_link'] = isset( $_POST['mltlngg_display_alternative_link'] ) ? 1 : 0;
+				$this->options['translate_menu']           = isset( $_POST['mltlngg_translate_menu'] ) ? 1 : 0;
 				$this->options['save_mode']                = isset( $_POST['mltlngg_save_mode'] ) && 'ajax' === sanitize_text_field( wp_unslash( $_POST['mltlngg_save_mode'] ) ) ? 'ajax' : 'manual';
 				$this->options['search']                   = isset( $_POST['mltlngg_search'] ) && in_array( sanitize_text_field( wp_unslash( $_POST['mltlngg_search'] ) ), array( 'single', 'all' ), true ) ? sanitize_text_field( wp_unslash( $_POST['mltlngg_search'] ) ) : 'single';
 				$this->options['enabled_roles']            = isset( $_POST['mltlngg_enabled_roles'] ) ? array_map( 'sanitize_text_field', array_map( 'wp_unslash', $_POST['mltlngg_enabled_roles'] ) ) : array();
@@ -180,7 +181,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 											esc_html_e( 'Before', 'multilanguage' );
 											printf(
 												'&ensp;<code>%s</code>',
-												esc_url( preg_replace( '~(://)~', '$0<b>en.</b>', $url ) )
+												preg_replace( '~(://)~', '$0<b>en.</b>', $url )
 											);
 											?>
 										</label>
@@ -196,7 +197,7 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 											esc_html_e( 'After', 'multilanguage' );
 											printf(
 												'&ensp;<code>%s</code>',
-												esc_url( preg_replace( '~(?<=[/=])(' . $mltlngg_current_language . ')(?![\w\d-])~', '<b>en</b>', mltlngg_get_lang_link( $args ) ) )
+												preg_replace( '~(?<=[/=])(' . $mltlngg_current_language . ')(?![\w\d-])~', '<b>en</b>', mltlngg_get_lang_link( $args ) )
 											);
 											?>
 										</label>
@@ -249,6 +250,12 @@ if ( ! class_exists( 'Mltlngg_Settings_Tabs' ) ) {
 					<th><?php esc_html_e( 'Hreflang Attribute', 'multilanguage' ); ?></th>
 					<td>
 						<input type="checkbox" name="mltlngg_display_alternative_link" value="1" <?php checked( 1, $this->options['display_alternative_link'] ); ?> /> <span class="bws_info"><?php printf( esc_html__( 'Enable to add hreflang attribute used by search engines and display the correct language or regional URL in search results. This option inserts automatically the respective link for each language within the %s section.', 'multilanguage' ), '&lt;head&gt;' ); ?></span>
+					</td>
+				</tr>
+				<tr>
+					<th><?php esc_html_e( 'Translate Menu', 'multilanguage' ); ?></th>
+					<td>
+						<input type="checkbox" name="mltlngg_translate_menu" value="1" <?php checked( 1, $this->options['translate_menu'] ); ?> /> <span class="bws_info"><?php printf( esc_html__( 'Enable to translation for the created menu on the page %s (only Pages, Posts, Categories, only if a translation has been made for the corresponding objects)', 'multilanguage' ), '<a href="' . esc_url( admin_url( '/nav-menus.php' ) ) . '">' . esc_html__( 'Menus' ) . '</a>' ); ?></span>
 					</td>
 				</tr>
 				<?php if ( ! defined( 'ET_BUILDER_THEME' ) && ! defined( 'WPB_VC_VERSION' ) ) { ?>

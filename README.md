@@ -50,6 +50,7 @@
 </ul>
 </li>
 <li>Enable translation for any user role</li>
+<li>Translate menu</li>
 </ul>
 <blockquote>
 <p><strong>Pro Features</strong></p>
